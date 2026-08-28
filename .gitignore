@@ -31,6 +31,13 @@ corpus/.repos/
 # production. Every check passed because it asked disk, not git.
 !docs-site/images/**/*.png
 
+# ...and the cloud half's served static dirs, for the same reason: `*.png` is
+# this repo's only unanchored extension rule, and the merge put two Next
+# `public/` trees under it. Deliberately NOT cloud/site/tests/evidence/ — those
+# really are review artifacts, which is what the blanket is for.
+# (`cloud/` is Vendo Cloud's closed source; it has no files in this repo.)
+!cloud/*/public/**/*.png
+
 # ...except RAW MEASUREMENT DATA under docs/verification: logs, counters, and
 # sample sets are small, they diff, and a lane's claims are worthless without
 # them. Without this negation every lane has to remember `git add -f` and the
@@ -97,6 +104,19 @@ coverage/
 .env.local
 .env.*.local
 examples/*/.env.local
+
+# The cloud half's own ignore file moved with it, to cloud/site/.gitignore, so
+# its `.env*` and `*.pem` rules stopped reaching cloud/console and cloud/workers
+# — and Next really does load `.env.production`. Nothing announces this: it goes
+# wrong the first time somebody commits one. Here rather than in each subproject
+# so a cloud subproject added later is covered the day it is created; `.dev.vars`
+# is Wrangler's local secret file, uncovered outside cloud/console on both sides
+# of the merge.
+# (`cloud/` is Vendo Cloud's closed source; it has no files in this repo.)
+cloud/**/.env*
+cloud/**/*.pem
+cloud/**/.dev.vars
+!cloud/**/.env.example
 
 # speed lane raw samples (aggregated into README table)
 docs/verification/vendo-v2-speed/samples.ndjson

@@ -16,3 +16,8 @@ assets/
 examples/*/docs/
 packages/*/docs/
 corpus/harness/src/knowledge-eval/fixtures/
+
+# Not size: the private half of the monorepo (console, broker, its CA certs)
+# must never be uploaded. Anchored on purpose — gitignore semantics, so a bare
+# `cloud/` would also drop packages/vendo/src/cli/cloud/ and break the build.
+/cloud/

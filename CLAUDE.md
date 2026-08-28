@@ -67,7 +67,7 @@ generated UI in a sandboxed, brand-native surface.
   they could never disagree. Anything this repo emits for `vendo-web` to read
   (`.vendo/components/`, `vendo_*` collections, blob namespaces) is one of
   those seams, and the console's copy of the schema is a mirror — see the
-  testing section of `vendo-web/AGENTS.md` for the full lesson.
+  testing section of `cloud/AGENTS.md` for the full lesson.
 - Two suites must not share a directory that either of them deletes.
   `next build` wipes its whole `distDir`, so a fixture dev server's dist dir
   is a SIBLING of the build's, never a child. Nesting them took out all 36

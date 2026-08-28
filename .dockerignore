@@ -16,3 +16,7 @@ corpus/.logs
 **/.env*
 **/.vendo/data
 examples/*/docs/verification
+
+# The private half of the monorepo — console, broker, its CA certs — must
+# never reach a public demo's image.
+cloud
