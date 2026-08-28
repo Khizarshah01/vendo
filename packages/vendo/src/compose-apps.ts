@@ -23,7 +23,7 @@ import {
 import { appAccess } from "@vendoai/store";
 import { askUserRegistry } from "./ask-user.js";
 import { cloudApps } from "./cloud-apps.js";
-import { cloudKeyOptions } from "./compose-selection.js";
+import { cloudKeyOptions, selectAppDatabase } from "./compose-selection.js";
 import type { VendoComposition } from "./compose-context.js";
 import { vendoVerbsRegistry } from "./vendo-verbs.js";
 import { environment } from "./wire/shared.js";
@@ -41,14 +41,15 @@ interface AppsSeams {
 /** Persistence, permission and interchange: the seams the runtime reads and
  *  writes THROUGH. */
 const appsStoreSeams = (composition: VendoComposition, seams: AppsSeams): Partial<AppsConfig> => {
-  const { store, ops, guard, boundTools, inference, catalog, seedBaselines, files } = composition;
+  const { config, store, ops, guard, boundTools, inference, catalog, seedBaselines, files } = composition;
   const { access } = seams;
+  const appDatabase = selectAppDatabase(config.appDatabase, store);
   return {
     store,
-    // Adapter rule — the SAME ops surface the deployment selected, so app data
-    // lands owner-stamped through the named-operation family instead of the
-    // raw façade.
+    // Adapter rule — the SAME ops surface the deployment selected.
     ops,
+    // Adapter rule, app-database seam: one SQL database per app.
+    ...(appDatabase === undefined ? {} : { appDatabase }),
     guard,
     tools: boundTools,
     model: inference.agent.model,
@@ -270,7 +271,7 @@ export const composeApps = (composition: VendoComposition): Pick<VendoCompositio
   // Design §4's vendo verbs, projected onto the SAME registry as everything else
   // — guarded, audited, and searchable by `find_tools`, with no privileged side
   // door. `records_list/put/delete` are deliberately absent: they already ship as
-  // `vendo_apps_data_*` through the apps pack, and those names are written inside
+  // `vendo_apps_sql` through the apps pack, and those names are written inside
   // stored app documents (contract §8's lane-D ratification — renaming would
   // invalidate live apps for cosmetics).
   //

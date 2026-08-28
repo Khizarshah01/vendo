@@ -113,6 +113,22 @@ const tools: readonly HostToolInfo[] = [
   },
 ];
 
+/** The app's own database — ONE tool over statements that read and statements
+ *  that write, so its AUTHORED grade is the pessimistic `write`. Kept OUT of the
+ *  shared list above: adding it there changes what every other test's "the tools
+ *  you can read are…" message says. */
+const APP_SQL: HostToolInfo = {
+  name: "vendo_apps_sql",
+  description: "Run one SQL statement against this app's own database",
+  risk: "write",
+  inputSchema: {
+    type: "object",
+    properties: { appId: { type: "string" }, sql: { type: "string" }, params: { type: "array" } },
+    required: ["sql"],
+    additionalProperties: false,
+  },
+};
+
 /** The names this host's surface renders — the Kit slice a screen here needs. */
 const catalog = ["Stack", "Row", "Card", "Text", "Button", "Callout"];
 
@@ -127,6 +143,29 @@ interface Ran {
   tool: string;
   input?: unknown;
 }
+
+/** `pets.rows`, not `pets.data.rows`: `useQuery` hands back the tool's own result
+ *  (`vm-program.ts` `return data[key]`), and `.data` is only the shape of a read
+ *  nobody has answered yet. With a stubbed empty answer the two spellings paint
+ *  identically, which is exactly why a fixture must not teach the wrong one. */
+const PERSISTS = `import { useState } from "react";
+import { Button, Card, Stack, Text, tools, useQuery } from "@vendo/screen";
+
+export default function Pets() {
+  const pets = useQuery("vendo_apps_sql", { sql: "SELECT * FROM mine.pets" });
+  const [name, setName] = useState("");
+
+  return (
+    <Stack gap={12}>
+      <Text text="Pets" variant="heading" />
+      {(pets.rows ?? []).map((pet) => (
+        <Card key={pet.id} title={pet.name} />
+      ))}
+      <Button label="Add" onClick={() => tools.vendo_apps_sql({ sql: "INSERT INTO mine.pets (id, name) VALUES (?, ?)", params: [name, name] })} />
+    </Stack>
+  );
+}
+`;
 
 const check = async (
   source: string,
@@ -2379,5 +2418,52 @@ export default function Build() {
       queryResults: {},
       ...(builds.initialTree === undefined ? {} : { painted: { tree: builds.initialTree } }),
     })).toBe(bare);
+  });
+});
+
+// `vendo_apps_sql` is authored `write`, so a grade-only rule filtered it out of
+// `useQuery` and a screen could not name it there at all. The grade of a CALL is
+// its statement's.
+//
+// WHAT THIS DOES NOT COVER, said plainly, because it was once named "a screen
+// reads its own database on first paint" and was not that: `runQuery` below is
+// this file's own stub, so nothing here touches an app, a row, an owner or a
+// database. It measures the AUTHORING GRADE and only that — which statement may
+// ride `useQuery`. It passed green for a whole release while the live first
+// paint died on `app not found`, because the thing that refused was on the other
+// side of the stub.
+//
+// The ordering — a screen reading its own database on the build that CREATES the
+// app, where the paint being checked is what writes the row — is a seam and is
+// proven as one, with no stub on either side, in
+// `packages/vendo/tests/app-first-build.seam.test.ts`.
+describe("which SQL statements a screen may put in useQuery", () => {
+  const empty = { columns: ["id", "name"], rows: [] as unknown[], rowCount: 0 };
+  const checkSql = (source: string): Promise<ComponentScreenCheck> => checkComponentScreen({
+    source,
+    hostTools: [...tools, APP_SQL],
+    catalog,
+    runQuery: async () => empty,
+  });
+
+  it("admits a SELECT through useQuery, and the INSERT through a handler", async () => {
+    const result = await checkSql(PERSISTS);
+    expect(result.issues.map(({ message }) => message).join("\n")).toBe("");
+    expect(result.ok).toBe(true);
+  });
+
+  it("still refuses a statement that WRITES from useQuery", async () => {
+    const result = await checkSql(PERSISTS.replace('"SELECT * FROM mine.pets"', '"DELETE FROM mine.pets"'));
+    expect(result.ok).toBe(false);
+    const text = result.issues.map(({ message }) => message).join("\n");
+    expect(text).toContain("runs a statement that CHANGES things");
+  });
+
+  it("refuses a COMPUTED statement, which cannot be graded before it runs", async () => {
+    const result = await checkSql(PERSISTS.replace(
+      '{ sql: "SELECT * FROM mine.pets" }',
+      "{ sql: `SELECT * FROM mine.` + table }",
+    ));
+    expect(result.ok).toBe(false);
   });
 });
