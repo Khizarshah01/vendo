@@ -30,7 +30,7 @@
 import { createHmac } from "node:crypto";
 import { afterEach, describe, expect, it } from "vitest";
 import type { AutomationRecord, AutomationTask, RunContext, When } from "@vendoai/core";
-import { automationsInternals } from "@vendoai/automations";
+import { automationsInternals } from "@vendoai/vendo/automations";
 import {
   ADA,
   createStack,

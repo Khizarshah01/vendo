@@ -390,7 +390,7 @@ export function storeOpsConformance(opts: StoreOpsConformanceOptions): Conforman
       }),
 
       /** The deliveries dedupe the ingestion surface depends on
-          (packages/automations/src/ingestion-surface.ts): a redelivered webhook
+          (packages/vendo/src/automations/ingestion-surface.ts): a redelivered webhook
           must lose, and lose without touching what the first one recorded. */
       opsCase(opts, "engine.insertIfAbsent returns record on first call, null on second", async (ops) => {
         const first = await ops.engine.insertIfAbsent("automations:deliveries", { id: "dlv_1", data: { n: 1 } });

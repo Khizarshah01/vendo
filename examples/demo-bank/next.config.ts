@@ -33,12 +33,9 @@ const nextConfig: NextConfig = {
     ? {
         transpilePackages: [
           "@vendoai/actions",
-          "@vendoai/automations",
           "@vendoai/core",
           "@vendoai/guard",
           "@vendoai/harnesses",
-          "@vendoai/knowledge",
-          "@vendoai/mcp",
           "@vendoai/telemetry",
           "@vendoai/ui",
           "@vendoai/vendo",
@@ -49,7 +46,6 @@ const nextConfig: NextConfig = {
             "@vendoai/actions/presets": "../../packages/actions/src/presets/index.ts",
             "@vendoai/actions/presets/auth-js": "../../packages/actions/src/presets/auth-js.ts",
             "@vendoai/actions/sync": "../../packages/actions/src/sync/public.ts",
-            "@vendoai/automations": "../../packages/automations/src/index.ts",
             "@vendoai/core": "../../packages/core/src/index.ts",
             "@vendoai/core/conformance": "../../packages/core/src/conformance/index.ts",
             "@vendoai/guard": "../../packages/guard/src/index.ts",
@@ -59,8 +55,6 @@ const nextConfig: NextConfig = {
             "@vendoai/harnesses/claude-turn": "../../packages/harnesses/src/claude-code/claude-turn.ts",
             // No line for @vendoai/harnesses/box-door: it ships as source
             // (box/turn-routes.mjs), so there is no dist copy to bypass.
-            "@vendoai/knowledge": "../../packages/knowledge/src/index.ts",
-            "@vendoai/mcp": "../../packages/mcp/src/index.ts",
             "@vendoai/telemetry": "../../packages/vendo-telemetry/src/index.ts",
             "@vendoai/ui": "../../packages/ui/src/index.ts",
             "@vendoai/ui/chrome": "../../packages/ui/src/chrome/index.ts",

@@ -9,7 +9,7 @@
  * `venue: "chat"`, `presence: "present"`, the subject from the link, and the
  * delivery's `eventId` as the conversation the guard scopes its cards by.
  */
-import { automationName, type AutomationsEngine } from "@vendoai/automations";
+import { automationName, type AutomationsEngine } from "./automations/index.js";
 import {
   AGENT_CONTEXT_MARK,
   log,

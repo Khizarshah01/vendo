@@ -79,6 +79,9 @@ importers:
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
+      '@vendoai/cli':
+        specifier: workspace:*
+        version: link:../../packages/cli
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -253,9 +256,9 @@ importers:
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
-      '@vendoai/automations':
+      '@vendoai/cli':
         specifier: workspace:*
-        version: link:../../packages/automations
+        version: link:../../packages/cli
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -487,9 +490,6 @@ importers:
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
-      '@vendoai/automations':
-        specifier: workspace:*
-        version: link:../../packages/automations
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -591,15 +591,9 @@ importers:
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
-      '@vendoai/automations':
-        specifier: workspace:*
-        version: link:../../packages/automations
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/mcp':
-        specifier: workspace:*
-        version: link:../../packages/mcp
       '@vendoai/store':
         specifier: workspace:*
         version: link:../../packages/store
@@ -701,9 +695,6 @@ importers:
       '@vendoai/guard':
         specifier: workspace:*
         version: link:../../packages/guard
-      '@vendoai/mcp':
-        specifier: workspace:*
-        version: link:../../packages/mcp
       '@vendoai/store':
         specifier: workspace:*
         version: link:../../packages/store
@@ -741,9 +732,6 @@ importers:
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
-      '@vendoai/automations':
-        specifier: workspace:*
-        version: link:../../packages/automations
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -753,9 +741,6 @@ importers:
       '@vendoai/harnesses':
         specifier: workspace:*
         version: link:../../packages/harnesses
-      '@vendoai/mcp':
-        specifier: workspace:*
-        version: link:../../packages/mcp
       '@vendoai/store':
         specifier: workspace:*
         version: link:../../packages/store
@@ -1002,17 +987,38 @@ importers:
         specifier: ^3.2.6
         version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@25.0.1)(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
 
-  packages/automations:
+  packages/cli:
     dependencies:
+      '@vendoai/actions':
+        specifier: workspace:*
+        version: link:../actions
+      '@vendoai/apps':
+        specifier: workspace:*
+        version: link:../apps
       '@vendoai/core':
         specifier: workspace:*
         version: link:../core
-      croner:
-        specifier: ^9.0.0
-        version: 9.1.0
-      jsonata:
-        specifier: ^2.0.5
-        version: 2.2.1
+      '@vendoai/guard':
+        specifier: workspace:*
+        version: link:../guard
+      '@vendoai/harnesses':
+        specifier: workspace:*
+        version: link:../harnesses
+      '@vendoai/store':
+        specifier: workspace:*
+        version: link:../store
+      '@vendoai/telemetry':
+        specifier: workspace:*
+        version: link:../vendo-telemetry
+      '@vendoai/vendo':
+        specifier: workspace:*
+        version: link:../vendo
+      ajv:
+        specifier: ^8.20.0
+        version: 8.20.0
+      ajv-formats:
+        specifier: ^3.0.1
+        version: 3.0.1(ajv@8.20.0)
       zod:
         specifier: ^3.25.0
         version: 3.25.76
@@ -1128,56 +1134,6 @@ importers:
       ai:
         specifier: 6.0.28
         version: 6.0.28(zod@3.25.76)
-      typescript:
-        specifier: ^5.6.0
-        version: 5.9.3
-      vitest:
-        specifier: ^3.2.6
-        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
-
-  packages/knowledge:
-    dependencies:
-      '@vendoai/core':
-        specifier: workspace:*
-        version: link:../core
-      zod:
-        specifier: ^3.25.0
-        version: 3.25.76
-    devDependencies:
-      '@types/node':
-        specifier: ^22.0.0
-        version: 22.20.0
-      ai:
-        specifier: 6.0.28
-        version: 6.0.28(zod@3.25.76)
-      typescript:
-        specifier: ^5.6.0
-        version: 5.9.3
-      vitest:
-        specifier: ^3.2.6
-        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
-
-  packages/mcp:
-    dependencies:
-      '@modelcontextprotocol/sdk':
-        specifier: ^1.29.0
-        version: 1.29.0(@cfworker/json-schema@4.1.1)(zod@3.25.76)
-      '@vendoai/apps':
-        specifier: workspace:*
-        version: link:../apps
-      '@vendoai/core':
-        specifier: workspace:*
-        version: link:../core
-      jose:
-        specifier: ^6.2.3
-        version: 6.2.3
-      zod:
-        specifier: ^3.25.0
-        version: 3.25.76
-    devDependencies:
-      '@types/node':
-        specifier: ^22.0.0
-        version: 22.20.0
       typescript:
         specifier: ^5.6.0
         version: 5.9.3
@@ -1312,15 +1268,15 @@ importers:
       '@ai-sdk/anthropic':
         specifier: 3.0.12
         version: 3.0.12(zod@3.25.76)
+      '@modelcontextprotocol/sdk':
+        specifier: ^1.29.0
+        version: 1.29.0(@cfworker/json-schema@4.1.1)(zod@3.25.76)
       '@vendoai/actions':
         specifier: workspace:*
         version: link:../actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../apps
-      '@vendoai/automations':
-        specifier: workspace:*
-        version: link:../automations
       '@vendoai/core':
         specifier: workspace:*
         version: link:../core
@@ -1330,12 +1286,6 @@ importers:
       '@vendoai/harnesses':
         specifier: workspace:*
         version: link:../harnesses
-      '@vendoai/knowledge':
-        specifier: workspace:*
-        version: link:../knowledge
-      '@vendoai/mcp':
-        specifier: workspace:*
-        version: link:../mcp
       '@vendoai/store':
         specifier: workspace:*
         version: link:../store
@@ -1351,6 +1301,15 @@ importers:
       ajv-formats:
         specifier: ^3.0.1
         version: 3.0.1(ajv@8.20.0)
+      croner:
+        specifier: ^9.0.0
+        version: 9.1.0
+      jose:
+        specifier: ^6.2.3
+        version: 6.2.3
+      jsonata:
+        specifier: ^2.0.5
+        version: 2.2.1
       qrcode-generator:
         specifier: ^2.0.4
         version: 2.0.4
@@ -1373,9 +1332,6 @@ importers:
       '@mastra/core':
         specifier: 1.51.0
         version: 1.51.0(@bufbuild/protobuf@2.12.1)(@cfworker/json-schema@4.1.1)(ai@6.0.28(zod@3.25.76))(express@5.2.1)(rxjs@7.8.1)(zod@3.25.76)
-      '@modelcontextprotocol/sdk':
-        specifier: ^1.29.0
-        version: 1.29.0(@cfworker/json-schema@4.1.1)(zod@3.25.76)
       '@types/json-schema':
         specifier: ^7.0.15
         version: 7.0.15
@@ -1391,9 +1347,6 @@ importers:
       ai:
         specifier: 6.0.28
         version: 6.0.28(zod@3.25.76)
-      jose:
-        specifier: ^6.2.3
-        version: 6.2.3
       just-bash:
         specifier: ^3.1.0
         version: 3.2.0
@@ -1424,6 +1377,9 @@ importers:
 
   packages/vendoai:
     dependencies:
+      '@vendoai/cli':
+        specifier: workspace:*
+        version: link:../cli
       '@vendoai/vendo':
         specifier: workspace:*
         version: link:../vendo

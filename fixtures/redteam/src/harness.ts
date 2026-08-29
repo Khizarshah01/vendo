@@ -38,7 +38,7 @@ import { createGuard, type Judge, type PolicyConfig, type VendoGuard } from "@ve
 import { createActions } from "@vendoai/actions";
 import { connectorDiscoveryRegistry } from "@vendoai/vendo";
 import { createApps, type AppsRuntime, type SandboxAdapter } from "@vendoai/apps";
-import { automationsInternals, createAutomations, type AutomationsEngine } from "@vendoai/automations";
+import { automationsInternals, createAutomations, type AutomationsEngine } from "@vendoai/vendo/automations";
 
 export const fixtureBaseUrl = (): string => inject("fixtureBaseUrl");
 

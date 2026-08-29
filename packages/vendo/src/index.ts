@@ -67,14 +67,14 @@ export type {
   RunPlan,
   RunRecord,
   RunStatus,
-} from "@vendoai/automations";
+} from "./automations/index.js";
 export type { VendoClient, VendoClientConfig } from "@vendoai/ui";
 // 10-mcp §3: the one type a host implements to open the MCP door
-// (`createVendo({ mcp: true, oauth })`). The rest of @vendoai/mcp's surface
+// (`createVendo({ mcp: true, oauth })`). The rest of the door's surface
 // (createMcpDoor, McpDoor, McpDoorConfig, McpRunContext) is
 // umbrella-internal — the Vendo interface exposes no `mcp` handle (09 §2) — so
 // only this host-facing seam belongs on the root.
-export type { HostOAuthAdapter } from "@vendoai/mcp";
+export type { HostOAuthAdapter } from "./mcp/index.js";
 // Existing-agents Lane B — the wire's per-approval resolution for a parked BYO
 // guarded call (what GET /approvals/:id answers; the ui client mirrors it).
 export type { ByoApprovalResolution } from "./byo-approvals.js";

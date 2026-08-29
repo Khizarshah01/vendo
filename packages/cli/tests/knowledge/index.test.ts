@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { knowledgeHashManifestSchema, type KnowledgeAdapter, type KnowledgeDoc } from "@vendoai/core";
 import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
-import { httpKnowledge } from "@vendoai/knowledge";
+import { httpKnowledge } from "@vendoai/vendo/knowledge";
 import { runKnowledge } from "../../src/knowledge/index.js";
 import type { Output } from "../../src/shared.js";
 

@@ -36,7 +36,7 @@ import type { AddressInfo } from "node:net";
 import { Readable } from "node:stream";
 import { VendoError, type Guard, type StoreAdapter, type ToolRegistry } from "@vendoai/core";
 import type { ToolDoorPort } from "@vendoai/harnesses";
-import { createMcpDoor, createTurnCredentials, type LiveTurn } from "@vendoai/mcp";
+import { createMcpDoor, createTurnCredentials, type LiveTurn } from "../mcp/index.js";
 
 /** Where the host mounts {@link AgentDoor.handler}, and the path the box dials.
  *  The umbrella's mount, deliberately: a deployment that later wraps this agent

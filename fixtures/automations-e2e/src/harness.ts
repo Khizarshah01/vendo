@@ -37,7 +37,7 @@ import {
   createAutomations,
   type AutomationsEngine,
   type ReconcileAutomations,
-} from "@vendoai/automations";
+} from "@vendoai/vendo/automations";
 
 export const fixtureBaseUrl = (): string => inject("fixtureBaseUrl");
 

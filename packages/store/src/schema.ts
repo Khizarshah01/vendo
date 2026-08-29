@@ -75,7 +75,7 @@ import type { Db } from "./db-postgres.js";
     outlived its owner's erasure would be a hole, not an untidiness — and
     `revision` the optimistic-concurrency counter the row's atomic verbs turn.
     No caller claims a fire through it: the tick arbitrates on the schedule
-    cursor instead (packages/automations/src/ingestion-surface.ts).
+    cursor instead (packages/vendo/src/automations/ingestion-surface.ts).
     `vendo_runs` re-keys `app_id`
     to `automation_id`, because a run belongs to the record that fired it and an
     automation holds no app reference at all; `vendo_grants` re-keys `trigger_id`

@@ -5,7 +5,7 @@ import type {
   Principal,
   ToolOutcome,
 } from "@vendoai/core";
-import type { RunRecord, RunStatus } from "@vendoai/automations";
+import type { RunRecord, RunStatus } from "@vendoai/core";
 import { expect } from "vitest";
 import {
   ADA,

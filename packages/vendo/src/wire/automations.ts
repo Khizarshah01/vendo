@@ -1,4 +1,4 @@
-import type { RunStatus } from "@vendoai/automations";
+import type { RunStatus } from "../automations/index.js";
 import { RUN_STATUSES, VendoError } from "@vendoai/core";
 import { json, route, string, type RouteEntry } from "./shared.js";
 

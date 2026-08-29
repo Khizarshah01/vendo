@@ -13,7 +13,7 @@ import { join } from "node:path";
 import { nodeBridge } from "@vendoai-fixtures/test-kit/node-bridge";
 import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
 import type { Principal } from "@vendoai/core";
-import type { HostOAuthAdapter } from "@vendoai/mcp";
+import type { HostOAuthAdapter } from "@vendoai/vendo/mcp";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { createVendo, type CreateVendoConfig, type Vendo } from "@vendoai/vendo/server";
 import { afterEach, describe, expect, it } from "vitest";

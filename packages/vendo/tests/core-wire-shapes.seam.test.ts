@@ -18,7 +18,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { automationsInternals } from "@vendoai/automations";
+import { automationsInternals } from "../src/automations/index.js";
 import { RUN_STATUSES, type AutomationId, type Principal, type RunContext } from "@vendoai/core";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { createVendoClient, type VendoClient } from "@vendoai/ui";

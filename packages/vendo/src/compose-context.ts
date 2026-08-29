@@ -25,7 +25,7 @@ import type {
 } from "@vendoai/actions";
 import type { AgentComposition } from "./turn/index.js";
 import type { AppsRuntime, SeedBaseline } from "@vendoai/apps";
-import type { AutomationsEngine } from "@vendoai/automations";
+import type { AutomationsEngine } from "./automations/index.js";
 import type {
   ActAs,
   AgentRunner,
@@ -48,7 +48,7 @@ import type {
 import type { VendoGuard, RiskResolver } from "@vendoai/guard";
 import type { CapabilityMissConfig } from "@vendoai/harnesses";
 import type { VendoToolSearchConfig } from "@vendoai/harnesses/vendo";
-import type { McpDoor, TurnCredentials } from "@vendoai/mcp";
+import type { McpDoor, TurnCredentials } from "./mcp/index.js";
 import type { VendoStore } from "@vendoai/store";
 import type { createByoApprovals } from "./byo-approvals.js";
 import type { McpBundle } from "./cloud-mcp.js";
@@ -227,7 +227,7 @@ export interface VendoComposition {
   toolOutputCap: number;
   catalogConnectors: Connector[];
   serviceCatalog: boolean;
-  knowledgeIndex: ReturnType<typeof import("@vendoai/knowledge").knowledgeIndexResolver> | undefined;
+  knowledgeIndex: ReturnType<typeof import("./knowledge/index.js").knowledgeIndexResolver> | undefined;
   missSurface: () => Promise<CapabilitySurfaceSnapshot>;
   missCapture: ReturnType<typeof import("./capability-misses.js").createCapabilityMissCapture>;
 

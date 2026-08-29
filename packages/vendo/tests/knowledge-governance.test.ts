@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
-import { automationsInternals } from "@vendoai/automations";
+import { automationsInternals } from "../src/automations/index.js";
 import {
   descriptorHash,
   type KnowledgeAdapter,

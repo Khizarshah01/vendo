@@ -17,7 +17,7 @@ import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { channelInboundSecret } from "../src/channels.js";
 import { createVendo, guard, type Vendo } from "../src/server.js";
-import { READ_ONLY_POWER } from "@vendoai/automations";
+import { READ_ONLY_POWER } from "../src/automations/index.js";
 import { VENDO_TEXT_ME_TOOL } from "../src/text-me.js";
 
 /**

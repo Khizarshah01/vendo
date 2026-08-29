@@ -5,7 +5,7 @@
  * running, not by a status.
  *
  * Both halves of this were already proved, and neither could catch the other:
- * `packages/automations/tests/engine.test.ts` re-runs against a `GuardDouble`
+ * `packages/vendo/tests/automations/engine.test.ts` re-runs against a `GuardDouble`
  * whose `check()` always answers "run", so its `status: "ok"` says nothing about
  * authority, and `packages/guard/test/security/chat-grant-not-away.test.ts`
  * hand-seeds the grant shape it accepts. Here the guard that refuses the first
@@ -19,7 +19,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { automationsInternals } from "@vendoai/automations";
+import { automationsInternals } from "../src/automations/index.js";
 import type { Principal, RunContext, ToolRegistry } from "@vendoai/core";
 import { createStore } from "@vendoai/store";
 import { afterEach, describe, expect, it } from "vitest";

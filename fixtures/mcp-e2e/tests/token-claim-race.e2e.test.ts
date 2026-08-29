@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import type { AuditEvent, Guard, Principal, StoreAdapter, ToolRegistry } from "@vendoai/core";
-import { createMcpDoor, type HostOAuthAdapter, type McpDoor } from "@vendoai/mcp";
+import { createMcpDoor, type HostOAuthAdapter, type McpDoor } from "@vendoai/vendo/mcp";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { Client } from "pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";

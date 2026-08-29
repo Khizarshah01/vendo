@@ -18,7 +18,7 @@
  * name, because the name is what a declaration carries and what a firing looks
  * the brain up by.
  */
-import { automationsInternals, createAutomations } from "@vendoai/automations";
+import { automationsInternals, createAutomations } from "../automations/index.js";
 import { VendoError, type Principal, type RunContext } from "@vendoai/core";
 import { agentComposition, type AgentComposition, type VendoAgent } from "./agent.js";
 import { agentAutomationPlan } from "./automations.js";

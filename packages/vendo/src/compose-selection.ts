@@ -14,7 +14,7 @@ import {
   type SecretsProvider,
   type StoreAdapter,
 } from "@vendoai/core";
-import { bindKnowledgeStore, cloudKnowledge } from "@vendoai/knowledge";
+import { bindKnowledgeStore, cloudKnowledge } from "./knowledge/index.js";
 import { envSecrets, postgresAppDatabase, type VendoStore } from "@vendoai/store";
 import { chainSecrets, cloudSecrets } from "./cloud-secrets.js";
 import { warnDeprecatedOnce } from "./config-keys.js";

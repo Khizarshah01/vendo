@@ -20,7 +20,7 @@ import type { ApprovalRequest, CreateAutomation, CreateAutomationInput, Permissi
 import { createStore, type VendoStore } from "@vendoai/store";
 import { createGuard, type VendoGuard } from "@vendoai/guard";
 import { createActions } from "@vendoai/actions";
-import { automationsInternals, createAutomations, type AutomationsEngine } from "@vendoai/automations";
+import { automationsInternals, createAutomations, type AutomationsEngine } from "@vendoai/vendo/automations";
 import {
   createAutomation,
   createStack,

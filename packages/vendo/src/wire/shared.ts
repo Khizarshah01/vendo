@@ -7,7 +7,7 @@ import {
 } from "./router.js";
 import type { AppsRuntime } from "@vendoai/apps";
 import type { SandboxVenue } from "@vendoai/apps";
-import type { AutomationsEngine } from "@vendoai/automations";
+import type { AutomationsEngine } from "../automations/index.js";
 import {
   VendoError,
   type Json,
@@ -19,7 +19,7 @@ import {
   type ToolRegistry,
 } from "@vendoai/core";
 import type { VendoGuard } from "@vendoai/guard";
-import type { McpDoor } from "@vendoai/mcp";
+import type { McpDoor } from "../mcp/index.js";
 import type { VendoStore } from "@vendoai/store";
 import type { Telemetry } from "@vendoai/telemetry";
 import type { ByoApprovalResolution } from "../byo-approvals.js";

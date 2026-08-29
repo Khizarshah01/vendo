@@ -7,7 +7,7 @@
  * knocking and report what fired.
  *
  * The signed leg signs against the SHIPPED verifier
- * (packages/automations/src/webhook-signature.ts) rather than against a scheme
+ * (packages/vendo/src/automations/webhook-signature.ts) rather than against a scheme
  * restated here. Cloud's own door originally keyed the HMAC on the secret's
  * characters, agreed with its own restatement, and would have answered 401 to
  * every knock in the fleet forever; a test that restates the scheme cannot tell
@@ -23,7 +23,7 @@ import {
   base64url,
   signedWebhookBytes,
   verifySignature,
-} from "@vendoai/automations";
+} from "../src/automations/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";

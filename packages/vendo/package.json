@@ -36,6 +36,18 @@
       "types": "./dist/turn/claude-code.d.ts",
       "default": "./dist/turn/claude-code.js"
     },
+    "./automations": {
+      "types": "./dist/automations/index.d.ts",
+      "default": "./dist/automations/index.js"
+    },
+    "./knowledge": {
+      "types": "./dist/knowledge/index.d.ts",
+      "default": "./dist/knowledge/index.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp/index.d.ts",
+      "default": "./dist/mcp/index.js"
+    },
     "./server": {
       "types": "./dist/server.d.ts",
       "default": "./dist/server.js"
@@ -86,19 +98,20 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.12",
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "@vendoai/actions": "workspace:*",
     "@vendoai/apps": "workspace:*",
-    "@vendoai/automations": "workspace:*",
     "@vendoai/core": "workspace:*",
     "@vendoai/guard": "workspace:*",
     "@vendoai/harnesses": "workspace:*",
-    "@vendoai/knowledge": "workspace:*",
-    "@vendoai/mcp": "workspace:*",
     "@vendoai/store": "workspace:*",
     "@vendoai/telemetry": "workspace:*",
     "@vendoai/ui": "workspace:*",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
+    "croner": "^9.0.0",
+    "jose": "^6.2.3",
+    "jsonata": "^2.0.5",
     "qrcode-generator": "^2.0.4",
     "undici": "^7.29.0",
     "zod": "^3.25.0"
@@ -132,13 +145,11 @@
     "@auth/core": "^0.41.3",
     "@clerk/backend": "^3.11.7",
     "@mastra/core": "1.51.0",
-    "@modelcontextprotocol/sdk": "^1.29.0",
     "@types/json-schema": "^7.0.15",
     "@types/node": "^22.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "ai": "6.0.28",
-    "jose": "^6.2.3",
     "just-bash": "^3.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

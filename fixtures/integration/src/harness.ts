@@ -33,8 +33,8 @@ import {
   type RunContext,
   type ToolRegistry,
 } from "@vendoai/core";
-import { automationsInternals } from "@vendoai/automations";
-import { createMcpDoor, type McpDoorConfig, type HostOAuthAdapter, type McpDoor } from "@vendoai/mcp";
+import { automationsInternals } from "@vendoai/vendo/automations";
+import { createMcpDoor, type McpDoorConfig, type HostOAuthAdapter, type McpDoor } from "@vendoai/vendo/mcp";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { createVendo, type CreateVendoConfig, type Vendo } from "@vendoai/vendo/server";
 import {

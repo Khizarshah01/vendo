@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { automationsInternals } from "@vendoai/automations";
+import { automationsInternals } from "../src/automations/index.js";
 import type { Membership, Principal, RunContext, ToolRegistry } from "@vendoai/core";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { afterEach, describe, expect, it, vi } from "vitest";

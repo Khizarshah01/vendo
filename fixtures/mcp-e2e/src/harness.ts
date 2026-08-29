@@ -15,7 +15,7 @@ import type {
 import { createActions } from "@vendoai/actions";
 import { createApps, sealBundleBlobs, SCREEN_FILE, type AppsRuntime } from "@vendoai/apps";
 import { createGuard, type PolicyConfig, type VendoGuard } from "@vendoai/guard";
-import { createMcpDoor, type McpDoorConfig, type HostOAuthAdapter } from "@vendoai/mcp";
+import { createMcpDoor, type McpDoorConfig, type HostOAuthAdapter } from "@vendoai/vendo/mcp";
 import { createStore, storeFiles, type VendoStore } from "@vendoai/store";
 
 export const SUBJECT = "user_1";

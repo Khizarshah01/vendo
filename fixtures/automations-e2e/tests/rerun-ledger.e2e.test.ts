@@ -15,7 +15,7 @@ import { createStore } from "@vendoai/store";
 import { createGuard } from "@vendoai/guard";
 import { createActions } from "@vendoai/actions";
 import { createApps } from "@vendoai/apps";
-import { automationsInternals, createAutomations } from "@vendoai/automations";
+import { automationsInternals, createAutomations } from "@vendoai/vendo/automations";
 import {
   appsAutomationsSeam,
   fixtureActAs,

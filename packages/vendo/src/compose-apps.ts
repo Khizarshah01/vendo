@@ -9,7 +9,7 @@ import {
   SCREEN_FILE,
   type AppsConfig,
 } from "@vendoai/apps";
-import { unattendedIrreversibilityCheck } from "@vendoai/automations";
+import { unattendedIrreversibilityCheck } from "./automations/index.js";
 import { inferenceEnv } from "@vendoai/harnesses/claude-code/box";
 import { appBuilder } from "./build-agent.js";
 import { screenAssembler } from "./screen-agent.js";

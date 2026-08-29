@@ -15,7 +15,7 @@ const entry = resolve(packageDir, "src/tree/mcp-shim/entry.tsx");
 // committed bundle.
 const output = process.env.VENDO_MCP_SHIM_OUT
   ? resolve(process.env.VENDO_MCP_SHIM_OUT)
-  : resolve(packageDir, "../mcp/src/shim/shim-html.gen.ts");
+  : resolve(packageDir, "../vendo/src/mcp/shim/shim-html.gen.ts");
 
 const result = await build({
   configFile: false,

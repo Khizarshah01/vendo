@@ -7,7 +7,7 @@
  *
  *   1. LAYERING — the only allowed @vendoai/* edges are:
  *        core → (nothing)
- *        apps → core            automations → core
+ *        apps → core
  *        store, agent, actions, guard, ui → core
  *        vendo (umbrella) → everything
  *      A packages/* block not in the map fails loudly: adding a block means
@@ -18,9 +18,10 @@
  *   2. NO RETIRED IMPORTS — nothing may import from legacy/ (path or relative
  *      escape), and nothing may import a retired package name: the pre-v0
  *      publishes that only exist in the quarry (client, components, react,
- *      runtime, server, shell, stage) and @vendoai/agents, which folded into
- *      @vendoai/vendo. Every one of them is still ON NPM, so the import
- *      resolves to a frozen publish instead of failing.
+ *      runtime, server, shell, stage) and the four that folded into
+ *      @vendoai/vendo (@vendoai/agents, automations, knowledge, mcp). Every one
+ *      of them is still ON NPM, so the import resolves to a frozen publish
+ *      instead of failing.
  *
  *   3. HONEST MANIFESTS — every @vendoai/* import in a package's src must be
  *      declared in its package.json (dependencies or peerDependencies).
@@ -79,18 +80,6 @@ const LAYERS = {
   // enforced by ONLY_SUBPATHS below, not by this list.
   "@vendoai/ui": ["@vendoai/core", "@vendoai/apps"],
   "@vendoai/apps": ["@vendoai/core"],
-  // the door (10-mcp): depends on core only; the ui/tree shim arrives as a
-  // prebuilt committed artifact (built by packages/ui/scripts), never an import
-  "@vendoai/mcp": ["@vendoai/core", "@vendoai/apps"],
-  // the product knowledge base (knowledge design v2): engines + ingestion behind
-  // core's KnowledgeAdapter contract; core-only, like the other engine blocks
-  "@vendoai/knowledge": ["@vendoai/core"],
-  // The layering flip (automations centralization): an automation is a
-  // first-class RECORD with no app reference of any kind, so this package has
-  // ZERO app concepts and this line is the machine-checkable proof of it. A
-  // task reaches an app only by naming one of its functions as an ordinary
-  // granted tool, which resolves through the tool registry like any other.
-  "@vendoai/automations": ["@vendoai/core"],
   // the harness runtime (build contract 2026-07-30 §2): the second multi-block
   // package after the umbrella. It runs any Harness — building the Turn, mapping
   // the guard's outcomes, mirroring onto today's wire — and since the engine
@@ -242,6 +231,13 @@ const RETIRED = [
   // folded whole into @vendoai/vendo (src/turn/, src/wire/router.ts). The API
   // survives under the umbrella's name; @vendoai/agents@0.55.0 stays published.
   "@vendoai/agents",
+  // folded whole into @vendoai/vendo (src/automations/, src/knowledge/,
+  // src/mcp/). Their run-ledger types and the two released knowledge collection
+  // names were already @vendoai/core's and stay there; everything else answers
+  // to the umbrella now. All three stay published at 0.56.0.
+  "@vendoai/automations",
+  "@vendoai/knowledge",
+  "@vendoai/mcp",
   "@vendoai/client",
   "@vendoai/components",
   "@vendoai/react",

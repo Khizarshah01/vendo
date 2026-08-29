@@ -56,7 +56,7 @@ describe("local Vendo package closure", () => {
 
     const packed = new Set<string>(LOCAL_VENDO_PACKAGE_NAMES);
     expect([...reachable].filter((name) => !packed.has(name)).sort()).toEqual([]);
-    expect(reachable).toContain("@vendoai/mcp");
+    expect(reachable).toContain("@vendoai/harnesses");
   });
 
   // The seam: a local host is snapshotted into corpus/.repos as a LONE

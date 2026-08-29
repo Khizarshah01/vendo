@@ -16,7 +16,7 @@ import {
   knowledgeSourceConfigSchema,
   vendoKnowledge,
   type KnowledgeConfig,
-} from "@vendoai/knowledge";
+} from "@vendoai/vendo/knowledge";
 import { createStore } from "@vendoai/store";
 import { environment, resolveCloudBaseUrl } from "@vendoai/core";
 import { formatTable } from "../cloud/output.js";

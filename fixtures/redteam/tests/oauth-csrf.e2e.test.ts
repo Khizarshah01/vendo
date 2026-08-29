@@ -1,7 +1,7 @@
 /** OAuth + CSRF adversarial suite (ENG-251).
  *
  * The MCP door's OAuth server and the umbrella wire's CSRF floor are DEFENDED
- * (packages/mcp/src/oauth/server.ts, packages/vendo/src/server.ts) but the
+ * (packages/vendo/src/mcp/oauth/server.ts, packages/vendo/src/server.ts) but the
  * red-team wave never attacked them on the composed system. These probes assert
  * each defense holds and would FAIL if the guard were removed:
  *
@@ -19,7 +19,7 @@
  */
 import type { LanguageModel } from "ai";
 import type { Principal } from "@vendoai/core";
-import { createMcpDoor, type HostOAuthAdapter, type McpDoor } from "@vendoai/mcp";
+import { createMcpDoor, type HostOAuthAdapter, type McpDoor } from "@vendoai/vendo/mcp";
 import { createVendo } from "@vendoai/vendo/server";
 import { afterEach, describe, expect, it } from "vitest";
 import { createStack, type Stack } from "../src/harness.js";

@@ -7,7 +7,7 @@ import {
   type PermissionGrant,
   type Principal,
 } from "@vendoai/core";
-import type { HostOAuthAdapter } from "@vendoai/mcp";
+import type { HostOAuthAdapter } from "../mcp/index.js";
 import { environment } from "../wire/shared.js";
 import type { HostAuthPreset, HostAuthPresetUser, HostAuthPresetUserResolver } from "./shared.js";
 

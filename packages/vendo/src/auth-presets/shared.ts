@@ -1,6 +1,6 @@
 import type { SecretSource } from "@vendoai/actions/presets";
 import type { ActAs, Json, Membership, Principal } from "@vendoai/core";
-import type { HostOAuthAdapter } from "@vendoai/mcp";
+import type { HostOAuthAdapter } from "../mcp/index.js";
 
 /** 09-vendo §2.1 — one host-identity story, every seam. This is what the ONE
     DOOR `createVendo({ auth })` takes, in either of its two spellings:

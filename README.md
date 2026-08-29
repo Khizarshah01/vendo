@@ -114,11 +114,9 @@ Install individual blocks when you want to compose Vendo yourself.
 | `@vendoai/actions` | Host API and connector tools executed as the signed-in user |
 | `@vendoai/guard` | Policy, approvals, grants, audit, breakers, and safety |
 | `@vendoai/apps` | App generation, editing, execution, interchange, and sandbox adapters |
-| `@vendoai/automations` | Trigger ingestion, schedules, away runs, and run history |
 | `@vendoai/ui` | Headless React hooks, optional chrome, tree rendering, and the in-jail component kit |
-| `@vendoai/mcp` | The door: serves the host's tools to outside MCP clients |
 | `@vendoai/telemetry` | Anonymous, opt-out build and development telemetry |
-| `@vendoai/vendo` | Default composition, public wire, React entry, and `vendo` bin |
+| `@vendoai/vendo` | Default composition, public wire, React entry, `vendo` bin, and the automations, knowledge and MCP-door blocks |
 
 Cloud-gated sharing, publishing, org overlays, and pinning activate with
 `VENDO_API_KEY`; the open-source blocks remain self-hosted.

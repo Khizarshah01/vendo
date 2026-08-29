@@ -17,6 +17,6 @@ export type EngineOps = StoreOps["engine"];
     host constructing this block directly passes only a `StoreAdapter` — that
     store gets core's `engineOverAdapter`, which is the same allowlist gate in
     front of the adapter's own record door. Mirrors how automations reaches its
-    drawers (`packages/automations/src/engine-context.ts`). */
+    drawers (`packages/vendo/src/automations/engine-context.ts`). */
 export const engineOf = (ops: StoreOps | undefined, store: StoreAdapter): EngineOps =>
   ops?.engine ?? engineOverAdapter(store);

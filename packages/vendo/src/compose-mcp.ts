@@ -11,7 +11,7 @@ import {
   type McpDoor,
   type McpDoorConfig,
   type TurnCredentials,
-} from "@vendoai/mcp";
+} from "./mcp/index.js";
 import { cloudMcpBundle, type McpBundle } from "./cloud-mcp.js";
 import type { VendoComposition } from "./compose-context.js";
 import { cloudKeyOptions } from "./compose-selection.js";
@@ -85,7 +85,7 @@ type Brokerage = Pick<McpDoorConfig, "remoteAs" | "federation">;
 
     An explicit `mcp.serviceAuth` is itself a LOCAL authorization-server choice:
     the RFC 8693 exchange it opens exists only at the door's own `/token`, which
-    a `remoteAs` door does not serve (`packages/mcp/src/door.ts`). So it fills
+    a `remoteAs` door does not serve (`packages/vendo/src/mcp/door.ts`). So it fills
     the same slot the env default fills, and neither the env default nor Cloud
     displaces it — a default never overrides what the host passed. The broker
     URL is still PARSED either way, so a malformed one keeps failing loudly

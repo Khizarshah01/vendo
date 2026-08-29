@@ -1,5 +1,5 @@
 import { createActions, VENDO_OVERRIDES_FORMAT, type ExtractedTool, type OverridesFile } from "@vendoai/actions";
-import { automationsInternals, createAutomations } from "@vendoai/automations";
+import { automationsInternals, createAutomations } from "../src/automations/index.js";
 import {
   type ApprovalId,
   type AuditEvent,

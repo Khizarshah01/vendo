@@ -213,7 +213,7 @@ describe("parity gate — the MCP door vs the in-process projection", () => {
   // the door has to be able to return results the host never declared (the
   // `toolOutputCap` truncation envelope first among them), so the door omits the
   // parts of the declaration it cannot honour. Pinned at the source in
-  // `packages/mcp/tests/door.test.ts`.
+  // `packages/vendo/tests/mcp/door.test.ts`.
   it("an EXTRACTED tool's declared outputSchema reaches the wire listing, and an undeclared one carries none", async () => {
     const outputSchema = {
       type: "object",

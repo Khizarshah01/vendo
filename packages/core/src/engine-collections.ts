@@ -59,7 +59,7 @@ export const ENGINE_COLLECTION_REGISTRY = {
   // "any timestamp column".
   vendo_runs: { kind: "storage", indexed: ["started_at"] },
   vendo_apps: { kind: "storage" },
-  vendo_automations: { kind: "storage" }, // AUTOMATIONS, packages/automations/src/types.ts:20
+  vendo_automations: { kind: "storage" }, // AUTOMATIONS, packages/vendo/src/automations/types.ts:20
   vendo_effects: { kind: "storage" },
   vendo_app_grants: { kind: "storage" },
 
@@ -93,11 +93,11 @@ export const ENGINE_COLLECTION_REGISTRY = {
   vendo_slots: { kind: "storage" }, // SLOTS_COLLECTION, packages/apps/src/server/persistence/slots.ts:24
   vendo_app_seen: { kind: "storage" }, // APP_SEEN_COLLECTION, packages/apps/src/server/persistence/app-seen.ts:26
   vendo_workspace_commits: { kind: "storage" }, // WORKSPACE_COMMITS, packages/store/src/ops.ts:27
-  "automations:captures": { kind: "storage" }, // CAPTURES, packages/automations/src/types.ts:29
-  "automations:schedule": { kind: "storage" }, // SCHEDULE, packages/automations/src/types.ts:30
-  "automations:deliveries": { kind: "storage" }, // DELIVERIES, packages/automations/src/types.ts:32
-  "automations:sponsorships": { kind: "storage" }, // SPONSORSHIPS, packages/automations/src/sponsorship.ts:17
-  "automations:sponsored": { kind: "storage" }, // SPONSORED, packages/automations/src/sponsorship.ts:29
+  "automations:captures": { kind: "storage" }, // CAPTURES, packages/vendo/src/automations/types.ts:29
+  "automations:schedule": { kind: "storage" }, // SCHEDULE, packages/vendo/src/automations/types.ts:30
+  "automations:deliveries": { kind: "storage" }, // DELIVERIES, packages/vendo/src/automations/types.ts:32
+  "automations:sponsorships": { kind: "storage" }, // SPONSORSHIPS, packages/vendo/src/automations/sponsorship.ts:17
+  "automations:sponsored": { kind: "storage" }, // SPONSORED, packages/vendo/src/automations/sponsorship.ts:29
   "guard:controls": { kind: "storage" }, // CONTROLS_COLLECTION, packages/guard/src/guard.ts:117 — host-level config, see above
   "guard:approval-claims": { kind: "storage" }, // APPROVAL_CLAIMS_COLLECTION, packages/guard/src/guard.ts:111
   vendo_channel_links: { kind: "storage" }, // LINK_COLLECTION, packages/vendo/src/channel-links.ts:22

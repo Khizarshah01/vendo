@@ -198,7 +198,7 @@ export {
   type Contribution,
   type MergedCapability,
 } from "./capability/index.js";
-export { UNATTENDED_IRREVERSIBILITY_RULE } from "@vendoai/automations";
+export { UNATTENDED_IRREVERSIBILITY_RULE } from "./automations/index.js";
 
 // Task 15a — the profile piece types, named from THIS entry so they sit
 // beside createVendo/CreateVendoConfig: the hosted try venue (a Worker in the

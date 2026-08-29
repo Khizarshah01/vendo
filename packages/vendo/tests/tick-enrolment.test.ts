@@ -12,7 +12,7 @@
  * here would still have answered 401 to every knock in the fleet; that mistake
  * has been made twice on this seam, once on each side.
  */
-import { signedWebhookBytes, verifySignature } from "@vendoai/automations";
+import { signedWebhookBytes, verifySignature } from "../src/automations/index.js";
 import { setLogger, type VendoLogEvent } from "@vendoai/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { deriveTickSecret, enrolForTicks, tickSecret } from "../src/tick-enrolment.js";

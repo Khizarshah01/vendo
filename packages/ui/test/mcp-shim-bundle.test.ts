@@ -9,7 +9,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 const execFileAsync = promisify(execFile);
 const packageDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const generator = join(packageDir, "scripts/build-mcp-app-shim.mjs");
-const committed = resolve(packageDir, "../mcp/src/shim/shim-html.gen.ts");
+const committed = resolve(packageDir, "../vendo/src/mcp/shim/shim-html.gen.ts");
 
 // A dynamic-execution primitive used as an executor call: `new Function(...)`, a
 // bare global `Function(...)` (indirect eval), or `eval(...)`. Anchored to the
@@ -23,7 +23,7 @@ const EXECUTOR = /(^|[^.\w$])(new\s+Function|Function|eval)\s*\(/;
 // The refusal the shim renders instead of executing generated component source.
 const REFUSAL_MARKER = "no longer runs in the host page";
 
-// The committed MCP shim bundle (packages/mcp/src/shim/shim-html.gen.ts) is
+// The committed MCP shim bundle (packages/vendo/src/mcp/shim/shim-html.gen.ts) is
 // generated from src/tree/mcp-shim/entry.tsx by build:mcp-shim, wired into no
 // build step. It once shipped stale for a whole release cycle, carrying a
 // `new Function` executor for generated component source that the source had
@@ -92,7 +92,7 @@ describe("MCP shim bundle", () => {
   it("committed bundle matches a fresh regeneration", () => {
     expect(
       fresh === current,
-      "packages/mcp/src/shim/shim-html.gen.ts is out of date — run `pnpm --filter @vendoai/ui build:mcp-shim` and commit the result",
+      "packages/vendo/src/mcp/shim/shim-html.gen.ts is out of date — run `pnpm --filter @vendoai/ui build:mcp-shim` and commit the result",
     ).toBe(true);
   });
 });

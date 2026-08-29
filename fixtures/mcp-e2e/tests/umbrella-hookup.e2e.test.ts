@@ -19,7 +19,7 @@ import { join } from "node:path";
 import { nodeBridge } from "@vendoai-fixtures/test-kit/node-bridge";
 import { type Principal } from "@vendoai/core";
 import { VENDO_TOOLS_FORMAT } from "@vendoai/actions";
-import type { HostOAuthAdapter } from "@vendoai/mcp";
+import type { HostOAuthAdapter } from "@vendoai/vendo/mcp";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { createVendo, type CreateVendoConfig, type Vendo } from "@vendoai/vendo/server";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";

@@ -12,7 +12,7 @@ import {
   type KnowledgeAdapter,
 } from "@vendoai/core";
 import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
-import { cloudKnowledge } from "@vendoai/knowledge";
+import { cloudKnowledge } from "@vendoai/vendo/knowledge";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { runKnowledge } from "../../src/knowledge/index.js";
 import type { Output } from "../../src/shared.js";

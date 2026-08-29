@@ -7,7 +7,7 @@
  * and publishes both at boot, exactly as the text channel registers its inbound
  * door (compose-channels.ts).
  */
-import { base64url } from "@vendoai/automations";
+import { base64url } from "./automations/index.js";
 import { consoleSender, defaultFetch, log, raiseCloudError } from "@vendoai/core";
 import { environment } from "./wire/shared.js";
 

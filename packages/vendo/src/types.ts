@@ -16,7 +16,7 @@ import type {
 } from "@vendoai/actions";
 import type { AppsConfig, SandboxAdapter, AppsRuntime } from "@vendoai/apps";
 import type { VendoAgent as ComposedAgent } from "./turn/index.js";
-import type { AutomationsEngine } from "@vendoai/automations";
+import type { AutomationsEngine } from "./automations/index.js";
 import type {
   ActAs,
   AppDatabase,
@@ -44,7 +44,7 @@ import type {
 } from "@vendoai/apps/contract";
 import type { GuardRules, PolicyFile, VendoGuard } from "@vendoai/guard";
 import type { ShellLimits } from "@vendoai/harnesses/vendo";
-import type { HostOAuthAdapter } from "@vendoai/mcp";
+import type { HostOAuthAdapter } from "./mcp/index.js";
 import type { VendoStore } from "@vendoai/store";
 import type { VendoAgentTools } from "./agent-tools.js";
 import type { HostAuthPreset } from "./auth-presets/index.js";

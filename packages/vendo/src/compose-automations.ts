@@ -9,7 +9,7 @@
  * (src/turn/serve.ts) is the other lifecycle, and runs the same reconcile.
  */
 import { agentAutomationPlan, agentComposition, awayRunner, type VendoAgent } from "./turn/index.js";
-import { automationsInternals, createAutomations } from "@vendoai/automations";
+import { automationsInternals, createAutomations } from "./automations/index.js";
 import {
   DEFAULT_RUNNER_NAME,
   isVendoError,

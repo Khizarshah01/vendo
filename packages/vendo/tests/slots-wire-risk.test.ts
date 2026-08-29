@@ -83,7 +83,7 @@ describe("POST /slots bounds its input like every other write on this wire", () 
     // Nothing on this route distinguishes a signed-in person from a visitor the
     // host resolved to a throwaway subject, so the ceiling is the only thing
     // between an open page and unbounded rows. `/connections` (connections.ts:54)
-    // and the MCP door (packages/mcp/src/door.ts:520) both refuse an ephemeral
+    // and the MCP door (packages/vendo/src/mcp/door.ts:520) both refuse an ephemeral
     // principal outright; whether this surface should too is a spec decision —
     // this case only asks that SOMETHING bound it.
     const store = await tempStore();

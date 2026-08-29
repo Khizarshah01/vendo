@@ -38,7 +38,7 @@ export type DoorWalk = {
  * The well-known URLs are the door's own PREFIX-LOCAL spelling, not RFC 8414
  * / 9728 root-insertion: a mounted deployment owns no path outside its
  * prefix, so that is the spelling it advertises and answers
- * (packages/mcp/src/door.ts).
+ * (packages/vendo/src/mcp/door.ts).
  *
  * `authorizationServerMetadata` is only where the door's OWN metadata sits —
  * which server to read is discovery's answer, not this table's (see

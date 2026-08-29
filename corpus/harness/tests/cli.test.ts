@@ -117,7 +117,6 @@ describe("runCli run", () => {
               packages: [
                 "@vendoai/actions",
                 "@vendoai/apps",
-                "@vendoai/automations",
                 "@vendoai/core",
                 "@vendoai/guard",
                 "@vendoai/store",
