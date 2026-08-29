@@ -15,6 +15,7 @@ export * from "./capability-miss.js";
 // core is bundled for browser and edge targets (portability-gate.mjs).
 export * from "./cloud-console.js";
 export * from "./cloud-standing.js";
+export * from "./config-surface.js";
 export * from "./console-url.js";
 export * from "./define-tool.js";
 export * from "./deployment-identity.js";
@@ -22,6 +23,8 @@ export * from "./descriptor-hash.js";
 export * from "./errors.js";
 export * from "./connections.js";
 export * from "./files-wire.js";
+export * from "./sync-wire.js";
+export * from "./environment.js";
 export * from "./formats.js";
 export * from "./box-ports.js";
 export * from "./grants.js";

@@ -12,7 +12,7 @@ import {
   type JudgmentPassCounts,
   type JudgmentPassOptions,
   type JudgmentPassResult,
-} from "@vendoai/vendo/extract";
+} from "@vendoai/cli/extract";
 import { actualToolIdentity } from "../layers/scored.js";
 import type { ScorecardCheck, ScorecardScore } from "../scorecard.js";
 import { loadRepoAiExpectations, type RepoAiExpectations } from "./expectations.js";

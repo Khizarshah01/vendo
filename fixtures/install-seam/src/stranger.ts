@@ -9,7 +9,6 @@ import { DIRECT_DEPENDENCIES, fileSpec, packedVersions, packWorkspace, vendorInt
 
 export const workspaceRoot = path.resolve(fileURLToPath(new URL("../../../", import.meta.url)));
 const appSource = path.join(workspaceRoot, "fixtures/install-seam/app");
-const vendoCli = path.join(workspaceRoot, "packages/vendo/bin/vendo.mjs");
 
 /** A key-shaped string that is not a key. The BYO rung only has to RESOLVE for
  *  init to write an explicit `models` line and install the matching provider;
@@ -41,8 +40,15 @@ export interface Stranger {
   baseUrl: string;
   /** `pnpm add <tarballs>` — assertion 1. */
   add: CommandResult;
+  /** The `vendo` that ran: the bin of the PACKED `@vendoai/cli`, installed
+   *  outside the app. A path inside this workspace would mean the suite proved
+   *  the source tree and not the tarball — assertion 2. */
+  cliBin: string;
   /** `vendo init …` — assertion 2. */
   init: CommandResult;
+  /** The scaffold's own `predev` hook, run for real: the first thing a host's
+   *  `npm run dev` does, and the one that needs a `vendo` on PATH. */
+  predev: CommandResult;
   /** `tsc --noEmit` over the app INCLUDING what init generated — assertion 3. */
   typecheck: CommandResult;
   /** Every dependency name/spec the scaffold declares after install + init. */
@@ -195,6 +201,7 @@ export async function bootStranger(artifactsDir: string): Promise<{ stranger: St
   // nothing outside the fixture" is checkable rather than assumed.
   const home = await fs.mkdtemp(path.join(tmpdir(), "vendo-install-seam-home-"));
   const elsewhere = await fs.mkdtemp(path.join(tmpdir(), "vendo-install-seam-cwd-"));
+  const cliDir = await fs.mkdtemp(path.join(tmpdir(), "vendo-install-seam-cli-"));
 
   const cloud = await startCloudRecorder();
   const port = await freePort();
@@ -216,7 +223,7 @@ export async function bootStranger(artifactsDir: string): Promise<{ stranger: St
       console.log(`VENDO_INSTALL_SEAM_KEEP=1 — stranger retained at ${scaffoldDir}`);
       return;
     }
-    for (const dir of [scaffoldDir, home, elsewhere]) {
+    for (const dir of [scaffoldDir, home, elsewhere, cliDir]) {
       await fs.rm(dir, { recursive: true, force: true }).catch(() => {});
     }
   };
@@ -225,7 +232,7 @@ export async function bootStranger(artifactsDir: string): Promise<{ stranger: St
     // The tarballs are only as good as `dist/`, and a pack of an unbuilt
     // package succeeds — it just ships an empty one. Say so here instead of
     // three minutes later, as a module-not-found inside a Next dev server.
-    await fs.access(path.join(workspaceRoot, "packages/vendo/dist/cli.js")).catch(() => {
+    await fs.access(path.join(workspaceRoot, "packages/cli/dist/index.js")).catch(() => {
       throw new Error("the workspace is not built — run `pnpm build` before the install seam");
     });
     const packed = await packOnce();
@@ -245,13 +252,29 @@ export async function bootStranger(artifactsDir: string): Promise<{ stranger: St
     );
     await writeLog("add.log", add.output);
 
+    // Assertion 2, first half: the published CLI is a package a host installs,
+    // so the seam installs it — from its own tarball, into a directory that is
+    // NOT the app. That is the shape of `npx @vendoai/cli init <dir>`: the CLI
+    // is never a dependency of the project it initialises, and its own install
+    // cannot see the project's typescript (which is why extraction resolves the
+    // compiler project-first — `compiler-gate.ts:90`). Init still runs from the
+    // empty `elsewhere`, so "wrote nothing into its cwd" stays a check on init.
+    await fs.writeFile(path.join(cliDir, "package.json"), '{"name":"vendo-cli-runner","private":true}\n');
+    await vendorInto(cliDir, packed);
+    const cliAdd = await checked(
+      "pnpm add @vendoai/cli",
+      run("pnpm", ["add", "-w", fileSpec(packed, "@vendoai/cli")], { cwd: cliDir, env }),
+    );
+    await writeLog("cli-add.log", cliAdd.output);
+    const cliBin = path.join(cliDir, "node_modules/@vendoai/cli/bin/vendo.mjs");
+
     // Assertion 2: one non-interactive init, answered entirely by flags.
     // `--yes` and NOT `--byo`: an unattended run that already has a working
     // local key is exactly the run that must not quietly mint a cloud account.
     const init = await run(
       process.execPath,
       [
-        vendoCli,
+        cliBin,
         "init",
         scaffoldDir,
         "--yes",
@@ -264,6 +287,14 @@ export async function bootStranger(artifactsDir: string): Promise<{ stranger: St
       { cwd: elsewhere, env },
     );
     await writeLog("init.log", init.output);
+
+    // Init wrote `predev: vendo sync --no-ai` into the scaffold's package.json,
+    // and since the split that binary lives in @vendoai/cli — which nothing
+    // here installed into the app. Running the hook is how "a host's first
+    // `npm run dev` works" stops being an assumption: a missing CLI is
+    // `vendo: not found`, exit 127, right here.
+    const predev = await run("pnpm", ["run", "predev"], { cwd: scaffoldDir, env });
+    await writeLog("predev.log", predev.output);
 
     // Assertion 3: the app compiles WITH what init generated.
     const typecheck = await run(
@@ -302,7 +333,9 @@ export async function bootStranger(artifactsDir: string): Promise<{ stranger: St
       packedVersions: packedVersions(packed),
       baseUrl,
       add,
+      cliBin,
       init,
+      predev,
       typecheck,
       declaredDependencies,
       lockfile,

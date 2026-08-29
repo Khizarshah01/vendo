@@ -10,6 +10,7 @@
  * all go through.
  */
 import {
+  UPLOAD_MAX_BYTES,
   VendoError,
   VENDO_TOOL_TITLES,
   type Principal,
@@ -99,13 +100,10 @@ export const threadFilesDir = (threadId: ThreadId): string => `${USER_THREADS}/$
 export const threadFilePath = (threadId: ThreadId, name: string): string =>
   `${threadFilesDir(threadId)}/files/${leafName(name)}`;
 
-/** What one caller may push into the drawer in one go by DEFAULT, and the same
-    number at every door into it; `createVendo({ uploadMaxBytes })` moves it. It
-    is a DOOR cap, not a storage cap: `vendo.putUserFile` is a trusted server
-    caller and is bounded by whatever backs the `files:` adapter instead. There
-    is no 413 rung — an over-cap upload is a request the caller can fix, which
-    is what `validation` already means everywhere else on this wire. */
-export const UPLOAD_MAX_BYTES = 5 * 1024 * 1024;
+/** The drop door's default cap. It lives in core beside `UPLOAD_HEADER`, the
+    other half of the same wire contract, because `vendo doctor` reports it from
+    another package; named here because this is the door the default describes. */
+export { UPLOAD_MAX_BYTES };
 
 /** Where the bytes a door ADMITS actually land, per backing. Named in the
     refusal because raising the cap is only half a fix: past 5 MiB with no

@@ -17,10 +17,10 @@
  *
  *   2. NO RETIRED IMPORTS — nothing may import from legacy/ (path or relative
  *      escape), and nothing may import a retired package name: the pre-v0
- *      publishes that only exist in the quarry (@vendoai/cli, client,
- *      components, react, runtime, server, shell, stage) and @vendoai/agents,
- *      which folded into @vendoai/vendo. Every one of them is still ON NPM, so
- *      the import resolves to a frozen publish instead of failing.
+ *      publishes that only exist in the quarry (client, components, react,
+ *      runtime, server, shell, stage) and @vendoai/agents, which folded into
+ *      @vendoai/vendo. Every one of them is still ON NPM, so the import
+ *      resolves to a frozen publish instead of failing.
  *
  *   3. HONEST MANIFESTS — every @vendoai/* import in a package's src must be
  *      declared in its package.json (dependencies or peerDependencies).
@@ -115,8 +115,26 @@ const LAYERS = {
   "@vendoai/harnesses": ["@vendoai/core", "@vendoai/guard", "@vendoai/apps"],
   // the canonical umbrella is the only package allowed to depend on every block
   "@vendoai/vendo": "*",
-  // the unscoped compatibility package is a thin alias of the canonical umbrella
-  vendoai: ["@vendoai/vendo"],
+  // The CLI (S10, 2026-08-29): its own published package, ABOVE the umbrella
+  // rather than inside it. The umbrella is a real edge, not scaffolding text —
+  // `vendo init` pins and installs `@vendoai/vendo@<this version>` into the
+  // host, every scaffold it writes imports `@vendoai/vendo/*`, and the seam
+  // suites boot a real composition to prove the two agree. The edge is one-way
+  // and must stay so: @vendoai/vendo does NOT depend on the CLI.
+  "@vendoai/cli": [
+    "@vendoai/actions",
+    "@vendoai/apps",
+    "@vendoai/core",
+    "@vendoai/guard",
+    "@vendoai/harnesses",
+    "@vendoai/knowledge",
+    "@vendoai/store",
+    "@vendoai/telemetry",
+    "@vendoai/vendo",
+  ],
+  // the unscoped compatibility package is a thin alias of the canonical umbrella,
+  // plus the CLI whose `vendo` bin it re-exposes for `npx vendoai@latest …`
+  vendoai: ["@vendoai/cli", "@vendoai/vendo"],
   // orthogonal to the campaign (00-overview: "stays as-is"); no vendo deps
   "@vendoai/telemetry": [],
 };
@@ -224,7 +242,6 @@ const RETIRED = [
   // folded whole into @vendoai/vendo (src/turn/, src/wire/router.ts). The API
   // survives under the umbrella's name; @vendoai/agents@0.55.0 stays published.
   "@vendoai/agents",
-  "@vendoai/cli",
   "@vendoai/client",
   "@vendoai/components",
   "@vendoai/react",
@@ -330,8 +347,7 @@ for (const dir of dirs) {
   }
 
   const isAllowed = (name) =>
-    // a self-reference is not a cross-block edge (Node subpath self-resolution,
-    // and the umbrella CLI's generated wiring snippets name their own package)
+    // a self-reference is not a cross-block edge (Node subpath self-resolution)
     name === pkg.name ||
     (allowed === "*" ? Object.hasOwn(LAYERS, name) : allowed.includes(name));
 

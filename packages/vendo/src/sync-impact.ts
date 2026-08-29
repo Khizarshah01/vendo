@@ -5,16 +5,15 @@ import {
   type AutomationRecord,
   type PermissionGrant,
   type StoreOps,
+  type ToolImpact,
   type VendoRecord,
 } from "@vendoai/core";
 import { appRowSchema } from "@vendoai/apps/contract";
 
-export interface ToolImpact {
-  tool: string;
-  apps: { id: string; title: string }[];
-  automations: { id: string; title: string }[];
-  grants: number;
-}
+/** The wire shape lives in core: `vendo sync` reads this report back off the
+ *  response from another package, so producer and consumer share one
+ *  definition. Named here because this is where it is produced. */
+export type { ToolImpact };
 
 /** The app row as this reader takes it OFF the store. `appRowSchema` is the
  *  contract's one definition of the stored row, and it is parsed rather than

@@ -3,20 +3,13 @@
  *  state on top — Node-only concerns that used to ride into Worker bundles
  *  whenever runtime code borrowed it. Keep this module free of node builtins
  *  and CLI imports; the portability gate bundles it. */
-import { consoleUrlFromEnv, defaultFetch, deploymentIdentityHeaders } from "@vendoai/core";
+import { defaultFetch, deploymentIdentityHeaders, resolveCloudBaseUrl, type CloudUrlOptions } from "@vendoai/core";
 import { VERSION } from "./wire/shared.js";
 
-const DEFAULT_CLOUD_URL = "https://console.vendo.run";
-
-export interface CloudUrlOptions {
-  apiUrl?: string;
-  env?: Record<string, string | undefined>;
-}
-
-export function resolveCloudBaseUrl(options: CloudUrlOptions = {}): string {
-  const value = options.apiUrl ?? consoleUrlFromEnv(options.env) ?? DEFAULT_CLOUD_URL;
-  return value.replace(/\/+$/, "");
-}
+/** Base-URL resolution lives in core, beside the env read it wraps: the CLI
+ *  resolves the same origin from the same inputs and may not reach this
+ *  Node-facing module to do it. Named here because this is where it is used. */
+export { resolveCloudBaseUrl, type CloudUrlOptions };
 
 export interface CloudKeyFetchOptions extends CloudUrlOptions {
   /** The key is always seam-supplied (adapter rule): callers pass it

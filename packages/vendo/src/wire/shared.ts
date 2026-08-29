@@ -215,13 +215,10 @@ export function orgsCloudRequired(): never {
   throw new VendoError("cloud-required", "orgs are a Vendo Cloud capability");
 }
 
-/** Stays here, and deliberately NOT trimmed: `vendo doctor` reads operator
+/** In core, and deliberately NOT trimmed: `vendo doctor` reads operator
     variables with this exact predicate so doctor and runtime agree on what
-    counts as set (doctor-config-checks.ts, doctor-wiring-checks.ts), and
-    boot-summary.ts's `keySet` documents itself as the stricter one. The trimmed
-    reader in the agent surface's turn/door.ts is a different question — an ORIGIN. */
-export function environment(name: string): string | undefined {
-  if (typeof process === "undefined") return undefined;
-  const value = process.env[name];
-  return typeof value === "string" && value.length > 0 ? value : undefined;
-}
+    counts as set (doctor-config-checks.ts, doctor-wiring-checks.ts), and it does
+    so from another package now. boot-summary.ts's `keySet` documents itself as
+    the stricter one; the trimmed reader in the agent surface's turn/door.ts is
+    a different question — an ORIGIN. */
+export { environment } from "@vendoai/core";

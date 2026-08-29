@@ -10,7 +10,7 @@ import { cloudKeyOptions, selectSecrets } from "./compose-selection.js";
 import type { VendoComposition } from "./compose-context.js";
 import { selectStore } from "./compose-store.js";
 import { createConfigReporter } from "./config-report.js";
-import type { ConfigSurfaceName } from "./config-surface.js";
+import type { ConfigSurfaceName } from "@vendoai/core";
 import { dotVendoFile, dotVendoRoot, readFileSyncOrUndefined } from "./dot-vendo.js";
 import { resolveModels } from "./models-config.js";
 import { cloudSandbox } from "./sandbox.js";

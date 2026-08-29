@@ -17,7 +17,7 @@ import type { CapabilityMissConfig } from "@vendoai/harnesses";
 import type { VendoToolSearchConfig } from "@vendoai/harnesses/vendo";
 import { themeSummary } from "@vendoai/apps/contract";
 import type { VendoComposition } from "./compose-context.js";
-import { selectConfigSurface } from "./config-surface.js";
+import { selectConfigSurface } from "@vendoai/core";
 
 /** The prompt inputs and the discovery rails, for the one thinker. */
 export const composePrompt = (composition: VendoComposition): Pick<VendoComposition,

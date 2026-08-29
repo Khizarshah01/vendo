@@ -1,7 +1,7 @@
 {
   "name": "@vendoai/vendo",
   "version": "0.56.0",
-  "description": "The Vendo umbrella: default composition, public wire routes, React provider, and the vendo CLI.",
+  "description": "The Vendo umbrella: default composition, public wire routes, and the React provider.",
   "keywords": [
     "ai",
     "agent",
@@ -27,9 +27,6 @@
   "sideEffects": false,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "vendo": "bin/vendo.mjs"
-  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -42,10 +39,6 @@
     "./server": {
       "types": "./dist/server.d.ts",
       "default": "./dist/server.js"
-    },
-    "./extract": {
-      "types": "./dist/cli/extract/index.d.ts",
-      "default": "./dist/cli/extract/index.js"
     },
     "./react": {
       "types": "./dist/react.d.ts",
@@ -82,8 +75,6 @@
   },
   "files": [
     "dist",
-    "bin",
-    "skills",
     "README.md"
   ],
   "scripts": {

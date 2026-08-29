@@ -24,6 +24,7 @@ export const VENDO_PACKAGE_NAMES = [
   "@vendoai/ui",
   "@vendoai/telemetry",
   "@vendoai/vendo",
+  "@vendoai/cli",
   "vendoai",
 ] as const;
 

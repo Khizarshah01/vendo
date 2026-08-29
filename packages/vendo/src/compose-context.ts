@@ -33,6 +33,7 @@ import type {
   FilesAdapter,
   Harness,
   Principal,
+  ConfigSurfaceName,
   RiskLabel,
   RunContext,
   SecretsProvider,
@@ -70,7 +71,6 @@ import { composeSurfaces } from "./compose-surfaces.js";
 import { composeSweep } from "./compose-sweep.js";
 import { composeTools, emitDeploymentBoot } from "./compose-tools.js";
 import { composeLimits, type Limiter } from "./limits.js";
-import type { ConfigSurfaceName } from "./config-surface.js";
 import type { ResolvedSweep } from "./compose-config.js";
 import type { ChannelDoor, ChannelsService } from "./channels.js";
 import type { ConnectionsService } from "./connections.js";

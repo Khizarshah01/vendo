@@ -155,6 +155,12 @@ export { cloudDirectory, type CloudDirectory, type CloudDirectoryOptions } from 
 export { tenantLimits } from "./tenant-limits.js";
 export { createLimiter, type Limiter, type LimitVerdict } from "./limits.js";
 
+// The exact origin-root documents the MCP door owns, for a host that has to
+// route to it — and for `vendo init`'s generated `.well-known` route, whose
+// seam test asks the booted door for every path in this set. One authority,
+// named from here so the generator and the door can never disagree.
+export { doorWellKnownPaths } from "./door-paths.js";
+
 // The BYO connectors a host passes to createVendo({ connectors }), named from
 // here so bringing an MCP server or a third-party REST API in is one import
 // from the umbrella — no direct @vendoai/actions dependency.
@@ -173,7 +179,7 @@ export {
   CONFIG_SURFACES,
   type ConfigSurfaceName,
   type ConfigSurfaceOwner,
-} from "./config-surface.js";
+} from "@vendoai/core";
 
 // The hosted-store adapter rides the server surface like the other Cloud
 // adapters: a host can pass it explicitly via createVendo({ store }) with its

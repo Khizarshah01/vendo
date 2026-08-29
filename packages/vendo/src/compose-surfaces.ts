@@ -9,8 +9,10 @@ import { agentToolDescriptors, buildingAppsSkill } from "@vendoai/apps";
 import { selectAppDatabase } from "./compose-selection.js";
 import {
   log,
+  selectConfigSurface,
   VENDO_AUTOMATE_TOOL,
   VendoError,
+  type ConfigSurfaceName,
   type RunContext,
   type ToolRegistry,
 } from "@vendoai/core";
@@ -33,7 +35,6 @@ import {
   runtimeCatalogFromJson,
 } from "./catalog.js";
 import type { VendoComposition } from "./compose-context.js";
-import { selectConfigSurface, type ConfigSurfaceName } from "./config-surface.js";
 import {
   dotVendoFile,
   dotVendoSeedBaselines,

@@ -15,6 +15,7 @@
       "@vendoai/mcp",
       "@vendoai/knowledge",
       "@vendoai/vendo",
+      "@vendoai/cli",
       "vendoai"
     ]
   ],

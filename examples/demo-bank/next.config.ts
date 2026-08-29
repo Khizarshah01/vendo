@@ -68,7 +68,7 @@ const nextConfig: NextConfig = {
             "@vendoai/ui/kit": "../../packages/ui/src/kit/index.ts",
             "@vendoai/vendo": "../../packages/vendo/src/index.ts",
             "@vendoai/vendo/server": "../../packages/vendo/src/server.ts",
-            "@vendoai/vendo/extract": "../../packages/vendo/src/cli/extract/index.ts",
+            "@vendoai/cli/extract": "../../packages/cli/src/extract/index.ts",
             "@vendoai/vendo/react": "../../packages/vendo/src/react.tsx",
             "@vendoai/vendo/ai-sdk": "../../packages/vendo/src/ai-sdk.ts",
             "@vendoai/vendo/mastra": "../../packages/vendo/src/mastra.ts",

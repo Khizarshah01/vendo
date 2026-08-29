@@ -24,6 +24,18 @@
  */
 export const UPLOAD_HEADER = "x-vendo-upload";
 
+/** What one caller may push into the drawer in one go by DEFAULT, and the same
+ * number at every door into it; `createVendo({ uploadMaxBytes })` moves it. It
+ * is a DOOR cap, not a storage cap: `vendo.putUserFile` is a trusted server
+ * caller and is bounded by whatever backs the `files:` adapter instead. There
+ * is no 413 rung — an over-cap upload is a request the caller can fix, which
+ * is what `validation` already means everywhere else on this wire.
+ *
+ * Here beside {@link UPLOAD_HEADER} for the same reason that constant is: the
+ * default is quoted by the drawer that enforces it (@vendoai/vendo) and by
+ * `vendo doctor`, which reports it (@vendoai/cli). */
+export const UPLOAD_MAX_BYTES = 5 * 1024 * 1024;
+
 /** What `POST /files` answers: where the file the user shared landed in their
  *  own files, and how big it was. The path is the whole handle — the message
  *  then carries a reference and never the bytes, and anything that can open the

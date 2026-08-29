@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Keeps the hand-maintained version constants in @vendoai/vendo and
+// Keeps the hand-maintained version constants in @vendoai/cli and
 // @vendoai/core in lockstep with package.json (every published package is one
 // `fixed` group, so one version serves all of them). Runs as part of
 // `pnpm changeset:version` so the Version Packages PR is self-consistent;
-// cli/shared.test.ts and core's store-wire.test.ts pin the invariant either way.
+// the CLI's shared.test.ts and core's store-wire.test.ts pin it either way.
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,7 +14,7 @@ const version = JSON.parse(
 ).version;
 
 const targets = [
-  { file: "packages/vendo/src/cli/shared.ts", pattern: /(export const CLI_VERSION = ")[^"]+(")/ },
+  { file: "packages/cli/src/shared.ts", pattern: /(export const CLI_VERSION = ")[^"]+(")/ },
   { file: "packages/core/src/version.ts", pattern: /(export const VERSION = ")[^"]+(")/ },
 ];
 

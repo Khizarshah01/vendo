@@ -9,8 +9,8 @@ npx vendo init
 ```
 
 `vendoai` is the unscoped compatibility alias for `@vendoai/vendo`. It exports
-the same default composition and installs the same `vendo` CLI; new projects can
-use either package name.
+the same default composition and depends on `@vendoai/cli`, so it also brings
+the `vendo` command; new projects can use either package name.
 
 Read the [quickstart](https://docs.vendo.run/quickstart) and
 [CLI reference](https://docs.vendo.run/reference/cli).
