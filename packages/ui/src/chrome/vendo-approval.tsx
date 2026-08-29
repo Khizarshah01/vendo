@@ -1,7 +1,7 @@
 import { isVendoError } from "@vendoai/core";
 import { useState } from "react";
 import type { VendoClient } from "../client.js";
-import { ApprovalCard, refusalCopy } from "./approval-card.js";
+import { ApprovalCard, APPROVAL_LINES, refusalCopy } from "./approval-card.js";
 import { ChromeRoot } from "./chrome-root.js";
 import { ResolvedApprovalCard } from "./embeds.js";
 import { buildApprovalRequest } from "./thread/approval-wire.js";
@@ -78,7 +78,7 @@ export function VendoApproval({ approval, client }: VendoApprovalProps) {
           setSettled({ ok: false, line: refusalCopy(reason) });
           return;
         }
-        setSettled({ ok: approve, line: approve ? "Approved — ran" : "Declined — nothing ran" });
+        setSettled({ ok: approve, line: approve ? APPROVAL_LINES.underWay : APPROVAL_LINES.declined });
       }}
     />
   );

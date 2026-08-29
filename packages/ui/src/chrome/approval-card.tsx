@@ -101,6 +101,19 @@ export function refusalCopy(reason: unknown): string {
   return "That didn’t go through — nothing was approved. Try again in a moment.";
 }
 
+/** The approve/decline line the consent ladder settles into, once. Three
+ *  surfaces (this card's callers in thread/parts.tsx, vendo-approval.tsx and
+ *  embeds.tsx) used to hardcode their own copy of these sentences, and one of
+ *  them told the person a call had RUN when only the approval had landed —
+ *  the words were the only thing distinguishing the two, and they drifted.
+ *  `underWay` is the decide-resolved moment (the call itself may still be in
+ *  flight); `ran` is only for a surface that polled the call's own outcome. */
+export const APPROVAL_LINES = {
+  underWay: "Approved — under way",
+  ran: "Approved — ran",
+  declined: "Declined — nothing ran",
+} as const;
+
 function approvalDate(grantedAt: string): string {
   return new Intl.DateTimeFormat("en", { dateStyle: "medium", timeZone: "UTC" }).format(
     new Date(grantedAt),

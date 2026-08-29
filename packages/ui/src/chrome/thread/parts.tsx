@@ -6,7 +6,7 @@ import { useSplitView } from "../split-view.js";
 import { useApprovalSheetPresentation } from "../../hooks/use-mobile-takeover.js";
 import { PayloadView } from "../../tree/renderer.js";
 import { PlacementAction } from "../add-to-picker.js";
-import { ApprovalCard, refusalCopy } from "../approval-card.js";
+import { ApprovalCard, APPROVAL_LINES, refusalCopy } from "../approval-card.js";
 import { useApprovalModal } from "../approval-modal.js";
 import { ApprovalSheet } from "../approval-sheet.js";
 import { ChromeRoot, useChromeTheme } from "../chrome-root.js";
@@ -601,7 +601,7 @@ async function settleDecision(
     return { ok: false, line: refusalCopy(reason) };
   }
   landed?.();
-  return { ok: approve, line: approve ? "Approved — under way" : "Declined — nothing ran" };
+  return { ok: approve, line: approve ? APPROVAL_LINES.underWay : APPROVAL_LINES.declined };
 }
 
 /**

@@ -21,7 +21,7 @@ import { useResource } from "../hooks/use-resource.js";
 import { AppFrame } from "../tree/frames.js";
 import type { ApprovalResolution, OpenSurface } from "../wire-types.js";
 import { PlacementAction } from "./add-to-picker.js";
-import { ApprovalCard } from "./approval-card.js";
+import { ApprovalCard, APPROVAL_LINES } from "./approval-card.js";
 import { useApprovalModal } from "./approval-modal.js";
 import { AutomationCard } from "./automation-card.js";
 import {
@@ -139,7 +139,7 @@ function executedCard(summary: string, outcome: ToolOutcome | undefined): ReactN
   // A call parked at the MCP door runs in the outside agent's own retry, not
   // server-side, so its receipt carries no result to show — only that the yes
   // was spent by the call it authorized.
-  if (outcome === undefined) return <ResolvedApprovalCard summary={summary} ok line="Approved — ran" />;
+  if (outcome === undefined) return <ResolvedApprovalCard summary={summary} ok line={APPROVAL_LINES.ran} />;
   if (outcome.status === "ok") {
     // The result reads as the shell's ONE body — field rows, never the raw JSON
     // dump this used to print at an end user (spec §16.2). `resultRows`, not
@@ -149,7 +149,7 @@ function executedCard(summary: string, outcome: ToolOutcome | undefined): ReactN
     // object-only guard this replaces showed a person nothing at all.
     const rows = resultRows(outcome.output);
     const detail = rows.length > 0 ? <CardFields rows={rows} label="Result" /> : undefined;
-    return <ResolvedApprovalCard summary={summary} ok line="Approved — ran" detail={detail} />;
+    return <ResolvedApprovalCard summary={summary} ok line={APPROVAL_LINES.ran} detail={detail} />;
   }
   // The resumed call itself failed (error/blocked/…): the honest record, in
   // the thread's existing "couldn't finish" vocabulary.
@@ -255,7 +255,7 @@ export function VendoApprovalEmbed({ refValue, theme }: VendoApprovalEmbedProps)
   } else if (data.state === "executed") {
     body = executedCard(summary, data.outcome);
   } else if (data.state === "declined") {
-    body = <ResolvedApprovalCard summary={summary} ok={false} line="Declined — nothing ran" />;
+    body = <ResolvedApprovalCard summary={summary} ok={false} line={APPROVAL_LINES.declined} />;
   } else {
     body = <ResolvedApprovalCard summary={summary} ok={false} line="Expired — no longer waiting for approval" />;
   }

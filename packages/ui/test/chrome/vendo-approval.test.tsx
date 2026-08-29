@@ -2,6 +2,7 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { createVendoClient, VendoApproval, type VendoClient } from "../../src/index.js";
+import { APPROVAL_LINES } from "../../src/chrome/approval-card.js";
 import { createWireServer } from "../wire-server.js";
 
 // The ask as an outside agent's door ships it: the words are already chosen, so
@@ -54,7 +55,10 @@ describe("<VendoApproval>", () => {
     const { container } = render(<VendoApproval approval={ask} client={client} />);
     fireEvent.click(screen.getByRole("button", { name: "Approve" }));
     await waitFor(() => expect(container.querySelector(".fl-cardshell--settled")).not.toBeNull());
-    expect(container.querySelector("p.fl-approval-sub")!.textContent).toBe("Approved — ran");
+    // The decide call is all that resolved here — the call it authorizes runs
+    // server-side after — so the receipt says "under way", not "ran" (that
+    // line is embeds.tsx's, once the wire reports the call's own outcome).
+    expect(container.querySelector("p.fl-approval-sub")!.textContent).toBe(APPROVAL_LINES.underWay);
     expect(wire.requests.filter(entry => entry.path === "/approvals/decide").map(entry => entry.body)).toEqual([
       { ids: ["apr_1"], decision: { approve: true } },
     ]);
@@ -70,7 +74,7 @@ describe("<VendoApproval>", () => {
     fireEvent.click(screen.getByRole("button", { name: "Deny" }));
     await waitFor(() => expect(container.querySelector(".fl-cardshell--settled")).not.toBeNull());
     const receipt = container.querySelector("p.fl-approval-sub")!;
-    expect(receipt.textContent).toBe("Declined — nothing ran");
+    expect(receipt.textContent).toBe(APPROVAL_LINES.declined);
     // The settled card wears the failed treatment, which is the only thing that
     // says a no from a yes at a glance.
     expect(receipt.classList.contains("fl-approval-sub--failed")).toBe(true);
