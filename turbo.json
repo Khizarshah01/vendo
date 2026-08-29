@@ -33,7 +33,22 @@
       "env": ["CI", "VITEST_MIN_FORKS", "VITEST_MAX_FORKS", "VITEST_MIN_THREADS", "VITEST_MAX_THREADS"]
     },
     "conformance": { "dependsOn": ["^build", "build"], "env": ["CI", "POSTGRES_URL"] },
-    "typecheck": { "dependsOn": ["^build"] },
+    // `build` as well as `^build`. @vendoai/actions and @vendoai/store resolve
+    // their own subpath `imports` (#actions/host-files, #store/db, #store/crypto)
+    // to ./dist/*.js, and tsconfig.test.json — which includes tests/ as well as
+    // src/, so it can carry no outDir — leaves TypeScript no way to map those
+    // back to source. A typecheck therefore reads its OWN dist, not just its
+    // dependencies'.
+    //
+    // Undeclared, the two were unordered WITHIN a package, and `compile` runs
+    // them in one pass (`turbo run build typecheck`). Whichever one turbo gave a
+    // slot to first decided the result: on main 4b57b1e75, actions:typecheck
+    // started 2.6s BEFORE actions:build restored and reported TS2307 against its
+    // own `imports`; at 7d32670d7 the identical pair of hashes ran in the
+    // opposite order and the job was green. A coin flip, NOT a cache miss — the
+    // build was a cache hit both times. It is only flipped when the typecheck
+    // itself is a miss, which is how it sat green for weeks.
+    "typecheck": { "dependsOn": ["^build", "build"] },
     "lint": {},
     // The root-level eslint over packages/* (eslint.blocking.config.mjs). It
     // parses ~1,500 files and takes 2m20s cold, so it is a turbo task rather
