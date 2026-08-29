@@ -119,6 +119,80 @@ export const STORE_WIRE_PATHS = {
   "turn.commit": "/turn/commit",
 } as const;
 
+/** The op name a client sends and a mount serves, as the manifest spells it. */
+export type StoreWireOp = keyof typeof STORE_WIRE_PATHS;
+
+/** Which ops MUTATE — the ONE answer to "does this op need an
+    `Idempotency-Key`", for the client that sends the key and the mount that
+    honours it.
+
+    A TOTAL MAP over the manifest, not a list of the mutating names. A list is
+    the shape that goes stale: an op added above and forgotten here reads as a
+    read, the mount stops keying it, and a retried write applies TWICE. A total
+    map cannot be forgotten — a new entry in STORE_WIRE_PATHS does not compile
+    until it is classified, which is the whole reason this lives beside the
+    table it classifies rather than in each mount. */
+const STORE_WIRE_MUTATES: Record<StoreWireOp, boolean> = {
+  "engine.get": false,
+  "engine.put": true,
+  "engine.delete": true,
+  "engine.list": false,
+  "engine.claim": true,
+  "engine.insertIfAbsent": true,
+  "engine.compareAndSwap": true,
+  "blobs.put": true,
+  "blobs.get": false,
+  "blobs.delete": true,
+  "blobs.list": false,
+  // Retired (see above), classified anyway: the map is total over the table,
+  // and a slot that stays needs an answer like any other.
+  "appData.put": true,
+  "appData.get": false,
+  "appData.list": false,
+  "appData.delete": true,
+  "appData.putFile": true,
+  "appData.getFile": false,
+  "appData.listFiles": false,
+  "appData.deleteFile": true,
+  "transcripts.putThread": true,
+  "transcripts.getThread": false,
+  "transcripts.listThreads": false,
+  "transcripts.deleteThread": true,
+  "transcripts.putMessage": true,
+  "transcripts.appendMessages": true,
+  "transcripts.recordAnswer": true,
+  "harness.get": false,
+  "harness.set": true,
+  "harness.clear": true,
+  "workspace.index": false,
+  "workspace.read": false,
+  "workspace.commit": true,
+  "workspace.history": false,
+  "lifecycle.erase": true,
+  "lifecycle.promote": true,
+  "audit.list": false,
+  "secrets.get": false,
+  "secrets.set": true,
+  "secrets.list": false,
+  "secrets.delete": true,
+  footprint: false,
+  "retention.quarantine": true,
+  "retention.purge": true,
+  status: false,
+  "audit.tally": false,
+  "usage.record": true,
+  "usage.count": false,
+  "usage.tally": false,
+  "turn.load": false,
+  "turn.commit": true,
+};
+
+/** {@link STORE_WIRE_MUTATES} for an op name off the wire, where the name is a
+    string a caller chose. An op this table has never heard of is not a
+    mutation — the mount answers it with the wire's own 501 either way. */
+export const isStoreWireMutation = (op: string): boolean =>
+  STORE_WIRE_MUTATES[op as StoreWireOp] === true;
+
 // ---------------------------------------------------------------------------
 // Shared schemas
 // ---------------------------------------------------------------------------

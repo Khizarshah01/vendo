@@ -45,7 +45,7 @@ export {
   RESERVED_CURSOR_COLUMNS,
   type ReservedCollection,
 } from "./routing.js";
-export { eraseStore, type EraseReport, type EraseTable } from "./erase.js";
+export { ERASE_TABLES, eraseStore, type EraseReport, type EraseTable } from "./erase.js";
 export { envSecrets, secretStore, storeSecrets } from "./secrets.js";
 export { appStore, type AppRow } from "./helpers/apps.js";
 // Build contract §9.3 — `can()`, the one permission function every door reaches.

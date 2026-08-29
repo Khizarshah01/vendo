@@ -18,6 +18,7 @@ import {
   type StoreOps,
   storeWireErrorSchema,
   storeWireSchemaProposalSchema,
+  type StoreWireOp,
   type StoreWireStatus,
   storeWireStatusSchema,
   storeWireTurnCommitResponseSchema,
@@ -262,10 +263,6 @@ export function hostedStore(options: HostedStoreOptions): HostedStore {
 // ---------------------------------------------------------------------------
 // The 50-op StoreOps client — store design v1, `vendo/store-wire@1`
 // ---------------------------------------------------------------------------
-
-/** The 50 named ops — STORE_WIRE_PATHS' keys ARE the op names, and stay the
- * op names even where the console's door sits at a different path. */
-type StoreWireOp = keyof typeof STORE_WIRE_PATHS;
 
 /** Measurement instrument, not a feature: with VENDO_STORE_TRACE set, every
  * call through the store client below — the 50 ops AND the StoreAdapter façade,
