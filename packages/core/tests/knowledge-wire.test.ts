@@ -110,9 +110,9 @@ describe("parseKnowledgeWireError and the meter refusal", () => {
   });
 
   // THE cross-repo seam. This object is the byte-for-byte 402 body the console
-  // emitter produces, copied from the recorded wire fixture
-  // `cloud/console/fixtures/knowledge-wire/upsert.quota-exhausted.json` (which
-  // is itself recorded from `poolRefusalResponse`, never hand-written). Neither
+  // emitter produces, copied from the console's recorded wire fixture
+  // `upsert.quota-exhausted.json` (which is itself recorded from
+  // `poolRefusalResponse`, never hand-written). Neither
   // side stubs the other: the console's real emitter wrote it, and the real
   // parser below reads it. If the console changes the envelope, this goes red.
   const RECORDED_CONSOLE_402 = {
