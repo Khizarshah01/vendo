@@ -262,12 +262,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../../packages/guard
-      '@vendoai/harnesses':
-        specifier: workspace:*
-        version: link:../../packages/harnesses
       '@vendoai/store':
         specifier: workspace:*
         version: link:../../packages/store
@@ -493,12 +487,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../../packages/guard
-      '@vendoai/harnesses':
-        specifier: workspace:*
-        version: link:../../packages/harnesses
       '@vendoai/store':
         specifier: workspace:*
         version: link:../../packages/store
@@ -692,9 +680,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../../packages/guard
       '@vendoai/store':
         specifier: workspace:*
         version: link:../../packages/store
@@ -735,12 +720,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../../packages/guard
-      '@vendoai/harnesses':
-        specifier: workspace:*
-        version: link:../../packages/harnesses
       '@vendoai/store':
         specifier: workspace:*
         version: link:../../packages/store
@@ -797,9 +776,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../packages/core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../packages/guard
       '@vendoai/store':
         specifier: workspace:*
         version: link:../packages/store
@@ -998,12 +974,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../guard
-      '@vendoai/harnesses':
-        specifier: workspace:*
-        version: link:../harnesses
       '@vendoai/store':
         specifier: workspace:*
         version: link:../store
@@ -1054,86 +1024,6 @@ importers:
       just-bash:
         specifier: ^3.1.0
         version: 3.2.0
-      typescript:
-        specifier: ^5.6.0
-        version: 5.9.3
-      vitest:
-        specifier: ^3.2.6
-        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
-
-  packages/guard:
-    dependencies:
-      '@vendoai/core':
-        specifier: workspace:*
-        version: link:../core
-      zod:
-        specifier: ^3.25.0
-        version: 3.25.76
-    devDependencies:
-      '@ai-sdk/anthropic':
-        specifier: 3.0.12
-        version: 3.0.12(zod@3.25.76)
-      '@electric-sql/pglite':
-        specifier: ^0.2.0
-        version: 0.2.17
-      '@types/node':
-        specifier: ^22.0.0
-        version: 22.20.0
-      ai:
-        specifier: 6.0.28
-        version: 6.0.28(zod@3.25.76)
-      typescript:
-        specifier: ^5.6.0
-        version: 5.9.3
-      vitest:
-        specifier: ^3.2.6
-        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
-
-  packages/harnesses:
-    dependencies:
-      '@ai-sdk/anthropic':
-        specifier: 3.0.12
-        version: 3.0.12(zod@3.25.76)
-      '@anthropic-ai/claude-agent-sdk':
-        specifier: '>=0.3.0 <1'
-        version: 0.3.214(@anthropic-ai/sdk@0.112.3(zod@3.25.76))(@modelcontextprotocol/sdk@1.29.0(@cfworker/json-schema@4.1.1)(zod@3.25.76))(zod@3.25.76)
-      '@e965/xlsx':
-        specifier: 0.20.3
-        version: 0.20.3
-      '@vendoai/apps':
-        specifier: workspace:*
-        version: link:../apps
-      '@vendoai/core':
-        specifier: workspace:*
-        version: link:../core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../guard
-      fflate:
-        specifier: ^0.8.3
-        version: 0.8.3
-      just-bash:
-        specifier: ^3.4.2
-        version: 3.4.2
-      unpdf:
-        specifier: ^1.8.1
-        version: 1.8.1
-      zod:
-        specifier: ^3.25.0
-        version: 3.25.76
-    devDependencies:
-      '@ai-sdk/openai':
-        specifier: 3.0.9
-        version: 3.0.9(zod@3.25.76)
-      '@ai-sdk/openai-compatible':
-        specifier: 2.0.9
-        version: 2.0.9(zod@3.25.76)
-      '@types/node':
-        specifier: ^22.0.0
-        version: 22.20.0
-      ai:
-        specifier: 6.0.28
-        version: 6.0.28(zod@3.25.76)
       typescript:
         specifier: ^5.6.0
         version: 5.9.3
@@ -1268,6 +1158,12 @@ importers:
       '@ai-sdk/anthropic':
         specifier: 3.0.12
         version: 3.0.12(zod@3.25.76)
+      '@anthropic-ai/claude-agent-sdk':
+        specifier: '>=0.3.0 <1'
+        version: 0.3.214(@anthropic-ai/sdk@0.112.3(zod@3.25.76))(@modelcontextprotocol/sdk@1.29.0(@cfworker/json-schema@4.1.1)(zod@3.25.76))(zod@3.25.76)
+      '@e965/xlsx':
+        specifier: 0.20.3
+        version: 0.20.3
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.29.0(@cfworker/json-schema@4.1.1)(zod@3.25.76)
@@ -1280,12 +1176,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../guard
-      '@vendoai/harnesses':
-        specifier: workspace:*
-        version: link:../harnesses
       '@vendoai/store':
         specifier: workspace:*
         version: link:../store
@@ -1304,22 +1194,37 @@ importers:
       croner:
         specifier: ^9.0.0
         version: 9.1.0
+      fflate:
+        specifier: ^0.8.3
+        version: 0.8.3
       jose:
         specifier: ^6.2.3
         version: 6.2.3
       jsonata:
         specifier: ^2.0.5
         version: 2.2.1
+      just-bash:
+        specifier: ^3.4.2
+        version: 3.4.2
       qrcode-generator:
         specifier: ^2.0.4
         version: 2.0.4
       undici:
         specifier: ^7.29.0
         version: 7.29.0
+      unpdf:
+        specifier: ^1.8.1
+        version: 1.8.1
       zod:
         specifier: ^3.25.0
         version: 3.25.76
     devDependencies:
+      '@ai-sdk/openai':
+        specifier: 3.0.9
+        version: 3.0.9(zod@3.25.76)
+      '@ai-sdk/openai-compatible':
+        specifier: 2.0.9
+        version: 2.0.9(zod@3.25.76)
       '@anthropic-ai/sdk':
         specifier: ^0.112.3
         version: 0.112.3(zod@3.25.76)
@@ -1329,6 +1234,9 @@ importers:
       '@clerk/backend':
         specifier: ^3.11.7
         version: 3.11.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@electric-sql/pglite':
+        specifier: ^0.2.0
+        version: 0.2.17
       '@mastra/core':
         specifier: 1.51.0
         version: 1.51.0(@bufbuild/protobuf@2.12.1)(@cfworker/json-schema@4.1.1)(ai@6.0.28(zod@3.25.76))(express@5.2.1)(rxjs@7.8.1)(zod@3.25.76)
@@ -1347,9 +1255,6 @@ importers:
       ai:
         specifier: 6.0.28
         version: 6.0.28(zod@3.25.76)
-      just-bash:
-        specifier: ^3.1.0
-        version: 3.2.0
       react:
         specifier: ^19.0.0
         version: 19.2.7
@@ -17872,7 +17777,7 @@ snapshots:
 
   readdir-glob@3.0.0:
     dependencies:
-      minimatch: 10.2.5
+      minimatch: 10.2.6
 
   real-require@0.2.0: {}
 
