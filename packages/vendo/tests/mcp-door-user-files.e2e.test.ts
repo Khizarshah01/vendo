@@ -15,7 +15,7 @@
  *
  * The guard preset is `autopilot` because `vendo_user_files_put` is honestly
  * `risk: "write"` and `cautious` parks every write for a human tap
- * (`guard/src/policy.ts`). What is being measured here is the drawer, not the
+ * (`packages/vendo/src/guard/policy.ts`). What is being measured here is the drawer, not the
  * approvals queue, and the parking behaviour is already pinned next door.
  */
 import { createHash } from "node:crypto";
@@ -25,7 +25,7 @@ import { join } from "node:path";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { UPLOAD_HEADER } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, FILES_STORE_MAX_BYTES, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

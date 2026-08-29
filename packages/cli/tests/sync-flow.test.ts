@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { STORE_WIRE_PATHS } from "@vendoai/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { PIN_BASELINES_COLLECTION } from "../src/cloud/seed-baselines.js";
-import { describeDevCredential, resolveDevCredential } from "@vendoai/harnesses/inference/credential";
+import { describeDevCredential, resolveDevCredential } from "@vendoai/vendo/harnesses/inference/credential";
 import { claudeCliHarness } from "../src/extract/claude-cli-harness.js";
 import type { ExtractionHarness } from "../src/extract/harness.js";
 import { npxEngineHarness } from "../src/extract/npx-engine-harness.js";

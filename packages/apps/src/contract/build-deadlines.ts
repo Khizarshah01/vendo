@@ -15,7 +15,7 @@
  * 229 s, 414 s and 450 s on 2026-08-24, and the first was killed at exactly 4:00
  * while the box was still installing from npm. The bound that matters is the
  * box's own — it gives ONE message 15 minutes (`MESSAGE_BUDGET_MS`,
- * `@vendoai/harnesses`) before giving up and reporting a failure itself — so
+ * `@vendoai/vendo`) before giving up and reporting a failure itself — so
  * this sits above that plus boot, collect and seal. Anything shorter cannot
  * distinguish a lane that died from one that is working, which is the only
  * question it exists to answer. Pinned against the box's budget in

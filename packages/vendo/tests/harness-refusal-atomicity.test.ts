@@ -23,7 +23,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal } from "@vendoai/core";
 import { createStore, type VendoStore } from "@vendoai/store";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

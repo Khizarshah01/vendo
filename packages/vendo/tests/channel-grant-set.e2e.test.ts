@@ -11,7 +11,7 @@ import {
   type ToolDescriptor,
   type ToolRegistry,
 } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";

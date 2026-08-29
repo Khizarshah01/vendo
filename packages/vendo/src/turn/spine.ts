@@ -31,7 +31,7 @@ import {
   type ToolRegistry,
 } from "@vendoai/core";
 import { wrapWorkspaceForRender } from "@vendoai/apps";
-import { createHarnessRuntime, type HarnessRuntimeDeps } from "@vendoai/harnesses";
+import { createHarnessRuntime, type HarnessRuntimeDeps } from "../harnesses/index.js";
 import {
   harnessStateStore,
   threadMessageStore,

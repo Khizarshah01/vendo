@@ -9,7 +9,7 @@
  *
  * NOTHING NEW IS PERSISTED FOR IT. The guard's own approval row already carries
  * the exact `ToolCall` it parked and the ctx it was parked in
- * (`#parkApproval`, packages/guard/src/guard.ts) — including, now, the turn
+ * (`#parkApproval`, packages/vendo/src/guard/guard.ts) — including, now, the turn
  * that asked. That row IS the durable interrupted turn: `pending()` is the
  * list, and re-dispatching the stored call through the same guard-bound
  * registry is the resume. The guard's one-shot receipt on an approved call

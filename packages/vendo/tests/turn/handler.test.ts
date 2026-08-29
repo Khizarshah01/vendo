@@ -9,7 +9,7 @@
  * reloads against.
  */
 import type { RunContext } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore } from "@vendoai/store";
 import { describe, expect, it } from "vitest";
 import { agent } from "../../src/turn/agent.js";

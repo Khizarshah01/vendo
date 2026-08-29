@@ -18,7 +18,7 @@
  * `resolveUser`, rather than forwarded to `agent.permissions` on its fixed
  * `/api/vendo`. Two reasons, and the browser found both: deciding an approval
  * is what UNBLOCKS a parked turn (the guard's decision resolves the waiter the
- * turn is sitting on — packages/harnesses/src/turn-tools.ts:122,382), so a
+ * turn is sitting on — packages/vendo/src/harnesses/turn-tools.ts:122,382), so a
  * client that cannot reach this wire has a park it can never answer; and a
  * standalone host configures identity once, in `resolveUser`, so the asks a
  * person sees must be scoped to the same person the turns are.
@@ -33,7 +33,7 @@
  * `/api/vendo` puts it and everything else under one catch-all.
  */
 import { isVendoError, VendoError, type Json, type Principal, type ThreadId } from "@vendoai/core";
-import { handlePermissionRequest } from "@vendoai/guard";
+import { handlePermissionRequest } from "../guard/index.js";
 import { threadMessageStore, threadStore } from "@vendoai/store";
 import type { UIMessage } from "ai";
 import { agentComposition, type VendoAgent } from "./agent.js";

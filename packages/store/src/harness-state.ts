@@ -24,7 +24,7 @@ import type { VendoStore } from "./store.js";
  * cannot resurrect a session the conversation has outgrown.
  *
  * Typed structurally rather than against `HarnessStateStore` because the store
- * sits BELOW `@vendoai/harnesses` in the layering (contract §2) — the shape is
+ * sits BELOW `@vendoai/vendo` in the layering (contract §2) — the shape is
  * the contract, as it is for `threadMessageStore`.
  */
 /** The slot's stored payload. Spelled ONCE because three writers land it: both

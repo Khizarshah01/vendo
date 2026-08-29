@@ -118,7 +118,6 @@ describe("runCli run", () => {
                 "@vendoai/actions",
                 "@vendoai/apps",
                 "@vendoai/core",
-                "@vendoai/guard",
                 "@vendoai/store",
                 "@vendoai/telemetry",
                 "@vendoai/ui",

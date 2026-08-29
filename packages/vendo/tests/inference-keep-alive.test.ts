@@ -8,7 +8,7 @@
  * have to be) — because the whole point is that the fetch a producer sets
  * arrives at the provider a consumer builds.
  */
-import { vendoModel } from "@vendoai/harnesses/inference";
+import { vendoModel } from "../src/harnesses/inference/model.js";
 import { describe, expect, it } from "vitest";
 import { keepAliveFetch } from "../src/keep-alive-fetch.js";
 import { resolveModels } from "../src/models-config.js";

@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { extractServerActions } from "@vendoai/actions/sync";
 import type { RunContext, ToolDescriptor } from "@vendoai/core";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "@vendoai/vendo/guard";
 import { createStore } from "@vendoai/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { runDoctor } from "../src/doctor.js";

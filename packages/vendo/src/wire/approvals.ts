@@ -1,5 +1,5 @@
 import { VendoError, type Principal } from "@vendoai/core";
-import { handlePermissionRequest, type PermissionRequest, type VendoGuard } from "@vendoai/guard";
+import { handlePermissionRequest, type PermissionRequest, type VendoGuard } from "../guard/index.js";
 import { json, orgsCloudRequired, requestJson, route, string, type RouteEntry } from "./shared.js";
 
 /** The five routes themselves are @vendoai/guard's ONE permission wire. What

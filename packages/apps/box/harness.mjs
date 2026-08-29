@@ -173,7 +173,7 @@ export const createHarness = (options = {}) => {
   // control port, same supervisor, a different kind of turn.
   //
   // Loaded LAZILY, on the first /session request, because the module's repo home
-  // is `@vendoai/harnesses` (the claude-code driver owns its box-side half) and
+  // is `@vendoai/vendo` (the claude-code driver owns its box-side half) and
   // `build-template.mjs` stages it in beside this file only at image bake. A
   // static import would fail in the monorepo, where this supervisor's own tests
   // run; in the image the file is always there, staged by the same build that

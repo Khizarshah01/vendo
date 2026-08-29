@@ -18,13 +18,13 @@ import {
   type PolicyConfig,
   type RiskResolver,
   type VendoGuard,
-} from "@vendoai/guard";
+} from "./guard/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { readFileSyncOrUndefined } from "./dot-vendo.js";
 import { orgPolicyPath, orgPolicyResolver, workspacePolicySource } from "./org-policy.js";
 
 /** The file the guard reads when a policy config names none of its own
- *  (guard/src/policy.ts's DEFAULT_POLICY_FILE) — relative to the process cwd,
+ *  (packages/vendo/src/guard/policy.ts's DEFAULT_POLICY_FILE) — relative to the process cwd,
  *  exactly as it reads it, so the two can never name different documents. */
 const DEFAULT_POLICY_FILE = ".vendo/policy.json";
 
@@ -36,7 +36,7 @@ const DEFAULT_POLICY_FILE = ".vendo/policy.json";
  * composed facts, and this one needs to look at a disk.
  *
  * The fallback it reports STAYS — a missing file on the default path is
- * swallowed (guard/src/policy.ts:115) so a deployment boots on the built-in
+ * swallowed (packages/vendo/src/guard/policy.ts:115) so a deployment boots on the built-in
  * posture rather than refusing, which is the right call for a file that is not
  * required. What was missing is anyone saying it happened. And it is never the
  * never-configured case: `vendo init` always writes a starter policy.json

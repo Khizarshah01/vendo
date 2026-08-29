@@ -4,8 +4,8 @@
  * is deliberately not what is under test (CLAUDE.md: test the SEAM).
  */
 import { VendoError, type ApprovalRequest, type RunContext, type Turn } from "@vendoai/core";
-import { createGuard, type VendoGuard } from "@vendoai/guard";
-import { defineHarness } from "@vendoai/harnesses";
+import { createGuard, type VendoGuard } from "../../src/guard/index.js";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadMessageStore, threadStore } from "@vendoai/store";
 import { mkdtemp, rm, writeFile, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";

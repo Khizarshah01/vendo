@@ -21,7 +21,7 @@ selector.
 ## Loop
 
 Chat → read the pane → edit `packages/*/src` (`loop.ts`, `compaction.ts`,
-`vendo.ts` are the usual suspects — note `packages/harnesses/src/vendo/` is
+`vendo.ts` are the usual suspects — note `packages/vendo/src/harnesses/vendo/` is
 an author-involved zone per its CLAUDE.md) → save → the next message runs the
 edit. In-flight turns finish on the old code.
 
@@ -36,7 +36,7 @@ edit. In-flight turns finish on the old code.
 
 ## Architecture, three lines
 
-Harness sink `packages/harnesses/src/workbench.ts` → transient
+Harness sink `packages/vendo/src/harnesses/workbench.ts` → transient
 `data-vendo-debug` parts (never persisted) → ui feed store
 `packages/ui/src/chrome/workbench-store.ts` (20-turn retention) → pane in
 `examples/demo-bank/src/components/vendo/workbench/`.

@@ -6,7 +6,7 @@
  * back undefined for the host's next handler.
  */
 import type { Principal } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore } from "@vendoai/store";
 import { describe, expect, it } from "vitest";
 import { agent, agentComposition } from "../../src/turn/agent.js";

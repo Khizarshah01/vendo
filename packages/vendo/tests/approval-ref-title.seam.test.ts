@@ -27,7 +27,7 @@ import {
   type ToolDescriptor,
   type ToolRegistry,
 } from "@vendoai/core";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "../src/guard/index.js";
 import { createStore, createStoreOps } from "@vendoai/store";
 import { VendoProvider, VendoToolResult, createVendoClient } from "@vendoai/ui";
 import { act, createElement, type ReactElement } from "react";

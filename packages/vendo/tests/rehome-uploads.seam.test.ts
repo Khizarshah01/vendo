@@ -11,7 +11,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { genericJwtPreset } from "@vendoai/actions/presets";
 import { UPLOAD_HEADER, type FilesAdapter, type PermissionGrant, type Principal } from "@vendoai/core";
-import { THREAD_ID_HEADER } from "@vendoai/harnesses";
+import { THREAD_ID_HEADER } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

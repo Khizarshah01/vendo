@@ -13,8 +13,8 @@
  * a sentence about the brand here is a different thing for a different reader,
  * not a second copy.
  */
-import type { CapabilityMissConfig } from "@vendoai/harnesses";
-import type { VendoToolSearchConfig } from "@vendoai/harnesses/vendo";
+import type { CapabilityMissConfig } from "./harnesses/index.js";
+import type { VendoToolSearchConfig } from "./harnesses/vendo/index.js";
 import { themeSummary } from "@vendoai/apps/contract";
 import type { VendoComposition } from "./compose-context.js";
 import { selectConfigSurface } from "@vendoai/core";

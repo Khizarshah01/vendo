@@ -346,7 +346,7 @@ export function ThreadPart({ part, partKey, role, restored, count = 1, risks, co
   if (part.type === "data-vendo-connect") {
     // The connect ask's OTHER shape, and the ONLY one a harness turn produces: the
     // runtime maps `connect-required` to a `denied` ToolResult and the wire mirror
-    // writes a bare `tool-output-denied` (harnesses/src/wire.ts), so the native part
+    // writes a bare `tool-output-denied` (packages/vendo/src/harnesses/wire.ts), so the native part
     // above carries no outcome to read — without this branch every unconnected
     // service on a harness turn is a silent denial with no card.
     const data = partData(part) as Partial<VendoConnectPart>;

@@ -19,7 +19,7 @@
  */
 import { situationPromptBlock, type RunContext } from "@vendoai/core";
 import { memoryStoreAdapter } from "@vendoai/core/conformance";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "../src/guard/index.js";
 import { describe, expect, it } from "vitest";
 import { assembleSystemPrompt } from "../src/prompt.js";
 

@@ -52,7 +52,7 @@ export type {
   PolicyFn,
   PolicyRule,
   VendoGuard,
-} from "@vendoai/guard";
+} from "./guard/index.js";
 export type {
   AppsRuntime,
   EditResult,

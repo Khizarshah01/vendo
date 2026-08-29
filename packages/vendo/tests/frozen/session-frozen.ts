@@ -23,8 +23,8 @@ import {
   type ToolRegistry,
 } from "@vendoai/core";
 import { wrapWorkspaceForRender } from "@vendoai/apps";
-import type { VendoGuard } from "@vendoai/guard";
-import { createHarnessRuntime, THREAD_ID_HEADER, type HarnessRuntimeDeps } from "@vendoai/harnesses";
+import type { VendoGuard } from "../../src/guard/index.js";
+import { createHarnessRuntime, THREAD_ID_HEADER, type HarnessRuntimeDeps } from "../../src/harnesses/index.js";
 import {
   harnessStateStore,
   threadMessageStore,

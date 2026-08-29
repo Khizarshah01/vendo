@@ -21,7 +21,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createVendo } from "@vendoai/vendo/server";
 import { createStore } from "@vendoai/store";
-import { vendo as vendoHarness } from "@vendoai/harnesses";
+import { vendo as vendoHarness } from "@vendoai/vendo/harnesses";
 
 const principal = { kind: "user", subject: "user_probe" };
 

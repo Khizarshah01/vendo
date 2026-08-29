@@ -292,7 +292,7 @@ async function checkTenantConnectorVault(run: DoctorRun): Promise<void> {
 
 /** The static twin of the boot block's ⚠ guard row (boot-summary.ts): a host
  *  whose guard reads its rules from a file, and no file. The guard swallows a
- *  missing default path (guard/src/policy.ts:115) and keeps serving on its
+ *  missing default path (packages/vendo/src/guard/policy.ts:115) and keeps serving on its
  *  built-in posture, so nothing at runtime refuses and nothing in the product
  *  says the host's own rules stopped applying.
  *

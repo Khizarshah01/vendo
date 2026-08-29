@@ -35,7 +35,7 @@
  *     mechanism.
  *  3. The bounded fix round exists but at the wrong time. The claude-code
  *     harness runs ONE validate-and-repair round at the turn boundary
- *     (`@vendoai/harnesses` `claude-code/index.ts`, `repairInstruction`) — a
+ *     (`@vendoai/vendo` `claude-code/index.ts`, `repairInstruction`) — a
  *     PRE-land loop, and whatever survives it lands unflagged.
  *  4. Check PROVENANCE now exists (2026-08-05, `./checking.test.ts`). `Finding`
  *     carries `check`, stamped by `./layer.ts` — the one place that knows the

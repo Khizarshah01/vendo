@@ -15,7 +15,7 @@
  *
  * Why a turn survives its reader vanishing: `recordResumableTurn` tees the turn
  * response — the same tee-plus-detached-drain seam the harness runtime already
- * uses to checkpoint parked turns (`harnesses/src/runtime.ts`). The recording
+ * uses to checkpoint parked turns (`packages/vendo/src/harnesses/runtime.ts`). The recording
  * branch is drained by us, not by the client, so a client that stops reading
  * (recycled isolate, dropped socket, closed tab on `next dev`) does not stall
  * the turn. A client that genuinely ABORTS the fetch still kills the turn

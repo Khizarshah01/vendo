@@ -1,5 +1,5 @@
 /**
- * `@vendoai/harnesses` — one central home for the thinkers, and the runtime that
+ * `@vendoai/vendo/harnesses` — one central home for the thinkers, and the runtime that
  * runs any of them safely (build contract 2026-07-30 §1.6).
  *
  * The contract types themselves live in `@vendoai/core` so every block may speak
@@ -7,7 +7,7 @@
  * and `vendo()` — the default in-process, key-free thinker.
  *
  * Wave 2 adds `claudeCode()`; external drivers arrive as subpaths with their SDKs
- * as optional peers (`@vendoai/harnesses/claude-code`).
+ * as optional peers (`@vendoai/vendo/harnesses/claude-code`).
  *
  * `instant()` was the third thinker and is GONE (blueprint §14.1, 2026-08-05).
  * Two engines and no third: the lean `vendo()` loop, and the builder on the
@@ -34,7 +34,7 @@ export {
 // `vendo()` itself stays on the ROOT barrel: `harness: vendo()` is the
 // umbrella's documented one-liner and `@vendoai/vendo` re-exports it from here.
 // Everything else that harness owns — its loop and its provider ladder — lives
-// behind `@vendoai/harnesses/vendo`, one subpath per harness.
+// behind `@vendoai/vendo/harnesses/vendo`, one subpath per harness.
 export { vendo, type HarnessHand, type VendoHarnessDeps, type VendoHarnessOptions } from "./vendo/vendo.js";
 export {
   APPROVAL_WAIT_MS,

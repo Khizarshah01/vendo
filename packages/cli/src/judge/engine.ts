@@ -1,4 +1,4 @@
-import { resolveDevCredential, type DevCredential } from "@vendoai/harnesses/inference/credential";
+import { resolveDevCredential, type DevCredential } from "@vendoai/vendo/harnesses/inference/credential";
 import { claudeCliHarness } from "../extract/claude-cli-harness.js";
 import { claudeHarness } from "../extract/claude-harness.js";
 import { codexCliHarness } from "../extract/codex-cli-harness.js";

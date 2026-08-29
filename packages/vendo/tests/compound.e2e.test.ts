@@ -20,7 +20,7 @@ import {
   type ToolCall,
   type ToolRegistry,
 } from "@vendoai/core";
-import { createGuard, type PolicyConfig } from "@vendoai/guard";
+import { createGuard, type PolicyConfig } from "../src/guard/index.js";
 import { createStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";

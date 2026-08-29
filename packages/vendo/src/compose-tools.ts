@@ -5,7 +5,7 @@
  */
 import type { Connector } from "@vendoai/actions";
 import { consoleLogger, emitUsage, setLogger, setUsageSink, type Json } from "@vendoai/core";
-import { createShellTools } from "@vendoai/harnesses/vendo";
+import { createShellTools } from "./harnesses/vendo/index.js";
 import { createKnowledgeTools, knowledgeIndexResolver } from "./knowledge/index.js";
 import { workspaceStore } from "@vendoai/store";
 import {

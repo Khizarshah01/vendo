@@ -7,7 +7,7 @@
  * host's server path, and a bundler that folds `import(CONST)` therefore
  * demanded `@anthropic-ai/claude-agent-sdk` at BUILD time from a Next.js host
  * that had no reason to install it. The turn runner has since moved to
- * `@vendoai/harnesses` (claude-code/claude-turn.ts), which carries its own
+ * `@vendoai/vendo` (claude-code/claude-turn.ts), which carries its own
  * half of this pin (`tests/claude-code/sdk-absent.e2e.test.ts`) — the halves
  * are split per package because each probes its OWN dist, and only a
  * package's own test task is guaranteed to run after its build.

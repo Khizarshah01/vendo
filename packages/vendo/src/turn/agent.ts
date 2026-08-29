@@ -23,10 +23,10 @@ import {
   type ToolRegistry,
   type When,
 } from "@vendoai/core";
-import { createGuard, isGuardInstance, permissionsHandler, type GuardRules, type VendoGuard } from "@vendoai/guard";
-import { provideHarnessAdapters, vendo } from "@vendoai/harnesses";
-import { vendoModel } from "@vendoai/harnesses/inference";
-import { resolveDevCredential } from "@vendoai/harnesses/inference/credential";
+import { createGuard, isGuardInstance, permissionsHandler, type GuardRules, type VendoGuard } from "../guard/index.js";
+import { provideHarnessAdapters, vendo } from "../harnesses/index.js";
+import { vendoModel } from "../harnesses/inference/model.js";
+import { resolveDevCredential } from "../harnesses/inference/resolve.js";
 import { createStore, hostedStore, storeFiles, type VendoStore } from "@vendoai/store";
 import type { LanguageModel, UIMessage } from "ai";
 import { randomUUID } from "node:crypto";
@@ -342,7 +342,8 @@ export function agent(config: AgentConfig): VendoAgent {
   const harness = config.harness ?? vendo();
   // ONE seat, one ladder: an explicit `model` is used verbatim, always; unset,
   // `vendoModel()` is the zero-key rung (`vendo login` / VENDO_API_KEY). The
-  // ladder is `@vendoai/harnesses`'s — this package holds no rung of its own.
+  // ladder is the harness runtime's (src/harnesses/inference) — the turn holds
+  // no rung of its own.
   const models = { default: config.model ?? vendoModel() };
   /**
    * `vendo()` thinks with the `default` seat, so a turn with neither an explicit
@@ -361,7 +362,7 @@ export function agent(config: AgentConfig): VendoAgent {
       + "way is `npx vendoai@latest login`, which mints a VENDO_API_KEY. Or pass your own — "
       + "`model: anthropic(\"claude-sonnet-4-6\")`, importing `anthropic` from `@ai-sdk/anthropic` "
       + "— or name a harness that brings its own, e.g. `harness: claudeCode()`, importing "
-      + "`claudeCode` from `@vendoai/harnesses/claude-code`.",
+      + "`claudeCode` from `@vendoai/vendo/claude-code`.",
     );
   };
 

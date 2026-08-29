@@ -58,7 +58,7 @@ export type { CreateVendoConfig, TextChannelApi, Vendo, VendoChannels } from "./
 // `@vendoai/harnesses` — a documented one-liner that does not compile from the
 // package the host installed. Alias it at the import when your own composed
 // value is called `vendo` (`import { vendo as vendoHarness }`).
-export { vendo, type VendoHarnessDeps, type VendoHarnessOptions } from "@vendoai/harnesses";
+export { vendo, type VendoHarnessDeps, type VendoHarnessOptions } from "./harnesses/index.js";
 
 // The screen assembler moved home to this package (it needs `vendo()` from
 // harnesses AND the render seam from apps, so only the umbrella can hold it).
@@ -218,12 +218,12 @@ export type {
   VendoRouteMap,
   VendoTheme,
 } from "@vendoai/apps/contract";
-export type { PolicyFile } from "@vendoai/guard";
+export type { PolicyFile } from "./guard/index.js";
 // The `guard:` slot's two arms, named from here for the same reason as
 // `ServerActionHandler` and `ComposedAgent`: a host must be able to name what
 // it passes without adding a direct dependency on the block the value came
 // from. `guard()` itself is re-exported below, beside `vendo()`.
-export { guard, createGuard, type GuardRules, type VendoGuard } from "@vendoai/guard";
+export { guard, createGuard, type GuardRules, type VendoGuard } from "./guard/index.js";
 
 // The standalone agent runtime leaves its Cloud rungs as a seam because their
 // implementations ship here (it may not import the umbrella). Registered at

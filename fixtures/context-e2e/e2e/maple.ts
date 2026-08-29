@@ -32,7 +32,7 @@ export const MAPLE = "/maple";
 /** Maple is mounted at a basePath, so every URL this suite names carries it. */
 export const url = (path: string): string => `${MAPLE}${path}`;
 
-/** One audit row as the wire serves it (`packages/harnesses/src/runtime.ts`
+/** One audit row as the wire serves it (`packages/vendo/src/harnesses/runtime.ts`
  *  `reportRun`): a `run` row is the resident's own spend, a row carrying
  *  `subagent` is one hire's. */
 export interface RunRow {
@@ -133,7 +133,7 @@ export async function expectNoTurnError(page: Page): Promise<void> {
 /** A page of filler that reads like something a Maple customer would paste, and
  *  carries none of the identifiers a recall assertion looks for. Sized in
  *  CHARACTERS because the estimate this suite is pushing against is chars/4
- *  (`packages/harnesses/src/vendo/compaction.ts`). */
+ *  (`packages/vendo/src/harnesses/vendo/compaction.ts`). */
 export function ledgerPaste(chars: number, seed: string): string {
   const merchants = [
     "BRIGHTLEAF GROCERS", "NORTHGATE FUEL", "CEDAR LANE PHARMACY", "HARBOR TRANSIT",

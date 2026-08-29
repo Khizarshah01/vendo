@@ -25,7 +25,7 @@
 import { agentToolDescriptors, createApps, type AppsRuntime } from "@vendoai/apps";
 import type { ScreenAssembler } from "@vendoai/apps/contract";
 import type { AppId, Principal, RunContext, SqlDialect, ToolRegistry } from "@vendoai/core";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "../src/guard/index.js";
 import { createStore, postgresAppDatabase, type VendoStore } from "@vendoai/store";
 import { afterEach, describe, expect, it } from "vitest";
 

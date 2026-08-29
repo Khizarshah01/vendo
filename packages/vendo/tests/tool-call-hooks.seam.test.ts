@@ -20,7 +20,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal, ToolDescriptor, ToolRegistry, VendoUsageEvent } from "@vendoai/core";
 import { setUsageSink } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

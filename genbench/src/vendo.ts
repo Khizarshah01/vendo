@@ -1,7 +1,7 @@
 import { createApps, SCREEN_FILE } from "@vendoai/apps";
 import { renderBriefingPack, type BriefingPack } from "@vendoai/apps/contract";
 import type { AppId, Principal, RunContext, ToolRegistry, UIPayload } from "@vendoai/core";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "@vendoai/vendo/guard";
 import { createStore, workspaceStore } from "@vendoai/store";
 import { vendoVerbsRegistry } from "@vendoai/vendo";
 import { screenAssembler } from "@vendoai/vendo/server";

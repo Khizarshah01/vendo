@@ -48,8 +48,8 @@ import {
   type TurnResult as CoreTurnResult,
 } from "@vendoai/core";
 import { wrapWorkspaceForRender } from "@vendoai/apps";
-import type { VendoGuard } from "@vendoai/guard";
-import { addUsage, createHarnessRuntime, type HarnessRuntimeDeps, type UsageTotals } from "@vendoai/harnesses";
+import type { VendoGuard } from "../../src/guard/index.js";
+import { addUsage, createHarnessRuntime, type HarnessRuntimeDeps, type UsageTotals } from "../../src/harnesses/index.js";
 import {
   harnessStateStore,
   storeFiles,
@@ -544,7 +544,7 @@ export async function runTurn(deps: TurnDeps, input: TurnInput): Promise<TurnRec
   /** The harness's own sentence for the failure, when it gave one. */
   let failureMessage: string | undefined;
   const parked: ApprovalRequest[] = [];
-  /** The guard's OWN per-run key (packages/guard/src/guard.ts:1104), so a card is
+  /** The guard's OWN per-run key (packages/vendo/src/guard/guard.ts:1104), so a card is
    *  matched the way the guard counts it: an engine firing keys on its runId,
    *  everything else on the thread it is on. An undefined key matches NOTHING —
    *  two ctxs that both name no run are not the same run, and matching them would
@@ -616,7 +616,7 @@ export async function runTurn(deps: TurnDeps, input: TurnInput): Promise<TurnRec
         // and hands them to a closure in this function: no network, no store,
         // no host API, no file — and it pays the call budget just above. It is
         // here ONLY because an away turn parks every call it cannot trace to a
-        // grant, READS INCLUDED (packages/guard/src/guard.ts:1051), which would
+        // grant, READS INCLUDED (packages/vendo/src/guard/guard.ts:1051), which would
         // strand every typed run on a card nobody can answer. DELETE THIS
         // BRANCH once the pending guard change lands and a reaches-nothing read
         // no longer parks unattended.

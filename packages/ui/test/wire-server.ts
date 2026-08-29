@@ -704,11 +704,11 @@ export async function createWireServer(options: WireServerOptions = {}) {
         }
         if (sentText.includes("[beats]")) {
           // §3.4 — the STATUS channel: transient `data-vendo-status` chunks, the
-          // exact shape `writeStatus` (packages/harnesses/src/wire.ts) puts on
+          // exact shape `writeStatus` (packages/vendo/src/harnesses/wire.ts) puts on
           // the wire. Written here as the literal part name because @vendoai/ui
           // may depend on core only (scripts/dependency-guard.mjs), so the
           // producer's constant cannot be imported; the producer side pins the
-          // same literal in packages/harnesses/tests/runtime.test.ts.
+          // same literal in packages/vendo/tests/harnesses/runtime.test.ts.
           //
           // The script is the settled-gap shape (prose, then a call that
           // settles, then the busy gap) with beats riding through it: two

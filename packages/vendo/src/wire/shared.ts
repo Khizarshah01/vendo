@@ -18,7 +18,7 @@ import {
   type ToolOutcome,
   type ToolRegistry,
 } from "@vendoai/core";
-import type { VendoGuard } from "@vendoai/guard";
+import type { VendoGuard } from "../guard/index.js";
 import type { McpDoor } from "../mcp/index.js";
 import type { VendoStore } from "@vendoai/store";
 import type { Telemetry } from "@vendoai/telemetry";

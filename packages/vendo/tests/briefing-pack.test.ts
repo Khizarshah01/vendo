@@ -34,9 +34,9 @@ import {
 } from "@vendoai/core";
 import type { SandboxAdapter } from "@vendoai/apps";
 import type { ComponentRegistry, VendoRouteMap, VendoTheme } from "@vendoai/apps/contract";
-import { defineHarness } from "@vendoai/harnesses";
-import { createSessionRoutes } from "@vendoai/harnesses/box-door";
-import { disposeSessionMachines } from "@vendoai/harnesses/claude-code/box";
+import { defineHarness } from "../src/harnesses/index.js";
+import { createSessionRoutes } from "../box/turn-routes.mjs";
+import { disposeSessionMachines } from "../src/harnesses/claude-code/box.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";

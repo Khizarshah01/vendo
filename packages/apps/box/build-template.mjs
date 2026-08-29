@@ -35,7 +35,7 @@ const name = process.argv[2] ?? "vendo-box";
 // 2026-08-01: `../dist/...` → TemplateError; chdir does not move the base).
 // The session-door files are therefore STAGED in beside the harness files and
 // removed again below — build artifacts, and .gitignore says so. Both live in
-// `@vendoai/harnesses` (the claude-code driver owns its box-side half): the
+// `@vendoai/vendo` (the claude-code driver owns its box-side half): the
 // runner is that package's compiled `dist/claude-code/claude-turn.js`, the
 // session routes its shipped `box/turn-routes.mjs`. Run `pnpm build` before
 // this script so harnesses' dist is current — the same precondition the
@@ -74,8 +74,8 @@ const template = Template()
   .copy("harness.mjs", "/opt/vendo-box/harness.mjs", { user: "root" })
   .copy("bootstrap.mjs", "/opt/vendo-box/bootstrap.mjs", { user: "root" })
   // The conversational turn door and the SDK loop behind it, both staged in
-  // from `@vendoai/harnesses` above. `claude-turn.mjs` is the COMPILED
-  // `packages/harnesses/src/claude-code/claude-turn.ts`, the same module
+  // from `@vendoai/vendo` above. `claude-turn.mjs` is the COMPILED
+  // `packages/vendo/src/harnesses/claude-code/claude-turn.ts`, the same module
   // `machine: "local"` runs on the host and the same module BOTH doors of the
   // control port drive: one implementation, three callers.
   .copy(STAGED_SESSION_ROUTES, "/opt/vendo-box/turn-routes.mjs", { user: "root" })

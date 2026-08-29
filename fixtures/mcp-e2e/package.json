@@ -15,7 +15,6 @@
     "@vendoai/actions": "workspace:*",
     "@vendoai/apps": "workspace:*",
     "@vendoai/core": "workspace:*",
-    "@vendoai/guard": "workspace:*",
     "@vendoai/store": "workspace:*",
     "@vendoai/vendo": "workspace:*"
   },

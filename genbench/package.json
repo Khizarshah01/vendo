@@ -17,7 +17,6 @@
     "@jitl/quickjs-singlefile-browser-release-sync": "^0.32.0",
     "@vendoai/apps": "workspace:*",
     "@vendoai/core": "workspace:*",
-    "@vendoai/guard": "workspace:*",
     "@vendoai/store": "workspace:*",
     "@vendoai/ui": "workspace:*",
     "@vendoai/vendo": "workspace:*"

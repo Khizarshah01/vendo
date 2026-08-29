@@ -30,6 +30,8 @@ export * from "./box-ports.js";
 export * from "./grants.js";
 export * from "./grant-sets.js";
 export * from "./guard.js";
+export * from "./guard-collections.js";
+export * from "./policy.js";
 export * from "./fetch.js";
 export * from "./heartbeat.js";
 export * from "./host-seams.js";
@@ -79,7 +81,7 @@ export * from "./workspace.js";
 
 // The harness contract plus the two seams it is typed against: the workspace
 // filesystem and the model seats. Type-only by design — `defineHarness` and the
-// runtime live in @vendoai/harnesses, so core stays the shapes every block may
+// runtime live in @vendoai/vendo, so core stays the shapes every block may
 // speak.
 export type {
   BeatPhase,

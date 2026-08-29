@@ -6,7 +6,7 @@ import { call, context, descriptor } from "../fixtures/tools.js";
 
 /**
  * Live judge smoke (e2e doctrine: env-key-gated, out of CI).
- * Runs only when ANTHROPIC_API_KEY is set: `ANTHROPIC_API_KEY=... pnpm --filter @vendoai/guard test`.
+ * Runs only when ANTHROPIC_API_KEY is set: `ANTHROPIC_API_KEY=... pnpm --filter @vendoai/vendo test`.
  */
 const hasKey = Boolean(process.env.ANTHROPIC_API_KEY);
 

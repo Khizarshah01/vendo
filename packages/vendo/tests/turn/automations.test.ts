@@ -6,7 +6,7 @@ import {
   type VendoError,
 } from "@vendoai/core";
 import { createStore } from "@vendoai/store";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { describe, expect, it } from "vitest";
 import { agent } from "../../src/turn/agent.js";
 import { agentAutomationPlan, agentAutomations } from "../../src/turn/automations.js";

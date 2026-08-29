@@ -10,8 +10,8 @@
  * the park were living in a promise rather than in the store, nothing below
  * would find it.
  */
-import { createGuard } from "@vendoai/guard";
-import { defineHarness } from "@vendoai/harnesses";
+import { createGuard } from "../../src/guard/index.js";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadMessageStore, type VendoStore } from "@vendoai/store";
 import { VendoError, type RunContext, type ToolResult } from "@vendoai/core";
 import type { UIMessage } from "ai";

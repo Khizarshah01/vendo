@@ -5,7 +5,7 @@
  * door, the REAL guard (so the decision that starts a build is the one a person
  * really makes, and `decide` really awaits its subscribers), the real box pool
  * (`boxMachine`), the real box session door
- * (`packages/harnesses/box/turn-routes.mjs`) over an in-process transport, and
+ * (`packages/vendo/box/turn-routes.mjs`) over an in-process transport, and
  * the real seal. Two things are stand-ins, both the legitimate BYO boundary: the
  * SandboxAdapter, and the coding agent inside the box — a test cannot run a
  * model, so the script writes the files a real in-box agent would write.
@@ -32,14 +32,14 @@ import {
 } from "@vendoai/core";
 import { createApps, readBundleBlob, type AppsConfig } from "@vendoai/apps";
 import { BUILD_WATCHDOG_MS } from "@vendoai/apps/contract";
-import { createGuard } from "@vendoai/guard";
-import { MESSAGE_BUDGET_MS } from "@vendoai/harnesses/claude-code";
-import { createSessionRoutes } from "@vendoai/harnesses/box-door";
+import { createGuard } from "../src/guard/index.js";
+import { MESSAGE_BUDGET_MS } from "../src/harnesses/claude-code/index.js";
+import { createSessionRoutes } from "../box/turn-routes.mjs";
 import {
   BOX_WORKSPACE_ROOT,
   disposeSessionMachines,
   inferenceEnv,
-} from "@vendoai/harnesses/claude-code/box";
+} from "../src/harnesses/claude-code/box.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import * as kit from "@vendoai/ui/kit";
 import { afterEach, describe, expect, it } from "vitest";
@@ -333,7 +333,7 @@ describe("a consented build runs the box and seals what it made", () => {
     // Not torn down inline and not leaked: the lane hands the box back to the
     // pool, which is what its idle timer (and the shutdown reap below) act on.
     // The wall-clock reap that `release()` arms is `boxMachine`'s own, proven
-    // against a shortened TTL in `packages/harnesses/tests/claude-code`.
+    // against a shortened TTL in `packages/vendo/tests/harnesses/claude-code`.
     expect(sandbox.boxes[0]!.destroyed).toBe(false);
     await disposeSessionMachines();
     expect(sandbox.boxes[0]!.destroyed).toBe(true);

@@ -14,7 +14,7 @@
  *
  *   scripted SDK, firing the REAL registered PostToolUse hook and awaiting it
  *     → the REAL `createClaudeSession` loop (`src/claude-code/claude-turn.ts`)
- *     → the REAL box door (`packages/harnesses/box/turn-routes.mjs`)
+ *     → the REAL box door (`packages/vendo/box/turn-routes.mjs`)
  *     → the REAL `box.ts` poll loop
  *     → the REAL `claude-code/index.ts` hot sync
  *     → the REAL workspace commit

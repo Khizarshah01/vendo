@@ -263,7 +263,7 @@ export const ASK_USER_TOOL = "ask_user";
 
 /** The agent's hands over the user's own files: one shell, in this process,
  *  over the workspace (spec 2026-08-23 §1). Named here for `ASK_USER_TOOL`'s
- *  reason — the registry that implements it lives in `@vendoai/harnesses` and the
+ *  reason — the registry that implements it lives in `@vendoai/vendo` and the
  *  composition that mounts it lives in `@vendoai/vendo`, and a tool name with two
  *  spellings is a tool the guard grades under one and the loadout exempts under
  *  the other.

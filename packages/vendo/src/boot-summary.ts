@@ -332,7 +332,7 @@ export function bootSummaryFor(composition: VendoComposition): BootSummary {
     });
   }
   // …and the file that posture is waiting on, when it is not there. The guard
-  // falls back silently by design (guard/src/policy.ts:115) and keeps serving,
+  // falls back silently by design (packages/vendo/src/guard/policy.ts:115) and keeps serving,
   // so this line is the only place a deployment running on defaults says so.
   // Judged by its OWNER at compose (compose-guard.ts) and read here as a
   // property, exactly like the ephemeral-disk warning: this block may not stat.

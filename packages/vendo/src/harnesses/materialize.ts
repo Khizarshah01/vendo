@@ -40,7 +40,7 @@ const IN_MOUNT = /^\/(?:host|user|orgs\/[^/]+)(?:\/|$)/;
  * A SHAPE, and deliberately not a permission — it is the only question a walk of
  * a real disk can answer, because a disk has no store to ask. Both machines ask
  * it: `claude-code/local.ts` here, and the box door's own copy in
- * `packages/harnesses/box/turn-routes.mjs`. Whether a carried path may LAND is
+ * `packages/vendo/box/turn-routes.mjs`. Whether a carried path may LAND is
  * `canCommit`'s, per file, against live rows.
  */
 export const inWritableMount = (path: string): boolean =>
@@ -140,7 +140,7 @@ export interface WorkspaceCheckout {
 
 /**
  * The box door's whole-tree walk skips files over this to protect the proxy's
- * body limit (`packages/harnesses/box/turn-routes.mjs`), so a machine can report a
+ * body limit (`packages/vendo/box/turn-routes.mjs`), so a machine can report a
  * checked-out file ABSENT while still holding it. Under the default files
  * store (5 MiB cap) no checked-out file reaches this size; a BYO adapter (s3)
  * has no cap. Absent-means-deleted must not apply to such a file: keeping a

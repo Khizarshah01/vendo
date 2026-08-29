@@ -1,7 +1,7 @@
 import { createActions, createConnectGate, type Connector } from "@vendoai/actions";
 import type { Principal, RunContext, ToolDescriptor } from "@vendoai/core";
 import { memoryStoreAdapter } from "@vendoai/core/conformance";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "../src/guard/index.js";
 import { describe, expect, it, vi } from "vitest";
 
 /** Criterion 11 (discovery-discipline): dispatching a tool call for an

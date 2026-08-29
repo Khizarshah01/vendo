@@ -9,7 +9,7 @@ import {
   type ToolDescriptor,
   type ToolRegistry,
 } from "@vendoai/core";
-import { createGuard, type VendoGuard } from "@vendoai/guard";
+import { createGuard, type VendoGuard } from "../src/guard/index.js";
 import { createStore, createStoreOps } from "@vendoai/store";
 import { afterEach, describe, expect, it } from "vitest";
 import { createByoApprovals } from "../src/byo-approvals.js";

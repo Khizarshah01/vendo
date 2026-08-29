@@ -106,7 +106,7 @@ describe("deterministic breakers (05 §2)", () => {
 });
 
 // The agent bridge's needsApproval→execute pairing calls the
-// guard twice for one logical call (packages/harnesses/src/tool-bridge.ts): a preview
+// guard twice for one logical call (packages/vendo/src/harnesses/tool-bridge.ts): a preview
 // through `previewCheck`, then the real, dispatching check through
 // `check()`/`bind().execute()` moments later. A `previewCheck` "run" must
 // never itself spend the write budget or call-rate window — only the REAL

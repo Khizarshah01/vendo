@@ -116,7 +116,7 @@ const TIMEOUT_SIGNAL = /time?d?\s*out|timeout|abort/i;
  * does not match this line, so nothing else classifies it first.
  *
  * BYTE-FOR-BYTE COUPLED to a sentence in another package this one may not
- * import — `@vendoai/harnesses`' claude-code rungs (`box.ts` and `local.ts`
+ * import — `@vendoai/vendo`' claude-code rungs (`box.ts` and `local.ts`
  * throw it identically). Same coupling, and the same hazard, as
  * `MODEL_UNAVAILABLE_SIGNAL` below; the seam is driven against the real throw in
  * the umbrella's tests/build-budget-reason.test.ts, the one package that sees

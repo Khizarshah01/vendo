@@ -19,7 +19,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { automationsInternals } from "../src/automations/index.js";
 import { VENDO_AUTOMATE_TOOL, type Harness, type Principal, type RunContext, type ToolDescriptor, type ToolRegistry } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 // Harness-path defect (live E2E) — a connector call that ends `connect-required`
 // on a HARNESS turn (vendo() / claudeCode()) is mirrored as a bare
-// `tool-output-denied` (harnesses/src/wire.ts), so the thread's only record of
+// `tool-output-denied` (packages/vendo/src/harnesses/wire.ts), so the thread's only record of
 // the ask is the bridge's `data-vendo-connect` part. Nothing consumed it, so an
 // unconnected service produced a silent denial and the promised connect card
 // never appeared. The ENGINE path carries the typed outcome on the tool part AND

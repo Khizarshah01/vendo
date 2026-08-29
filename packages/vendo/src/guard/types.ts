@@ -6,13 +6,12 @@ import {
   type AuditEvent,
   type GrantId,
   type Guard,
-  type GuardDecision,
   type IsoDateTime,
   type PermissionGrant,
+  type PolicyConfig,
+  type PolicyRule,
   type Principal,
   type RecordInput,
-  type RiskLabel,
-  riskLabelSchema,
   type RiskResolver,
   type RunContext,
   type StoreAdapter,
@@ -20,77 +19,27 @@ import {
   type ToolCall,
   type ToolDescriptor,
   type ToolRegistry,
-  VENDO_POLICY_FORMAT,
   type GuardPosture,
 } from "@vendoai/core";
 import type { LanguageModel } from "ai";
-import { z } from "zod";
-
-export interface PolicyRule {
-  match: {
-    tool?: string;
-    risk?: RiskLabel;
-    venue?: RunContext["venue"];
-    presence?: RunContext["presence"];
-  };
-  action: "run" | "ask" | "block";
-  note?: string;
-}
-
-export type PolicyFn = (
-  call: ToolCall,
-  descriptor: ToolDescriptor,
-  ctx: RunContext,
-) => GuardDecision | undefined;
 
 /** Re-exported: the hook is defined in core because the automations engine
  * grades an arm-time declaration with the same resolver the guard runs. */
 export type { RiskResolver };
 
-/** Named policy presets: pure sugar that expands to rules before evaluation
- *  (00-overview decision 8). "cautious" asks before write/destructive and
- *  runs read; "readonly" runs read and blocks everything else; "autopilot"
- *  explicitly runs everything — still fully audited, and distinct from
- *  leaving `policy` unset (which reports the "unconfigured" posture). */
-export type PolicyPresetName = "cautious" | "readonly" | "autopilot";
-
-export interface PolicyConfigObject {
-  file?: string;
-  rules?: PolicyRule[];
-  directions?: string[];
-  code?: PolicyFn;
-}
-
-export type PolicyConfig = PolicyPresetName | PolicyConfigObject;
-
-export interface PolicyFile {
-  format: typeof VENDO_POLICY_FORMAT;
-  directions?: string[];
-  rules?: PolicyRule[];
-}
-
-export const policyRuleSchema = z
-  .object({
-    match: z
-      .object({
-        tool: z.string().optional(),
-        risk: riskLabelSchema.optional(),
-        venue: z.enum(["chat", "app", "automation", "mcp"]).optional(),
-        presence: z.enum(["present", "away"]).optional(),
-      })
-      .strict(),
-    action: z.enum(["run", "ask", "block"]),
-    note: z.string().optional(),
-  })
-  .strict() satisfies z.ZodType<PolicyRule>;
-
-export const policyFileSchema = z
-  .object({
-    format: z.literal(VENDO_POLICY_FORMAT),
-    directions: z.array(z.string()).optional(),
-    rules: z.array(policyRuleSchema).optional(),
-  })
-  .strict() satisfies z.ZodType<PolicyFile>;
+/** The policy contract — the rule shape, the .vendo/policy.json schema and the
+ *  preset names — lives in @vendoai/core: a second repo validates policy files
+ *  against it, and a schema with two spellings is two schemas. Re-exported here
+ *  so this block's own files keep importing one place. */
+export { policyFileSchema, policyRuleSchema } from "@vendoai/core";
+export type {
+  PolicyConfig,
+  PolicyConfigObject,
+  PolicyFile,
+  PolicyFn,
+  PolicyPresetName,
+  PolicyRule,
+} from "@vendoai/core";
 
 export interface Judge {
   /** The judge's own model, when it has one (vendoAutoJudge exposes the model

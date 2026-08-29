@@ -11,7 +11,7 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { guard } from "@vendoai/guard";
+import { guard } from "../src/guard/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createVendo } from "../src/server.js";
 import type { CreateVendoConfig } from "../src/types.js";

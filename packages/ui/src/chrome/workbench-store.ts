@@ -51,7 +51,7 @@ export interface WorkbenchTurn {
 }
 
 /** Written out rather than imported for the same reason `data-vendo-status` is
-    in `use-vendo-thread`: the constant lives in @vendoai/harnesses, and
+    in `use-vendo-thread`: the constant lives in @vendoai/vendo, and
     @vendoai/ui may depend on core alone (scripts/dependency-guard.mjs). */
 const DEBUG_PART = "data-vendo-debug";
 

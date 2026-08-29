@@ -27,8 +27,8 @@ import type { LanguageModel, UIMessage } from "ai";
 import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
 // The REAL box door, over a fake transport — a package subpath, not a relative
 // climb, because the door is the wire contract between the two blocks.
-import { createSessionRoutes } from "@vendoai/harnesses/box-door";
-import { claudeCode } from "@vendoai/harnesses/claude-code";
+import { createSessionRoutes } from "../box/turn-routes.mjs";
+import { claudeCode } from "../src/harnesses/claude-code/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { afterEach, describe, expect, it } from "vitest";
 import { liveDoor } from "../src/agent-doubles.test-util.js";
@@ -78,9 +78,9 @@ interface BoxDoor {
 
 /**
  * A stand-in for a real box, adapted from the fake in
- * `packages/harnesses/src/claude-code/claude-code.test.ts` and cut down to what
+ * `packages/vendo/src/harnesses/claude-code/claude-code.test.ts` and cut down to what
  * ONE turn touches: `request()` is a transport adapter over the ACTUAL box door
- * (`packages/harnesses/box/turn-routes.mjs`), so what this exercises is our driver
+ * (`packages/vendo/box/turn-routes.mjs`), so what this exercises is our driver
  * and the composition — never a mock of our own code. The SDK loop is the one
  * thing scripted, because a test cannot run a model.
  */

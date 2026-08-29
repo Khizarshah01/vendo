@@ -25,9 +25,9 @@ const THREAD_ID_PATTERN = /^thr_.+$/;
  * §3.4's status channel, RECEIVED.
  *
  * The part name is written out rather than imported: `VENDO_STATUS_PART` lives
- * in @vendoai/harnesses, and @vendoai/ui may depend on core alone
+ * in @vendoai/vendo, and @vendoai/ui may depend on core alone
  * (scripts/dependency-guard.mjs). The producer pins the same literal on the
- * wire in packages/harnesses/tests/runtime.test.ts.
+ * wire in packages/vendo/tests/harnesses/runtime.test.ts.
  *
  * THE CHANNEL IS `onData`, NOT A `parts.tsx` BRANCH. A transient data chunk is
  * handed to `onData` and `break`s before the SDK pushes anything into

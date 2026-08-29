@@ -11,7 +11,6 @@ export const VENDO_PACKAGE_NAMES = [
   "@vendoai/core",
   "@vendoai/store",
   "@vendoai/actions",
-  "@vendoai/guard",
   "@vendoai/apps",
   "@vendoai/ui",
   "@vendoai/telemetry",

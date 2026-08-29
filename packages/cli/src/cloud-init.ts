@@ -2,7 +2,7 @@ import { execFile, type ExecFileException } from "node:child_process";
 import { realpath } from "node:fs/promises";
 import { stdin, stdout } from "node:process";
 import { dirname, join, relative, resolve } from "node:path";
-import { ENV_KEY_VARS, type DevCredential } from "@vendoai/harnesses/inference/credential";
+import { ENV_KEY_VARS, type DevCredential } from "@vendoai/vendo/harnesses/inference/credential";
 import { cloudDoctor, isVendoKey, type CloudDoctorResult } from "./cloud/client.js";
 import { runDeviceLogin } from "./cloud/device-login.js";
 import type { SelectOption } from "./pretty.js";

@@ -277,7 +277,7 @@ describe("a beat is our copy, never the model's", () => {
  *
  * The COMPILE-TIME half of that seam deliberately does not live here. It lives
  * in gated production code instead: `BEAT_PHASES` in
- * `harnesses/src/claude-code/index.ts` fails when CORE gains a phase the mirror
+ * `packages/vendo/src/harnesses/claude-code/index.ts` fails when CORE gains a phase the mirror
  * lacks, and the `yield` beside it fails in the other direction. Both were
  * verified red by adding a seventh phase to each side in turn.
  *
@@ -285,7 +285,7 @@ describe("a beat is our copy, never the model's", () => {
  * puts on the wire are members of the contract's six, spelled the contract's way.
  */
 describe("every phase this loop emits is one of the contract's six", () => {
-  /** Spelled out as a value, following `harnesses/src/beats.test.ts`'s own
+  /** Spelled out as a value, following `packages/vendo/tests/harnesses/beats.test.ts`'s own
    *  precedent, so a seventh cannot arrive without this line changing on purpose. */
   const ARC: ContractBeatPhase[] = [
     "understanding", "planning", "assembling", "building", "checking", "finishing",
@@ -309,7 +309,7 @@ describe("the widening is ADDITIVE (§3.4)", () => {
   test("a status with only a label is still exactly what it always was", () => {
     // The dead `{ type: "status"; label: string }` member this PR took its seat in
     // had no `phase` and no `appId`; a producer that says nothing but `label` must
-    // put the identical chunk on the wire. `harnesses/src/beats.test.ts` asserts
+    // put the identical chunk on the wire. `packages/vendo/tests/harnesses/beats.test.ts` asserts
     // the wire half; this asserts the TYPE still admits the narrow form.
     const bare: ClaudeTurnEvent = { type: "status", label: "Reading your invoices" };
     expect(bare).toEqual({ type: "status", label: "Reading your invoices" });

@@ -12,7 +12,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStore } from "@vendoai/store";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "@vendoai/vendo/guard";
 import { createActions } from "@vendoai/actions";
 import { createApps } from "@vendoai/apps";
 import { automationsInternals, createAutomations } from "@vendoai/vendo/automations";

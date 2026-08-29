@@ -24,9 +24,9 @@ consumer in this repo has a real write path and a real read path; drive those.
 
 Concretely, these were considered and left where they are:
 
-- **the guard double** (`packages/harnesses/src/test-doubles.test-util.ts`,
+- **the guard double** (`packages/vendo/src/harnesses/test-doubles.test-util.ts`,
   `packages/vendo/src/agent-doubles.test-util.ts`) — `@vendoai/guard` ships a
-  real `createGuard`, and `packages/guard/test/abandon.test.ts` already drives
+  real `createGuard`, and `packages/vendo/tests/guard/abandon.test.ts` already drives
   it against a real store. A shared `testGuard` would be a fake standing in for
   a seam that can be run for real, promoted to a package.
 - **`tempStore`** — forty copies, every one of them inside `packages/vendo`.

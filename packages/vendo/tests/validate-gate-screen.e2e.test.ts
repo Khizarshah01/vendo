@@ -2,7 +2,7 @@
  * THE BUILDER'S VALIDATE GATE, ON A SCREEN THAT PAINTS.
  *
  * `validateWrittenApps` is what a `claudeCode()` turn runs over the files the model
- * wrote (`packages/harnesses/src/claude-code/index.ts`, the artifact path). It used
+ * wrote (`packages/vendo/src/harnesses/claude-code/index.ts`, the artifact path). It used
  * to hand EVERY app document to a door that compiled what it was given as markup,
  * so an `app.tsx` that compiled, type-checked, ran in the sealed VM and PAINTED
  * came back "expected a single <App> element", and a builder that obeyed the
@@ -29,7 +29,7 @@ import {
   type AppValidationFailure,
 } from "@vendoai/apps";
 import type { AppId, Principal } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

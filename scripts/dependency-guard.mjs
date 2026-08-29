@@ -8,7 +8,7 @@
  *   1. LAYERING — the only allowed @vendoai/* edges are:
  *        core → (nothing)
  *        apps → core
- *        store, agent, actions, guard, ui → core
+ *        store, actions, ui → core
  *        vendo (umbrella) → everything
  *      A packages/* block not in the map fails loudly: adding a block means
  *      consciously adding its layer here. A consumer outside packages/ is not a
@@ -18,8 +18,9 @@
  *   2. NO RETIRED IMPORTS — nothing may import from legacy/ (path or relative
  *      escape), and nothing may import a retired package name: the pre-v0
  *      publishes that only exist in the quarry (client, components, react,
- *      runtime, server, shell, stage) and the four that folded into
- *      @vendoai/vendo (@vendoai/agents, automations, knowledge, mcp). Every one
+ *      runtime, server, shell, stage) and the six that folded into
+ *      @vendoai/vendo (@vendoai/agents, automations, knowledge, mcp, guard,
+ *      harnesses). Every one
  *      of them is still ON NPM, so the import resolves to a frozen publish
  *      instead of failing.
  *
@@ -75,33 +76,10 @@ const LAYERS = {
   "@vendoai/core": [],
   "@vendoai/store": ["@vendoai/core", "@vendoai/apps"],
   "@vendoai/actions": ["@vendoai/core", "@vendoai/apps"],
-  "@vendoai/guard": ["@vendoai/core"],
   // ui reaches app generation ONLY through the browser-safe contract door —
   // enforced by ONLY_SUBPATHS below, not by this list.
   "@vendoai/ui": ["@vendoai/core", "@vendoai/apps"],
   "@vendoai/apps": ["@vendoai/core"],
-  // the harness runtime (build contract 2026-07-30 §2): the second multi-block
-  // package after the umbrella. It runs any Harness — building the Turn, mapping
-  // the guard's outcomes, mirroring onto today's wire — and since the engine
-  // fold it OWNS the turn loop too. core (the contract) and guard ONLY: the
-  // render seam, validate gate and screen agent moved out (apps, apps, and the
-  // umbrella respectively), hot-path views ride the runtime's generic
-  // `wrapWorkspace` slot, and the claude-code driver is apps-free since the
-  // claude-turn rehome — the session runner (`claude-code/claude-turn.ts`) and
-  // the box session door (`box/turn-routes.mjs`) live HERE now, and the apps
-  // vocabulary the driver still uses (hot paths, the validate gate) arrives
-  // INJECTED through `provideHarnessAdapters` from composition (the umbrella),
-  // never imported. The e2b/box-door seam tests live in
-  // packages/vendo/tests, where both blocks are legal.
-  // It is NOT the umbrella: no store, no actions.
-  //
-  // apps joined for the MODEL LADDER (agents-dx P1): `vendoModel()` moved here
-  // from @vendoai/vendo so the standalone agent runtime can fill its model slot
-  // without an umbrella edge, and the ladder re-decides sampling params against
-  // the RESOLVED rung — `acceptsSamplingParams` in apps' model-params.ts, the
-  // one place that rule is stated. apps depends on core alone, so there is no
-  // cycle; the cost is that a standalone install carries apps, which is accepted.
-  "@vendoai/harnesses": ["@vendoai/core", "@vendoai/guard", "@vendoai/apps"],
   // the canonical umbrella is the only package allowed to depend on every block
   "@vendoai/vendo": "*",
   // The CLI (S10, 2026-08-29): its own published package, ABOVE the umbrella
@@ -114,8 +92,6 @@ const LAYERS = {
     "@vendoai/actions",
     "@vendoai/apps",
     "@vendoai/core",
-    "@vendoai/guard",
-    "@vendoai/harnesses",
     "@vendoai/knowledge",
     "@vendoai/store",
     "@vendoai/telemetry",
@@ -238,6 +214,14 @@ const RETIRED = [
   "@vendoai/automations",
   "@vendoai/knowledge",
   "@vendoai/mcp",
+  // folded whole into @vendoai/vendo (src/guard/, src/harnesses/). Each block's
+  // own barrel survives at a subpath of the umbrella (@vendoai/vendo/guard,
+  // /harnesses and its four); the guard's CONTRACT half — the policy rule and
+  // file types, their zod schemas, and the five collection names the console
+  // reads — answers to @vendoai/core now, because a contract a second repo is
+  // written against is declared once. Both stay published at 0.56.0.
+  "@vendoai/guard",
+  "@vendoai/harnesses",
   "@vendoai/client",
   "@vendoai/components",
   "@vendoai/react",

@@ -13,7 +13,7 @@ packages:
 # (scripts/portability-gate.mjs).
 allowBuilds:
   # zstd + lzma are just-bash's OPTIONAL native backends for its compressed-tar
-  # commands. just-bash is a runtime dependency of @vendoai/harnesses (the shell
+  # commands. just-bash is a runtime dependency of @vendoai/vendo (the shell
   # tool) and nothing in the tree compresses an archive through it, so the native
   # builds are denied rather than compiled — running two build scripts would
   # widen the supply-chain surface for a code path with no caller. Kept rather
@@ -66,9 +66,9 @@ overrides:
   # the 2026-08-03 host-confusion advisory GHSA-7p8r-x3mc-p8w7 (>=4.0.0 <4.1.2).
   #
   # This is NOT examples-only, as this block used to claim. `pnpm why --prod`
-  # puts it in the published trees of @vendoai/{vendo,mcp,apps,harnesses}:
+  # puts it in the published trees of @vendoai/{vendo,mcp,apps}:
   # vendo depends on ajv and ajv-formats directly, mcp on
-  # @modelcontextprotocol/sdk>ajv, and apps/harnesses on
+  # @modelcontextprotocol/sdk>ajv, and apps and vendo on
   # @anthropic-ai/claude-agent-sdk>@modelcontextprotocol/sdk>ajv. Not exploitable
   # today — ajv resolves $ref/$id in schemas we author, not attacker-supplied
   # ones, and nothing authorizes off the parsed authority — but an advisory that
@@ -129,7 +129,7 @@ overrides:
   #     encoded backslash, GHSA-frvp-7c67-39w9 (<2.0.5).
   #
   # Not examples-only: `pnpm why --prod` puts both in the published
-  # @vendoai/{mcp,apps,harnesses} trees (apps/harnesses via
+  # @vendoai/{mcp,apps,vendo} trees (apps and vendo via
   # @anthropic-ai/claude-agent-sdk>@modelcontextprotocol/sdk), alongside
   # examples/mastra-agent>@mastra/core.
   #
@@ -186,7 +186,7 @@ overrides:
   # GHSA-mwp4-54f8-5fhr (<=10.3.0). Arrives via
   # @modelcontextprotocol/sdk>express-rate-limit — which is not only mastra's:
   # `pnpm why --prod` puts it in the published @vendoai/{mcp,apps,
-  # harnesses,vendo} trees too. Not exploitable today (the consumer is
+  # vendo} trees too. Not exploitable today (the consumer is
   # express-rate-limit's IPv4 key generator, so the worst case is bucket
   # confusion from a spoofed X-Forwarded-For, not an authz decision), but
   # ip-address is the library an SSRF allowlist would be built on, so a

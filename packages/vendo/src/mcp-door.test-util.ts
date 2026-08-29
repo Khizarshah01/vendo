@@ -14,7 +14,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { ExtractedTool } from "@vendoai/actions";
 import type { AuditEvent, Principal, ToolDescriptor, ToolRegistry, ToolResult } from "@vendoai/core";
-import { defineHarness, harnessAdapters } from "@vendoai/harnesses";
+import { defineHarness, harnessAdapters } from "./harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { createVendo, type Vendo } from "./server.js";

@@ -892,7 +892,7 @@ describe("grant sets: one set per enable, dedupe against pending", () => {
    * rode in on, so it has to contend with `approvals.revoke` on the same
    * one-time transition. The engine asks the guard for that spend and grants
    * only on "spent"; the two orderings of the race itself are pinned against the
-   * real receipt in `packages/guard/test/ungraded-default.test.ts`.
+   * real receipt in `packages/vendo/tests/guard/ungraded-default.test.ts`.
    */
   it("arms nothing when the person took the yes back before the callback could spend it", async () => {
     guard.spendApproval = async () => "taken-back";

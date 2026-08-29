@@ -8,7 +8,7 @@
  */
 import { memoryStoreAdapter } from "@vendoai/core/conformance";
 import type { RunContext, ToolCall, ToolDescriptor, ToolRegistry } from "@vendoai/core";
-import { createGuard, type Judge } from "@vendoai/guard";
+import { createGuard, type Judge } from "../../src/guard/index.js";
 import { describe, expect, it } from "vitest";
 import { createTurnTools } from "../../src/harnesses/turn-tools.js";
 import { ctx } from "../../src/harnesses/test-doubles.test-util.js";

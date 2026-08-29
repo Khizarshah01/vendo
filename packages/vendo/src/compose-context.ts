@@ -45,9 +45,9 @@ import type {
   BriefingPack,
   VendoTheme,
 } from "@vendoai/apps/contract";
-import type { VendoGuard, RiskResolver } from "@vendoai/guard";
-import type { CapabilityMissConfig } from "@vendoai/harnesses";
-import type { VendoToolSearchConfig } from "@vendoai/harnesses/vendo";
+import type { VendoGuard, RiskResolver } from "./guard/index.js";
+import type { CapabilityMissConfig } from "./harnesses/index.js";
+import type { VendoToolSearchConfig } from "./harnesses/vendo/index.js";
 import type { McpDoor, TurnCredentials } from "./mcp/index.js";
 import type { VendoStore } from "@vendoai/store";
 import type { createByoApprovals } from "./byo-approvals.js";

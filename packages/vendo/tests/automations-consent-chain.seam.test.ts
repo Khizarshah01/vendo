@@ -7,7 +7,7 @@
  * Both halves of this were already proved, and neither could catch the other:
  * `packages/vendo/tests/automations/engine.test.ts` re-runs against a `GuardDouble`
  * whose `check()` always answers "run", so its `status: "ok"` says nothing about
- * authority, and `packages/guard/test/security/chat-grant-not-away.test.ts`
+ * authority, and `packages/vendo/tests/guard/security/chat-grant-not-away.test.ts`
  * hand-seeds the grant shape it accepts. Here the guard that refuses the first
  * call is the guard that authorizes the second, and nothing between them is
  * stubbed: real `createVendo`, real guard, real automations engine, one real
@@ -105,7 +105,7 @@ describe.sequential("CHECK: a mid-firing tap is the away authority the re-run sp
       scope: { kind: "tool" },
     });
     // The record's own id is the WHOLE away match (`presenceMatches` in
-    // `packages/guard/src/guard.ts`): an automation carries no app reference at
+    // `packages/vendo/src/guard/guard.ts`): an automation carries no app reference at
     // all, so the rerun below is authorized with NO `appId` on the grant. Pinned
     // so this stays specifically the automations rule and can never quietly
     // absorb the boxed-app case, which is a different question with its own fix.

@@ -497,7 +497,7 @@ describe("the wrapper", () => {
   });
 });
 
-// The block below moved here with the seam from `@vendoai/harnesses`' parity
+// The block below moved here with the seam from `@vendoai/vendo`' parity
 // suite (H4 there): it exercises the seam alone, and the seam lives in this
 // package now.
 

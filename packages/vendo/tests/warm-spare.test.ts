@@ -13,7 +13,7 @@
  * warm door mints the id, the harnesses box pool reads it. Both halves are REAL
  * here — the actual `POST /threads/warm` and `POST /threads`, the actual
  * `createVendo` composition, the actual `claudeCode()` driver, the actual box
- * door (`packages/harnesses/box/turn-routes.mjs`) over an in-process transport.
+ * door (`packages/vendo/box/turn-routes.mjs`) over an in-process transport.
  * The SandboxAdapter is the one thing faked, because it is the legitimate BYO
  * boundary; the SDK loop inside the box is scripted, because a test cannot run a
  * model.
@@ -24,8 +24,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { LanguageModel, UIMessage } from "ai";
 import type { Principal } from "@vendoai/core";
-import { createSessionRoutes } from "@vendoai/harnesses/box-door";
-import { claudeCode, disposeSessionMachines } from "@vendoai/harnesses/claude-code";
+import { createSessionRoutes } from "../box/turn-routes.mjs";
+import { claudeCode, disposeSessionMachines } from "../src/harnesses/claude-code/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { afterEach, describe, expect, it } from "vitest";
 import { liveDoor } from "../src/agent-doubles.test-util.js";

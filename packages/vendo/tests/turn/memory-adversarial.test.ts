@@ -3,7 +3,7 @@
  * store (PGlite) and the REAL guard — nothing here stubs the counterparty.
  */
 import type { Guard, Principal, RunContext, ToolCall } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { describe, expect, it } from "vitest";
 import { agent, agentComposition } from "../../src/turn/agent.js";

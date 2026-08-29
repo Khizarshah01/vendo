@@ -290,7 +290,7 @@ export function VendoThread({
   // surfaces VISIBLY in the thread, not only through the hidden status span.
   // This band is the SYSTEM talking, in third person: a "Vendo: " prefixed
   // message is our own error (VendoError code + operator-crafted text,
-  // wireErrorMessage in @vendoai/harnesses) and reaches the reader as written;
+  // wireErrorMessage in @vendoai/vendo) and reaches the reader as written;
   // raw transport/provider strings never match the marker and stay hidden, so
   // the chrome says what it knows instead.
   // self-serve P — a live turn error now ALSO lands in the turn itself (the

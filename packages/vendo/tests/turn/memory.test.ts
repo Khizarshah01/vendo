@@ -5,7 +5,7 @@
  * in what the store actually does with a query.
  */
 import type { Guard, Principal, RunContext, ToolCall, ToolResult } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { describe, expect, it } from "vitest";
 import { agent, agentComposition } from "../../src/turn/agent.js";

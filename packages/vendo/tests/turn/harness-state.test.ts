@@ -8,7 +8,7 @@
  * the slot would have shipped green: a harness that owns a session would silently
  * start from scratch every turn.
  */
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { describe, expect, it } from "vitest";
 import { agent } from "../../src/turn/agent.js";

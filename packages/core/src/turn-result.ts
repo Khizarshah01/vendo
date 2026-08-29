@@ -7,7 +7,7 @@ import { toolCallSchema, type ToolCall, type ToolOutcome } from "./tools.js";
  * The metering figures a turn reports.
  *
  * Field for field the `UsageTotals` a harness already hands the runtime
- * (`@vendoai/harnesses`), restated here because core may not depend on
+ * (`@vendoai/vendo`), restated here because core may not depend on
  * harnesses and a turn's answer is core's shape. Identical on purpose: either
  * side's value is the other's, with no adapter between them.
  */

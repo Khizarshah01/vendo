@@ -5,7 +5,7 @@
  * build": every `vendo_make` request starts in the screen agent, and an
  * escalation is how it asks for the builder.
  *
- * The screen agent itself is a lean loop in `@vendoai/harnesses` — it needs a
+ * The screen agent itself is a lean loop in `@vendoai/vendo` — it needs a
  * model, the guard-bound registry, and a workspace whose commits reach the render
  * seam, none of which `@vendoai/apps` holds. `apps` depends on `core` alone, so
  * the two sides meet on this interface and composition (`packages/vendo`) is the

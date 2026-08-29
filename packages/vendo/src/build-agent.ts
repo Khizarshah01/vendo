@@ -32,7 +32,7 @@ import {
   boxEgress,
   boxMachine,
   type SandboxAdapterLike,
-} from "@vendoai/harnesses/claude-code/box";
+} from "./harnesses/claude-code/box.js";
 import { BRIEF_SECTION } from "./screen-agent.js";
 
 export interface AppBuilderDeps {
@@ -59,7 +59,7 @@ export const BUILD_ALLOWED_DOMAINS: readonly string[] = ["registry.npmjs.org"];
  *
  * `materialize` and `collect` speak WORKSPACE paths, which the box door maps
  * onto its disk under the mount root (`toDisk`,
- * `packages/harnesses/box/turn-routes.mjs`) — and `/user/**` is the only tree
+ * `packages/vendo/box/turn-routes.mjs`) — and `/user/**` is the only tree
  * that door carries back (`carriedBack`). The BRIEF cannot use that spelling:
  * the in-box agent has a shell, so it reads a leading `/` as the filesystem
  * root, sudo-creates `/user` there and bundles into a directory `collect` never

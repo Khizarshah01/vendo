@@ -16,7 +16,7 @@
  * is exactly the deployment shape a workspace-only host has.
  *
  * **The template matters here**, because this lane changes the box IMAGE (the
- * `/session/collect` walk in `packages/harnesses/box/turn-routes.mjs`): a run against
+ * `/session/collect` walk in `packages/vendo/box/turn-routes.mjs`): a run against
  * an image baked before the change collects `/user/` paths only and the team
  * file's edit never leaves the box. Proven on `vendo-box-orgs`
  * (`cnbt9dwz9ktvlplqhlq1`), a LANE-named template — never the shared `vendo-box`
@@ -38,7 +38,7 @@ import {
 } from "@vendoai/core";
 import type { SandboxAdapter } from "@vendoai/apps";
 import { e2bSandbox } from "@vendoai/apps";
-import { claudeCode } from "@vendoai/harnesses/claude-code";
+import { claudeCode } from "../src/harnesses/claude-code/index.js";
 import { appAccess, createStore, type VendoStore } from "@vendoai/store";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

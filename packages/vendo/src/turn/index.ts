@@ -93,12 +93,12 @@ export { decisionSchema, decisionsSchema, interruptionSchema, questionSchema } f
 /** The header `respond()` and `session.stream()` return the conversation's id
  *  on, and the one `@vendoai/ui` reads it from. Named, not spelled out, so a
  *  host and the browser cannot drift onto two literals. */
-export { THREAD_ID_HEADER, type UsageTotals } from "@vendoai/harnesses";
+export { THREAD_ID_HEADER, type UsageTotals } from "../harnesses/index.js";
 /** The default engine, from the one package a host installed — DEFINED in
  *  `@vendoai/harnesses`, re-exported here, never a second copy. `claudeCode()`
  *  is its own subpath (`@vendoai/vendo/claude-code`) for the reason it is one
  *  in harnesses: its SDK needs Node built-ins, and this barrel is bundled for
  *  Worker targets through `packages/vendo/src/server.ts` (portability-gate.mjs). */
-export { vendo, type VendoHarnessOptions } from "@vendoai/harnesses";
+export { vendo, type VendoHarnessOptions } from "../harnesses/index.js";
 
-export { createGuard, type GuardLike, type VendoGuard } from "@vendoai/guard";
+export { createGuard, type GuardLike, type VendoGuard } from "../guard/index.js";

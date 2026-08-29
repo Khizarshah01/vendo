@@ -34,8 +34,6 @@ const nextConfig: NextConfig = {
         transpilePackages: [
           "@vendoai/actions",
           "@vendoai/core",
-          "@vendoai/guard",
-          "@vendoai/harnesses",
           "@vendoai/telemetry",
           "@vendoai/ui",
           "@vendoai/vendo",
@@ -48,13 +46,6 @@ const nextConfig: NextConfig = {
             "@vendoai/actions/sync": "../../packages/actions/src/sync/public.ts",
             "@vendoai/core": "../../packages/core/src/index.ts",
             "@vendoai/core/conformance": "../../packages/core/src/conformance/index.ts",
-            "@vendoai/guard": "../../packages/guard/src/index.ts",
-            "@vendoai/harnesses": "../../packages/harnesses/src/index.ts",
-            "@vendoai/harnesses/vendo": "../../packages/harnesses/src/vendo/index.ts",
-            "@vendoai/harnesses/claude-code": "../../packages/harnesses/src/claude-code/index.ts",
-            "@vendoai/harnesses/claude-turn": "../../packages/harnesses/src/claude-code/claude-turn.ts",
-            // No line for @vendoai/harnesses/box-door: it ships as source
-            // (box/turn-routes.mjs), so there is no dist copy to bypass.
             "@vendoai/telemetry": "../../packages/vendo-telemetry/src/index.ts",
             "@vendoai/ui": "../../packages/ui/src/index.ts",
             "@vendoai/ui/chrome": "../../packages/ui/src/chrome/index.ts",
@@ -62,6 +53,13 @@ const nextConfig: NextConfig = {
             "@vendoai/ui/kit": "../../packages/ui/src/kit/index.ts",
             "@vendoai/vendo": "../../packages/vendo/src/index.ts",
             "@vendoai/vendo/server": "../../packages/vendo/src/server.ts",
+            "@vendoai/vendo/guard": "../../packages/vendo/src/guard/index.ts",
+            "@vendoai/vendo/harnesses": "../../packages/vendo/src/harnesses/index.ts",
+            "@vendoai/vendo/harnesses/vendo": "../../packages/vendo/src/harnesses/vendo/index.ts",
+            "@vendoai/vendo/harnesses/claude-code": "../../packages/vendo/src/harnesses/claude-code/index.ts",
+            "@vendoai/vendo/harnesses/claude-turn": "../../packages/vendo/src/harnesses/claude-code/claude-turn.ts",
+            // No line for @vendoai/vendo/box-door: it ships as source
+            // (box/turn-routes.mjs), so there is no dist copy to bypass.
             "@vendoai/cli/extract": "../../packages/cli/src/extract/index.ts",
             "@vendoai/vendo/react": "../../packages/vendo/src/react.tsx",
             "@vendoai/vendo/ai-sdk": "../../packages/vendo/src/ai-sdk.ts",

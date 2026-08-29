@@ -11,7 +11,7 @@
  * which would only prove the test can spell.
  */
 import type { Principal, RunContext } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { describe, expect, it } from "vitest";
 import { agent, agentComposition, type VendoAgent } from "../../src/turn/agent.js";

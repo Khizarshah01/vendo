@@ -26,7 +26,7 @@ export const VENDO_AUTOMATION_REF_KIND = "vendo/automation-ref@1" as const;
  *  finished, describable resource: given an envelope carrying only an appId and
  *  a title, observed conversations narrated a fabricated, finished dashboard.
  *  A build that terminally fails is never wrapped in this ref —
- *  see `appRefFromReceipt` in `@vendoai/harnesses`. */
+ *  see `appRefFromReceipt` in `@vendoai/vendo`. */
 export interface VendoAppRef {
   kind: typeof VENDO_APP_REF_KIND;
   appId: AppId;

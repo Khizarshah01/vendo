@@ -5,7 +5,7 @@
  * `dist/fs/interface.d.ts`, v3.2.0) so that `@vendoai/core` — the package every
  * consumer installs — carries the SHAPE without the ~50 MB bash interpreter
  * behind it. The runtime dependency belongs to whoever actually runs bash
- * (`@vendoai/harnesses`), never to core.
+ * (`@vendoai/vendo`), never to core.
  *
  * Keep this structurally identical to upstream: a `WorkspaceFs` must stay
  * assignable to `new Bash({ fs })`. The one deliberate omission is upstream's

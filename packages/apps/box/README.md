@@ -10,7 +10,7 @@ supervises whatever process the app directory declares.
 - `harness.mjs` — `createHarness()`: the control-port server + app supervisor,
   zero-dependency.
 - `build-template.mjs` — the e2b template builder (the recipe).
-- `turn-routes.mjs` and `claude-turn.mjs` are baked from `@vendoai/harnesses`
+- `turn-routes.mjs` and `claude-turn.mjs` are baked from `@vendoai/vendo`
   (the claude-code driver owns its box-side half): the routes from that
   package's `box/turn-routes.mjs`, the runner from its compiled
   `dist/claude-code/claude-turn.js`, both staged in here at bake time for the

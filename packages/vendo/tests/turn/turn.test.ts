@@ -7,8 +7,8 @@
  * real write path and read back through the real read path.
  */
 import { VendoError, type ToolResult } from "@vendoai/core";
-import { createGuard } from "@vendoai/guard";
-import { APPROVAL_WAIT_MS, defineHarness } from "@vendoai/harnesses";
+import { createGuard } from "../../src/guard/index.js";
+import { APPROVAL_WAIT_MS, defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadMessageStore, type VendoStore } from "@vendoai/store";
 import type { UIMessage } from "ai";
 import { describe, expect, it } from "vitest";

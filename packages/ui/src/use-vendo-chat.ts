@@ -23,7 +23,7 @@ import {
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 /** Written out rather than imported, for the reason `use-vendo-thread.ts` (its
-    own copy) states: the literal is defined in @vendoai/harnesses beside the
+    own copy) states: the literal is defined in @vendoai/vendo beside the
     wire that stamps it, and @vendoai/ui may depend on core and apps alone
     (scripts/dependency-guard.mjs). */
 const THREAD_ID_HEADER = "x-vendo-thread-id";

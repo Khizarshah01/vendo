@@ -14,7 +14,7 @@
 import { agent } from "../src/turn/index.js";
 import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
 import { inMemoryBoxFiles } from "@vendoai/apps/testing";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel, UIMessage } from "ai";
 import { mkdtemp, rm } from "node:fs/promises";

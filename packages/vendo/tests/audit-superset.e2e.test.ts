@@ -31,7 +31,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
@@ -415,7 +415,7 @@ describe("audit ⊇ transcript (design §3, evaluation E7)", () => {
  *    file does not re-stage it.
  *  - Per-FIRING dedupe does NOT exist. `#parkApproval` mints `apr_<uuid>` per
  *    call with no lookup for an existing pending row for the same missing grant
- *    (`packages/guard/src/guard.ts`), so N failed firings leave N standing cards.
+ *    (`packages/vendo/src/guard/guard.ts`), so N failed firings leave N standing cards.
  *
  * The first test below PINS that real behaviour, so the contradiction is a fact in
  * the suite rather than a paragraph in a doc — and so the day someone implements
@@ -537,7 +537,7 @@ describe("the unattended failure card (design §3)", () => {
     // MUST BE BUILT: a stable dedupe key for (appId, tool, args-shape) on the
     // FIRE path, the way `enable()` already reuses a pending capture per
     // (appId, tool) in `packages/vendo/src/automations/consent.ts`. `#parkApproval`
-    // (`packages/guard/src/guard.ts`) currently mints `apr_<uuid>` with no
+    // (`packages/vendo/src/guard/guard.ts`) currently mints `apr_<uuid>` with no
     // lookup, so the fire path has no dedupe at all.
     const fixture = await awayFixture();
     await fixture.fire("run_1");

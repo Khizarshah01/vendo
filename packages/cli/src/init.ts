@@ -11,7 +11,7 @@ import { BROKER_NEEDS_HTTPS, planMcp, SERVICE_KEY_ON_BROKER, wellFormedServiceKe
 import { initQuestions } from "./init-questions.js";
 import { readEnvFiles, rendererFlowOptions, resolveJudgmentConsent, runSyncFlow, writeFonts, type SyncFlowResult } from "./sync-flow.js";
 import { BRIEF_TEMPLATE } from "./extract/stages.js";
-import { ENV_KEY_VARS, resolveDevCredential, describeDevCredential, type DevCredential } from "@vendoai/harnesses/inference/credential";
+import { ENV_KEY_VARS, resolveDevCredential, describeDevCredential, type DevCredential } from "@vendoai/vendo/harnesses/inference/credential";
 import { NEXT_SERVER_EXTERNALS, NEXT_SERVER_EXTERNALS_LINE, SERVER_EXTERNALS_ARRAY, blankComments, detectAgentLoopRoute, detectFramework, detectVendoWiring, missingServerExternals, nextConfigPath, transpiledServerExternals, workspaceHostCandidates, type HostFramework } from "./framework.js";
 import {
   AUTH_FAMILY_INFO,
@@ -1411,7 +1411,7 @@ function providerKey(root: string, options: InitOptions): ScaffoldModel | null {
  * ANSWER, never by what happens to be in the environment.
  *
  * Vendo Cloud (a usable key in hand) → null. The runtime ladder resolves the
- * model from `VENDO_API_KEY` on its own (harnesses/src/inference/resolve.ts),
+ * model from `VENDO_API_KEY` on its own (packages/vendo/src/harnesses/inference/resolve.ts),
  * so writing `anthropic("claude-sonnet-4-6")` here would override the answer the
  * user just gave with whatever key was lying around in their shell — and the
  * comment beside it would name a key the wiring does not read.

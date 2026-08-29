@@ -158,16 +158,17 @@ if (!existsSync(STORE_POSTGRES_ENTRY)) {
   }
 }
 
-// ---- Leg A3: @vendoai/harnesses bundles for a Worker target ----
-// Its own leg because the harness runtime is NOT yet imported by the server
-// entry (composition wires it at integration), so Leg A would pass vacuously
-// while the package rotted. The runtime does use `node:async_hooks`
+// ---- Leg A3: the harness runtime bundles for a Worker target ----
+// Its own leg because Leg A only reaches what the server entry happens to pull.
+// The entry re-exports `vendo` today (packages/vendo/src/server.ts:61), but the
+// runtime's barrel is far wider than that one symbol, and a re-export is not a
+// guarantee — bundling the barrel itself is. The runtime does use `node:async_hooks`
 // (AsyncLocalStorage, to attribute a subagent hire to the right concurrent
 // turn), which nodejs_compat provides and NODE_BUILTIN_EXTERNALS allows —
 // this leg is what keeps that true.
-const HARNESSES_ENTRY = join(root, "packages/harnesses/dist/index.js");
+const HARNESSES_ENTRY = join(root, "packages/vendo/dist/harnesses/index.js");
 if (!existsSync(HARNESSES_ENTRY)) {
-  fail("packages/harnesses/dist/index.js missing — run `pnpm build` first");
+  fail("packages/vendo/dist/harnesses/index.js missing — run `pnpm build` first");
 } else {
   try {
     const result = await bundle(HARNESSES_ENTRY);
@@ -177,11 +178,11 @@ if (!existsSync(HARNESSES_ENTRY)) {
       const { seam } = FORBIDDEN_INPUTS.find(({ fragment }) => hit.includes(fragment));
       fail(`Node-only leg reached the harness runtime graph: ${hit}\n    containment seam: ${seam}`);
     } else {
-      ok(`@vendoai/harnesses bundles for a Worker target (${inputs.length} modules checked)`);
+      ok(`the harness runtime bundles for a Worker target (${inputs.length} modules checked)`);
     }
   } catch (error) {
     const messages = (error.errors ?? []).slice(0, 8).map((e) => `\n    ${e.text} (${e.location?.file ?? "?"})`).join("");
-    fail(`@vendoai/harnesses does not bundle for a Worker target:${messages || `\n    ${error.message}`}`);
+    fail(`the harness runtime does not bundle for a Worker target:${messages || `\n    ${error.message}`}`);
   }
 }
 

@@ -98,8 +98,8 @@ export const ENGINE_COLLECTION_REGISTRY = {
   "automations:deliveries": { kind: "storage" }, // DELIVERIES, packages/vendo/src/automations/types.ts:32
   "automations:sponsorships": { kind: "storage" }, // SPONSORSHIPS, packages/vendo/src/automations/sponsorship.ts:17
   "automations:sponsored": { kind: "storage" }, // SPONSORED, packages/vendo/src/automations/sponsorship.ts:29
-  "guard:controls": { kind: "storage" }, // CONTROLS_COLLECTION, packages/guard/src/guard.ts:117 — host-level config, see above
-  "guard:approval-claims": { kind: "storage" }, // APPROVAL_CLAIMS_COLLECTION, packages/guard/src/guard.ts:111
+  "guard:controls": { kind: "storage" }, // CONTROLS_COLLECTION, packages/vendo/src/guard/guard.ts:117 — host-level config, see above
+  "guard:approval-claims": { kind: "storage" }, // APPROVAL_CLAIMS_COLLECTION, packages/vendo/src/guard/guard.ts:111
   vendo_channel_links: { kind: "storage" }, // LINK_COLLECTION, packages/vendo/src/channel-links.ts:22
   vendo_channel_events: { kind: "storage" }, // EVENT_COLLECTION, packages/vendo/src/channel-links.ts:25
   vendo_channel_asks: { kind: "storage" }, // ASK_COLLECTION, packages/vendo/src/channel-links.ts:33

@@ -4,7 +4,7 @@
  * resolves against — plus the boot-once readiness latch they all hang off.
  */
 import { selectSandbox } from "@vendoai/apps";
-import { isGuardInstance } from "@vendoai/guard";
+import { isGuardInstance } from "./guard/index.js";
 import { bindVendoModelSlots } from "#dev-creds/model";
 import { cloudKeyOptions, selectSecrets } from "./compose-selection.js";
 import type { VendoComposition } from "./compose-context.js";
@@ -97,7 +97,7 @@ export const composeAdapters = (composition: VendoComposition): Pick<VendoCompos
   // reported as a code value it shipped `{"file":".vendo/policy.json"}` as this
   // deployment's policy, which no policy document schema accepts. A pointer is
   // followed below instead and reported as the file it is — the path taken
-  // exactly as the guard takes it (guard/src/policy.ts:88-115), so the mirror
+  // exactly as the guard takes it (packages/vendo/src/guard/policy.ts:88-115), so the mirror
   // can never name a different document than the one being enforced. Inline
   // rules, a preset name and `profile.policy` are values, not pointers, and
   // stay code.

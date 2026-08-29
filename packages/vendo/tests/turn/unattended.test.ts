@@ -7,8 +7,8 @@
  * the thinker is scripted (CLAUDE.md: test the SEAM).
  */
 import type { ToolDescriptor, ToolRegistry } from "@vendoai/core";
-import type { VendoGuard } from "@vendoai/guard";
-import { defineHarness } from "@vendoai/harnesses";
+import type { VendoGuard } from "../../src/guard/index.js";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadStore } from "@vendoai/store";
 import { describe, expect, it } from "vitest";
 import { agent } from "../../src/turn/agent.js";

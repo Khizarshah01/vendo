@@ -103,7 +103,7 @@ const matchesPattern = (pattern, workspacePath) => {
  * A SHAPE, deliberately, and never a permission: the box holds no store and can
  * ask nobody anything (design §8, "the box is born filtered"). WHETHER a carried
  * path may land is decided host-side, per file, against live rows — the sync-back
- * seam's `canCommit` in `packages/harnesses/src/materialize.ts`, whose
+ * seam's `canCommit` in `packages/vendo/src/harnesses/materialize.ts`, whose
  * `inWritableMount` is this same rule. Keeping this at `/user/` is what made a
  * team file's edit vanish between the box and the store with no error anywhere.
  */

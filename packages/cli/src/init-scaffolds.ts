@@ -5,7 +5,7 @@ import {
   serverActionRegistrations,
   type ServerActionRegistration,
 } from "@vendoai/actions/sync";
-import type { EnvKeyProvider } from "@vendoai/harnesses/inference/credential";
+import type { EnvKeyProvider } from "@vendoai/vendo/harnesses/inference/credential";
 import { AUTH_FAMILY_INFO, AUTH_PRESET_SPECIFIER, JWT_SECRET_ENV, type AuthWire } from "./init-auth.js";
 import { appDirectory, readOptional } from "./shared.js";
 

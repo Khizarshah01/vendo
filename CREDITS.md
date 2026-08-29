@@ -11,11 +11,11 @@ authors below.
 
 - The compaction summary skeleton and update skeleton
   (`packages/agent/src/harness/compaction/compaction.ts:428-498`) →
-  `packages/harnesses/src/vendo/compaction.ts`
+  `packages/vendo/src/harnesses/vendo/compaction.ts`
 - The summary-as-user-message projection (`packages/agent/src/harness/messages.ts:4-10`) →
-  `packages/harnesses/src/vendo/compaction.ts`
+  `packages/vendo/src/harnesses/vendo/compaction.ts`
 - The context-overflow error pattern set (`packages/ai/src/utils/overflow.ts`) →
-  `packages/harnesses/src/vendo/overflow.ts`
+  `packages/vendo/src/harnesses/vendo/overflow.ts`
 
 ## Cline — Apache-2.0 © Cline Bot Inc.
 
@@ -23,11 +23,11 @@ authors below.
 
 - The compaction trigger ratios and preserved-tail budget
   (`sdk/packages/core/src/extensions/context/compaction-shared.ts:15-19`) →
-  `packages/harnesses/src/vendo/compaction.ts`
+  `packages/vendo/src/harnesses/vendo/compaction.ts`
 - Counting the tools block into the prompt estimate (`compaction.ts:300-304`) →
-  `packages/harnesses/src/vendo/compaction.ts`
+  `packages/vendo/src/harnesses/vendo/compaction.ts`
 - The summarization cut-point rules (`compaction-shared.ts:326-359`) →
-  `packages/harnesses/src/vendo/compaction.ts`
+  `packages/vendo/src/harnesses/vendo/compaction.ts`
 
 ## Gemini CLI — Apache-2.0 © Google LLC
 
@@ -35,7 +35,7 @@ authors below.
 
 - The summarizer's prompt-injection security rule
   (`packages/core/src/prompts/snippets.ts:897-905`) →
-  `packages/harnesses/src/vendo/compaction.ts`
+  `packages/vendo/src/harnesses/vendo/compaction.ts`
 - Operating-manual lessons — acting vs asking, tool output as untrusted data
   (`packages/core/src/prompts/snippets.ts`) → the `How you work` section of
   `packages/vendo/src/prompt.ts` (adapted, not copied)
@@ -47,7 +47,7 @@ authors below.
 - The tool-search lexical scorer: normalize/tokenize pipeline, per-field bonus
   tiers, token-coverage gate and ranking bonuses
   (`packages/core/execution/src/tool-invoker.ts`) →
-  `packages/harnesses/src/vendo/tool-search.ts`
+  `packages/vendo/src/harnesses/vendo/tool-search.ts`
 
 ## OpenAI Codex CLI — Apache-2.0 © OpenAI
 

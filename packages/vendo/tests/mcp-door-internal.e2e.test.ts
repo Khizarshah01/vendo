@@ -20,7 +20,7 @@
  * `mcp: true`), where every lockout assertion fails.
  */
 import type { LanguageModel } from "ai";
-import { defineHarness, harnessAdapters } from "@vendoai/harnesses";
+import { defineHarness, harnessAdapters } from "../src/harnesses/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";
 import {

@@ -19,8 +19,8 @@ import {
   type Principal,
   type RunContext,
 } from "@vendoai/core";
-import type { VendoGuard } from "@vendoai/guard";
-import { THREAD_ID_HEADER } from "@vendoai/harnesses";
+import type { VendoGuard } from "./guard/index.js";
+import { THREAD_ID_HEADER } from "./harnesses/index.js";
 import type { UIMessage } from "ai";
 import type {
   ChannelAskRepository,

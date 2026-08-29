@@ -57,7 +57,7 @@ import {
 import { createActions } from "@vendoai/actions";
 import { authJsPreset } from "@vendoai/actions/presets/auth-js";
 import { createAutomations, type AutomationsEngine } from "@vendoai/vendo/automations";
-import { createGuard, type VendoGuard } from "@vendoai/guard";
+import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { mapleDemoUsers } from "@/server/users";
 

@@ -48,6 +48,41 @@
       "types": "./dist/mcp/index.d.ts",
       "default": "./dist/mcp/index.js"
     },
+    "./guard": {
+      "types": "./dist/guard/index.d.ts",
+      "default": "./dist/guard/index.js"
+    },
+    "./harnesses": {
+      "types": "./dist/harnesses/index.d.ts",
+      "default": "./dist/harnesses/index.js"
+    },
+    "./harnesses/vendo": {
+      "types": "./dist/harnesses/vendo/index.d.ts",
+      "default": "./dist/harnesses/vendo/index.js"
+    },
+    "./harnesses/claude-code": {
+      "types": "./dist/harnesses/claude-code/index.d.ts",
+      "default": "./dist/harnesses/claude-code/index.js"
+    },
+    "./harnesses/claude-code/box": {
+      "types": "./dist/harnesses/claude-code/box.d.ts",
+      "default": "./dist/harnesses/claude-code/box.js"
+    },
+    "./harnesses/claude-turn": {
+      "types": "./dist/harnesses/claude-code/claude-turn.d.ts",
+      "default": "./dist/harnesses/claude-code/claude-turn.js"
+    },
+    "./harnesses/inference": {
+      "types": "./dist/harnesses/inference/model.d.ts",
+      "default": "./dist/harnesses/inference/model.js"
+    },
+    "./harnesses/inference/credential": {
+      "types": "./dist/harnesses/inference/resolve.d.ts",
+      "default": "./dist/harnesses/inference/resolve.js"
+    },
+    "./box-door": {
+      "default": "./box/turn-routes.mjs"
+    },
     "./server": {
       "types": "./dist/server.d.ts",
       "default": "./dist/server.js"
@@ -87,6 +122,7 @@
   },
   "files": [
     "dist",
+    "box",
     "README.md"
   ],
   "scripts": {
@@ -98,25 +134,28 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.12",
+    "@e965/xlsx": "0.20.3",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "@vendoai/actions": "workspace:*",
     "@vendoai/apps": "workspace:*",
     "@vendoai/core": "workspace:*",
-    "@vendoai/guard": "workspace:*",
-    "@vendoai/harnesses": "workspace:*",
     "@vendoai/store": "workspace:*",
     "@vendoai/telemetry": "workspace:*",
     "@vendoai/ui": "workspace:*",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "croner": "^9.0.0",
+    "fflate": "^0.8.3",
     "jose": "^6.2.3",
     "jsonata": "^2.0.5",
+    "just-bash": "^3.4.2",
     "qrcode-generator": "^2.0.4",
     "undici": "^7.29.0",
+    "unpdf": "^1.8.1",
     "zod": "^3.25.0"
   },
   "peerDependencies": {
+    "@anthropic-ai/claude-agent-sdk": ">=0.3.0 <1",
     "@auth/core": ">=0.41.3",
     "@clerk/backend": ">=1.0.0",
     "@mastra/core": ">=1.0.0 <2",
@@ -138,19 +177,24 @@
     },
     "jose": {
       "optional": true
+    },
+    "@anthropic-ai/claude-agent-sdk": {
+      "optional": true
     }
   },
   "devDependencies": {
+    "@ai-sdk/openai": "3.0.9",
+    "@ai-sdk/openai-compatible": "2.0.9",
     "@anthropic-ai/sdk": "^0.112.3",
     "@auth/core": "^0.41.3",
     "@clerk/backend": "^3.11.7",
+    "@electric-sql/pglite": "^0.2.0",
     "@mastra/core": "1.51.0",
     "@types/json-schema": "^7.0.15",
     "@types/node": "^22.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "ai": "6.0.28",
-    "just-bash": "^3.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "typescript": "^5.6.0",

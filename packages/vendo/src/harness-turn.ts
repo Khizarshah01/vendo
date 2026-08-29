@@ -50,7 +50,7 @@ import {
   wrapWorkspaceForRender,
   type RenderSeamOptions,
 } from "@vendoai/apps";
-import type { VendoGuard } from "@vendoai/guard";
+import type { VendoGuard } from "./guard/index.js";
 import {
   eraseStore,
   harnessStateRow,
@@ -74,8 +74,8 @@ import {
   type ToolDoorPort,
   type HarnessRuntimeDeps,
   type ToolBridgeOptions,
-} from "@vendoai/harnesses";
-import type { VendoToolSearchConfig } from "@vendoai/harnesses/vendo";
+} from "./harnesses/index.js";
+import type { VendoToolSearchConfig } from "./harnesses/vendo/index.js";
 import { createUIMessageStream, createUIMessageStreamResponse, type LanguageModel, type UIMessage } from "ai";
 import { discoveryRail } from "./prompt.js";
 import { finishActiveTurn } from "./turn-liveness.js";

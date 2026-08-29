@@ -18,10 +18,10 @@ import { describe, expect, it } from "vitest";
 import type { LanguageModel } from "ai";
 import type { ToolRegistry } from "@vendoai/core";
 import { createStore } from "@vendoai/store";
-import { createGuard, type Judge } from "@vendoai/guard";
+import { createGuard, type Judge } from "@vendoai/vendo/guard";
 import { createActions } from "@vendoai/actions";
 import { awayRunner } from "@vendoai/vendo";
-import { vendo } from "@vendoai/harnesses";
+import { vendo } from "@vendoai/vendo/harnesses";
 import {
   ADA,
   awayCtx,

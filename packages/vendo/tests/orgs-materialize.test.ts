@@ -10,7 +10,7 @@
  *
  * Everything here is REAL except the model: a real store, the real `can()`, real
  * grants, the real composition, and the real box door
- * (`packages/harnesses/box/turn-routes.mjs`) over an in-process transport with a real
+ * (`packages/vendo/box/turn-routes.mjs`) over an in-process transport with a real
  * temp dir for the box's disk. Only the SDK loop is scripted, because a test
  * cannot run a model — so what the script does to that disk is exactly what a
  * model's Write tool would do.
@@ -28,8 +28,8 @@ import {
   type RunContext,
 } from "@vendoai/core";
 import type { SandboxAdapter } from "@vendoai/apps";
-import { createSessionRoutes } from "@vendoai/harnesses/box-door";
-import { claudeCode } from "@vendoai/harnesses/claude-code";
+import { createSessionRoutes } from "../box/turn-routes.mjs";
+import { claudeCode } from "../src/harnesses/claude-code/index.js";
 import { appAccess, createStore, type VendoStore } from "@vendoai/store";
 import { afterEach, describe, expect, it } from "vitest";
 import { liveDoor } from "../src/agent-doubles.test-util.js";

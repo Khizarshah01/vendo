@@ -1,7 +1,7 @@
 import { spawn } from "node:child_process";
 import { access, readFile } from "node:fs/promises";
 import { dirname, join, relative, resolve, sep } from "node:path";
-import type { DevCredential, EnvKeyProvider } from "@vendoai/harnesses/inference/credential";
+import type { DevCredential, EnvKeyProvider } from "@vendoai/vendo/harnesses/inference/credential";
 import { installedVersion, installedZodVersion } from "./dep-versions.js";
 import { CLI_VERSION, type Output } from "./shared.js";
 

@@ -19,7 +19,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { paintedIn, SCREEN_FILE } from "@vendoai/apps";
 import type { AppId, Json, Principal, RiskLabel, RunContext, ToolDefinition } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";

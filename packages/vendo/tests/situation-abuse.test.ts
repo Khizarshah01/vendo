@@ -12,7 +12,7 @@
  */
 import { mkdtemp, rm } from "node:fs/promises";
 import type { Principal, RunContext, ToolDescriptor, ToolRegistry } from "@vendoai/core";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { tmpdir } from "node:os";
 import { join } from "node:path";

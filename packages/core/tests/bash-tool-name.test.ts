@@ -1,6 +1,6 @@
 /**
  * The shell's name and its human title live in core for the reason every other
- * `vendo_*` name does: two sides read them — the registry in `@vendoai/harnesses`
+ * `vendo_*` name does: two sides read them — the registry in `@vendoai/vendo`
  * that implements the tool, and the surfaces that show it to a person.
  */
 import { describe, expect, it } from "vitest";

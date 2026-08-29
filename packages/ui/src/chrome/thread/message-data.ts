@@ -276,7 +276,7 @@ export function toolCallParked(part: UIMessage["parts"][number]): boolean {
 }
 
 /** A call the HOST's OWN RULES refused — a policy block, a usage limit — which
-    settles carrying the `blocked` outcome (harnesses/src/wire.ts). Distinct from
+    settles carrying the `blocked` outcome (packages/vendo/src/harnesses/wire.ts). Distinct from
     `output-denied`, which the ai-SDK reserves for an approval the PERSON turned
     down: nobody asked them about this one, so the beat must not say they said
     no. */

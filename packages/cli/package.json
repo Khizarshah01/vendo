@@ -56,8 +56,6 @@
     "@vendoai/actions": "workspace:*",
     "@vendoai/apps": "workspace:*",
     "@vendoai/core": "workspace:*",
-    "@vendoai/guard": "workspace:*",
-    "@vendoai/harnesses": "workspace:*",
     "@vendoai/store": "workspace:*",
     "@vendoai/telemetry": "workspace:*",
     "@vendoai/vendo": "workspace:*",

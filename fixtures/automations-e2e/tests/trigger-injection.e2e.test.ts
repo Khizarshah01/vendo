@@ -16,7 +16,7 @@
  * nothing changes at the host.
  */
 import { awayRunner } from "@vendoai/vendo";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "@vendoai/vendo/harnesses";
 import { createHmac } from "node:crypto";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStack, ownerCtx, resetFixture } from "../src/harness.js";

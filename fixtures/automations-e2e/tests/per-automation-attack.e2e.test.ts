@@ -15,10 +15,9 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { beforeEach, describe, expect, it } from "vitest";
-import { descriptorHash } from "@vendoai/core";
-import type { ApprovalRequest, CreateAutomation, CreateAutomationInput, PermissionGrant } from "@vendoai/core";
+import { type ApprovalRequest, type CreateAutomation, type CreateAutomationInput, descriptorHash, type PermissionGrant } from "@vendoai/core";
 import { createStore, type VendoStore } from "@vendoai/store";
-import { createGuard, type VendoGuard } from "@vendoai/guard";
+import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";
 import { createActions } from "@vendoai/actions";
 import { automationsInternals, createAutomations, type AutomationsEngine } from "@vendoai/vendo/automations";
 import {

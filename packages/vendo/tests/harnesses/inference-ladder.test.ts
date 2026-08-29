@@ -33,7 +33,7 @@ async function resolvedId(model: unknown): Promise<string> {
   return (await record.doGenerate({ prompt: [] })).modelId;
 }
 
-describe("the inference ladder resolves from @vendoai/harnesses", () => {
+describe("the inference ladder resolves from the harness runtime", () => {
   it("points the anthropic provider at the console gateway for a VENDO_API_KEY", async () => {
     const seen: Array<{ apiKey: string; baseURL?: string }> = [];
     const model = vendoModel(undefined, {

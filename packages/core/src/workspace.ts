@@ -1,7 +1,7 @@
 // `IFileSystem` is vendored into ./filesystem.ts rather than imported from
 // just-bash: it leaks into core's published .d.ts, and a dependency there
 // would put ~50 MB of bash interpreter into every SDK install for a shape.
-// The runtime dependency belongs to whoever runs bash (@vendoai/harnesses).
+// The runtime dependency belongs to whoever runs bash (@vendoai/vendo).
 import type { IFileSystem } from "./filesystem.js";
 
 /** Build contract §3.2 — the agent's filesystem. just-bash's `IFileSystem`

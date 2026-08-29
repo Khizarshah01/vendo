@@ -15,7 +15,7 @@
  * 404 rather than a loud failure.
  *
  * It lives in core because both halves must import the SAME constant and they
- * sit in different layers: the host side is `@vendoai/harnesses`, the binding
+ * sit in different layers: the host side is `@vendoai/vendo`, the binding
  * side is the box template. A second literal is how the two drift apart.
  */
 

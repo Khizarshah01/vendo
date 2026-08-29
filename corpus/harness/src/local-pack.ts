@@ -13,11 +13,7 @@ export const LOCAL_VENDO_PACKAGE_NAMES = [
   "@vendoai/core",
   "@vendoai/store",
   "@vendoai/actions",
-  "@vendoai/guard",
   "@vendoai/apps",
-  // The harness runtime (embedded-agent rebuild, wave 1): the umbrella depends
-  // on it for every turn, so a corpus run without it installs a broken tree.
-  "@vendoai/harnesses",
   "@vendoai/ui",
   "@vendoai/telemetry",
   "@vendoai/vendo",

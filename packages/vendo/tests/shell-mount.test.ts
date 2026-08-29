@@ -6,12 +6,12 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { VENDO_BASH_TOOL } from "@vendoai/core";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";
-import { vendo as vendoHarness } from "@vendoai/harnesses";
+import { vendo as vendoHarness } from "../src/harnesses/index.js";
 
 const cleanups: Array<() => Promise<void>> = [];
 afterEach(async () => {

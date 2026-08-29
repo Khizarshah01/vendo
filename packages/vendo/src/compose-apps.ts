@@ -10,7 +10,7 @@ import {
   type AppsConfig,
 } from "@vendoai/apps";
 import { unattendedIrreversibilityCheck } from "./automations/index.js";
-import { inferenceEnv } from "@vendoai/harnesses/claude-code/box";
+import { inferenceEnv } from "./harnesses/claude-code/box.js";
 import { appBuilder } from "./build-agent.js";
 import { screenAssembler } from "./screen-agent.js";
 import {

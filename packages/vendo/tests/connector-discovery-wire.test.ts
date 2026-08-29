@@ -15,7 +15,7 @@ import { join } from "node:path";
 import type { Connector, ConnectorAccount, OverridesFile, ServiceToolMatch } from "@vendoai/actions";
 import type { Principal, RiskLabel, RunContext } from "@vendoai/core";
 import { auditStore, createStore, type VendoStore } from "@vendoai/store";
-import type { PolicyRule } from "@vendoai/guard";
+import type { PolicyRule } from "../src/guard/index.js";
 import type { LanguageModel } from "ai";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";

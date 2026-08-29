@@ -10,7 +10,7 @@ import {
   type ToolDescriptor,
   type ToolRegistry,
 } from "@vendoai/core";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "../src/guard/index.js";
 import { createStore, createStoreOps } from "@vendoai/store";
 import { screenSource } from "./screen-fixture.js";
 import { afterEach, describe, expect, it } from "vitest";

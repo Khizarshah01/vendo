@@ -1,18 +1,18 @@
-/** @vendoai/guard — policy, approvals, audit, safety. */
+/** The guard — policy, approvals, audit, safety. Published as
+    `@vendoai/vendo/guard`. */
 export { createGuard } from "./guard.js";
-// The drawers this block writes, and the parked-call clock, named for the
-// READERS of guard state that live outside the guard's own process — Vendo
-// Cloud's console reads the audit trail and the parked approvals, and flips the
-// freeze row a guard elsewhere obeys on its next check. They were spelled a
-// second time over there; a reader's copy of a writer's collection name drifts
-// silently the moment the writer renames one.
+// The drawers this block writes, and the parked-call clock. They are declared
+// in @vendoai/core, not here, because their readers live outside the guard's
+// own process — Vendo Cloud's console reads the audit trail and the parked
+// approvals, and flips the freeze row a guard elsewhere obeys on its next
+// check. Re-exported so a host wiring a guard still imports one package.
 export {
   APPROVALS_COLLECTION,
   AUDIT_COLLECTION,
   CONTROLS_COLLECTION,
   DEFAULT_PARKED_CALL_TTL_MS,
   FREEZE_ROW,
-} from "./guard.js";
+} from "@vendoai/core";
 // The late-bound rules value (`guard({ policy, judge, approvals })`) and the
 // discriminator every consumer of a `VendoGuard | GuardRules` slot needs.
 // `createGuard` stays the one constructor both arms end at.
@@ -26,8 +26,9 @@ export { vendoAutoJudge } from "./judge.js";
 export { resolvePolicyConfig } from "./policy.js";
 // Zod schemas for a .vendo/policy.json file and its rules. Public since 0.3.0
 // (hosts validating a policy file before handing it to the guard); 0.4.x
-// dropped them from the barrel by accident, so restore them here.
-export { policyFileSchema, policyRuleSchema } from "./types.js";
+// dropped them from the barrel by accident, so restore them here. Defined in
+// @vendoai/core — a second repo validates policy files against them.
+export { policyFileSchema, policyRuleSchema } from "@vendoai/core";
 // The ONE permission wire: the five approval/grant routes every mount serves,
 // as a request→body function (the umbrella's routes delegate to it) and as a
 // ready fetch handler (what @vendoai/vendo's `agentHandler` mounts).

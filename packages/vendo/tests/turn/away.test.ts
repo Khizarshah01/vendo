@@ -12,8 +12,8 @@ import {
   type ToolRegistry,
   type Turn,
 } from "@vendoai/core";
-import { createGuard } from "@vendoai/guard";
-import { defineHarness } from "@vendoai/harnesses";
+import { createGuard } from "../../src/guard/index.js";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadMessageStore, threadStore, workspaceStore, type VendoStore } from "@vendoai/store";
 import { describe, expect, it } from "vitest";
 import { awayRunner } from "../../src/turn/away.js";

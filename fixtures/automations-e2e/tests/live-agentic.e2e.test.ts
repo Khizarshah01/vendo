@@ -9,7 +9,7 @@
 import { describe, expect, it } from "vitest";
 import type { LanguageModel } from "ai";
 import { awayRunner } from "@vendoai/vendo";
-import { vendo } from "@vendoai/harnesses";
+import { vendo } from "@vendoai/vendo/harnesses";
 import { createStack, ownerCtx, resetFixture } from "../src/harness.js";
 import { ADA, approve } from "../src/support.js";
 

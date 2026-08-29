@@ -1,5 +1,5 @@
 import { orgOfPath, type RunContext } from "@vendoai/core";
-import { parseOrgPolicyFile, type PolicyRule } from "@vendoai/guard";
+import { parseOrgPolicyFile, type PolicyRule } from "./guard/index.js";
 import { workspaceStore, type VendoStore } from "@vendoai/store";
 
 /** Build contract §9.10 — where an org's policy lives. Owner derivation is a

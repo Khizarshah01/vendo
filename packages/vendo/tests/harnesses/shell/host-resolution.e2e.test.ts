@@ -13,7 +13,7 @@
  * So this runs the BUILT shell out of a directory that cannot see those
  * libraries, left exactly as Turbopack and webpack leave it: the code is
  * relocated, while `import.meta.url` still names the original module (Turbopack
- * emits `file://${resolveAbsolutePath("packages/harnesses/dist/…")}` for it;
+ * emits `file://${resolveAbsolutePath("packages/vendo/dist/harnesses/…")}` for it;
  * webpack substitutes the module's own resource URL). Under a plain `node`
  * subprocess, never the test runner's module graph — vitest resolves against
  * this package's root, which would hand back the very illusion this test exists

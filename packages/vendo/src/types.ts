@@ -42,8 +42,8 @@ import type {
   VendoRouteMap,
   VendoTheme,
 } from "@vendoai/apps/contract";
-import type { GuardRules, PolicyFile, VendoGuard } from "@vendoai/guard";
-import type { ShellLimits } from "@vendoai/harnesses/vendo";
+import type { GuardRules, PolicyFile, VendoGuard } from "./guard/index.js";
+import type { ShellLimits } from "./harnesses/vendo/index.js";
 import type { HostOAuthAdapter } from "./mcp/index.js";
 import type { VendoStore } from "@vendoai/store";
 import type { VendoAgentTools } from "./agent-tools.js";

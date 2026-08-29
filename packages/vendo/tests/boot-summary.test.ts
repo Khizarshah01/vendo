@@ -303,7 +303,7 @@ describe("the composed facts", () => {
 
   /**
    * The guard reads `.vendo/policy.json` and finds nothing — the one config
-   * failure the runtime is DESIGNED to swallow (guard/src/policy.ts:115). The
+   * failure the runtime is DESIGNED to swallow (packages/vendo/src/guard/policy.ts:115). The
    * fallback stays; the silence does not.
    *
    * Composed for real against a real working directory, because the whole claim
@@ -347,7 +347,7 @@ describe("the composed facts", () => {
     });
 
     // The opt-out the config honestly supports: rules passed in code replace the
-    // file with no merge (guard/src/policy.ts:141), so there is no file to miss.
+    // file with no merge (packages/vendo/src/guard/policy.ts:141), so there is no file to miss.
     // Same for a deployment that configured no policy at all — the guard reports
     // `unconfigured`, earns no row, and this warning would be about nothing.
     it("says nothing for rules passed inline, or for no policy at all", () => {

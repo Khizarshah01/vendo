@@ -1,7 +1,7 @@
 import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
 import type { AuditEvent, Principal, ToolRegistry } from "@vendoai/core";
-import type { VendoGuard } from "@vendoai/guard";
-import { defineHarness, harnessAdapters } from "@vendoai/harnesses";
+import type { VendoGuard } from "../../src/guard/index.js";
+import { defineHarness, harnessAdapters } from "../../src/harnesses/index.js";
 import { createStore, threadStore } from "@vendoai/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { agent, agentComposition, e2b, postgres, provideCloudAdapters, withDefaultTemplate } from "../../src/turn/agent.js";

@@ -460,7 +460,7 @@ const limitThread: Thread = {
       role: "assistant",
       parts: [
         // The refused build itself, in the shape the runtime really persists for
-        // it (harnesses/src/wire.ts): the typed `blocked` outcome. The fixture
+        // it (packages/vendo/src/harnesses/wire.ts): the typed `blocked` outcome. The fixture
         // used to carry the card ALONE, which is why the beat above it could say
         // "you declined it" over a card explaining a limit — nothing in a browser
         // ever rendered the two together.

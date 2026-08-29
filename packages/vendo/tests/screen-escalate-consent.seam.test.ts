@@ -41,7 +41,7 @@ import {
 } from "@vendoai/core";
 import { makeReceiptSchema } from "@vendoai/apps/contract";
 import type { SandboxAdapter } from "@vendoai/apps";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { VendoProvider, createVendoClient } from "@vendoai/ui";
 import { VendoThread } from "@vendoai/ui/chrome";

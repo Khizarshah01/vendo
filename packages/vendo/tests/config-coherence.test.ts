@@ -21,7 +21,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { VENDO_TOOLS_FORMAT, type ExtractedTool } from "@vendoai/actions";
 import { VendoError, type Principal, type RunContext } from "@vendoai/core";
-import { createGuard, guard as guardRules } from "@vendoai/guard";
+import { createGuard, guard as guardRules } from "../src/guard/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -308,7 +308,7 @@ describe("instructions: one prose story, in the section brief always had", () =>
   it("an adopted agent's instructions and the top-level key are one slot", async () => {
     // Filling a slot twice is a boot error, never one side silently losing.
     const { agent } = await import("../src/turn/index.js");
-    const { vendo: vendoHarness } = await import("@vendoai/harnesses");
+    const { vendo: vendoHarness } = await import("../src/harnesses/index.js");
     const store = await tempStore("vendo-coherence-adopt-");
     const composed = agent({ name: "support", harness: vendoHarness(), store, instructions: PROSE });
     expect(() => createVendo({

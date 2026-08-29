@@ -1,6 +1,6 @@
 /**
  * The shell is `vendo()`'s hand, so it leaves this package where the rest of
- * that harness's knobs do — `@vendoai/harnesses/vendo`. A sandbox harness
+ * that harness's knobs do — `@vendoai/vendo/harnesses/vendo`. A sandbox harness
  * (`claudeCode()`) never imports it and must never see it.
  */
 import { describe, expect, it } from "vitest";

@@ -2,7 +2,7 @@
  * The doubles the render-seam and validate-gate suites arrived with when they
  * moved home from `@vendoai/harnesses` (the seam lives here now).
  *
- * A copy, deliberately: `@vendoai/harnesses` keeps its own equivalent
+ * A copy, deliberately: `@vendoai/vendo` keeps its own equivalent
  * (`test-doubles.test-util.ts`) and the umbrella keeps another
  * (`agent-doubles.test-util.ts`) rather than any package publishing a
  * test-only subpath — a doubles surface on a published package is surface

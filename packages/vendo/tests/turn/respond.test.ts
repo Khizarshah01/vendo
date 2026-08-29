@@ -6,7 +6,7 @@
  * Real embedded store, real guard, real runtime; only the thinker is scripted
  * (CLAUDE.md: test the SEAM).
  */
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore } from "@vendoai/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { agent } from "../../src/turn/agent.js";

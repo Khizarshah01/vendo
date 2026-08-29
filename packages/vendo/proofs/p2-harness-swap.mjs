@@ -18,7 +18,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createVendo } from "@vendoai/vendo/server";
 import { createStore } from "@vendoai/store";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "@vendoai/vendo/harnesses";
 
 const principal = { kind: "user", subject: "user_swap" };
 const THREAD = "thr_swap";

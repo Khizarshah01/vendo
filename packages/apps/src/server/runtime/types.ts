@@ -220,7 +220,7 @@ export interface AppsConfig {
    * and this block never decides which engine a request deserves.
    *
    * An ADAPTER SLOT, for the reason every other one here is: the screen agent is a
-   * lean loop in `@vendoai/harnesses` and this block depends on `core` alone, so
+   * lean loop in `@vendoai/vendo` and this block depends on `core` alone, so
    * the two sides meet on core's `ScreenAssembler` and composition is the only
    * place that fills it. Explicitly passed always wins.
    *

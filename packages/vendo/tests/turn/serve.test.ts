@@ -4,7 +4,7 @@
  * only the thinker is scripted, and the store is read back through its own doors
  * (CLAUDE.md: test the SEAM).
  */
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { VendoAgent } from "../../src/turn/agent.js";

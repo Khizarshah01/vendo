@@ -5,7 +5,7 @@
  * The runtime (`@vendoai/harnesses`) no longer imports the seam; composition
  * injects `wrapWorkspaceForRender` (`@vendoai/apps`) through the slot, exactly
  * as `harness-turn.ts` does. These tests moved here from
- * `packages/harnesses/tests/runtime.test.ts` when harnesses dropped its apps
+ * `packages/vendo/tests/harnesses/runtime.test.ts` when harnesses dropped its apps
  * dependency: the pair they pin spans both blocks, so the umbrella — which
  * depends on both — is where they can keep driving the REAL wrap. What they
  * pin is the SLOT: the wrap sees every commit, and its `emit` reaches the
@@ -18,7 +18,7 @@ import {
   defineHarness,
   memoryHarnessStateStore,
   type TurnRunInput,
-} from "@vendoai/harnesses";
+} from "../src/harnesses/index.js";
 import { describe, expect, it } from "vitest";
 import {
   boundRegistry,

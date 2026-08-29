@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal, RunContext, ToolDescriptor } from "@vendoai/core";
-import { createGuard } from "@vendoai/guard";
+import { createGuard } from "../src/guard/index.js";
 import { createStore, workspaceStore } from "@vendoai/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { orgPolicyPath, orgPolicyResolver, workspacePolicySource } from "../src/org-policy.js";

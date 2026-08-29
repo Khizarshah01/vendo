@@ -20,7 +20,7 @@
  * turns late and the cases read the ORDER it settled in, so what they prove is
  * decided by the code and never by how busy the machine is.
  */
-import { THREAD_ID_HEADER } from "@vendoai/harnesses";
+import { THREAD_ID_HEADER } from "../src/harnesses/index.js";
 import { describe, expect, it } from "vitest";
 import type { ChannelLink } from "../src/channel-links.js";
 import { runChannelTurn } from "../src/channel-turn.js";

@@ -5,7 +5,7 @@
  * the thinker, exactly as interruptions.test.ts has it. Every assertion below
  * states the behaviour the slice CLAIMS; a red one is a defect.
  */
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import {
   VendoError,

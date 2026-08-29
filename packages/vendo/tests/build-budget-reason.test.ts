@@ -21,7 +21,7 @@ import {
   boxMachine,
   disposeSessionMachines,
   type SandboxAdapterLike,
-} from "@vendoai/harnesses/claude-code";
+} from "../src/harnesses/claude-code/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 
 /** Well under the test timeout: the budget is the hang-detector here, not a

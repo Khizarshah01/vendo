@@ -8,4 +8,4 @@
  * (portability-gate.mjs). Everything here is a re-export — one definition, in
  * harnesses.
  */
-export { claudeCode, type ClaudeCodeOptions } from "@vendoai/harnesses/claude-code";
+export { claudeCode, type ClaudeCodeOptions } from "../harnesses/claude-code/index.js";

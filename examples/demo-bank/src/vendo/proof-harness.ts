@@ -18,8 +18,8 @@
  * not in its build graph. Only `claude-code-local` reaches for it, at runtime,
  * and says so plainly if it is not installed.
  */
-import { vendo } from "@vendoai/harnesses";
-import { claudeCode } from "@vendoai/harnesses/claude-code";
+import { vendo } from "@vendoai/vendo/harnesses";
+import { claudeCode } from "@vendoai/vendo/harnesses/claude-code";
 import type { createVendo } from "@vendoai/vendo/server";
 
 type HarnessSlot = Pick<Parameters<typeof createVendo>[0], "harness">;

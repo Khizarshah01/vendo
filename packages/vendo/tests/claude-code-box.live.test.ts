@@ -13,14 +13,14 @@
 import { e2bSandbox } from "@vendoai/apps";
 import type { Json, ToolResult, Turn } from "@vendoai/core";
 import { afterAll, describe, expect, test } from "vitest";
-import { createTurnState } from "@vendoai/harnesses";
+import { createTurnState } from "../src/harnesses/index.js";
 import {
   boxEgress,
   boxMachine,
   claudeCode,
   disposeSessionMachines,
   type SandboxAdapterLike,
-} from "@vendoai/harnesses/claude-code";
+} from "../src/harnesses/claude-code/index.js";
 import { testWorkspace, unusedModels, userMessage } from "../src/agent-doubles.test-util.js";
 
 const ready = process.env["E2B_API_KEY"] !== undefined

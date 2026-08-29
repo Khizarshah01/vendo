@@ -14,7 +14,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { ASK_USER_TOOL, type Principal, type RunContext } from "@vendoai/core";
 import { createStore, type VendoStore } from "@vendoai/store";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";

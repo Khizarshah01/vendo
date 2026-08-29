@@ -2,7 +2,7 @@
  * The harness contract.
  *
  * Types only, so every block may speak them: `defineHarness` and the runtime
- * that builds a `Turn` live in `@vendoai/harnesses` (build contract §2). The
+ * that builds a `Turn` live in `@vendoai/vendo` (build contract §2). The
  * dividing line these shapes draw: we own state, tools, checks, guard, and
  * skills; the harness owns thinking — and orchestration is thinking. A harness
  * receives a `Turn` and yields a closed event vocabulary; it never persists,

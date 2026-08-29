@@ -26,14 +26,14 @@ const encoder = new TextEncoder();
 
 /**
  * A stand-in for a REAL box: it speaks the same control-port wire the machine
- * image speaks (`packages/harnesses/box/turn-routes.mjs`), so what is under test is
+ * image speaks (`packages/vendo/box/turn-routes.mjs`), so what is under test is
  * our driver and our sync-back — never a mock of our own code. The SDK loop is
  * the one thing scripted, because a unit test cannot run a model.
  */
 /**
  * A stand-in for a real box that speaks the REAL protocol: the fake machine's
  * `request()` is a thin transport adapter over the ACTUAL box door
- * (`packages/harnesses/box/turn-routes.mjs`), with only the SDK session scripted.
+ * (`packages/vendo/box/turn-routes.mjs`), with only the SDK session scripted.
  *
  * A hand-written fake let a live BLOCKER hide: it accepted `hello`
  * unconditionally, so it modelled a protocol the real box does not implement.

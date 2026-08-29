@@ -2,12 +2,12 @@
  * A boot error that names a symbol has to name where the symbol COMES FROM.
  *
  * Every one of these sentences is copied verbatim by the person reading it, and
- * `claudeCode` is not on the `@vendoai/harnesses` root barrel — so "pass
+ * `claudeCode` is not on the harness runtime's root barrel — so "pass
  * `harness: claudeCode()`" sent a host straight into `TypeError: claudeCode is
  * not a function`. The path is pinned here against the REAL module, so a moved
  * export breaks this suite instead of the next host's first hour.
  */
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore } from "@vendoai/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { agent, e2b, postgres } from "../../src/turn/index.js";
@@ -39,7 +39,7 @@ describe("the symbols a boot error names", () => {
     const support = agent({ name: "support", store: memoryStore() });
 
     await expect(support.run("do a thing")).rejects.toThrow(
-      /`harness: claudeCode\(\)`, importing `claudeCode` from `@vendoai\/harnesses\/claude-code`/,
+      /`harness: claudeCode\(\)`, importing `claudeCode` from `@vendoai\/vendo\/claude-code`/,
     );
     await expect(support.run("do a thing")).rejects.toThrow(
       /`model: anthropic\("claude-sonnet-4-6"\)`, importing `anthropic` from `@ai-sdk\/anthropic`/,
@@ -48,8 +48,8 @@ describe("the symbols a boot error names", () => {
 
   it("claudeCode really is at that path, and really is not on the root barrel", async () => {
     // The verifier's exact failure: the suggestion, pasted verbatim, threw.
-    const subpath = await import("@vendoai/harnesses/claude-code");
-    const barrel = await import("@vendoai/harnesses");
+    const subpath = await import("../../src/harnesses/claude-code/index.js");
+    const barrel = await import("../../src/harnesses/index.js");
 
     expect(typeof subpath.claudeCode).toBe("function");
     expect(barrel).not.toHaveProperty("claudeCode");

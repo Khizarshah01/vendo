@@ -80,7 +80,7 @@ import {
   type RenderSeamOptions,
 } from "@vendoai/apps";
 import { wrapLanguageModel, type LanguageModel } from "ai";
-import { vendo, type HarnessHand, type VendoHarnessOptions } from "@vendoai/harnesses";
+import { vendo, type HarnessHand, type VendoHarnessOptions } from "./harnesses/index.js";
 
 /**
  * The whole budget for assembling one screen.

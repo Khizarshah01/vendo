@@ -97,7 +97,7 @@ describe("parity gate — the MCP door vs the in-process projection", () => {
 
     // THE MEASUREMENT, all five contract-named fields, verbatim — and they are
     // the SAME. `venue: "chat"` on both is the one that used to differ, and it
-    // is not cosmetic: venue is a policy-match field (`guard/src/policy.ts`) and
+    // is not cosmetic: venue is a policy-match field (`packages/vendo/src/guard/policy.ts`) and
     // a grant-set predicate (`core/src/grant-sets.ts`).
     const expected = {
       outcome: "ok",
@@ -307,7 +307,7 @@ describe("parity gate — the MCP door vs the in-process projection", () => {
     // box, and not with an executed row. It settles carrying the refusal's own
     // words, not as `output-denied`: nobody was here to decline anything, and a
     // part in that state with no approval beside it cannot be converted into the
-    // next turn's prompt at all (harnesses/src/turn-tools.ts).
+    // next turn's prompt at all (packages/vendo/src/harnesses/turn-tools.ts).
     expect(stream).toContain("data-vendo-approval");
     expect(mirroredToolParts(stream)).toContain(`tool-output-available:${WRITE_TOOL}`);
     expect(mirroredToolParts(stream)).not.toContain(`tool-output-denied:${WRITE_TOOL}`);

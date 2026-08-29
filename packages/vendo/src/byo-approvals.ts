@@ -15,7 +15,7 @@ import {
   type VendoRecord,
   type ApprovalResolution,
 } from "@vendoai/core";
-import type { VendoGuard } from "@vendoai/guard";
+import type { VendoGuard } from "./guard/index.js";
 
 /**
  * Existing-agents Lane B — parked guarded calls with NO Vendo thread and NO app.

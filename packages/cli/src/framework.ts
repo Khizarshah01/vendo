@@ -202,7 +202,7 @@ export async function wiresTenantConnectors(root: string): Promise<boolean> {
     rules live at the default path". Inline rules, a preset name and an
     explicitly named `file` all say something different and are deliberately
     not matched: the first two replace the file, the third fails loud on its
-    own (guard/src/policy.ts:115). */
+    own (packages/vendo/src/guard/policy.ts:115). */
 export async function wiresPolicyFile(root: string): Promise<boolean> {
   return hostSourceMatches(root, /\bpolicy\s*:\s*\{\s*\}/);
 }

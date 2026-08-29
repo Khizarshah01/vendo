@@ -21,7 +21,7 @@ import {
 import {
   makeReceiptSchema,
 } from "@vendoai/apps/contract";
-import { defineHarness } from "@vendoai/harnesses";
+import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

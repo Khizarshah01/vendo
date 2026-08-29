@@ -13,7 +13,7 @@ import {
   type AgentRunner,
   type Harness,
 } from "@vendoai/core";
-import { assertHarnessComposable, vendo } from "@vendoai/harnesses";
+import { assertHarnessComposable, vendo } from "./harnesses/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { storeServesHarnessTurns } from "./compose-store.js";
 import { basePathOf, MCP_MOUNT } from "./door-paths.js";

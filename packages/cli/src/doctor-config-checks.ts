@@ -3,11 +3,11 @@ import { join, relative, sep } from "node:path";
 import { applyJudgment, disabledReason, judgmentsFileSchema, overridesFileSchema, toolsFileSchema, type ExtractedTool, type ToolJudgment, type ToolsFile } from "@vendoai/actions";
 import { firstOpenApiSpec, openApiMountPath } from "@vendoai/actions/sync";
 import { CONFIG_SURFACES, OVERRIDES_ENABLEMENT_NOTE, publicBase, UPLOAD_MAX_BYTES, type RiskLabel } from "@vendoai/core";
-import { ENV_KEY_VARS, describeDevCredential, resolveDevCredential } from "@vendoai/harnesses/inference/credential";
+import { ENV_KEY_VARS, describeDevCredential, resolveDevCredential } from "@vendoai/vendo/harnesses/inference/credential";
 // The Node ladder itself (not @vendoai/vendo's `#dev-creds/model` condition):
 // the CLI is Node-only, and the edge build deliberately does not export the
 // pin map.
-import { SLOT_PIN_ENV } from "@vendoai/harnesses/inference";
+import { SLOT_PIN_ENV } from "@vendoai/vendo/harnesses/inference";
 import type { DoctorRun } from "./doctor-report.js";
 import { NEXT_SERVER_EXTERNALS, NEXT_SERVER_EXTERNALS_LINE, detectFramework, missingServerExternals, nextConfigPath, transpileConflictNote, transpiledServerExternals } from "./framework.js";
 import { compositionModulePath } from "./init-scaffolds.js";

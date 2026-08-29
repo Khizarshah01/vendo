@@ -113,7 +113,7 @@ const bundleKey = (appId: AppId, hex: string): string => `apps/${appId}/bundle/$
  *
  * `entry` names which of `files` the frame boots; everything else lands in
  * `assets` under the path the entry imports it by. Hashing goes over the BYTES
- * (`node:crypto`, as `@vendoai/harnesses`' materialize seam does) rather than
+ * (`node:crypto`, as `@vendoai/vendo`' materialize seam does) rather than
  * over text, because a bundle carries fonts and images that no string
  * round-trip survives.
  */

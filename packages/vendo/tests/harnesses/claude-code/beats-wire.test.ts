@@ -1,7 +1,7 @@
 /**
  * Beats, SDK loop to WIRE — contract §3.4, the whole chain with no stub in it.
  *
- * `harnesses/src/beats.test.ts` proves the second half (a harness that yields a
+ * `packages/vendo/tests/harnesses/beats.test.ts` proves the second half (a harness that yields a
  * status reaches `data-vendo-status` with `phase` and `appId` intact, through the
  * real runtime and the real writer). This proves the FIRST half joined to it, so
  * the two together cover the seam end to end:
@@ -11,7 +11,7 @@
  *       whose compiled dist is what `build-template.mjs` copies into the machine
  *       image — that the built artifact still imports and exports the loop is
  *       pinned by `sdk-absent.e2e.test.ts`'s runner probe)
- *     → the REAL box door (`packages/harnesses/box/turn-routes.mjs`), over a
+ *     → the REAL box door (`packages/vendo/box/turn-routes.mjs`), over a
  *       transport adapter instead of a socket
  *     → the REAL `box.ts` poll loop and its `message.emit` forward
  *     → the REAL `claude-code/index.ts` queue passthrough
