@@ -459,9 +459,9 @@ importers:
       '@hono/node-server':
         specifier: ^2.1.0
         version: 2.1.0(hono@4.13.0)
-      '@vendoai/agents':
+      '@vendoai/vendo':
         specifier: workspace:*
-        version: link:../../packages/agents
+        version: link:../../packages/vendo
       ai:
         specifier: 6.0.28
         version: 6.0.28(zod@3.25.76)
@@ -484,9 +484,6 @@ importers:
       '@vendoai/actions':
         specifier: workspace:*
         version: link:../../packages/actions
-      '@vendoai/agents':
-        specifier: workspace:*
-        version: link:../../packages/agents
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
@@ -646,9 +643,6 @@ importers:
       '@vendoai/actions':
         specifier: workspace:*
         version: link:../../packages/actions
-      '@vendoai/agents':
-        specifier: workspace:*
-        version: link:../../packages/agents
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -744,9 +738,6 @@ importers:
       '@vendoai/actions':
         specifier: workspace:*
         version: link:../../packages/actions
-      '@vendoai/agents':
-        specifier: workspace:*
-        version: link:../../packages/agents
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
@@ -937,49 +928,6 @@ importers:
       zod-to-json-schema:
         specifier: ^3.25.2
         version: 3.25.2(zod@3.25.76)
-
-  packages/agents:
-    dependencies:
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../actions
-      '@vendoai/apps':
-        specifier: workspace:*
-        version: link:../apps
-      '@vendoai/automations':
-        specifier: workspace:*
-        version: link:../automations
-      '@vendoai/core':
-        specifier: workspace:*
-        version: link:../core
-      '@vendoai/guard':
-        specifier: workspace:*
-        version: link:../guard
-      '@vendoai/harnesses':
-        specifier: workspace:*
-        version: link:../harnesses
-      '@vendoai/mcp':
-        specifier: workspace:*
-        version: link:../mcp
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../store
-      zod:
-        specifier: ^3.25.0
-        version: 3.25.76
-    devDependencies:
-      '@types/node':
-        specifier: ^22.0.0
-        version: 22.20.0
-      ai:
-        specifier: 6.0.28
-        version: 6.0.28(zod@3.25.76)
-      typescript:
-        specifier: ^5.6.0
-        version: 5.9.3
-      vitest:
-        specifier: ^3.2.6
-        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
 
   packages/apps:
     dependencies:
@@ -1367,9 +1315,6 @@ importers:
       '@vendoai/actions':
         specifier: workspace:*
         version: link:../actions
-      '@vendoai/agents':
-        specifier: workspace:*
-        version: link:../agents
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../apps
