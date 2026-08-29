@@ -1,15 +1,15 @@
 /**
- * One user's conversation — the THREAD's lifecycle, and the posture its turns
- * run at.
+ * One user's conversation — the ONLY file that touches `HarnessRuntime`.
  *
- * The turn body itself is `spine.ts`, shared with `turn.ts`. This file owns the
- * two things that are a session's alone: the thread is opened ONCE and many
- * turns stream over it, and every one of them is `interactive: true` — a person
- * is on the other end, so a turn that asks for permission waits for the tap.
- * Approval checkpointing, byte-for-byte re-dispatch and state persistence are
- * the runtime's and the guard's — INHERITED, not rebuilt.
+ * It resolves everything ctx-shaped (the enriched `RunContext`, the thread,
+ * the workspace with its `/host/skills` projection, the per-turn system
+ * prompt) and hands the existing runtime a `TurnRunInput`. Approval
+ * checkpointing, byte-for-byte re-dispatch, and state persistence are the
+ * runtime's and the guard's — INHERITED, not rebuilt.
  */
 import {
+  hostSkillFiles,
+  createTurnSkills,
   VendoError,
   type ApprovalRequest,
   type FilesAdapter,
@@ -22,14 +22,20 @@ import {
   type ThreadId,
   type ToolRegistry,
 } from "@vendoai/core";
+import { wrapWorkspaceForRender } from "@vendoai/apps";
 import type { VendoGuard } from "@vendoai/guard";
-import { THREAD_ID_HEADER, type HarnessRuntimeDeps } from "@vendoai/harnesses";
-import { threadStore, type VendoStore } from "@vendoai/store";
+import { createHarnessRuntime, THREAD_ID_HEADER, type HarnessRuntimeDeps } from "@vendoai/harnesses";
+import {
+  harnessStateStore,
+  threadMessageStore,
+  threadStore,
+  workspaceStore,
+  type VendoStore,
+} from "@vendoai/store";
 import type { LanguageModel, UIMessage } from "ai";
 import { randomUUID } from "node:crypto";
-import type { MemoryAdapter } from "./memory.js";
-import type { SystemPromptHook } from "./prompt.js";
-import { runHarnessTurn } from "./spine.js";
+import type { MemoryAdapter } from "../../src/turn/memory.js";
+import { resolveSystem, type SystemPromptHook } from "../../src/turn/prompt.js";
 
 export interface SessionOptions {
   /** Server-trust identity facts, model-visible (`[User]`). */
@@ -159,6 +165,31 @@ export async function createSession(
   const threadId = (options.threadId ?? `thr_${randomUUID()}`) as ThreadId;
   await openThread(deps.store, principal, threadId, options.threadId !== undefined);
 
+  const transcript = threadMessageStore<UIMessage>(deps.store);
+  const workspaces = workspaceStore(deps.store, { files: deps.files });
+  // Opened once per turn, in `stream()` below, so a turn always sees a fresh
+  // path index — and passed in rather than held on the session, so two
+  // `stream()` calls in flight on one session cannot read each other's.
+  const runtime = (workspace: Awaited<ReturnType<typeof workspaces.open>>) =>
+    createHarnessRuntime({
+      tools: deps.tools,
+      guard: deps.guard,
+      skills: createTurnSkills(workspace),
+      transcript,
+      harnessState: harnessStateStore(deps.store),
+      // §1.6 — the render seam, on the runtime's generic `wrapWorkspace` slot:
+      // a commit that lands `app.tsx` paints, whichever hands
+      // wrote it (`claudeCode()` commits mid-turn through `turn.workspace`).
+      // BARE — no floor, no app half — because this standalone runtime composes
+      // no apps runtime to fill them; the umbrella's composition does
+      // (`packages/vendo/src/harness-turn.ts`).
+      wrapWorkspace: (turnWorkspace, opts) => wrapWorkspaceForRender(turnWorkspace, {
+        turnId: opts.turnId,
+        emit: opts.emit,
+      }),
+      ...(deps.liveTurn === undefined ? {} : { liveTurn: deps.liveTurn }),
+    });
+
   const contextFor = (turnContext: Record<string, unknown> | undefined): RunContext => ({
     principal,
     venue: "chat",
@@ -204,23 +235,25 @@ export async function createSession(
       };
     },
     async stream(message, streamOptions = {}) {
+      const userMessage = asUserMessage(message);
+      const persisted = await transcript.list(principal, threadId);
+      const messages = [...persisted, userMessage];
       // `ctx.messages` (the frozen accessor) is the runtime's to attach — it
       // resolves the thread and freezes the canonical copy.
       const ctx = contextFor(streamOptions.context);
-      const response = await runHarnessTurn(deps, {
-        ctx,
+
+      const workspace = await workspaces.open(principal, { host: hostSkillFiles(deps.skills) });
+      const system = await resolveSystem(deps, ctx);
+
+      const response = await runtime(workspace).run({
+        harness: deps.harness,
         threadId,
-        message: asUserMessage(message),
-        // ALWAYS, and deliberately not this session's reopen flag: a session
-        // mints its thread once and streams turn after turn over it, so from
-        // the SECOND turn on there is history to read on a thread it never
-        // reopened. Wired to the reopen flag, turn two hands the harness an
-        // empty conversation.
-        readHistory: true,
-        // A person is on the other end of a session, so a call that needs
-        // permission WAITS for the tap rather than ending the turn with a
-        // standing card. See `spine.ts`.
+        messages,
+        ctx,
+        workspace,
         interactive: true,
+        system,
+        ...(deps.models === undefined ? {} : { models: deps.models }),
         ...(streamOptions.signal === undefined ? {} : { signal: streamOptions.signal }),
       });
       // The conversation's id, on the response the caller is already holding —

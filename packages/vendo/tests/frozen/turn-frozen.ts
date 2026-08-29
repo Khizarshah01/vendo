@@ -24,6 +24,8 @@
  */
 import {
   VendoError,
+  createTurnSkills,
+  hostSkillFiles,
   mintTurnId,
   type ApprovalRequest,
   type Decisions,
@@ -45,15 +47,21 @@ import {
   type TurnId,
   type TurnResult as CoreTurnResult,
 } from "@vendoai/core";
+import { wrapWorkspaceForRender } from "@vendoai/apps";
 import type { VendoGuard } from "@vendoai/guard";
-import { addUsage, type HarnessRuntimeDeps, type UsageTotals } from "@vendoai/harnesses";
-import { storeFiles, threadMessageStore, type VendoStore } from "@vendoai/store";
+import { addUsage, createHarnessRuntime, type HarnessRuntimeDeps, type UsageTotals } from "@vendoai/harnesses";
+import {
+  harnessStateStore,
+  storeFiles,
+  threadMessageStore,
+  workspaceStore,
+  type VendoStore,
+} from "@vendoai/store";
 import { asSchema, type FlexibleSchema, type LanguageModel, type Schema, type UIMessage } from "ai";
 import { randomUUID } from "node:crypto";
-import type { MemoryAdapter } from "./memory.js";
-import type { SystemPromptHook } from "./prompt.js";
-import { asUserMessage, openThread, toHeaderRecord } from "./session.js";
-import { runHarnessTurn, type SpineDeps } from "./spine.js";
+import type { MemoryAdapter } from "../../src/turn/memory.js";
+import { resolveSystem, type SystemPromptHook } from "../../src/turn/prompt.js";
+import { asUserMessage, openThread, toHeaderRecord } from "./session-frozen.js";
 
 /** The union, with the AGENTS-level `Turn` bound into the arm that resumes.
  *  Core owns the definition; this only names the loop core cannot. */
@@ -549,15 +557,18 @@ export async function runTurn(deps: TurnDeps, input: TurnInput): Promise<TurnRec
   const transcript = threadMessageStore<UIMessage>(deps.store);
   const { threadId } = input;
   await openThread(deps.store, principal, threadId, input.reopen);
+  // The SPONSOR's durable workspace, with the same `/host/skills` projection and
+  // the same org mounts (§9.7) a session gets — the ctx carries the memberships
+  // the caller asserted for this turn.
+  const workspace = await workspaceStore(deps.store, { files: deps.files ?? storeFiles(deps.store) })
+    .open(principal, {
+      host: hostSkillFiles(deps.skills ?? []),
+      ...(ctx.memberships === undefined ? {} : { memberships: ctx.memberships }),
+    });
+
   const schema = input.output === undefined ? undefined : asSchema(input.output);
 
-  // The turn's world, as the spine takes it. The four resolved here are the ones
-  // THIS lane wraps: the blob door, the skills projection, the registry the
-  // typed-output channel joins, and the harness whose failures it watches.
-  const world: SpineDeps = {
-    ...deps,
-    files: deps.files ?? storeFiles(deps.store),
-    skills: deps.skills ?? [],
+  const runtime = createHarnessRuntime({
     // THE CALLER's registry, never one of this turn's own choosing: the caller
     // decides the tool surface, and it is already guard-bound — so §12's
     // projection is what answers `list()` here.
@@ -566,9 +577,21 @@ export async function runTurn(deps: TurnDeps, input: TurnInput): Promise<TurnRec
       : withResultTool(input.tools, schema, (value) => {
         output = value;
       }),
-    harness: watchForFailure(deps.harness, (failure) => {
-      failed = true;
-      failureMessage = failure;
+    guard: deps.guard,
+    skills: createTurnSkills(workspace),
+    transcript,
+    // The same door a session keeps: a turn that CONTINUES a thread has to carry
+    // what the harness remembered on it, and a fresh thread has nothing stored,
+    // so wiring it costs the fresh case nothing.
+    harnessState: harnessStateStore(deps.store),
+    // §1.6 — the render seam, on the runtime's generic `wrapWorkspace` slot: a
+    // commit that lands `app.tsx` paints (the part persists, so the thread shows
+    // the screen the turn built). BARE — no floor, no app half — because this
+    // standalone runtime composes no apps runtime to fill them; the umbrella's
+    // composition does.
+    wrapWorkspace: (turnWorkspace, opts) => wrapWorkspaceForRender(turnWorkspace, {
+      turnId: opts.turnId,
+      emit: opts.emit,
     }),
     bridge: {
       // Every call the harness ATTEMPTS, before the guard sees it — and the one
@@ -610,7 +633,10 @@ export async function runTurn(deps: TurnDeps, input: TurnInput): Promise<TurnRec
         };
       },
     },
-  };
+    ...(deps.liveTurn === undefined ? {} : { liveTurn: deps.liveTurn }),
+  });
+
+  const system = await resolveSystem(deps, ctx);
 
   // Subscribed as LATE as possible and torn down in `finally`: the guard holds
   // its callbacks in a set forever, so a throw between the subscribe and the
@@ -652,18 +678,23 @@ export async function runTurn(deps: TurnDeps, input: TurnInput): Promise<TurnRec
     const message = asUserMessage(schema === undefined
       ? ask
       : `${ask}\n\nWhen you are done, call ${RESULT_TOOL} with the result.`);
-    const response = await runHarnessTurn(world, {
-      ctx,
+    // Reopening means CONTINUING: the thread's own turns come back with it, read
+    // through the same path a session's do. A fresh thread has none.
+    const persisted = input.reopen ? await transcript.list(principal, threadId) : [];
+
+    const response = await runtime.run({
+      harness: watchForFailure(deps.harness, (failure) => {
+        failed = true;
+        failureMessage = failure;
+      }),
       threadId,
-      message,
-      // Reopening means CONTINUING: the thread's own turns come back with it,
-      // read through the same path a session's do. A fresh thread has none.
-      readHistory: input.reopen,
+      messages: [...persisted, message],
+      ctx,
+      workspace,
       // A park ENDS this turn: nobody is blocked on the 90s waiter, and the card
       // stands for `resume()`. See this file's header.
       interactive: false,
-      // §9.7 — the org mounts the caller asserted for this turn.
-      ...(ctx.memberships === undefined ? {} : { memberships: ctx.memberships }),
+      system,
       // The harness's own vocabulary, forwarded as the runtime routes it: the
       // metering fold every caller needs, and the three things a watching caller
       // wants to see while they happen.
@@ -673,6 +704,7 @@ export async function runTurn(deps: TurnDeps, input: TurnInput): Promise<TurnRec
         else if (event.type === "status") input.emit?.({ type: "status", label: event.label });
         else if (event.type === "error") input.emit?.({ type: "error", message: event.message });
       },
+      ...(deps.models === undefined ? {} : { models: deps.models }),
       ...(input.signal === undefined ? {} : { signal: input.signal }),
     });
     // Drained, not discarded: the stream's `onFinish` is what persists the turn
