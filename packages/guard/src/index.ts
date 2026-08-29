@@ -1,5 +1,18 @@
 /** @vendoai/guard — policy, approvals, audit, safety. */
 export { createGuard } from "./guard.js";
+// The drawers this block writes, and the parked-call clock, named for the
+// READERS of guard state that live outside the guard's own process — Vendo
+// Cloud's console reads the audit trail and the parked approvals, and flips the
+// freeze row a guard elsewhere obeys on its next check. They were spelled a
+// second time over there; a reader's copy of a writer's collection name drifts
+// silently the moment the writer renames one.
+export {
+  APPROVALS_COLLECTION,
+  AUDIT_COLLECTION,
+  CONTROLS_COLLECTION,
+  DEFAULT_PARKED_CALL_TTL_MS,
+  FREEZE_ROW,
+} from "./guard.js";
 // The late-bound rules value (`guard({ policy, judge, approvals })`) and the
 // discriminator every consumer of a `VendoGuard | GuardRules` slot needs.
 // `createGuard` stays the one constructor both arms end at.

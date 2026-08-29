@@ -57,7 +57,7 @@ import type {
  *  card in a foreign chat expires on time instead: generous enough to walk away
  *  and come back, bounded enough that stale writes can't be approved days
  *  later. */
-const DEFAULT_PARKED_CALL_TTL_MS = 60 * 60_000;
+export const DEFAULT_PARKED_CALL_TTL_MS = 60 * 60_000;
 
 /** `0` (the documented off switch) and any other non-negative integer only —
  *  validated HERE so both entry points, `guard({ approvals })` and a direct
@@ -98,7 +98,7 @@ function resolveBreakerLimit(configured: number | undefined, name: string, fallb
 }
 
 const GRANTS_COLLECTION = "vendo_grants";
-const APPROVALS_COLLECTION = "vendo_approvals";
+export const APPROVALS_COLLECTION = "vendo_approvals";
 /** One-time transition receipts for approvals: `decided:<id>` /
  *  `consumed:<id>` rows in a guard-owned generic collection, written only via
  *  the store's atomic `insertIfAbsent` (02-store §4) so exactly one caller —
@@ -117,13 +117,13 @@ const APPROVALS_COLLECTION = "vendo_approvals";
  *  would need is already spent, so no call ever executes off it. Closing the
  *  window properly needs guarded writes on `vendo_approvals`; not chased here. */
 const APPROVAL_CLAIMS_COLLECTION = "guard:approval-claims";
-const AUDIT_COLLECTION = "vendo_audit";
+export const AUDIT_COLLECTION = "vendo_audit";
 /** The emergency stop is a ROW (`freeze`, `{ frozen, by, at }`) and not a config
  *  field: the moment you need a kill switch is the moment you cannot redeploy to
  *  get one, so the console flips this row directly and a guard in another
  *  process obeys it on its next check. */
-const CONTROLS_COLLECTION = "guard:controls";
-const FREEZE_ROW = "freeze";
+export const CONTROLS_COLLECTION = "guard:controls";
+export const FREEZE_ROW = "freeze";
 /** The block a frozen guard returns — the same words at the check and at the
  *  execute re-read, so the two agree. */
 const FROZEN_REASON = "vendo is frozen — nothing runs until it is unfrozen";

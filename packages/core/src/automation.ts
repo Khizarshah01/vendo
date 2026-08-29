@@ -122,6 +122,20 @@ export const automationRecordSchema = z.object({
 export const RUN_STATUSES = ["running", "ok", "error", "stopped"] as const;
 export type RunStatus = (typeof RUN_STATUSES)[number];
 
+/** The engine's four plus `pending-approval`, which no engine writes: the STORE
+ *  is the wider acceptor here, and `parseRunData` has taken it since before the
+ *  ledger dropped its waiting state. Derived from the tuple above so the four
+ *  can never drift, and narrowing it would be a behaviour change, not a
+ *  consolidation.
+ *
+ *  Here rather than in `@vendoai/store` for the same reason `RUN_STATUSES` is
+ *  here: the readers of this ledger live outside the store — Vendo Cloud's
+ *  console validates a `?status=` query param against it — and console code
+ *  consumes contracts from this package, never the store implementation. A
+ *  reader narrower than the acceptor refuses rows the store will happily hold. */
+export const RUN_ROW_STATUSES = [...RUN_STATUSES, "pending-approval"] as const;
+export type RunRowStatus = (typeof RUN_ROW_STATUSES)[number];
+
 /** THE one create operation, as a type — the implementation is
  *  `create-surface.ts` in `@vendoai/automations`, reached through
  *  `automationsInternals(engine)` and never exposed on `vendo.automations`.

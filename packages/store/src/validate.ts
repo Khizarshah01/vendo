@@ -18,7 +18,8 @@ import {
 } from "@vendoai/core";
 import { isGrantPrincipal, type AccessLevel } from "./helpers/app-access.js";
 import type { AppData } from "@vendoai/apps/contract";
-import type { ApprovalRow, RunRow, ThreadRow } from "./helpers/types.js";
+import { RUN_ROW_STATUSES } from "./helpers/types.js";
+import type { ApprovalRow, RunRow, RunRowStatus, ThreadRow } from "./helpers/types.js";
 
 export interface ApprovalData {
   request: ApprovalRequest;
@@ -229,11 +230,10 @@ export function parseRunData(value: unknown, id: string): RunData {
   }
   const event = optionalString(triggerInput["event"], "run trigger event");
   const trigger: RunRow["trigger"] = { kind, ...(event === undefined ? {} : { event }) };
-  const status = input["status"];
-  if (status !== "running" && status !== "ok" && status !== "error"
-    && status !== "stopped" && status !== "pending-approval") {
-    invalid("run status is invalid");
-  }
+  // The acceptor, off the tuple the row type is built from — a third spelling of
+  // these five is a third thing to remember to widen.
+  const status = input["status"] as RunRowStatus;
+  if (!RUN_ROW_STATUSES.includes(status)) invalid("run status is invalid");
   const record = requireJson(input["record"], "run record");
   const startedAt = parseSchema(isoDateTimeSchema, input["startedAt"], "run startedAt");
   const finishedAt = optionalDate(input["finishedAt"], "run finishedAt");

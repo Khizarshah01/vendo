@@ -55,4 +55,4 @@ export function runStore(store: VendoStore): {
   };
 }
 
-export type { RunRow } from "./types.js";
+export { RUN_ROW_STATUSES, type RunRow, type RunRowStatus } from "./types.js";

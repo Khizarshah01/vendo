@@ -4,8 +4,8 @@ import {
   type AutomationId,
   type IsoDateTime,
   type Json,
-  RUN_STATUSES,
   type RunId,
+  type RunRowStatus,
   type ThreadId,
   type TriggerSource,
 } from "@vendoai/core";
@@ -45,6 +45,11 @@ export interface ApprovalRow {
   createdAt: IsoDateTime;
 }
 
+/** 02-store §3 — declared in `@vendoai/core` beside the four it widens, and
+ *  re-exported here because this package's own surface is where the store's
+ *  callers reach for it. */
+export { RUN_ROW_STATUSES, type RunRowStatus } from "@vendoai/core";
+
 /** 02-store §3 */
 export interface RunRow {
   id: RunId;
@@ -52,12 +57,8 @@ export interface RunRow {
    *  an automation record names none (core's `automation.ts`). */
   automationId: AutomationId;
   trigger: { kind: TriggerSource["kind"]; event?: string };
-  /** The engine's four (`RunStatus`) plus `pending-approval`, which no engine
-   *  writes: the store is the wider ACCEPTOR here, and `parseRunData` has taken
-   *  it since before the ledger dropped its waiting state. Spelled as a union
-   *  with the shared tuple so the four can never drift, and narrowing it would
-   *  be a behaviour change, not a consolidation. */
-  status: (typeof RUN_STATUSES)[number] | "pending-approval";
+  /** {@link RUN_ROW_STATUSES} — the engine's four plus `pending-approval`. */
+  status: RunRowStatus;
   record: Json;
   startedAt: IsoDateTime;
   finishedAt?: IsoDateTime;

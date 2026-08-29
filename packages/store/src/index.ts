@@ -49,7 +49,7 @@ export { threadStore, type AskUserAnswer, type ThreadRow } from "./helpers/threa
 export { threadMessageStore, type ThreadMessageLike } from "./helpers/thread-messages.js";
 export { grantStore } from "./helpers/grants.js";
 export { auditStore, type AuditQuery } from "./helpers/audit.js";
-export { runStore, type RunRow } from "./helpers/runs.js";
+export { runStore, RUN_ROW_STATUSES, type RunRow, type RunRowStatus } from "./helpers/runs.js";
 // The workspace (build contract §3): the agent's filesystem as a façade over
 // the two vendo_workspace_* tables, plus the blob seam under it.
 export {
