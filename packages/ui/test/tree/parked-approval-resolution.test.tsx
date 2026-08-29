@@ -24,7 +24,7 @@ import type { VendoClient } from "../../src/client.js";
 import { APPROVALS_DECIDED_EVENT } from "../../src/client-impl.js";
 import { VendoProvider } from "../../src/context.js";
 import { PayloadView, type ParkedPress } from "../../src/tree/index.js";
-import type { ApprovalResolution } from "../../src/wire-types.js";
+import type { ApprovalResolution } from "@vendoai/core";
 
 afterEach(cleanup);
 

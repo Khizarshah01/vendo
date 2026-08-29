@@ -33,7 +33,7 @@ import type { VendoClient } from "../client.js";
 import { useVendoProvider } from "../context.js";
 import { identityState } from "./identity-state.js";
 import { onPinAnnounced } from "../pin-events.js";
-import type { PlacementEntry } from "../wire-types.js";
+import type { PlacementEntry } from "@vendoai/core";
 
 /** The floor under the pin bus: a placement made anywhere else (another tab,
  *  an agent turn, a build that just landed) shows up within this. */

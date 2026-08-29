@@ -29,7 +29,7 @@ import { useVendoProvider } from "../context.js";
 import { useSlots } from "../hooks/use-slots.js";
 import { announcePin } from "../pin-events.js";
 import { usePinAction } from "./pin-ceremony.js";
-import type { SlotEntry } from "../wire-types.js";
+import type { SlotEntry } from "@vendoai/core";
 
 /** The pin mark, on the verb button and the picker alike. */
 function PinMark() {

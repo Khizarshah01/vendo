@@ -9,7 +9,7 @@ import { effectiveAppBuildUiDeadlineMs } from "@vendoai/apps/contract";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useVendoProvider } from "../context.js";
 import { isForbiddenError } from "./identity-state.js";
-import type { EditResult, OpenSurface, VersionEntry } from "../wire-types.js";
+import type { EditResult, OpenSurface, VersionEntry } from "@vendoai/apps/contract";
 
 /** How many times a load may try before the error becomes the user's problem.
  *  A pinned app is mounted, unattended chrome — one dropped `apps.open` used to

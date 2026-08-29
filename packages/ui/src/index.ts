@@ -77,26 +77,31 @@ export { announcePin, onPinAnnounced } from "./pin-events.js";
 // provider's `theme` prop with it — every chrome surface takes its own
 // `theme?: Partial<VendoTheme>`.
 export { defaultVendoTheme, resolveTheme, themeCssVariables, type VendoTheme } from "./theme.js";
+// The wire's answer shapes, re-exported so a host types its own surfaces
+// without reaching past this package. ONE definition each, on the block that
+// owns the behaviour — this package no longer keeps a copy of any of them.
 export type {
-  AppListRow,
   ApprovalResolution,
   AutomationEntry,
   ConnectableToolkit,
   ConnectionAccount,
-  EditResult,
   EnableResult,
   GuardPosture,
   InitiatedConnection,
-  OpenSurface,
-  PendingSurface,
   PlacementEntry,
   RunPlan,
   RunRecord,
   RunStatus,
-  SeedDrift,
   SlotEntry,
   Thread,
   ThreadSummary,
   VendoStatus,
+} from "@vendoai/core";
+export type {
+  AppListRow,
+  EditResult,
+  OpenSurface,
+  PendingSurface,
+  SeedDrift,
   VersionEntry,
-} from "./wire-types.js";
+} from "@vendoai/apps/contract";

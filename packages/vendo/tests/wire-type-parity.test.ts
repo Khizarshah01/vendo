@@ -48,8 +48,24 @@ function typecheckFixture(source: string): string | null {
   }
 }
 
+// WHAT IS LEFT TO CHECK, and why the list shrank.
+//
+// This file compared ui's hand copies against the blocks that produce them.
+// Those copies are gone: the chat, connections, automations and status shapes
+// have ONE definition each, in `@vendoai/core`, and both halves import it — so
+// the rows for them became `Assignable<X, X>`, a green check that cannot fail,
+// which is the exact thing this file exists to prevent. They are proven now by
+// tests/core-wire-shapes.seam.test.ts, which reads the real door's answers back
+// through the real client.
+//
+// The apps rows STAY, because `@vendoai/apps` genuinely ships two declarations
+// of these names — the browser-safe contract door and the richer server one
+// (see the header of apps/src/contract/wire-types.ts, which leaves unifying
+// them to the slice that owns that behavior question). Two declarations is
+// exactly what this gate is for.
+//
 // The repository gate runs `pnpm build` before `pnpm test`, so these package
-// imports resolve freshly emitted declarations from all four owning packages.
+// imports resolve freshly emitted declarations from both owning packages.
 // That keeps the fixture type-only: importing their source roots would make an
 // ad-hoc tsc invocation re-check unrelated runtime implementations as well.
 const imports = `
@@ -57,13 +73,6 @@ import type {
   OpenSurface as UiOpenSurface,
   EditResult as UiEditResult,
   VersionEntry as UiVersionEntry,
-  RunStatus as UiRunStatus,
-  RunRecord as UiRunRecord,
-  RunPlan as UiRunPlan,
-  AutomationEntry as UiAutomationEntry,
-  EnableResult as UiEnableResult,
-  Thread as UiThread,
-  ThreadSummary as UiThreadSummary,
   SeedDrift as UiSeedDrift,
 } from "@vendoai/ui";
 import type {
@@ -72,25 +81,13 @@ import type {
   VersionEntry as AppsVersionEntry,
   SeedDrift as AppsSeedDrift,
 } from "@vendoai/apps";
-import type {
-  AutomationsEngine,
-  RunStatus as AutomationsRunStatus,
-  RunRecord as AutomationsRunRecord,
-  RunPlan as AutomationsRunPlan,
-} from "@vendoai/automations";
-import type {
-  Thread as AgentThread,
-  ThreadSummary as AgentThreadSummary,
-} from "./src/threads.js";
 
-type AutomationsEntry = Awaited<ReturnType<AutomationsEngine["list"]>>[number];
-type AutomationsEnableResult = Awaited<ReturnType<AutomationsEngine["enable"]>>;
 type Assignable<Source, Target> = [Source] extends [Target] ? true : false;
 type Assert<T extends true> = T;
 `;
 
 describe("UI wire types stay structurally aligned with their owning blocks", () => {
-  it("is assignable both ways for apps, automations, and agent responses", () => {
+  it("is assignable both ways for the two doors @vendoai/apps still ships", () => {
     const failure = typecheckFixture(`${imports}
 type Checks = [
   Assert<Assignable<UiOpenSurface, AppsOpenSurface>>,
@@ -101,20 +98,6 @@ type Checks = [
   Assert<Assignable<AppsVersionEntry, UiVersionEntry>>,
   Assert<Assignable<UiSeedDrift, AppsSeedDrift>>,
   Assert<Assignable<AppsSeedDrift, UiSeedDrift>>,
-  Assert<Assignable<UiRunStatus, AutomationsRunStatus>>,
-  Assert<Assignable<AutomationsRunStatus, UiRunStatus>>,
-  Assert<Assignable<UiRunRecord, AutomationsRunRecord>>,
-  Assert<Assignable<AutomationsRunRecord, UiRunRecord>>,
-  Assert<Assignable<UiRunPlan, AutomationsRunPlan>>,
-  Assert<Assignable<AutomationsRunPlan, UiRunPlan>>,
-  Assert<Assignable<UiAutomationEntry, AutomationsEntry>>,
-  Assert<Assignable<AutomationsEntry, UiAutomationEntry>>,
-  Assert<Assignable<UiEnableResult, AutomationsEnableResult>>,
-  Assert<Assignable<AutomationsEnableResult, UiEnableResult>>,
-  Assert<Assignable<UiThread, AgentThread>>,
-  Assert<Assignable<AgentThread, UiThread>>,
-  Assert<Assignable<UiThreadSummary, AgentThreadSummary>>,
-  Assert<Assignable<AgentThreadSummary, UiThreadSummary>>,
 ];
 declare const checks: Checks;
 void checks;
@@ -124,7 +107,7 @@ void checks;
 
   it("has teeth: a one-way incompatible wire shape fails the tsc gate", () => {
     const failure = typecheckFixture(`${imports}
-type Broken = Assert<Assignable<UiThread, { definitelyNotOnTheWire: string }>>;
+type Broken = Assert<Assignable<UiEditResult, { definitelyNotOnTheWire: string }>>;
 declare const broken: Broken;
 void broken;
 `);

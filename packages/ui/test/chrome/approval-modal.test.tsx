@@ -19,7 +19,7 @@ import { ApprovalModal, useApprovalModal } from "../../src/chrome/approval-modal
 import { Remixable, VendoAppEmbed, VendoOverlay, type VendoThreadProps } from "../../src/chrome/index.js";
 import { useSplitView } from "../../src/chrome/split-view.js";
 import { ThreadPart } from "../../src/chrome/thread/parts.js";
-import type { ApprovalResolution } from "../../src/wire-types.js";
+import type { ApprovalResolution } from "@vendoai/core";
 import { createWireServer } from "../wire-server.js";
 
 let wire: Awaited<ReturnType<typeof createWireServer>>;

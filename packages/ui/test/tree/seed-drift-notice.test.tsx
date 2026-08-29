@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { VENDO_TREE_FORMAT, type ToolOutcome } from "@vendoai/core";
 import { TreeView, type WalkTree } from "../../src/tree/index.js";
-import type { SeedDrift } from "../../src/wire-types.js";
+import type { SeedDrift } from "@vendoai/apps/contract";
 
 afterEach(() => {
   cleanup();

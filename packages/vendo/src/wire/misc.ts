@@ -1,5 +1,5 @@
 import { signedWebhookBytes, verifySignature } from "@vendoai/automations";
-import { log, VendoError } from "@vendoai/core";
+import { log, VendoError, type VendoStatus } from "@vendoai/core";
 import { computeImpact } from "../sync-impact.js";
 import { tickSecret } from "../tick-enrolment.js";
 import {
@@ -239,6 +239,6 @@ export const statusRoutes: RouteEntry[] = [
         // "byo" (host's own Composio key), "cloud" (VENDO_API_KEY), or off.
         connections: deps.connections.posture,
       },
-    });
+    } satisfies VendoStatus);
   }),
 ];

@@ -21,6 +21,7 @@ import {
   type ToolDescriptor,
   type ToolRegistry,
   VENDO_POLICY_FORMAT,
+  type GuardPosture,
 } from "@vendoai/core";
 import type { LanguageModel } from "ai";
 import { z } from "zod";
@@ -214,9 +215,7 @@ export interface VendoGuard extends Guard {
     }): AsyncIterable<string>;
   };
 
-  status(): {
-    posture: "unconfigured" | "rules" | "judge" | "rules+judge";
-  };
+  status(): { posture: GuardPosture };
 }
 
 /**

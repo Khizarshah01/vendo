@@ -5,9 +5,16 @@
  * rather than in the store because a `Thread` carries ai's `UIMessage`: the store
  * block deliberately has no `ai` dependency. Its one consumer is the harness turn
  * door (`harness-turn.ts`), which resolves, persists and evicts through it.
+ *
+ * The SHAPE it reads and writes is core's, not this file's — `@vendoai/ui` reads
+ * a thread off the wire and may not import this package.
  */
-import { isAgentContextText, VendoError, type IsoDateTime, type RunContext, type StoreAdapter, type ThreadId, type VendoRecord } from "@vendoai/core";
+import { isAgentContextText, VendoError, type RunContext, type StoreAdapter, type Thread, type ThreadId, type ThreadSummary, type VendoRecord } from "@vendoai/core";
 import type { UIMessage } from "ai";
+
+// The SHAPE is core's (core/src/threads.ts) so `@vendoai/ui` can read a thread
+// without an illegal edge to this package; the LIFECYCLE below is ours.
+export type { Thread, ThreadSummary };
 
 const THREAD_COLLECTION = "vendo_threads";
 const THREAD_ID_PATTERN = /^thr_.+$/;
@@ -22,30 +29,6 @@ export const isThreadId = (id: string): boolean => THREAD_ID_PATTERN.test(id);
  *  is still a turn with a workspace to read. */
 export function mintThreadId(): ThreadId {
   return `thr_${globalThis.crypto.randomUUID().replaceAll("-", "")}`;
-}
-
-/** 03-agent §5 */
-export interface Thread {
-  id: ThreadId;
-  subject: string;
-  messages: UIMessage[];
-  /** Precomputed listing title. Persisted beside the thread so `list` need not load the
-   *  full messages array to derive it; absent on legacy rows (derived from messages then). */
-  title?: string;
-  /** The store's concurrency token for this row, as READ. Carried so the turn
-   *  that resolved the thread can compare-and-swap on it directly instead of
-   *  re-reading the whole row (and its transcript) for a token it already had.
-   *  Absent on a thread that has never been written. */
-  revision?: string;
-  createdAt: IsoDateTime;
-  updatedAt: IsoDateTime;
-}
-
-/** 03-agent §5 */
-export interface ThreadSummary {
-  id: ThreadId;
-  title: string;
-  updatedAt: IsoDateTime;
 }
 
 /** Reconstruct a Thread from a store record. The store seam (core §12) carries

@@ -17,7 +17,7 @@ import { useEffect, useRef } from "react";
 import { APPROVALS_DECIDED_EVENT, type ApprovalsDecidedDetail } from "../client-impl.js";
 import { useVendoClientOrNone } from "../context.js";
 import { identityState } from "../hooks/identity-state.js";
-import type { ApprovalResolution } from "../wire-types.js";
+import type { ApprovalResolution } from "@vendoai/core";
 
 /** Slower than the approvals feed on purpose: this is the backstop for a
  *  decision made where the page cannot hear it, not the primary signal. */

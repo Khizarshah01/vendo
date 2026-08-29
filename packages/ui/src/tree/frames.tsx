@@ -1,6 +1,6 @@
 import { Component, useEffect, useMemo, useRef, type ComponentType, type ErrorInfo, type ReactNode } from "react";
 import type { Json, ToolOutcome, UIPayload } from "@vendoai/core";
-import type { OpenSurface } from "../wire-types.js";
+import type { OpenSurface } from "@vendoai/apps/contract";
 import { useVendoProvider } from "../context.js";
 import { themeCssVariables } from "../theme.js";
 import { applyFrameResize, isFromFrame, FRAME_MAX_HEIGHT_CSS } from "./frame-resize.js";

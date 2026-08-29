@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useVendoProvider } from "../context.js";
 import type { Membership } from "@vendoai/core";
-import type { GuardPosture } from "../wire-types.js";
+import type { GuardPosture } from "@vendoai/core";
 
 interface StatusState {
   posture: GuardPosture;

@@ -10,24 +10,24 @@
  * runner map — this package never imports an agent.
  */
 import type {
-  ApprovalRequest,
   AutomationId,
   AutomationRecord,
+  EnableResult,
   Guard,
-  IsoDateTime,
   Json,
   Membership,
   Principal,
   RiskResolver,
   RunContext,
   RunId,
+  RunPlan,
+  RunRecord,
+  RunRowStatus,
   RunStatus,
   StoreAdapter,
   StoreOps,
   ToolCall,
-  ToolOutcome,
   ToolRegistry,
-  TriggerSource,
 } from "@vendoai/core";
 import { createAutomationsEngine } from "./engine.js";
 
@@ -90,38 +90,10 @@ export interface AutomationsConfig {
   memberships?: (principal: Principal) => Promise<Membership[]>;
 }
 
-export type { RunStatus } from "@vendoai/core";
-
-/** 07 §5 — ONE ledger. The owner / agent / automation / console views are
- *  FILTERS over it, never separate tables. */
-export interface RunRecord {
-  id: RunId;
-  automationId: AutomationId;
-  /** Who it ran as — the filter every owner-scoped view reads. */
-  owner: Principal;
-  /** Which runner ran it; absent for a steps task. */
-  agent?: string;
-  trigger: { kind: TriggerSource["kind"]; event?: string };
-  status: RunStatus;
-  startedAt: IsoDateTime;
-  finishedAt?: IsoDateTime;
-  /** Goal runs: the report's toolCalls. Steps: one per call. */
-  steps: Array<{ id: string; tool: string; outcome: ToolOutcome["status"]; at: IsoDateTime; detail?: string }>;
-  /** Goal: model-written; steps: generated. */
-  summary?: string;
-  /** `code: "needs-permission"` is the one a surface acts on: the run met a
-   *  permission nobody had granted, the ask is pending, and `tool`/`slug` name
-   *  exactly what it needed — so the row can offer Grant & re-run instead of
-   *  making the person go looking. */
-  error?: { code: string; message: string; tool?: string; slug?: string };
-}
-
-/** 07 §5 */
-export interface RunPlan {
-  steps: Array<{ id: string; tool: string; wouldAsk: boolean }>;
-  grantsMissing: string[];
-}
-
+// The ledger's ANSWER shapes live in core (core/src/automation.ts) with the
+// record itself: this package serves them and `@vendoai/ui` renders them, and
+// the dependency guard lets neither import the other.
+export type { EnableResult, RunPlan, RunRecord, RunRowStatus, RunStatus };
 /** 07 §1 — the PUBLIC surface, `vendo.automations`.
  *
  *  There is deliberately no `create` here. Authoring goes through the one
@@ -149,7 +121,7 @@ export interface AutomationsEngine {
     id: AutomationId,
     ctx: RunContext,
     options?: { armedBy?: ToolCall },
-  ): Promise<{ enabled: boolean; missing: ApprovalRequest[]; grantSetId?: string }>;
+  ): Promise<EnableResult>;
   /** 07 §3 — the human titles of the standing powers arming a GOAL automation in
    *  this ctx would hold: the tools whose fire-time policy outcome needs a person.
    *

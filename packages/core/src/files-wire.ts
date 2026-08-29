@@ -23,3 +23,12 @@
  * hostile page would otherwise push files into a signed-in user's drawer.
  */
 export const UPLOAD_HEADER = "x-vendo-upload";
+
+/** What `POST /files` answers: where the file the user shared landed in their
+ *  own files, and how big it was. The path is the whole handle — the message
+ *  then carries a reference and never the bytes, and anything that can open the
+ *  workspace can reach them again. */
+export interface UploadedFile {
+  path: string;
+  bytes: number;
+}

@@ -3,7 +3,7 @@ import type { AutomationId, RunId } from "@vendoai/core";
 import { useCallback } from "react";
 import { useVendoProvider } from "../context.js";
 import { type PollOptions, useResource } from "./use-resource.js";
-import type { AutomationEntry, EnableResult, RunPlan, RunRecord, RunStatus } from "../wire-types.js";
+import type { AutomationEntry, EnableResult, RunPlan, RunRecord, RunStatus } from "@vendoai/core";
 
 export function useAutomations(options?: PollOptions): {
   automations: AutomationEntry[];

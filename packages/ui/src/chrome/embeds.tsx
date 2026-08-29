@@ -19,7 +19,8 @@ import type {
 } from "../embeds.js";
 import { useResource } from "../hooks/use-resource.js";
 import { AppFrame } from "../tree/frames.js";
-import type { ApprovalResolution, OpenSurface } from "../wire-types.js";
+import type { ApprovalResolution } from "@vendoai/core";
+import type { OpenSurface } from "@vendoai/apps/contract";
 import { PlacementAction } from "./add-to-picker.js";
 import { ApprovalCard, APPROVAL_LINES } from "./approval-card.js";
 import { useApprovalModal } from "./approval-modal.js";

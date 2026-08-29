@@ -36,7 +36,7 @@ import {
 } from "react";
 import { useVendoThemeOrDefault } from "../context.js";
 import { themeCssVariables } from "../theme.js";
-import type { SeedDrift } from "../wire-types.js";
+import type { SeedDrift } from "@vendoai/apps/contract";
 import { resolvePointer } from "./bindings.js";
 import { DISPLAY_BRICKS, SURFACE_CONTAINMENT, safeProps } from "./display-bricks.js";
 import { NodeErrorBoundary } from "./error-boundary.js";

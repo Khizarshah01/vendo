@@ -6,6 +6,12 @@ import type { Principal } from "./principal.js";
 import type { RunContext } from "./run-context.js";
 import type { ToolCall, ToolDescriptor } from "./tools.js";
 
+/** 05-guard §1 — what `status()` answers about how this deployment is guarded,
+ *  and the one field of `GET /status` a surface acts on (the no-policy notice).
+ *  Here rather than inline on `Guard.status()` so the door, the guard and the
+ *  client all name the same four values. */
+export type GuardPosture = "unconfigured" | "rules" | "judge" | "rules+judge";
+
 /** 01-core §6. `"org"` (build contract §9.10) is the org-admin policy layer's
  *  strictness clamp: it appears on `ask` and `block` only, because org policy
  *  TIGHTENS and never loosens — no run is ever decided BY it. `"frozen"` is the

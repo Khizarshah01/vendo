@@ -21,6 +21,7 @@ import {
   USE_SERVICE_TOOL,
   type ToolCall,
   type ToolDescriptor,
+  type ToolOutcome,
 } from "./tools.js";
 
 /** 01-core §5, amended 2026-08-03 (connector discovery) — `service-tool` is a
@@ -140,6 +141,23 @@ export const permissionGrantSchema = z.object({
   expiresAt: isoDateTimeSchema.optional(),
   revokedAt: isoDateTimeSchema.optional(),
 }).passthrough() satisfies z.ZodType<PermissionGrant>;
+
+/** What `GET /approvals/:id` answers for a parked guarded call: the frozen
+ *  approval-embed vocabulary, carrying the full request while pending (so the
+ *  consent card can show real inputs) and the resumed call's outcome once
+ *  executed — errors included, which the embed renders with the failed
+ *  vocabulary rather than a blank.
+ *
+ *  The request is absent where the ask is gone but the answer is not in yet —
+ *  an in-app parked press during the resume window, or a door-parked call whose
+ *  yes is in and whose caller has not retried. Surfaces keep waiting on it. The
+ *  outcome is absent for that same door lane: nothing server-side ran the call,
+ *  so "it ran" is all its receipt can say. */
+export type ApprovalResolution =
+  | { state: "pending"; request?: ApprovalRequest }
+  | { state: "executed"; outcome?: ToolOutcome }
+  | { state: "declined" }
+  | { state: "expired" };
 
 /** 01-core §5 */
 export interface ApprovalRequest {

@@ -2,7 +2,7 @@
 import { useCallback } from "react";
 import { useVendoProvider } from "../context.js";
 import { type PollOptions, useResource } from "./use-resource.js";
-import type { ConnectionAccount } from "../wire-types.js";
+import type { ConnectionAccount } from "@vendoai/core";
 
 export function useConnections(options?: PollOptions): {
   connections: ConnectionAccount[];

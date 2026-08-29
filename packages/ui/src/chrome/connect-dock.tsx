@@ -11,7 +11,7 @@ import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import { useVendoProvider, type ConnectorOption } from "../context.js";
 import { useConnections } from "../hooks/use-connections.js";
 import { useConnectorCatalog } from "../hooks/use-connector-catalog.js";
-import type { ConnectionAccount } from "../wire-types.js";
+import type { ConnectionAccount } from "@vendoai/core";
 import { toolkitLogoUrl } from "./build-beat.js";
 import { toolkitDisplayName } from "./humanize.js";
 

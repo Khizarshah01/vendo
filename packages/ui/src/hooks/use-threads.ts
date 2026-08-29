@@ -4,7 +4,7 @@ import type { ThreadId } from "@vendoai/core";
 import { useCallback } from "react";
 import { useVendoProvider } from "../context.js";
 import { type PollOptions, useResource } from "./use-resource.js";
-import type { Thread, ThreadSummary } from "../wire-types.js";
+import type { Thread, ThreadSummary } from "@vendoai/core";
 
 export function useThreads(options?: PollOptions): {
   threads: ThreadSummary[];

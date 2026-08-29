@@ -23,28 +23,8 @@ import {
   type ToolOutcome,
 } from "@vendoai/core";
 import type { UIMessage } from "ai";
-import type {
-  AppListRow,
-  ApprovalResolution,
-  AutomationEntry,
-  ConnectableToolkit,
-  ConnectionAccount,
-  EditResult,
-  EnableResult,
-  InitiatedConnection,
-  OpenSurface,
-  PendingSurface,
-  PlacementEntry,
-  RunPlan,
-  RunRecord,
-  RunStatus,
-  SlotEntry,
-  Thread,
-  ThreadSummary,
-  UploadedFile,
-  VendoStatus,
-  VersionEntry,
-} from "./wire-types.js";
+import type { ApprovalResolution, AutomationEntry, ConnectableToolkit, ConnectionAccount, EnableResult, InitiatedConnection, PlacementEntry, RunPlan, RunRecord, RunStatus, SlotEntry, Thread, ThreadSummary, UploadedFile, VendoStatus } from "@vendoai/core";
+import type { AppListRow, EditResult, OpenSurface, PendingSurface, VersionEntry } from "@vendoai/apps/contract";
 
 export interface VendoClientConfig {
   /** Wire mount point. Default "/api/vendo". */

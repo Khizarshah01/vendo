@@ -12,11 +12,13 @@
 import { Cron } from "croner";
 import { z } from "zod";
 import { VendoError } from "./errors.js";
-import { isoDateTimeSchema, type IsoDateTime } from "./ids.js";
+import type { ApprovalRequest } from "./grants.js";
+import { isoDateTimeSchema, type IsoDateTime, type RunId } from "./ids.js";
 import { canonicalJson } from "./jcs.js";
 import { principalSchema, type Principal } from "./principal.js";
 import type { RunContext } from "./run-context.js";
 import { sha256Hex } from "./sha256.js";
+import type { ToolOutcome } from "./tools.js";
 import { stepSchema, triggerSourceSchema, type Step, type TriggerSource } from "./triggers.js";
 
 /** `atm_<32 hex>` when minted, `atm_<hash of when+task+agent>` or
@@ -135,6 +137,53 @@ export type RunStatus = (typeof RUN_STATUSES)[number];
  *  reader narrower than the acceptor refuses rows the store will happily hold. */
 export const RUN_ROW_STATUSES = [...RUN_STATUSES, "pending-approval"] as const;
 export type RunRowStatus = (typeof RUN_ROW_STATUSES)[number];
+
+/** 07 §5 — ONE ledger. The owner / agent / automation / console views are
+ *  FILTERS over it, never separate tables. `@vendoai/automations` serves these
+ *  rows and `@vendoai/ui` renders them; neither may import the other. */
+export interface RunRecord {
+  id: RunId;
+  automationId: AutomationId;
+  /** Who it ran as — the filter every owner-scoped view reads. */
+  owner: Principal;
+  /** Which runner ran it; absent for a steps task. */
+  agent?: string;
+  trigger: { kind: TriggerSource["kind"]; event?: string };
+  /** The ACCEPTOR's width, not the engine's four: no engine writes
+   *  `pending-approval` but the ledger stores it, and a reader narrower than
+   *  its writer drops real rows. */
+  status: RunRowStatus;
+  startedAt: IsoDateTime;
+  finishedAt?: IsoDateTime;
+  /** Goal runs: the report's toolCalls. Steps: one per call. */
+  steps: Array<{ id: string; tool: string; outcome: ToolOutcome["status"]; at: IsoDateTime; detail?: string }>;
+  /** Goal: model-written; steps: generated. */
+  summary?: string;
+  /** `code: "needs-permission"` is the one a surface acts on: the run met a
+   *  permission nobody had granted, the ask is pending, and `tool`/`slug` name
+   *  exactly what it needed — so the row can offer Grant & re-run instead of
+   *  making the person go looking. */
+  error?: { code: string; message: string; tool?: string; slug?: string };
+}
+
+/** 07 §5 — what `POST /automations/:id/dry-run` answers. */
+export interface RunPlan {
+  steps: Array<{ id: string; tool: string; wouldAsk: boolean }>;
+  grantsMissing: string[];
+}
+
+/** 07 §1 — what `POST /automations/:id/enable` answers. `grantSetId` names the
+ *  ONE set the `missing` asks belong to, so a single decision settles them all;
+ *  present exactly when `missing` is non-empty. */
+export interface EnableResult {
+  enabled: boolean;
+  missing: ApprovalRequest[];
+  grantSetId?: string;
+}
+
+/** 07 §1 — one entry of `GET /automations`: the record itself, with
+ *  `webhookSecret` redacted by the server on every read. */
+export type AutomationEntry = AutomationRecord;
 
 /** THE one create operation, as a type — the implementation is
  *  `create-surface.ts` in `@vendoai/automations`, reached through

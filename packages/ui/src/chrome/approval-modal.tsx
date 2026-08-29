@@ -41,7 +41,7 @@ import { createPortal } from "react-dom";
 import { APPROVALS_DECIDED_EVENT, type ApprovalsDecidedDetail } from "../client-impl.js";
 import { useVendoProvider, useVendoTools } from "../context.js";
 import { themeCssVariables } from "../theme.js";
-import type { ApprovalResolution } from "../wire-types.js";
+import type { ApprovalResolution } from "@vendoai/core";
 import { refusalCopy } from "./approval-card.js";
 import { consentAsk, toolPresentation } from "./build-beat.js";
 import { CARD_EYEBROWS, CardFields, NOTE_SEPARATOR } from "./card-shell.js";

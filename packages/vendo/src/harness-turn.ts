@@ -35,6 +35,7 @@ import {
   type ThreadId,
   type ToolRegistry,
   type WorkspaceFs,
+  type UploadedFile,
 } from "@vendoai/core";
 import {
   hostComponentFiles,
@@ -166,13 +167,9 @@ export interface HarnessTurnsConfig {
   limiter?: Limiter;
 }
 
-/** Where a file the user shared landed, and how big it was. The path is the
- *  whole handle: the drawer is the workspace, so anything that can open the
- *  workspace can reach the bytes again. */
-export interface UploadedFile {
-  path: string;
-  bytes: number;
-}
+// `POST /files`'s answer shape is core's (core/src/files-wire.ts), beside the
+// header that door requires: `@vendoai/ui`'s client reads it back.
+export type { UploadedFile };
 
 /**
  * What the MODEL is handed for a file the user shared.

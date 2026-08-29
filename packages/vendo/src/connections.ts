@@ -1,4 +1,8 @@
-import { consoleSender, debugConnectorHttp, raiseCloudError, VendoError, type Principal } from "@vendoai/core";
+import { consoleSender, debugConnectorHttp, raiseCloudError, VendoError, type ConnectableToolkit, type InitiatedConnection, type Principal } from "@vendoai/core";
+
+// Both answer shapes are core's (core/src/connections.ts): `@vendoai/ui` reads
+// them off the wire and may not import this package.
+export type { ConnectableToolkit, InitiatedConnection };
 import { keepAliveFetch } from "./keep-alive-fetch.js";
 import type { Connector, ConnectorAccount, ConnectorConnections } from "@vendoai/actions";
 
@@ -12,22 +16,6 @@ export interface InitiateOptions {
   connector?: string;
   toolkit: string;
   callbackUrl?: string;
-}
-
-export interface InitiatedConnection {
-  id: string;
-  connector: string;
-  redirectUrl: string;
-}
-
-/** One row of the connect dock's auto catalog: a toolkit a user could finish
- * connecting, tagged with the broker that would carry it. */
-export interface ConnectableToolkit {
-  toolkit: string;
-  connector: string;
-  label?: string;
-  /** One-line capability blurb — feeds the OSS discovery index. */
-  description?: string;
 }
 
 /** 04-actions §3 (block-actions design §B) — the umbrella's per-principal

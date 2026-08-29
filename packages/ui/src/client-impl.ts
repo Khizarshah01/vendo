@@ -1,7 +1,7 @@
 /** Fetch/SSE bindings for the public wire route table (08-ui §2, 09-vendo §3). */
 import { UPLOAD_HEADER, VendoError, joinPath, mountMismatchMessage, type RunId, type VendoErrorCode } from "@vendoai/core";
 import type { VendoClient, VendoClientConfig } from "./client.js";
-import type { ConnectableToolkit, ConnectionAccount } from "./wire-types.js";
+import type { ConnectableToolkit, ConnectionAccount } from "@vendoai/core";
 
 const KNOWN_ERROR_CODES = new Set<VendoErrorCode>([
   "validation",

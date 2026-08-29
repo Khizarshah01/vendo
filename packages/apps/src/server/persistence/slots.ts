@@ -17,7 +17,7 @@
  * (`vendo_records WHERE refs @> '{"subject": …}'::jsonb`, `packages/store/src/
  * erase.ts`), and the only query this surface ever makes.
  */
-import { SLOT_DECAY_MS, type RunContext, type VendoRecord } from "@vendoai/core";
+import { SLOT_DECAY_MS, type RunContext, type SlotEntry, type VendoRecord } from "@vendoai/core";
 import type { EngineOps } from "./engine.js";
 import { listAllEngineRecords } from "./persistence.js";
 
@@ -37,16 +37,16 @@ export interface SlotDescriptor {
   description?: string;
 }
 
-/** A registered slot, as the registry answers it. */
-export interface SlotRecord extends SlotDescriptor {
-  lastSeen: string;
-}
+// A registered slot, as the registry answers it. The shape is core's
+// (core/src/app-surfaces.ts) because `@vendoai/ui` reads these rows off
+// `GET /slots` and may not import this package.
+export type { SlotEntry };
 
 export interface SlotRegistry {
   /** Idempotent: one row per (subject, slot), refreshed in place. */
   report(input: { slots: readonly SlotDescriptor[] }, ctx: RunContext): Promise<void>;
   /** The caller's own slots inside the decay window, most recently seen first. */
-  list(ctx: RunContext): Promise<SlotRecord[]>;
+  list(ctx: RunContext): Promise<SlotEntry[]>;
 }
 
 /** Both halves are percent-encoded — `encodeURIComponent` escapes ":" as %3A —
@@ -54,8 +54,8 @@ export interface SlotRegistry {
 const rowId = (subject: string, slotId: string): string =>
   `slot:${encodeURIComponent(subject)}:${encodeURIComponent(slotId)}`;
 
-const slotOf = (record: VendoRecord): SlotRecord | undefined => {
-  const data = record.data as Partial<SlotRecord> | null;
+const slotOf = (record: VendoRecord): SlotEntry | undefined => {
+  const data = record.data as Partial<SlotEntry> | null;
   if (data === null || typeof data !== "object") return undefined;
   const { id, label, description, lastSeen } = data;
   if (typeof id !== "string" || typeof label !== "string" || typeof lastSeen !== "string") {
@@ -86,7 +86,7 @@ export const createSlotRegistry = (engine: EngineOps): SlotRegistry => ({
     // what this answer is about. ISO-8601 UTC strings compare chronologically.
     return found
       .map(slotOf)
-      .filter((slot): slot is SlotRecord => slot !== undefined && Date.parse(slot.lastSeen) >= floor)
+      .filter((slot): slot is SlotEntry => slot !== undefined && Date.parse(slot.lastSeen) >= floor)
       .sort((left, right) => right.lastSeen.localeCompare(left.lastSeen));
   },
 });

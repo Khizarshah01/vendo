@@ -42,6 +42,7 @@ import {
   type VendoRecord,
   withheldFromUnattended,
   withResolvedRisk,
+  type GuardPosture,
 } from "@vendoai/core";
 import { PolicyResolver, resolvePolicyConfig, ruleMatches } from "./policy.js";
 import type {
@@ -1039,7 +1040,7 @@ class GuardImplementation implements VendoGuard {
     });
   }
 
-  status(): { posture: "unconfigured" | "rules" | "judge" | "rules+judge" } {
+  status(): { posture: GuardPosture } {
     const hasRules = this.#policyConfig !== undefined;
     const hasJudge = this.#config.judge !== undefined;
     if (hasRules && hasJudge) return { posture: "rules+judge" };

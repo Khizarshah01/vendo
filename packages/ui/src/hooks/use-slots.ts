@@ -4,7 +4,7 @@
 import { useCallback } from "react";
 import { useVendoProvider } from "../context.js";
 import { type PollOptions, useResource } from "./use-resource.js";
-import type { SlotEntry } from "../wire-types.js";
+import type { SlotEntry } from "@vendoai/core";
 
 export function useSlots(options?: PollOptions): {
   slots: SlotEntry[];

@@ -31,7 +31,7 @@ export {
 // caller must be able to name them.
 export type {
   SlotDescriptor,
-  SlotRecord,
+  SlotEntry,
   SlotRegistry,
 } from "./persistence/slots.js";
 export type { SandboxAdapter, SandboxMachine, SandboxResumePolicy } from "./escalation/sandbox.js";

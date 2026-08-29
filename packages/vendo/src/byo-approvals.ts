@@ -11,9 +11,9 @@ import {
   type RunContext,
   type StoreOps,
   type ToolCall,
-  type ToolOutcome,
   type ToolRegistry,
   type VendoRecord,
+  type ApprovalResolution,
 } from "@vendoai/core";
 import type { VendoGuard } from "@vendoai/guard";
 
@@ -81,11 +81,7 @@ interface ParkedByoCall {
  *
  *  The outcome is absent for the same door lane: nothing here runs that call,
  *  so once it has run all this seam can honestly say is that it did. */
-export type ByoApprovalResolution =
-  | { state: "pending"; request?: ApprovalRequest }
-  | { state: "executed"; outcome?: ToolOutcome }
-  | { state: "declined" }
-  | { state: "expired" };
+export type ByoApprovalResolution = ApprovalResolution;
 
 export interface ByoApprovals {
   /** The guard-bound registry with approval parking — the registry the BYO

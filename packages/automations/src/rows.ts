@@ -6,7 +6,7 @@
  * Lifted out of engine.ts unchanged.
  */
 import { VendoError, type AutomationRecord, type StoreOps, type VendoRecord } from "@vendoai/core";
-import type { RunRecord, RunStatus } from "./index.js";
+import type { RunRecord, RunRowStatus } from "./index.js";
 import { automationRowSchema, runRowDataSchema, type InternalRunRecord } from "./types.js";
 
 /** Every engine-owned generic row belongs to ONE automation, and the 02-store §5
@@ -59,7 +59,10 @@ export const parseRunRecord = (record: VendoRecord): InternalRunRecord => {
 // need stripping.
 export const publicRun = ({ __event: _, __lineage: __, __record: ___, ...record }: InternalRunRecord): RunRecord => record;
 
-export const terminalStatus = (status: RunStatus): status is Extract<RunStatus, "ok" | "error" | "stopped"> =>
+// Takes the ROW's width, not the engine's four: these rows come back off the
+// ledger, which also stores `pending-approval`, and a parked run is simply not
+// terminal. Narrower than its input is how a reader drops rows.
+export const terminalStatus = (status: RunRowStatus): status is Extract<RunRowStatus, "ok" | "error" | "stopped"> =>
   status === "ok" || status === "error" || status === "stopped";
 
 export const syncRun = (target: InternalRunRecord, source: InternalRunRecord): void => {
