@@ -4,6 +4,7 @@ import {
   type AutomationId,
   type IsoDateTime,
   type Json,
+  RUN_STATUSES,
   type RunId,
   type ThreadId,
   type TriggerSource,
@@ -51,7 +52,12 @@ export interface RunRow {
    *  an automation record names none (core's `automation.ts`). */
   automationId: AutomationId;
   trigger: { kind: TriggerSource["kind"]; event?: string };
-  status: "running" | "ok" | "error" | "stopped" | "pending-approval";
+  /** The engine's four (`RunStatus`) plus `pending-approval`, which no engine
+   *  writes: the store is the wider ACCEPTOR here, and `parseRunData` has taken
+   *  it since before the ledger dropped its waiting state. Spelled as a union
+   *  with the shared tuple so the four can never drift, and narrowing it would
+   *  be a behaviour change, not a consolidation. */
+  status: (typeof RUN_STATUSES)[number] | "pending-approval";
   record: Json;
   startedAt: IsoDateTime;
   finishedAt?: IsoDateTime;

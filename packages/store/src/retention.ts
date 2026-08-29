@@ -1,9 +1,9 @@
 import { assertEngineCollection, VendoError, type StoreOps } from "@vendoai/core";
 import type { Db } from "./db.js";
 import {
-  ageColumnOf,
   DEDICATED_RECORD_COLLECTIONS,
   RESERVED_COLLECTIONS,
+  RESERVED_CURSOR_COLUMNS,
   type ReservedCollection,
 } from "./routing.js";
 
@@ -46,13 +46,13 @@ const NOT_SWEEPABLE: Record<string, string> = {
  *  routing constants (footprint.ts' rule), never from the caller's string. A
  *  generic collection is a `collection = $1` scope inside `vendo_records`; a
  *  collection with a table of its own is the whole table. The age column is the
- *  door's own `cursorColumn`, read off the door's config rather than copied, so
+ *  routing table's own `RESERVED_CURSOR_COLUMNS`, read rather than copied, so
  *  "older than" cannot come to mean one thing to a reader and another to a
  *  sweep. */
-function liftFrom(db: Db, collection: string): { table: string; where: string } {
+function liftFrom(collection: string): { table: string; where: string } {
   const reserved = (RESERVED_COLLECTIONS as readonly string[]).includes(collection);
   const ownTable = reserved || (DEDICATED_RECORD_COLLECTIONS as readonly string[]).includes(collection);
-  const age = reserved ? ageColumnOf(db, collection as ReservedCollection) : "created_at";
+  const age = reserved ? RESERVED_CURSOR_COLUMNS[collection as ReservedCollection] : "created_at";
   return {
     table: ownTable ? collection : "vendo_records",
     where: [
@@ -91,7 +91,7 @@ export function storeRetention(db: Db): NonNullable<StoreOps["retention"]> {
   return {
     async quarantine(collection, olderThan) {
       assertSweepable(collection);
-      const { table, where } = liftFrom(db, collection);
+      const { table, where } = liftFrom(collection);
       // `id` is read back out of the row's own jsonb rather than named per
       // table, because `vendo_effects` keys its rows `key` and everything else
       // keys them `id`. `subject`/`app_id` likewise: a typed door carries them

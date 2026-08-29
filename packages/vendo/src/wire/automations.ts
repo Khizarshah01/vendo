@@ -1,5 +1,5 @@
 import type { RunStatus } from "@vendoai/automations";
-import { VendoError } from "@vendoai/core";
+import { RUN_STATUSES, VendoError } from "@vendoai/core";
 import { json, route, string, type RouteEntry } from "./shared.js";
 
 /** 07-automations / 09 §3 — the /automations wire area, one route per verb on
@@ -44,9 +44,8 @@ export const automationRoutes: RouteEntry[] = [
 export const runRoutes: RouteEntry[] = [
   route("GET", "/runs", async ({ url, deps, context }) => {
     const status = url.searchParams.get("status") ?? undefined;
-    const allowed: RunStatus[] = ["running", "ok", "error", "stopped"];
-    if (status !== undefined && !allowed.includes(status as RunStatus)) {
-      throw new VendoError("validation", `run status "${status}" is not one of ${allowed.join(", ")}`);
+    if (status !== undefined && !(RUN_STATUSES as readonly string[]).includes(status)) {
+      throw new VendoError("validation", `run status "${status}" is not one of ${RUN_STATUSES.join(", ")}`);
     }
     const filter = {
       ...(url.searchParams.get("automationId") === null ? {} : { automationId: url.searchParams.get("automationId")! }),

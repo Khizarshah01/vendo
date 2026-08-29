@@ -22,6 +22,7 @@ import type {
   RiskResolver,
   RunContext,
   RunId,
+  RunStatus,
   StoreAdapter,
   StoreOps,
   ToolCall,
@@ -90,12 +91,7 @@ export interface AutomationsConfig {
   memberships?: (principal: Principal) => Promise<Membership[]>;
 }
 
-/** 07 §5. There is no waiting state: a run that meets a permission it does not
- *  hold fails LOUDLY (`error`, code `needs-permission`) and the person grants it
- *  and re-runs. A run that could be resumed later was a run nobody could see the
- *  end of — it held an approval open, an identity open, and an intent open across
- *  an unbounded gap. */
-export type RunStatus = "running" | "ok" | "error" | "stopped";
+export type { RunStatus } from "@vendoai/core";
 
 /** 07 §5 — ONE ledger. The owner / agent / automation / console views are
  *  FILTERS over it, never separate tables. */

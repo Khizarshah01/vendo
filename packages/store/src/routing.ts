@@ -83,6 +83,24 @@ export const ATOMIC_RESERVED_COLLECTIONS = [
 
 export type ReservedCollection = typeof RESERVED_COLLECTIONS[number];
 
+/** The column each routed collection carries its own AGE in, and the keyset a
+ *  page walks. A map rather than a literal per case: this router is mirrored
+ *  door-for-door by Vendo Cloud's own typed doors, and a value copied across
+ *  that seam is a retention sweep and a reader disagreeing about which column
+ *  "older" is measured on — silently, in one deployment only. Exported so the
+ *  mirror reads it instead of restating it. */
+export const RESERVED_CURSOR_COLUMNS = {
+  vendo_grants: "granted_at",
+  vendo_approvals: "created_at",
+  vendo_audit: "at",
+  vendo_threads: "created_at",
+  vendo_automations: "created_at",
+  vendo_runs: "started_at",
+  vendo_apps: "created_at",
+  vendo_effects: "at",
+  vendo_app_grants: "created_at",
+} as const satisfies Record<ReservedCollection, string>;
+
 interface RoutedConfig {
   table: ReservedCollection;
   select: string;
@@ -92,7 +110,6 @@ interface RoutedConfig {
   /** 02-store §2: vendo_audit is append-only through this door — `delete` is
    *  refused outright; rows are erased only via the store erase API (02 §5). */
   appendOnly?: true;
-  cursorColumn: string;
   refs: Readonly<Record<string, string>>;
   fromDb(row: Record<string, unknown>): VendoRecord;
   put(record: { id: string; data: unknown; refs?: Record<string, string> }): Promise<VendoRecord>;
@@ -302,12 +319,12 @@ function createTableRecordStore(db: Db, config: RoutedConfig): RecordStore {
       if (query.cursor !== undefined) {
         const cursor = decodeCursor(query.cursor);
         params.push(cursor.c, cursor.i);
-        clauses.push(`(${cursorMs(config.cursorColumn)}, id) < (${cursorMs(`$${params.length - 1}::timestamptz`)}, $${params.length})`);
+        clauses.push(`(${cursorMs(RESERVED_CURSOR_COLUMNS[config.table])}, id) < (${cursorMs(`$${params.length - 1}::timestamptz`)}, $${params.length})`);
       }
       params.push(limit + 1);
       const result = await db.query(
         `${config.listSelect ?? config.select}${clauses.length ? ` WHERE ${clauses.join(" AND ")}` : ""}
-         ORDER BY ${cursorMs(config.cursorColumn)} DESC, id DESC LIMIT $${params.length}`,
+         ORDER BY ${cursorMs(RESERVED_CURSOR_COLUMNS[config.table])} DESC, id DESC LIMIT $${params.length}`,
         params,
       );
       const records = result.rows.slice(0, limit).map(config.fromDb);
@@ -327,7 +344,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
       return {
         table: collection,
         select: "SELECT * FROM vendo_grants",
-        cursorColumn: "granted_at",
         refs: { subject: "subject", tool: "tool", app_id: "app_id", automation_id: "automation_id" },
         fromDb: (row) => grantRecord(grantFromRow(row)),
         async put(record) {
@@ -342,7 +358,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
       return {
         table: collection,
         select: "SELECT * FROM vendo_approvals",
-        cursorColumn: "created_at",
         refs: { subject: "subject", status: "status", call: "call_id" },
         fromDb: (row) => approvalRecord(approvalFromRow(row)),
         async put(record) {
@@ -368,7 +383,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
         table: collection,
         select: "SELECT * FROM vendo_audit",
         appendOnly: true,
-        cursorColumn: "at",
         refs: { subject: "subject", kind: "kind", app_id: "app_id", tool: "tool" },
         fromDb: (row) => auditRecord(row["event"] as AuditEvent),
         async put(record) {
@@ -392,7 +406,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
         listSelect: `SELECT t.id, t.subject, t.title,
            CASE WHEN t.title IS NULL THEN ${THREAD_MESSAGES_AGGREGATE("t")} ELSE '[]'::jsonb END AS messages,
            t.created_at, t.updated_at FROM vendo_threads t`,
-        cursorColumn: "created_at",
         refs: { subject: "subject" },
         fromDb: (row) => threadRecord(threadFromRow(row)),
         async put(record) {
@@ -462,7 +475,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
       return {
         table: collection,
         select: "SELECT * FROM vendo_automations",
-        cursorColumn: "created_at",
         refs: { subject: "subject", when_kind: "when_kind" },
         fromDb: automationRecord,
         async put(record) {
@@ -522,7 +534,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
       return {
         table: collection,
         select: "SELECT * FROM vendo_runs",
-        cursorColumn: "started_at",
         refs: { automation_id: "automation_id", status: "status" },
         fromDb: (row) => runRecord(runFromRow(row)),
         async put(record) {
@@ -536,7 +547,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
       return {
         table: collection,
         select: "SELECT * FROM vendo_apps",
-        cursorColumn: "created_at",
         refs: { subject: "subject" },
         fromDb: (row) => appRecord(appFromRow(row)),
         async put(record) {
@@ -598,7 +608,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
         // Receipts are a ledger: never deleted through the door, erased only
         // via the store erase API — same law as vendo_audit.
         appendOnly: true,
-        cursorColumn: "at",
         refs: { subject: "subject" },
         fromDb: effectRecord,
         async put(record) {
@@ -634,7 +643,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
         // directly, so grants routed to the generic table would be invisible
         // to both (the vendo_effects lesson).
         select: "SELECT * FROM vendo_app_grants",
-        cursorColumn: "created_at",
         refs: { app_id: "app_id", org_id: "org_id", principal: "principal", level: "level" },
         fromDb: appGrantRecord,
         async put(record) {
@@ -655,15 +663,6 @@ function configFor(db: Db, collection: ReservedCollection): RoutedConfig {
         },
       };
   }
-}
-
-/** The column one routed collection carries its own age in — the door's own
- *  `cursorColumn`, read off the door's config rather than copied into a second
- *  table, so a retention sweep and a reader can never come to disagree about
- *  which column "older" is measured on. The Db is the config builder's; nothing
- *  is queried to answer this. */
-export function ageColumnOf(db: Db, collection: ReservedCollection): string {
-  return configFor(db, collection).cursorColumn;
 }
 
 export function createReservedRecordStore(

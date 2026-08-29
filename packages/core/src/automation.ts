@@ -111,6 +111,17 @@ export const automationRecordSchema = z.object({
   updatedAt: isoDateTimeSchema,
 }).passthrough() satisfies z.ZodType<AutomationRecord>;
 
+/** 07 §5 — a RUN's lifecycle. There is no waiting state: a run that meets a
+ *  permission it does not hold fails LOUDLY (`error`, code `needs-permission`)
+ *  and the person grants it and re-runs. A run that could be resumed later was a
+ *  run nobody could see the end of — it held an approval open, an identity open,
+ *  and an intent open across an unbounded gap.
+ *
+ *  Here rather than in `@vendoai/automations` because `@vendoai/store` persists
+ *  these rows and may not import that package (dependency-guard). */
+export const RUN_STATUSES = ["running", "ok", "error", "stopped"] as const;
+export type RunStatus = (typeof RUN_STATUSES)[number];
+
 /** THE one create operation, as a type — the implementation is
  *  `create-surface.ts` in `@vendoai/automations`, reached through
  *  `automationsInternals(engine)` and never exposed on `vendo.automations`.

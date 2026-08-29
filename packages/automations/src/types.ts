@@ -8,6 +8,7 @@
 import {
   approvalRequestSchema,
   automationRecordSchema,
+  RUN_STATUSES,
   type AutomationRecord,
   type Json,
   type RunId,
@@ -101,7 +102,7 @@ export interface InternalRunRecord extends RunRecord {
   __record?: AutomationRecord;
 }
 
-const runStatusSchema = z.enum(["running", "ok", "error", "stopped"]);
+const runStatusSchema = z.enum(RUN_STATUSES);
 
 const baseRunRecordSchema = z.object({
   id: z.string(),

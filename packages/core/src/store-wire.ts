@@ -1,7 +1,9 @@
 import { z } from "zod";
+import { AUDIT_DECIDED_BY, AUDIT_KINDS, AUDIT_OUTCOMES } from "./audit.js";
 import { VendoError, safeErrorMessage, vendoErrorCodeSchema, type VendoErrorCode } from "./errors.js";
 import { isoDateTimeSchema, type Json } from "./ids.js";
 import { limitActionSchema } from "./limits.js";
+import { VENUES } from "./run-context.js";
 import {
   recordQuerySchema,
   vendoRecordSchema,
@@ -445,15 +447,16 @@ export const storeWireLifecyclePromoteRequestSchema = z.object({
     feed and the tally the way `AuditFilters` is shared on the contract side: a
     WHERE spelled twice is a WHERE that drifts, and a tally that counts a
     different set of rows than the feed shows is the drift nobody can see.
-    The enums are spelled here rather than imported from `auditEventSchema`
-    because this is the REQUEST, and a request that names a kind this build has
-    not heard of should be refused by the mount's own validation, not silently
-    widened. */
+    The MEMBERS come from `audit.ts` — one spelling, so a kind added to the row
+    cannot miss the filter — but the SCHEMA is still built here rather than
+    reused from `auditEventSchema`, because this is the REQUEST: a request that
+    names a kind this build has not heard of must be refused by the mount's own
+    validation, not silently widened. */
 const auditFilterFields = {
-  kind: z.enum(["tool-call", "approval", "policy-decision", "run", "app-lifecycle", "share", "door-auth", "principal"]).optional(),
-  venue: z.enum(["chat", "app", "automation", "mcp"]).optional(),
-  outcome: z.enum(["ok", "error", "pending-approval", "blocked", "connect-required"]).optional(),
-  decidedBy: z.enum(["grant", "rule", "judge", "default", "confirmEach", "breaker", "denied", "org", "frozen"]).optional(),
+  kind: z.enum(AUDIT_KINDS).optional(),
+  venue: z.enum(VENUES).optional(),
+  outcome: z.enum(AUDIT_OUTCOMES).optional(),
+  decidedBy: z.enum(AUDIT_DECIDED_BY).optional(),
 };
 
 /** An empty body is the whole feed, newest first. */

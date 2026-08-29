@@ -1,3 +1,4 @@
+import { z } from "zod";
 import type { Json } from "./ids.js";
 
 /**
@@ -31,6 +32,23 @@ export interface MeterExhausted {
 
 /** The console's stable refusal code (one shape, all services). */
 export const METER_EXHAUSTED_CODE = "meter-exhausted";
+
+/** The refusal BODY as every Cloud door WRITES it — the wire's own snake_case,
+ *  not the camelCase `MeterExhausted` the parser below produces. The producing
+ *  door and any second reader validate against this rather than re-listing the
+ *  fields; `parseMeterExhausted` stays deliberately looser, because a host
+ *  pinned to an older core must still render a sentence from a partial body. */
+export const meterExhaustedBodySchema = z.object({
+  meter: z.string(),
+  unit: z.literal("usd").optional(),
+  used: z.number(),
+  limit: z.number(),
+  resets_at: z.string(),
+  reason: z.string(),
+  exits: z.object({ upgrade_url: z.string(), byo_docs_url: z.string() }),
+});
+
+export type MeterExhaustedBody = z.infer<typeof meterExhaustedBodySchema>;
 
 /** Only short machine-token strings from the body are ever rendered — the
  *  message stays operator-grade even against a garbled body. */

@@ -29,6 +29,7 @@ export { postgresAppDatabase, appSchema } from "./app-database.js";
 export {
   DEDICATED_RECORD_COLLECTIONS,
   RESERVED_COLLECTIONS,
+  RESERVED_CURSOR_COLUMNS,
   type ReservedCollection,
 } from "./routing.js";
 export { eraseStore, type EraseAppSql, type EraseReport, type EraseTable } from "./erase.js";

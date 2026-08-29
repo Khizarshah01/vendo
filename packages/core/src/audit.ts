@@ -1,16 +1,26 @@
 import { z } from "zod";
 import { appIdSchema, isoDateTimeSchema, turnIdSchema, type AppId, type IsoDateTime, type Json, type TurnId } from "./ids.js";
 import { principalSchema, type Principal } from "./principal.js";
-import type { RunContext } from "./run-context.js";
+import { VENUES, type RunContext } from "./run-context.js";
 import { triggerRefSchema, type TriggerRef } from "./triggers.js";
 import type { GuardDecision } from "./guard.js";
 import { riskLabelSchema, type RiskLabel, type ToolOutcome } from "./tools.js";
+
+/** The audit enums' members. ONE spelling each: the interface below, the row
+ *  schema, and the wire's request filters (`store-wire.ts`) all build from these
+ *  tuples, so a member added in one place cannot silently miss the others.
+ *  `venue` needs no tuple here — `VENUES` is already its one source, and the
+ *  `satisfies` on the other two ties them to the types that own them. */
+export const AUDIT_KINDS = ["tool-call", "approval", "policy-decision", "run", "app-lifecycle", "share", "door-auth", "principal"] as const;
+export type AuditKind = (typeof AUDIT_KINDS)[number];
+export const AUDIT_OUTCOMES = ["ok", "error", "pending-approval", "blocked", "connect-required"] as const satisfies readonly ToolOutcome["status"][];
+export const AUDIT_DECIDED_BY = ["grant", "rule", "judge", "default", "confirmEach", "breaker", "denied", "org", "frozen"] as const satisfies readonly GuardDecision["decidedBy"][];
 
 /** 01-core §7 */
 export interface AuditEvent {
   id: string;
   at: IsoDateTime;
-  kind: "tool-call" | "approval" | "policy-decision" | "run" | "app-lifecycle" | "share" | "door-auth" | "principal";
+  kind: AuditKind;
   principal: Principal;
   venue: RunContext["venue"];
   presence: RunContext["presence"];
@@ -63,9 +73,9 @@ export const auditContext = (
 export const auditEventSchema = z.object({
   id: z.string().regex(/^aud_.+$/),
   at: isoDateTimeSchema,
-  kind: z.enum(["tool-call", "approval", "policy-decision", "run", "app-lifecycle", "share", "door-auth", "principal"]),
+  kind: z.enum(AUDIT_KINDS),
   principal: principalSchema,
-  venue: z.enum(["chat", "app", "automation", "mcp"]),
+  venue: z.enum(VENUES),
   presence: z.enum(["present", "away"]),
   appId: appIdSchema.optional(),
   trigger: triggerRefSchema.optional(),
@@ -74,7 +84,7 @@ export const auditEventSchema = z.object({
   tool: z.string().optional(),
   risk: riskLabelSchema.optional(),
   inputPreview: z.string().optional(),
-  outcome: z.enum(["ok", "error", "pending-approval", "blocked", "connect-required"]).optional(),
-  decidedBy: z.enum(["grant", "rule", "judge", "default", "confirmEach", "breaker", "denied", "org", "frozen"]).optional(),
+  outcome: z.enum(AUDIT_OUTCOMES).optional(),
+  decidedBy: z.enum(AUDIT_DECIDED_BY).optional(),
   detail: z.unknown().optional(),
 }).passthrough() satisfies z.ZodType<AuditEvent>;
