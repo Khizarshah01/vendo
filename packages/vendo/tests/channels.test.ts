@@ -98,7 +98,51 @@ describe("cloudTextChannel — the frozen wire, from this side", () => {
     ]);
     expect(new Set(calls.map((call) => call.auth))).toEqual(new Set(["Bearer vk_live_abc"]));
     expect(calls[0]?.body).toEqual({ url: "https://maple.test", secret: "sec" });
+    // The send BODY is frozen: the idempotency key rides a header, so nothing
+    // reading this wire has to learn a new field.
     expect(calls[1]?.body).toEqual({ conversationId: "conv_1", text: "two invoices are due" });
+  });
+
+  it("carries ONE Idempotency-Key across a send's retries, and a fresh one for the next send", async () => {
+    const keys: Array<string | null> = [];
+    let attempts = 0;
+    const channels = cloudTextChannel({
+      apiKey: "vk_live_abc",
+      fetch: async (_input, init) => {
+        keys.push(new Headers(init?.headers).get("idempotency-key"));
+        attempts += 1;
+        return attempts === 1
+          ? Response.json({ error: { code: "unavailable", message: "blip" } }, { status: 503 })
+          : Response.json({ ok: true });
+      },
+    });
+
+    await channels.send({ conversationId: "conv_1", text: "on it" });
+    await channels.send({ conversationId: "conv_1", text: "and one more" });
+
+    expect(keys).toHaveLength(3);
+    expect(keys[0]).toMatch(/^idm_/);
+    expect(keys[1]).toBe(keys[0]);
+    expect(keys[2]).not.toBe(keys[0]);
+  });
+
+  it("does not spend a person's second on a refusal that answers the same way twice", async () => {
+    let attempts = 0;
+    const channels = cloudTextChannel({
+      apiKey: "vk_live_abc",
+      fetch: async () => {
+        attempts += 1;
+        return Response.json(
+          { error: { code: "not-found", message: "No such conversation." } },
+          { status: 404 },
+        );
+      },
+    });
+
+    const error = await refusal(() => channels.send({ conversationId: "conv_1", text: "on it" }));
+
+    expect(error.code).toBe("not-found");
+    expect(attempts).toBe(1);
   });
 
   it("fails loudly on a registration that carries no identity to text", async () => {

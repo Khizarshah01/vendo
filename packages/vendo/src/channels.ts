@@ -145,13 +145,36 @@ const DEFAULT_TIMEOUT_MS = 30_000;
  *  retries at 150/300/600ms: long enough to outlast a redeploy blip, short
  *  enough that somebody holding their phone does not notice.
  *
- *  A refused call (the console answered non-2xx) delivered nothing, so retrying
- *  it cannot duplicate a text. A call that failed at the socket MIGHT have
- *  landed, so a retry can put the same message on the conversation twice — a
- *  deliberate trade: a repeated text is a wart, a silently lost reply is a
- *  broken product. */
+ *  What makes retrying SAFE on a wire where one call is one visible bubble on
+ *  somebody's phone is the `Idempotency-Key` below, never the shape of the
+ *  failure. A refusal is not proof that nothing was delivered: the console can
+ *  answer non-2xx after the vendor has already carried the message, and this
+ *  side cannot tell that apart from a refusal that delivered nothing. Same
+ *  posture as hostedStore's mutations — one key per logical call, replayed
+ *  verbatim on a retry. */
 const SEND_RETRIES = 3;
 const RETRY_BACKOFF_MS = 150;
+
+/** Codes the console MEANT: a body it will not parse, a conversation that is
+ *  not this deployment's, a key the meter has stopped. The same call answers
+ *  the same way 150ms later, so retrying one only makes a person wait a second
+ *  longer for the same failure. Everything else — a dead socket, a 503, an
+ *  abort — is the blip the retries above exist for. */
+const SETTLED_CODES: ReadonlySet<string> = new Set([
+  "validation",
+  "not-found",
+  "conflict",
+  "forbidden",
+  "blocked",
+  "not-implemented",
+  "cloud-required",
+]);
+
+/** `raiseChannelsError` throws a VendoError for a wire-legal code and a plain
+ *  Error carrying `code` for its own tail, so the field is read off either. */
+const isSettled = (error: unknown): boolean =>
+  typeof error === "object" && error !== null && "code" in error
+  && SETTLED_CODES.has(String((error as { code: unknown }).code));
 
 /** The shared console error table (cloud-console.ts), exactly as
  *  cloudConnections uses it. */
@@ -178,10 +201,16 @@ export function cloudTextChannel(options: CloudTextChannelOptions): ChannelsServ
     raise: raiseChannelsError,
   });
 
-  async function post(path: string, body: unknown): Promise<unknown> {
+  async function post(
+    path: string,
+    body: unknown,
+    headers?: Record<string, string>,
+  ): Promise<unknown> {
+    // The SAME init on every attempt — same key, same body — so a call the
+    // console already carried is deduped rather than delivered again.
     const init: RequestInit = {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", ...headers },
       body: JSON.stringify(body),
     };
     let response: Response;
@@ -190,7 +219,7 @@ export function cloudTextChannel(options: CloudTextChannelOptions): ChannelsServ
         response = await send(path, init);
         break;
       } catch (error) {
-        if (attempt === SEND_RETRIES) throw error;
+        if (attempt === SEND_RETRIES || isSettled(error)) throw error;
         await new Promise((resolve) => setTimeout(resolve, RETRY_BACKOFF_MS * 2 ** attempt));
       }
     }
@@ -223,7 +252,15 @@ export function cloudTextChannel(options: CloudTextChannelOptions): ChannelsServ
       };
     },
     async send(input) {
-      await post("/api/v1/channels/text/send", input);
+      // ONE key per logical send, minted OUTSIDE `post` so every retry of it
+      // carries the same one. That is what lets the console tell a retry from a
+      // second message, and it is the whole reason riding out a blip on this
+      // wire cannot text a person twice. A header, not a body field, so the
+      // frozen send body does not move. WebCrypto only, like
+      // channelInboundSecret, so the module keeps bundling for edge targets.
+      await post("/api/v1/channels/text/send", input, {
+        "idempotency-key": `idm_${globalThis.crypto.randomUUID()}`,
+      });
     },
   };
 }
