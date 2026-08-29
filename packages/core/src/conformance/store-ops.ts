@@ -3,7 +3,7 @@ import { ENGINE_ALLOWLIST_VERSION, engineAppHistory } from "../engine-collection
 import type { VendoErrorCode } from "../errors.js";
 import { isoDateTimeSchema, type IsoDateTime } from "../ids.js";
 import { STORE_WIRE_APPEND_MESSAGES_OPS, STORE_WIRE_PATHS, STORE_WIRE_TURN_OPS, VENDO_STORE_WIRE_FORMAT } from "../store-wire.js";
-import type { AuditQuery, CollectionFootprint, StoreOps, UsageCountQuery } from "../store.js";
+import { tenantConnectorSecret, type AuditQuery, type CollectionFootprint, type StoreOps, type UsageCountQuery } from "../store.js";
 import { assert, assertBytesEqual, assertDeepEqual } from "./assertions.js";
 import { omitted, type ConformanceCase, type ConformanceOmission, type ConformanceSuite } from "./index.js";
 
@@ -1412,13 +1412,20 @@ export function storeOpsConformance(opts: StoreOpsConformanceOptions): Conforman
       // lifecycle
       // =====================================================================
 
-      opsCase(opts, "lifecycle.erase removes one subject's records, threads, and harness state", async (ops) => {
+      opsCase(opts, "lifecycle.erase removes one subject's records, threads, harness state, and connector tokens", async (ops) => {
         await ops.engine.put("vendo_parked_call", { id: "gone", data: {}, refs: { subject: "erase_me" } });
         await ops.engine.put("vendo_parked_call", { id: "keep", data: {}, refs: { subject: "other" } });
         await ops.transcripts.putThread({ id: "thr_erase", subject: "erase_me", messages: [] });
         await ops.transcripts.putThread({ id: "thr_keep", subject: "other", messages: [] });
         await ops.harness.set("thr_erase", "erase_me", { v: 1 });
         await ops.harness.set("thr_keep", "other", { v: 1 });
+        // A tenant connector's vault name CARRIES the org that owns it, so the
+        // subject axis reaches the live credential and not only the rows that
+        // point at it. The host's own config is name-keyed and belongs to the
+        // deployment, so an erase must leave it armed — the pair is what tells a
+        // targeted sweep from a blanket DELETE that also passes the first half.
+        await ops.secrets.set(tenantConnectorSecret("erase_me", "github"), "dummy-token");
+        await ops.secrets.set("conf_host_token", "dummy-host-token");
 
         const report = await ops.lifecycle.erase({ subject: "erase_me" });
         assert(report !== null && report !== undefined, "erase must return a report");
@@ -1428,6 +1435,8 @@ export function storeOpsConformance(opts: StoreOpsConformanceOptions): Conforman
         assert(await ops.transcripts.getThread("thr_keep") !== null, "erase removed another subject's thread");
         assert(await ops.harness.get("thr_erase", "erase_me") === null, "erase left the subject's harness state behind");
         assertDeepEqual(await ops.harness.get("thr_keep", "other"), { v: 1 }, "erase took another subject's harness state");
+        assert(await ops.secrets.get(tenantConnectorSecret("erase_me", "github")) === null, "erase left the subject's connector token in the vault");
+        assert(await ops.secrets.get("conf_host_token") === "dummy-host-token", "erase disarmed the host's own secret");
       }),
 
       /** The erase target's OTHER half. `EraseTarget` is a union of exactly two

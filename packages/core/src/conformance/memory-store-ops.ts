@@ -4,6 +4,7 @@ import { VendoError } from "../errors.js";
 import type { IsoDateTime } from "../ids.js";
 import { STORE_WIRE_PATHS, VENDO_STORE_WIRE_FORMAT, type StoreWireStatus } from "../store-wire.js";
 import {
+  tenantConnectorSecretPrefix,
   type AuditFilters,
   type AuditTallyRow,
   type CollectionFootprint,
@@ -673,6 +674,13 @@ export function memoryStoreOps(): StoreOps {
         for (const [collection, held] of quarantined) {
           quarantined.set(collection, held.filter((row) => row.record.refs?.["subject"] !== target.subject));
         }
+        // A tenant connector's vault name carries the org that owns it, so the
+        // subject axis reaches the live credential itself and not only the rows
+        // that point at it. Prefix-matched through core's ONE builder, never a
+        // blanket sweep: the host's own name-keyed config belongs to the
+        // deployment and an erased person must not disarm it.
+        const owned = tenantConnectorSecretPrefix(target.subject);
+        for (const name of [...vault.keys()]) if (name.startsWith(owned)) vault.delete(name);
       }
       if (target.appId) {
         // Everything the app owns, and nothing beside it: its own drawers
