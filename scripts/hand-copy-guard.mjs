@@ -2,10 +2,10 @@
 /** Hand-copy guard — a member set the console re-declares is a member set that
  *  will drift.
  *
- *  A MIRRORED CONSTANT IS A SEAM (the phrase is
- *  cloud/console/tests/metering-registry-drift.test.ts's, and that test is this
- *  gate's ancestor: it compares the metering registry against the REAL .sql
- *  files rather than a copy of them). This generalises the idea to the seam that
+ *  A MIRRORED CONSTANT IS A SEAM (the phrase belongs to the console's own
+ *  metering-registry drift test, which is this gate's ancestor: it compares the
+ *  metering registry against the REAL .sql files rather than a copy of them —
+ *  see the console's AGENTS.md). This generalises the idea to the seam that
  *  produced nine defects at once — `@vendoai/core` exports a vocabulary, the
  *  console spells the same words again by hand, one side gains a word, and
  *  nothing goes red. Every one of those nine sites carried a comment claiming
