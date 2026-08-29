@@ -3,8 +3,7 @@ import { resolveCloudBaseUrl } from "../cloud/client.js";
 /**
  * Gateway fuel: the env overlay that makes Claude Code (any rung that reads
  * ANTHROPIC_BASE_URL / ANTHROPIC_AUTH_TOKEN / ANTHROPIC_CUSTOM_HEADERS — the
- * PATH `claude` binary today, the npx-fetched engine package tomorrow, per
- * `docs/superpowers/plans/2026-07-20-init-selfcontained-engine.md` Task 3/4)
+ * PATH `claude` binary today, the npx-fetched engine package tomorrow)
  * speak to the Vendo Cloud model gateway instead of Anthropic directly, when
  * the dev has no Anthropic credential of their own but does have
  * VENDO_API_KEY. Own credential always wins — this module never overrides

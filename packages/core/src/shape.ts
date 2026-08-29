@@ -2,7 +2,7 @@ import type { Json, JsonSchema } from "./ids.js";
 import { defineOwn } from "./genui/tree-node.js";
 
 /**
- * v2 spec §3 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) —
+ * v2 spec §3 —
  * the shape model behind shape-aware binding. A ShapeType is the structural
  * type of a host tool / fn: response: field names, kinds, and (where the host
  * declared one) the closed enum. `json` is the unknown type — the defensive

@@ -392,7 +392,7 @@ describe("§9.3 — the permission check costs what it claims to cost", () => {
  *  seam. That engine is gone: a `vendo.json` schedule is a doc trigger now, and
  *  the ONE unattended firing path is the automations engine, whose own
  *  `memberships` seam is proven in
- *  `packages/automations/src/sponsorship.test.ts`. */
+ *  `packages/automations/tests/sponsorship.test.ts`. */
 
 /** Build contract §9.2 — the grant write half, back for the ✦ toggle and
     nothing else. `list` is viewer-gated; grant/revoke are owner-gated, and the

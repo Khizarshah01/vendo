@@ -27,7 +27,7 @@ import {
 
 /**
  * Existing-agents seam — the framework-neutral tool pack a BYO agent loop gets
- * (frozen contract: docs/superpowers/specs/2026-07-20-existing-agents-contracts.md §2).
+ * (frozen contract — see this file's exported shape and tests).
  * A promotion of the guard-bound wrapping Vendo's own loop uses (tools.ts):
  * every pack tool executes through the SAME guard-bound registry, so no tool
  * reachable from a BYO loop has an unguarded route. The umbrella's `./ai-sdk`

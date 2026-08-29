@@ -1,4 +1,4 @@
-/** @vendoai/actions — every API becomes agent tools (docs/contracts/04-actions.md). */
+/** @vendoai/actions — every API becomes agent tools. */
 export * from "./formats.js";
 // Tool identity + the judgment layer's deterministic half. Both are at the
 // ROOT, not behind the node-only ./sync entry: the runtime registry applies

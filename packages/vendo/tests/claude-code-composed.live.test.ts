@@ -16,7 +16,7 @@
  *     transcript rather than restarting it (§1.3).
  *
  * `machine: "local"` because the box leg is proven separately
- * (`packages/harnesses/src/claude-code/claude-code-box.live.test.ts`, and
+ * (`packages/vendo/tests/claude-code-box.live.test.ts`, and
  * end-to-end over a public tunnel in
  * `docs/verification/door-ctx/live-door-proof.mjs`) and adds a provider account
  * to a test whose subject is composition.

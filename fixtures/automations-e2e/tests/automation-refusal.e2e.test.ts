@@ -15,7 +15,7 @@
  * because THE DECLARED LABEL IS THE TRUTH. This test was first written against a
  * `write`-declared send tool that core's `mechanicalRisk` name vote overruled;
  * that vote was deleted repo-wide with two-vote grading (#791), and
- * `packages/actions/src/sync/protocol-facts.test.ts` now forbids concluding
+ * `packages/actions/tests/sync/protocol-facts.test.ts` now forbids concluding
  * anything from a tool's name. So a mislabelled tool is a grading problem
  * (`vendo sync`, `.vendo/overrides.json`), not the planner's — and what the
  * planner owes is exactly what is asserted below: a labelled-irreversible tool is

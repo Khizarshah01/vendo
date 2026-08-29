@@ -19,7 +19,7 @@ unchanged. There is also no `vendo cloud deploy` command and no
 
 With `VENDO_API_KEY` set, enabled automations sync to the hosted store
 automatically as you save them and run on Vendo's own schedulers and
-Composio-delivered external triggers. See `docs-site/deploy/vendo-cloud.mdx`
+Composio-delivered external triggers. See `docs-site/production/vendo-cloud.mdx`
 for the current behavior.
 
 ## User authentication

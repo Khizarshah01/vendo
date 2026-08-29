@@ -141,8 +141,7 @@ export function selectKnowledge(
   return cloudKnowledge(cloud);
 }
 
-/** ADAPTER RULE (docs/superpowers/specs/2026-07-17-vendo-cloud-definition-design.md):
-    an infrastructure-backed block defines one adapter interface; which
+/** ADAPTER RULE: an infrastructure-backed block defines one adapter interface; which
     implementation composes is decided HERE, at the seam where createVendo
     wires blocks together — never by a hidden key-conditional inside the block.
     Precedence, top to bottom:

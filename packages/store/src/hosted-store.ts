@@ -134,9 +134,8 @@ function parseNullableRecord(value: unknown): VendoRecord | null {
   return parseRecord(value);
 }
 
-/** The Cloud hosted-store adapter — the OSS side of the hosted-store seam
- * (docs/superpowers/specs/2026-07-18-hosted-store-onepager.md): a plain
- * StoreAdapter speaking RPC-over-HTTP to the console's /api/v1/store routes,
+/** The Cloud hosted-store adapter — the OSS side of the hosted-store seam:
+ * a plain StoreAdapter speaking RPC-over-HTTP to the console's /api/v1/store routes,
  * method for method. Tenant = the key's org, resolved server-side on every
  * call; reserved-collection semantics are enforced server-side by the same
  * engine rules as packages/store's routing. Secrets are excluded by

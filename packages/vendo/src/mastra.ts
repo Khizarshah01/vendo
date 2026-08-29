@@ -12,7 +12,7 @@ import type { Vendo } from "./server.js";
 
 /**
  * `@vendoai/vendo/mastra` — the BYO-agent seam for Mastra agents (frozen
- * contract: docs/superpowers/specs/2026-07-20-existing-agents-contracts.md §2,
+ * contract: the existing-agents contract §2,
  * async return amended Wave 1). The same framework-neutral tool pack as
  * `./ai-sdk`, in Mastra `createTool` shape for the `Agent({ tools })` map.
  *

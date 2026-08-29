@@ -43,8 +43,8 @@ import {
 // ── the classifier ───────────────────────────────────────────────────────────
 
 /**
- * One real sentence per ported pattern, in pi-mono's own order
- * (`packages/ai/src/utils/overflow.ts:37-63`). The examples are the ones pi
+ * One real sentence per ported pattern, in pi-mono's own order.
+ * The examples are the ones pi
  * documents above the set, so this table is also the audit trail: 25 entries,
  * 25 patterns.
  */

@@ -19,7 +19,7 @@ import {
  * door-ctx moved execution to the host's own MCP door, and D1 deleted the
  * permission callback — the session runs in `bypassPermissions`, so a tool use is
  * simply a tool use. The door half is covered end-to-end by
- * `packages/vendo/src/mcp-door-parity.e2e.test.ts` instead.
+ * `packages/vendo/tests/mcp-door-parity.e2e.test.ts` instead.
  */
 interface ScriptStep {
   say?: string;

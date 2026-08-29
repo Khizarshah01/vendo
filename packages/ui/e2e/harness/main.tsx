@@ -1099,7 +1099,7 @@ const storedTree: UIPayload = {
 };
 
 /**
- * WAVE 1 GATE (v2 spec §8, docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md):
+ * WAVE 1 GATE (v2 spec §8):
  * a vendo-genui/v2 tree renders through the same PayloadView dispatch as every
  * stored payload — side-by-side with a stored v1 tree to prove coexistence.
  * Covers queries → `$path` bindings, host-brand-wins resolution, a generated

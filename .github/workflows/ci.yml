@@ -196,9 +196,10 @@ jobs:
       # $CONE is "" on a push to main, which is exactly those scripts again.
       - run: pnpm turbo run build $CONE
       - run: pnpm turbo run typecheck $CONE
-      # Neither guard is a turbo task and neither is package-scoped — they walk
-      # the whole tree in seconds. They always run.
+      # None of these guards is a turbo task and none is package-scoped — they
+      # walk the whole tree in seconds. They always run.
       - run: node scripts/dependency-guard.mjs
+      - run: node scripts/citation-guard.mjs
       # portability-gate reads BUILT output — packages/{vendo,store,actions,
       # vendo-telemetry,apps,harnesses}/dist — and used to get it for free from
       # the unconditional `pnpm build` that stood here. Under a cone that build

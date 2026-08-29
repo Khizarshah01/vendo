@@ -1,4 +1,4 @@
-/** @vendoai/guard — policy, approvals, audit, safety (docs/contracts/05-guard.md). */
+/** @vendoai/guard — policy, approvals, audit, safety. */
 export { createGuard } from "./guard.js";
 // The late-bound rules value (`guard({ policy, judge, approvals })`) and the
 // discriminator every consumer of a `VendoGuard | GuardRules` slot needs.

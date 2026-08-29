@@ -3,7 +3,7 @@ import { shapeAtPointer, type ShapeType } from "./shape.js";
 import { defineOwn, isPlainObject } from "./genui/tree-node.js";
 
 /**
- * v2 spec §3 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) —
+ * v2 spec §3 —
  * the bounded reshape vocabulary: a small, pure, non-Turing projection
  * language over a STORED binding's `$reshape` chain. Exactly the spec's
  * families: pick, field-rename, map (asPoints/asOptions), format, template

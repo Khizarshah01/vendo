@@ -29,7 +29,7 @@ async function freePort(): Promise<number> {
 
 /** Next dev compiles API routes lazily; under parallel-suite CPU load a first
  *  request to an uncompiled dynamic route can 404/500 before the route module
- *  finishes compiling (see packages/actions/src/runtime/fixture.e2e.test.ts).
+ *  finishes compiling (see packages/actions/tests/runtime/fixture.e2e.test.ts).
  *  Touch each route family once (any status counts — we only need the
  *  compile) and retry transient dev-compile failures so tests — including
  *  resetFixture()'s POST /fixture/reset — assert against a warm server. */

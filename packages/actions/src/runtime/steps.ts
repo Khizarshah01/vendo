@@ -8,7 +8,7 @@ import { safeErrorMessage, type ApprovalId, type Json, type Step, type ToolCall,
  * same forEach cap and error texts, same verbatim re-issue of a parked call on
  * resume — WITHOUT the run-record/stop persistence concerns. Automations is
  * the reference implementation; parity is enforced by a shared fixture table
- * (packages/vendo/src/compound-parity.test.ts). Single-sourcing automations
+ * (packages/vendo/tests/compound-parity.test.ts). Single-sourcing automations
  * onto this kernel is a tracked follow-up.
  *
  * The kernel performs no I/O and never imports jsonata: `evaluate` and

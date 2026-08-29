@@ -137,7 +137,7 @@ const TEABLE_PAGES_APP = [
   "",
 ].join("\n");
 
-// The canonical mount from docs-site/quickstart.mdx ("The client mount") — the
+// The canonical mount from docs-site/product/mount-the-surface.mdx ("The client mount") — the
 // harness constructs this itself, independent of what init printed.
 const WRAP = '<VendoProvider baseUrl="/api/vendo">{children}</VendoProvider>';
 // The pages equivalent: same provider, wrapped around the page slot.

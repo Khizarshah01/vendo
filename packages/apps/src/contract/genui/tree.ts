@@ -13,14 +13,14 @@ import {
 } from "@vendoai/core";
 import { FN_REFERENCE_PATTERN, findInvalidActionReference } from "../fn-references.js";
 
-/** v2 spec §1–2 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) —
+/** v2 spec §1–2 —
  *  query names are bare identifiers: the query's result lives at JSON Pointer
  *  `"/" + name` by definition, so there is no `path` field to validate.
  *  Shared with the wire compiler (wire/compile.ts), which validates
  *  `<Query id>` against the same grammar. */
 export const QUERY_NAME_PATTERN = /^[A-Za-z_][A-Za-z0-9_]*$/;
 
-/** v2 spec §1–2 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) */
+/** v2 spec §1–2 */
 export interface TreeQuery {
   name: string;
   tool: string;
@@ -28,7 +28,7 @@ export interface TreeQuery {
 }
 
 /**
- * v2 spec §1–2 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) —
+ * v2 spec §1–2 —
  * structural shape only (the types+zod pairing convention).
  * {@link validateTree} is the normative gate; this schema alone accepts
  * queries validateTree rejects.
@@ -39,7 +39,7 @@ export const treeQuerySchema = z.object({
   input: z.record(z.unknown()).optional(),
 }).passthrough() satisfies z.ZodType<TreeQuery>;
 
-/** v2 spec §1–2 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) —
+/** v2 spec §1–2 —
  *  mirrors v1 `Tree` minus `components`: trees never carry component
  *  sources (they live at the app-document level). Nodes are v1 nodes
  *  verbatim. */
@@ -52,7 +52,7 @@ export interface Tree {
 }
 
 /**
- * v2 spec §1–2 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) —
+ * v2 spec §1–2 —
  * structural shape only (the types+zod pairing convention).
  * The pinned wire rules (caps, name grammar, root/id integrity, fn: syntax,
  * the no-components rule) live in {@link validateTree}, which is the
@@ -209,7 +209,7 @@ const validateTreeUnsafe = (input: unknown): TreeValidation => {
   return { ok: true, tree: input as unknown as Tree };
 };
 
-/** v2 spec §1–2 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) */
+/** v2 spec §1–2 */
 export function validateTree(input: unknown): TreeValidation {
   try {
     return validateTreeUnsafe(input);

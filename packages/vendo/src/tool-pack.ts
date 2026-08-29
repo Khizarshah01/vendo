@@ -5,7 +5,7 @@ import type { AgentRunReport, Principal, VendoToolEnvelope } from "@vendoai/core
  * gets from the umbrella's `./ai-sdk` and `./mastra` subpaths. Wave 0 freezes
  * the names and option shapes here (the docs, examples, and both shims build
  * against them); Wave 1 Lane A supplies the implementation behind them.
- * Frozen in `docs/superpowers/specs/2026-07-20-existing-agents-contracts.md`.
+ * Frozen by this file's exported shape and its tests.
  */
 
 /** Every pack tool is namespaced under this prefix to avoid collisions with

@@ -11,7 +11,7 @@ import type { ToolDescriptor } from "./tools.js";
  * returns either one of these small JSON refs — which the host's chat renders
  * with the matching embed component — or plain data, meaning the action
  * executed cleanly and the agent consumes the result like any tool output.
- * Frozen in `docs/superpowers/specs/2026-07-20-existing-agents-contracts.md`.
+ * Frozen by this file's exported shape and its tests.
  */
 export const VENDO_APP_REF_KIND = "vendo/app-ref@1" as const;
 export const VENDO_APPROVAL_REF_KIND = "vendo/approval-ref@1" as const;

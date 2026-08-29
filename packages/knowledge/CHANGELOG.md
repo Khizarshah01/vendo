@@ -1,13 +1,5 @@
 # @vendoai/knowledge
 
-## 0.55.0
-
-### Patch Changes
-
-- Updated dependencies [dfb822d]
-- Updated dependencies [533dfe8]
-  - @vendoai/core@0.55.0
-
 ## 0.54.2
 
 ### Patch Changes

@@ -9,7 +9,7 @@ import { createVendo, guard, type Vendo } from "@vendoai/vendo/server";
 import { getWeather, sendTripReport } from "./vendo-actions";
 
 /** The demo runs as one fixed user. A real host resolves the principal from
- *  its own session (or passes an auth preset — see docs/quickstart.md). */
+ *  its own session (or passes an auth preset — see docs-site/existing-agent/quickstart.mdx). */
 export const DEMO_PRINCIPAL: Principal = { kind: "user", subject: "demo-user" };
 
 /** Whether this environment carries a usable OpenAI credential — NON-BLANK, not

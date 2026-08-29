@@ -8,7 +8,7 @@
  * retry". A `claudeCode()` box reaching its host's tools over native remote MCP
  * has a live turn behind it — a real venue, a real presence, a real stream to
  * put an approval card on — and losing all of that at the door made the door
- * unusable for it (measured: `packages/vendo/src/mcp-door-parity.e2e.test.ts`).
+ * unusable for it (measured: `packages/vendo/tests/mcp-door-parity.e2e.test.ts`).
  *
  * **The shape, and why it cannot impersonate.** A token states NOTHING. It is an
  * opaque pointer at "the turn currently in flight on thread T", handed out by

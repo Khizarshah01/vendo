@@ -176,7 +176,7 @@ export interface RenderSeamOptions {
    * the whole list rides every call. `workspace` is the real façade underneath this
    * wrapper, which is what the diff reads the landed bytes back through.
    *
-   * Composition injects `AppsRuntime.commitSource` (see `packages/vendo/server.ts`),
+   * Composition injects `AppsRuntime.commitSource` (see `packages/vendo/src/server.ts`),
    * which binds `commitApp` to the app row's ownership, its compare-and-swap
    * update, and the deployment's files adapter for blob spill.
    *

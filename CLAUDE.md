@@ -54,8 +54,9 @@ generated UI in a sandboxed, brand-native surface.
 - Local gate = `pnpm build && pnpm test:affected && pnpm typecheck && pnpm lint`
   on the touched scope. The FULL suite runs only in CI — the PR's green `ci`
   check is the gate of record; never run the full suite locally.
-- After any `@vendoai` npm release, bump `vendo-web`'s `@vendoai` deps to the
-  new version in the same session.
+- `vendo-web` is archived. The Cloud half now lives in the private monorepo
+  and consumes these packages as `workspace:*`, so it moves in lockstep with
+  every release automatically — no downstream bump step.
 
 ## Tests
 
@@ -64,7 +65,7 @@ generated UI in a sandboxed, brand-native surface.
   and read back through the real read path, with no stub on either side. The
   host-component previews shipped four times with a green suite and a dead
   feature because the producer and the consumer each mocked the other, so
-  they could never disagree. Anything this repo emits for `vendo-web` to read
+  they could never disagree. Anything this repo emits for the console to read
   (`.vendo/components/`, `vendo_*` collections, blob namespaces) is one of
   those seams, and the console's copy of the schema is a mirror — see the
   testing section of `cloud/AGENTS.md` for the full lesson.

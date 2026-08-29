@@ -241,7 +241,7 @@ export interface McpDoorConfig {
    * venue but `mcp`, no presence but `present`, no stream to put an approval
    * card on. A `claudeCode()` box reaching its host's tools over native remote
    * MCP has all three, and losing them at the door made the door unusable for it
-   * (measured — `packages/vendo/src/mcp-door-parity.e2e.test.ts`).
+   * (measured — `packages/vendo/tests/mcp-door-parity.e2e.test.ts`).
    *
    * A bearer this port resolves is answered from the LIVE TURN it names: the
    * turn's own ctx, the turn's own equipped tools, and `turn.tools.call()` for
@@ -1321,7 +1321,7 @@ const VENDO_TOOL_PREFIX = "vendo_";
 /**
  * Vendo's reserved namespace for keys the RUNTIME adds to a tool result — the
  * `toolOutputCap` truncation envelope (`vendo_truncated`/`vendo_chars`/
- * `vendo_preview`, minted in `packages/agent/src/tools.ts`) and
+ * `vendo_preview`, minted in `packages/harnesses/src/tool-bridge.ts`) and
  * {@link VENDO_RESULT_VALUE} here. Reserved because the official client validates
  * every result against the advertised schema: a host declaring a field of the
  * same name and a different type would make its own tool throw on a truncated

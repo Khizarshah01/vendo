@@ -109,7 +109,7 @@ export function generationTurn(dialect: unknown, id = "gen_1"): LanguageModelV3S
 
 /**
  * The AI reviewer's verdict on one finished screen — a `report_findings` strict
- * tool call over `doGenerate` (`packages/apps/src/checking/strict-tool-call.ts`),
+ * tool call over `doGenerate` (`packages/apps/src/server/checking/strict-tool-call.ts`),
  * empty by default because "nothing wrong" is what a fixture app deserves.
  *
  * Scripted as the call it really is rather than left to run the script dry:
@@ -211,7 +211,7 @@ export interface StackOptions {
   model?: LanguageModel;
   /** Mount the MCP door (J6) beside `vendo.handler` on the same loopback origin,
    * composed from the umbrella's OWN parts — the way a host must today until the
-   * `createVendo({ mcp: true })` hookup lands (docs/contracts/10-mcp-umbrella-hookup.md). */
+   * `createVendo({ mcp: true })` hookup lands. */
   mcp?: boolean;
   /** Compose the umbrella with `telemetry: true` (opt-in anonymous telemetry).
    * Consent is still resolved at emit time from env/config (J11). */

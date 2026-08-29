@@ -15,7 +15,7 @@
  *                    for the console's own implementation.
  *
  * The console itself is proven with no stand-in at all, against Yousef's Vendo
- * Cloud account, in `packages/vendo/src/hosted-transcript.live.test.ts`.
+ * Cloud account, in `packages/vendo/tests/hosted-transcript.live.test.ts`.
  */
 import { VendoError, type Principal, type StoreOps } from "@vendoai/core";
 import { memoryStoreOps } from "@vendoai/core/conformance";
@@ -161,7 +161,7 @@ for (const backend of backends()) {
      * `memory-ops` is excluded because core's reference `putMessage` appends
      * unconditionally — the wire's conformance suite only asserts append, so the
      * reference has no id semantics to edit by. The LIVE console shares that gap
-     * (measured: `packages/vendo/src/hosted-transcript.live.test.ts` records it
+     * (measured: `packages/vendo/tests/hosted-transcript.live.test.ts` records it
      * with an `it.fails`), which is why the two backends that DO carry id
      * semantics are the ones checked here: they are what the wire contract has
      * to grow into, not a lower bar this helper settled for.

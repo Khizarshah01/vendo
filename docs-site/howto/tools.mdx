@@ -99,7 +99,7 @@ export const vendo = createVendo({ tools: [refundOrder] });
 - **OpenAPI** — the highest-leverage file you can add, because it is what gives
   every tool its parameter names, types, and output shape. Put an
   `openapi.json` at your app root; `openapi.yaml`, `public/openapi.json`, and
-  `docs/openapi.json` are read too, and the spec never has to be served.
+  a copy under `docs/` are read too, and the spec never has to be served.
 - **tRPC** — nothing to install. Sync sees `@trpc/server` in your dependencies
   and reads each router with the TypeScript compiler. The `.input()` schema is
   the declaration, and a mutation grades `write`.

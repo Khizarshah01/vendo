@@ -1,4 +1,4 @@
-/** @vendoai/store — persistence under everything (docs/contracts/02-store.md).
+/** @vendoai/store — persistence under everything.
  *  Postgres-only consumers: import from `@vendoai/store/postgres` instead to
  *  keep the PGlite wasm engine out of the bundle graph. */
 export { createStore } from "./create-store.js";

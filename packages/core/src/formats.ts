@@ -1,7 +1,7 @@
 /** 01-core §1 */
 export const VENDO_APP_FORMAT = "vendo/app@1" as const;
 
-/** v2 spec §1 (docs/superpowers/specs/2026-07-18-vendo-v2-format-spec.md) */
+/** v2 spec §1 */
 export const VENDO_TREE_FORMAT = "vendo-genui/v2" as const;
 
 /** 01-core §1 */

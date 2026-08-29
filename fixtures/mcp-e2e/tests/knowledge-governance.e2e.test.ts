@@ -4,7 +4,7 @@
  * through the umbrella-mounted door against a corpus whose internal doc
  * matches the query, and the internal doc never crosses the door. The other
  * three venue legs (chat, app, automation) live in
- * packages/vendo/src/knowledge-governance.test.ts.
+ * packages/vendo/tests/knowledge-governance.test.ts.
  */
 import { mkdtemp, rm } from "node:fs/promises";
 import { createServer } from "node:http";
@@ -54,7 +54,7 @@ async function createKnowledgeUmbrella(): Promise<Umbrella> {
     store,
     // The shipped read posture: the call RUNS at the door, so the leg proves
     // zero leakage on execution (init's vendo_knowledge_* → ask hardening is
-    // its own test in packages/vendo/src/cli/init.test.ts).
+    // its own test in packages/vendo/tests/cli/init.test.ts).
     guard: {
       policy: {
         rules: [

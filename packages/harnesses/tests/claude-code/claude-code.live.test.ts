@@ -17,11 +17,11 @@
  * the umbrella). The three asks that were about tools therefore live where the
  * composition does:
  *
- *   - `packages/vendo/src/claude-code-composed.live.test.ts` — the local leg,
+ *   - `packages/vendo/tests/claude-code-composed.live.test.ts` — the local leg,
  *     over a real loopback door;
  *   - `docs/verification/door-ctx/live-door-proof.mjs` — the box leg, over a
  *     real public tunnel, with the approval tap and the audit rows;
- *   - `packages/vendo/src/mcp-door-parity.e2e.test.ts` — the offline gate.
+ *   - `packages/vendo/tests/mcp-door-parity.e2e.test.ts` — the offline gate.
  *
  * What stays here is everything that is TRUE of the harness with no door at all:
  * its real bash hands, the diff sync-back, the native session across turns, and

@@ -2,7 +2,7 @@
  * Connector discovery (design 2026-08-03), on the ONE registry, through the real
  * composition.
  *
- * The unit tests (packages/agent/src/connector-discovery.test.ts) prove the
+ * The unit tests (packages/vendo/tests/connector-discovery.test.ts) prove the
  * registry against fake ports. These prove the WIRING: that each tool exists
  * exactly as far as an adapter backs it, that a dispatch reaches the broker's own
  * slug through the guard (so the per-slug grade decides run/ask and the audit row

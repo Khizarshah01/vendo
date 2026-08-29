@@ -10,7 +10,7 @@ import * as chrome from "../../src/chrome/index.js";
 // Shelf-core Task 1 guard: the thread refactor (vendo-thread.tsx →
 // chrome/thread/) must keep `@vendoai/ui/chrome`'s public surface identical.
 // Value exports are asserted at runtime; type-only exports are erased by
-// esbuild, so — following packages/vendo/src/type-surface.test.ts — a real
+// esbuild, so — following packages/vendo/tests/type-surface.test.ts — a real
 // `tsc --noEmit` runs over a generated fixture that `import type`s each name
 // from the source chrome entry (a dropped type re-export emits TS2305).
 

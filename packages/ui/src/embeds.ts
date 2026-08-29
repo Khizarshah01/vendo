@@ -15,7 +15,7 @@ import {
  * surface renders from `vendo_*` tool outputs. The components behind them are
  * built on the existing slot / build-beat / approval-card machinery, on the
  * defaults a `VendoProvider` overrides when the host mounts one.
- * Frozen in `docs/superpowers/specs/2026-07-20-existing-agents-contracts.md`.
+ * Frozen by this file's exported shape and its tests.
  *
  * `theme` is the one addition since the freeze (approved 2026-08-23): an
  * OPTIONAL per-surface override, never a required prop and never a second way

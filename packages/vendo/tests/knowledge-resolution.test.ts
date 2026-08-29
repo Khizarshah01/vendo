@@ -217,7 +217,7 @@ describe("knowledge resolution matrix (ENG-368) — which engine composes, and d
     await vendoKnowledge({ store }).upsert!([doc("docs#composed-store.md")]);
 
     // No store plumbing anywhere in the host's config — exactly what
-    // docs/knowledge.md promises.
+    // docs-site/customize/knowledge.mdx promises.
     const vendo = await compose({ store, knowledge: vendoKnowledge() });
 
     expect(servingEngine(await search(vendo, "transfers settle business day"))).toBe("docs#composed-store.md");

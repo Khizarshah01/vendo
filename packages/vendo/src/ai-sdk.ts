@@ -6,7 +6,7 @@ import type { Vendo } from "./server.js";
 
 /**
  * `@vendoai/vendo/ai-sdk` — the BYO-agent seam for AI SDK loops (frozen
- * contract: docs/superpowers/specs/2026-07-20-existing-agents-contracts.md §2).
+ * contract — see this file's exported shape and tests).
  * One thin format shim over the framework-neutral tool pack in `./pack.js`,
  * executing through `vendo.guardedTools` — the guard-bound
  * registry Vendo's own loop shares, decorated to park pending-approval calls

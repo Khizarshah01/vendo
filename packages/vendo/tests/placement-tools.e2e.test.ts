@@ -19,7 +19,7 @@
  *
  * This host has no sandbox, so `vendo_make` here is always served by the
  * ASSEMBLY engine. The escalated-builder half of `slot` is proved one layer
- * down, in `packages/apps/src/agent-tools.test.ts`, where a fake box makes that
+ * down, in `packages/apps/tests/agent-tools.test.ts`, where a fake box makes that
  * route reachable.
  */
 import {

@@ -5,8 +5,7 @@ import type { Db } from "./db-postgres.js";
 
 /** 02-store §4. v3 (block-actions design §C, ENG-263) historically added the
     Vendo-owned org tables (`vendo_orgs` + `vendo_org_members`); those tables
-    are cut under the simplify-v2 kill-list (docs/superpowers/specs/2026-07-16
-    -simplify-v2-kill-list-design.md §A5) — orgs live on the Vendo-hosted side
+    are cut under the simplify-v2 kill-list (§A5) — orgs live on the Vendo-hosted side
     now. Existing dev databases that already have `vendo_orgs`/
     `vendo_org_members` keep those orphaned tables — erasing them is not
     required and this migration does not attempt it.

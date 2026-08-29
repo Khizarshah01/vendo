@@ -1,7 +1,7 @@
 /**
  * The BYO-model provider matrix, live.
  *
- * It was `packages/agent/src/live.test.ts` and it drove `createAgent`. The loop
+ * It used to live in the old agent package and drove `createAgent`. The loop
  * moved here, so the live proof moves with it: the same three-leg journey —
  * a parked approval that runs exactly once, a blocked call that never runs, and
  * a tree that reaches the screen — now through the runtime + `vendo()`, against

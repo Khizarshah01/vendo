@@ -196,7 +196,7 @@ describe("Form", () => {
   });
 
   // genqa defect 2: a generated island's onSubmit is often a hydrated
-  // `$action` binding (packages/agent/src/tools.ts's runtime hydrate()) —
+  // `$action` binding (packages/harnesses/src/tool-bridge.ts's runtime hydrate()) —
   // a zero-arg callback that can never call preventDefault itself. Form must
   // own preventDefault unconditionally, or the native submission still fires
   // and the jail's sandbox (deliberately no allow-forms) blocks it with a

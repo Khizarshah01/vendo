@@ -24,8 +24,7 @@ import {
  * truth read from each app's source. Skipped without a key, or without the
  * `claude` binary/login the CLI harness needs.
  *
- * Rubric (fixed in docs/superpowers/plans/2026-07-17-b2-theme-exact-or-model.md):
- * seven brand-defining slots; the gate is at least 6/7 per app, and any miss
+ * Rubric: seven brand-defining slots; the gate is at least 6/7 per app, and any miss
  * must be visible (defaulted/uncertain), never a silent wrong brand.
  */
 
