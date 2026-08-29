@@ -3,14 +3,13 @@ import {
   type ApprovalDecision,
   type ApprovalId,
   type ApprovalRequest,
-  assertEngineCollection,
-  type AtomicRecordStore,
   auditContext,
   type AuditEvent,
   buildGrant,
   canonicalJson,
   descriptorHash,
   emitUsage,
+  engineOverAdapter,
   type GrantId,
   grantRefs,
   type GrantScope,
@@ -26,12 +25,10 @@ import {
   projectableForRun,
   type RecordInput,
   type RecordQuery,
-  type RecordStore,
   type RunContext,
   serviceToolSlug,
   approvalRecordRefs,
   sha256Hex,
-  type StoreAdapter,
   type StoreOps,
   type ToolCall,
   type ToolDescriptor,
@@ -303,55 +300,6 @@ function eventFromContext(
 /** The seven verbs every drawer in this block is reached through. */
 type EngineOps = StoreOps["engine"];
 
-/** `ops.engine` over a bare {@link StoreAdapter}, for the deployment whose
- *  composition could not resolve a 42-op surface (`selectStoreOps` answers
- *  `undefined` for a store with neither its own ops nor a SQL handle) and for
- *  every host passing their own adapter. Verb for verb the local backend's
- *  family (packages/store/src/ops.ts): the allowlist gate in front, the routed
- *  door behind, and `not-implemented` where a door omits an optional
- *  capability — so single-use approval transitions fail closed here exactly as
- *  they do on the hosted wire.
- *
- *  `records()` is called per verb and never cached: an adapter is free to mint
- *  a fresh handle each time, and the fixtures that wrap one to inject a failure
- *  depend on it. */
-function adapterEngine(store: StoreAdapter): EngineOps {
-  const door = (collection: string): RecordStore => {
-    assertEngineCollection(collection);
-    return store.records(collection);
-  };
-  const atomic = (collection: string, verb: string): AtomicRecordStore => {
-    const capability = door(collection).atomic;
-    if (capability === undefined) {
-      throw new VendoError(
-        "not-implemented",
-        `${collection} does not support ${verb}: this adapter omits the optional `
-        + "atomic-revisions capability (RecordStore.atomic, 02-store §4)",
-      );
-    }
-    return capability;
-  };
-  return {
-    get: async (collection, id) => await door(collection).get(id),
-    put: async (collection, record) => await door(collection).put(record),
-    delete: async (collection, id) => {
-      await door(collection).delete(id);
-    },
-    list: async (collection, query) => await door(collection).list(query),
-    claim: async (collection, expected, replacement) => {
-      const claim = door(collection).claim;
-      if (claim === undefined) {
-        throw new VendoError("not-implemented", `${collection} does not support claim`);
-      }
-      return await claim(expected, replacement);
-    },
-    insertIfAbsent: async (collection, record) =>
-      await atomic(collection, "insertIfAbsent").insertIfAbsent(record),
-    compareAndSwap: async (collection, record, expectedRevision) =>
-      await atomic(collection, "compareAndSwap").compareAndSwap(record, expectedRevision),
-  };
-}
-
 async function listAll(
   engine: EngineOps,
   collection: string,
@@ -572,7 +520,10 @@ class GuardImplementation implements VendoGuard {
   };
 
   constructor(config: CreateGuardConfig) {
-    this.#engine = config.ops?.engine ?? adapterEngine(config.store);
+    // `atomics: "require"`: a door without the optional atomic capability is
+    // refused, not degraded to a check-then-put — this block's single-use
+    // approval transitions fail closed here exactly as on the hosted wire.
+    this.#engine = config.ops?.engine ?? engineOverAdapter(config.store, { atomics: "require" });
     this.#config = config;
     // Compose time, not first call: an unknown preset name (or any other
     // policy misconfiguration `resolvePolicyConfig` catches) must fail loud

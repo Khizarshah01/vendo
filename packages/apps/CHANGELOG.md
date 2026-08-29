@@ -1,11 +1,5 @@
 # @vendoai/apps
 
-## 0.54.2
-
-### Patch Changes
-
-- @vendoai/core@0.54.2
-
 ## 0.54.1
 
 ### Patch Changes

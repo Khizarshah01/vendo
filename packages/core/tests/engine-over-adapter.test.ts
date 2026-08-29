@@ -1,12 +1,15 @@
 import { describe, expect, it } from "vitest";
+import { assertEngineCollection } from "../src/engine-collections.js";
 import { engineOverAdapter } from "../src/engine-over-adapter.js";
-import type { VendoError } from "../src/errors.js";
+import { VendoError } from "../src/errors.js";
 import type {
+  AtomicRecordStore,
   BlobStore,
   RecordInput,
   RecordQuery,
   RecordStore,
   StoreAdapter,
+  StoreOps,
   VendoRecord,
 } from "../src/store.js";
 
@@ -191,4 +194,204 @@ describe("engineOverAdapter — the engine family over a bare StoreAdapter", () 
       expect(await engine.get(EFFECTS, "e1")).toMatchObject({ data: { v: 2 } });
     });
   });
+});
+
+// ---------------------------------------------------------------------------
+// The consolidation table
+// ---------------------------------------------------------------------------
+
+/** `vendo_runs.started_at` is the only indexed field in the registry, so it is
+ *  the only collection a watermark bound can legally name. */
+const RUNS = "vendo_runs";
+
+type Engine = StoreOps["engine"];
+
+/** The two implementations this family replaced, frozen verbatim.
+ *
+ *  Core's was `engineOverAdapter` before the option; guard's was a private
+ *  `adapterEngine` in guard.ts. They disagreed in OPPOSITE directions — guard
+ *  refused the atomics core degraded, core refused the watermark guard silently
+ *  dropped — so the single implementation is only safe if it is checked against
+ *  BOTH, cell by cell. Edit a copy here only when the posture it pins is being
+ *  deliberately changed, and say which caller's posture moved. */
+function legacyCore(store: StoreAdapter): Engine {
+  const door = (collection: string): RecordStore => {
+    assertEngineCollection(collection);
+    return store.records(collection);
+  };
+  return {
+    get: async (collection, id) => await door(collection).get(id),
+    put: async (collection, record) => await door(collection).put(record),
+    delete: async (collection, id) => {
+      await door(collection).delete(id);
+    },
+    list: async (collection, query) => {
+      if (query?.watermark !== undefined) {
+        throw new VendoError(
+          "not-implemented",
+          `${collection} is served by a bare StoreAdapter, which cannot honor an engine.list watermark`
+          + " — use a store with its own engine (createStore, or a Store Wire mount).",
+        );
+      }
+      return await door(collection).list(query);
+    },
+    claim: async (collection, expected, replacement) => {
+      const records = door(collection);
+      if (records.claim === undefined) {
+        throw new VendoError("not-implemented", `${collection} does not support claim`);
+      }
+      return await records.claim(expected, replacement);
+    },
+    insertIfAbsent: async (collection, record) => {
+      const records = door(collection);
+      if (records.atomic !== undefined) return await records.atomic.insertIfAbsent(record);
+      if (await records.get(record.id) !== null) return null;
+      return await records.put(record);
+    },
+    compareAndSwap: async (collection, record, expectedRevision) => {
+      const records = door(collection);
+      if (records.atomic === undefined) return await records.put(record);
+      return await records.atomic.compareAndSwap(record, expectedRevision);
+    },
+  };
+}
+
+function legacyGuard(store: StoreAdapter): Engine {
+  const door = (collection: string): RecordStore => {
+    assertEngineCollection(collection);
+    return store.records(collection);
+  };
+  const atomic = (collection: string, verb: string): AtomicRecordStore => {
+    const capability = door(collection).atomic;
+    if (capability === undefined) {
+      throw new VendoError(
+        "not-implemented",
+        `${collection} does not support ${verb}: this adapter omits the optional `
+        + "atomic-revisions capability (RecordStore.atomic, 02-store §4)",
+      );
+    }
+    return capability;
+  };
+  return {
+    get: async (collection, id) => await door(collection).get(id),
+    put: async (collection, record) => await door(collection).put(record),
+    delete: async (collection, id) => {
+      await door(collection).delete(id);
+    },
+    list: async (collection, query) => await door(collection).list(query),
+    claim: async (collection, expected, replacement) => {
+      const claim = door(collection).claim;
+      if (claim === undefined) {
+        throw new VendoError("not-implemented", `${collection} does not support claim`);
+      }
+      return await claim(expected, replacement);
+    },
+    insertIfAbsent: async (collection, record) =>
+      await atomic(collection, "insertIfAbsent").insertIfAbsent(record),
+    compareAndSwap: async (collection, record, expectedRevision) =>
+      await atomic(collection, "compareAndSwap").compareAndSwap(record, expectedRevision),
+  };
+}
+
+/** Who constructs this family, and how each one gets built now. `mcp`,
+ *  `knowledge`, `apps`, `automations` and `store` all call it bare; guard is the
+ *  one caller that passes an option. */
+const CALLERS = [
+  { name: "core callers (mcp, knowledge, apps, automations, store)", legacy: legacyCore,
+    build: (store: StoreAdapter): Engine => engineOverAdapter(store) },
+  { name: "guard", legacy: legacyGuard,
+    build: (store: StoreAdapter): Engine => engineOverAdapter(store, { atomics: "require" }) },
+] as const;
+
+/** One line of observable behaviour per verb, seeded through the family itself
+ *  so the same script runs on every implementation. */
+const CASES: { verb: string; run: (engine: Engine) => Promise<string> }[] = [
+  {
+    verb: "list without a watermark",
+    run: async (engine) => {
+      await engine.put(RUNS, { id: "r1", data: { started_at: "2026-01-01T00:00:00.000Z" } });
+      const page = await engine.list(RUNS);
+      return `records=${page.records.map((row) => row.id).join("|")} watermark=${page.watermark}`;
+    },
+  },
+  {
+    verb: "list with a watermark",
+    run: async (engine) => {
+      await engine.put(RUNS, { id: "r1", data: { started_at: "2026-01-01T00:00:00.000Z" } });
+      const page = await engine.list(RUNS, {
+        watermark: { field: "started_at", after: "2026-06-01T00:00:00.000Z" },
+      });
+      return `records=${page.records.map((row) => row.id).join("|")} watermark=${page.watermark}`;
+    },
+  },
+  {
+    verb: "claim",
+    run: async (engine) => {
+      await engine.put(AUDIT, { id: "a1", data: { n: 1 } });
+      return `claimed=${await engine.claim(AUDIT, { id: "a1", data: { n: 1 } })}`;
+    },
+  },
+  {
+    verb: "insertIfAbsent, twice",
+    run: async (engine) => {
+      const first = await engine.insertIfAbsent(EFFECTS, { id: "e1", data: { v: 1 } });
+      const second = await engine.insertIfAbsent(EFFECTS, { id: "e1", data: { v: 2 } });
+      const stored = await engine.get(EFFECTS, "e1");
+      return `first=${first?.id} second=${second?.id ?? null} stored=${JSON.stringify(stored?.data)}`;
+    },
+  },
+  {
+    verb: "compareAndSwap on a stale token",
+    run: async (engine) => {
+      await engine.put(EFFECTS, { id: "e1", data: { v: 1 } });
+      const swapped = await engine.compareAndSwap(EFFECTS, { id: "e1", data: { v: 2 } }, "stale");
+      const stored = await engine.get(EFFECTS, "e1");
+      return `swapped=${swapped?.id ?? null} stored=${JSON.stringify(stored?.data)}`;
+    },
+  },
+];
+
+const observe = async (engine: Engine, run: (engine: Engine) => Promise<string>): Promise<string> => {
+  try {
+    return await run(engine);
+  } catch (error) {
+    return `threw ${(error as VendoError).code}`;
+  }
+};
+
+describe("the consolidation table — every caller's posture, before and after", () => {
+  /** The one cell where the single implementation deliberately DIFFERS from the
+   *  copy it replaced: guard used to hand the watermark to a `RecordStore.list`
+   *  that has no watermark in its query, getting an ordinary newest-first page
+   *  and no echo back — a forward walk that re-reads the newest rows forever.
+   *  Latent, not live (guard passes no watermark anywhere), and core's refusal
+   *  is the fix. Every other cell must match. */
+  const INTENDED_DRIFT = "guard × list with a watermark";
+
+  for (const caller of CALLERS) {
+    for (const caps of [
+      { claim: true, atomic: true },
+      { claim: true, atomic: false },
+      { claim: false, atomic: true },
+      { claim: false, atomic: false },
+    ]) {
+      const shape = `claim=${caps.claim} atomic=${caps.atomic}`;
+      for (const { verb, run } of CASES) {
+        const cell = `${caller.name} × ${verb}`;
+        it(`${cell} — ${shape}`, async () => {
+          const before = await observe(caller.legacy(fakeAdapter(caps).store), run);
+          const after = await observe(caller.build(fakeAdapter(caps).store), run);
+          if (cell === INTENDED_DRIFT) {
+            // Spelled out rather than merely "differs": the old answer served
+            // the bounded row it was asked to skip, with no echo to say the
+            // bound was ignored.
+            expect(before).toBe("records=r1 watermark=undefined");
+            expect(after).toBe("threw not-implemented");
+            return;
+          }
+          expect(`${cell} [${shape}] ${after}`).toBe(`${cell} [${shape}] ${before}`);
+        });
+      }
+    }
+  }
 });

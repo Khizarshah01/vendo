@@ -2,6 +2,21 @@ import { assertEngineCollection } from "./engine-collections.js";
 import { VendoError } from "./errors.js";
 import type { RecordStore, StoreAdapter, StoreOps } from "./store.js";
 
+export interface EngineOverAdapterOptions {
+  /** What `insertIfAbsent` and `compareAndSwap` do when the adapter's door omits
+   *  the OPTIONAL `RecordStore.atomic` capability (02-store §4).
+   *
+   *  `degrade` (the default) falls back to the check-then-put each caller used
+   *  to hand-roll, so moving a block onto this family never turns a working BYO
+   *  adapter into a `not-implemented`.
+   *
+   *  `require` refuses instead. For the caller whose atomics carry a security
+   *  meaning — a guard's single-use approval transition, where a read-then-write
+   *  is not single-use — failing closed here is the same answer the hosted wire
+   *  gives, and a degraded write would be a silently weaker one. */
+  atomics?: "degrade" | "require";
+}
+
 /** The `engine` family over a bare {@link StoreAdapter}.
  *
  *  Every block that owns Vendo drawers (automations, guard, apps) reads them
@@ -14,10 +29,21 @@ import type { RecordStore, StoreAdapter, StoreOps } from "./store.js";
  *  `records()` is called per verb and never cached: an adapter is free to mint a
  *  fresh handle each time, and fixtures that wrap one to inject a failure depend
  *  on it. */
-export function engineOverAdapter(store: StoreAdapter): StoreOps["engine"] {
+export function engineOverAdapter(
+  store: StoreAdapter,
+  options?: EngineOverAdapterOptions,
+): StoreOps["engine"] {
   const door = (collection: string): RecordStore => {
     assertEngineCollection(collection);
     return store.records(collection);
+  };
+  const assertAtomic = (records: RecordStore, collection: string, verb: string): void => {
+    if (records.atomic !== undefined || options?.atomics !== "require") return;
+    throw new VendoError(
+      "not-implemented",
+      `${collection} does not support ${verb}: this adapter omits the optional `
+      + "atomic-revisions capability (RecordStore.atomic, 02-store §4)",
+    );
   };
   return {
     get: async (collection, id) => await door(collection).get(id),
@@ -54,9 +80,10 @@ export function engineOverAdapter(store: StoreAdapter): StoreOps["engine"] {
      *  be — it is what those call sites already did, in one place, so moving a
      *  block onto this family does not quietly turn a working BYO adapter into
      *  a `not-implemented`. An adapter that HAS the capability always gets the
-     *  real one. */
+     *  real one, and `atomics: "require"` opts out of the fallback entirely. */
     insertIfAbsent: async (collection, record) => {
       const records = door(collection);
+      assertAtomic(records, collection, "insertIfAbsent");
       if (records.atomic !== undefined) return await records.atomic.insertIfAbsent(record);
       if (await records.get(record.id) !== null) return null;
       return await records.put(record);
@@ -71,6 +98,7 @@ export function engineOverAdapter(store: StoreAdapter): StoreOps["engine"] {
      *  `atomic === undefined` branches before they moved onto this family. */
     compareAndSwap: async (collection, record, expectedRevision) => {
       const records = door(collection);
+      assertAtomic(records, collection, "compareAndSwap");
       if (records.atomic === undefined) return await records.put(record);
       return await records.atomic.compareAndSwap(record, expectedRevision);
     },
