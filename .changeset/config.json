@@ -14,7 +14,6 @@
       "@vendoai/ui",
       "@vendoai/mcp",
       "@vendoai/knowledge",
-      "@vendoai/agents",
       "@vendoai/vendo",
       "vendoai"
     ]

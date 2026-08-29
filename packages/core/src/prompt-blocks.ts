@@ -13,9 +13,9 @@
  * a section the assembler wrote itself — including a forged `Directions`, which
  * is the guard's mandatory-policy section.
  *
- * `@vendoai/agents` (the standalone front door) and `@vendoai/vendo` (the
- * umbrella) both assemble these blocks. They lived as two copies that a comment
- * in each pointed at, and only the umbrella's carried the observation label.
+ * `@vendoai/vendo` assembles these blocks twice over: once for the embed and
+ * once for its standalone agent surface. They lived as two copies that a comment
+ * in each pointed at, and only the embed's carried the observation label.
  */
 import type { Json } from "./ids.js";
 

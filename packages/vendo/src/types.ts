@@ -15,7 +15,7 @@ import type {
   ServerActionHandler,
 } from "@vendoai/actions";
 import type { AppsConfig, SandboxAdapter, AppsRuntime } from "@vendoai/apps";
-import type { VendoAgent as ComposedAgent } from "@vendoai/agents";
+import type { VendoAgent as ComposedAgent } from "./turn/index.js";
 import type { AutomationsEngine } from "@vendoai/automations";
 import type {
   ActAs,
@@ -496,7 +496,7 @@ export interface CreateVendoConfig {
       without it.
       @deprecated Use the one door: `auth: { principal, oauth }`. */
   oauth?: HostOAuthAdapter;
-  /** A whole agent built by `agent()` from `@vendoai/agents` — the seam the
+  /** A whole agent built by `agent()` from `@vendoai/vendo` — the seam the
       agents-v0 spec names ("Vendo's embed consumes it across a real seam").
 
       This deployment ADOPTS what that agent already composed:

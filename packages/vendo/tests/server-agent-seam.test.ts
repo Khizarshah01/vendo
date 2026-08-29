@@ -8,7 +8,7 @@
  */
 import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
 import { inMemoryBoxFiles } from "@vendoai/apps/testing";
-import { agent, agentComposition } from "@vendoai/agents";
+import { agent, agentComposition } from "../src/turn/index.js";
 import type { Principal } from "@vendoai/core";
 import { defineHarness, harnessAdapters } from "@vendoai/harnesses";
 import { createStore, threadStore, type VendoStore } from "@vendoai/store";
@@ -174,7 +174,7 @@ describe("createVendo({ agent }) adopts what the agent already composed", () => 
       principal: async () => ({ kind: "user", subject: "user_seam" }),
       store,
       agent: { name: "impostor", session: async () => ({}) } as never,
-    })).toThrow(/`agent\(\)` from @vendoai\/agents did not build/);
+    })).toThrow(/`agent\(\)` from @vendoai\/vendo did not build/);
   });
 });
 

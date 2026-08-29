@@ -99,7 +99,7 @@ export const decisionsSchema = z.record(decisionSchema) satisfies z.ZodType<Deci
  *
  * `TTurn` exists because `resume()` hands back the AGENTS-level `Turn`, and
  * core is the layer everything else depends on, so it cannot name one.
- * `@vendoai/agents` binds it (`TurnResult<T, Turn<T>>`). There is ONE
+ * `@vendoai/vendo`'s agent surface binds it (`TurnResult<T, Turn<T>>`). There is ONE
  * definition of this union and this is it — nothing re-declares it.
  *
  * Deliberately NOT schema-ised: the interrupted arm carries a live closure, and

@@ -20,7 +20,7 @@ import type { ToolRegistry } from "@vendoai/core";
 import { createStore } from "@vendoai/store";
 import { createGuard, type Judge } from "@vendoai/guard";
 import { createActions } from "@vendoai/actions";
-import { awayRunner } from "@vendoai/agents";
+import { awayRunner } from "@vendoai/vendo";
 import { vendo } from "@vendoai/harnesses";
 import {
   ADA,

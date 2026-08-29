@@ -307,7 +307,7 @@ describe("instructions: one prose story, in the section brief always had", () =>
 
   it("an adopted agent's instructions and the top-level key are one slot", async () => {
     // Filling a slot twice is a boot error, never one side silently losing.
-    const { agent } = await import("@vendoai/agents");
+    const { agent } = await import("../src/turn/index.js");
     const { vendo: vendoHarness } = await import("@vendoai/harnesses");
     const store = await tempStore("vendo-coherence-adopt-");
     const composed = agent({ name: "support", harness: vendoHarness(), store, instructions: PROSE });

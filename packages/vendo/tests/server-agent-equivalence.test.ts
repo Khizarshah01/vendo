@@ -11,7 +11,7 @@
  * assembled system prompt, the equipped tool listing, the model seats — is the
  * comparison, because that is everything the deployment's brain is handed.
  */
-import { agent } from "@vendoai/agents";
+import { agent } from "../src/turn/index.js";
 import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
 import { inMemoryBoxFiles } from "@vendoai/apps/testing";
 import { defineHarness } from "@vendoai/harnesses";

@@ -1,13 +1,12 @@
 /**
- * The umbrella's half of code-authored automations. `@vendoai/agents` may not
- * import `@vendoai/automations`, so `agent.on(...)` only COLLECTS — this is the
- * one place declarations become records, and the one place a firing's brain is
- * registered by name.
+ * The umbrella's half of code-authored automations. `agent.on(...)` only
+ * DECLARES — this is where `createVendo`'s boot turns declarations into records,
+ * and where a firing's brain is registered by name.
  */
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { agent, type VendoAgent } from "@vendoai/agents";
+import { agent, type VendoAgent } from "../src/turn/index.js";
 import { createStore, createStoreOps, type VendoStore } from "@vendoai/store";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -100,10 +99,8 @@ describe("boot reconcile — `.on()` declarations become records", () => {
 
 describe("the named-runner map — registered at BOOT, looked up at fire time", () => {
   // The map's own throw is proven in @vendoai/automations; what is proven HERE is
-  // the boot register loop that feeds it — the umbrella is the only place that
-  // can, because the dependency guard forbids @vendoai/agents from importing
-  // @vendoai/automations. It throws at COMPOSE, not at 2am, when a firing that
-  // looked the name up would already have reached the wrong brain.
+  // the boot register loop that feeds it. It throws at COMPOSE, not at 2am, when
+  // a firing that looked the name up would already have reached the wrong brain.
   it("refuses to compose when two agents in `agents: []` wear one name", async () => {
     const store = await tempStore();
     expect(() => createVendo({

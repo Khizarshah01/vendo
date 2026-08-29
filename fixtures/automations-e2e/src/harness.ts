@@ -219,7 +219,7 @@ export interface StackOptions {
   /** Extra brains, by the name a record's `agent` field names. */
   runners?: Record<string, AgentRunner>;
   /** Build the default runner from the stack's own parts — the live leg builds
-   *  the `@vendoai/agents` away runner over the same guard and store the engine
+   *  the `@vendoai/vendo` away runner over the same guard and store the engine
    *  got. Wins over runner. */
   runnerFrom?: (parts: { guard: VendoGuard; bound: ToolRegistry; store: VendoStore }) => AgentRunner;
   now?: () => Date;

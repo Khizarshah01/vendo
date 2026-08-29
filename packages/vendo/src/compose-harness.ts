@@ -4,7 +4,7 @@
  * door, the turn runtime, the `ready()`-latched door the host and the wire
  * share, and `vendo_delegate`'s motor.
  */
-import { awayRunner } from "@vendoai/agents";
+import { awayRunner } from "./turn/index.js";
 import {
   CONNECTOR_DISCOVERY_TOOLS,
   VENDO_AUTOMATE_TOOL,

@@ -2,7 +2,7 @@
   "name": "@vendoai-examples/standalone-agent",
   "version": "0.0.1",
   "private": true,
-  "description": "The @vendoai/agents quickstart: one package, one agent, one tool — answered in the terminal, then the same agent over HTTP.",
+  "description": "The @vendoai/vendo standalone-agent quickstart: one package, one agent, one tool — answered in the terminal, then the same agent over HTTP.",
   "type": "module",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^2.1.0",
-    "@vendoai/agents": "workspace:*",
+    "@vendoai/vendo": "workspace:*",
     "ai": "6.0.28",
     "hono": "^4.13.0",
     "zod": "^3.25.0"

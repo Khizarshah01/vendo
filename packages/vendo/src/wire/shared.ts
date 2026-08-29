@@ -4,7 +4,7 @@ import {
   route as httpRoute,
   type RouteEntry as HttpRouteEntry,
   type RouteHandler as HttpRouteHandler,
-} from "@vendoai/agents/http";
+} from "./router.js";
 import type { AppsRuntime } from "@vendoai/apps";
 import type { SandboxVenue } from "@vendoai/apps";
 import type { AutomationsEngine } from "@vendoai/automations";
@@ -30,12 +30,12 @@ import type { ConnectionsService } from "../connections.js";
 
 /** The shared wire toolkit (kill-list B4). The generic half — the route-table
     types and matcher, the envelope helpers, the param validators — lives in
-    `@vendoai/agents/http` now, so there is exactly ONE route runtime; it is
+    `./router.js` now, so there is exactly ONE route runtime; it is
     re-exported here, so every wire area keeps its `./shared.js` import. What
     stays is what only the umbrella has. The per-request RunContext resolution
     lives in wire/context.ts; server.ts assembles the table from the per-area
     modules under src/wire/. */
-export { errorResponse, hex, internalError, json, object, requestJson, routeSegments, string } from "@vendoai/agents/http";
+export { errorResponse, hex, internalError, json, object, requestJson, routeSegments, string } from "./router.js";
 
 /** Re-exported, not redeclared: the one version literal lives in
     @vendoai/core, beside the deployment-identity headers that stamp it. */
@@ -219,7 +219,7 @@ export function orgsCloudRequired(): never {
     variables with this exact predicate so doctor and runtime agree on what
     counts as set (doctor-config-checks.ts, doctor-wiring-checks.ts), and
     boot-summary.ts's `keySet` documents itself as the stricter one. The trimmed
-    reader in @vendoai/agents' door.ts is a different question — an ORIGIN. */
+    reader in the agent surface's turn/door.ts is a different question — an ORIGIN. */
 export function environment(name: string): string | undefined {
   if (typeof process === "undefined") return undefined;
   const value = process.env[name];

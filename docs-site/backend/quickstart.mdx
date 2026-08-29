@@ -18,16 +18,16 @@ everything else has a default.
 <CodeGroup>
 
 ```bash npm
-npm install @vendoai/agents ai zod
+npm install @vendoai/vendo ai zod
 ```
 
 ```bash pnpm
-pnpm add @vendoai/agents ai zod
+pnpm add @vendoai/vendo ai zod
 ```
 
 </CodeGroup>
 
-`@vendoai/agents` is ESM, so an empty project needs one line in its
+`@vendoai/vendo` is ESM, so an empty project needs one line in its
 `package.json`:
 
 ```json package.json
@@ -35,7 +35,7 @@ pnpm add @vendoai/agents ai zod
 ```
 
 ```ts lib/agent.ts focus={12-24}
-import { agent, tool } from "@vendoai/agents";
+import { agent, tool } from "@vendoai/vendo";
 import { z } from "zod";
 
 /** Stand-in for your own database or API call. */
@@ -108,7 +108,7 @@ That is the whole hello world. The agent needs a model to think with, and the
 shortest way to give it one is `npx vendoai@latest login`, which mints a
 `VENDO_API_KEY` into `.env.local` and never prints it.
 
-`.env.local` is a Next.js convention, and nothing in `@vendoai/agents` reads it.
+`.env.local` is a Next.js convention, and nothing in `@vendoai/vendo` reads it.
 A plain Node backend — which this page is — has to be handed the variable:
 
 ```bash
@@ -123,7 +123,7 @@ pairs with your `ai`, 4 with `ai@7` and 3 with `ai@6` — and pass it beside
 
 ```ts lib/agent.ts focus={1,6}
 import { anthropic } from "@ai-sdk/anthropic";
-import { agent } from "@vendoai/agents";
+import { agent } from "@vendoai/vendo";
 
 export const support = agent({
   name: "support",
@@ -214,7 +214,7 @@ as approve/deny cards that call `resume`.
 so `run.events` is the live feed and awaiting it is the result.
 
 ```ts app/api/reports/route.ts focus={10,15-18,29}
-import { THREAD_ID_HEADER } from "@vendoai/agents";
+import { THREAD_ID_HEADER } from "@vendoai/vendo";
 import { support } from "@/lib/agent";
 import { auth } from "@/lib/auth";
 

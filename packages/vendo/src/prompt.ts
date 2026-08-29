@@ -225,7 +225,8 @@ export async function assembleSystemPrompt(
   // every message, so composition delivers it beside the prompt
   // (`Turn.situation`, harness-turn.ts) and the harness places it behind the
   // history — a volatile block in here is what kept the prompt cache cold.
-  // The block is core's, shared verbatim with @vendoai/agents' assemblePrompt:
+  // The block is core's, shared verbatim with the standalone agent surface's
+  // assemblePrompt (src/turn/prompt.ts):
   // the section-forgery indent is a prompt-injection defence and it gets
   // exactly one implementation.
   const user = userPromptBlock(ctx.user);

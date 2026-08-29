@@ -2,13 +2,13 @@
  * 07-automations — the engine, the named-runner map a firing looks its brain up
  * in, and the boot reconcile that turns `.on()` declarations into records.
  *
- * `@vendoai/agents` may not import `@vendoai/automations`, so `agent.on(...)`
- * only COLLECTS declarations. This is the one place they are executed: at boot
- * the umbrella reads what every agent collected, diffs it against what is
- * stored (core's shared reconcile, the same helper the manifest fold-in runs),
- * and drives the engine's create/disarm.
+ * `agent.on(...)` only DECLARES; a lifecycle is what reaches the store. This is
+ * `createVendo`'s: at boot the umbrella reads what every agent collected, diffs
+ * it against what is stored (core's shared reconcile, the same helper the
+ * manifest fold-in runs), and drives the engine's create/disarm. `serve()`
+ * (src/turn/serve.ts) is the other lifecycle, and runs the same reconcile.
  */
-import { agentAutomationPlan, agentComposition, awayRunner, type VendoAgent } from "@vendoai/agents";
+import { agentAutomationPlan, agentComposition, awayRunner, type VendoAgent } from "./turn/index.js";
 import { automationsInternals, createAutomations } from "@vendoai/automations";
 import {
   DEFAULT_RUNNER_NAME,
@@ -234,7 +234,7 @@ function extraAgentRunner(agent: VendoAgent): AgentRunner {
   if (composed === undefined) {
     throw new VendoError(
       "validation",
-      "createVendo({ agents }) takes the values `agent()` from @vendoai/agents returned, and one of them is something else — "
+      "createVendo({ agents }) takes the values `agent()` from @vendoai/vendo returned, and one of them is something else — "
       + "pass `agent({ name, … })`'s return value, not a harness, a config object, or a class instance.",
     );
   }

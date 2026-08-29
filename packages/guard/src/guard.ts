@@ -2157,7 +2157,7 @@ class GuardImplementation implements VendoGuard {
         sessionId: ctx.sessionId,
         // The TURN that asked, so a park survives the process that made it as
         // something addressable rather than as one more of a subject's asks:
-        // `turns.resume(turnId, …)` (@vendoai/agents) finds this row through it
+        // `turns.resume(turnId, …)` (@vendoai/vendo) finds this row through it
         // after a restart. Inert for matching — `sameParkedCall` pins the call
         // and the venue, never this — and absent on a check with no turn.
         ...(ctx.turnId === undefined ? {} : { turnId: ctx.turnId }),

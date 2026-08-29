@@ -1,7 +1,7 @@
 /**
  * The union of what the two former copies of this defence were tested for —
  * @vendoai/vendo's `prompt-block-forgery.test.ts` (section forgery, all seven
- * line terminators) and @vendoai/agents' `prompt.test.ts` (function drop, JSON
+ * line terminators) and the agent surface's `turn/prompt.test.ts` (function drop, JSON
  * facts, no bare headers) — now aimed at the one implementation both use.
  */
 import { describe, expect, it } from "vitest";

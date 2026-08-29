@@ -1,6 +1,6 @@
 # Standalone agent
 
-The `@vendoai/agents` quickstart, whole. One package, three short files:
+The standalone-agent quickstart, whole. One package, three short files:
 
 | File | What it is |
 | --- | --- |
@@ -24,7 +24,7 @@ npx vendoai@latest login          # mints VENDO_API_KEY into .env.local, never p
 pnpm chat
 ```
 
-`.env.local` is a Next.js convention and nothing in `@vendoai/agents` reads it,
+`.env.local` is a Next.js convention and nothing in `@vendoai/vendo` reads it,
 so the `chat` and `start` scripts pass it to Node themselves
 (`node --env-file-if-exists=.env.local …`). Exporting `VENDO_API_KEY` in your
 shell works just as well.

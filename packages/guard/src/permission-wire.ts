@@ -1,7 +1,7 @@
 /**
  * ONE permission wire. Five routes — the pending asks, the decision, the two
  * take-backs, the standing grants — served identically by every surface that
- * mounts them (the umbrella's `/api/vendo`, `@vendoai/agents`'s mount, a host
+ * mounts them (the umbrella's `/api/vendo`, `agentHandler`'s mount, a host
  * wiring the guard itself), because `@vendoai/ui`'s consent surfaces post to
  * ONE shape and a second hand-rolled copy is how they come to disagree.
  *
@@ -35,7 +35,7 @@ export interface PermissionsHandlerDeps {
   mount?: string;
 }
 
-/** The umbrella's base path, and the mount `@vendoai/agents` documents. */
+/** The umbrella's base path, and the mount `agentHandler` documents. */
 const DEFAULT_MOUNT = "/api/vendo";
 
 const STATUS_BY_CODE: Partial<Record<VendoErrorCode, number>> = {

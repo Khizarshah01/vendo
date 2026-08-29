@@ -20,6 +20,7 @@ import { join } from "node:path";
 import {
   STORE_WIRE_TURN_OPS,
   VENDO_STORE_WIRE_FORMAT,
+  type AuditEvent,
   type Harness,
   type Principal,
   type RecordInput,
@@ -106,6 +107,9 @@ function hostedShape(backing: VendoStore, level: number, seen: string[]): VendoS
 interface Deployment {
   say(text: string, id: string): Promise<number>;
   messageIds(): Promise<string[]>;
+  /** Every `kind: "run"` row this deployment's guard has landed, read back out
+   *  of the guard's own collection. */
+  runRows(): Promise<AuditEvent[]>;
   seen: string[];
 }
 
@@ -133,6 +137,11 @@ async function deploy(level: number, harness?: Harness<never>): Promise<Deployme
       }));
       await response.text();
       return response.status;
+    },
+    async runRows() {
+      const { records } = await backing.records("vendo_audit")
+        .list({ refs: { subject: principal.subject, kind: "run" } });
+      return records.map((record) => record.data as unknown as AuditEvent);
     },
     async messageIds() {
       const listed = await vendo.harness.threads.get(thread, {
@@ -235,5 +244,27 @@ describe("the turn envelope, adopted", () => {
     expect(perTurn).toContain("harness.get");
     expect(perTurn).toContain("harness.set");
     expect(perTurn).not.toContain("turn.commit");
+  });
+
+  it("carries the run's audit row IN the commit, and lands exactly one", async () => {
+    // The commit's THIRD leg — `guard.reportThrough` in
+    // packages/vendo/src/harness-turn.ts. The messages and the state legs are
+    // pinned above; this one was untested anywhere in the repo, and it is the
+    // leg billing reads — a row that stopped landing, or landed twice, is money
+    // either way.
+    const deployment = await deploy(STORE_WIRE_TURN_OPS);
+    expect(await deployment.say("first", "m_first")).toBe(200);
+
+    deployment.seen.length = 0;
+    expect(await deployment.say("second", "m_second")).toBe(200);
+
+    // One row per turn, no more: the fallback `report` beside the batch would
+    // double this.
+    const rows = await deployment.runRows();
+    expect(rows.map((row) => row.kind)).toEqual(["run", "run"]);
+    // …and it RODE the commit rather than taking a write of its own.
+    const perTurn = deployment.seen.filter((op) => op !== "status");
+    expect(perTurn).toContain("turn.commit");
+    expect(perTurn).not.toContain("engine.put");
   });
 });

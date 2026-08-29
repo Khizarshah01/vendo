@@ -154,7 +154,7 @@ export function rejectRemovedConfigKeys(config: Partial<Record<string, unknown>>
     .map((key) => `\`agent.${key}\` → ${REMOVED_AGENT_OPTION_KEYS[key]}`);
   throw new VendoError(
     "validation",
-    "`agent:` now takes only a whole agent built by `agent()` from @vendoai/agents. "
+    "`agent:` now takes only a whole agent built by `agent()` from @vendoai/vendo. "
     + (moved.length === 0
       ? "The chat-knobs object is gone."
       : `Move ${moved.join(", ")}.`),

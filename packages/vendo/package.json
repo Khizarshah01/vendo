@@ -1,6 +1,6 @@
 {
   "name": "@vendoai/vendo",
-  "version": "0.56.0",
+  "version": "0.55.0",
   "description": "The Vendo umbrella: default composition, public wire routes, React provider, and the vendo CLI.",
   "keywords": [
     "ai",
@@ -34,6 +34,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./claude-code": {
+      "types": "./dist/turn/claude-code.d.ts",
+      "default": "./dist/turn/claude-code.js"
     },
     "./server": {
       "types": "./dist/server.d.ts",
@@ -92,7 +96,6 @@
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.12",
     "@vendoai/actions": "workspace:*",
-    "@vendoai/agents": "workspace:*",
     "@vendoai/apps": "workspace:*",
     "@vendoai/automations": "workspace:*",
     "@vendoai/core": "workspace:*",

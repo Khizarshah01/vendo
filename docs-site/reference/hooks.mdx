@@ -52,7 +52,7 @@ A failed read keeps the last good collection, so you can render a retry affordan
 | `useSlots(options?)` | `slots: SlotEntry[]`, the caller's registered slots | `pollMs` |
 | `useSlotApp(slotId, options?)` | `{ appId, status, error, isLoading, refresh }` | on by default |
 | `useVendoThread(threadId?)` | the streaming conversation. See [Threads](#threads) | |
-| `useVendoChat(options)` | the same conversation against an `@vendoai/agents` mount, without a provider. See [Standalone agent chat](#standalone-agent-chat) | |
+| `useVendoChat(options)` | the same conversation against an `@vendoai/vendo` mount, without a provider. See [Standalone agent chat](#standalone-agent-chat) | |
 | `useVendoStatus()` | `{ posture, connected, memberships }` | |
 | `useVendoContext(data)` | nothing. Publishes `data` into the prompt's `[Context]` block while mounted | |
 | `useVendoOverlay(options?)` | `VendoOverlayController`. See [Overlay control](#overlay-control) | |
@@ -188,7 +188,7 @@ The "type while it is answering, and it sends when the reply lands" behavior bel
 
 ## Standalone agent chat
 
-`useVendoChat` is `useVendoThread`'s thinner sibling, for a page talking to an [`@vendoai/agents` mount](/reference/server-api#handler). No provider, no client, no embed chrome, no `[Context]` block — just the transport, the thread-id round trip, and the two things you have to render for an agent that asks permission.
+`useVendoChat` is `useVendoThread`'s thinner sibling, for a page talking to an [`@vendoai/vendo` mount](/reference/server-api#handler). No provider, no client, no embed chrome, no `[Context]` block — just the transport, the thread-id round trip, and the two things you have to render for an agent that asks permission.
 
 ```ts
 const {

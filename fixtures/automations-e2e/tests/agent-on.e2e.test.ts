@@ -13,7 +13,7 @@
  * from the source is disarmed (never deleted — its run history survives), and a
  * person's own kill switch outlives every redeploy.
  */
-import { agent, agentAutomations } from "@vendoai/agents";
+import { agent, agentAutomations } from "@vendoai/vendo";
 import { declaredAutomationId, reconcileAutomations, toTriggerSource } from "@vendoai/core";
 import type { AutomationRecord, DeclaredAutomation, Principal, RunContext } from "@vendoai/core";
 import { beforeEach, describe, expect, it } from "vitest";

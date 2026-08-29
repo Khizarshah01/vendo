@@ -5,7 +5,7 @@
  * Everything here runs BEFORE anything is constructed, so a config that fills a
  * slot twice leaks no resources on its way to the error.
  */
-import { agentComposition, type AgentComposition } from "@vendoai/agents";
+import { agentComposition, type AgentComposition } from "./turn/index.js";
 import { unsupportedRouteParams } from "@vendoai/apps/contract";
 import { VendoError } from "@vendoai/core";
 import { cloudDirectory } from "./cloud-directory.js";
@@ -28,7 +28,7 @@ function adoptAgent(config: CreateVendoConfig): AgentComposition | undefined {
   if (composed === undefined) {
     throw new VendoError(
       "validation",
-      "createVendo({ agent }) was handed something `agent()` from @vendoai/agents did not build — pass the value that `agent({ … })` returned.",
+      "createVendo({ agent }) was handed something `agent()` from @vendoai/vendo did not build — pass the value that `agent({ … })` returned.",
     );
   }
   const conflicts = AGENT_OWNED_KEYS.filter((key) => config[key] !== undefined);
@@ -159,7 +159,7 @@ export const composeConfig = (input: CreateVendoConfig): Pick<VendoComposition,
       + "keep `components` (the name `<VendoProvider components>` already uses) and drop `catalog`.",
     );
   }
-  // agents-v0 §Product — the embed's seam onto @vendoai/agents. Checked here,
+  // agents-v0 §Product — the embed's seam onto the agent surface. Checked here,
   // beside the auth mixing check and for the same reason: a slot filled twice
   // is a wiring mistake the host hears about before anything is constructed.
   const composed = adoptAgent(config);

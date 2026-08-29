@@ -6,7 +6,7 @@
  * approve the cards they mean. Every test below grants exactly the cards its
  * subject needs and leaves the rest standing.
  */
-import { awayRunner } from "@vendoai/agents";
+import { awayRunner } from "@vendoai/vendo";
 import {
   DEFAULT_RUNNER_NAME,
   serviceToolSlug,
@@ -188,7 +188,7 @@ describe("scripted goal runs", () => {
 
 /**
  * The SHIPPED away entry driving a real automation, end to end, with no key: the
- * real engine fires it, the real `@vendoai/agents` runner runs it on the real
+ * real engine fires it, the real `@vendoai/vendo` runner runs it on the real
  * harness runtime, the real guard decides its calls, and the real fixture host
  * serves them. Only the thinker is scripted — the live leg (`live-agentic`) is the
  * same wiring with a real model in that one slot.

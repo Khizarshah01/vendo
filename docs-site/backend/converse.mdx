@@ -19,7 +19,7 @@ the same turn:
 you would rather write yourself, with its own auth model.
 
 ```ts lib/agent.ts focus={11,23}
-import { agent, api, tool } from "@vendoai/agents";
+import { agent, api, tool } from "@vendoai/vendo";
 
 export const support = agent({
   name: "support",
@@ -177,7 +177,7 @@ back on the next turn.
 </div>
 
 ```ts app/support-client.ts focus={9}
-import { THREAD_ID_HEADER } from "@vendoai/agents";
+import { THREAD_ID_HEADER } from "@vendoai/vendo";
 
 let threadId: string | null = null;
 
@@ -212,7 +212,7 @@ turn carries on from exactly where it parked — a denied call is a refusal the
 model reads, never a rerun.
 
 ```ts focus={5-10}
-import type { Decisions } from "@vendoai/agents";
+import type { Decisions } from "@vendoai/vendo";
 
 const turn = await support.chat(message, { as: user.id });
 

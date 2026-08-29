@@ -7,8 +7,8 @@
  * this file re-exports is re-exported from HERE because `@vendoai/vendo/server`
  * is where a host names it.
  */
-import { provideCloudAdapters } from "@vendoai/agents";
-import { isJsonRequest, relativePath } from "@vendoai/agents/http";
+import { provideCloudAdapters } from "./turn/index.js";
+import { isJsonRequest, relativePath } from "./wire/router.js";
 import { isVendoError, log, VendoError } from "@vendoai/core";
 import { announceBootSummary, bootSummaryFor } from "./boot-summary.js";
 import { createComposition } from "./compose-context.js";
@@ -202,11 +202,10 @@ export { UNATTENDED_IRREVERSIBILITY_RULE } from "@vendoai/automations";
 // the documented `serverActions` config key, so a host must be able to name it
 // without adding a direct @vendoai/actions dependency.
 export type { CatalogFile, ExtractedTool, OverridesFile, ServerActionHandler } from "@vendoai/actions";
-// The second arm of the `agent:` key — what `agent()` from @vendoai/agents
-// returns — named from here for the same reason as ServerActionHandler: a host
+// The second arm of the `agent:` key — what `agent()` returns — named from here for the same reason as ServerActionHandler: a host
 // must be able to name what it passes without adding a direct dependency on the
 // block the value came from.
-export type { VendoAgent as ComposedAgent } from "@vendoai/agents";
+export type { VendoAgent as ComposedAgent } from "./turn/index.js";
 export type {
   VendoNavigation,
   VendoRoute,

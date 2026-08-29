@@ -33,7 +33,6 @@ const nextConfig: NextConfig = {
     ? {
         transpilePackages: [
           "@vendoai/actions",
-          "@vendoai/agents",
           "@vendoai/automations",
           "@vendoai/core",
           "@vendoai/guard",
@@ -50,7 +49,6 @@ const nextConfig: NextConfig = {
             "@vendoai/actions/presets": "../../packages/actions/src/presets/index.ts",
             "@vendoai/actions/presets/auth-js": "../../packages/actions/src/presets/auth-js.ts",
             "@vendoai/actions/sync": "../../packages/actions/src/sync/public.ts",
-            "@vendoai/agents": "../../packages/agents/src/index.ts",
             "@vendoai/automations": "../../packages/automations/src/index.ts",
             "@vendoai/core": "../../packages/core/src/index.ts",
             "@vendoai/core/conformance": "../../packages/core/src/conformance/index.ts",

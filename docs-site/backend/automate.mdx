@@ -8,7 +8,7 @@ description: ".on() declares an automation in code. Consent is the code itself, 
 neither: it declares work that should happen **without a caller at all**.
 
 ```ts lib/agent.ts
-import { agent } from "@vendoai/agents";
+import { agent } from "@vendoai/vendo";
 
 export const support = agent({ name: "support" });
 
@@ -79,7 +79,7 @@ declarations this process runs and hands back the handle that stops the
 scheduler:
 
 ```ts
-import { serve } from "@vendoai/agents";
+import { serve } from "@vendoai/vendo";
 import { support } from "./agent.js";
 
 const runtime = await serve({ agents: [support] });

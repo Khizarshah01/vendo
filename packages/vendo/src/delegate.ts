@@ -5,7 +5,7 @@
  * Internal wiring, not a host surface: a delegated run is the deployment's own
  * brain doing a whole task, and there is nothing for a host to swap or inspect —
  * so it stays off `Vendo` and rides a WeakMap keyed on the composition, the same
- * way `@vendoai/agents` carries what `agent()` composed.
+ * way the agent surface carries what `agent()` composed.
  */
 import { VendoError, type AgentRunner } from "@vendoai/core";
 import type { Vendo } from "./server.js";

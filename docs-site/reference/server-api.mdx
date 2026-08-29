@@ -1,7 +1,7 @@
 ---
 title: "Server API"
 sidebarTitle: "Server API"
-description: "Every server-side symbol: the createVendo composition and the Vendo handle, the /server exports, the tool-pack subpaths, and the @vendoai/agents surface."
+description: "Every server-side symbol: the createVendo composition and the Vendo handle, the /server exports, the tool-pack subpaths, and the @vendoai/vendo surface."
 ---
 
 ## Entry points
@@ -15,7 +15,7 @@ description: "Every server-side symbol: the createVendo composition and the Vend
 | `@vendoai/vendo/mastra` | `vendoMastraTools`, the same pack as Mastra tool shapes |
 | `@vendoai/vendo/auth/{auth0,auth-js,clerk,jwt,supabase}` | One preset factory each |
 | `@vendoai/vendo/extract` | The extraction stages the CLI drives |
-| `@vendoai/agents` | `agent()`, the standalone backend agent |
+| `@vendoai/vendo` | `agent()`, the standalone backend agent |
 
 Type imports come from the umbrella, not the block packages. Importing the same type from `@vendoai/core` or `@vendoai/apps` is a `TS2307` under strict linking, because those are not your dependencies.
 
@@ -216,18 +216,18 @@ Every pack tool executes through `vendo.guardedTools`, the same guard-bound regi
 
 Tool outputs are the versioned envelopes documented in [Embeds and envelopes](/existing-agent/embeds).
 
-## `@vendoai/agents`
+## `@vendoai/vendo`
 
 The standalone backend agent. Every value and option type below is exported
-from `@vendoai/agents`. The shared block types its signatures name are not:
+from `@vendoai/vendo`. The shared block types its signatures name are not:
 `Harness`, `Principal`, `SandboxAdapter`, `ThreadId`, `ToolCall`,
 `ToolOutcome`, `TurnId`, `VendoErrorCode`, `VendoStore` and `When` come from
 `@vendoai/vendo`, `GuardRules` from `@vendoai/vendo/server`, and
 `LanguageModel` and `UIMessage` from `ai`.
 
 ```ts
-import { agent, api, e2b, postgres, serve, tool, THREAD_ID_HEADER } from "@vendoai/agents";
-import { claudeCode } from "@vendoai/agents/claude-code";
+import { agent, api, e2b, postgres, serve, tool, THREAD_ID_HEADER } from "@vendoai/vendo";
+import { claudeCode } from "@vendoai/vendo/claude-code";
 ```
 
 ### `agent(config)`
@@ -266,7 +266,7 @@ Unset, the agent thinks in this process. Swapping in the Claude Agent SDK on
 this server is one line:
 
 ```ts
-import { claudeCode } from "@vendoai/agents/claude-code";
+import { claudeCode } from "@vendoai/vendo/claude-code";
 
 agent({ name: "builder", harness: claudeCode({ machine: "local" }) });
 ```

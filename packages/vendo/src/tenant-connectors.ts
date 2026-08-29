@@ -286,8 +286,8 @@ export function createTenantConnectors(deps: {
 /** THE selection point: the shared surface, plus the registries this run's orgs
  *  add to it.
  *
- *  A merge of registries (the same shape @vendoai/agents' own multi-source
- *  registry takes), never a filter over one combined set — a run whose orgs
+ *  A merge of registries (the same shape the standalone agent surface's own
+ *  multi-source registry takes), never a filter over one combined set — a run whose orgs
  *  registered nothing is handed the base registry untouched, and a run whose org
  *  did is handed a registry another tenant's connector was never in.
  *

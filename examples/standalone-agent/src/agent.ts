@@ -5,7 +5,7 @@
  * an agent thinks in this process and persists its threads and audit rows
  * automatically, so this file runs in an empty Node project.
  */
-import { agent, tool } from "@vendoai/agents";
+import { agent, tool } from "@vendoai/vendo";
 import { z } from "zod";
 
 /** Stand-in for your own database or API call. */

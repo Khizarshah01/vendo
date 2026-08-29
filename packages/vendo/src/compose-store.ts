@@ -149,8 +149,8 @@ export function selectStore(
     if (configured !== undefined) return configured;
     const cloud = cloudKeyOptions();
     // The kept-alive pool is the umbrella's to supply: it reaches undici, so it
-    // cannot live in @vendoai/store, which @vendoai/agents composes on an edge
-    // target too. A host passing its own `fetch` still wins (adapter rule).
+    // cannot live in @vendoai/store, which the standalone agent surface composes
+    // on an edge target too. A host passing its own `fetch` still wins (adapter rule).
     if (cloud !== undefined) return hostedStore({ ...cloud, fetch: keepAliveFetch });
     const encryptionKey = environment("VENDO_STORE_ENCRYPTION_KEY");
     return createStore(encryptionKey === undefined

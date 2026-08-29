@@ -1,4 +1,4 @@
-/** Live leg (ANTHROPIC_API_KEY-gated): a real model behind the `@vendoai/agents`
+/** Live leg (ANTHROPIC_API_KEY-gated): a real model behind the `@vendoai/vendo`
  * away runner drives an away goal automation through the same guard-bound
  * registry the engine hands every run — 07 §4 with real reasoning, real fixture
  * tools, and record-bound authority only.
@@ -8,7 +8,7 @@
  */
 import { describe, expect, it } from "vitest";
 import type { LanguageModel } from "ai";
-import { awayRunner } from "@vendoai/agents";
+import { awayRunner } from "@vendoai/vendo";
 import { vendo } from "@vendoai/harnesses";
 import { createStack, ownerCtx, resetFixture } from "../src/harness.js";
 import { ADA, approve } from "../src/support.js";

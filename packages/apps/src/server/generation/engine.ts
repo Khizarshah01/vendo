@@ -47,7 +47,7 @@ export interface GenerationDependencies extends FloorDependencies {
 
 export type GeneratedAppDocument = Omit<AppDocument, "id">;
 
-// Anthropic prompt-caching breakpoint (mirrors packages/agents/src/agent.ts's
+// Anthropic prompt-caching breakpoint (mirrors packages/vendo/src/turn/agent.ts's
 // CACHE_BREAKPOINT). providerOptions.anthropic is ignored by every other
 // provider and by the test mocks, so marking the breakpoint degrades to a
 // no-op off-Anthropic.

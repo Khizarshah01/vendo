@@ -24,5 +24,12 @@ into its system prompt, cancels a turn when the client disconnects, and caps
 tool steps per turn via `agent.maxSteps` (default 20) with a visible
 step-limit notice in the stream.
 
-Read the [quickstart](https://docs.vendo.run/quickstart) and
+This package also ships the standalone backend agent — `agent()`, `tool()`,
+`api()`, `serve()` and `agentHandler`, with `session()`, `respond()`, `run()`
+and `chat()` on the agent it builds. That path takes none of the CLI or UI
+above — an empty Node project and one import. It arrived here when
+`@vendoai/agents` folded in, and every export kept its name.
+
+Read the [quickstart](https://docs.vendo.run/quickstart), the
+[backend quickstart](https://docs.vendo.run/backend/quickstart) and the
 [CLI reference](https://docs.vendo.run/reference/cli).

@@ -15,11 +15,12 @@
  *      block and sits above every layer, so it may depend on any block in the
  *      map — but rules 2 and 3 bind it exactly as they bind a block.
  *
- *   2. NO QUARRY IMPORTS — nothing may import from legacy/ (path or relative
- *      escape), and nothing may import the retired package names that only
- *      exist in the quarry / on old npm (@vendoai/cli, client, components,
- *      react, runtime, server, shell, stage) — those would silently resolve
- *      to the pre-v0 published versions.
+ *   2. NO RETIRED IMPORTS — nothing may import from legacy/ (path or relative
+ *      escape), and nothing may import a retired package name: the pre-v0
+ *      publishes that only exist in the quarry (@vendoai/cli, client,
+ *      components, react, runtime, server, shell, stage) and @vendoai/agents,
+ *      which folded into @vendoai/vendo. Every one of them is still ON NPM, so
+ *      the import resolves to a frozen publish instead of failing.
  *
  *   3. HONEST MANIFESTS — every @vendoai/* import in a package's src must be
  *      declared in its package.json (dependencies or peerDependencies).
@@ -100,8 +101,8 @@ const LAYERS = {
   // claude-turn rehome — the session runner (`claude-code/claude-turn.ts`) and
   // the box session door (`box/turn-routes.mjs`) live HERE now, and the apps
   // vocabulary the driver still uses (hot paths, the validate gate) arrives
-  // INJECTED through `provideHarnessAdapters` from composition (the umbrella
-  // and @vendoai/agents), never imported. The e2b/box-door seam tests live in
+  // INJECTED through `provideHarnessAdapters` from composition (the umbrella),
+  // never imported. The e2b/box-door seam tests live in
   // packages/vendo/tests, where both blocks are legal.
   // It is NOT the umbrella: no store, no actions.
   //
@@ -112,41 +113,6 @@ const LAYERS = {
   // one place that rule is stated. apps depends on core alone, so there is no
   // cycle; the cost is that a standalone install carries apps, which is accepted.
   "@vendoai/harnesses": ["@vendoai/core", "@vendoai/guard", "@vendoai/apps"],
-  // the standalone agent runtime (agents-v0 spec, 2026-08-04): the open-source
-  // front door Vendo's embed consumes across a real seam. It assembles what the
-  // umbrella assembles — harness runtime (harnesses), guard, store, host tools
-  // and MCP connectors (actions), and the e2b sandbox adapter (apps) — but it
-  // is NOT the umbrella: no @vendoai/vendo, ever (the spec's dependency law;
-  // the embed consumes agents, never the reverse).
-  //
-  // knowledge LEFT with the dead `vendoKnowledge` re-export (#982): the runtime
-  // reaches knowledge engines through core's KnowledgeAdapter, so the direct
-  // edge had no importer. An allow-list entry with no edge behind it is a hole
-  // in the gate — it permits what nobody intends — so it goes when the edge does.
-  //
-  // mcp joined for the TOOL DOOR (Amendment 2, 2026-08-05): a harness declaring
-  // `requires.toolDoor` thinks outside this process and reaches the host's
-  // tools by dialling back, so the standalone runtime has to mount the door's
-  // SERVER half (`createMcpDoor({ internal: true })`) exactly as the umbrella
-  // does. mcp depends on core alone, so there is no cycle and the umbrella is
-  // not dragged in; the cost is that a standalone install now carries
-  // @modelcontextprotocol/sdk and jose, which is accepted.
-  // automations joined for `serve()` (agents-dx v1): `.on()` only COLLECTED
-  // declarations while the umbrella was the one lifecycle, and a standalone
-  // runtime with no lifecycle to reconcile them had triggers that never fired.
-  // automations depends on core alone, so there is no cycle and no umbrella
-  // edge; the cost is that a standalone install now carries croner and jsonata,
-  // which is accepted.
-  "@vendoai/agents": [
-    "@vendoai/core",
-    "@vendoai/actions",
-    "@vendoai/apps",
-    "@vendoai/automations",
-    "@vendoai/guard",
-    "@vendoai/harnesses",
-    "@vendoai/mcp",
-    "@vendoai/store",
-  ],
   // the canonical umbrella is the only package allowed to depend on every block
   "@vendoai/vendo": "*",
   // the unscoped compatibility package is a thin alias of the canonical umbrella
@@ -250,8 +216,14 @@ function compareVersions(a, b) {
   return 0;
 }
 
-/** Retired names that only exist as pre-v0 npm publishes. */
+/** Names that must never resolve again: the pre-v0 npm publishes that only
+ * exist in the quarry, and packages that folded into another block. Either way
+ * the name still exists ON NPM, so an import of it silently resolves to a
+ * frozen publish instead of failing. */
 const RETIRED = [
+  // folded whole into @vendoai/vendo (src/turn/, src/wire/router.ts). The API
+  // survives under the umbrella's name; @vendoai/agents@0.55.0 stays published.
+  "@vendoai/agents",
   "@vendoai/cli",
   "@vendoai/client",
   "@vendoai/components",
@@ -371,7 +343,7 @@ for (const dir of dirs) {
   };
   for (const [dep, version] of Object.entries(declared)) {
     if (RETIRED.includes(dep)) {
-      errors.push(`${pkg.name}: depends on retired quarry package "${dep}".`);
+      errors.push(`${pkg.name}: depends on retired package "${dep}".`);
     } else if (dep.startsWith("@vendoai/") || dep === "vendoai") {
       if (!isAllowed(dep)) {
         errors.push(
@@ -448,7 +420,7 @@ for (const dir of dirs) {
         );
       }
       if (RETIRED.includes(name)) {
-        errors.push(`${rel}: imports retired quarry package "${name}".`);
+        errors.push(`${rel}: imports retired package "${name}".`);
       } else if (name.startsWith("@vendoai/") || name === "vendoai") {
         if (!isAllowed(name)) {
           errors.push(`${rel}: import of "${name}" violates the layering rule.`);

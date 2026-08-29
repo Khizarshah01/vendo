@@ -6,7 +6,7 @@
  * It lives in core because four authoring doors and two packages have to name
  * the same shapes: the chat tool (`vendo_automate`), `vendo_make`'s auto-arm
  * sugar and the `vendo.json` manifest fold-in (both in `@vendoai/apps`), and
- * `agent.on` (`@vendoai/agents`). `@vendoai/apps` may import core and nothing
+ * `agent.on` (`@vendoai/vendo`). `@vendoai/apps` may import core and nothing
  * else, so this is the only place all four can meet.
  */
 import { Cron } from "croner";

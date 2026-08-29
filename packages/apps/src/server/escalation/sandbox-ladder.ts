@@ -4,9 +4,8 @@
  * Which `SandboxAdapter` composes is decided here, once, for every consumer:
  * the umbrella (`createVendo({ sandbox })`) and the standalone agent runtime
  * (`agent({ sandbox })`) call this same function. It lives in `@vendoai/apps`
- * because apps owns the sandbox seam and the e2b adapter, and because it is
- * the lowest package BOTH consumers may depend on — nothing in `@vendoai/agents`
- * may import `@vendoai/vendo` (the agents-v0 dependency law).
+ * because apps owns the sandbox seam and the e2b adapter, and because apps sits
+ * below both callers — `@vendoai/vendo` depends on apps, never the reverse.
  *
  * SELECTION LAW: env keys are credentials, config selects. `VENDO_API_KEY` is
  * the only blessed default-filler for a slot the host left unset — a

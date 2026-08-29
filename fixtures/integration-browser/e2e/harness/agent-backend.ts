@@ -16,7 +16,7 @@
  */
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import type { AddressInfo } from "node:net";
-import { agent, agentHandler, tool } from "@vendoai/agents";
+import { agent, agentHandler, tool } from "@vendoai/vendo";
 import type { Harness } from "@vendoai/core";
 import { createStore } from "@vendoai/store";
 

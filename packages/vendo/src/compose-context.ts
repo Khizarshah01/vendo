@@ -23,7 +23,7 @@ import type {
   OverridesFile,
   ServerActionHandler,
 } from "@vendoai/actions";
-import type { AgentComposition } from "@vendoai/agents";
+import type { AgentComposition } from "./turn/index.js";
 import type { AppsRuntime, SeedBaseline } from "@vendoai/apps";
 import type { AutomationsEngine } from "@vendoai/automations";
 import type {
@@ -117,7 +117,7 @@ export interface VendoComposition {
   automationsMounted: boolean;
   /** The host's config with `apps: false` folded away. */
   config: Omit<CreateVendoConfig, "apps"> & { apps?: AppsOptions };
-  /** What `agent()` from @vendoai/agents composed, when the host adopted one. */
+  /** What `agent()` composed, when the host adopted one. */
   composed: AgentComposition | undefined;
   resolvePrincipal: (req: Request) => Promise<Principal | null>;
   actAsSeam: ActAs | undefined;

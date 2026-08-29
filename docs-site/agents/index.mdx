@@ -16,7 +16,7 @@ playbook instead of the raw text, re-fetch it raw
 commands, and rules below don't survive paraphrase.
 
 **Only an agent in their backend?** Then none of the install below applies:
-`@vendoai/agents` is one package with no CLI and no `init`. Go straight to
+that path is one package, no CLI and no `init`. Go straight to
 [In the backend](#in-the-backend).
 
 **How to read this — fetch lean, act fast.** Take [Start here](#start-here) to
@@ -242,8 +242,8 @@ pointed at.
    tail is a paste: init writes the files itself and the code lives on the
    pages below.
 
-   **A backend agent takes none of this.** `@vendoai/agents` needs no CLI and
-   no init — see [In the backend](#in-the-backend), which starts from an empty
+   **A backend agent takes none of this.** That path needs no CLI and no
+   init — see [In the backend](#in-the-backend), which starts from an empty
    project rather than from a Continue link.
 
 ### Next.js: `serverExternalPackages`
@@ -611,7 +611,7 @@ One package and one call at module scope. `agent()` is the only export of the
 three — the object it returns carries the other two:
 
 ```bash
-npm install @vendoai/agents ai zod
+npm install @vendoai/vendo ai zod
 ```
 
 - `chat(message)` is one turn and the answer, with no route and no stream in

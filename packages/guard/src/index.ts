@@ -17,7 +17,7 @@ export { resolvePolicyConfig } from "./policy.js";
 export { policyFileSchema, policyRuleSchema } from "./types.js";
 // The ONE permission wire: the five approval/grant routes every mount serves,
 // as a request→body function (the umbrella's routes delegate to it) and as a
-// ready fetch handler (what @vendoai/agents mounts).
+// ready fetch handler (what @vendoai/vendo's `agentHandler` mounts).
 export {
   handlePermissionRequest,
   permissionsHandler,

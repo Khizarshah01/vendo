@@ -102,3 +102,16 @@ export { defineTool } from "@vendoai/core";
 // The copy-paste install prompt, so a surface that offers it (docs, README,
 // console) builds the one text instead of keeping a copy that rots.
 export { buildAgentPrompt } from "./agent-prompt.js";
+// The standalone-agent surface — `agent()`, `tool()`, `serve()`, `agentHandler`,
+// `createUser`, `createTurns`, `awayRunner`, `e2b`, `postgres`,
+// `provideCloudAdapters` and the rest. It shipped as `@vendoai/agents`' barrel
+// until that package folded in here; the package name retired, the API did not,
+// so the whole barrel is re-exported verbatim under its new home.
+export * from "./turn/index.js";
+// `Turn` and `TurnResult` are claimed by both halves and are NOT the same
+// types: core's `Turn` is the Build-contract turn a HARNESS is handed, the
+// agent surface's is the in-flight handle a CALLER holds. The root keeps
+// core's — what it meant before the fold-in — so no existing umbrella consumer
+// silently changes meaning. A host migrating off `@vendoai/agents` that names
+// either one gets a compile error at its use site, never a quiet swap.
+export type { Turn, TurnResult } from "@vendoai/core";
