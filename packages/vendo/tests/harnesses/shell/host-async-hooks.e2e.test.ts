@@ -22,8 +22,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-const PACKAGE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const SHELL_DIST = join(PACKAGE_DIR, "dist", "vendo", "shell");
+const PACKAGE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
+const SHELL_DIST = join(PACKAGE_DIR, "dist", "harnesses", "vendo", "shell");
 
 /** Next's dev tracker, reduced to the one object literal its crash stacks point
  *  at (next-server/app-page-turbo.runtime.dev.js): a `performance.now()`, a

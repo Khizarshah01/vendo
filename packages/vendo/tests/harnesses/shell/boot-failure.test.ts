@@ -13,7 +13,7 @@ import { describe, expect, it, vi } from "vitest";
 /** Set for the next library load only, then cleared — a blink, not a break. */
 let blink = false;
 
-vi.mock("../../src/vendo/shell/runtime.js", async (importOriginal) => {
+vi.mock("../../../src/harnesses/vendo/shell/runtime.js", async (importOriginal) => {
   const real = await importOriginal<typeof import("../../../src/harnesses/vendo/shell/runtime.js")>();
   return {
     ...real,

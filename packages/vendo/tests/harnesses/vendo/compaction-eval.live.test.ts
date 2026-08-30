@@ -46,7 +46,7 @@ import {
 
 /** A recorded Maple thread. Maple's data is synthetic, so nothing is scrubbed. */
 const MAPLE_THREAD = JSON.parse(
-  readFileSync(new URL("../../src/vendo/fixtures/maple-thread.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../../src/harnesses/vendo/fixtures/maple-thread.json", import.meta.url), "utf8"),
 ) as UIMessage[];
 
 /** The four strings the January band is the only source of. */

@@ -37,8 +37,8 @@ const constantIn = (source: string, name: string): number | undefined => {
 };
 
 test("the host's replay window is the box's own sync-ack wait", () => {
-  const host = sourceOf("../../src/claude-code/box.ts");
-  const box = sourceOf("../../box/turn-routes.mjs");
+  const host = sourceOf("../../../src/harnesses/claude-code/box.ts");
+  const box = sourceOf("../../../box/turn-routes.mjs");
 
   // `SYNC_ACK_WAIT_MS` is defined as `MAX_POLL_WAIT_MS`, so the alias has to hold
   // too — the coupling can drift through either name.

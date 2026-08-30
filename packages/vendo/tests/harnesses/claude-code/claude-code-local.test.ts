@@ -27,7 +27,7 @@ import { liveDoor, testAppsHooks, testWorkspace, unusedModels, userMessage } fro
 /** Every message the doubled local machine was sent, in order. */
 const sent: SessionMessage[] = [];
 
-vi.mock("../../src/claude-code/local.js", () => ({
+vi.mock("../../../src/harnesses/claude-code/local.js", () => ({
   localMachine: async (): Promise<SessionMachine> => ({
     carriesSession: false,
     pluginPath: "/tmp/vendo-local-double/host",

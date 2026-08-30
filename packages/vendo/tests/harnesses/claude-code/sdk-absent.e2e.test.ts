@@ -20,7 +20,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { afterAll, describe, expect, test } from "vitest";
 
-const PACKAGE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+const PACKAGE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 const dist = (path: string): string => pathToFileURL(join(PACKAGE_DIR, path)).href;
 
 const work = mkdtempSync(join(tmpdir(), "vendo-sdk-absent-"));
@@ -71,7 +71,7 @@ describe("D1 · a host that never installed the Agent SDK", () => {
     // reading apps' dist by file path needs apps BUILT, and since the
     // claude-turn rehome nothing orders apps' build before this suite.
     const output = runProbe(`
-      const runner = await import(${JSON.stringify(dist("dist/claude-code/claude-turn.js"))});
+      const runner = await import(${JSON.stringify(dist("dist/harnesses/claude-code/claude-turn.js"))});
       if (typeof runner.createClaudeSession !== "function") throw new Error("runner did not load");
       console.log("RUNNER_OK");
     `);
@@ -80,8 +80,8 @@ describe("D1 · a host that never installed the Agent SDK", () => {
 
   test("claudeCode() composes with a sandbox and passes the boot gate", () => {
     const output = runProbe(`
-      const { claudeCode } = await import(${JSON.stringify(dist("dist/claude-code/index.js"))});
-      const { assertHarnessComposable } = await import(${JSON.stringify(dist("dist/index.js"))});
+      const { claudeCode } = await import(${JSON.stringify(dist("dist/harnesses/claude-code/index.js"))});
+      const { assertHarnessComposable } = await import(${JSON.stringify(dist("dist/harnesses/index.js"))});
       const sandbox = { async create() {}, async destroy() {} };
       // The sandbox path: the SDK lives in the box image, never here.
       assertHarnessComposable(claudeCode(), { sandbox });
@@ -95,7 +95,7 @@ describe("D1 · a host that never installed the Agent SDK", () => {
 
   test("only machine:\"local\" fails, and it NAMES the package to install", () => {
     const output = runProbe(`
-      const { localMachine } = await import(${JSON.stringify(dist("dist/claude-code/local.js"))});
+      const { localMachine } = await import(${JSON.stringify(dist("dist/harnesses/claude-code/local.js"))});
       const machine = await localMachine({ threadId: "thr_sdk_absent", env: {} });
       try {
         await machine.send({ prompt: "go", tools: [], callTool: async () => ({ status: "ok", output: {} }), emit: () => {} });
