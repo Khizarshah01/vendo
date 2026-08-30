@@ -90,7 +90,6 @@ const LAYERS = {
   // and must stay so: @vendoai/vendo does NOT depend on the CLI.
   "@vendoai/cli": [
     "@vendoai/core",
-    "@vendoai/knowledge",
     "@vendoai/vendo",
   ],
   // the unscoped compatibility package is a thin alias of the canonical umbrella,
@@ -181,7 +180,7 @@ function compareVersions(a, b) {
  * frozen publish instead of failing. */
 const RETIRED = [
   // folded whole into @vendoai/vendo (src/turn/, src/wire/router.ts). The API
-  // survives under the umbrella's name; @vendoai/agents@0.55.0 stays published.
+  // survives under the umbrella's name; @vendoai/agents@0.56.0 stays published.
   "@vendoai/agents",
   // folded whole into @vendoai/vendo (src/automations/, src/knowledge/,
   // src/mcp/). Their run-ledger types and the two released knowledge collection
@@ -195,7 +194,7 @@ const RETIRED = [
   // /harnesses and its four); the guard's CONTRACT half — the policy rule and
   // file types, their zod schemas, and the five collection names the console
   // reads — answers to @vendoai/core now, because a contract a second repo is
-  // written against is declared once. Both stay published at 0.56.0.
+  // written against is declared once. Both stay published at 0.57.0.
   "@vendoai/guard",
   "@vendoai/harnesses",
   // folded whole into @vendoai/vendo (src/store/, src/actions/, src/telemetry/).
@@ -213,7 +212,7 @@ const RETIRED = [
   // door @vendoai/ui and browser consumers reach and core is the one package
   // below both. The SERVER half answers to @vendoai/vendo: /apps, /apps/testing,
   // and the sandbox pair /sandbox/e2b and /sandbox/edge. Stays published at
-  // 0.57.0.
+  // 0.58.0.
   "@vendoai/apps",
   "@vendoai/client",
   "@vendoai/components",

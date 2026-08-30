@@ -33,9 +33,10 @@
  * the SAME module `machine: "local"` runs on the host — one implementation, two
  * homes.
  *
- * This file lives in `@vendoai/harnesses` (the claude-code driver's package —
- * the box-side half of the session protocol the driver speaks), but it RUNS in
- * the box: `packages/vendo/box/build-template.mjs` stages it into the machine
+ * This file ships with the claude-code driver
+ * (`packages/vendo/src/harnesses/claude-code/`) as the box-side half of the
+ * session protocol that driver speaks, but it RUNS in the box:
+ * `packages/vendo/box/build-template.mjs` stages it into the machine
  * image beside the supervisor, which delegates every `/session/*` request here.
  * It imports nothing but node builtins, so it works from either home.
  */

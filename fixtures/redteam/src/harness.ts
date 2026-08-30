@@ -244,7 +244,7 @@ export async function createStack(options: StackOptions = {}): Promise<Stack> {
     actions.add(connectorDiscoveryRegistry(serviceToolPorts()));
   }
   const bound = guard.bind(actions);
-  // `@vendoai/automations` has zero app concepts, so the engine is composed
+  // `@vendoai/vendo/automations` has zero app concepts, so the engine is composed
   // WITHOUT the apps runtime. The dependency runs the other way now: the apps
   // layer holds the create seam, which closes over the engine composed here.
   const automations = createAutomations({

@@ -6,7 +6,7 @@
  * Cloud has no URL to knock on, so nothing ever fires.
  *
  * The secret is proven against the SHIPPED verifier (`verifySignature` in
- * @vendoai/automations) as the oracle, signed the way Cloud's heartbeat actually
+ * @vendoai/vendo/automations) as the oracle, signed the way Cloud's heartbeat actually
  * signs — HMAC over `${webhook-id}.${webhook-timestamp}.` keyed on the secret's
  * base64url-DECODED BYTES. A derivation that only satisfied a scheme restated
  * here would still have answered 401 to every knock in the fleet; that mistake

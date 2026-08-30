@@ -1,5 +1,5 @@
 /**
- * `@vendoai/harnesses/vendo` — the default in-process thinker and the turn loop
+ * `@vendoai/vendo/harnesses/vendo` — the default in-process thinker and the turn loop
  * it drives.
  *
  * One folder per harness, one subpath per harness: this mirrors

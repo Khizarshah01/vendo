@@ -3,8 +3,9 @@
  * broken.
  *
  * `harness-turn` calls the batch verb on every turn after the first, and it
- * used to call it unconditionally while `persistTurn` in `@vendoai/harnesses`
- * guarded the same verb — one call site protected, one not, which reads as
+ * used to call it unconditionally while `persistTurn`
+ * (packages/vendo/src/harnesses/runtime.ts) guarded the same verb — one call
+ * site protected, one not, which reads as
  * protection that is not there. A store without the verb then failed on turn
  * TWO of a conversation, after the first turn had already worked.
  *

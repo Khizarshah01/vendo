@@ -97,7 +97,7 @@ async function loadShim(page: Page, payload: unknown, theme?: VendoTheme): Promi
       }
     });
   </script>`);
-  const generated = await readFile(new URL("../../mcp/src/shim/shim-html.gen.ts", import.meta.url), "utf8");
+  const generated = await readFile(new URL("../../vendo/src/mcp/shim/shim-html.gen.ts", import.meta.url), "utf8");
   const match = generated.match(/export const SHIM_HTML: string = (.*);\s*$/s);
   if (!match) throw new Error("The generated MCP Apps shim artifact is malformed");
   const genericShimHtml = JSON.parse(match[1]!) as string;

@@ -148,7 +148,7 @@ const prewiredPropsIssues = (node: TreeNode): FactIssue[] => {
   if (kitSpec(node.component)?.engine !== undefined) return [];
   return Object.keys(props)
     // `pending` is the renderer's own placeholder cue, not a component prop —
-    // the plan skeleton writes it on every leaf (generation/skeleton.ts) and a
+    // the plan skeleton writes it on every leaf and a
     // section whose fill honestly failed keeps it.
     .filter((name) => name !== "pending" && !allowed.has(name))
     .map((name) => atNode(node.id, `sets unknown prop "${name}" on prewired component "${node.component}"; the renderer drops it. Allowed props: ${[...allowed].join(", ") || "(none)"}`));

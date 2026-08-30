@@ -2,7 +2,8 @@
 /**
  * The `request_connection` seam.
  *
- * The agent DECIDES to ask (the tool, in @vendoai/agent) and the chrome RENDERS
+ * The agent DECIDES to ask (the tool, in
+ * packages/vendo/src/connector-discovery.ts) and the chrome RENDERS
  * the ask (the connect card, in @vendoai/ui). Those are two packages that never
  * import each other, and the only thing joining them is the shape of one
  * `connect-required` outcome as it crosses the wire. A test that hand-writes
@@ -225,7 +226,7 @@ describe("request_connection: the agent asks, the chrome renders the ask", () =>
   /** uiaudit 2026-08-06 — the same hidden line, one surface later. The chrome's
    *  card answers are sent as bare marked text, and a fresh conversation's first
    *  message is sometimes exactly that; the title is minted server-side in
-   *  @vendoai/agent, which knew nothing about the mark. Written through the real
+   *  packages/vendo/src/threads.ts, which knew nothing about the mark. Written through the real
    *  door and read back through the real `GET /threads` listing — the rail's own
    *  read path, no stub on either side. */
   it("a hidden context message never becomes the thread's listed title", async () => {

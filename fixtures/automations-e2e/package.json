@@ -2,7 +2,7 @@
   "name": "@vendoai-fixtures/automations-e2e",
   "version": "0.0.1",
   "private": true,
-  "description": "Wave-4 full-stack e2e harness for @vendoai/automations: fixture host app + real store + real guard + real actions, composed the way the umbrella will compose them.",
+  "description": "Wave-4 full-stack e2e harness for @vendoai/vendo/automations: fixture host app + real store + real guard + real actions, composed the way the umbrella will compose them.",
   "type": "module",
   "engines": {
     "node": ">=20"

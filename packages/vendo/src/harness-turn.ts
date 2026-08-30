@@ -1,10 +1,10 @@
 /**
  * The composition seam that turns a `Harness` into a served turn.
  *
- * `@vendoai/harnesses` owns the runtime — building the `Turn`, mirroring tool
- * calls, persisting, running the injected workspace wrap that emits hot-path
- * views. What it deliberately does NOT own
- * is anything that needs a `RunContext`, because a harness is permission-blind by
+ * `packages/vendo/src/harnesses/runtime.ts` owns the runtime — building the
+ * `Turn`, mirroring tool calls, persisting, running the injected workspace wrap
+ * that emits hot-path views. What it deliberately does NOT own is anything
+ * that needs a `RunContext`, because a harness is permission-blind by
  * contract (§1). That leaves exactly this file's job: resolve the per-turn things
  * from the request's principal — the thread, the workspace, the `/host`
  * projection, the system prompt, the descriptor catalog — and hand the runtime a
@@ -428,7 +428,7 @@ export function createHarnessTurns(config: HarnessTurnsConfig): HarnessTurns {
     provideHarnessAdapters(config.harness, { toolSearch: config.toolSearch });
   }
   // The app-document vocabulary a machine-backed driver needs: the hot-path
-  // watch set, and the finish-line validate gate. `@vendoai/harnesses` no
+  // watch set, and the finish-line validate gate. The harness runtime no
   // longer imports `@vendoai/vendo/apps`, so composition hands the driver the REAL
   // implementations here — which is what keeps the composed path byte-identical
   // to when the driver imported them itself. Filled unconditionally: the slots
@@ -762,8 +762,8 @@ export function createHarnessTurns(config: HarnessTurnsConfig): HarnessTurns {
       // The group ships lockstep, so that takes pinning the packages
       // individually (or a stale build), but an unguarded call turns it into a
       // hard failure on turn TWO of a conversation, and `persistTurn` in
-      // `@vendoai/harnesses` already guards the same verb the same way. One
-      // policy for it, not two.
+      // `packages/vendo/src/harnesses/runtime.ts` already guards the same verb
+      // the same way. One policy for it, not two.
       const batchAppend: typeof transcript.upsertMany | undefined = transcript.upsertMany;
       const index = loaded !== undefined && (input.ctx.memberships ?? []).length === 0
         ? workspaceIndexPage(loaded.index, subject)

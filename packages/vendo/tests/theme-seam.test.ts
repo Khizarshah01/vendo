@@ -1,5 +1,5 @@
 /**
- * The theme seam: `@vendoai/ui` and `@vendoai/mcp` render the SAME theme
+ * The theme seam: `@vendoai/ui` and `@vendoai/vendo/mcp` render the SAME theme
  * through three different transports — a React style object, a `style`
  * attribute on the door's connect page, and a `:root{}` block inside the MCP
  * Apps shim. Each used to carry its own hand-kept copy of the mapping, and they

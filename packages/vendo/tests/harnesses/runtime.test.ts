@@ -1,5 +1,6 @@
 /**
- * The runtime — build contract §1.6 ("@vendoai/harnesses owns the runtime").
+ * The runtime — build contract §1.6, which puts it in the harness layer
+ * (`packages/vendo/src/harnesses/runtime.ts`).
  * It builds the Turn, converts HarnessEvents plus mirrored tool calls into the
  * EXISTING ai-SDK UIMessage stream, persists the transcript, and enforces the
  * frozen routing table. Harness adapters contain no persistence and no wire code.

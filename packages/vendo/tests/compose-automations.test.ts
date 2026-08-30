@@ -98,8 +98,8 @@ describe("boot reconcile — `.on()` declarations become records", () => {
 });
 
 describe("the named-runner map — registered at BOOT, looked up at fire time", () => {
-  // The map's own throw is proven in @vendoai/automations; what is proven HERE is
-  // the boot register loop that feeds it. It throws at COMPOSE, not at 2am, when
+  // The map's own throw is proven in the automations engine's suite; what is
+  // proven HERE is the boot register loop that feeds it. It throws at COMPOSE, not at 2am, when
   // a firing that looked the name up would already have reached the wrong brain.
   it("refuses to compose when two agents in `agents: []` wear one name", async () => {
     const store = await tempStore();

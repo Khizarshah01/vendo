@@ -29,7 +29,7 @@
  * It therefore imports NOTHING — not even a sibling in this package — and, the
  * rule that matters, it never NAMES the Agent SDK. Whoever supplies the machine
  * supplies the SDK: the box door loads it from the machine image, `machine:
- * "local"` loads it from the optional peer that `@vendoai/harnesses` declares.
+ * "local"` loads it from the optional peer that `@vendoai/vendo` declares.
  * A module that named the package itself was reachable from every composed
  * host's build graph, and a bundler that folds `import(CONST)` then refused to
  * build a host that has no reason to install a ~250MB platform binary. Keep it
@@ -194,7 +194,7 @@ interface ClaudeSessionInput {
   /**
    * The Agent SDK module, supplied by whoever supplied the machine: the box door
    * loads it from the image, `machine: "local"` loads it from the optional peer
-   * `@vendoai/harnesses` declares (contract build-list item 1). REQUIRED, so
+   * `@vendoai/vendo` declares (contract build-list item 1). REQUIRED, so
    * this file never names the package and never lands in a host's build graph
    * for it. Tests pass a double.
    */

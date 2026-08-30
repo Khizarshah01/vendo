@@ -1,6 +1,6 @@
 /**
  * The umbrella's approvals/grants area after it became a DELEGATE to
- * @vendoai/guard's one permission wire. Driven whole — the real composition,
+ * @vendoai/vendo/guard's one permission wire. Driven whole — the real composition,
  * the real guard, a real park through `vendo.guardedTools` — because what is at
  * risk in a delegation is precisely that the umbrella's OWN extras get lost:
  * the `?org=` cloud clamp on all five routes, and the BYO `GET /approvals/:id`

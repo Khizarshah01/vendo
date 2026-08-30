@@ -362,7 +362,7 @@ export interface CreateVendoConfig {
   remixWiring?: Record<string, { tools?: Record<string, ToolDefinition>; holes?: Record<string, unknown> }>;
   /** 05-guard — the deployment's choke point, as ONE value.
 
-      `guard({ policy, judge, approvals })` from `@vendoai/guard` declares the
+      `guard({ policy, judge, approvals })` from `@vendoai/vendo/guard` declares the
       host's RULES and lets this composition finish them: the store, the app/
       service risk resolver and the org-policy layer
       are plumbing only a venue can supply, so they are never on the spec (the

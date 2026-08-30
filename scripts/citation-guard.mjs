@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** Citation guard — every path/to/file.ext citation in a doc or a code
- *  comment must point at a file that actually exists in the tree.
+ *  comment must point at a file that actually exists in the tree, and every
+ *  @vendoai/* package it names must be a package that still exists.
  *
  *  Scans the full text of tracked .md/.mdx files, and the COMMENT text only
  *  of tracked .ts/.tsx/.mjs source, including tests — comment-only scanning is
@@ -100,6 +101,91 @@ function citationsIn(chunks) {
   return found;
 }
 
+// A package name is a citation too — "<some @vendoai package> exports the
+// constant" sends a reader to a package exactly the way a path sends them to a
+// file, and a name that no longer resolves is the same dead end. The
+// live set is DERIVED: every `name` in every tracked package.json, so a fold,
+// a rename or a new package moves this the day it lands. There is deliberately
+// no list of retired names here — dependency-guard.mjs owns that list for the
+// IMPORT rule, and a second copy is a second thing to forget.
+const NAME_RE = /@vendoai\/[a-z0-9-]+/g;
+const liveNames = new Set(
+  gitFiles("*package.json").flatMap((f) => {
+    try {
+      return [JSON.parse(readFileSync(join(root, f), "utf8")).name].filter(Boolean);
+    } catch {
+      return [];
+    }
+  }),
+);
+
+/** The only files allowed to name a package that no longer exists.
+ *
+ *  Everywhere else the name is a lead, and a lead to a deleted package is worse
+ *  than none. Three kinds are not leads:
+ *
+ *   - the two guards THEMSELVES: dependency-guard.mjs is the retirement
+ *     registry, and this file has to name a dead package to explain the rule.
+ *     A `*.gen.ts` artifact (matched below, not listed) is generated
+ *     rather than authored: its payload is a minified bundle whose `//` runs are not
+ *     comments and whose embedded import list names whatever the generator saw.
+ *   - the scanner pair, where a retired name is a string this repo still has to
+ *     RECOGNISE in a stranger's code: route-scan keys on `@vendoai/agents`
+ *     because a host that installed it before the fold still imports it.
+ *   - the rest are sentences that NARRATE a retirement ("it arrived here when X
+ *     folded in"), where the dead name is the subject of a past-tense fact and
+ *     is correct as written.
+ *
+ *  The excuse is per FILE, so a new FALSE claim added to one of these is not
+ *  caught. That is accepted, and it is why the list is enumerated rather than
+ *  pattern-matched: every past-tense marker tried against the real corpus ("no
+ *  longer", "moved", "until") also appeared in present-tense claims that were
+ *  wrong — "`@vendoai/harnesses` no longer imports `@vendoai/vendo/apps`" is
+ *  both — so a marker heuristic would have waved through the very sentences
+ *  this gate exists to catch.
+ *
+ *  A stale entry is an error, below: the list can only shrink by being right. */
+const MAY_NAME_RETIRED = new Set([
+  "scripts/citation-guard.mjs",
+  "scripts/dependency-guard.mjs",
+  "cloud/console/tests/config-preview.test.ts",
+  "packages/ui/src/tree/screen-engine.ts",
+  "packages/vendo/README.md",
+  "packages/vendo/src/actions/sync/route-scan.ts",
+  "packages/vendo/src/harnesses/index.ts",
+  "packages/vendo/src/index.ts",
+  "packages/vendo/src/server.ts",
+  "packages/vendo/src/threads.ts",
+  "packages/vendo/src/turn/index.ts",
+  "packages/vendo/tests/actions/sync/route-exclusions.agents.test.ts",
+  "packages/vendo/tests/apps/automations-double.test-util.ts",
+  "packages/vendo/tests/apps/engine.bundler-safety.e2e.test.ts",
+  "packages/vendo/tests/apps/test-doubles.test-util.ts",
+  "packages/vendo/tests/harness-system-prompt.test.ts",
+  "packages/vendo/tests/harnesses/provider-401.test.ts",
+  "packages/vendo/tests/threads.test.ts",
+  "packages/vendo/vitest.config.ts",
+]);
+const mayNameRetired = (f) => MAY_NAME_RETIRED.has(f) || /\.gen\.tsx?$/.test(f);
+
+// deadName -> namingFile -> true
+const retired = new Map();
+const usedExcuse = new Set();
+
+function retiredIn(file, chunks) {
+  for (const chunk of chunks) {
+    for (const name of chunk.match(NAME_RE) ?? []) {
+      if (liveNames.has(name)) continue;
+      if (mayNameRetired(file)) {
+        usedExcuse.add(file);
+        continue;
+      }
+      if (!retired.has(name)) retired.set(name, new Set());
+      retired.get(name).add(file);
+    }
+  }
+}
+
 // citedPath -> citingFile -> true
 const citations = new Map();
 const record = (path, file) => {
@@ -113,13 +199,17 @@ for (const f of gitFiles("*.md", "*.mdx")) {
   // Paragraphs, not the whole file, so one license mention anywhere in a long
   // doc (e.g. crediting an on-prem vendor's own license) can't blanket-excuse
   // every citation in the rest of the file.
-  for (const p of citationsIn(text.split(/\n{2,}/))) record(p, f);
+  const chunks = text.split(/\n{2,}/);
+  for (const p of citationsIn(chunks)) record(p, f);
+  retiredIn(f, chunks);
 }
 
 for (const f of gitFiles("*.ts", "*.tsx", "*.mjs")) {
   if (isExcluded(f)) continue;
   const text = readFileSync(join(root, f), "utf8");
-  for (const p of citationsIn(commentChunks(text))) record(p, f);
+  const chunks = commentChunks(text);
+  for (const p of citationsIn(chunks)) record(p, f);
+  retiredIn(f, chunks);
 }
 
 const isIgnored = (p) => {
@@ -156,8 +246,24 @@ for (const [p, files] of [...citations].sort(([a], [b]) => a.localeCompare(b))) 
   console.error(`citation-guard: DEAD ${p} (cited by ${shown})`);
 }
 
-if (dead > 0) {
-  console.error(`citation-guard: ${dead} dead citation(s) out of ${total} checked`);
+let deadNames = 0;
+for (const [name, files] of [...retired].sort(([a], [b]) => a.localeCompare(b))) {
+  deadNames += 1;
+  const list = [...files].sort();
+  const shown = list.slice(0, 3).join(", ") + (list.length > 3 ? `, +${list.length - 3} more` : "");
+  console.error(`citation-guard: RETIRED ${name} — no such package (named by ${shown})`);
+}
+
+for (const f of [...MAY_NAME_RETIRED].sort()) {
+  if (usedExcuse.has(f)) continue;
+  deadNames += 1;
+  console.error(`citation-guard: STALE EXCUSE ${f} names no retired package — drop it from MAY_NAME_RETIRED`);
+}
+
+if (dead > 0 || deadNames > 0) {
+  console.error(
+    `citation-guard: ${dead} dead citation(s) out of ${total} checked, ${deadNames} retired package name(s)`,
+  );
   process.exit(1);
 }
-console.log(`citation-guard: ${total} citations checked, all resolve`);
+console.log(`citation-guard: ${total} citations checked, all resolve; ${liveNames.size} live package names`);

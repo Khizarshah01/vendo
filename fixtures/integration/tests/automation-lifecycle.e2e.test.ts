@@ -128,7 +128,7 @@ const tickSecret = (): string => {
  *
  * The signed bytes are `${webhook-id}.${webhook-timestamp}.` and the key is the
  * secret BASE64URL-DECODED — the same encoding `verifySignature` in
- * `@vendoai/automations` uses for a per-record webhook secret, and the encoding
+ * `@vendoai/vendo/automations` uses for a per-record webhook secret, and the encoding
  * the Cloud signer was proven RED→GREEN against. The two halves of this seam
  * live in different repos, so the encoding is the one thing that can silently
  * disagree: keying on the secret's characters instead would 401 every knock in

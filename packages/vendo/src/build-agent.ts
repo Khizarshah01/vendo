@@ -16,7 +16,7 @@
  * code a person's words asked for.
  *
  * It lives in the umbrella for `screenAssembler`'s reason: only composition
- * holds both the box pool (`@vendoai/harnesses`) and the apps runtime.
+ * holds both the box pool (`packages/vendo/src/harnesses/`) and the apps runtime.
  */
 import {
   isVendoError,

@@ -728,7 +728,7 @@ function NodeRenderer(props: NodeRendererProps) {
   if (node.component === SCREEN_TEXT_NODE) {
     return <>{String(node.props?.text ?? "")}</>;
   }
-  // The plan's skeleton (packages/vendo generation/skeleton.ts) prewires one
+  // The plan's skeleton prewires one
   // `pending` placeholder per plan leaf and a fill worker later replaces it
   // with the real component. Until then the node holds the same shape-derived
   // shimmer a streaming node holds — the app's real geometry arriving in

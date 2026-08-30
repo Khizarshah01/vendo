@@ -14,7 +14,7 @@
  *
  * It lives in core because both ends need it. The chrome writes it, and the
  * SERVER has to recognise it too, or a hidden line becomes something a person
- * reads: `deriveTitle` (@vendoai/agent) took the first user text part it found,
+ * reads: `deriveTitle` (packages/vendo/src/threads.ts) took the first user text part it found,
  * so a fresh thread whose first message was a hidden connect answer was
  * persisted — and listed in the thread rail — as
  * "[vendo:context] Declined to connect Gmail."

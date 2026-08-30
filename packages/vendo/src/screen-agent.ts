@@ -1578,7 +1578,7 @@ export interface ScreenAssemblerDeps {
  *
  * The layering is why this door exists at all — and why this file lives in the
  * umbrella. `@vendoai/vendo/apps` depends on `core` alone, so the `vendo_make` handler
- * cannot reach a harness; and `@vendoai/harnesses` no longer reaches apps, so
+ * cannot reach a harness; and the harness runtime no longer reaches apps, so
  * the loop that needs `vendo()` AND the render seam can only live here. The two
  * meet on core's `ScreenAssembler` and composition — the one place that already
  * holds the store, the guard-bound registry, the seats and the seam — is what

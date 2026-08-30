@@ -1,6 +1,6 @@
 /**
  * The generation guard spans a wire, and the two sides ship separately: the host
- * half rides `@vendoai/harnesses`, the box half is baked into the machine image.
+ * half rides `@vendoai/vendo/harnesses`, the box half is baked into the machine image.
  * A host on this version against an image that predates it FAILS OPEN by design —
  * hello reports no generation, `adopt` has nothing to disagree with, and collect's
  * check does not apply — because a box that cannot speak about its generation

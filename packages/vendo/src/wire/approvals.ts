@@ -2,7 +2,7 @@ import { VendoError, type Principal } from "@vendoai/core";
 import { handlePermissionRequest, type PermissionRequest, type VendoGuard } from "../guard/index.js";
 import { json, orgsCloudRequired, requestJson, route, string, type RouteEntry } from "./shared.js";
 
-/** The five routes themselves are @vendoai/guard's ONE permission wire. What
+/** The five routes themselves are @vendoai/vendo/guard's ONE permission wire. What
     stays here is only what the UMBRELLA adds around them: the `?org=` clamp on
     every one of them, and the BYO `GET /approvals/:id` below. */
 async function serve(

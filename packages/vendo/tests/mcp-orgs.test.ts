@@ -102,7 +102,7 @@ const pkceChallenge = async (verifier: string): Promise<string> => {
 
 /** An MCP client, spelled out in raw JSON-RPC over the composed handler: the
  *  whole client-side OAuth dance, then the streamable-HTTP session. (The SDK
- *  client is @vendoai/mcp's own test dependency; this package speaks the wire
+ *  client is the MCP door's own test dependency; this package speaks the wire
  *  instead of taking one on.) */
 async function connectOverMcp(vendo: Vendo): Promise<(name: string, args: Record<string, unknown>) => Promise<any>> {
   const registered = await (await vendo.handler(new Request(`${MCP}/register`, {

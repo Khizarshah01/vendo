@@ -2,7 +2,8 @@
  * Where this package's permission wire mounts, and who it asks. A library
  * cannot add a route to the host's server, so — exactly like {@link DOOR_PATH}
  * — the handler comes back out of `agent()` for the host to mount. The routes
- * themselves are @vendoai/guard's ONE implementation.
+ * themselves are `packages/vendo/src/guard/permission-wire.ts`'s ONE
+ * implementation.
  */
 import type { Principal, StoreAdapter } from "@vendoai/core";
 

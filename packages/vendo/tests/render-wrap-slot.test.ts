@@ -2,9 +2,9 @@
  * The render seam riding the harness runtime's generic `wrapWorkspace` slot —
  * §1.6, the PRODUCER/CONSUMER pair with no stub on either side.
  *
- * The runtime (`@vendoai/harnesses`) no longer imports the seam; composition
- * injects `wrapWorkspaceForRender` (`@vendoai/vendo/apps`) through the slot, exactly
- * as `harness-turn.ts` does. These tests moved here from
+ * The runtime (`packages/vendo/src/harnesses/runtime.ts`) no longer imports the
+ * seam; composition injects `wrapWorkspaceForRender` (`@vendoai/vendo/apps`)
+ * through the slot, exactly as `harness-turn.ts` does. These tests moved here from
  * `packages/vendo/tests/harnesses/runtime.test.ts` when harnesses dropped its apps
  * dependency: the pair they pin spans both blocks, so the umbrella — which
  * depends on both — is where they can keep driving the REAL wrap. What they

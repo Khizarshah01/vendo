@@ -1,5 +1,5 @@
 /**
- * `vendo()` — build-list item 4: today's `@vendoai/agent` loop (the streamText
+ * `vendo()` — build-list item 4: the legacy agent door's loop (the streamText
  * call inside the createUIMessageStream closure) lifted onto `run(turn)`. Same
  * behaviour; tools now through `turn.tools`; output as HarnessEvents; plus
  * subagent hiring.
@@ -723,7 +723,8 @@ describe("vendo() — the system prompt arrives pre-assembled", () => {
       models: seats(model),
     });
     // Nothing to assert beyond it being accepted and the turn running: the
-    // prompt's CONTENT is @vendoai/agent's assembleSystemPrompt, tested there.
+    // prompt's CONTENT is `assembleSystemPrompt`
+    // (packages/vendo/src/prompt.ts), tested there.
     expect(model.calls).toBe(1);
   });
 });

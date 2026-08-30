@@ -365,7 +365,7 @@ export const AGENT_CONTEXT_METADATA = { vendo: { agentContext: true } } as const
  * `{ type, text }` — which the wire contract permits — drops it, and the marked
  * part comes back as an ORDINARY text part, so a reloaded transcript prints the
  * app id. The mark lives in core because the SERVER needs it too: thread titles
- * are minted in @vendoai/agent.
+ * are minted server-side in packages/vendo/src/threads.ts.
  */
 export { AGENT_CONTEXT_MARK };
 

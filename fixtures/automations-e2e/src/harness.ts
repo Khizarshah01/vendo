@@ -1,6 +1,6 @@
 /** The automations harness: composes REAL blocks the way the umbrella does —
  * real PGlite store, real guard, real actions against the live fixture host
- * app, real apps runtime — around @vendoai/automations under test.
+ * app, real apps runtime — around @vendoai/vendo/automations under test.
  *
  * The unit is the RECORD. An automation is not an app any more: it is a row a
  * principal owns, created through the ONE create operation every authoring door
@@ -263,7 +263,7 @@ export async function createStack(options: StackOptions = {}): Promise<Stack> {
     actions.add(connectorDiscoveryRegistry(serviceToolPorts()));
   }
   const bound = options.wrapTools === undefined ? guard.bind(actions) : options.wrapTools(guard.bind(actions));
-  // `@vendoai/automations` has zero app concepts, so the engine is composed
+  // `@vendoai/vendo/automations` has zero app concepts, so the engine is composed
   // WITHOUT the apps runtime. The dependency runs the other way now: the apps
   // layer holds the create seam, which closes over the engine composed below —
   // creating only ever happens inside a call, which is after createStack

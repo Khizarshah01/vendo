@@ -425,7 +425,7 @@ export function agent(config: AgentConfig): VendoAgent {
     ...(sandbox === undefined ? {} : { sandbox }),
     ...(door === undefined ? {} : { toolDoor: door.port }),
     // The app-document vocabulary a machine-backed driver needs (the hot-path
-    // watch set and the validate gate) — injected because `@vendoai/harnesses`
+    // watch set and the validate gate) — injected because the harness runtime
     // no longer imports `@vendoai/vendo/apps`. Same fill as the umbrella's
     // (`packages/vendo/src/harness-turn.ts`), so both composed paths stay
     // byte-identical to when the driver imported these itself.

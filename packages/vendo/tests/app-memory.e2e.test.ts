@@ -4,7 +4,7 @@
  * An app's memory has two writers and two readers, in different packages, and the
  * only thing that can prove they agree is one run that goes all the way through:
  *
- *   producer  the screen agent's `save_app` hand (`@vendoai/harnesses`) and the
+ *   producer  the screen agent's `save_app` hand (`packages/vendo/src/screen-agent.ts`) and the
  *             front door's ask recording (`@vendoai/vendo/apps`)
  *   store     the real row, through the real `AppsRuntime.remember` door
  *   consumer  the edit brain's brief (`@vendoai/vendo/apps` generation), which is what

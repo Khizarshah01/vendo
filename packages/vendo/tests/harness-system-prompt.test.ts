@@ -237,7 +237,7 @@ describe("the assembled system prompt reaches every composition", () => {
   it("names the default harness from the umbrella alone — §10's one-liner needs one dependency", () => {
     // The opt-in the spec documents is `createVendo({ harness: vendo() })`. Both
     // names have to come out of the package the host installed, or the one-liner
-    // costs a second direct dependency on @vendoai/harnesses to compile.
+    // costs a second direct dependency to compile.
     expect(serverExports.vendo).toBe(vendoHarness);
     expect(serverExports.vendo().name).toBe("vendo");
   });

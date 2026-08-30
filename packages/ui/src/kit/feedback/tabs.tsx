@@ -1,10 +1,9 @@
 /** Tabs — self-managing; the model gives tabs + panels, no state plumbing (W2).
  *
  *  V4 (one component family): this absorbed the retired tree primitive's WIRE
- *  contract, because the plan skeleton emits tabs as a TREE node
- *  (packages/vendo generation/skeleton.ts) and a wire attribute cannot hold an
- *  element. So a tab item may be a plain string or `{value,label}`, `value`
- *  picks the initial tab by value, and PANELS ARRIVE AS CHILDREN in tab order.
+ *  contract, because the plan skeleton emits tabs as a TREE node and a wire
+ *  attribute cannot hold an element. So a tab item may be a plain string or
+ *  `{value,label}`, `value` picks the initial tab by value, and PANELS ARRIVE AS CHILDREN in tab order.
  *  The code-only `{label, content}` item still works; children win when both
  *  are present.
  */

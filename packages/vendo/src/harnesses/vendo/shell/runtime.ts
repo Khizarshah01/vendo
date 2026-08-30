@@ -55,7 +55,7 @@ export const importFromHere = async (specifier: string): Promise<unknown> =>
  * But bundler-blind means the bundler emits a bare `import("just-bash")` into a
  * chunk that sits in the HOST APP's directory, and Node resolves a bare
  * specifier relative to the importing FILE. All four are dependencies of
- * @vendoai/harnesses alone, so pnpm keeps them in THIS package's node_modules,
+ * @vendoai/vendo alone, so pnpm keeps them in THIS package's node_modules,
  * invisible from there: every shell call answered ERR_MODULE_NOT_FOUND in a real
  * app while the tests, which import from inside this package, stayed green.
  *

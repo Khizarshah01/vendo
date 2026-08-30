@@ -25,13 +25,13 @@ consumer in this repo has a real write path and a real read path; drive those.
 Concretely, these were considered and left where they are:
 
 - **the guard double** (`packages/vendo/src/harnesses/test-doubles.test-util.ts`,
-  `packages/vendo/src/agent-doubles.test-util.ts`) — `@vendoai/guard` ships a
+  `packages/vendo/src/agent-doubles.test-util.ts`) — `packages/vendo/src/guard/` ships a
   real `createGuard`, and `packages/vendo/tests/guard/abandon.test.ts` already drives
   it against a real store. A shared `testGuard` would be a fake standing in for
   a seam that can be run for real, promoted to a package.
 - **`tempStore`** — forty copies, every one of them inside `packages/vendo`.
   That is one package's own helper written forty times, not a shared one.
-- **`packages/harnesses`' turn helpers** — same NAMES, different meaning. This
+- **`packages/vendo/src/harnesses`' turn helpers** — same NAMES, different meaning. This
   kit's `textTurn(text, id)` names the stream part; harnesses'
   `textTurn(text, usage)` sets the token usage on the `finish` part and
   hardcodes the part id. Seven of its 73 call sites pass the second argument and

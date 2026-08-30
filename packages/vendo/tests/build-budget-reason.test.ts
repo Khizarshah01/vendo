@@ -1,7 +1,7 @@
 /**
  * The SEAM: what a box turn that outran its budget is finally CALLED.
  *
- * `@vendoai/harnesses` throws the budget error and `@vendoai/vendo/apps` turns a throw
+ * The harness runtime throws the budget error and `@vendoai/vendo/apps` turns a throw
  * into the sentence on the person's failure card — and apps cannot import
  * harnesses, so the two only meet in the umbrella. They disagreed silently for
  * exactly that reason: the budget throw carries code `unavailable`, which the
@@ -79,7 +79,7 @@ describe("a build that outran its budget is not told it is a busy service", () =
     expect(reason).not.toBe("busy, try again shortly");
     // A budget expires on schedule, so waiting cannot help — and `retryable`
     // is what tells the calling agent "asking for it again may work"
-    // (@vendoai/mcp door.ts).
+    // (packages/vendo/src/mcp/door.ts).
     expect(retryable).toBe(false);
   }, 20_000);
 });

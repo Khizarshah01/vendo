@@ -7,8 +7,8 @@
  * door and `claude-turn.mjs`). Skipped otherwise, like every `.live.test.ts`.
  *
  * It lives in the UMBRELLA's suite because it needs both blocks — the real e2b
- * adapter (`@vendoai/vendo/sandbox/e2b`) driving the harness driver (`@vendoai/harnesses`)
- * — and harnesses no longer depends on apps.
+ * adapter (`@vendoai/vendo/sandbox/e2b`) driving the harness driver
+ * (`packages/vendo/src/harnesses/`) — and harnesses no longer depends on apps.
  */
 import { e2bSandbox } from "../src/apps/index.js";
 import type { Json, ToolResult, Turn } from "@vendoai/core";

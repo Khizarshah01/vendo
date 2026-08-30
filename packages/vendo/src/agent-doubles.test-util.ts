@@ -1,9 +1,9 @@
 /**
  * The doubles the tool-pack suites need: a test guard and a guard-bound registry.
  *
- * A copy, deliberately: `@vendoai/harnesses` keeps its own equivalent
- * (`test-doubles.test-util.ts`) rather than either package publishing a
- * test-only subpath, which is surface nobody asked for. The alternative — a
+ * A copy, deliberately: `packages/vendo/src/harnesses/test-doubles.test-util.ts`
+ * keeps its own equivalent rather than either half publishing a test-only
+ * subpath, which is surface nobody asked for. The alternative — a
  * shared doubles package — would be a package for two callers.
  */
 import { createServer } from "node:http";
@@ -205,7 +205,7 @@ export function ctx(overrides: Partial<RunContext> = {}): RunContext {
 }
 
 // ── The doubles the screen-agent suites arrived with (the agent moved home
-// here from `@vendoai/harnesses`, whose test-doubles file keeps the same set).
+// here from the harnesses half, whose test-doubles file keeps the same set).
 
 export function readTool(name: string, risk: ToolDescriptor["risk"] = "read"): ToolDescriptor {
   return {
@@ -346,10 +346,11 @@ export function seats(model: LanguageModel): ResolvedModels<LanguageModel> {
   return { default: model, apps: model, review: model, judge: model };
 }
 
-// ─── the harness-runtime doubles, mirrored from `@vendoai/harnesses`
-//     (test-doubles.test-util.ts) for the cross-block seam tests that live in
-//     THIS package because they need both blocks (the claude-code live box
-//     proofs, the render-seam wrapWorkspace slot) ────────────────────────────
+// ─── the harness-runtime doubles, mirrored from
+//     `packages/vendo/src/harnesses/test-doubles.test-util.ts` for the
+//     cross-block seam tests that live in THIS package because they need both
+//     halves (the claude-code live box proofs, the render-seam wrapWorkspace
+//     slot) ─────────────────────────────────────────────────────────────────
 
 export function userMessage(id: string, text: string): UIMessage {
   return { id, role: "user", parts: [{ type: "text", text }] };
@@ -404,7 +405,7 @@ export function testTranscript() {
  * which is the whole point of the probe. `origin` is what goes in
  * `mcp: { baseUrl }`; the composition appends the mount itself.
  *
- * The copy in `@vendoai/harnesses` (`test-doubles.test-util.ts`) is the same
+ * The copy in `packages/vendo/src/harnesses/test-doubles.test-util.ts` is the same
  * double for the same reason — see this file's header on why it is a copy.
  */
 export async function liveDoor(status = 401): Promise<{

@@ -6,7 +6,7 @@
  * `admitAppDocument` in the codebase.
  *
  * There is no longer any exception: an automation is a record of its own, so
- * `@vendoai/automations` writes no app rows at all and nothing reaches this
+ * the automations engine writes no app rows at all and nothing reaches this
  * collection past admission.
  *
  * This suite drives EVERY origin in `AdmissionOrigin` through the real path — a

@@ -1,7 +1,7 @@
 /**
  * The automation RECORD — first-class, principal-owned, and free of every app
- * concept: `@vendoai/automations` depends on this module and on nothing else
- * that knows what an app is (dependency-guard enforces the edge).
+ * concept: the automations engine (`packages/vendo/src/automations/`) depends
+ * on this module and on nothing else that knows what an app is (dependency-guard enforces the edge).
  *
  * It lives in core because four authoring doors and two packages have to name
  * the same shapes: the chat tool (`vendo_automate`), `vendo_make`'s auto-arm
@@ -121,7 +121,7 @@ export const automationRecordSchema = z.object({
  *  run nobody could see the end of — it held an approval open, an identity open,
  *  and an intent open across an unbounded gap.
  *
- *  Here rather than in `@vendoai/automations` because `@vendoai/vendo/store` persists
+ *  Here rather than in the automations engine because `@vendoai/vendo/store` persists
  *  these rows and may not import that package (dependency-guard). */
 export const RUN_STATUSES = ["running", "ok", "error", "stopped"] as const;
 export type RunStatus = (typeof RUN_STATUSES)[number];
@@ -141,7 +141,7 @@ export const RUN_ROW_STATUSES = [...RUN_STATUSES, "pending-approval"] as const;
 export type RunRowStatus = (typeof RUN_ROW_STATUSES)[number];
 
 /** 07 §5 — ONE ledger. The owner / agent / automation / console views are
- *  FILTERS over it, never separate tables. `@vendoai/automations` serves these
+ *  FILTERS over it, never separate tables. The automations engine serves these
  *  rows and `@vendoai/ui` renders them; neither may import the other. */
 export interface RunRecord {
   id: RunId;
@@ -188,7 +188,7 @@ export interface EnableResult {
 export type AutomationEntry = AutomationRecord;
 
 /** THE one create operation, as a type — the implementation is
- *  `create-surface.ts` in `@vendoai/automations`, reached through
+ *  `packages/vendo/src/automations/create-surface.ts`, reached through
  *  `automationsInternals(engine)` and never exposed on `vendo.automations`.
  *  Named here so the app-generation code can hold one without importing the
  *  automations engine it is composed beside. */

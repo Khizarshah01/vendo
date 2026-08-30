@@ -347,7 +347,7 @@ export const vendoGrantSetPartSchema = z.object({
 /** The envelope tag `vendo_knowledge_search` carries on its ok-output. The agent
  *  tool-bridge keys on it to lift the FULL citation data onto the citations part
  *  below BEFORE the tool-output cap can truncate
- *  anything; named once here so producer (@vendoai/knowledge) and consumer
+ *  anything; named once here so producer (@vendoai/vendo/knowledge) and consumer
  *  (@vendoai/vendo) never string-match each other. */
 export const VENDO_KNOWLEDGE_RESULT_KIND = "vendo/knowledge-result@1" as const;
 
