@@ -167,21 +167,15 @@ describe("createLocalVendoInjector", () => {
     ]);
     await expect(readdir(path.join(repoOne, "vendor"))).resolves.toEqual(expect.arrayContaining([
       "vendoai-0.3.0.tgz",
-      "vendoai-actions-0.3.0.tgz",
       "vendoai-apps-0.3.0.tgz",
       "vendoai-core-0.3.0.tgz",
-      "vendoai-store-0.3.0.tgz",
-      "vendoai-telemetry-0.3.0.tgz",
       "vendoai-ui-0.3.0.tgz",
       "vendoai-vendo-0.3.0.tgz",
     ]));
     await expect(readdir(path.join(repoTwo, "vendor"))).resolves.toEqual(expect.arrayContaining([
       "vendoai-0.3.0.tgz",
-      "vendoai-actions-0.3.0.tgz",
       "vendoai-apps-0.3.0.tgz",
       "vendoai-core-0.3.0.tgz",
-      "vendoai-store-0.3.0.tgz",
-      "vendoai-telemetry-0.3.0.tgz",
       "vendoai-ui-0.3.0.tgz",
       "vendoai-vendo-0.3.0.tgz",
     ]));
