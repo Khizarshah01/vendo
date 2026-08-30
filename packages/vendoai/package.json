@@ -1,6 +1,6 @@
 {
   "name": "vendoai",
-  "version": "0.59.2",
+  "version": "0.60.0",
   "description": "Thin compatibility alias for @vendoai/vendo.",
   "keywords": [
     "ai",
@@ -76,7 +76,6 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vendoai/cli": "workspace:*",
     "@vendoai/vendo": "workspace:*"
   },
   "devDependencies": {
