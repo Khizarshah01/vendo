@@ -1,11 +1,5 @@
 # @vendoai/ui
 
-## 0.60.0
-
-### Patch Changes
-
-- @vendoai/core@0.60.0
-
 ## 0.59.2
 
 ### Patch Changes

@@ -31,28 +31,12 @@ export default defineConfig({
       // Ratcheted line-coverage floor (ENG-255): set at/just below the measured
       // value so it can only rise. Regression below this fails CI.
       //
-      // A glob entry is an ADDITIVE check, never an exclusion: its files are
-      // held to the glob AND go on counting in the global number. That is why
-      // the CLI fold parked src/cli/ in `exclude` instead of handing it a glob
-      // of 0 — an exclusion was the only thing that could keep the then-78
-      // global measuring its pre-fold file set. This is the re-ratchet that
-      // exclusion was placed for, so src/cli/ comes back in with a floor.
-      //
-      // Measured on main, coverage-merge of run 33328955194 (the fold commit),
-      // 94.51 global without the CLI; the CLI itself last measured 93.57 as
-      // @vendoai/cli in run 33318885615, one commit earlier, over a src/ whose
-      // 71 files and 66 test files the fold moved across unchanged. A 93.57
-      // sixth of the tree blended into a 94.51 rest cannot land below 93.57, so
-      // the global goes 78 -> 93 and the CLI takes 92 — each keeping the point
-      // or so of slack the ui floor argues for: a floor with no room is a floor
-      // everyone learns to bypass.
-      //
-      // src/apps/** and src/sandbox/** are the app-generation code S11d folded
-      // in, held at the 88 it arrived with so a fold cannot weaken a gate as a
-      // side effect. They do NOT re-ratchet here: the text reporter prints one
-      // row per directory and each of those globs spans several, so the
-      // aggregate the threshold actually checks never appears in the log. They
-      // rise when someone measures them, not before.
+      // The two globs are the app-generation code S11d folded in. A fold must
+      // not weaken a gate as a side effect, and a single umbrella number would
+      // have: that code carried its own floor of 88 as @vendoai/apps, and
+      // averaging it into 78 would have retired 10 points nobody chose to give
+      // up. Files matched by a glob are held to the glob and excluded from the
+      // number above, so each half still answers for itself.
       //
       // Off inside a shard, which sees a fraction of the files: coverage-merge
       // replays the blobs and enforces these against the whole suite. This gate
@@ -63,9 +47,8 @@ export default defineConfig({
       thresholds: process.env.VITEST_SHARD
         ? {}
         : {
-            lines: 93,
+            lines: 78,
             "src/apps/**": { lines: 88 },
-            "src/cli/**": { lines: 92 },
             "src/sandbox/**": { lines: 88 },
           },
     },

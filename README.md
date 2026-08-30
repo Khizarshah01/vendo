@@ -45,6 +45,7 @@ Every capture below is a real agent run in a demo host app, not a mockup.
 
 ```bash
 npm install @vendoai/vendo
+npm install -D @vendoai/cli
 npx vendo init
 ```
 
