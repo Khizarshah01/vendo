@@ -115,7 +115,6 @@ describe("runCli run", () => {
               repoDir: context.repoDir(entry.name),
               packageManager: "pnpm",
               packages: [
-                "@vendoai/vendo/apps",
                 "@vendoai/core",
                 "@vendoai/ui",
                 "@vendoai/vendo",

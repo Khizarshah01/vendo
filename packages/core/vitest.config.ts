@@ -22,14 +22,20 @@ export default defineConfig({
       // Ratcheted line-coverage floor (ENG-255): set at/just below the measured
       // value so it can only rise. Regression below this fails CI.
       //
-      // `src/apps/**` is the app-generation contract S11d folded in, and it
-      // keeps the floor of 88 it carried as @vendoai/apps. Averaged into one
-      // number the pair would sit near 94, which would have quietly retired
-      // three points of core's own gate to admit code that never met it. Files
-      // matched by a glob are held to the glob and excluded from the number
-      // above, so core's own 97 is untouched.
+      // 97 -> 94 at S11d, and this IS a real drop: the app-generation contract
+      // folded in at 88.87% over 3,118 lines against core's own 97.54% over
+      // 7,411, so the merged number is 94.97. A glob threshold does NOT exclude
+      // its files from the global one — both apply — so there is no arrangement
+      // of two numbers that holds core's own code at 97 without also demanding
+      // 97 from code that never met it.
+      //
+      // The glob is still worth having: it stops the folded half from drifting
+      // BELOW the 88 it arrived with, which a single 94 would happily allow.
+      // Re-ratcheting the global needs the merged number from a full sharded
+      // run — the same follow-up guard 96, store 84, actions 90 and telemetry
+      // 95 are already queued behind.
       thresholds: {
-        lines: 97,
+        lines: 94,
         "src/apps/**": { lines: 88 },
       },
     },

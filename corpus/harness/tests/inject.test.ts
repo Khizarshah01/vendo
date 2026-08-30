@@ -39,13 +39,11 @@ async function createWorkspace(): Promise<string> {
       dir: "vendo",
       name: "@vendoai/vendo",
       dependencies: {
-        "@vendoai/vendo/apps": "workspace:*",
         "@vendoai/core": "workspace:*",
         "@vendoai/ui": "workspace:*",
       },
     },
     { dir: "vendoai", name: "vendoai", dependencies: { "@vendoai/vendo": "workspace:*" } },
-    { dir: "apps", name: "@vendoai/vendo/apps" },
     { dir: "core", name: "@vendoai/core" },
     { dir: "ui", name: "@vendoai/ui" },
   ];
@@ -103,7 +101,7 @@ describe("createLocalVendoInjector", () => {
         "@vendoai/vendo": "workspace:*",
       },
       devDependencies: {
-        "@vendoai/vendo/apps": "workspace:*",
+        "@vendoai/core": "workspace:*",
       },
     });
     const pack: PackWorkspacePackage = async (pkg, opts) => {
@@ -125,7 +123,7 @@ describe("createLocalVendoInjector", () => {
     expect(result.installDir).toBe(repoDir);
     expect(pkg.dependencies["@vendoai/vendo"]).toBe("file:vendor/vendoai-vendo-0.3.0.tgz");
     expect(pkg.dependencies["@vendoai/ui"]).toBe("file:vendor/vendoai-ui-0.3.0.tgz");
-    expect(pkg.devDependencies?.["@vendoai/vendo/apps"]).toBe("file:vendor/vendoai-apps-0.3.0.tgz");
+    expect(pkg.devDependencies?.["@vendoai/core"]).toBe("file:vendor/vendoai-core-0.3.0.tgz");
     await expect(readFile(path.join(repoDir, "pnpm-lock.yaml"), "utf8")).rejects.toThrow();
     await expect(readFile(path.join(repoDir, "node_modules/.modules.yaml"), "utf8")).rejects.toThrow();
   });
@@ -159,7 +157,6 @@ describe("createLocalVendoInjector", () => {
     expect(second.repoDir).toBe(repoTwo);
     expect(buildCount).toBe(1);
     expect([...packCounts.entries()].sort()).toEqual([
-      ["@vendoai/vendo/apps", 1],
       ["@vendoai/core", 1],
       ["@vendoai/ui", 1],
       ["@vendoai/vendo", 1],
@@ -167,14 +164,12 @@ describe("createLocalVendoInjector", () => {
     ]);
     await expect(readdir(path.join(repoOne, "vendor"))).resolves.toEqual(expect.arrayContaining([
       "vendoai-0.3.0.tgz",
-      "vendoai-apps-0.3.0.tgz",
       "vendoai-core-0.3.0.tgz",
       "vendoai-ui-0.3.0.tgz",
       "vendoai-vendo-0.3.0.tgz",
     ]));
     await expect(readdir(path.join(repoTwo, "vendor"))).resolves.toEqual(expect.arrayContaining([
       "vendoai-0.3.0.tgz",
-      "vendoai-apps-0.3.0.tgz",
       "vendoai-core-0.3.0.tgz",
       "vendoai-ui-0.3.0.tgz",
       "vendoai-vendo-0.3.0.tgz",
@@ -185,7 +180,6 @@ describe("createLocalVendoInjector", () => {
     expect(pkg.dependencies["vendoai"]).toBeUndefined();
     expect(pkg.devDependencies).toBeUndefined();
     for (const name of [
-      "@vendoai/vendo/apps",
       "@vendoai/core",
       "@vendoai/ui",
       "@vendoai/vendo",
