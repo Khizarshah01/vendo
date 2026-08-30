@@ -97,7 +97,7 @@ describe("a seeded app survives its own edit door", () => {
    * then destroyed the app and returned 200.
    *
    * The floor is not decoration on the edit path: `validateWrittenApps`
-   * (server/generation/validate-gate.ts) runs it over every `app.vendo` the
+   * (packages/vendo/src/apps/generation/validate-gate.ts) runs it over every `app.vendo` the
    * builder writes and hands every `block` straight back as a repair
    * instruction. A block on source the person did not write cannot be repaired —
    * the builder's only way to clear it was to stop rendering the island.

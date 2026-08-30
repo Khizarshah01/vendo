@@ -157,7 +157,7 @@ export const SLOT_PIN_ENV: Record<VendoModelSlot, string> = {
 
 /** The keyless boot error. Both ways out, in order: explicit config first, then
  *  VENDO_API_KEY. Byte-for-byte coupled to `MODEL_UNAVAILABLE_SIGNAL` in
- *  `@vendoai/vendo/apps` (server/doors/build-messages.ts), which anchors on this
+ *  `@vendoai/vendo/apps` (packages/vendo/src/apps/doors/build-messages.ts), which anchors on this
  *  sentence's opening so the actionable line survives the build door's fold —
  *  change one and the other stops matching. The seam is tested in
  *  tests/dev-creds/model.test.ts, through the real regex. */

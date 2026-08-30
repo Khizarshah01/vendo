@@ -364,7 +364,7 @@ describe("liveness on disk", () => {
  * So the fixture is a real one all the way down — the screen's TSX compiled the
  * way the product compiles it, booted in the real engine, flattened into the
  * same `{ formatVersion, nodes, root, interactive }` the render seam serves
- * (`apps/src/server/checking/floor.ts:240`). That payload IS the snapshot: its
+ * (`packages/vendo/src/apps/checking/floor.ts:240`). That payload IS the snapshot: its
  * nodes hold whatever the assembler's own queries answered with, frozen at the
  * instant it was written. Whether the page built from it is live is a question
  * about the mount, and it is asked here through the same seam, in the same

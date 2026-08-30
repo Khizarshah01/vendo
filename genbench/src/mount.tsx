@@ -67,7 +67,7 @@ const served = read<UIPayload>("payload");
 
 /**
  * A component screen's live half, exactly as the paint gate wrote it into the
- * payload (`apps/src/server/checking/floor.ts:240`): the compiled module, the
+ * payload (`packages/vendo/src/apps/checking/floor.ts:240`): the compiled module, the
  * answers it was painted against, and how to read them again.
  */
 interface Interactive {
@@ -89,7 +89,7 @@ const MAX_SUPPLY_ROUNDS = 3;
  * A deployment never serves the paint it saved. `runtime.open` hands the app's
  * own `app.tsx` back through the same gauntlet a save paints through, so the
  * payload a person is served is the screen re-executed against the queries their
- * open just made (`apps/src/server/persistence/open.ts:229`, and the comment on
+ * open just made (`packages/vendo/src/apps/persistence/open.ts:229`, and the comment on
  * `createAppOpener`'s `screen` argument says so in the product's own words). A
  * benchmark page has no server behind it — it is one file carrying one payload,
  * frozen at the instant the assembler wrote it — so unless the open happens

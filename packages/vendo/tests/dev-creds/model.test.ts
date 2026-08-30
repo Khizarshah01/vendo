@@ -99,7 +99,7 @@ describe("THE SELECTION LAW — a provider key is a credential, not a choice", (
   /**
    * THE COUPLING, from the producer's side.
    *
-   * `MODEL_UNAVAILABLE_SIGNAL` in `@vendoai/vendo/apps` (server/doors/build-messages.ts)
+   * `MODEL_UNAVAILABLE_SIGNAL` in `@vendoai/vendo/apps` (packages/vendo/src/apps/doors/build-messages.ts)
    * is anchored BYTE-FOR-BYTE to this sentence's opening: it is what lets the
    * app-build door surface the actionable line instead of collapsing it to
    * "generation failed · retry", where it reaches only the operator's terminal

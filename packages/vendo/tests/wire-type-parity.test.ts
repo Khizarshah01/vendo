@@ -60,7 +60,7 @@ function typecheckFixture(source: string): string | null {
 //
 // The apps rows STAY, because `@vendoai/vendo/apps` genuinely ships two declarations
 // of these names — the browser-safe contract door and the richer server one
-// (see the header of apps/src/contract/wire-types.ts, which leaves unifying
+// (see the header of packages/core/src/apps/wire-types.ts, which leaves unifying
 // them to the slice that owns that behavior question). Two declarations is
 // exactly what this gate is for.
 //

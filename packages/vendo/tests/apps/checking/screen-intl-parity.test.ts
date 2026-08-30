@@ -3,7 +3,7 @@
  * typecheck means the screen runs in the box".
  *
  * The claim spans two files that share no code and live at opposite ends of this
- * package: the declarations `tsc` reads (`server/checking/screen-typings.ts`,
+ * package: the declarations `tsc` reads (`packages/vendo/src/apps/checking/screen-typings.ts`,
  * whose `COMPONENT_SCREEN_LIB` pins `lib.es2020.d.ts` and therefore decides which
  * `Intl` a screen may write) and the bridge the screen actually runs against
  * (`contract/genui/component/vm-program.ts` `INTL_SOURCE`, which has no ICU and

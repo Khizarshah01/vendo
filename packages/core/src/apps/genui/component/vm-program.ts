@@ -103,7 +103,7 @@ ${INTL_SOURCE}
  * and the host reads it back with `Number`.
  *
  * THE SURFACE IS THE TYPINGS' SURFACE, EXACTLY. What a screen may write is what
- * `lib.es2020.d.ts` declares (server/checking/screen-typings.ts
+ * `lib.es2020.d.ts` declares (packages/vendo/src/apps/checking/screen-typings.ts
  * `COMPONENT_SCREEN_LIB`), so every value-side name in that lib's `Intl` is here
  * and nothing else is: `Collator`, `DateTimeFormat`, `DisplayNames`, `Locale`,
  * `NumberFormat`, `PluralRules`, `RelativeTimeFormat`, `getCanonicalLocales`,

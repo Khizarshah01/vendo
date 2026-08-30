@@ -8,7 +8,7 @@
  * needs a filesystem for nothing, so it runs wherever the caller found a
  * compiler. `screen-tsc.ts` is that caller on Node, resolving `typescript`
  * through `createRequire` and answering the lib files off disk;
- * `server/edge/typecheck.ts` is that caller on a Worker, importing the compiler
+ * `packages/vendo/src/sandbox/edge/typecheck.ts` is that caller on a Worker, importing the compiler
  * and answering the lib files out of a `Map`.
  *
  * THE SPLIT IS THE POINT, and it is structural rather than careful. A single

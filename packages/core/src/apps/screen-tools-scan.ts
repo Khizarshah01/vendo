@@ -1,6 +1,6 @@
 /**
  * The `tools` literal-access scan a screen's source goes through
- * (`server/checking/component-screen.ts`), plus the specifier set a capture
+ * (`packages/vendo/src/apps/checking/component-screen.ts`), plus the specifier set a capture
  * walk may leave uncaptured because the render venue answers it itself
  * (`@vendoai/vendo/actions` sync/capture.ts).
  */

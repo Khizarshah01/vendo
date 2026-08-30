@@ -151,7 +151,7 @@ export interface ComposedHost {
  */
 /**
  * The title is the COMPONENT's own name, split on camel case — `screenName`
- * (`apps/src/server/checking/component-screen.ts`) is what both the receipt and the
+ * (`packages/vendo/src/apps/checking/component-screen.ts`) is what both the receipt and the
  * app row read, so `SpendingThisMonth` is where this string comes from and there is
  * no `name=` attribute to declare it any more.
  */

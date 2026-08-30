@@ -2,7 +2,7 @@
  * What a zod schema IS, in ONE vocabulary across zod 3 and zod 4.
  *
  * Two walkers read the Kit's schemas — the checks floor's TypeScript printer
- * (`server/checking/screen-typings.ts`) and the catalog prompt's compact type
+ * (`packages/vendo/src/apps/checking/screen-typings.ts`) and the catalog prompt's compact type
  * text (`kit/catalog-prompt.ts`) — and both used to switch on `_def.typeName`
  * against `z.ZodFirstPartyTypeKind`. zod 4 has neither: the def carries `type`
  * instead, and the enum is gone, so every `case` compared `undefined` against

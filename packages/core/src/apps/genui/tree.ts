@@ -246,7 +246,7 @@ export const stripServerAuthoritativeFields = <T extends object>(payload: T): T 
 
 /**
  * CDN package loading is a PREVIEW-VENUE capability, and this is the wall that
- * keeps it there. `attachPinFurnishings` (server/persistence/open.ts) copies a fixed field list that
+ * keeps it there. `attachPinFurnishings` (packages/vendo/src/apps/persistence/open.ts) copies a fixed field list that
  * has never included `packages`, so the runtime cannot produce one; this strip
  * covers the other direction — a model-written or imported `.vendoapp` tree
  * CLAIMING it. Without it, a stored document could make a customer's own page

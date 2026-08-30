@@ -12,7 +12,7 @@
  * refusals are a mixed class. "This screen did not render" covers a screen that
  * will never compile AND a query the guard blocked, an unconnected toolkit, a
  * read awaiting approval, or a deployment missing esbuild/tsc/QuickJS
- * (`server/checking/component-screen.ts`) — and the wire cannot tell which it
+ * (`packages/vendo/src/apps/checking/component-screen.ts`) — and the wire cannot tell which it
  * got. The last test here is that case, end to end: the same stored app that
  * refused opens fine once its dependency answers.
  *

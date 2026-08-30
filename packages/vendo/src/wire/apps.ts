@@ -168,7 +168,7 @@ async function openApp(wire: WireContext, appId: string, ctx: RunContext, pendin
     // the shape its queries really return), but the same refusal also carries a
     // deployment with no compiler or engine, a query the guard blocked, an
     // unconnected toolkit, and a read awaiting approval
-    // (server/checking/component-screen.ts) — every one of those can open fine
+    // (packages/vendo/src/apps/checking/component-screen.ts) — every one of those can open fine
     // later, and only the floor knows which one it had. So this states the
     // failure and its reason, and asserts nothing about a retry.
     if (isVendoError(reason) && reason.code === "validation") {

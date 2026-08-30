@@ -7,7 +7,7 @@
  * "numeric" })` are what a model writes for money and dates whether or not
  * anything asked it to, and the two halves that have to agree about them sit at
  * opposite ends of this package: the declarations `tsc` reads
- * (`server/checking/screen-typings.ts`, whose lib is `lib.es2020.d.ts` and
+ * (`packages/vendo/src/apps/checking/screen-typings.ts`, whose lib is `lib.es2020.d.ts` and
  * therefore carries `Intl`) and the VM the screen actually runs in
  * (`contract/genui/component/vm-program.ts`, which has no ICU and borrows the
  * host's). Either one alone can be green while the pair is broken — the compiler

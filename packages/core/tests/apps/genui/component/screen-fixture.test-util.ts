@@ -2,7 +2,7 @@
  * One screen, compiled and booted the way the engine is fed in production.
  *
  * The compile flags are the gauntlet's own `engine` form
- * (server/checking/toolchain.ts): CommonJS, because the VM hosts a `require` and
+ * (packages/vendo/src/apps/checking/toolchain.ts): CommonJS, because the VM hosts a `require` and
  * no module loader, the AUTOMATIC jsx transform, because the VM publishes
  * `react/jsx-runtime` and has no bare `React` global, and the `"use strict";`
  * banner, because CommonJS output is otherwise sloppy. A test that hand-wrote the

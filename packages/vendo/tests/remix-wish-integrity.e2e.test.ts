@@ -22,7 +22,7 @@
  * either way, and the two outcomes are distinguishable in the stored screen.
  *
  * The ones that must be able to fail:
- *  1. drop the `landed` gate in `remember` (`apps/server/doors/write-surface.ts`)
+ *  1. drop the `landed` gate in `remember` (`packages/vendo/src/apps/doors/write-surface.ts`)
  *     and "a follow-up that does not land" goes red with a second wish.
  *  2. restore the `!(await base.exists(checkout))` guard around `storedScreen`
  *     in `screenAssembler` (`vendo/src/screen-agent.ts`) and "the follow-up edits

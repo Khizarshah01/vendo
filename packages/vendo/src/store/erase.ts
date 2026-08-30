@@ -214,7 +214,7 @@ export function eraseStore(
     // The capped version log (and the pin-intent trail inside it) is the one
     // app-scoped drawer neither selector could see: it is addressed by
     // COLLECTION NAME (`vendo:app-history:<id>`) and its rows carry NO refs at
-    // all (apps/src/server/persistence/history.ts:104), so the refs containment
+    // all (packages/vendo/src/apps/persistence/history.ts:104), so the refs containment
     // leg in each cascade never matched them. Every stored version
     // of every deleted app survived its app until this line existed. Named
     // through core's ONE builder — the same one that composes it on the write

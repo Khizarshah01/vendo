@@ -1,7 +1,7 @@
 /**
  * The checks floor, as a port — blueprint §7.
  *
- * The floor's implementation lives in the server half (`server/checking/`),
+ * The floor's implementation lives in the server half (`packages/vendo/src/apps/checking/`),
  * because it needs the catalog, the tool shapes and a model. Its one hot-path
  * CALLER is the render seam, which must not import a pipeline body. So the
  * contract between them lives here on the browser-safe contract door, beside

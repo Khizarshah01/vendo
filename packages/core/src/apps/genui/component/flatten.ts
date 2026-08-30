@@ -48,7 +48,7 @@ const segment = (child: NestedNode | string, index: number): string =>
  * every node it emits — the VM emits elements, not provenance, so there is no
  * finer truth to be had here. The gauntlet is the only hand that sets it, and it
  * sets it off the DIALECT the screen was type-checked in
- * (server/checking/screen-typings.ts), which is what actually holds the class
+ * (packages/vendo/src/apps/checking/screen-typings.ts), which is what actually holds the class
  * boundary; a screen has no way to name its own.
  */
 export function flattenTree(root: NestedNode, source?: FlatNode["source"]): FlatTree {

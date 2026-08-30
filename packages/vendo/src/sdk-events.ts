@@ -151,7 +151,7 @@ export function withSdkErrorReporting(logger: VendoLogger): VendoLogger {
  * REMOVED, and not to be re-added by reasoning that the namespaces are Vendo's
  * — both are caller-suppliable on a live path, and neither has any closed set
  * to be validated against:
- *   - `appId`: `apps/src/server/doors/build-surface.ts:286` is
+ *   - `appId`: `packages/vendo/src/apps/doors/build-surface.ts:286` is
  *     `input.appId ?? mint`, and `appIdSchema` pins only the `app_` prefix, so
  *     a caller's app id is `app_` followed by anything at all.
  *   - `turnId`: `screen-agent.ts:855` is `surface.turnId ?? mintTurnId()`.

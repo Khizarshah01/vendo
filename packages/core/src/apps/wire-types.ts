@@ -7,7 +7,7 @@
  * them — one fewer copy, and ui's public surface is unchanged.
  *
  * NOT yet one definition. The server half declares its own richer `EditResult`
- * (`server/runtime/types.ts`) carrying `failure`, `graduated`, `box`,
+ * (`packages/vendo/src/apps/runtime/types.ts`) carrying `failure`, `graduated`, `box`,
  * `pendingEgress` and `automation`; this one is the four-field wire shape a
  * surface reads. Two declarations of the same name ship from this package, one
  * per door. Unifying them is a behavior question — which fields the wire is
