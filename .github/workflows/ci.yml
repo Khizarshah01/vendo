@@ -299,14 +299,16 @@ jobs:
           # HANG-DETECTOR, not a speed limit, so the shard count moves instead —
           # and store's own three shards leave with the package, so this costs
           # one runner, not four.
-          - { name: vendo-1, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "1/8" }
-          - { name: vendo-2, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "2/8" }
-          - { name: vendo-3, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "3/8" }
-          - { name: vendo-4, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "4/8" }
-          - { name: vendo-5, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "5/8" }
-          - { name: vendo-6, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "6/8" }
-          - { name: vendo-7, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "7/8" }
-          - { name: vendo-8, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "8/8" }
+          - { name: vendo-1, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "1/10" }
+          - { name: vendo-2, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "2/10" }
+          - { name: vendo-3, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "3/10" }
+          - { name: vendo-4, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "4/10" }
+          - { name: vendo-5, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "5/10" }
+          - { name: vendo-6, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "6/10" }
+          - { name: vendo-7, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "7/10" }
+          - { name: vendo-8, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "8/10" }
+          - { name: vendo-9, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "9/10" }
+          - { name: vendo-10, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "10/10" }
           - { name: ui-1, key: ui, pkg: "@vendoai/ui", dir: packages/ui, shard: "1/2" }
           - { name: ui-2, key: ui, pkg: "@vendoai/ui", dir: packages/ui, shard: "2/2" }
     env:
