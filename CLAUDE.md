@@ -124,10 +124,16 @@ generated UI in a sandboxed, brand-native surface.
   suites (`store`, `guard`, the fixtures) boot an embedded Postgres per worker.
   `VITEST_MIN_FORKS/MAX_FORKS` and `VITEST_MIN_THREADS/MAX_THREADS` cap the
   inner layer at 2 workers — set in the root `test` / `test:affected` /
-  `test:coverage` scripts locally, and at job level on `test-shards` and
-  `test-rest` in CI (which invoke vitest and turbo directly, so they do not
-  inherit the root scripts). Set them in any new script or workflow that runs
-  the suite. The MIN half is not optional:
+  `test:coverage` scripts locally, and at job level on `test-shards`,
+  `test-rest` and `coverage-merge` in CI (which invoke vitest and turbo
+  directly, so they do not inherit the root scripts). Set them in any new script
+  or workflow that runs the suite — an uncapped job sizes its pool to the core
+  count, and workers EQUAL to the core count is its own failure: it leaves
+  nothing for the main thread the workers report to, and vitest fails with
+  `[vitest-worker]: Timeout calling "onTaskUpdate"`, every test passing, exit 1.
+  Measured, not assumed: the public runner is 4 cores / 16 GB and its shards drew
+  a mean 88% of it at 4 workers; the private runner is 2 cores / 7.9 GB and went
+  red at 2 workers, green at 1. The MIN half is not optional:
   vitest 2.1 defaults `minThreads` to the CPU count independently of the max, so
   a max-only cap makes Tinypool throw `minThreads and maxThreads must not
   conflict` before a single test runs. `fileParallelism: false` still wins where

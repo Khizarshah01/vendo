@@ -318,23 +318,36 @@ jobs:
           - { name: ui-2, key: ui, pkg: "@vendoai/ui", dir: packages/ui, shard: "2/2" }
     env:
       POSTGRES_URL: postgres://vendo:vendo@localhost:5432/vendo_test
-      # 4, not the laptop's 2. This is the ONE place the two-worker cap can be
-      # lifted safely: a shard runs exactly one package's vitest, so there is no
-      # outer turbo layer to multiply against — which is what the cap exists to
-      # stop (a 12-core laptop at ~27 workers, and an OOM kill on a 15GB runner
-      # when 4 packages each sized their own pool). test-rest, which DOES have
-      # that outer layer, keeps 2. The root scripts and the laptop are untouched.
+      # This runner has FOUR cores — nproc=4, 15989 MB — measured on run
+      # 33315120681, not remembered. At the 4 workers this used to carry, the
+      # eight vendo shards drew 287/339/339/351/372/378/381/385 percent of the
+      # 400 available: a mean of 88% and a peak of 96%, with nothing left for
+      # the main thread the workers report to. That is the shape behind
+      # `[vitest-worker]: Timeout calling "onTaskUpdate"` — every test passing,
+      # exit 1 — and the private runner showed the causal half of it directly:
+      # 2 workers on its 2 cores went red with that signature, 1 worker is green
+      # (monorepo.yml). Workers must stay UNDER the core count, not equal to it.
+      #
+      # Halved rather than shaved to 3 because the failure is intermittent, so a
+      # marginal cap would look like a fix and come back. The cost is bounded and
+      # was computed from the same run's core-seconds: the longest shard goes
+      # 7:16 -> about 10:30 against a 25-minute job timeout.
+      #
+      # Memory is NOT the constraint here, and that is worth recording so nobody
+      # re-litigates it: peak RSS was 1.7-2.7 GB on seven shards of sixteen GB.
+      # Shard 2 is the exception at 7.3 GB and is the one to watch if this is
+      # ever raised again.
       #
       # MIN stays 1 rather than matching MAX: the reason MIN must be set at all
       # is that vitest 2.1 defaults minThreads to the CPU count independently of
       # the max, so a max-only cap throws `minThreads and maxThreads must not
       # conflict` before a test runs — and MIN=1 prevents that just as well.
-      # Pinning MIN=4 would instead force four PGlite-booting workers onto a
+      # Pinning MIN=2 would instead force two PGlite-booting workers onto a
       # two-file shard, which is the memory profile that caused the OOM.
       VITEST_MIN_FORKS: "1"
-      VITEST_MAX_FORKS: "4"
+      VITEST_MAX_FORKS: "2"
       VITEST_MIN_THREADS: "1"
-      VITEST_MAX_THREADS: "4"
+      VITEST_MAX_THREADS: "2"
       # Read by each package's vitest config to drop its coverage thresholds:
       # a shard covers a fraction of the files, so its number is not the floor.
       # coverage-merge does not set this, which is what keeps the floor real.
@@ -383,27 +396,9 @@ jobs:
       # --reporter=default alongside blob: with blob as the SOLE reporter a
       # failing shard prints nothing about WHICH test failed, so a red shard
       # is undebuggable from the log alone.
-      # TEMPORARY PROBE — remove with the commit that acts on it. Nobody has
-      # measured THIS runner. The public shards run 4 workers and coverage-merge
-      # runs uncapped (pool = CPU count); both are now failing with
-      # `[vitest-worker]: Timeout calling "onTaskUpdate"`, tests all passing.
-      # Whether that is workers-versus-cores cannot be argued, only measured, and
-      # the run happens anyway so this costs nothing.
       - name: Test shard
         if: env.RUN == 'true'
-        run: |
-          echo "::group::runner"
-          echo "nproc=$(nproc)"; free -m | head -2; echo "load=$(cat /proc/loadavg)"
-          echo "::endgroup::"
-          set +e
-          /usr/bin/time -v pnpm --filter ${{ matrix.pkg }} exec vitest run --coverage --reporter=dot --reporter=blob --shard=${{ matrix.shard }} 2> /tmp/time-v.txt
-          code=$?
-          set -e
-          echo "::group::probe"
-          grep -E 'Maximum resident set size|Percent of CPU|Elapsed \(wall' /tmp/time-v.txt || true
-          tail -40 /tmp/time-v.txt || true
-          echo "::endgroup::"
-          exit $code
+        run: pnpm --filter ${{ matrix.pkg }} exec vitest run --coverage --reporter=dot --reporter=blob --shard=${{ matrix.shard }}
       # always(): a failed shard must still upload its blob, or coverage-merge
       # merges a hole and reports a phantom coverage drop on top of the real
       # failure.
@@ -521,6 +516,18 @@ jobs:
     timeout-minutes: 15
     needs: test-shards
     if: github.event_name == 'push' && always() && needs.test-shards.result != 'cancelled'
+    env:
+      # This job had no cap at all, so vitest sized its pool to the core count —
+      # the same one-worker-per-core the shards above just moved off. It replays
+      # blob reports and runs no tests, and it still failed with the identical
+      # `Timeout calling "onTaskUpdate"` on run 33312902982, which is the best
+      # evidence that the cause is the box and not the suite. Same cap, same
+      # reason. It deliberately does NOT set VITEST_SHARD: that is what keeps the
+      # coverage floors enforced here, where the number is the whole suite's.
+      VITEST_MIN_FORKS: "1"
+      VITEST_MAX_FORKS: "2"
+      VITEST_MIN_THREADS: "1"
+      VITEST_MAX_THREADS: "2"
     # No turbo cache step: this job never invokes turbo — it replays blob
     # reports through vitest directly.
     steps:
@@ -551,9 +558,6 @@ jobs:
           path: packages/ui/.vitest-reports
       - name: Merge shard reports and enforce coverage floors
         run: |
-          echo "::group::runner"
-          echo "nproc=$(nproc)"; free -m | head -2; echo "load=$(cat /proc/loadavg)"
-          echo "::endgroup::"
           for pkg in vendo ui; do
             if [ -d "packages/$pkg/.vitest-reports" ]; then
               echo "::group::coverage merge — @vendoai/$pkg"
