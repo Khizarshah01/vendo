@@ -33,7 +33,7 @@ const SERVER_TS = join(HERE, "..", "server.ts");
 const AUTH_PRESETS_INDEX = join(HERE, "index.ts");
 const AUTH_JS_TS = join(HERE, "auth-js.ts");
 const CLERK_TS = join(HERE, "clerk.ts");
-const ACTIONS_PRESETS_INDEX = join(HERE, "..", "..", "..", "actions", "src", "presets", "index.ts");
+const ACTIONS_PRESETS_INDEX = join(HERE, "..", "actions", "presets", "index.ts");
 
 /** Every top-level `import`/`export ... from "spec"` statement (skipping
     pure `import type` / `export type`, which TypeScript erases entirely —
