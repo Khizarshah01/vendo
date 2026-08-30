@@ -21,12 +21,20 @@
  * throws ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING under Vitest, breaking the
  * existing engine tests).
  *
- * This test builds the package's real dist output (tsc, same command
- * `pnpm build` runs) and inspects it directly — proving what a consumer
- * actually imports, not just the source a human edits.
+ * This test inspects the package's real dist output directly — proving what a
+ * consumer actually imports, not just the source a human edits.
+ *
+ * It READS that output rather than building it. It used to shell out to
+ * `tsc -p tsconfig.json`, which was cheap while this file lived in
+ * `@vendoai/apps`; S11d moved it into `@vendoai/vendo`, where the same command
+ * compiles a package roughly ten times the size — twice, once per case —
+ * synchronously inside a vitest worker. That starves vitest's own reporter IPC
+ * and the shard exits 1 with every test passing
+ * (`[vitest-worker]: Timeout calling "onTaskUpdate"`, monorepo.yml:313).
+ * Building here was always redundant: turbo.json's `test` task declares
+ * `dependsOn: ["^build", "build"]`, so dist is on disk before this file runs.
  */
-import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
@@ -51,19 +59,22 @@ const NAKED_ESBUILD_IMPORT = /import\(\s*["']esbuild["']\s*\)/;
 const GUARDED_ESBUILD_IMPORT =
   /import\(\s*\/\*\s*webpackIgnore:\s*true\s*\*\/\s*\/\*\s*turbopackIgnore:\s*true\s*\*\/\s*(?:\/\*\s*@vite-ignore\s*\*\/\s*)?ESBUILD_SPECIFIER\s*\)/;
 
-function buildDistToolchainSource(): string {
-  execFileSync("npx", ["tsc", "-p", "tsconfig.json"], { cwd: PACKAGE_DIR, stdio: "pipe" });
-  return readFileSync(join(PACKAGE_DIR, "dist", "apps", "checking", "toolchain.js"), "utf8");
+function distToolchainSource(): string {
+  const built = join(PACKAGE_DIR, "dist", "apps", "checking", "toolchain.js");
+  // Absent means the build did not run, not that the guard holds — say so,
+  // rather than reading an empty string past both assertions.
+  if (!existsSync(built)) throw new Error(`${built} is missing — run \`pnpm build\` first`);
+  return readFileSync(built, "utf8");
 }
 
 describe("toolchain.ts esbuild import — bundler-style reachability (built dist)", () => {
   it("the compiled dist never carries a naked, bundler-resolvable esbuild specifier", () => {
-    const compiled = buildDistToolchainSource();
+    const compiled = distToolchainSource();
     expect(NAKED_ESBUILD_IMPORT.test(compiled)).toBe(false);
   });
 
   it("the compiled dist keeps the webpackIgnore + turbopackIgnore guarded form (tsc preserves comments; this is the actual proof, not just source)", () => {
-    const compiled = buildDistToolchainSource();
+    const compiled = distToolchainSource();
     expect(GUARDED_ESBUILD_IMPORT.test(compiled)).toBe(true);
   });
-}, 120_000);
+});
