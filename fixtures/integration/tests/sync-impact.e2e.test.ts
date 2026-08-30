@@ -1,5 +1,5 @@
 /** ENG-261 — sync blast radius over the real composed wire and store. */
-import { VENDO_APP_FORMAT, type AppDocument } from "@vendoai/core";
+import { VENDO_APP_FORMAT, type AppDocument } from "@vendoai/vendo/core";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   ADA,

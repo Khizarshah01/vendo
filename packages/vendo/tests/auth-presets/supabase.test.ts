@@ -1,5 +1,5 @@
 import { supabasePreset } from "../../src/actions/presets/index.js";
-import type { PermissionGrant } from "@vendoai/core";
+import type { PermissionGrant } from "../../src/core/index.js";
 import { SignJWT } from "jose";
 import { afterEach, describe, expect, it, vi } from "vitest";
 // supabase is pinned via its own module — the same file the

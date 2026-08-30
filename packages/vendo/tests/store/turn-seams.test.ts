@@ -1,4 +1,4 @@
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { harnessStateStore } from "../../src/store/harness-state.js";

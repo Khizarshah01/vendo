@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../src/core/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { channelInboundSecret, cloudTextChannel } from "../src/channels.js";
 import { selectChannels } from "../src/compose-channels.js";

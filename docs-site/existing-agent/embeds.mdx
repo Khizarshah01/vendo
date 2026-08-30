@@ -137,12 +137,12 @@ A pending approval expires after 60 minutes, and the card then reads "expired". 
 `parseVendoToolEnvelope(output)` returns the typed envelope or `null` — exactly what `<VendoToolResult>` calls. Use it server-side, or anywhere you want the branch in your own code.
 
 ```ts focus={3-4}
-import { parseVendoToolEnvelope } from "@vendoai/core";
+import { parseVendoToolEnvelope } from "@vendoai/vendo/core";
 
 const envelope = parseVendoToolEnvelope(output);
 if (envelope?.kind === "vendo/app-ref@1") saveForLater(envelope.appId);
 ```
 
-It is a runtime value, not a type, so it ships from `@vendoai/core` — add that package to import it.
+It is a runtime value, not a type, so it ships from `@vendoai/vendo/core` — add that package to import it.
 
 Malformed output returns `null` too. The tool pack is the only writer, so a bad shape is a bug there, not something your chat should half-render.

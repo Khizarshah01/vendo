@@ -10,7 +10,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Connector } from "../src/actions/index.js";
-import type { FilesAdapter, Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import type { FilesAdapter, Principal, ToolDescriptor, ToolRegistry } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { vendo as vendoHarness } from "../src/harnesses/index.js";
 import { defineHarness } from "../src/harnesses/index.js";

@@ -1,4 +1,4 @@
-import { defineOwn, isPlainObject, mintTurnId, THREAD_WINDOW_INITIAL, VendoError, vendoViewWirePartSchema, withSseKeepalive } from "@vendoai/core";
+import { defineOwn, isPlainObject, mintTurnId, THREAD_WINDOW_INITIAL, VendoError, vendoViewWirePartSchema, withSseKeepalive } from "../core/index.js";
 import { UI_MESSAGE_STREAM_HEADERS } from "ai";
 import { registerActiveTurn, steerActiveTurn, touchActiveTurn, trackTurnResponse } from "../turn-liveness.js";
 import { recordResumableTurn, resumableTurnStream } from "../turn-resume.js";

@@ -9,10 +9,10 @@ import {
   type AppId,
   type RunContext,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { EngineOps } from "../persistence/engine.js";
 import { APPS_COLLECTION, documentFromRecord, listAllEngineRecords } from "../persistence/persistence.js";
 import type { AppsConfig } from "../runtime/types.js";

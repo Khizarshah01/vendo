@@ -72,7 +72,7 @@ back on `x-vendo-thread-id`. Send that id back as `threadId` to keep talking on
 the same thread. `GET /api/agent/threads` lists this user's threads;
 `GET /api/agent/threads/:id` reads one back.
 
-In a browser, `useVendoChat` from `@vendoai/ui` speaks to this mount directly:
+In a browser, `useVendoChat` from `@vendoai/vendo/ui` speaks to this mount directly:
 
 ```tsx
 const { messages, sendMessage, interruptions, resume } = useVendoChat({

@@ -1,5 +1,5 @@
-import type { VendoUsageEvent } from "@vendoai/core";
-import { consoleLogger, setLogger, setUsageSink } from "@vendoai/core";
+import type { VendoUsageEvent } from "../src/core/index.js";
+import { consoleLogger, setLogger, setUsageSink } from "../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cloudSandbox } from "../src/sandbox.js";
 import { withSdkErrorReporting } from "../src/sdk-events.js";

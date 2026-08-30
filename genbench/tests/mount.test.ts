@@ -32,8 +32,8 @@
  * `--vendo-*` from its own theme, so a root variable can be right and the screen
  * still default.
  */
-import type { UIPayload } from "@vendoai/core";
-import type { ScreenInteractive } from "@vendoai/ui/tree";
+import type { UIPayload } from "@vendoai/vendo/core";
+import type { ScreenInteractive } from "@vendoai/vendo/ui/tree";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";

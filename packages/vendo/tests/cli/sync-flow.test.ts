@@ -1,7 +1,7 @@
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { STORE_WIRE_PATHS } from "@vendoai/core";
+import { STORE_WIRE_PATHS } from "../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { PIN_BASELINES_COLLECTION } from "../../src/cli/cloud/seed-baselines.js";
 import { describeDevCredential, resolveDevCredential } from "../../src/harnesses/inference/resolve.js";

@@ -1,5 +1,5 @@
-import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
-import type { KnowledgeAdapter, KnowledgeDoc } from "@vendoai/core";
+import { memoryKnowledgeAdapter } from "../../src/core/conformance/index.js";
+import type { KnowledgeAdapter, KnowledgeDoc } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { knowledgeIndexResolver, knowledgeIndexSummary, parseKnowledgeConfig } from "../../src/knowledge/prompt-note.js";
 

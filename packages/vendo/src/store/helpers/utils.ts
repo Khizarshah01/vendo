@@ -1,4 +1,4 @@
-import { VendoError, isoDateTimeSchema, type IsoDateTime } from "@vendoai/core";
+import { VendoError, isoDateTimeSchema, type IsoDateTime } from "../../core/index.js";
 import type { Db } from "../db.js";
 
 export function iso(value: unknown): IsoDateTime {

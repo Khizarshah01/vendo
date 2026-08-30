@@ -20,7 +20,7 @@
  *    on the runtime's turnId — so their parts interleave with its own on one
  *    stream, each counting its own steps from zero.
  */
-import { publishWorkbenchPart, type WorkbenchEvent, type WorkbenchPart } from "@vendoai/ui";
+import { publishWorkbenchPart, type WorkbenchEvent, type WorkbenchPart } from "@vendoai/vendo/ui";
 
 type Beat = [agent: WorkbenchPart["agent"], offsetMs: number, event: WorkbenchEvent];
 

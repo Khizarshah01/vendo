@@ -7,7 +7,7 @@
  * nothing else.
  */
 import { describe, expect, it } from "vitest";
-import type { Tree } from "@vendoai/core/apps";
+import type { Tree } from "../../../src/core/apps/index.js";
 import { catalogIssues } from "../../../src/apps/checking/facts.js";
 import {
   COMPONENT_SCREEN_LIB,

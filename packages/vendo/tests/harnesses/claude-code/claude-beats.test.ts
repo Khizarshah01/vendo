@@ -11,7 +11,7 @@
  * @anthropic-ai/claude-agent-sdk 0.3.214's own `sdk-tools.d.ts`).
  */
 import { describe, expect, test } from "vitest";
-import type { BeatPhase as ContractBeatPhase } from "@vendoai/core";
+import type { BeatPhase as ContractBeatPhase } from "../../../src/core/index.js";
 import {
   createClaudeSession,
   type BeatPhase,

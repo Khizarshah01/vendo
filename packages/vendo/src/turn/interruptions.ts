@@ -30,7 +30,7 @@ import {
   type ResumeOptions,
   type ThreadId,
   type TurnId,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { toHeaderRecord } from "./session.js";
 import { DEFAULT_MAX_TOOL_CALLS, expired, startTurn, type AgentDeps, type TurnResult } from "./turn.js";
 

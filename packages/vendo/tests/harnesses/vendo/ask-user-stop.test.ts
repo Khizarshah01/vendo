@@ -15,7 +15,7 @@
  * whatever its implementation returns in `{status:"ok"}`, so a refusal would read
  * as answered and the second case could never fail.
  */
-import { ASK_USER_TOOL, type Json, type ToolOutcome, type ToolRegistry, type Turn } from "@vendoai/core";
+import { ASK_USER_TOOL, type Json, type ToolOutcome, type ToolRegistry, type Turn } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { vendo, type VendoHarnessOptions } from "../../../src/harnesses/vendo/vendo.js";
 import { createTurnState } from "../../../src/harnesses/harness-state.js";

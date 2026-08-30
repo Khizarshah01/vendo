@@ -186,11 +186,11 @@ The browser talks to it at `POST /api/agent/threads` with `{ message }`; the
 thread's id comes back on the `x-vendo-thread-id` header, and sending it back as
 `threadId` keeps the same thread. `GET /api/agent/threads` lists them.
 
-In the browser, `useVendoChat` from `@vendoai/ui` speaks to that mount and
+In the browser, `useVendoChat` from `@vendoai/vendo/ui` speaks to that mount and
 keeps nothing of its own:
 
 ```tsx app/support/page.tsx focus={3}
-import { useVendoChat } from "@vendoai/ui";
+import { useVendoChat } from "@vendoai/vendo/ui";
 
 const { messages, sendMessage, interruptions, resume } = useVendoChat({
   api: "/api/agent",

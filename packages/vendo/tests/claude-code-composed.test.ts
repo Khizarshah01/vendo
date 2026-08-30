@@ -24,7 +24,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { LanguageModel, UIMessage } from "ai";
-import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import type { Principal, ToolDescriptor, ToolRegistry } from "../src/core/index.js";
 // The REAL box door, over a fake transport — a package subpath, not a relative
 // climb, because the door is the wire contract between the two blocks.
 import { createSessionRoutes } from "../box/turn-routes.mjs";

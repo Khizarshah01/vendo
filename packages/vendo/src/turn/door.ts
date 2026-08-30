@@ -34,7 +34,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import type { AddressInfo } from "node:net";
 import { Readable } from "node:stream";
-import { VendoError, type Guard, type StoreAdapter, type ToolRegistry } from "@vendoai/core";
+import { VendoError, type Guard, type StoreAdapter, type ToolRegistry } from "../core/index.js";
 import type { ToolDoorPort } from "../harnesses/index.js";
 import { createMcpDoor, createTurnCredentials, type LiveTurn } from "../mcp/index.js";
 

@@ -1,4 +1,4 @@
-import type { FilesAdapter, Membership, Principal, RunContext, WorkspaceFs } from "@vendoai/core";
+import type { FilesAdapter, Membership, Principal, RunContext, WorkspaceFs } from "../core/index.js";
 import { storeFiles } from "./files-store.js";
 import { appAccess, appOfOrgPath, orgOfPath } from "./helpers/app-access.js";
 import { backendOf } from "./helpers/backend.js";

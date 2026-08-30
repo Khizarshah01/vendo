@@ -12,7 +12,7 @@
  *
  * Observed live once on a warm-probe turn, as a bare `TypeError: fetch failed`.
  */
-import { VendoError, type HarnessEvent, type Turn } from "@vendoai/core";
+import { VendoError, type HarnessEvent, type Turn } from "../../../src/core/index.js";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";

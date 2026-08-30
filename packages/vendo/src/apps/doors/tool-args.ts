@@ -9,10 +9,10 @@ import {
   VendoError,
   type Json,
   type RunContext,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { AppsRuntime } from "../runtime/types.js";
 
 export const input = (

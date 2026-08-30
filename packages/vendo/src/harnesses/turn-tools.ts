@@ -1,4 +1,4 @@
-import { log } from "@vendoai/core";
+import { log } from "../core/index.js";
 import type {
   ApprovalId,
   DeniedNeeds,
@@ -13,7 +13,7 @@ import type {
   ToolResult,
   TurnId,
   TurnTools,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { CapabilityMissReporter } from "./capability-miss.js";
 import { guardedCall, previewApproval, type ToolBridgeOptions } from "./tool-bridge.js";
 import { emitWorkbench, workbenchCursor, type WorkbenchEvent } from "./workbench.js";

@@ -7,7 +7,7 @@
  * resolved id is not knowable before the call and IS reported on it, which the
  * window table already reads; the same record answers here.
  */
-import type { ToolRegistry, Turn } from "@vendoai/core";
+import type { ToolRegistry, Turn } from "../../../src/core/index.js";
 import type { LanguageModel } from "ai";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import { describe, expect, it } from "vitest";

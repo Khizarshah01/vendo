@@ -14,8 +14,8 @@ import {
   type RecordStore,
   type VendoRecord,
   type Watermark,
-} from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+} from "../core/index.js";
+import { memoryStoreAdapter } from "../core/conformance/index.js";
 
 const decoder = new TextDecoder();
 

@@ -1,4 +1,4 @@
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { cloudDirectory } from "../src/cloud-directory.js";
 

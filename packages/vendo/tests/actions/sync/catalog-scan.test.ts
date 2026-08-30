@@ -4,10 +4,14 @@ import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { scanComponentCatalog } from "../../../src/actions/sync/catalog-scan.js";
 
-/** The provider's two import specifiers, assembled at runtime because the
+/** The provider's import specifiers, assembled at runtime because the
  *  dependency guard's static text scan reads import-shaped strings even inside
- *  fixtures, and actions may not import @vendoai/vendo or @vendoai/ui. */
+ *  fixtures — and `UI_PACKAGE` is a RETIRED name, which that scan rejects.
+ *  It is here on purpose: a host upgrades the umbrella and rewrites its imports
+ *  in two separate moments, and the scanner has to keep finding its components
+ *  in between. */
 const VENDO_REACT = ["@vendoai", "vendo", "react"].join("/");
+const VENDO_UI = ["@vendoai", "vendo", "ui"].join("/");
 const UI_PACKAGE = ["@vendoai", "ui"].join("/");
 
 const temporaryDirectories: string[] = [];
@@ -332,7 +336,23 @@ describe("deterministic component catalog scan", () => {
     expect(result.entries.map((entry) => entry.name)).toEqual(["Badge"]);
   });
 
-  it("recognizes <VendoProvider> imported from @vendoai/ui, and under an alias", async () => {
+  it("recognizes <VendoProvider> imported from @vendoai/vendo/ui, and under an alias", async () => {
+    const root = await host(`
+      type ComponentType = (props: unknown) => unknown;
+      import { VendoProvider as Root } from "${VENDO_UI}";
+      export function Badge({ active }: { active?: boolean }) { return <span>{active}</span>; }
+      export const hostComponents: Record<string, ComponentType> = { Badge: Badge as ComponentType };
+      export function App() { return <Root components={hostComponents} />; }
+    `);
+    const result = await scanComponentCatalog(root);
+    expect(result.entries.map((entry) => entry.name)).toEqual(["Badge"]);
+  });
+
+  // The fold's migration seam. A host on the retired specifier is not broken,
+  // it is EARLY: it has the new umbrella and has not rewritten its imports yet.
+  // Drop this name from PROVIDER_MODULES and its catalog scans to zero
+  // components with no error — the failure mode `vendo sync` exists to prevent.
+  it("still recognizes <VendoProvider> imported from the retired @vendoai/ui", async () => {
     const root = await host(`
       type ComponentType = (props: unknown) => unknown;
       import { VendoProvider as Root } from "${UI_PACKAGE}";

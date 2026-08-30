@@ -22,7 +22,7 @@ import {
   type Harness,
   type HarnessEvent,
   type Turn,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type { BeatPhase as LoopBeatPhase, ClaudeTurnEvent } from "./claude-turn.js";
 import type { UIMessage } from "ai";
 import { z } from "zod";

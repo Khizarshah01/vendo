@@ -1,5 +1,5 @@
 import { storeFiles } from "../../../src/store/files-store.js";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../../src/store/backends.test-util.js";
 import { eraseStore } from "../../../src/store/erase.js";

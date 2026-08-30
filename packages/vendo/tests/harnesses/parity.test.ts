@@ -14,7 +14,7 @@ import {
   type ToolOutcome,
   type ToolRegistry,
   type VendoViewStreamingToolCall,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { wireErrorMessage } from "../../src/harnesses/wire-error.js";
 import { describe, expect, it, vi } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";

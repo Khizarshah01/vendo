@@ -12,12 +12,12 @@
  */
 import {
   type VendoViewPart,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   screenDescriptionSchema,
   VENDO_SCREEN_FORMAT,
   warmScreenEngine,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { beforeAll, describe, expect, it } from "vitest";
 import { createAppFloor } from "../../src/apps/checking/floor.js";
 import { wrapWorkspaceForRender } from "../../src/apps/generation/render-seam.js";

@@ -1,5 +1,5 @@
-import { descriptorHash } from "@vendoai/core";
-import type { ToolDescriptor } from "@vendoai/core";
+import { descriptorHash } from "../../src/core/index.js";
+import type { ToolDescriptor } from "../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createPGliteStore, type PGliteStore } from "./fixtures/pglite-store.js";

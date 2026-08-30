@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
-import type { IdempotencyLedger } from "@vendoai/core";
+import type { IdempotencyLedger } from "../../src/core/index.js";
 
 // 01 §12 — the `Idempotency-Key` replay ledger, served off the same database as
 // the mutations it gates. `createStore()` hands one out, so a mount never has to

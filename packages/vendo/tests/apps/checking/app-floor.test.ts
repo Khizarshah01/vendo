@@ -20,7 +20,7 @@ import {
   warmScreenEngine,
   type Check,
   type NormalizedCatalog,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import type { FloorDependencies, HostToolInfo } from "../../../src/apps/checking/deps.js";
 import { blocks, createAppFloor } from "../../../src/apps/checking/floor.js";
 import {
@@ -132,7 +132,7 @@ describe("component runs the ONE gauntlet, and it is the paint gate", () => {
     // spent for nothing — and the toolchain's own why reaches the caller
     // verbatim, so whoever CAN fix it reads the fix.
     const why = "no esbuild is reachable from @vendoai/vendo — keep this package out of the server bundle"
-      + ' (Next: serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"])';
+      + ' (Next: serverExternalPackages: ["esbuild", "@electric-sql/pglite"])';
     const painted = await floor({
       toolchain: {
         transform: async () => { throw new ScreenToolchainUnavailable(why); },

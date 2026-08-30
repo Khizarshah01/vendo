@@ -1,4 +1,4 @@
-import { automationHash, type AutomationRecord, type IsoDateTime } from "@vendoai/core";
+import { automationHash, type AutomationRecord, type IsoDateTime } from "../core/index.js";
 import { z } from "zod";
 import type { EngineOps } from "./rows.js";
 

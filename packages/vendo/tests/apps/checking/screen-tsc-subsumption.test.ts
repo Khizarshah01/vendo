@@ -20,13 +20,13 @@
 import {
   type JsonSchema,
   type ShapeType,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import {
   checkBindingShapes,
   type NormalizedCatalog,
   type StandardSchema,
   type Tree,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { z } from "zod";
 import { describe, expect, it } from "vitest";
 import { catalogIssues } from "../../../src/apps/checking/facts.js";

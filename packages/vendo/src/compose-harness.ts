@@ -12,7 +12,7 @@ import {
   VENDO_MAKE_TOOL,
   type AgentRunner,
   type Harness,
-} from "@vendoai/core";
+} from "./core/index.js";
 import { assertHarnessComposable, vendo } from "./harnesses/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { storeServesHarnessTurns } from "./compose-store.js";

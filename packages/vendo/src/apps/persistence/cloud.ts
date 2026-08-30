@@ -3,11 +3,11 @@ import {
   isoDateTimeSchema,
   type AppId,
   type IsoDateTime,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   appDocumentSchema,
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { z, type ZodTypeDef } from "zod";
 
 /** 06-apps §1 — frozen copy created by Vendo Cloud sharing. */

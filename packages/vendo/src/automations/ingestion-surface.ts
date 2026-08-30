@@ -8,7 +8,7 @@
  * dumb alarm clock that CALLS this tick, so the engine is always the thing that
  * decides what is due and always the thing that runs it.
  */
-import { durationMs, webhookSubject, type AutomationRecord, type Json } from "@vendoai/core";
+import { durationMs, webhookSubject, type AutomationRecord, type Json } from "../core/index.js";
 import { Cron } from "croner";
 import { z } from "zod";
 import type { AutomationRowsAccess } from "./automation-rows.js";

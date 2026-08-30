@@ -4,7 +4,7 @@
  *  so edge deployments must fill the store seam explicitly — hostedStore via
  *  VENDO_API_KEY, or a custom adapter. Keep this module free of node builtins;
  *  the portability gate bundles it. */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../core/index.js";
 
 import type { Db, StoreConfig } from "./db.js";
 

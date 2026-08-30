@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { TOOL_NAME_PATTERN, toolDescriptorSchema, type RunContext } from "@vendoai/core";
+import { TOOL_NAME_PATTERN, toolDescriptorSchema, type RunContext } from "../../../src/core/index.js";
 import { composioConnector } from "../../../src/actions/connectors/composio.js";
 
 const apiKey = process.env.COMPOSIO_API_KEY;

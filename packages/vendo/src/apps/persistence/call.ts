@@ -8,10 +8,10 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 
 /**
  * The name half of core's 01 §8 `fn:<name>` grammar, bounded at 64 characters

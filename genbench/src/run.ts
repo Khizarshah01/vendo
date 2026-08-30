@@ -1,6 +1,6 @@
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
-import type { UIPayload } from "@vendoai/core";
+import type { UIPayload } from "@vendoai/vendo/core";
 import { execFileSync, spawn } from "node:child_process";
 import { existsSync } from "node:fs";
 import { copyFile, link, readdir, readFile, mkdir, writeFile } from "node:fs/promises";
@@ -447,7 +447,7 @@ export async function pool<T>(jobs: readonly (() => Promise<T>)[], limit: number
   return done;
 }
 
-/** The recharts-backed Kit components (packages/ui/src/kit/charts/). */
+/** The recharts-backed Kit components (packages/vendo/src/ui/kit/charts/). */
 const CHARTS = new Set(["LineChart", "BarChart", "DonutChart", "Sparkline"]);
 
 /**

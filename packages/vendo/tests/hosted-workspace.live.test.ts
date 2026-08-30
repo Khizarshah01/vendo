@@ -15,7 +15,7 @@
  * overrides the mount for a staging console. Every id is per-run unique so two
  * runs never collide, and everything written is erased at the end.
  */
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import { hostedStore, workspaceStore, type HostedStore } from "../src/store/index.js";
 import { afterAll, describe, expect, it } from "vitest";
 

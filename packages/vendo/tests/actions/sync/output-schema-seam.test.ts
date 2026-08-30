@@ -10,7 +10,7 @@
 import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "../../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { bindingIdentity } from "../../../src/actions/binding-identity.js";
 import { createActions } from "../../../src/actions/runtime/registry.js";

@@ -26,11 +26,17 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { vendoSync } from "../src/actions/sync/public.js";
 import { SCREEN_FILE, seedBaselineSchema } from "../src/apps/index.js";
-import { SCREEN_TEXT_NODE } from "@vendoai/core/apps";
-import type { RunContext } from "@vendoai/core";
+import { SCREEN_TEXT_NODE } from "../src/core/apps/index.js";
+import type { RunContext } from "../src/core/index.js";
 import { createStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";
+
+/** The specifier the FIXTURE HOST writes, not one this file imports.
+ *  Assembled at runtime because the dependency guard's static text scan reads
+ *  import-shaped strings even inside a template literal. */
+const UI_CHROME = ["@vendoai", "vendo", "ui", "chrome"].join("/");
+
 
 const ctx: RunContext = {
   principal: { kind: "user", subject: "user_port_dialect" },
@@ -59,7 +65,7 @@ describe("a styled port is graded in one dialect from sync to paint", () => {
 }
 `);
     await writeFile(join(root, "src", "page.tsx"), `
-import { Remixable } from "@vendoai/ui/chrome";
+import { Remixable } from "${UI_CHROME}";
 import MapleBalanceCard from "./MapleBalanceCard";
 export default function Page() {
   return <Remixable><MapleBalanceCard /></Remixable>;

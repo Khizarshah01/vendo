@@ -23,7 +23,7 @@ import {
   type CreateAutomation,
   type ReconcilePlan,
   type RunContext,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { AutomationRowsAccess } from "./automation-rows.js";
 import type { EngineBase } from "./engine-context.js";
 import { id } from "./rows.js";

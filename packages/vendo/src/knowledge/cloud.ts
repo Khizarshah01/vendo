@@ -1,4 +1,4 @@
-import { VendoError, type KnowledgeAdapter } from "@vendoai/core";
+import { VendoError, type KnowledgeAdapter } from "../core/index.js";
 import { knowledgeWireAdapter } from "./wire.js";
 
 const DEFAULT_BASE_URL = "https://console.vendo.run";

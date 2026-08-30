@@ -1,6 +1,6 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join, resolve, sep } from "node:path";
-import type { KnowledgeDoc } from "@vendoai/core";
+import type { KnowledgeDoc } from "../../core/index.js";
 import { knowledgeConfigSchema, type KnowledgeConfig, type KnowledgeSourceConfig } from "./config.js";
 import { parseSourceFile } from "./parse.js";
 

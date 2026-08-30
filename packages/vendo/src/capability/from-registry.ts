@@ -24,7 +24,7 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../core/index.js";
 
 /**
  * Marks a tool definition whose real implementation is a `ToolRegistry`, so the merge

@@ -6,7 +6,7 @@ import {
   type IsoDateTime,
   type PermissionGrant,
   type Principal,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import { dbFor, type VendoStore } from "../store.js";
 import { grantFromRow, putGrantRow } from "./rows.js";
 import { parsePermissionGrant } from "../validate.js";

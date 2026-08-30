@@ -25,7 +25,7 @@
  * whenever the machine was merely busy.
  */
 import { afterEach, describe, expect, it } from "vitest";
-import { UNATTENDED_DESTRUCTIVE_REASON } from "@vendoai/core";
+import { UNATTENDED_DESTRUCTIVE_REASON } from "@vendoai/vendo/core";
 import {
   ADA,
   createAutomation,

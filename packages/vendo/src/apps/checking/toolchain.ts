@@ -31,7 +31,7 @@ import {
   type ScreenErrorKind,
   type ScreenInstance,
   type ScreenQuery,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { screenTypecheckIssues } from "./screen-typecheck.js";
 import { screenProgram } from "./screen-tsc.js";
 import type { ComponentScreenIssue } from "./component-screen.js";
@@ -208,7 +208,7 @@ export const nodeToolchain = (): ScreenToolchain => ({
       // The whole list is the one `vendo init` writes, so it pastes as it stands.
       throw new ScreenToolchainUnavailable(
         "no esbuild is reachable from @vendoai/vendo — keep this package out of the server bundle (Next:"
-        + ' serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"]'
+        + ' serverExternalPackages: ["esbuild", "@electric-sql/pglite"]'
         + " in next.config)",
       );
     }

@@ -1,5 +1,5 @@
 import type { SandboxAdapter, SandboxMachine } from "../../src/apps/index.js";
-import type { AuditEvent, Principal, ToolRegistry } from "@vendoai/core";
+import type { AuditEvent, Principal, ToolRegistry } from "../../src/core/index.js";
 import type { VendoGuard } from "../../src/guard/index.js";
 import { defineHarness, harnessAdapters } from "../../src/harnesses/index.js";
 import { createStore, threadStore } from "../../src/store/index.js";

@@ -15,7 +15,7 @@ import {
   skillPath,
   type ToolDescriptor,
   type Turn,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import { APICallError } from "ai";
 import { MockLanguageModelV3 } from "ai/test";
 import { describe, expect, it } from "vitest";

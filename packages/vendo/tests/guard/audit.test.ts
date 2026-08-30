@@ -1,4 +1,4 @@
-import type { AuditEvent, ToolDescriptor } from "@vendoai/core";
+import type { AuditEvent, ToolDescriptor } from "../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createPGliteStore, type PGliteStore } from "./fixtures/pglite-store.js";

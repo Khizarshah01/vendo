@@ -1,8 +1,8 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
-import { type Principal } from "@vendoai/core";
+import { memoryKnowledgeAdapter } from "../src/core/conformance/index.js";
+import { type Principal } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { screenDocument, screenSource } from "./screen-fixture.js";
 import type { LanguageModel } from "ai";

@@ -14,8 +14,8 @@
  * person's own kill switch outlives every redeploy.
  */
 import { agent, agentAutomations } from "@vendoai/vendo";
-import { declaredAutomationId, reconcileAutomations, toTriggerSource } from "@vendoai/core";
-import type { AutomationRecord, DeclaredAutomation, Principal, RunContext } from "@vendoai/core";
+import { declaredAutomationId, reconcileAutomations, toTriggerSource } from "@vendoai/vendo/core";
+import type { AutomationRecord, DeclaredAutomation, Principal, RunContext } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStack, ownerCtx, resetFixture, type Stack } from "../src/harness.js";
 import { ADA, approve, runCount } from "../src/support.js";

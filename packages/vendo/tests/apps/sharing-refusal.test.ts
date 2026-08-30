@@ -7,10 +7,10 @@
  * refuses nothing. The tree half is the other side of the same claim — screens
  * stay shareable exactly as before.
  */
-import { engineOverAdapter } from "@vendoai/core";
-import type { FilesAdapter, RunContext, ToolRegistry } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
+import type { FilesAdapter, RunContext, ToolRegistry } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
-import type { AppBuilder, AppDocument } from "@vendoai/core/apps";
+import type { AppBuilder, AppDocument } from "../../src/core/apps/index.js";
 import { createApps, type AppsConfig, type AppsRuntime } from "../../src/apps/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";

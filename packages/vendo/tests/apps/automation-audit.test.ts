@@ -1,4 +1,4 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 /**
  * The automation door's two REPORTED facts: the audit row it writes, and the
  * armed state it hands back.
@@ -21,10 +21,10 @@ import {
   type ApprovalRequest,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { armAutomation } from "../../src/apps/automation/lane.js";
 import { createApps } from "../../src/apps/index.js";

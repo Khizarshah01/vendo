@@ -1,6 +1,6 @@
 "use client";
 
-import { VendoSlot } from "@vendoai/ui/chrome";
+import { VendoSlot } from "@vendoai/vendo/ui/chrome";
 import { VendoRoot } from "@/components/vendo/VendoRoot";
 
 /**

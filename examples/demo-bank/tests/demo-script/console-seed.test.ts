@@ -13,7 +13,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "@vendoai/vendo/core";
 import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createVendo, type Vendo } from "@vendoai/vendo/server";
 import { mapleDemoUsers } from "@/server/users";

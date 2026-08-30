@@ -8,12 +8,12 @@ import {
   type RunRowStatus,
   type ThreadId,
   type TriggerSource,
-} from "@vendoai/core";
+} from "../../core/index.js";
 
-/** 02-store §3 — declared once, in `@vendoai/core/apps`. The store is a
+/** 02-store §3 — declared once, in `@vendoai/vendo/core/apps`. The store is a
  *  dumb adapter for a shape app generation owns; re-declaring it here is how
  *  the two drifted. */
-export type { AppRow } from "@vendoai/core/apps";
+export type { AppRow } from "../../core/apps/index.js";
 
 /** 02-store §3 */
 export interface ThreadRow {
@@ -45,10 +45,10 @@ export interface ApprovalRow {
   createdAt: IsoDateTime;
 }
 
-/** 02-store §3 — declared in `@vendoai/core` beside the four it widens, and
+/** 02-store §3 — declared in `@vendoai/vendo/core` beside the four it widens, and
  *  re-exported here because this package's own surface is where the store's
  *  callers reach for it. */
-export { RUN_ROW_STATUSES, type RunRowStatus } from "@vendoai/core";
+export { RUN_ROW_STATUSES, type RunRowStatus } from "../../core/index.js";
 
 /** 02-store §3 */
 export interface RunRow {

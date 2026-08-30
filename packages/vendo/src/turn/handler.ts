@@ -32,7 +32,7 @@
  * process therefore routes that path here too — mounting this handler at
  * `/api/vendo` puts it and everything else under one catch-all.
  */
-import { isVendoError, VendoError, type Json, type Principal, type ThreadId } from "@vendoai/core";
+import { isVendoError, VendoError, type Json, type Principal, type ThreadId } from "../core/index.js";
 import { handlePermissionRequest } from "../guard/index.js";
 import { threadMessageStore, threadStore } from "../store/index.js";
 import type { UIMessage } from "ai";

@@ -17,7 +17,7 @@
  * (`vendo_records WHERE refs @> '{"subject": …}'::jsonb`, `packages/vendo/src/store/
  * erase.ts`), and the only query this surface ever makes.
  */
-import { SLOT_DECAY_MS, type RunContext, type SlotEntry, type VendoRecord } from "@vendoai/core";
+import { SLOT_DECAY_MS, type RunContext, type SlotEntry, type VendoRecord } from "../../core/index.js";
 import type { EngineOps } from "./engine.js";
 import { listAllEngineRecords } from "./persistence.js";
 
@@ -38,7 +38,7 @@ export interface SlotDescriptor {
 }
 
 // A registered slot, as the registry answers it. The shape is core's
-// (core/src/app-surfaces.ts) because `@vendoai/ui` reads these rows off
+// (core/src/app-surfaces.ts) because `@vendoai/vendo/ui` reads these rows off
 // `GET /slots` and may not import this package.
 export type { SlotEntry };
 

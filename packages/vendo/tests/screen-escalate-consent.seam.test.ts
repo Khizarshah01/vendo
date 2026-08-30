@@ -38,13 +38,13 @@ import {
   type RunContext,
   type ToolResult,
   type VendoApprovalPart,
-} from "@vendoai/core";
-import { makeReceiptSchema } from "@vendoai/core/apps";
+} from "../src/core/index.js";
+import { makeReceiptSchema } from "../src/core/apps/index.js";
 import type { SandboxAdapter } from "../src/apps/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
-import { VendoProvider, createVendoClient } from "@vendoai/ui";
-import { VendoThread } from "@vendoai/ui/chrome";
+import { VendoProvider, createVendoClient } from "../src/ui/index.js";
+import { VendoThread } from "../src/ui/chrome/index.js";
 import type { LanguageModel } from "ai";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import { act, createElement, type ReactElement } from "react";

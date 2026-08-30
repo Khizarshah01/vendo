@@ -7,7 +7,7 @@
  * wrapped tool — the run mechanics under test are unchanged.)
  */
 import { beforeEach, describe, expect, it } from "vitest";
-import type { ToolRegistry } from "@vendoai/core";
+import type { ToolRegistry } from "@vendoai/vendo/core";
 import { createStack, ownerCtx, resetFixture } from "../src/harness.js";
 import { ADA, BOB, enableAndApprove, fixtureInvoices } from "../src/support.js";
 

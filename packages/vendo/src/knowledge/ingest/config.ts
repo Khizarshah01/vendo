@@ -4,7 +4,7 @@ import {
   knowledgeVisibilitySchema,
   type KnowledgeKind,
   type KnowledgeVisibility,
-} from "@vendoai/core";
+} from "../../core/index.js";
 
 /** The `.vendo/knowledge.json` format tag (developer
     door). An ingestion INPUT like tools.json — deliberately NOT a config

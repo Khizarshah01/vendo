@@ -10,7 +10,7 @@
  *
  * Internal — not exported from the package root.
  */
-import { engineOverAdapter, type AgentRunners } from "@vendoai/core";
+import { engineOverAdapter, type AgentRunners } from "../core/index.js";
 import { createAutomationRows, type AutomationRowsAccess } from "./automation-rows.js";
 import { createConsent, type ConsentAccess } from "./consent.js";
 import { createCreateSurface, type CreateSurfaceAccess } from "./create-surface.js";

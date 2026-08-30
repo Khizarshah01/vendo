@@ -15,10 +15,10 @@
  *    no ctx returns EVERYTHING, so an automation was shown a destructive tool and
  *    only found out when the call came back denied.
  */
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+import { memoryStoreAdapter } from "../../src/core/conformance/index.js";
 import { createGuard } from "../../src/guard/index.js";
 import { describe, expect, it } from "vitest";
-import type { ToolDescriptor, ToolListing, ToolRegistry } from "@vendoai/core";
+import type { ToolDescriptor, ToolListing, ToolRegistry } from "../../src/core/index.js";
 import { createTurnTools } from "../../src/harnesses/turn-tools.js";
 import { ctx } from "../../src/harnesses/test-doubles.test-util.js";
 

@@ -14,7 +14,7 @@
  * checked by their compiler rather than claimed by this file.
  */
 import type Anthropic from "@anthropic-ai/sdk";
-import { vendoApprovalRefSchema, type ToolDescriptor, type ToolRegistry } from "@vendoai/core";
+import { vendoApprovalRefSchema, type ToolDescriptor, type ToolRegistry } from "../src/core/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {

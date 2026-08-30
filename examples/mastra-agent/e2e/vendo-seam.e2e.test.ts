@@ -18,7 +18,7 @@ import { join } from "node:path";
 import { Agent } from "@mastra/core/agent";
 import { RequestContext } from "@mastra/core/request-context";
 import { noopObserve } from "@mastra/core/tools";
-import { parseVendoToolEnvelope, vendoAppRefSchema, vendoApprovalRefSchema } from "@vendoai/core";
+import { parseVendoToolEnvelope, vendoAppRefSchema, vendoApprovalRefSchema } from "@vendoai/vendo/core";
 import { createStore } from "@vendoai/vendo/store";
 import { VENDO_PRINCIPAL_KEY, VENDO_SESSION_KEY, vendoMastraTools } from "@vendoai/vendo/mastra";
 import {

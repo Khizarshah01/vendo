@@ -14,7 +14,7 @@
  * re-lists inside its own `execute`, which is what makes a found tool callable on
  * the very next step.
  */
-import type { ThreadId } from "@vendoai/core";
+import type { ThreadId } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { vendo } from "../../../src/harnesses/vendo/vendo.js";
 import { createHarnessRuntime } from "../../../src/harnesses/runtime.js";

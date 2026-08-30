@@ -16,7 +16,7 @@ import {
   type RunContext,
   type Step,
   type ToolOutcome,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { EngineBase } from "./engine-context.js";
 import type { RunRecord, RunStatus } from "./index.js";
 import { id, message, parseRunRecord, syncRun, terminalStatus } from "./rows.js";

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { KnowledgeDoc } from "@vendoai/core";
+import type { KnowledgeDoc } from "../../../src/core/index.js";
 import { structuralChunker } from "../../../src/knowledge/ingest/chunker.js";
 
 const doc = (text: string, kind: KnowledgeDoc["kind"] = "docs"): KnowledgeDoc => ({

@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   // through a variable specifier the bundler cannot see, so an "esbuild" entry
   // alone is inert and this only ever worked because the monorepo root hoists
   // esbuild. Same list `vendo init` writes (NEXT_SERVER_EXTERNALS).
-  serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"],
+  serverExternalPackages: ["esbuild", "@electric-sql/pglite"],
   // --- /vendo
 };
 

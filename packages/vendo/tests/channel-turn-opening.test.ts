@@ -31,7 +31,7 @@ import {
   type RecordQuery,
   type RunContext,
   type StoreOps,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, createStoreOps, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel, UIMessage } from "ai";

@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../core/index.js";
 import { z } from "zod";
 import type { PolicyRule } from "./types.js";
 import { policyRuleSchema } from "./types.js";

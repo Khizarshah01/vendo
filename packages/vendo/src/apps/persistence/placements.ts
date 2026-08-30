@@ -40,7 +40,7 @@
  * name `egress-approval.ts` clears an app by) — a shared app is placed by
  * people its owner cannot enumerate.
  */
-import type { RecordInput, VendoRecord } from "@vendoai/core";
+import type { RecordInput, VendoRecord } from "../../core/index.js";
 import type { EngineOps } from "./engine.js";
 import { listAllEngineRecords } from "./persistence.js";
 

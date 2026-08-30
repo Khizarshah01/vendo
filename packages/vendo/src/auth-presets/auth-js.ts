@@ -4,7 +4,7 @@
 // in a barrel file regardless of which export a consumer uses (corpus-triage
 // Task 9 — mirrors the same split done for this file's own vendo-side barrel).
 import { authJsPreset } from "../actions/presets/auth-js.js";
-import type { ActAs } from "@vendoai/core";
+import type { ActAs } from "../core/index.js";
 import { environment } from "../wire/shared.js";
 import {
   actAsClaimsFromUser,

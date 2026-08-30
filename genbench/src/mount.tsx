@@ -7,7 +7,7 @@ import {
   type Json,
   type ToolOutcome,
   type UIPayload,
-} from "@vendoai/core";
+} from "@vendoai/vendo/core";
 import {
   bootScreen,
   defaultVendoTheme,
@@ -21,10 +21,10 @@ import {
   type ScreenInstance,
   type ScreenQuery,
   type VendoTheme,
-} from "@vendoai/core/apps";
-import { VendoProvider } from "@vendoai/ui";
-import { applyThemeVars } from "@vendoai/ui/kit";
-import { PayloadView } from "@vendoai/ui/tree";
+} from "@vendoai/vendo/core/apps";
+import { VendoProvider } from "@vendoai/vendo/ui";
+import { applyThemeVars } from "@vendoai/vendo/ui/kit";
+import { PayloadView } from "@vendoai/vendo/ui/tree";
 import { useEffect, type JSX } from "react";
 import { createRoot } from "react-dom/client";
 

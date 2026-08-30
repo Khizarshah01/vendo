@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { KnowledgeAdapter, KnowledgeDoc, Principal, RunContext, ToolOutcome } from "@vendoai/core";
+import type { KnowledgeAdapter, KnowledgeDoc, Principal, RunContext, ToolOutcome } from "../src/core/index.js";
 import { httpKnowledge, vendoKnowledge } from "../src/knowledge/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

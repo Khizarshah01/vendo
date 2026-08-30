@@ -1,4 +1,4 @@
-import { CONNECTOR_DISCOVERY_TOOLS, VENDO_BASH_TOOL, type ToolDescriptor, type ToolRegistry } from "@vendoai/core";
+import { CONNECTOR_DISCOVERY_TOOLS, VENDO_BASH_TOOL, type ToolDescriptor, type ToolRegistry } from "../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { memoizedSurfaceMenu, withAgentMenu } from "../src/surface-menu.js";
 

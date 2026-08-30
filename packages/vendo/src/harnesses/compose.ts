@@ -1,4 +1,4 @@
-import { VendoError, type Harness } from "@vendoai/core";
+import { VendoError, type Harness } from "../core/index.js";
 
 /** The adapter slots a harness's `requires` can speak about. The SLOT being
  *  filled is the switch — there is no capability boolean anywhere (§9). */

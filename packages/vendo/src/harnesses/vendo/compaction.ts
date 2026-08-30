@@ -115,7 +115,7 @@ export function writeCompactionState(state: CompactionState): string {
 }
 
 /**
- * Ported from cline `sdk/packages/core/src/extensions/context/compaction-shared.ts:15,17`
+ * Ported from cline `sdk/packages/vendo/src/core/extensions/context/compaction-shared.ts:15,17`
  * (Apache-2.0): `CONTEXT_WINDOW_INPUT_RATIO = 0.9` × `COMPACTION_TRIGGER_RATIO = 0.9`.
  *
  * Two multiplied margins, and both are load-bearing. The first keeps the ANSWER's
@@ -148,7 +148,7 @@ export const TRIGGER_RATIO = 0.81;
 export const PESSIMISTIC_CHARS_PER_TOKEN = 2;
 
 /**
- * Ported from cline `sdk/packages/core/src/extensions/context/compaction-shared.ts:19`
+ * Ported from cline `sdk/packages/vendo/src/core/extensions/context/compaction-shared.ts:19`
  * (Apache-2.0): the verbatim tail a compaction always preserves.
  *
  * Declared here with the ratio it belongs beside; the cut point that reads it
@@ -286,7 +286,7 @@ export function findCutIndex(
  * The summarizer's system prompt.
  *
  * The security rule is FIRST, and that ordering is the point. Ported from
- * gemini-cli `packages/core/src/prompts/snippets.ts:897-905` (Apache-2.0), whose
+ * gemini-cli `packages/vendo/src/core/prompts/snippets.ts:897-905` (Apache-2.0), whose
  * `getCompressionPrompt` opens on it for the reason this whole function exists:
  * the history being summarized is untrusted input. A tool result is a document
  * somebody else wrote, and a summarizer that reads it as instructions is a

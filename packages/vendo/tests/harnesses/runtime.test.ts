@@ -6,7 +6,7 @@
  * frozen routing table. Harness adapters contain no persistence and no wire code.
  */
 import { defineHarness } from "../../src/harnesses/define.js";
-import { SSE_KEEPALIVE_FRAME, type Harness, type HarnessEvent, type ThreadId, type Turn } from "@vendoai/core";
+import { SSE_KEEPALIVE_FRAME, type Harness, type HarnessEvent, type ThreadId, type Turn } from "../../src/core/index.js";
 import { convertToModelMessages, type UIMessage } from "ai";
 import { describe, expect, it, vi } from "vitest";
 import { createHarnessRuntime, type TurnRunInput } from "../../src/harnesses/runtime.js";

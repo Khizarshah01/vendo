@@ -40,11 +40,11 @@ import type {
   StoreOps,
   ToolCall,
   ToolRegistry,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type {
   BriefingPack,
   VendoTheme,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import type { VendoGuard, RiskResolver } from "./guard/index.js";
 import type { CapabilityMissConfig } from "./harnesses/index.js";
 import type { VendoToolSearchConfig } from "./harnesses/vendo/index.js";
@@ -102,7 +102,7 @@ export interface VendoActionsConfig {
   fetch?: typeof fetch;
   onPresentCredentialsNotForwarded: (event: {
     ctx: RunContext;
-    tool: import("@vendoai/core").ToolDescriptor;
+    tool: import("./core/index.js").ToolDescriptor;
     reason: "untrusted-host-origin" | "cross-origin-binding";
   }) => Promise<void>;
   untrustedOriginPolicy?: "warn" | "fail";

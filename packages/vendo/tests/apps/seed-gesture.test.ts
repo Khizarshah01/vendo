@@ -7,12 +7,12 @@ import type {
   RunContext,
   StoreAdapter,
   ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   SCREEN_FILE,
   type AppDocument,
   type SeedBaseline,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { createApps, type AppsConfig, type AppsRuntime } from "../../src/apps/index.js";
 import { scriptedScreenAssembler } from "../../src/apps/testing/screen-assembler.js";

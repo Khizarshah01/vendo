@@ -22,8 +22,8 @@ import {
   type RunContext,
   type ToolCall,
   type ToolDescriptor,
-} from "@vendoai/core";
-import type { BuiltFile } from "@vendoai/core/apps";
+} from "../../core/index.js";
+import type { BuiltFile } from "../../core/apps/index.js";
 import {
   BUILD_ALREADY_ASKED,
   BUILD_DECLINED,

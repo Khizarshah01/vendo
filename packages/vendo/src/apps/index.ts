@@ -8,7 +8,7 @@
  * "why is this public?" is the only question this file cannot answer itself.
  *
  * The FORMAT this engine produces lives on the browser-safe sibling door,
- * `@vendoai/core/apps`. Anything a surface needs to speak about an app —
+ * `@vendoai/vendo/core/apps`. Anything a surface needs to speak about an app —
  * the document, the dialects, the kit, the wire shapes — is there, not here.
  */
 export {
@@ -57,7 +57,7 @@ export {
   seedDrift,
   type SeedBaseline,
   type SeedDrift,
-} from "@vendoai/core/apps";
+} from "../core/apps/index.js";
 // HostToolInfo is the tool slice GenerationDependencies (and external
 // harnesses) speak.
 export type { HostToolInfo } from "./generation/engine.js";
@@ -146,7 +146,7 @@ export {
  * package and reaches them relatively.
  */
 export { assembleTree } from "./runtime/runtime.js";
-export { stripServerAuthoritativeFields } from "@vendoai/core/apps";
+export { stripServerAuthoritativeFields } from "../core/apps/index.js";
 /**
  * The checks floor, built (§7.1). Composition reaches it through
  * `AppsRuntime.floor(ctx)`, which is the supported path; this export exists so the
@@ -188,7 +188,7 @@ export {
 // is not in this package — the screen agent lives in the umbrella, and a harness
 // with its own hands writes the same file — and two spellings of the basename is
 // a save that paints nothing.
-export { SCREEN_FILE } from "@vendoai/core/apps";
+export { SCREEN_FILE } from "../core/apps/index.js";
 export { screenName } from "./checking/component-screen.js";
 // The E2B sandbox adapter and the sandbox ladder, previously the
 // `@vendoai/vendo/apps/{e2b,sandbox-ladder}` subpaths. Both are node-only like

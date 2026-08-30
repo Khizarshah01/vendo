@@ -5,7 +5,7 @@
  * the WRITE side of the registry, which is why every fixture below is graded that
  * way (`screen-agent.ts`'s `wireable`).
  */
-import { UNKNOWN_INPUT_SCHEMA_NOTE, UNKNOWN_OUTPUT_SHAPE_NOTE } from "@vendoai/core";
+import { UNKNOWN_INPUT_SCHEMA_NOTE, UNKNOWN_OUTPUT_SHAPE_NOTE } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { toolBrief } from "../src/screen-agent.js";
 

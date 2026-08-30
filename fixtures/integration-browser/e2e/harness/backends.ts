@@ -34,7 +34,7 @@ import { fileURLToPath } from "node:url";
 import { getToolUiResourceUri } from "@modelcontextprotocol/ext-apps/app-bridge";
 import type { CallToolRequest } from "@modelcontextprotocol/sdk/types.js";
 import { composioConnector } from "@vendoai/vendo/actions";
-import { descriptorHash, type Principal } from "@vendoai/core";
+import { descriptorHash, type Principal } from "@vendoai/vendo/core";
 import { createStore } from "@vendoai/vendo/store";
 import { createVendo } from "@vendoai/vendo/server";
 import { connectWithSdk, type ConnectedClient } from "@vendoai-fixtures/test-kit/mcp-client";

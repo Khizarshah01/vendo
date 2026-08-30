@@ -8,7 +8,7 @@ import {
   type ToolCall,
   type ToolDescriptor,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createGuard, type VendoGuard } from "../src/guard/index.js";
 import { createStore, createStoreOps } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";

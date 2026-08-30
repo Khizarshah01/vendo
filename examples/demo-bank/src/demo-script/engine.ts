@@ -27,7 +27,7 @@ import {
   type Principal,
   type RunContext,
   type ToolOutcome,
-} from "@vendoai/core";
+} from "@vendoai/vendo/core";
 import {
   createUIMessageStream,
   createUIMessageStreamResponse,

@@ -1,5 +1,5 @@
-import type { RunContext } from "@vendoai/core";
-import { memoryStoreOps } from "@vendoai/core/conformance";
+import type { RunContext } from "../src/core/index.js";
+import { memoryStoreOps } from "../src/core/conformance/index.js";
 import { describe, expect, it, vi } from "vitest";
 import type { ChannelLink } from "../src/channel-links.js";
 import { bubbles, cronProse, runChannelTurn, type ChannelTurnDeps } from "../src/channel-turn.js";

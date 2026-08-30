@@ -1,5 +1,5 @@
-import type { Membership, Principal, StoreOps } from "@vendoai/core";
-import { VendoError } from "@vendoai/core";
+import type { Membership, Principal, StoreOps } from "../../src/core/index.js";
+import { VendoError } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { createStoreOps } from "../../src/store/ops.js";
@@ -203,7 +203,7 @@ for (const backend of backends()) {
 
 /**
  * The ops surface belongs to whoever MOUNTED it — a hosted store, a host's own
- * adapter — which is exactly where a second `@vendoai/core` copy lives. Its
+ * adapter — which is exactly where a second `@vendoai/vendo/core` copy lives. Its
  * VendoErrors are a different class, so a lost compare-and-swap failed
  * `instanceof`, escaped §9.7's conflict branch, and reached the façade as a
  * crash instead of the re-aim.

@@ -1,4 +1,4 @@
-import type { KnowledgeDoc } from "@vendoai/core";
+import type { KnowledgeDoc } from "../../core/index.js";
 import type { KnowledgeSourceConfig } from "./config.js";
 import { normalizeText, splitHeadingSections } from "./markdown.js";
 

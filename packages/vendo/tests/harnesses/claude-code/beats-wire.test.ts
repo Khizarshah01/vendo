@@ -27,7 +27,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, test } from "vitest";
-import type { ThreadId } from "@vendoai/core";
+import type { ThreadId } from "../../../src/core/index.js";
 import { createSessionRoutes } from "../../../box/turn-routes.mjs";
 import { createClaudeSession } from "../../../src/harnesses/claude-code/claude-turn.js";
 import { createHarnessRuntime } from "../../../src/harnesses/runtime.js";

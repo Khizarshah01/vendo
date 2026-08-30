@@ -13,7 +13,7 @@ import {
   type Guard,
   type Json,
   type RunContext,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { MEMORY_RECALL_LIMIT, MEMORY_TEXT_MAX_CHARS, type MemoryAdapter } from "./memory.js";
 
 /** Who the agent is acting for. An unattended run often has no user at all, and

@@ -1,4 +1,4 @@
-import type { LimitAction, LimitsCallback, TenantLimits } from "@vendoai/core";
+import type { LimitAction, LimitsCallback, TenantLimits } from "./core/index.js";
 import type { CloudDirectory } from "./cloud-directory.js";
 
 /**

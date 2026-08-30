@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { VendoProvider } from "@vendoai/vendo/react";
-import { VendoOverlay } from "@vendoai/ui/chrome";
+import { VendoOverlay } from "@vendoai/vendo/ui/chrome";
 import { App } from "./App.js";
 import "./brand.css";
 

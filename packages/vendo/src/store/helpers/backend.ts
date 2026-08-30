@@ -1,4 +1,4 @@
-import { VendoError, type StoreOps } from "@vendoai/core";
+import { VendoError, type StoreOps } from "../../core/index.js";
 // Type-only — erased at compile time, so the engine stays out of this module's
 // bundle graph (the same rule store.ts states).
 import type { Db } from "../db-postgres.js";

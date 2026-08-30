@@ -1,6 +1,6 @@
-import { VENDO_APP_FORMAT, type AppId } from "@vendoai/core";
-import type { AppDocument } from "@vendoai/core/apps";
-import { SCREEN_FILE } from "@vendoai/core/apps";
+import { VENDO_APP_FORMAT, type AppId } from "../../core/index.js";
+import type { AppDocument } from "../../core/apps/index.js";
+import { SCREEN_FILE } from "../../core/apps/index.js";
 import { inlineSourceFile } from "../persistence/app-source.js";
 
 /**

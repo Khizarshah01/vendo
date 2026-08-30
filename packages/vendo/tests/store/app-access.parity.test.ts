@@ -26,8 +26,8 @@
  * same id to two roads; sharing one database between them would let one road's
  * rows answer another road's question.
  */
-import type { AccessLevel, AppId, StoreOps } from "@vendoai/core";
-import { appAccessConformance, memoryStoreAdapter } from "@vendoai/core/conformance";
+import type { AccessLevel, AppId, StoreOps } from "../../src/core/index.js";
+import { appAccessConformance, memoryStoreAdapter } from "../../src/core/conformance/index.js";
 import { afterAll, beforeAll, describe, it } from "vitest";
 import { appFixture } from "../../src/store/fixtures.test-util.js";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";

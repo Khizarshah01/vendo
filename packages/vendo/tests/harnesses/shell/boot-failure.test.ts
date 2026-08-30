@@ -7,7 +7,7 @@
  * touch is real — the engine, just-bash, the filesystem, the retry.
  */
 import { InMemoryFs } from "just-bash";
-import type { IFileSystem } from "@vendoai/core";
+import type { IFileSystem } from "../../../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
 
 /** Set for the next library load only, then cleared — a blink, not a break. */

@@ -63,13 +63,13 @@ authJs()` and friends are one line ([Auth](https://docs.vendo.run/deploy/auth)).
 
 `apps/web/pages/_app.tsx` — wrap the app, add the overlay. One subtlety this
 workspace surfaces: import provider and overlay from **one package specifier**.
-In a workspace where the umbrella resolves its own nested `@vendoai/ui` copy,
-mixing `@vendoai/vendo/react` imports with direct `@vendoai/ui` imports on the
+In a workspace where the umbrella resolves its own nested `@vendoai/vendo/ui` copy,
+mixing `@vendoai/vendo/react` imports with direct `@vendoai/vendo/ui` imports on the
 same page yields two React contexts that cannot see each other:
 
 ```tsx
-import { VendoProvider } from "@vendoai/ui";
-import { VendoOverlay } from "@vendoai/ui/chrome";
+import { VendoProvider } from "@vendoai/vendo/ui";
+import { VendoOverlay } from "@vendoai/vendo/ui/chrome";
 
 <VendoProvider baseUrl="/api/vendo">
   {getLayout(<Component {...pageProps} />)}
@@ -85,7 +85,7 @@ import { VendoOverlay } from "@vendoai/ui/chrome";
 `apps/web/next.config.js`:
 
 ```js
-serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"],
+serverExternalPackages: ["esbuild", "@electric-sql/pglite"],
 ```
 
 `@vendoai/vendo` is the load-bearing entry: it reaches esbuild through a variable

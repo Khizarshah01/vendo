@@ -48,7 +48,7 @@ import {
   withheldFromUnattended,
   withResolvedRisk,
   type GuardPosture,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { PolicyResolver, resolvePolicyConfig, ruleMatches } from "./policy.js";
 import type {
   ApprovalReading,

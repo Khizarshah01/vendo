@@ -13,7 +13,7 @@ import {
   type KnowledgeAdapter,
   type SecretsProvider,
   type StoreAdapter,
-} from "@vendoai/core";
+} from "./core/index.js";
 import { bindKnowledgeStore, cloudKnowledge } from "./knowledge/index.js";
 import { envSecrets, postgresAppDatabase, type VendoStore } from "./store/index.js";
 import { chainSecrets, cloudSecrets } from "./cloud-secrets.js";

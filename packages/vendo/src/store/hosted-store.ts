@@ -30,7 +30,7 @@ import {
   VendoError,
   type VendoRecord,
   vendoRecordSchema,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { EraseReport } from "./erase.js";
 import { turnLoadOverOps } from "./helpers/turn.js";
 import {

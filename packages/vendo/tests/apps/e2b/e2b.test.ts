@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../../src/core/index.js";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { e2bSandbox } from "../../../src/sandbox/escalation/e2b/index.js";
 

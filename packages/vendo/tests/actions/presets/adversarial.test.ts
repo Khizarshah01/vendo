@@ -1,4 +1,4 @@
-import type { PermissionGrant, Principal } from "@vendoai/core";
+import type { PermissionGrant, Principal } from "../../../src/core/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   auth0Preset,

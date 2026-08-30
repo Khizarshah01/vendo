@@ -17,8 +17,8 @@ import {
   VENDO_AUTOMATE_TOOL,
   VENDO_AUTOMATION_REF_KIND,
   vendoAutomationRefSchema,
-} from "@vendoai/core";
-import type { ToolRegistry, VendoAutomationRef } from "@vendoai/core";
+} from "@vendoai/vendo/core";
+import type { ToolRegistry, VendoAutomationRef } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStack, ownerCtx, resetFixture, type Stack } from "../src/harness.js";
 import { ADA, BOB, approve, fixtureInvoices, record, runCount, tableCount } from "../src/support.js";

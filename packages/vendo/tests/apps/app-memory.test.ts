@@ -6,7 +6,7 @@
  * a write followed by a read. Nothing here is stubbed: `createApps` over a real
  * store, `runtime.remember` as the one writer, `runtime.get` as the reader.
  */
-import type { AppId, RunContext } from "@vendoai/core";
+import type { AppId, RunContext } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { APP_MEMORY_DECISIONS_MAX_BYTES, APP_MEMORY_MAX_ASKS } from "../../src/apps/persistence/app-memory.js";
 import { createApps, type AppsRuntime } from "../../src/apps/index.js";

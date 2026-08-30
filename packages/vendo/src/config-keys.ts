@@ -19,7 +19,7 @@
  * It also does real work at runtime: {@link warnDeprecatedConfigKeys} is what
  * tells a host on the old shape where the key went.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "./core/index.js";
 import type { CreateVendoConfig } from "./types.js";
 
 /**

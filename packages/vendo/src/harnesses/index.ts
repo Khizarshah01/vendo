@@ -2,7 +2,7 @@
  * `@vendoai/vendo/harnesses` — one central home for the thinkers, and the runtime that
  * runs any of them safely (build contract 2026-07-30 §1.6).
  *
- * The contract types themselves live in `@vendoai/core` so every block may speak
+ * The contract types themselves live in `@vendoai/vendo/core` so every block may speak
  * them; this package is the implementation half: `defineHarness`, the runtime,
  * and `vendo()` — the default in-process, key-free thinker.
  *

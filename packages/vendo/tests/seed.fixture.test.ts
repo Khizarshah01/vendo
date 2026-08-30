@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { vendoSync } from "../src/actions/sync/public.js";
 import { seedBaselineSchema } from "../src/apps/index.js";
-import { seedComponentName, type RunContext } from "@vendoai/core";
+import { seedComponentName, type RunContext } from "../src/core/index.js";
 import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -15,6 +15,11 @@ interface ModelCall {
     content: string | Array<{ type?: string; text?: string }>;
   }>;
 }
+
+/** The specifier the FIXTURE HOST writes, not one this file imports.
+ *  Assembled at runtime because the dependency guard's static text scan reads
+ *  import-shaped strings even inside a template literal. */
+const UI_CHROME = ["@vendoai", "vendo", "ui", "chrome"].join("/");
 
 const scriptedModel = (respond: (call: ModelCall) => string): LanguageModel => ({
   specificationVersion: "v2",
@@ -94,7 +99,7 @@ import "./globals.css";
 export default function Layout({ children }) { return children; }
 `);
     await writeFile(join(root, "src", "app", "page.tsx"), `
-import { Remixable } from "@vendoai/ui/chrome";
+import { Remixable } from "${UI_CHROME}";
 import MapleNetWorthCard from "../MapleNetWorthCard";
 export default function Page() {
   return <Remixable><MapleNetWorthCard /></Remixable>;
@@ -173,7 +178,7 @@ export default function Page() {
 }\n`;
     await writeFile(join(root, "src", "MapleNetWorthCard.tsx"), componentSource);
     await writeFile(join(root, "src", "page.tsx"), `
-import { Remixable } from "@vendoai/ui/chrome";
+import { Remixable } from "${UI_CHROME}";
 import MapleNetWorthCard from "./MapleNetWorthCard";
 export default function Page() {
   return <Remixable><MapleNetWorthCard /></Remixable>;

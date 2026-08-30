@@ -15,7 +15,7 @@ import {
   type ShapeType,
   type Step,
   type When,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type { LanguageModel } from "ai";
 import { askModel, distinctIssues, type HostToolInfo } from "../generation/engine.js";
 import { whenSays } from "../doors/automate-tool.js";

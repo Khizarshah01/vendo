@@ -7,8 +7,8 @@ import {
   type RunContext,
   type StoreAdapter,
   type ToolRegistry,
-} from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+} from "../../../src/core/index.js";
+import { memoryStoreAdapter } from "../../../src/core/conformance/index.js";
 import { beforeEach, describe, expect, it } from "vitest";
 import { automationsInternals, createAutomations, type AutomationsEngine } from "../../../src/automations/index.js";
 import { SCHEDULE } from "../../../src/automations/types.js";

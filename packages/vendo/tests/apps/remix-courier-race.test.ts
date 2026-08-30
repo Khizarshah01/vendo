@@ -24,8 +24,8 @@
  * person's screen is the one they did not save, and the log says
  * `app changed under this save`.
  */
-import { engineOverAdapter, type AppId, type RunContext, type ToolRegistry } from "@vendoai/core";
-import { SCREEN_FILE, type AppDocument } from "@vendoai/core/apps";
+import { engineOverAdapter, type AppId, type RunContext, type ToolRegistry } from "../../src/core/index.js";
+import { SCREEN_FILE, type AppDocument } from "../../src/core/apps/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { createApps, type SeedBaseline } from "../../src/apps/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";

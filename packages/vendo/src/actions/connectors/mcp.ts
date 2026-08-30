@@ -1,4 +1,4 @@
-import type { Json, PermissionGrant, RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "@vendoai/core";
+import type { Json, PermissionGrant, RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "../../core/index.js";
 import type { Connector, ConnectorAccountIdentity } from "./connector.js";
 import { normalizeToolName } from "./names.js";
 import type { ConnectorAuthContext, ConnectorHeadersResolver } from "./openapi.js";

@@ -23,7 +23,7 @@
 import type TS from "typescript";
 import { beforeAll, describe, expect, it } from "vitest";
 import { transformSync } from "esbuild";
-import { bootScreen, warmScreenEngine, type NestedNode } from "@vendoai/core/apps";
+import { bootScreen, warmScreenEngine, type NestedNode } from "../../../src/core/apps/index.js";
 import { screenProgram, screenTscFindings } from "../../../src/apps/checking/screen-tsc.js";
 import {
   COMPONENT_SCREEN_LIB,
@@ -32,10 +32,10 @@ import {
 } from "../../../src/apps/checking/screen-typings.js";
 
 // The screen fixture, inlined. Its twin is
-// `packages/core/tests/apps/genui/component/screen-fixture.test-util.ts`, and
+// `packages/vendo/tests/core/apps/genui/component/screen-fixture.test-util.ts`, and
 // S11d put that file in another package — a test util is not a published
 // export, so it cannot be imported across the seam and is not going on the
-// `@vendoai/core/apps` door to make it possible. The compile flags are the
+// `@vendoai/vendo/core/apps` door to make it possible. The compile flags are the
 // gauntlet's own `engine` form, spelled once for real in
 // `../../../src/apps/checking/toolchain.ts:189`; reaching that through
 // `nodeToolchain()` would drop this copy, and is the follow-up.

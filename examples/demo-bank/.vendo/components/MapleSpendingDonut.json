@@ -1,10 +1,10 @@
 {
   "name": "MapleSpendingDonut",
-  "hash": "sha256:29a60ba3c62285955ccfe4b4a2a7d8d7db6db121902e0b339cbf64b0c6f1c7bc",
-  "capturedAt": "2026-08-30T05:04:28.853Z",
+  "hash": "sha256:906ccd1634f540335711c131b3a57a46a7b12f9ae782f45f604977da81d0d5d2",
+  "capturedAt": "2026-08-30T21:43:08.157Z",
   "module": "src/vendo/registry.tsx",
   "export": "MapleSpendingDonut",
-  "entry": "33766d9334d1c181c93459fa2532d4a86ba415c7bece95f8b84fb8e7886b8246",
+  "entry": "9a0b62ac178d8a07d8c67742d845754c429b39574c7317970335074ede0731e1",
   "modules": {
     "src/components/charts/colors.ts": "86c8b59ecc843e1d4549847b254c7647d568a4a8fe96f0d7048dad184ecd72ab",
     "src/components/charts/donut.tsx": "499fc969edce5dee3823d9d27b914ed39cabb90845b726478a24b59ada47d145",
@@ -19,7 +19,7 @@
       "ref": "be824ee9e1001771a4b14f7ff7cbf68b7691fa54a419a1d5e3aed7d7abe0eb0e"
     }
   ],
-  "bytes": 20101,
+  "bytes": 20107,
   "requires": [
     "clsx",
     "recharts",

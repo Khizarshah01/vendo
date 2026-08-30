@@ -17,14 +17,14 @@ import {
   type AppId,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import {
   kitSpec,
   renderBriefingPack,
   type NormalizedCatalog,
   type VendoRouteMap,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { createApps } from "../../../src/apps/index.js";
 import { guardFixture } from "../../../src/apps/testing/guard-fixture.js";
 import { memoryStore } from "../../../src/apps/testing/memory-store.js";

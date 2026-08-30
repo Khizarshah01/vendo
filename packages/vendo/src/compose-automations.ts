@@ -18,7 +18,7 @@ import {
   type AgentRunner,
   type Principal,
   type RunContext,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { cloudKeyOptions } from "./compose-selection.js";
 import { isHostedStore, reportHostedStoreOnce } from "./compose-store.js";

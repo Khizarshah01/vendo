@@ -21,7 +21,7 @@ import {
   type ToolOutcome,
   type ToolRegistry,
   type Turn,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import type { LanguageModel } from "ai";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import { describe, expect, it } from "vitest";

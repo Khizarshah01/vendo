@@ -21,14 +21,16 @@
  * so this can never pass by accident.
  */
 import { execFileSync } from "node:child_process";
-import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
+import { cp, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 const PACKAGE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
-const SHELL_DIST = join(PACKAGE_DIR, "dist", "harnesses", "vendo", "shell");
+const DIST = join(PACKAGE_DIR, "dist");
+const SHELL_SUBPATH = join("harnesses", "vendo", "shell");
+const SHELL_DIST = join(DIST, SHELL_SUBPATH);
 const LIBRARIES = ["just-bash", "unpdf", "@e965/xlsx", "fflate"];
 
 /** The whole run, in the relocated chunk's own process. Every command is caught
@@ -87,16 +89,22 @@ beforeAll(async () => {
   // `pnpm build` — same command, so this never tests a stale copy.
   execFileSync("npx", ["tsc", "-p", "tsconfig.json"], { cwd: PACKAGE_DIR, stdio: "pipe" });
   chunk = await mkdtemp(join(tmpdir(), "vendo-host-chunk-"));
-  await cp(SHELL_DIST, chunk, { recursive: true });
+  const shell = join(chunk, SHELL_SUBPATH);
+  await cp(SHELL_DIST, shell, { recursive: true });
   await writeFile(join(chunk, "package.json"), '{"type":"module"}\n');
-  // A bundler INLINES an ordinary sibling like @vendoai/core into the chunk; the
-  // four above are the only imports left bare, because they alone are
-  // bundler-blind. Modelling core as bare too would fail this fixture for a
-  // reason no host has. So the chunk gets core, and nothing else — the first
-  // assertion below still proves the four are genuinely dead here.
-  await mkdir(join(chunk, "node_modules", "@vendoai"), { recursive: true });
-  await symlink(join(PACKAGE_DIR, "..", "core"), join(chunk, "node_modules", "@vendoai", "core"), "dir");
-  const runtime = join(chunk, "runtime.js");
+  // Since the fold the contract half is this same package, so the shell reaches
+  // it RELATIVELY (`../../../core/index.js`) — hence the copy keeps the shell at
+  // its depth inside dist, and core sits where that path points. A bundler
+  // INLINES core, along with the ordinary packages core itself imports (zod,
+  // acorn, …), and a symlink is what models that: Node resolves through it to
+  // the real dist, so those resolve too. Copying core would mean copying
+  // node_modules with it, which would hand the shell the four libraries and
+  // dissolve the test. The four are the only imports left bare, because they
+  // alone are bundler-blind, and they resolve from the COPY — a temp directory
+  // with no node_modules above it — so the first assertion below still proves
+  // they are genuinely dead here.
+  await symlink(join(DIST, "core"), join(chunk, "core"), "dir");
+  const runtime = join(shell, "runtime.js");
   await writeFile(runtime, (await readFile(runtime, "utf8")).replaceAll(
     "import.meta.url",
     JSON.stringify(pathToFileURL(join(SHELL_DIST, "runtime.js")).href),
@@ -106,9 +114,9 @@ beforeAll(async () => {
     ["-e", 'process.stdout.write(require.resolve("just-bash"))'],
     { cwd: PACKAGE_DIR, encoding: "utf8" },
   );
-  await writeFile(join(chunk, "probe.mjs"), PROBE(pathToFileURL(justBash).href));
-  probed = JSON.parse(execFileSync(process.execPath, [join(chunk, "probe.mjs")], {
-    cwd: chunk,
+  await writeFile(join(shell, "probe.mjs"), PROBE(pathToFileURL(justBash).href));
+  probed = JSON.parse(execFileSync(process.execPath, [join(shell, "probe.mjs")], {
+    cwd: shell,
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
   })) as typeof probed;

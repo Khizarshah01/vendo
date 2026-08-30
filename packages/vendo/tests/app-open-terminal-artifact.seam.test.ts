@@ -37,7 +37,7 @@ import {
   type Principal,
   type RunContext,
   type ToolDefinition,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

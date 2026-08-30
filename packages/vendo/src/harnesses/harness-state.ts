@@ -3,7 +3,7 @@
  * disposable: correctness never depends on the harness's copy, because the truth
  * is ours (architecture §3, "Harness state").
  */
-import type { ThreadId, TurnState } from "@vendoai/core";
+import type { ThreadId, TurnState } from "../core/index.js";
 import type { UIMessage } from "ai";
 import { jsonEqual } from "./json-equal.js";
 

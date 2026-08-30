@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../core/index.js";
 // Type-only — erased at compile time, so this module stays engine-free and
 // safe to share between the main entry and @vendoai/vendo/store/postgres.
 import type { Db } from "./db-postgres.js";

@@ -1,6 +1,6 @@
 import type {
   ComponentRegistry,
-} from "@vendoai/core/apps";
+} from "@vendoai/vendo/core/apps";
 import { z } from "zod";
 import { Sparkline } from "../components/charts/sparkline";
 import { Donut } from "../components/charts/donut";

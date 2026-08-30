@@ -10,7 +10,7 @@
  * that mocked either end could never catch `clientId` failing to make the trip
  * from the OAuth grant, through the RunContext, onto the row.
  */
-import type { AuditEvent } from "@vendoai/core";
+import type { AuditEvent } from "../src/core/index.js";
 import type { VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";

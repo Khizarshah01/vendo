@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { appStore, createStore, envSecrets, secretStore, storeSecrets } from "../../src/store/index.js";

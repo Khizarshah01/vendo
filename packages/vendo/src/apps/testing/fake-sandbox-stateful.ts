@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../core/index.js";
 import type { SandboxAdapter, SandboxMachine } from "../../sandbox/escalation/sandbox.js";
 import { inMemoryBoxFiles } from "./box-files.js";
 

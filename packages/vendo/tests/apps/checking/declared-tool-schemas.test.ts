@@ -21,11 +21,11 @@ import {
   type RunContext,
   type ToolDescriptor,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import {
   type NormalizedCatalog,
   type StandardSchema,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
 import { createApps } from "../../../src/apps/index.js";

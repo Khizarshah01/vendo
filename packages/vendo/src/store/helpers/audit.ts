@@ -1,4 +1,4 @@
-import type { AppId, AuditEvent, IsoDateTime, Principal } from "@vendoai/core";
+import type { AppId, AuditEvent, IsoDateTime, Principal } from "../../core/index.js";
 import { dbFor, type VendoStore } from "../store.js";
 import { putAuditRow } from "./rows.js";
 import { cursorMs, decodeCursor, encodeCursor, iso, pageLimit, text } from "./utils.js";

@@ -13,11 +13,22 @@
  *    bundlers use — the resolution mode under which a console Worker silently
  *    crossed Cloudflare's size ceiling carrying PGlite wasm it can't run)
  *    with neither PGlite nor the store's PGlite engine module in the graph.
+ *  Leg A3 (harness runtime): the harnesses barrel must bundle for a Worker
+ *    target on its own — Leg A only reaches what the server entry happens
+ *    to pull.
  *  Leg B (boot): the fixture worker constructs createVendo at MODULE SCOPE
  *    under real workerd and must serve GET /status 200 — catching
  *    global-scope I/O and timers, unbound fetch, and anything a bundle
  *    check can't see.
  *  Leg C (source): the raw hazard patterns must not reappear in source.
+ *  Leg D (browser, core): the @vendoai/vendo/core/apps contract door must
+ *    bundle for a browser target with no node built-ins.
+ *  Leg E (edge): the @vendoai/vendo/sandbox/edge toolchain must bundle for
+ *    workerd with NO nodejs_compat, then compile, type-check and paint a
+ *    screen inside a real isolate.
+ *  Leg F (browser, ui): the @vendoai/vendo/ui door must bundle for a browser
+ *    target with no node built-ins — the property dependency-guard's layer map
+ *    stood in for until core and ui folded into the umbrella.
  *
  *  Run: node scripts/portability-gate.mjs  (wired into `pnpm lint`). */
 import { readFile, readdir } from "node:fs/promises";
@@ -54,6 +65,7 @@ const FORBIDDEN_INPUTS = [
   { fragment: "packages/vendo/dist/telemetry/base-props.js", seam: "@vendoai/vendo/telemetry worker conditions" },
   { fragment: "packages/vendo/dist/store/db.js", seam: "#store/db conditions" },
   { fragment: "packages/vendo/dist/store/crypto.js", seam: "#store/crypto conditions" },
+  { fragment: "packages/vendo/dist/ui/", seam: "client React must never enter the worker server graph" },
   { fragment: "node_modules/.pnpm/pg@", seam: "#store/db conditions" },
   { fragment: "node_modules/.pnpm/typescript@", seam: "@vendoai/vendo/actions/sync subpath split" },
   { fragment: "node_modules/.pnpm/e2b@", seam: "bundler-blind e2b specifier (packages/vendo/src/sandbox/escalation/e2b)" },
@@ -65,7 +77,7 @@ const FORBIDDEN_INPUTS = [
 const SOURCE_GUARDS = [
   {
     pattern: /\?\?\s*globalThis\.fetch\b/,
-    message: "detached `?? globalThis.fetch` default (Illegal invocation on Workers) — use defaultFetch from @vendoai/core",
+    message: "detached `?? globalThis.fetch` default (Illegal invocation on Workers) — use defaultFetch from @vendoai/vendo/core",
   },
   {
     pattern: /await import\((?:\/\*[^*]*\*\/\s*)*["']e2b["']\)/,
@@ -235,35 +247,36 @@ try {
 }
 
 // ---- Leg D: the app-generation CONTRACT door bundles for a BROWSER ----
-// `@vendoai/core/apps` is the browser-safe half of the app engine, and
-// `scripts/dependency-guard.mjs` lets @vendoai/ui depend on @vendoai/core and
-// nothing else, which makes this the one app-generation door ui can reach at
-// all. That list enforces which PACKAGE ui writes; nothing enforced what the
-// specifier RESOLVES to. A single `import "node:fs"` inside the contract half
-// passed lint, typecheck and the whole suite, and surfaced only in a customer's
-// `next build` — so the headline layering claim was a convention, not a
-// mechanism. This is the mechanism.
+// `@vendoai/vendo/core/apps` is the browser-safe half of the app engine and the
+// door `src/ui/` reaches app generation through. `scripts/dependency-guard.mjs`
+// never made that safe: its layer map enforced which PACKAGE ui wrote, and
+// nothing enforced what the specifier RESOLVES to. A single `import "node:fs"`
+// inside the contract half passed lint, typecheck and the whole suite, and
+// surfaced only in a customer's `next build` — so the headline layering claim
+// was a convention, not a mechanism. This is the mechanism. Since the fold there
+// is no layer map between the halves at all — core and ui are directories in one
+// package now — and this leg and Leg F are the whole fence.
 //
-// It matters more since S11d put this door inside @vendoai/core: the engine's
-// `#engine/wasm` node arm now lives in the package every block depends on, and
-// this leg is what proves a browser still resolves the OTHER arm. Flip that
-// condition's `default` to the node leg and this goes red — verified, not
-// assumed. Core's own `packaging.e2e.test.ts` holds the matching half: that
-// nothing portable in core can reach this door in the first place.
+// It matters more since S11d put this door inside core: the engine's
+// `#engine/wasm` node arm now lives in the half every browser consumer depends
+// on, and this leg is what proves a browser still resolves the OTHER arm. Flip
+// that condition's `default` to the node leg and this goes red — verified, not
+// assumed. `packages/vendo/tests/core/packaging.e2e.test.ts` holds the matching
+// half: that nothing portable in core can reach this door in the first place.
 try {
   await esbuild.build({
-    entryPoints: [join(root, "packages/core/dist/apps/index.js")],
+    entryPoints: [join(root, "packages/vendo/dist/core/apps/index.js")],
     bundle: true,
     format: "esm",
     platform: "browser",
     write: false,
   });
-  ok("@vendoai/core/apps bundles for a browser target (no node built-ins)");
+  ok("@vendoai/vendo/core/apps bundles for a browser target (no node built-ins)");
 } catch (error) {
   fail(
-    "@vendoai/core/apps does NOT bundle for a browser target — something under "
-    + "packages/core/src/apps/ reached a node built-in or a node-only package. "
-    + "That door is imported by @vendoai/ui and by browser consumers; it must stay "
+    "@vendoai/vendo/core/apps does NOT bundle for a browser target — something under "
+    + "packages/vendo/src/core/apps/ reached a node built-in or a node-only package. "
+    + "That door is imported by @vendoai/vendo/ui and by browser consumers; it must stay "
     + `platform-clean. ${error instanceof Error ? error.message : String(error)}`,
   );
 }
@@ -437,6 +450,41 @@ if (!existsSync(EDGE_ENTRY)) {
       + "`node:` specifier this bundle refuses to excuse; anything else is the worker itself failing. Either way "
       + "a static import is resolved while the module graph is instantiated, before the handler runs, and being "
       + `uncalled does not save it:${messages || `\n    ${error instanceof Error ? error.message : String(error)}`}`,
+    );
+  }
+}
+
+// ---- Leg F: the ui door bundles for a BROWSER ----
+// This leg is a REPLACEMENT for a fence the fold removed. Until core and ui
+// folded into the umbrella, `scripts/dependency-guard.mjs` carried
+// `"@vendoai/ui": ["@vendoai/core"]`, and that one-entry list was the mechanism
+// that kept ui source out of vendo's Node-only half: ui could not NAME
+// @vendoai/vendo, so it could not reach store, actions or the CLI. Now
+// `src/ui/` and `src/store/` are two directories in one package, and a relative
+// import from one into the other is legal to every gate we own.
+//
+// So this leg stops asserting the proxy and asserts the PROPERTY the proxy
+// stood in for: the ui door bundles for a browser with no node built-ins. It is
+// the ui half of Leg D, and it is the half that has no other keeper.
+const UI_ENTRY = join(root, "packages/vendo/dist/ui/index.js");
+if (!existsSync(UI_ENTRY)) {
+  fail("packages/vendo/dist/ui/index.js missing — run `pnpm build` first");
+} else {
+  try {
+    await esbuild.build({
+      entryPoints: [UI_ENTRY],
+      bundle: true,
+      format: "esm",
+      platform: "browser",
+      write: false,
+    });
+    ok("@vendoai/vendo/ui bundles for a browser target (no node built-ins)");
+  } catch (error) {
+    fail(
+      "@vendoai/vendo/ui does NOT bundle for a browser target — something under "
+      + "packages/vendo/src/ui/ reached a node built-in or a node-only package, most "
+      + "likely a relative import into the umbrella's Node-only half. Nothing but this "
+      + `leg stops that since the fold. ${error instanceof Error ? error.message : String(error)}`,
     );
   }
 }

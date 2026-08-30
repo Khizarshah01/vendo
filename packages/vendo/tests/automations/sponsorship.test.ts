@@ -11,8 +11,8 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+} from "../../src/core/index.js";
+import { memoryStoreAdapter } from "../../src/core/conformance/index.js";
 import { beforeEach, describe, expect, it } from "vitest";
 import {
   automationsInternals,

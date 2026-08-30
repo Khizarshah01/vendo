@@ -6,20 +6,22 @@
  * the consumers under fixtures/, examples/ and corpus/ alike:
  *
  *   1. LAYERING — the only allowed @vendoai/* edges are:
- *        core → (nothing)
- *        ui → core
  *        vendo (umbrella) → everything
- *      A packages/* block not in the map fails loudly: adding a block means
- *      consciously adding its layer here. A consumer outside packages/ is not a
- *      block and sits above every layer, so it may depend on any block in the
- *      map — but rules 2 and 3 bind it exactly as they bind a block.
+ *        vendoai (alias) → vendo
+ *      Since core and ui folded in there is nothing left to layer: one
+ *      published block and the alias in front of it. The map is still the
+ *      mechanism and not a formality — a packages/* block not in it fails
+ *      loudly, so adding a block means consciously adding its layer here. A
+ *      consumer outside packages/ is not a block and sits above every layer, so
+ *      it may depend on any block in the map — but rules 2 and 3 bind it
+ *      exactly as they bind a block.
  *
  *   2. NO RETIRED IMPORTS — nothing may import from legacy/ (path or relative
  *      escape), and nothing may import a retired package name: the pre-v0
  *      publishes that only exist in the quarry (client, components, react,
- *      runtime, server, shell, stage) and the six that folded into
+ *      runtime, server, shell, stage) and the twelve that folded into
  *      @vendoai/vendo (@vendoai/agents, automations, knowledge, mcp, guard,
- *      harnesses). Every one
+ *      harnesses, store, actions, telemetry, apps, core, ui). Every one
  *      of them is still ON NPM, so the import resolves to a frozen publish
  *      instead of failing.
  *
@@ -72,14 +74,6 @@ const ROOT = fileURLToPath(new URL("..", import.meta.url));
 
 /** package name → allowed @vendoai/* (and umbrella) deps. "*" = anything in the map. */
 const LAYERS = {
-  "@vendoai/core": [],
-  // ui reaches app generation through `@vendoai/core/apps`, the browser-safe
-  // contract door, which is core's since S11d. This one-entry list IS the
-  // fence that the old apps-subpath rule used to be: the node-only half
-  // answers to @vendoai/vendo, and vendo is not on it. What that door
-  // RESOLVES to is a different question, held by the browser legs of
-  // scripts/portability-gate.mjs.
-  "@vendoai/ui": ["@vendoai/core"],
   // the canonical umbrella is the only package allowed to depend on every block
   "@vendoai/vendo": "*",
   // the unscoped compatibility package is a thin alias of the canonical
@@ -174,7 +168,7 @@ const RETIRED = [
   "@vendoai/agents",
   // folded whole into @vendoai/vendo (src/automations/, src/knowledge/,
   // src/mcp/). Their run-ledger types and the two released knowledge collection
-  // names were already @vendoai/core's and stay there; everything else answers
+  // names were already @vendoai/vendo/core's and stay there; everything else answers
   // to the umbrella now. All three stay published at 0.56.0.
   "@vendoai/automations",
   "@vendoai/knowledge",
@@ -183,7 +177,7 @@ const RETIRED = [
   // own barrel survives at a subpath of the umbrella (@vendoai/vendo/guard,
   // /harnesses and its four); the guard's CONTRACT half — the policy rule and
   // file types, their zod schemas, and the five collection names the console
-  // reads — answers to @vendoai/core now, because a contract a second repo is
+  // reads — answers to @vendoai/vendo/core now, because a contract a second repo is
   // written against is declared once. Both stay published at 0.57.0.
   "@vendoai/guard",
   "@vendoai/harnesses",
@@ -191,19 +185,26 @@ const RETIRED = [
   // Each block's own barrel survives at a subpath of the umbrella
   // (@vendoai/vendo/store, /store/postgres, /store/test-util, /actions,
   // /actions/presets, /actions/presets/auth-js, /actions/sync, /telemetry); the
-  // store's routed COLLECTION NAMES answer to @vendoai/core now, because the
+  // store's routed COLLECTION NAMES answer to @vendoai/vendo/core now, because the
   // console reads them from a different process. @vendoai/store and
   // @vendoai/actions stay published at 0.57.0, @vendoai/telemetry at 0.6.0.
   "@vendoai/store",
   "@vendoai/actions",
   "@vendoai/telemetry",
   // split in two (S11d). The CONTRACT half — the app format, the Kit and the
-  // browser-safe screen engine — is @vendoai/core/apps now, because it is the
-  // door @vendoai/ui and browser consumers reach and core is the one package
+  // browser-safe screen engine — is @vendoai/vendo/core/apps now, because it is the
+  // door @vendoai/vendo/ui and browser consumers reach and core was the one package
   // below both. The SERVER half answers to @vendoai/vendo: /apps, /apps/testing,
   // and the sandbox pair /sandbox/e2b and /sandbox/edge. Stays published at
   // 0.58.0.
   "@vendoai/apps",
+  // folded whole into @vendoai/vendo (src/core/, src/ui/) — the fold that left
+  // one published block, so there is no layer map between them any more. Each
+  // block's barrel survives at a subpath of the umbrella (@vendoai/vendo/core,
+  // /core/apps, /core/conformance, /ui, /ui/chrome, /ui/tree, /ui/kit). Both
+  // stay published at 0.60.0.
+  "@vendoai/core",
+  "@vendoai/ui",
   "@vendoai/client",
   "@vendoai/components",
   "@vendoai/react",

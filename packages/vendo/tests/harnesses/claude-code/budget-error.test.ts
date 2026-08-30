@@ -11,7 +11,7 @@
  * The budget is one of `MESSAGE_BUDGET_MS`'s two rungs, and its own doc says both
  * rungs owe the caller the SAME answer, so both are covered here.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../../src/core/index.js";
 import { afterEach, describe, expect, test } from "vitest";
 import { boxMachine, type SandboxAdapterLike } from "../../../src/harnesses/claude-code/box.js";
 import { disposeLocalSessions, localMachine } from "../../../src/harnesses/claude-code/local.js";

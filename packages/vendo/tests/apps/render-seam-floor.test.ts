@@ -21,16 +21,16 @@
  * mocked the other, so they could never disagree."
  */
 import { createAppFloor } from "../../src/apps/checking/floor.js";
-import type { VendoViewPart } from "@vendoai/core";
+import type { VendoViewPart } from "../../src/core/index.js";
 import type {
   AppFloor,
   Check,
   NormalizedCatalog,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import type { HostToolInfo } from "../../src/apps/checking/deps.js";
 import type { LanguageModel } from "ai";
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { warmScreenEngine } from "@vendoai/core/apps";
+import { warmScreenEngine } from "../../src/core/apps/index.js";
 import { wrapWorkspaceForRender } from "../../src/apps/generation/render-seam.js";
 import { testWorkspace } from "./test-doubles.test-util.js";
 

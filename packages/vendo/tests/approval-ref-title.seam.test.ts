@@ -3,7 +3,7 @@
  * The approval-ref TITLE seam.
  *
  * The pack mints the ref's one line (`approvalSummary`, this package) and the
- * shipped `<VendoApprovalEmbed>` (@vendoai/ui) titles the card with that same
+ * shipped `<VendoApprovalEmbed>` (@vendoai/vendo/ui) titles the card with that same
  * line for the rest of the request's life — waiting, approved, declined,
  * expired. Two packages that never import each other, joined by one string, so
  * each side's own suite could only ever agree with itself: the mint said
@@ -26,10 +26,10 @@ import {
   type RunContext,
   type ToolDescriptor,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createGuard } from "../src/guard/index.js";
 import { createStore, createStoreOps } from "../src/store/index.js";
-import { VendoProvider, VendoToolResult, createVendoClient } from "@vendoai/ui";
+import { VendoProvider, VendoToolResult, createVendoClient } from "../src/ui/index.js";
 import { act, createElement, type ReactElement } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, describe, expect, it } from "vitest";

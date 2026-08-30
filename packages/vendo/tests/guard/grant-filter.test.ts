@@ -1,5 +1,5 @@
-import type { GrantId, PermissionGrant, VendoRecord } from "@vendoai/core";
-import { descriptorHash } from "@vendoai/core";
+import type { GrantId, PermissionGrant, VendoRecord } from "../../src/core/index.js";
+import { descriptorHash } from "../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createPGliteStore, type PGliteStore } from "./fixtures/pglite-store.js";

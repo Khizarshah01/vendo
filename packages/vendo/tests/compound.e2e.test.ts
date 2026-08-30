@@ -19,7 +19,7 @@ import {
   type Step,
   type ToolCall,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createGuard, type PolicyConfig } from "../src/guard/index.js";
 import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

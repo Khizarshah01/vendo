@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { useState } from "react";
-import { developmentMode, useWorkbenchFeed } from "@vendoai/ui";
+import { developmentMode, useWorkbenchFeed } from "@vendoai/vendo/ui";
 import { pushDemoFeed } from "./demo-feed";
 import { count, duration, eventsOf, rows, share, turnStatus } from "./model";
 import { ContextPanel, GuardPanel, RawPanel, TimelinePanel, ToolsPanel } from "./panels";
@@ -27,7 +27,7 @@ export function VendoWorkbench() {
 }
 
 /**
- * `inertBehind` (@vendoai/ui) inerts every body child while the overlay is open,
+ * `inertBehind` (@vendoai/vendo/ui) inerts every body child while the overlay is open,
  * and this pane is one — so with the chat up it was not merely dimmed by the
  * scrim, it was `inert`: no clicks, no keyboard, no screen reader. The workbench
  * reports on the turn THAT chat is running, which is exactly when it has to be

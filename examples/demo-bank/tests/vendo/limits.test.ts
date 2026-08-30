@@ -8,7 +8,7 @@
  * that asks for one refuses the turn (proved in @vendoai/vendo's limits suite).
  * The identities are Maple's own seams, unmocked.
  */
-import type { LimitUser, LimitWindow } from "@vendoai/core";
+import type { LimitUser, LimitWindow } from "@vendoai/vendo/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { mapleAuth, mapleLimits } from "../../src/vendo/server";
 

@@ -1,4 +1,4 @@
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../../core/index.js";
 
 export interface HostOAuthConsentFlow {
   /** Submit approve/deny here with application/x-www-form-urlencoded. */

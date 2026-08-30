@@ -29,7 +29,7 @@ import {
   type ToolDescriptor,
   type VendoLogEvent,
   type VendoViewPart,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createAppFloor, SCREEN_FILE, type HostToolInfo } from "../src/apps/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { EDIT_APP_TOOL, REPAIR_STEPS, SAVE_APP_TOOL, SCREEN_STEPS, screenAssembler } from "../src/screen-agent.js";
@@ -522,7 +522,7 @@ describe("assembly writes through the real path and the seam paints it", () => {
   /** No row YET is not a failure, so a memory door answering `not-found` is an
    *  info line, not a warning that sends an operator hunting for a broken store.
    *  The check read `instanceof VendoError`, and a host bundle's second
-   *  `@vendoai/core` copy mints a different class — so the field kept firing the
+   *  `@vendoai/vendo/core` copy mints a different class — so the field kept firing the
    *  warning it was told it had stopped firing. */
   it("demotes a not-found from ANOTHER realm's VendoError, exactly like its own", async () => {
     const logs: VendoLogEvent[] = [];

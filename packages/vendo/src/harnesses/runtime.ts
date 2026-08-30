@@ -30,7 +30,7 @@ import {
   type TurnSkills,
   type TurnTools,
   type WorkspaceFs,
-} from "@vendoai/core";
+} from "../core/index.js";
 import {
   abandonPendingApprovals,
   clearFailedTurnRecord,

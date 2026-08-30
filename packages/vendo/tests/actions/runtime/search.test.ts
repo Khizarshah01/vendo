@@ -1,4 +1,4 @@
-import type { ToolDescriptor } from "@vendoai/core";
+import type { ToolDescriptor } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createActions, type ExtractedTool } from "../../../src/actions/index.js";
 import { searchToolDescriptors } from "../../../src/actions/runtime/search.js";

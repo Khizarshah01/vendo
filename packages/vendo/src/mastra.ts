@@ -1,7 +1,7 @@
 import { buildVendoToolPack } from "./pack.js";
 import { delegateRunner } from "./delegate.js";
 import type { VendoToolPackFilter } from "./tool-pack.js";
-import { VendoError, type Principal, type RunContext } from "@vendoai/core";
+import { VendoError, type Principal, type RunContext } from "./core/index.js";
 // Static import of an OPTIONAL peer: this module only loads when the host
 // imports `@vendoai/vendo/mastra`, and a Mastra host has @mastra/core by
 // definition. Nothing outside this subpath touches it.

@@ -7,7 +7,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { defineHarness } from "../src/harnesses/index.js";
-import { VENDO_BASH_TOOL } from "@vendoai/core";
+import { VENDO_BASH_TOOL } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";

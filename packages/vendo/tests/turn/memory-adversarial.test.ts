@@ -2,7 +2,7 @@
  * ADVERSARIAL suite for per-user memory. Every attack runs against the REAL
  * store (PGlite) and the REAL guard — nothing here stubs the counterparty.
  */
-import type { Guard, Principal, RunContext, ToolCall } from "@vendoai/core";
+import type { Guard, Principal, RunContext, ToolCall } from "../../src/core/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";

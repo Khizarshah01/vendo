@@ -12,8 +12,8 @@
 import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { vendoThemeSchema } from "@vendoai/core/apps";
-import { TOOL_NAME_PATTERN } from "@vendoai/core";
+import { vendoThemeSchema } from "@vendoai/vendo/core/apps";
+import { TOOL_NAME_PATTERN } from "@vendoai/vendo/core";
 import { beforeAll, describe, expect, it } from "vitest";
 import { blind } from "../src/judge.js";
 import { CASE_SHAPES, loadCases, loadWorld, type Case, type CaseTag, type World } from "../src/world.js";

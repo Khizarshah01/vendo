@@ -16,9 +16,9 @@
  * recorder that answered for itself would prove the calls were made and not that
  * their answers are what the door acts on.
  */
-import { VENDO_APP_FORMAT, engineOverAdapter, sha256Hex, type RunContext, type ToolRegistry } from "@vendoai/core";
+import { VENDO_APP_FORMAT, engineOverAdapter, sha256Hex, type RunContext, type ToolRegistry } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
-import { SCREEN_FILE, type AppDocument, type NormalizedCatalog } from "@vendoai/core/apps";
+import { SCREEN_FILE, type AppDocument, type NormalizedCatalog } from "../../../src/core/apps/index.js";
 import { createApps } from "../../../src/apps/index.js";
 import { nodeToolchain, type ScreenToolchain } from "../../../src/apps/checking/toolchain.js";
 import { guardFixture } from "../../../src/apps/testing/guard-fixture.js";

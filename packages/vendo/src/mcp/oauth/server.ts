@@ -6,11 +6,11 @@ import {
   type StoreAdapter,
   type StoreOps,
   type VendoRecord,
-} from "@vendoai/core";
-import { engineOverAdapter, isVendoError } from "@vendoai/core";
+} from "../../core/index.js";
+import { engineOverAdapter, isVendoError } from "../../core/index.js";
 import type {
   VendoTheme,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { z } from "zod";
 import type { HostOAuthAdapter } from "./adapter.js";
 import { consentPage } from "./consent-page.js";

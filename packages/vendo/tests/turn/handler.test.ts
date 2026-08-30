@@ -8,7 +8,7 @@
  * thread that came out of a turn readable back through the routes a browser
  * reloads against.
  */
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "../../src/core/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";
@@ -31,7 +31,7 @@ const speaks = (text: string) =>
     },
   });
 
-/** A `Turn` deliberately carries no RunContext (packages/core/src/harness.ts:72),
+/** A `Turn` deliberately carries no RunContext (packages/vendo/src/core/harness.ts:72),
  *  so the ctx a request composed is observed where it really lands: in a tool. */
 let seen: RunContext | undefined;
 /** Read through a call: assigning `undefined` before each test narrows the

@@ -11,8 +11,6 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@vendoai/core": "workspace:*",
-    "@vendoai/ui": "workspace:*",
     "@vendoai/vendo": "workspace:*",
     "zod": "^3.24.0"
   },

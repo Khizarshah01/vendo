@@ -11,9 +11,9 @@
  */
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 // The screen engine, by its own path: the contract door does not carry it yet.
-import { SCREEN_FILE } from "@vendoai/core/apps";
+import { SCREEN_FILE } from "../../core/apps/index.js";
 import type { FloorDependencies } from "./deps.js";
 import { REPORT_FINDINGS_DESCRIPTION, REVIEWER_SYSTEM } from "./reviewer-prompt.js";
 import { strictToolCall } from "./strict-tool-call.js";

@@ -28,14 +28,14 @@ import {
   type AppId,
   type Json,
   type RunContext,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   seedDrift,
   type AppDocument,
   type SeedBaseline,
   type SeedDrift,
   type SeedPort,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { APPS_COLLECTION, appRecordInput, onAppRow } from "../persistence/persistence.js";
 import type { AppsRuntimeContext } from "../runtime/runtime-context.js";
 import type { AppsRuntime, SeedFromInput, VersionEntry } from "../runtime/types.js";

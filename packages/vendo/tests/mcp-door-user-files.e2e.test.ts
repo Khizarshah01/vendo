@@ -24,7 +24,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
-import { UPLOAD_HEADER } from "@vendoai/core";
+import { UPLOAD_HEADER } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, FILES_STORE_MAX_BYTES, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

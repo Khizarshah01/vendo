@@ -1,7 +1,7 @@
 /** Reading the workbench feed. Every value here is derived from parts the
  *  harness actually sent — nothing is filled in, and a fact the feed does not
  *  carry (a model name, a cost) simply has no row in the pane. */
-import type { WorkbenchEvent, WorkbenchPart } from "@vendoai/ui";
+import type { WorkbenchEvent, WorkbenchPart } from "@vendoai/vendo/ui";
 
 export type Tone = "ok" | "warn" | "bad" | "info" | "sys" | "mute";
 

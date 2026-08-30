@@ -3,7 +3,7 @@
  * can one person reach another person's rows through it, and can a crafted path
  * reach a route the mount does not own.
  */
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../../src/core/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";

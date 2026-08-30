@@ -1,5 +1,5 @@
 import { createActions } from "../src/actions/index.js";
-import { tenantConnectorSecret, type Principal, type RunContext } from "@vendoai/core";
+import { tenantConnectorSecret, type Principal, type RunContext } from "../src/core/index.js";
 import { hostedStore, hostedStoreOps } from "../src/store/index.js";
 import { fakeConsole } from "../src/store/fake-console.js";
 import { describe, expect, it } from "vitest";

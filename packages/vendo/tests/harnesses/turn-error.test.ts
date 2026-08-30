@@ -9,7 +9,7 @@
  * the TRANSCRIPT holds — the real read path — not against the live stream, since
  * the live stream was never the part that was broken.
  */
-import type { SeatModels, ThreadId } from "@vendoai/core";
+import type { SeatModels, ThreadId } from "../../src/core/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";

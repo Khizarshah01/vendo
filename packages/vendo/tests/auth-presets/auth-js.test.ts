@@ -1,5 +1,5 @@
 import { encode } from "@auth/core/jwt";
-import type { PermissionGrant } from "@vendoai/core";
+import type { PermissionGrant } from "../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 // authJs is pinned via its own module — the same file the
 // "@vendoai/vendo/auth/auth-js" subpath re-exports (corpus-triage Task 9);

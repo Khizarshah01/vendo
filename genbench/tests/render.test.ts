@@ -12,7 +12,7 @@
  *
  * A real browser, because both claims are about what Chromium did.
  */
-import type { UIPayload } from "@vendoai/core";
+import type { UIPayload } from "@vendoai/vendo/core";
 import { MockLanguageModelV3 } from "ai/test";
 import { readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";

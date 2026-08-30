@@ -7,7 +7,7 @@
  */
 import { createHmac } from "node:crypto";
 import { beforeEach, describe, expect, it } from "vitest";
-import type { AutomationId } from "@vendoai/core";
+import type { AutomationId } from "@vendoai/vendo/core";
 import { createStack, ownerCtx, resetFixture, type Stack } from "../src/harness.js";
 import { ADA, enableAndApprove, fixtureInvoices, runCount, tableCount, webhookSecret } from "../src/support.js";
 

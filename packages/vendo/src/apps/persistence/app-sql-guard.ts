@@ -23,7 +23,7 @@
  *
  * Anything this file cannot account for is REFUSED, never guessed at.
  */
-import { VendoError, type RiskLabel } from "@vendoai/core";
+import { VendoError, type RiskLabel } from "../../core/index.js";
 
 /** What a statement DOES, graded before it runs, so a running app's SELECT can
     take the query arm the ui kit's `useToolQuery` needs. Pessimistic on

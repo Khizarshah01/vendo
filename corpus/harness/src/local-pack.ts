@@ -3,15 +3,14 @@ import path from "node:path";
 import { runCommand } from "./process.js";
 import { isRecord, pathExists, readOptional } from "./util.js";
 
-// Direct dependencies every injected fixture gets. @vendoai/ui rides along
-// because a host may mount the shipped chat chrome itself (@vendoai/ui/chrome
-// VendoOverlay — express-host does) while init wires the provider only, and
-// pnpm's strict node_modules make transitive packages unimportable.
-export const LOCAL_DIRECT_DEPENDENCIES = ["@vendoai/vendo", "@vendoai/ui"] as const;
+// Direct dependencies every injected fixture gets. One entry since the fold:
+// the chat chrome a host may mount itself (VendoOverlay, from
+// @vendoai/vendo/ui/chrome — express-host does) is a subpath of the umbrella
+// now, so pnpm's strict node_modules no longer need a second declared package
+// to make it importable.
+export const LOCAL_DIRECT_DEPENDENCIES = ["@vendoai/vendo"] as const;
 
 export const LOCAL_VENDO_PACKAGE_NAMES = [
-  "@vendoai/core",
-  "@vendoai/ui",
   "@vendoai/vendo",
   "vendoai",
 ] as const;
@@ -282,9 +281,9 @@ export function rewritePackageJsonForLocalVendo(
 
   const originalDependencies = stringRecord(pkg["dependencies"]);
   const dependencies = withoutVendoPackages(originalDependencies);
-  // Standalone local hosts may import publishable Vendo packages directly
-  // (for example @vendoai/ui chrome). Keep those declared at the same direct
-  // dependency level while replacing workspace:/registry specs with tarballs.
+  // Standalone local hosts may declare a publishable Vendo package directly.
+  // Keep those at the same dependency level while replacing workspace:/registry
+  // specs with tarballs.
   for (const name of Object.keys(originalDependencies)) {
     const tarball = vendoredTarball(byName, name);
     if (tarball) dependencies[name] = fileSpec(tarball.fileName);

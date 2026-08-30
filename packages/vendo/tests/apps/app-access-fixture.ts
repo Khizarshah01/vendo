@@ -10,7 +10,7 @@ import {
   type AppGrantRecord,
   type AppId,
   type RunContext,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type { memoryStore } from "../../src/apps/testing/memory-store.js";
 
 /**

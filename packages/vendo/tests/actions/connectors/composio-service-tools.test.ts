@@ -1,6 +1,6 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import type { AddressInfo } from "node:net";
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "../../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { composioConnector } from "../../../src/actions/connectors/composio.js";
 

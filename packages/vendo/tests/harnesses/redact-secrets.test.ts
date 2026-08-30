@@ -11,7 +11,7 @@
  * first defeats a literal match — the fix is per-session brokering (deferred).
  */
 import { defineHarness } from "../../src/harnesses/define.js";
-import { type Harness, type ThreadId } from "@vendoai/core";
+import { type Harness, type ThreadId } from "../../src/core/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createHarnessRuntime } from "../../src/harnesses/runtime.js";
 import {

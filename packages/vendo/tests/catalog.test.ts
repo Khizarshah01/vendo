@@ -2,15 +2,15 @@ import { catalogEntrySchema } from "../src/actions/index.js";
 import { parseModule, zodFromExpression, type StaticExtraction } from "../src/actions/sync/public.js";
 import {
   VendoError,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import {
   SAFE_COMPONENT_NAME,
-} from "@vendoai/core/apps";
+} from "../src/core/apps/index.js";
 import type {
   ComponentCatalog,
   ComponentRegistry,
   NormalizedCatalog,
-} from "@vendoai/core/apps";
+} from "../src/core/apps/index.js";
 import ts from "typescript";
 import { describe, expect, it, vi } from "vitest";
 import { z } from "zod";

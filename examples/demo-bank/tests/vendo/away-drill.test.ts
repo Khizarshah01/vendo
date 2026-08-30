@@ -53,7 +53,7 @@ import {
   type ToolDescriptor,
   type ToolRegistry,
   UNATTENDED_DESTRUCTIVE_REASON,
-} from "@vendoai/core";
+} from "@vendoai/vendo/core";
 import { createActions } from "@vendoai/vendo/actions";
 import { authJsPreset } from "@vendoai/vendo/actions/presets/auth-js";
 import { createAutomations, type AutomationsEngine } from "@vendoai/vendo/automations";

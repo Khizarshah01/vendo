@@ -1,4 +1,4 @@
-import type { KnowledgeAdapter, KnowledgeStatus } from "@vendoai/core";
+import type { KnowledgeAdapter, KnowledgeStatus } from "../core/index.js";
 import { VENDO_KNOWLEDGE_SEARCH_TOOL } from "./agent-tools.js";
 import { knowledgeConfigSchema, type KnowledgeConfig } from "./ingest/index.js";
 

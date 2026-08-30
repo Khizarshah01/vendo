@@ -1,4 +1,4 @@
-import type { Principal, VendoAppRef, VendoApprovalRef } from "@vendoai/core";
+import type { Principal, VendoAppRef, VendoApprovalRef } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import {
   VENDO_DELEGATE_TOOL,

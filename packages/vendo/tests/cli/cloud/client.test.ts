@@ -4,7 +4,7 @@ import { basename, join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { CloudError, cloudFetch, isVendoKey, resolveCloudBaseUrl } from "../../../src/cli/cloud/client.js";
 import { CLI_VERSION } from "../../../src/cli/shared.js";
-import { VERSION } from "@vendoai/core";
+import { VERSION } from "../../../src/core/index.js";
 
 const cleanup: string[] = [];
 afterEach(async () => {

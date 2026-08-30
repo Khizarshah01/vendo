@@ -16,8 +16,8 @@ import {
   type RunContext,
   type ToolCall,
   type ToolOutcome,
-} from "@vendoai/core";
-import { agentRunnerConformance, runConformance } from "@vendoai/core/conformance";
+} from "@vendoai/vendo/core";
+import { agentRunnerConformance, runConformance } from "@vendoai/vendo/core/conformance";
 import { createGuard } from "@vendoai/vendo/guard";
 import { defineHarness } from "@vendoai/vendo/harnesses";
 import { createStore } from "@vendoai/vendo/store";

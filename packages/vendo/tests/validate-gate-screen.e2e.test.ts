@@ -28,7 +28,7 @@ import {
   validateWrittenApps,
   type AppValidationFailure,
 } from "../src/apps/index.js";
-import type { AppId, Principal } from "@vendoai/core";
+import type { AppId, Principal } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

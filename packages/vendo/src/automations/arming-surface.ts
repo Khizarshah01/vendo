@@ -3,7 +3,7 @@
  * names the sponsor and captures the grants), the kill switch, and the preview
  * that says what a record would run without running it.
  */
-import { VendoError, type Json } from "@vendoai/core";
+import { VendoError, type Json } from "../core/index.js";
 import type { AutomationRowsAccess } from "./automation-rows.js";
 import type { ConsentAccess } from "./consent.js";
 import type { EngineBase } from "./engine-context.js";

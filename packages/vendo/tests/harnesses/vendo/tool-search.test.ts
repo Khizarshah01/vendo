@@ -14,7 +14,7 @@
  *    prompt kept teaching it); the harness itself exempts only its own
  *    capability-miss hand, and knows no product names.
  */
-import { CONNECTOR_DISCOVERY_TOOLS, type ThreadId, type ToolListing } from "@vendoai/core";
+import { CONNECTOR_DISCOVERY_TOOLS, type ThreadId, type ToolListing } from "../../../src/core/index.js";
 import { CAPABILITY_MISS_TOOL_NAME } from "../../../src/harnesses/capability-miss.js";
 import { describe, expect, it } from "vitest";
 import { vendo } from "../../../src/harnesses/vendo/vendo.js";

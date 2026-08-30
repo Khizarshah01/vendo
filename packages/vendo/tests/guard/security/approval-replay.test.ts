@@ -1,4 +1,4 @@
-import type { ApprovalId } from "@vendoai/core";
+import type { ApprovalId } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../../src/guard/index.js";
 import { createMemoryStore } from "../fixtures/memory-store.js";

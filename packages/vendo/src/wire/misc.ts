@@ -1,5 +1,5 @@
 import { signedWebhookBytes, verifySignature } from "../automations/index.js";
-import { log, VendoError, type VendoStatus } from "@vendoai/core";
+import { log, VendoError, type VendoStatus } from "../core/index.js";
 import { computeImpact } from "../sync-impact.js";
 import { tickSecret } from "../tick-enrolment.js";
 import {

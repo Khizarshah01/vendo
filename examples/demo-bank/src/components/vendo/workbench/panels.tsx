@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { useState } from "react";
-import type { WorkbenchEvent, WorkbenchPart } from "@vendoai/ui";
+import type { WorkbenchEvent, WorkbenchPart } from "@vendoai/vendo/ui";
 import { Chevron, Chip, Disclosure, Empty, SectionHead } from "./parts";
 import { contextByAgent, count, describe, duration, eventsOf, rows, share, TONES, type Of, type Tone } from "./model";
 import styles from "./workbench.module.css";
@@ -10,7 +10,7 @@ import styles from "./workbench.module.css";
 type PanelProps = { parts: readonly WorkbenchPart[] };
 
 /** Keyed by the union itself, so a new guard decision or approval outcome in
- *  `@vendoai/ui` is a build error here rather than an uncoloured cell. */
+ *  `@vendoai/vendo/ui` is a build error here rather than an uncoloured cell. */
 type Call = Extract<WorkbenchEvent, { kind: "tool" }>;
 const GUARD_TONE: Record<NonNullable<Call["guard"]>, Tone> = { run: "ok", ask: "warn", block: "bad" };
 const STATUS_TONE: Record<Call["status"], Tone> = { ok: "mute", denied: "bad", error: "bad" };

@@ -43,7 +43,7 @@
  */
 import { parse } from "acorn";
 import type { Node, Program } from "acorn";
-import { isPlainObject, VENDO_TREE_FORMAT, type TreeNode } from "@vendoai/core";
+import { isPlainObject, VENDO_TREE_FORMAT, type TreeNode } from "../../core/index.js";
 import {
   DISPLAY_TAG_NAMES,
   resolveIslandToolName,
@@ -52,7 +52,7 @@ import {
   type NormalizedCatalog,
   type Tree,
   type VendoRouteMap,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 // The screen engine, by its own path: the contract door does not carry it yet.
 import {
   queryKey,
@@ -61,7 +61,7 @@ import {
   type FlatTree,
   type InertControl,
   type ScreenErrorKind,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { isMutatingQuery, isMutatingTool, type HostToolInfo } from "./deps.js";
 import { VENDO_APPS_SQL_TOOL } from "../doors/sql-tool.js";
 import { catalogIssues, factIssueLine, kitNestingIssues, routeIssues } from "./facts.js";

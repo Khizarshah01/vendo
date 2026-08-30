@@ -11,7 +11,7 @@
  * emitWorkbench} is a map miss and returns — there is no second flag to check and
  * no part can reach the wire.
  */
-import type { TurnId } from "@vendoai/core";
+import type { TurnId } from "../core/index.js";
 
 /** Which loop is speaking. The resident is the turn's own thinker; `screen` is
  *  the closed-loadout drive that paints; `subagent` is a hire, which shares the

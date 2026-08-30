@@ -4,7 +4,7 @@ import {
   isReservedSubject,
   principalSchema,
   type RunContext,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { WireDeps } from "./shared.js";
 
 /** The one shared per-request context resolution pass (kill-list B4): resolve

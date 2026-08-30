@@ -4,7 +4,7 @@
  *  records that is keyed on the automation id alone: there is no app left to
  *  pair it with, so if authority leaked it would leak here.
  */
-import type { CreateAutomationInput, Step } from "@vendoai/core";
+import type { CreateAutomationInput, Step } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createAutomation, createStack, ownerCtx, resetFixture } from "../src/harness.js";
 import { ADA, approve } from "../src/support.js";

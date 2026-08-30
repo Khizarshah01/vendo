@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { toolOutcomeSchema, type PermissionGrant, type RunContext, type ToolOutcome } from "@vendoai/core";
+import { toolOutcomeSchema, type PermissionGrant, type RunContext, type ToolOutcome } from "../../../src/core/index.js";
 import { VENDO_OVERRIDES_FORMAT, type ExtractedTool } from "../../../src/actions/formats.js";
 import { vendoSync } from "../../../src/actions/sync/index.js";
 import { createActions, type ActionsRunContext } from "../../../src/actions/runtime/registry.js";

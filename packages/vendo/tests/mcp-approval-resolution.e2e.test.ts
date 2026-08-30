@@ -13,7 +13,7 @@
  * renders as "Expired — no longer waiting for approval" on the very approval
  * the person had just granted (observed live 2026-08-23).
  */
-import type { ApprovalRequest, ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import type { ApprovalRequest, ToolDescriptor, ToolRegistry } from "../src/core/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import {

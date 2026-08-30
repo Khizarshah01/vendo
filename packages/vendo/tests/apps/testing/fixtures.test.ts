@@ -3,7 +3,7 @@ import type {
   ToolCall,
   ToolDescriptor,
   ToolRegistry,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { fakeSandbox, type MachineApp } from "../../../src/apps/testing/fake-sandbox.js";
 import { bindTools, guardFixture } from "../../../src/apps/testing/guard-fixture.js";

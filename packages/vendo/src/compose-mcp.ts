@@ -3,7 +3,7 @@
  * broker-fronted one a declared `VENDO_MCP_BROKER_URL` turns on, and the INTERNAL
  * half a machine-bound harness mounts by itself.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "./core/index.js";
 import {
   canonicalUri,
   createMcpDoor,

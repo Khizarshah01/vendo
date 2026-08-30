@@ -1,4 +1,4 @@
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { appStore } from "../../src/store/helpers/apps.js";
 import { appFixture } from "../../src/store/fixtures.test-util.js";

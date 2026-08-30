@@ -68,7 +68,7 @@ describe("the Kit's own types survive the zod the host installed", () => {
   });
 
   it("says the same thing to the MODEL — the catalog prompt walks the same schemas", async () => {
-    const { catalogPrompt } = await import("@vendoai/core/apps");
+    const { catalogPrompt } = await import("../../../src/core/apps/index.js");
 
     const stat = catalogPrompt({ only: ["Stat"], omitPreamble: true });
 

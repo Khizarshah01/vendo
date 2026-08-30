@@ -1,4 +1,4 @@
-import { VendoError, type FilesAdapter, type Principal } from "@vendoai/core";
+import { VendoError, type FilesAdapter, type Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { FILES_STORE_MAX_BYTES } from "../../src/store/files-store.js";

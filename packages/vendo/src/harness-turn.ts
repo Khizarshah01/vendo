@@ -36,11 +36,11 @@ import {
   type ToolRegistry,
   type WorkspaceFs,
   type UploadedFile,
-} from "@vendoai/core";
+} from "./core/index.js";
 import {
   hostComponentFiles,
   type NormalizedCatalog,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import { deriveTitle, isThreadId, mintThreadId, ThreadRepository, type Thread, type ThreadSummary } from "./threads.js";
 import {
   HOT_PATH_WATCH,
@@ -168,7 +168,7 @@ export interface HarnessTurnsConfig {
 }
 
 // `POST /files`'s answer shape is core's (core/src/files-wire.ts), beside the
-// header that door requires: `@vendoai/ui`'s client reads it back.
+// header that door requires: `@vendoai/vendo/ui`'s client reads it back.
 export type { UploadedFile };
 
 /**

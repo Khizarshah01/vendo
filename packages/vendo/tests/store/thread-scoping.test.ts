@@ -6,7 +6,7 @@
  * and ephemeral subjects alike (kill-list B3). Same-subject re-puts still
  * update in place.
  */
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { threadStore } from "../../src/store/index.js";

@@ -25,10 +25,10 @@ import { join } from "node:path";
 import {
   VENDO_MAKE_TOOL,
   type Principal,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import {
   makeReceiptSchema,
-} from "@vendoai/core/apps";
+} from "../src/core/apps/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

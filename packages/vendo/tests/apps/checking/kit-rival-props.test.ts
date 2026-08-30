@@ -13,8 +13,8 @@
  * screen gauntlet's `nesting` stage at once.
  */
 import { describe, expect, it } from "vitest";
-import { VENDO_TREE_FORMAT } from "@vendoai/core";
-import { KIT_SPECS, kitSpec, type Tree } from "@vendoai/core/apps";
+import { VENDO_TREE_FORMAT } from "../../../src/core/index.js";
+import { KIT_SPECS, kitSpec, type Tree } from "../../../src/core/apps/index.js";
 import { kitNestingIssues } from "../../../src/apps/checking/facts.js";
 
 type Node = Tree["nodes"][number];

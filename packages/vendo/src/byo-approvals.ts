@@ -14,7 +14,7 @@ import {
   type ToolRegistry,
   type VendoRecord,
   type ApprovalResolution,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type { VendoGuard } from "./guard/index.js";
 
 /**

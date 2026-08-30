@@ -16,10 +16,10 @@ import {
   type ToolCall,
   type ToolDescriptor,
   type ToolOutcome,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type { AppSqlAccess } from "../persistence/app-sql.js";
-import type { AppDocument } from "@vendoai/core/apps";
-import type { AppId } from "@vendoai/core";
+import type { AppDocument } from "../../core/apps/index.js";
+import type { AppId } from "../../core/index.js";
 import { input } from "./tool-args.js";
 
 export const VENDO_APPS_SQL_TOOL = "vendo_apps_sql";

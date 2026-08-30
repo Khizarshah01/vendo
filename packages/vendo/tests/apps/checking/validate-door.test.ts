@@ -21,11 +21,11 @@ import {
   type RunContext,
   type ToolDescriptor,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import {
   type Check,
   type Finding,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createApps, type AppsConfig, type AppsRuntime } from "../../../src/apps/index.js";
 import { REVIEWER_SYSTEM } from "../../../src/apps/checking/reviewer-prompt.js";

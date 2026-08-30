@@ -18,7 +18,7 @@
  * once per request, and reports what it holds — which is how the host knows the
  * disk it is reading is the disk it wrote.
  */
-import { setLogger, type HarnessEvent, type Turn, type VendoLogEvent } from "@vendoai/core";
+import { setLogger, type HarnessEvent, type Turn, type VendoLogEvent } from "../../../src/core/index.js";
 import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";

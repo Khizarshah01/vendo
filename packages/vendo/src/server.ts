@@ -9,7 +9,7 @@
  */
 import { provideCloudAdapters } from "./turn/index.js";
 import { isJsonRequest, relativePath } from "./wire/router.js";
-import { isVendoError, log, VendoError } from "@vendoai/core";
+import { isVendoError, log, VendoError } from "./core/index.js";
 import { announceBootSummary, bootSummaryFor } from "./boot-summary.js";
 import { createComposition } from "./compose-context.js";
 import { vendoInstance, wireDepsFor } from "./compose-wire.js";
@@ -179,7 +179,7 @@ export {
   CONFIG_SURFACES,
   type ConfigSurfaceName,
   type ConfigSurfaceOwner,
-} from "@vendoai/core";
+} from "./core/index.js";
 
 // The hosted-store adapter rides the server surface like the other Cloud
 // adapters: a host can pass it explicitly via createVendo({ store }) with its
@@ -203,7 +203,7 @@ export { UNATTENDED_IRREVERSIBILITY_RULE } from "./automations/index.js";
 // Task 15a — the profile piece types, named from THIS entry so they sit
 // beside createVendo/CreateVendoConfig: the hosted try venue (a Worker in the
 // console repo) composes typed `profile` pieces against the umbrella alone,
-// without adding a direct @vendoai/vendo/actions or @vendoai/core dependency.
+// without adding a direct @vendoai/vendo/actions or @vendoai/vendo/core dependency.
 // ServerActionHandler rides along for the same reason: it is the value type of
 // the documented `serverActions` config key, so a host must be able to name it
 // without adding a direct @vendoai/vendo/actions dependency.
@@ -217,7 +217,7 @@ export type {
   VendoRoute,
   VendoRouteMap,
   VendoTheme,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 export type { PolicyFile } from "./guard/index.js";
 // The `guard:` slot's two arms, named from here for the same reason as
 // `ServerActionHandler` and `ComposedAgent`: a host must be able to name what
@@ -426,7 +426,7 @@ function createWireHandler(deps: WireDeps): (request: Request) => Promise<Respon
 
       throw new VendoError("not-found", "unknown Vendo route");
     } catch (error) {
-      // `isVendoError`, not `instanceof`: a host bundle's second @vendoai/core
+      // `isVendoError`, not `instanceof`: a host bundle's second @vendoai/vendo/core
       // copy mints a different class, and 0.27.0 answered 501 to every one of
       // its refusals — a blocked collection read as "Internal Vendo error".
       if (isVendoError(error)) return errorResponse(error);

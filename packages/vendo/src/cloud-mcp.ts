@@ -21,7 +21,7 @@
  * discovery hit, a door hit, or `vendo.tokenFor` — and is cached for the
  * process.
  */
-import { raiseCloudError, VendoError } from "@vendoai/core";
+import { raiseCloudError, VendoError } from "./core/index.js";
 import { cloudKeyFetch } from "./cloud-key-fetch.js";
 
 export interface McpBundle {

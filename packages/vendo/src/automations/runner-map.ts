@@ -11,7 +11,7 @@
  *    through a different agent than the one they named is worse than not
  *    running it, because nobody would ever find out.
  */
-import { VendoError, type AgentRunner, type AgentRunners } from "@vendoai/core";
+import { VendoError, type AgentRunner, type AgentRunners } from "../core/index.js";
 
 export const createRunnerMap = (): AgentRunners => {
   const runners = new Map<string, AgentRunner>();

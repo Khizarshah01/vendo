@@ -35,7 +35,7 @@ full AI sweep (layer 2 scoring + AI polish) runs on the Mac mini.
 ## Local Vendo injection
 
 The harness owns the local-pack boundary. Once per sweep it builds the workspace
-and packs the v0 publish set: `@vendoai/core`, `store`, `agent`, `actions`,
+and packs the v0 publish set: `@vendoai/vendo/core`, `store`, `agent`, `actions`,
 `guard`, `apps`, `automations`, `ui`, `telemetry`, `mcp`, `vendo`, plus the `vendoai`
 alias. Each cloned app receives the cached tarballs under `vendor/`, depends on
 the bin-owning `@vendoai/vendo` umbrella, and pins the complete workspace closure
@@ -91,7 +91,7 @@ the orchestrating environment; Vendo-specific wiring never belongs here.
 
 ## Running the sweep
 
-Run `pnpm build` first: the harness imports `@vendoai/core` at load, so a cold
+Run `pnpm build` first: the harness imports `@vendoai/vendo/core` at load, so a cold
 checkout fails before the first repo is cloned. Then, on demand — the sweep
 never runs in CI. Layer 1 is free — the structural clean room, no model
 credentials — so run

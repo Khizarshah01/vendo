@@ -1,4 +1,4 @@
-import type { GradedRiskLabel } from "@vendoai/core";
+import type { GradedRiskLabel } from "../core/index.js";
 import { bindingIdentity } from "./binding-identity.js";
 import type { ExtractedTool, JudgmentFields, JudgmentsFile, PendingLoosening, ToolJudgment } from "./formats.js";
 

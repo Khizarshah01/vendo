@@ -7,7 +7,7 @@ import {
   sha256Hex,
   type KnowledgeAdapter,
   type KnowledgeHashManifest,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   VENDO_KNOWLEDGE_CONFIG_FORMAT,
   cloudKnowledge,
@@ -18,7 +18,7 @@ import {
   type KnowledgeConfig,
 } from "../../knowledge/index.js";
 import { createStore } from "../../store/index.js";
-import { environment, resolveCloudBaseUrl } from "@vendoai/core";
+import { environment, resolveCloudBaseUrl } from "../../core/index.js";
 import { formatTable } from "../cloud/output.js";
 import { consoleOutput, withCommandRun, type Output, type TelemetryOptions } from "../shared.js";
 

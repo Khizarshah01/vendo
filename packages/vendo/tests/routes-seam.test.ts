@@ -8,8 +8,8 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { AppId, Principal, RunContext } from "@vendoai/core";
-import type { VendoRouteMap } from "@vendoai/core/apps";
+import type { AppId, Principal, RunContext } from "../src/core/index.js";
+import type { VendoRouteMap } from "../src/core/apps/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

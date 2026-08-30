@@ -4,7 +4,7 @@
  *
  * Lifted out of `createApps` unchanged.
  */
-import { shapeFromJsonSchema, type RunContext, type ShapeType } from "@vendoai/core";
+import { shapeFromJsonSchema, type RunContext, type ShapeType } from "../../core/index.js";
 import type { LanguageModel } from "ai";
 import type { GenerationDependencies } from "../generation/engine.js";
 import type { AppsConfig } from "./types.js";

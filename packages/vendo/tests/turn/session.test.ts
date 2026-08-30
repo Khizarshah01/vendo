@@ -3,7 +3,7 @@
  * `createHarnessRuntime` — only the thinker is scripted, because the thinker
  * is deliberately not what is under test (CLAUDE.md: test the SEAM).
  */
-import { VendoError, type ApprovalRequest, type RunContext, type Turn } from "@vendoai/core";
+import { VendoError, type ApprovalRequest, type RunContext, type Turn } from "../../src/core/index.js";
 import { createGuard, type VendoGuard } from "../../src/guard/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadMessageStore, threadStore } from "../../src/store/index.js";

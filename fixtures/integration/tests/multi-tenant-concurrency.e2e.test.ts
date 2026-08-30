@@ -24,7 +24,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import {
   type AppDocument,
   type Principal,
-} from "@vendoai/core";
+} from "@vendoai/vendo/core";
 import {
   createStack,
   decideApprovals,

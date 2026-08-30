@@ -4,7 +4,7 @@
  * unadorned — every element here exists to be asserted on, and nothing between
  * the hook and the wire is this file's own invention.
  */
-import { useVendoChat } from "@vendoai/ui";
+import { useVendoChat } from "@vendoai/vendo/ui";
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
 

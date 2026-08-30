@@ -26,7 +26,7 @@
  * assertion is that the counter stays at zero.
  */
 import { createAnthropic } from "@ai-sdk/anthropic";
-import type { HarnessEvent, Json, RunContext, ToolDescriptor, Turn } from "@vendoai/core";
+import type { HarnessEvent, Json, RunContext, ToolDescriptor, Turn } from "../../../src/core/index.js";
 import type { UIMessage } from "ai";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";

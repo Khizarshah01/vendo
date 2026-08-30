@@ -10,7 +10,7 @@
  * Each suite here pins a hole the shipped engine actually had. They are grouped
  * by what breaks, not by which file broke it.
  */
-import type { ToolRegistry, Turn } from "@vendoai/core";
+import type { ToolRegistry, Turn } from "../../../src/core/index.js";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import type { LanguageModel, ModelMessage } from "ai";
 import { describe, expect, it } from "vitest";

@@ -4,7 +4,7 @@
  * The refusal is the one sentence the calling model recovers from mid-turn, so
  * it has to carry the exact next move rather than dead-ending.
  */
-import { engineOverAdapter, VENDO_APP_FORMAT, type RunContext, type ToolRegistry } from "@vendoai/core";
+import { engineOverAdapter, VENDO_APP_FORMAT, type RunContext, type ToolRegistry } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createApps } from "../../src/apps/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";

@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../core/index.js";
 import { createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
 
 /** GCM's full tag, pinned on both sides — Node otherwise verifies a tag at

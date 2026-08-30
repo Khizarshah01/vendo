@@ -14,7 +14,7 @@ vi.mock("../../../src/actions/sync/common.js", async (importOriginal) => ({
 
 /** Assembled at runtime: the dependency guard's static text scan reads
  *  import-shaped strings even inside fixtures, and actions may not import
- *  @vendoai/ui. */
+ *  @vendoai/vendo/ui. */
 const UI_CHROME = ["@vendoai", "ui", "chrome"].join("/");
 
 const temporaryDirectories: string[] = [];

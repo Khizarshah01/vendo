@@ -5,7 +5,7 @@
 import { readFile } from "node:fs/promises";
 import { basename, join, resolve } from "node:path";
 
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../core/index.js";
 
 /** `dir` may be the host root (we look inside its .vendo/) or the .vendo
  *  directory itself; reads `file` from it, undefined when absent. */

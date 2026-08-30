@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { AuditEvent, RunContext, ToolCall, ToolDescriptor } from "@vendoai/core";
-import { guardConformance, memoryStoreAdapter, runConformance } from "@vendoai/core/conformance";
+import type { AuditEvent, RunContext, ToolCall, ToolDescriptor } from "../../src/core/index.js";
+import { guardConformance, memoryStoreAdapter, runConformance } from "../../src/core/conformance/index.js";
 import { createGuard } from "../../src/guard/index.js";
 import { createPGliteStore } from "./fixtures/pglite-store.js";
 

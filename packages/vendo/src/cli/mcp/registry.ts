@@ -1,6 +1,6 @@
 import Ajv, { type ErrorObject } from "ajv";
 import addFormats from "ajv-formats";
-import { isPlainObject as isRecord } from "@vendoai/core";
+import { isPlainObject as isRecord } from "../../core/index.js";
 import serverSchema from "./server.schema.json" with { type: "json" };
 
 export const SERVER_SCHEMA_URL = "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json";

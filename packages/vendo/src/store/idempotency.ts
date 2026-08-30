@@ -1,4 +1,4 @@
-import { VendoError, type IdempotencyLedger, type Json } from "@vendoai/core";
+import { VendoError, type IdempotencyLedger, type Json } from "../core/index.js";
 // Type-only — erased at compile time, so this module stays engine-free and can
 // be assembled into the store alongside the routing doors (see store.ts).
 import type { Db } from "./db-postgres.js";

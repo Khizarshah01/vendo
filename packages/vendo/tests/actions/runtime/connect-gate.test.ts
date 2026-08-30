@@ -1,4 +1,4 @@
-import type { RunContext, ToolRegistry } from "@vendoai/core";
+import type { RunContext, ToolRegistry } from "../../../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { createConnectGate } from "../../../src/actions/runtime/connect-gate.js";
 

@@ -14,7 +14,7 @@ import {
   type StoreAdapter,
   type StoreOps,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import { structuralChunker } from "../ingest/chunker.js";
 // Schema intent matches a term on its title case- and whitespace-insensitively,
 // which is the same normalization ingest uses to mint the term's id fragment.

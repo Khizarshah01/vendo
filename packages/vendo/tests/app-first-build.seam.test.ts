@@ -23,8 +23,8 @@
  * the doors.
  */
 import { agentToolDescriptors, createApps, type AppsRuntime } from "../src/apps/index.js";
-import type { ScreenAssembler } from "@vendoai/core/apps";
-import type { AppId, Principal, RunContext, SqlDialect, ToolRegistry } from "@vendoai/core";
+import type { ScreenAssembler } from "../src/core/apps/index.js";
+import type { AppId, Principal, RunContext, SqlDialect, ToolRegistry } from "../src/core/index.js";
 import { createGuard } from "../src/guard/index.js";
 import { createStore, postgresAppDatabase, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";

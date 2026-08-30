@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../core/index.js";
 import {
   VENDO_CATALOG_FORMAT,
   catalogFileSchema,

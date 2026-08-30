@@ -9,11 +9,11 @@ import { seedBaselineSchema, type SeedBaseline } from "./apps/index.js";
 import {
   log,
   type ToolDefinition,
-} from "@vendoai/core";
+} from "./core/index.js";
 import {
   vendoThemeSchema,
   type VendoTheme,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import { hostToolNamesIn, vendoDirOf } from "./capability/index.js";
 import type { CreateVendoConfig } from "./types.js";
 

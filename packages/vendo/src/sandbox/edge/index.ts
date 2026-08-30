@@ -34,7 +34,7 @@
  * workerd freezes the clock while a screen burns and a deadline handler then
  * truthfully answers "not yet" a million times (contract/genui/component/budget.ts).
  */
-import { opsBudget, type ScreenBudget } from "@vendoai/core/apps";
+import { opsBudget, type ScreenBudget } from "../../core/apps/index.js";
 import type { ScreenToolchain } from "../../apps/checking/toolchain.js";
 import { edgePaint, type EdgeWasmModule } from "./paint.js";
 import { edgeTransform } from "./transform.js";

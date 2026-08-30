@@ -20,7 +20,7 @@ import {
   VENDO_THEME_VARIABLE_NAMES,
   defaultVendoTheme,
   themeCssVariables,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { checkComponentScreen } from "../../../src/apps/checking/component-screen.js";
 import { SCREEN_MODULE, screenCatalog } from "../../../src/apps/checking/screen-typings.js";
 import { describe, expect, it } from "vitest";

@@ -1,4 +1,4 @@
-import { STORE_WIRE_APPEND_MESSAGES_OPS, VendoError, type Principal, type StoreOps, type ThreadId } from "@vendoai/core";
+import { STORE_WIRE_APPEND_MESSAGES_OPS, VendoError, type Principal, type StoreOps, type ThreadId } from "../../core/index.js";
 import type { Db } from "../db-postgres.js";
 import type { VendoStore } from "../store.js";
 import { backendOf } from "./backend.js";
@@ -9,7 +9,7 @@ import { appendThreadMessages } from "./rows.js";
  *  Build contract §6 writes the surface in terms of the ai-SDK's `UIMessage`,
  *  and lane A's runtime instantiates it that way — `threadMessageStore<UIMessage>(store)`
  *  — so callers get the frozen signature exactly. The parameter stays generic
- *  here because `@vendoai/vendo/store` (like `@vendoai/core`) deliberately does not
+ *  here because `@vendoai/vendo/store` (like `@vendoai/vendo/core`) deliberately does not
  *  depend on `ai`: the store never interprets a message, only orders and
  *  returns it. Importing the type would put `ai` + a `zod` floor into the
  *  store's published peer set for one type annotation, which

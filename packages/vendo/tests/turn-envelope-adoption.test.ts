@@ -26,7 +26,7 @@ import {
   type RecordInput,
   type RecordQuery,
   type StoreOps,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, createStoreOps, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

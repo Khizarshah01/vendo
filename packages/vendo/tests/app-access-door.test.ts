@@ -3,7 +3,7 @@ import {
   type AppDocument,
   type AppId,
   type RunContext,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { appAccess, hostedStore } from "../src/store/index.js";
 import { describe, expect, it } from "vitest";
 import { fakeConsole } from "../src/store/fake-console.js";

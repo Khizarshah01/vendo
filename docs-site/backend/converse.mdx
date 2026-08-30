@@ -104,7 +104,7 @@ else reads back as absent.
 | `resolveUser` | `(request) => Promise<HandlerUser \| null>` | Your session, read per request |
 | `headers` | `Record<string, string>` or `false` | What the turn's tools forward as the caller's authority. Unset forwards this request's own headers; `false` forwards nothing |
 
-In the browser, `useVendoChat` from `@vendoai/ui` talks to that mount and keeps
+In the browser, `useVendoChat` from `@vendoai/vendo/ui` talks to that mount and keeps
 nothing of its own — the transcript, pending approvals included, is read back
 from the server, so a reload loses nothing.
 

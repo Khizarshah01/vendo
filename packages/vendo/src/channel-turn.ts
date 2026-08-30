@@ -18,7 +18,7 @@ import {
   type Membership,
   type Principal,
   type RunContext,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type { VendoGuard } from "./guard/index.js";
 import { THREAD_ID_HEADER } from "./harnesses/index.js";
 import type { UIMessage } from "ai";

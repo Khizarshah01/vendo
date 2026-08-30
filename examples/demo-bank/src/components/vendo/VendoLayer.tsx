@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import { withBasePath } from "@/lib/base-path";
-import { useVendoOverlay } from "@vendoai/ui";
-import { VendoOverlay, VendoThread, VendoToasts, type VendoThreadProps } from "@vendoai/ui/chrome";
+import { useVendoOverlay } from "@vendoai/vendo/ui";
+import { VendoOverlay, VendoThread, VendoToasts, type VendoThreadProps } from "@vendoai/vendo/ui/chrome";
 import { MapleMark } from "@/components/ui/maple-mark";
 import { VendoWorkbench } from "@/components/vendo/workbench/VendoWorkbench";
 import { mapleScenarios } from "@/vendo/scenarios";

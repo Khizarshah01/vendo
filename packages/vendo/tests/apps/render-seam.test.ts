@@ -14,9 +14,9 @@
  * real sealed VM), because the seam paints through `options.floor.component()`
  * and nothing else: a stubbed gauntlet here would be a seam agreeing with itself.
  */
-import { vendoViewPartSchema, vendoViewStreamId, type AppId, type UIPayload, type VendoViewPart } from "@vendoai/core";
+import { vendoViewPartSchema, vendoViewStreamId, type AppId, type UIPayload, type VendoViewPart } from "../../src/core/index.js";
 import { beforeAll, describe, expect, it, vi } from "vitest";
-import { warmScreenEngine } from "@vendoai/core/apps";
+import { warmScreenEngine } from "../../src/core/apps/index.js";
 import { createAppFloor } from "../../src/apps/checking/floor.js";
 import { HOT_PATH_FILES, HOT_PATH_WATCH, hotPathAppId, paintedIn, unpaintedIn, viewForWrite, wrapWorkspaceForRender } from "../../src/apps/generation/render-seam.js";
 import { testWorkspace } from "./test-doubles.test-util.js";

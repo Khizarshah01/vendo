@@ -16,7 +16,7 @@ import {
   type RunContext,
   type VendoViewStreamUpdate,
   type VendoViewStreamingToolCall,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import type { AgentToolsDataDependencies } from "../../src/apps/doors/agent-tools.js";
 import { runMakeTool } from "../../src/apps/doors/make-tool.js";

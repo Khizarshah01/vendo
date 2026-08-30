@@ -17,7 +17,7 @@
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { createAppSql, type AppSqlAccess } from "../../src/apps/index.js";
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../src/core/index.js";
 import { appSchema, createStore, postgresAppDatabase, type VendoStore } from "../../src/store/index.js";
 
 const ADA = "auth0|ada";

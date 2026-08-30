@@ -36,7 +36,7 @@ async function healthy(base?: string): Promise<string> {
     await writeFile(path, body);
   };
   await write("package.json", JSON.stringify({ dependencies: { "@vendoai/vendo": "0.3.0", next: "16" } }));
-  await write("next.config.ts", 'export default { serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"] };\n');
+  await write("next.config.ts", 'export default { serverExternalPackages: ["esbuild", "@electric-sql/pglite"] };\n');
   await write("app/layout.tsx", "export default ({children}) => <VendoProvider>{children}<VendoOverlay /></VendoProvider>;");
   await write("app/api/vendo/[...vendo]/route.ts", "export const GET = () => {};\n");
   for (const file of ["tools.json", "overrides.json", "policy.json", "brief.md", "theme.json"]) await write(`.vendo/${file}`, "{}\n");
@@ -1099,32 +1099,34 @@ describe("vendo doctor error codes + fix_refs", () => {
     expect(report.checks.find((check) => check.id === "config/mount")).toMatchObject({ status: "ok" });
   });
 
-  /** A Next host whose config never externalizes esbuild: Next bundles
-   *  @vendoai/vendo into the server chunk, the checker's runtime esbuild import
-   *  then resolves from the app root — where pnpm never hoists it — and every
-   *  generated screen fails its checks. */
+  /** A Next host whose config externalizes neither: PGlite's Emscripten module
+   *  breaks under production chunking, and the checker reaches esbuild at
+   *  runtime. */
   it("fails E-CFG-004 when a Next host's config does not externalize esbuild", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"), "export default { reactStrictMode: true };\n", "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     const check = report.checks.find((entry) => entry.id === "config/next-externals");
     expect(check).toMatchObject({ status: "broken", error_code: "E-CFG-004" });
-    expect(check?.message).toContain('serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"],');
+    expect(check?.message).toContain('serverExternalPackages: ["esbuild", "@electric-sql/pglite"],');
     expect(exit).toBe(1);
   });
 
-  /** The hole a live run found: an "esbuild" entry without @vendoai/vendo is
-   *  inert (the checker's specifier is a variable the bundler cannot see), so
-   *  the check has to fail on the package, not just on esbuild. */
-  it("fails E-CFG-004 on a list that has esbuild but not @vendoai/vendo", async () => {
+  /** THE INVERSION, and the reason it is stated as its own case. This list used
+   *  to be graded BROKEN for lacking `@vendoai/vendo`; it is the correct list
+   *  now. The package cannot be externalized — `serverExternalPackages` is
+   *  package-granular and this one has a "use client" half, so externalizing it
+   *  hands Next the client doors through the server condition and `next build`
+   *  dies in prerender. Doctor demanding it meant no host config satisfied both
+   *  doctor and the build at once. */
+  it("passes E-CFG-004 on esbuild + pglite, and never asks for the umbrella", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
       'export default { serverExternalPackages: ["esbuild", "@electric-sql/pglite"] };\n', "utf8");
-    const { exit, report } = await jsonChecks({ targetDir: root });
+    const { report } = await jsonChecks({ targetDir: root });
     const check = report.checks.find((entry) => entry.id === "config/next-externals");
-    expect(check).toMatchObject({ status: "broken", error_code: "E-CFG-004" });
-    expect(check?.message).toContain("@vendoai/vendo");
-    expect(exit).toBe(1);
+    expect(check).toMatchObject({ status: "ok" });
+    expect(JSON.stringify(report)).not.toContain('"@vendoai/vendo"');
   });
 
   /** A commented-out list is what a host debugging its bundle leaves behind.
@@ -1132,7 +1134,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("fails E-CFG-004 when the only externals list is commented out", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      '// serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"],\n'
+      '// serverExternalPackages: ["esbuild", "@electric-sql/pglite"],\n'
       + "export default { reactStrictMode: true };\n", "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals"))
@@ -1143,7 +1145,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("fails E-CFG-004 when the list is inside a block comment", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      '/* serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"], */\n'
+      '/* serverExternalPackages: ["esbuild", "@electric-sql/pglite"], */\n'
       + "export default {};\n", "utf8");
     const { report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals"))
@@ -1152,14 +1154,27 @@ describe("vendo doctor error codes + fix_refs", () => {
 
   /** Next hard-fatals on a package named in both lists, so the fix is two
    *  steps for a source-linked host and the message has to say so. */
+  /** The conflict note is about a package we ask to be EXTERNALIZED being
+   *  transpiled instead — Turbopack hard-fatals on a name in both lists. Since
+   *  the umbrella left the externals list, transpiling it is no longer a
+   *  conflict (demo-bank does exactly that); esbuild still is. */
   it("names the transpilePackages conflict in the E-CFG-004 message", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      'export default { transpilePackages: ["@vendoai/vendo"] };\n', "utf8");
+      'export default { transpilePackages: ["esbuild"] };\n', "utf8");
     const { report } = await jsonChecks({ targetDir: root });
     const check = report.checks.find((entry) => entry.id === "config/next-externals");
     expect(check).toMatchObject({ status: "broken", error_code: "E-CFG-004" });
-    expect(check?.message).toContain("Remove @vendoai/vendo from transpilePackages first");
+    expect(check?.message).toContain("Remove esbuild from transpilePackages first");
+  });
+
+  it("does not call transpiling the umbrella a conflict — it is not externalized", async () => {
+    const root = await healthy();
+    await writeFile(join(root, "next.config.ts"),
+      'export default { serverExternalPackages: ["esbuild", "@electric-sql/pglite"], transpilePackages: ["@vendoai/vendo"] };\n', "utf8");
+    const { report } = await jsonChecks({ targetDir: root });
+    const check = report.checks.find((entry) => entry.id === "config/next-externals");
+    expect(check).toMatchObject({ status: "ok" });
   });
 
   it("fails E-CFG-004 when a Next host has no next.config at all", async () => {
@@ -1175,7 +1190,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("passes config/next-externals on the Next 14 spelling of the same list", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      'export default { experimental: { serverComponentsExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"] } };\n',
+      'export default { experimental: { serverComponentsExternalPackages: ["esbuild", "@electric-sql/pglite"] } };\n',
       "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals")).toMatchObject({ status: "ok" });

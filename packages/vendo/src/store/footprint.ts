@@ -1,4 +1,4 @@
-import { collectionKind, type CollectionFootprint } from "@vendoai/core";
+import { collectionKind, type CollectionFootprint } from "../core/index.js";
 // Type-only — erased at compile time, so this module stays engine-free.
 import type { Db } from "./db-postgres.js";
 import { text } from "./helpers/utils.js";

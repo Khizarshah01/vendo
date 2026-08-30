@@ -11,7 +11,7 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../core/index.js";
 
 export type ProgrammedAction = "run" | "ask" | "block";
 

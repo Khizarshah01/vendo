@@ -7,7 +7,7 @@
  *  schema, records, blobs, secrets, and helpers; only the engine picker
  *  differs. Purity is enforced by scripts/portability-gate.mjs and
  *  src/postgres-entry.test.ts. */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../core/index.js";
 import { createPostgresDb, type StoreConfig } from "./db-postgres.js";
 import { createStoreForDb, type VendoStore } from "./store.js";
 

@@ -1,4 +1,4 @@
-import type { StoreOps, TurnLoad, TurnLoadRequest } from "@vendoai/core";
+import type { StoreOps, TurnLoad, TurnLoadRequest } from "../../core/index.js";
 
 /** A turn's opening reads as the calls they bundle, over whichever `StoreOps`
  *  is asked. Two implementations answer with exactly this: the local backend,

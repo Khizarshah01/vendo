@@ -1,15 +1,15 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 import {
   VENDO_APP_FORMAT,
   type AppAccess,
   type AppId,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
-import { appAccessConformance } from "@vendoai/core/conformance";
+} from "../../src/core/apps/index.js";
+import { appAccessConformance } from "../../src/core/conformance/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { createApps, type AppsConfig, type AppsRuntime } from "../../src/apps/index.js";
 import { scriptedAssembler } from "../../src/apps/testing/screen-assembler.js";

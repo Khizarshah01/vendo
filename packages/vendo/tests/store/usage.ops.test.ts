@@ -1,4 +1,4 @@
-import type { IsoDateTime, StoreOps } from "@vendoai/core";
+import type { IsoDateTime, StoreOps } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { createStoreOps, eraseStore, storeFiles } from "../../src/store/index.js";

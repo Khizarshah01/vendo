@@ -1,4 +1,4 @@
-import { defaultFetch, joinUrl, type ToolOutcome, VendoError } from "@vendoai/core";
+import { defaultFetch, joinUrl, type ToolOutcome, VendoError } from "../../core/index.js";
 import type { HttpMethod, OpenApiBinding, PrimitiveToolBinding, RouteBinding, TrpcBinding } from "../formats.js";
 import { error } from "./outcome.js";
 

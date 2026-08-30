@@ -5,7 +5,7 @@
  * the composition supplies them with — plus the two origin learners, which live
  * here because the wire is what validates a request enough to learn from it.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "./core/index.js";
 import { initTelemetry, type Telemetry } from "#telemetry";
 import type { VendoComposition } from "./compose-context.js";
 import { isLoopbackOrigin } from "./door-paths.js";

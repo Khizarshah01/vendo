@@ -6,7 +6,7 @@
  * its OWN `automations: string[]` and drops the dead ids, which is the apps
  * layer's job and not this one's.
  */
-import type { AutomationRecord, RunContext } from "@vendoai/core";
+import type { AutomationRecord, RunContext } from "../core/index.js";
 import type { AutomationRowsAccess } from "./automation-rows.js";
 import type { EngineBase } from "./engine-context.js";
 import type { AutomationsEngine } from "./index.js";

@@ -12,7 +12,7 @@
  *  - flag set, the turn's own steps, calls and compaction arrive in the order
  *    they happened, numbered, under this turn's id.
  */
-import type { Harness, ThreadId } from "@vendoai/core";
+import type { Harness, ThreadId } from "../../src/core/index.js";
 import { simulateReadableStream, MockLanguageModelV3 } from "ai/test";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

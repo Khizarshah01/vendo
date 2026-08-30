@@ -19,7 +19,7 @@ import {
   type Json,
   type RunContext,
   type WorkspaceFs,
-} from "@vendoai/core";
+} from "./core/index.js";
 import { appAccess } from "./store/index.js";
 import { askUserRegistry } from "./ask-user.js";
 import { cloudApps } from "./cloud-apps.js";

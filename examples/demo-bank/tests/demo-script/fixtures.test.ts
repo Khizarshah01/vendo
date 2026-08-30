@@ -17,7 +17,7 @@
  */
 import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
-import { kitComponentNames } from "@vendoai/core/apps";
+import { kitComponentNames } from "@vendoai/vendo/core/apps";
 import judgments from "../../.vendo/judgments.json";
 import tools from "../../.vendo/tools.json";
 import { mapleRegistry } from "@/vendo/registry";

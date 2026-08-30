@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { VendoError, type KnowledgeContext, type KnowledgeDoc } from "@vendoai/core";
-import { knowledgeAdapterConformance, memoryKnowledgeAdapter, runConformance } from "@vendoai/core/conformance";
+import { VendoError, type KnowledgeContext, type KnowledgeDoc } from "../../src/core/index.js";
+import { knowledgeAdapterConformance, memoryKnowledgeAdapter, runConformance } from "../../src/core/conformance/index.js";
 import { fakeKnowledgeServer } from "../../src/knowledge/cloud.test-util.js";
 import { httpKnowledge } from "../../src/knowledge/http.js";
 

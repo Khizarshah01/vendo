@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { SEATS } from "@vendoai/core";
+import { SEATS } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { REMOVED_CONFIG_KEYS } from "../src/config-keys.js";
 
@@ -68,7 +68,7 @@ const documentedSeats = (section: string): string[] =>
 
 /**
  * The page that documents the seat vocabulary is pinned to the one closed list
- * in `@vendoai/core`. server-api.mdx invented a `verifier` seat and
+ * in `@vendoai/vendo/core`. server-api.mdx invented a `verifier` seat and
  * handler-options.mdx taught the same one plus a `knowledgeVerifier` →
  * `verifier` migration — neither has ever existed on `ModelsConfig`, and the
  * knowledge verifier pass they belonged to was removed outright.

@@ -1,4 +1,4 @@
-import { defaultFetch, VendoError, type FilesAdapter } from "@vendoai/core";
+import { defaultFetch, VendoError, type FilesAdapter } from "../core/index.js";
 import { AwsClient } from "aws4fetch";
 
 /**

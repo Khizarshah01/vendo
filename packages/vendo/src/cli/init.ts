@@ -1,6 +1,6 @@
 import { mkdir, readFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
-import { isVendoError, VendoError } from "@vendoai/core";
+import { isVendoError, VendoError } from "../core/index.js";
 import { stdin, stdout } from "node:process";
 import { scrubErrorDetail, type Telemetry } from "#telemetry";
 import { detectDepVersions, installedAiVersion } from "./dep-versions.js";

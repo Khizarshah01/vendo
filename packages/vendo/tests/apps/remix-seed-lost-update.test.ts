@@ -25,8 +25,8 @@
  * NEITHER SIDE IS STUBBED. The mint is the real ✦ door, the courier is the real
  * `seed.props` door the wrapper POSTs to, and both write the real store.
  */
-import type { RunContext, StoreAdapter, ToolRegistry } from "@vendoai/core";
-import { type AppDocument, type SeedBaseline } from "@vendoai/core/apps";
+import type { RunContext, StoreAdapter, ToolRegistry } from "../../src/core/index.js";
+import { type AppDocument, type SeedBaseline } from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { createApps } from "../../src/apps/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";

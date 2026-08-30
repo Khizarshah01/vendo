@@ -1,4 +1,4 @@
-import { duplicateToolTitles, VendoError, type ToolRegistry } from "@vendoai/core";
+import { duplicateToolTitles, VendoError, type ToolRegistry } from "./core/index.js";
 import { FIND_TOOLS_TOOL_NAME } from "./harnesses/vendo/index.js";
 
 /**

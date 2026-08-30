@@ -1,4 +1,4 @@
-import { UNATTENDED_DESTRUCTIVE_REASON, VENUES } from "@vendoai/core";
+import { UNATTENDED_DESTRUCTIVE_REASON, VENUES } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../../src/guard/index.js";
 import { createMemoryStore } from "../fixtures/memory-store.js";

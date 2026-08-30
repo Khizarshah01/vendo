@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { canonicalJson, sha256Hex } from "@vendoai/core";
+import { canonicalJson, sha256Hex } from "../../core/index.js";
 import {
   capturedHostComponentSchema,
   type CapturedHostComponent,

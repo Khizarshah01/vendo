@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../core/index.js";
 import { json, requestJson, route, string, type RouteEntry } from "./shared.js";
 
 /** 04-actions §3 (block-actions design §B) — per-principal connected

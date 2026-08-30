@@ -1,7 +1,7 @@
 /** ENG-261 — descriptor drift invalidates standing grants loudly through the
  * composed wire: the replacement approval identifies the stale grant and the
  * public audit table records one grant-invalidated policy decision. */
-import { descriptorHash, type PermissionGrant } from "@vendoai/core";
+import { descriptorHash, type PermissionGrant } from "@vendoai/vendo/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   ADA,

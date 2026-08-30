@@ -18,8 +18,8 @@
  * column — the floor, the seam, the probe, the judge and the report.
  */
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
-import type { VendoTheme } from "@vendoai/core/apps";
-import type { JsonSchema } from "@vendoai/core";
+import type { VendoTheme } from "@vendoai/vendo/core/apps";
+import type { JsonSchema } from "@vendoai/vendo/core";
 import { generateText, jsonSchema, stepCountIs, tool, type ToolSet } from "ai";
 import { build } from "esbuild";
 import { dirname, join } from "node:path";

@@ -1,4 +1,4 @@
-import { sha256Hex, type AppDocument } from "@vendoai/core";
+import { sha256Hex, type AppDocument } from "@vendoai/vendo/core";
 
 /** `@vendoai/vendo/apps` `SCREEN_FILE`, spelled out: this fixture composes through
  *  `@vendoai/vendo` and does not depend on the apps package directly. */

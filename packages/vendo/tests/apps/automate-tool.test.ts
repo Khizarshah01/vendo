@@ -17,7 +17,7 @@ import {
   VENDO_AUTOMATION_REF_KIND,
   type RunContext,
   type ToolOutcome,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { agentToolDescriptors, createAgentTools, type AgentToolsDataDependencies } from "../../src/apps/doors/agent-tools.js";
 import type { AppsRuntime } from "../../src/apps/runtime/types.js";

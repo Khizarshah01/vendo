@@ -20,7 +20,7 @@
  *  comment leaves the import to the runtime — Node resolves undici normally,
  *  and every target that can't gets the same catch-to-plain-fetch as before.
  *  (Turbopack ignores the comment but parses undici fine.) */
-import { defaultFetch } from "@vendoai/core";
+import { defaultFetch } from "./core/index.js";
 import type { Agent } from "undici";
 
 /** Long enough to span the gaps between the tool calls of one turn; short

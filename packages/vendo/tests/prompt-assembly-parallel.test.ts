@@ -9,7 +9,7 @@
  * test is the guardrail for that: it pins the whole prompt, not a substring, so a
  * reordering shows up as a diff rather than as a passing test.
  */
-import type { Guard, RunContext } from "@vendoai/core";
+import type { Guard, RunContext } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { assembleSystemPrompt } from "../src/prompt.js";
 

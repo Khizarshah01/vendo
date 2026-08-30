@@ -1,6 +1,6 @@
 import type { Connector, ConnectorAccount } from "../src/actions/index.js";
 import type { LanguageModel } from "ai";
-import type { Principal, RunContext, ToolDescriptor } from "@vendoai/core";
+import type { Principal, RunContext, ToolDescriptor } from "../src/core/index.js";
 import { createStore } from "../src/store/index.js";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";

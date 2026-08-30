@@ -13,7 +13,7 @@
  * pass every behavioural test in the parity gate and silently drop the commit,
  * so the identity is asserted directly.
  */
-import type { Harness, HarnessEvent, ThreadId, Turn, TurnTools } from "@vendoai/core";
+import type { Harness, HarnessEvent, ThreadId, Turn, TurnTools } from "../../src/core/index.js";
 import type { UIMessage } from "ai";
 import { describe, expect, it } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";

@@ -23,7 +23,7 @@
  */
 import { planAutomation, type AutomationPlanInput, type HostToolInfo } from "@vendoai/vendo/apps";
 import { scriptedLanguageModel, type ScriptedModelCall } from "@vendoai/vendo/apps/testing";
-import { UNATTENDED_DESTRUCTIVE_REASON } from "@vendoai/core";
+import { UNATTENDED_DESTRUCTIVE_REASON } from "@vendoai/vendo/core";
 import { describe, expect, it } from "vitest";
 
 const SEND_TOOL = "host_invoices_send";

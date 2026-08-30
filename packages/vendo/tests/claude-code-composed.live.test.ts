@@ -39,7 +39,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { LanguageModel, UIMessage } from "ai";
-import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import type { Principal, ToolDescriptor, ToolRegistry } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { claudeCode } from "../src/harnesses/claude-code/index.js";
 import { createStore, maybeDbFor, type VendoStore } from "../src/store/index.js";

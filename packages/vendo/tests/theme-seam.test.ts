@@ -1,5 +1,5 @@
 /**
- * The theme seam: `@vendoai/ui` and `@vendoai/vendo/mcp` render the SAME theme
+ * The theme seam: `@vendoai/vendo/ui` and `@vendoai/vendo/mcp` render the SAME theme
  * through three different transports — a React style object, a `style`
  * attribute on the door's connect page, and a `:root{}` block inside the MCP
  * Apps shim. Each used to carry its own hand-kept copy of the mapping, and they
@@ -20,13 +20,13 @@ import {
   type StoreAdapter,
   type ToolRegistry,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import {
   VENDO_THEME_VARIABLE_NAMES,
   type VendoTheme,
-} from "@vendoai/core/apps";
+} from "../src/core/apps/index.js";
 import { createMcpDoor, type McpDoor } from "../src/mcp/index.js";
-import { themeCssVariables } from "@vendoai/ui";
+import { themeCssVariables } from "../src/ui/index.js";
 import { describe, expect, it } from "vitest";
 
 const BASE = "https://product.example/api/vendo/mcp";

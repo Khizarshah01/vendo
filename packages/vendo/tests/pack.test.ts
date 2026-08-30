@@ -12,7 +12,7 @@ import {
   type ToolDescriptor,
   type VendoLogEvent,
   type VendoViewStreamingToolCall,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { buildVendoToolPack, type VendoPackTool } from "../src/pack.js";
 import { VENDO_DELEGATE_TOOL } from "../src/tool-pack.js";

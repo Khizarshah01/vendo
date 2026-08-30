@@ -1,5 +1,5 @@
 import { promises as fs } from "node:fs";
-import type { JsonSchema } from "@vendoai/core";
+import type { JsonSchema } from "../../core/index.js";
 import { VENDO_TOOLS_FORMAT, schemaIsBlind, toolsFileSchema, type ExtractedTool, type SchemaSource } from "../formats.js";
 import { bindingIdentity, writeIfChanged } from "./common.js";
 

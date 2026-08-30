@@ -1,10 +1,10 @@
 /**
  * The ONE permission wire, over a REAL guard and a real store on both sides: a
  * route answers from the same approvals and grants the guard's own check path
- * parked and minted. `@vendoai/ui` posts these five shapes; a mount that
+ * parked and minted. `@vendoai/vendo/ui` posts these five shapes; a mount that
  * answers a sixth is the drift this module exists to end.
  */
-import type { StoreAdapter } from "@vendoai/core";
+import type { StoreAdapter } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard, handlePermissionRequest, permissionsHandler } from "../../src/guard/index.js";
 import { createMemoryStore } from "./fixtures/memory-store.js";
@@ -166,7 +166,7 @@ describe("permissionsHandler", () => {
     expect(await bad?.json()).toMatchObject({ error: { code: "validation" } });
   });
 
-  /** A refusal minted by a SECOND `@vendoai/core` copy (a host bundle carrying
+  /** A refusal minted by a SECOND `@vendoai/vendo/core` copy (a host bundle carrying
    *  both the ESM and CJS builds) is a different class, so the gate's
    *  `instanceof` said no and rethrew — the host's route crashed on a refusal
    *  that has a perfectly good status. */

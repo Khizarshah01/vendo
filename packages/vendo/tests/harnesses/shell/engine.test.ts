@@ -3,7 +3,7 @@
  * `WorkspaceFs` satisfies, so what passes here is what a turn gets.
  */
 import { InMemoryFs } from "just-bash";
-import type { IFileSystem } from "@vendoai/core";
+import type { IFileSystem } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createShellSession } from "../../../src/harnesses/vendo/shell/engine.js";
 

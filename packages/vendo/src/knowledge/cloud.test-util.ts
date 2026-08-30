@@ -11,8 +11,8 @@ import {
   type KnowledgeAdapter,
   type KnowledgeContext,
   type KnowledgePosture,
-} from "@vendoai/core";
-import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
+} from "../core/index.js";
+import { memoryKnowledgeAdapter } from "../core/conformance/index.js";
 
 /** One request the fake saw — tests assert auth rode as a Bearer token and
     that NO tenant selector of any kind crossed the wire. */

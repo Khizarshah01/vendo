@@ -23,17 +23,17 @@
  *    left no row are four different bugs and four failed receipts — never a
  *    "ready" served by an engine nobody chose.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../src/core/index.js";
 import type {
   AppId,
   RunContext,
   ToolRegistry,
   VendoViewPart,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type {
   ScreenAssembler,
   ScreenRequest,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { createAgentTools } from "../../src/apps/doors/agent-tools.js";
 import { authoringAssembler, scriptedAssembler } from "../../src/apps/testing/screen-assembler.js";

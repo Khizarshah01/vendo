@@ -25,7 +25,7 @@
  *
  * Gated on `VENDO_API_KEY` like every other `.live.test.ts`.
  */
-import type { Membership, Principal } from "@vendoai/core";
+import type { Membership, Principal } from "../src/core/index.js";
 import { hostedStore, workspaceStore, type HostedStore } from "../src/store/index.js";
 import { afterAll, describe, expect, it } from "vitest";
 

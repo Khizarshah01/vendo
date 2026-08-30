@@ -3,7 +3,7 @@
  * sponsorship read, the run context built from it, and the fire-time gate every
  * firing passes before a single tool call.
  */
-import type { AutomationRecord, RunContext } from "@vendoai/core";
+import type { AutomationRecord, RunContext } from "../core/index.js";
 import type { EngineBase } from "./engine-context.js";
 import { stopFor } from "./messages.js";
 import { allRecords } from "./rows.js";

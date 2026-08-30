@@ -1,4 +1,4 @@
-import { VendoError, type Json, type Principal, type StoreOps, type ThreadId, type VendoRecord } from "@vendoai/core";
+import { VendoError, type Json, type Principal, type StoreOps, type ThreadId, type VendoRecord } from "../../core/index.js";
 import type { Db } from "../db-postgres.js";
 import type { VendoStore } from "../store.js";
 import { backendOf } from "./backend.js";

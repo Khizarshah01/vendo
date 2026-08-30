@@ -9,13 +9,13 @@
  * keeps working unchanged — and the floor now runs anywhere a catalog and a model
  * exist, which is what lets it move to the paint seam.
  */
-import type { JsonSchema } from "@vendoai/core";
+import type { JsonSchema } from "../../core/index.js";
 import { VENDO_APPS_SQL_TOOL } from "../doors/sql-tool.js";
 import { sqlRisk } from "../persistence/app-sql-guard.js";
 import type {
   NormalizedCatalog,
   VendoRouteMap,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { LanguageModel } from "ai";
 
 /** The slice of a tool descriptor the floor (and the generation prompts) need:

@@ -12,7 +12,7 @@
  * `@vendoai/vendo` only — no deep path — so if this suite passes, the public
  * interface really is enough to extend Vendo from outside.
  */
-import { createTurnSkills } from "@vendoai/core";
+import { createTurnSkills } from "@vendoai/vendo/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   ADA,

@@ -1,4 +1,4 @@
-import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
+import { memoryKnowledgeAdapter } from "../../src/core/conformance/index.js";
 import type {
   Json,
   KnowledgeAdapter,
@@ -7,8 +7,8 @@ import type {
   KnowledgeQuery,
   RunContext,
   ToolRegistry,
-} from "@vendoai/core";
-import { VENDO_TOOL_TITLES } from "@vendoai/core";
+} from "../../src/core/index.js";
+import { VENDO_TOOL_TITLES } from "../../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
 import {
   createKnowledgeTools,
@@ -409,7 +409,7 @@ describe("tool policy: engine outage (T2)", () => {
   });
 
   /** The adapter is a HOST's code, which is exactly where a second
-   *  `@vendoai/core` copy lives — so its VendoErrors are another class and the
+   *  `@vendoai/vendo/core` copy lives — so its VendoErrors are another class and the
    *  operator's line lost the one thing that names the failure: its code. */
   it("names the CODE of a refusal another realm's VendoError carried", async () => {
     const warnings = vi.spyOn(console, "warn").mockImplementation(() => undefined);

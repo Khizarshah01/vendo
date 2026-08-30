@@ -22,7 +22,7 @@ import {
   type Skill,
   type ToolRegistry,
   type When,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { createGuard, isGuardInstance, permissionsHandler, type GuardRules, type VendoGuard } from "../guard/index.js";
 import { provideHarnessAdapters, vendo } from "../harnesses/index.js";
 import { vendoModel } from "../harnesses/inference/model.js";
@@ -187,7 +187,7 @@ export interface VendoAgent {
    */
   readonly door?: (request: Request) => Promise<Response>;
   /**
-   * This agent's approvals and grants wire — what `@vendoai/ui`'s consent
+   * This agent's approvals and grants wire — what `@vendoai/vendo/ui`'s consent
    * surfaces already post to. MOUNT THIS at `PERMISSIONS_PATH`
    * (`/api/vendo`); `undefined` comes back for every path it does not own,
    * `DOOR_PATH` included, so ONE catch-all route can serve both.
@@ -351,7 +351,7 @@ export function agent(config: AgentConfig): VendoAgent {
    * keyless message names `createVendo`, which is not the surface this host is
    * holding. Asked at the first turn rather than at boot: the detector is async
    * (`resolveDevCredential`), and a host that names its own harness owns saying
-   * which seats it reads (`packages/core/src/model-seats.ts`).
+   * which seats it reads (`packages/vendo/src/core/model-seats.ts`).
    */
   const requireModel = async (): Promise<void> => {
     if (config.harness !== undefined || config.model !== undefined) return;

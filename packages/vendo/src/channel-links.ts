@@ -18,7 +18,7 @@ import {
   type IsoDateTime,
   type StoreAdapter,
   type VendoRecord,
-} from "@vendoai/core";
+} from "./core/index.js";
 
 const LINK_COLLECTION = "vendo_channel_links";
 const LINK_ID_PATTERN = /^chl_[0-9a-f]+$/;

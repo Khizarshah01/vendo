@@ -13,7 +13,7 @@
  * (or a composed registry search), and remembers what it loaded in
  * `turn.state` — the brain's own memory slot.
  */
-import type { ToolListing } from "@vendoai/core";
+import type { ToolListing } from "../../core/index.js";
 import { CAPABILITY_MISS_TOOL_NAME } from "../capability-miss.js";
 
 export const FIND_TOOLS_TOOL_NAME = "find_tools";

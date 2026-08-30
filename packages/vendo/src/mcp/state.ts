@@ -1,4 +1,4 @@
-import type { McpConsent, RunContext } from "@vendoai/core";
+import type { McpConsent, RunContext } from "../core/index.js";
 
 /** The RunContext the door mints for every MCP tool call. CORE-2 (wave 5):
  * `mcpConsent` is core's own typed field now — this narrows it to required

@@ -38,7 +38,7 @@ import {
   type RunContext,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createApps } from "../../src/apps/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";

@@ -1,6 +1,6 @@
 import { composioToolRisk, normalizeToolName, type Connector, type ConnectorAccountIdentity } from "./actions/index.js";
-import type { RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "@vendoai/core";
-import { debugConnectorHttp, deploymentIdentityHeaders, log } from "@vendoai/core";
+import type { RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "./core/index.js";
+import { debugConnectorHttp, deploymentIdentityHeaders, log } from "./core/index.js";
 import { keepAliveFetch } from "./keep-alive-fetch.js";
 
 /** The Cloud tools adapter — the execution half of the zero-key Composio

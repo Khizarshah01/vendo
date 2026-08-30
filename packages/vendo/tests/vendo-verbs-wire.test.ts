@@ -19,10 +19,10 @@ import {
   type Principal,
   type RunContext,
   VENDO_APP_FORMAT,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import {
   type ComponentRegistry,
-} from "@vendoai/core/apps";
+} from "../src/core/apps/index.js";
 import { SCREEN_FILE } from "../src/apps/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

@@ -12,7 +12,7 @@
  * attempt that starts after that window contradicts what the model has already
  * been told.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../../src/core/index.js";
 import { afterEach, expect, test, vi } from "vitest";
 import { boxMachine, disposeSessionMachines, type SandboxAdapterLike, type SandboxMachineLike } from "../../../src/harnesses/claude-code/box.js";
 

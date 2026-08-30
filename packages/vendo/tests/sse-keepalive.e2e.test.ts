@@ -15,7 +15,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { SSE_KEEPALIVE_FRAME, type Principal } from "@vendoai/core";
+import { SSE_KEEPALIVE_FRAME, type Principal } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { readUIMessageStream, type LanguageModel, type UIMessage, type UIMessageChunk } from "ai";

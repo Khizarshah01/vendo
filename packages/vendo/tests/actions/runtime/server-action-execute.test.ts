@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "../../../src/core/index.js";
 import type { ExtractedTool } from "../../../src/actions/formats.js";
 import { createActions } from "../../../src/actions/runtime/registry.js";
 

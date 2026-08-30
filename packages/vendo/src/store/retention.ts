@@ -1,4 +1,4 @@
-import { assertEngineCollection, VendoError, type StoreOps } from "@vendoai/core";
+import { assertEngineCollection, VendoError, type StoreOps } from "../core/index.js";
 import type { Db } from "./db.js";
 import {
   DEDICATED_RECORD_COLLECTIONS,

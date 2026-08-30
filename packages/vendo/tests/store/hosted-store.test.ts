@@ -33,8 +33,8 @@ import {
   storeWireUsageRecordRequestSchema,
   storeWireUsageTallyRequestSchema,
   type StoreAdapter,
-} from "@vendoai/core";
-import { storeAdapterConformance } from "@vendoai/core/conformance";
+} from "../../src/core/index.js";
+import { storeAdapterConformance } from "../../src/core/conformance/index.js";
 import { createStore, secretStore, storeSecrets, type VendoStore } from "../../src/store/index.js";
 import { hostedStore, hostedStoreOps, type HostedStore } from "../../src/store/hosted-store.js";
 import { fakeConsole } from "../../src/store/fake-console.js";

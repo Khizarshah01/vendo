@@ -8,7 +8,7 @@
  * one object instead of threaded in dependency order.
  */
 import type { Connector } from "./actions/index.js";
-import type { Principal, RiskLabel, RunContext, ToolCall } from "@vendoai/core";
+import type { Principal, RiskLabel, RunContext, ToolCall } from "./core/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { selectConnections, withDisconnectInvalidation } from "./compose-selection.js";
 import { USE_SERVICE_TOOL } from "./connector-discovery.js";

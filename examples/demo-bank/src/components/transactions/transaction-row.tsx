@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { openVendoConversation } from "@vendoai/ui/chrome"
+import { openVendoConversation } from "@vendoai/vendo/ui/chrome"
 import type { Transaction } from "@/server/types"
 import { formatAmount } from "@/lib/money"
 import { relativeDay, formatTime } from "@/lib/format"

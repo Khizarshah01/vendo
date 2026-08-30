@@ -15,9 +15,9 @@ import {
   type AutomationRecord,
   type Json,
   type PermissionGrant,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { isGrantPrincipal, type AccessLevel } from "./helpers/app-access.js";
-import type { AppData } from "@vendoai/core/apps";
+import type { AppData } from "../core/apps/index.js";
 import { RUN_ROW_STATUSES } from "./helpers/types.js";
 import type { ApprovalRow, RunRow, RunRowStatus, ThreadRow } from "./helpers/types.js";
 

@@ -4,7 +4,7 @@
  * capability-miss surface the agent reports an unfulfillable ask through.
  */
 import type { Connector } from "./actions/index.js";
-import { consoleLogger, emitUsage, setLogger, setUsageSink, type Json } from "@vendoai/core";
+import { consoleLogger, emitUsage, setLogger, setUsageSink, type Json } from "./core/index.js";
 import { createShellTools } from "./harnesses/vendo/index.js";
 import { createKnowledgeTools, knowledgeIndexResolver } from "./knowledge/index.js";
 import { workspaceStore } from "./store/index.js";

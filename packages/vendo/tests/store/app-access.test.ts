@@ -1,5 +1,5 @@
-import { VendoError, type AccessLevel, type Membership, type RunContext } from "@vendoai/core";
-import { appAccessConformance, memoryStoreAdapter } from "@vendoai/core/conformance";
+import { VendoError, type AccessLevel, type Membership, type RunContext } from "../../src/core/index.js";
+import { appAccessConformance, memoryStoreAdapter } from "../../src/core/conformance/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { appAccess } from "../../src/store/helpers/app-access.js";
 import { appStore } from "../../src/store/helpers/apps.js";

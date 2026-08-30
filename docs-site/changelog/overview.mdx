@@ -11,7 +11,7 @@ description: "Weekly release notes for the Vendo SDK and runtime: new features, 
 **Configurable palette keybinding.** `VendoPalette` accepts an optional `hotkey` prop so hosts can retune or hand off the keyboard opener. Pass a chord, a custom matcher, or `false` to disable the built-in opener and wire your own.
 
 ```tsx
-import { VendoPalette } from "@vendoai/ui/chrome";
+import { VendoPalette } from "@vendoai/vendo/ui/chrome";
 
 // Rebind to Ctrl+/, leaving ⌘K for the host app.
 <VendoPalette hotkey={{ key: "/", ctrl: true }} />
@@ -24,7 +24,7 @@ All mounted palettes share a single `keydown` listener, and the keystroke routes
 
 While the palette is closed the shortcut is ignored when focus is in a host `input`, `textarea`, `select`, or `contenteditable`, so your app keeps its own ⌘K inside its own fields.
 
-**Humanized tool chips and approval cards.** `@vendoai/ui` chrome now shows friendly labels and readable argument previews instead of raw tool slugs, AI SDK lifecycle strings, or raw JSON.
+**Humanized tool chips and approval cards.** `@vendoai/vendo/ui` chrome now shows friendly labels and readable argument previews instead of raw tool slugs, AI SDK lifecycle strings, or raw JSON.
 
 `VendoProvider` accepts an optional `tools` prop (`ToolMetaMap`) with per-tool `label`, `description`, and `formatField(key, value)`. The new `useVendoTools()` hook exposes the same map to custom surfaces.
 
@@ -48,7 +48,7 @@ An explicit selection is now immune to the default-select effect, so the first t
 
 ## New features
 
-**Uniform headless hooks.** Every read hook in `@vendoai/ui` returns `{ data, error, isLoading, refresh }` and accepts an optional `pollMs` for serialized background polling.
+**Uniform headless hooks.** Every read hook in `@vendoai/vendo/ui` returns `{ data, error, isLoading, refresh }` and accepts an optional `pollMs` for serialized background polling.
 
 `useThreads` brings headless parity with `VendoOverlay`, and `useApps` gains `export(appId)` and `import(bytes)` for round-tripping an `AppDocument` through the wire. See [Hooks](/reference/hooks).
 
@@ -127,7 +127,7 @@ Retry re-issues the failed turn from the preserved user message, so nothing is d
 Headless callers of `useVendoThread` get matching `regenerate()` and `clearError()` methods alongside the existing `error` field:
 
 ```tsx
-import { useVendoThread } from "@vendoai/ui";
+import { useVendoThread } from "@vendoai/vendo/ui";
 
 function Composer() {
   const thread = useVendoThread();

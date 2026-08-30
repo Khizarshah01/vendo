@@ -12,7 +12,7 @@
  * The 2-chars-per-token ratio is not what is under test here and is unchanged —
  * this is about WHICH tools go into the count, not what a character is worth.
  */
-import type { TurnId } from "@vendoai/core";
+import type { TurnId } from "../../../src/core/index.js";
 import { tool } from "ai";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import { afterEach, describe, expect, it } from "vitest";

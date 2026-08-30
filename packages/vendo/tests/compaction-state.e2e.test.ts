@@ -26,7 +26,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import type { Principal, ToolDescriptor, ToolRegistry } from "../src/core/index.js";
 import { vendo as vendoHarness } from "../src/harnesses/index.js";
 import { readCompactionState } from "../src/harnesses/vendo/index.js";
 import { createStore, harnessStateStore, type VendoStore } from "../src/store/index.js";

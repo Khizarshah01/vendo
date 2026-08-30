@@ -1,4 +1,4 @@
-import type { AppDocument } from "@vendoai/core";
+import type { AppDocument } from "../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { cloudApps } from "../src/cloud-apps.js";
 

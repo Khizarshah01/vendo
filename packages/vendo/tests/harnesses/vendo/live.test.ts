@@ -16,7 +16,7 @@
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { createOpenAI } from "@ai-sdk/openai";
-import type { ThreadId, ToolDescriptor } from "@vendoai/core";
+import type { ThreadId, ToolDescriptor } from "../../../src/core/index.js";
 import type { LanguageModel } from "ai";
 import { describe, expect, it } from "vitest";
 import { vendo } from "../../../src/harnesses/vendo/vendo.js";

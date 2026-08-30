@@ -23,7 +23,7 @@ import {
   VendoError,
   type Json,
   type VendoToolEnvelope,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { MCP_MOUNT } from "./door-paths.js";
 import { doorOrigin } from "./mcp-token.js";

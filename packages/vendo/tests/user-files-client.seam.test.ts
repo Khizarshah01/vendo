@@ -2,7 +2,7 @@
  * SEAM: the shipped client's `files.upload` against the shipped drop door.
  *
  * The sibling of `client-door.seam.test.ts`, for the route it predates. `ui`
- * is layered to `@vendoai/core` alone, so a ui test can only prove its half
+ * is layered to `@vendoai/vendo/core` alone, so a ui test can only prove its half
  * against a fixture wire that also lives in ui — the producer and the consumer
  * each holding their own copy of the route table, unable to disagree. Here
  * nothing is stubbed on either side: the real `createVendoClient` builds the
@@ -12,9 +12,9 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
-import { createVendoClient, type VendoClient } from "@vendoai/ui";
+import { createVendoClient, type VendoClient } from "../src/ui/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";
 

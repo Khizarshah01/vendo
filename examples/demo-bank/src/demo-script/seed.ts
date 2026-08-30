@@ -13,7 +13,7 @@
  * Existing rows are left untouched (a user's recorded pins survive), so
  * seeding is safe to run on every boot.
  */
-import type { AppDocument, AutomationRecord, AutomationTask, TriggerSource } from "@vendoai/core";
+import type { AppDocument, AutomationRecord, AutomationTask, TriggerSource } from "@vendoai/vendo/core";
 import { mapleDemoUsers } from "@/server/users";
 import { vendo } from "@/vendo/server";
 import { seedConsoleData } from "./console-seed";

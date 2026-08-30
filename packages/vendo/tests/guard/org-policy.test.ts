@@ -1,5 +1,5 @@
-import { VendoError } from "@vendoai/core";
-import type { AuditEvent } from "@vendoai/core";
+import { VendoError } from "../../src/core/index.js";
+import type { AuditEvent } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { parseOrgPolicyFile } from "../../src/guard/org-policy.js";

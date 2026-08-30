@@ -10,7 +10,7 @@
  * door's real token endpoint (and its schema latch) without the deployment
  * having to be able to reach itself over the network.
  */
-import { joinUrl, VendoError, defaultFetch } from "@vendoai/core";
+import { joinUrl, VendoError, defaultFetch } from "./core/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { MCP_MOUNT } from "./door-paths.js";
 

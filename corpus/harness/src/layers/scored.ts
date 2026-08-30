@@ -4,7 +4,7 @@ import path from "node:path";
 import {
   vendoThemeSchema,
   type VendoTheme,
-} from "@vendoai/core/apps";
+} from "@vendoai/vendo/core/apps";
 import { toolsFileSchema, type ExtractedTool } from "@vendoai/vendo/actions";
 import {
   THEME_RUBRIC_DIMENSIONS,

@@ -1,5 +1,5 @@
-import { canonicalJson, sha256Hex } from "@vendoai/core";
-import type { ApprovalId } from "@vendoai/core";
+import { canonicalJson, sha256Hex } from "../../src/core/index.js";
+import type { ApprovalId } from "../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createPGliteStore, type PGliteStore } from "./fixtures/pglite-store.js";

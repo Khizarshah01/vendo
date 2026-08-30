@@ -13,7 +13,7 @@ import {
   type RunId,
   type Step,
   type ToolCall,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { ConsentAccess } from "./consent.js";
 import type { EngineBase } from "./engine-context.js";
 import type { GrantsAccess } from "./grants.js";

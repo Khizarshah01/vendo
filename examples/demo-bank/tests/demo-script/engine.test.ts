@@ -7,7 +7,7 @@
  * `input`) 400s the first real prompt sent in the same thread:
  * `tool_use.input: Input should be an object`.
  */
-import type { ApprovalRequest } from "@vendoai/core";
+import type { ApprovalRequest } from "@vendoai/vendo/core";
 import { convertToModelMessages, type UIMessage } from "ai";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 

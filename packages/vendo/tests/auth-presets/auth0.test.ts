@@ -1,5 +1,5 @@
 import { auth0Preset } from "../../src/actions/presets/index.js";
-import type { AuthMaterial, PermissionGrant } from "@vendoai/core";
+import type { AuthMaterial, PermissionGrant } from "../../src/core/index.js";
 import { SignJWT } from "jose";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 // auth0 is pinned via its own module — the same file the

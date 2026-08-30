@@ -5,12 +5,12 @@
 import {
   shapeFromJsonSchema,
   type JsonSchema,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import {
   KIT_ICON_NAMES,
   KIT_SCREEN_COMPONENT_NAMES,
   type NormalizedCatalog,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { componentScreenTypings, screenTypings, zodTypeText } from "../../../src/apps/checking/screen-typings.js";
 import type { HostToolInfo } from "../../../src/apps/checking/deps.js";

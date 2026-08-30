@@ -1,5 +1,5 @@
 import { jwtVerify } from "jose";
-import type { PermissionGrant, Principal } from "@vendoai/core";
+import type { PermissionGrant, Principal } from "../../../src/core/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { supabasePreset } from "../../../src/actions/presets/index.js";
 

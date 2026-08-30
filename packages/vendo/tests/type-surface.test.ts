@@ -25,7 +25,7 @@ const tsc = require.resolve("typescript/bin/tsc");
 const packageDir = fileURLToPath(new URL("..", import.meta.url)); // packages/vendo
 
 // Every host-facing type a host names when wiring or reaching into the umbrella.
-// Core types arrive via `export type * from "@vendoai/core"` (verified: ActAs,
+// Core types arrive via `export type * from "../src/core/index.js"` (verified: ActAs,
 // SecretsProvider, StoreAdapter, VendoTheme are all core exports); the rest are
 // each block's primary/host-facing types re-exported explicitly.
 const HOST_FACING_TYPES = [
@@ -110,8 +110,14 @@ function typecheckImports(names: string[], entry = "./src/index.js"): string | n
   try {
     execFileSync(
       process.execPath,
+      // `--jsx` and `--lib` are the fold's addition, and they are not optional:
+      // the root entry re-exports the ui barrel, which used to resolve to another
+      // package's emitted `.d.ts` and now resolves to `src/ui/context.tsx` — real
+      // TSX against the DOM. Without them tsc stops at TS6142 on every hook and
+      // the surface it was asked about is never checked. Mirrors tsconfig.base.
       [tsc, fixturePath, "--noEmit", "--strict", "--target", "ES2022", "--module", "ESNext",
-        "--moduleResolution", "Bundler", "--skipLibCheck", "--esModuleInterop"],
+        "--moduleResolution", "Bundler", "--skipLibCheck", "--esModuleInterop",
+        "--jsx", "react-jsx", "--lib", "ES2022,DOM,DOM.Iterable"],
       { cwd: packageDir, stdio: "pipe" },
     );
     return null;

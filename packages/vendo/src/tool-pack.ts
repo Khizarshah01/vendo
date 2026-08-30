@@ -1,4 +1,4 @@
-import type { AgentRunReport, Principal, VendoToolEnvelope } from "@vendoai/core";
+import type { AgentRunReport, Principal, VendoToolEnvelope } from "./core/index.js";
 
 /**
  * Existing-agents contract — the public tool-pack surface a BYO agent loop
@@ -12,13 +12,13 @@ import type { AgentRunReport, Principal, VendoToolEnvelope } from "@vendoai/core
  *  the host loop's own tools: a registered host tool `host_x` ships as
  *  `vendo_host_x`; the built-ins below are already prefixed. The same string
  *  `isVendoToolPart` reads on the chat surface, so it is named once in core. */
-export { VENDO_TOOL_PREFIX as VENDO_TOOL_PACK_PREFIX } from "@vendoai/core";
+export { VENDO_TOOL_PREFIX as VENDO_TOOL_PACK_PREFIX } from "./core/index.js";
 
 /** Generate UI. The pack's app door is Vendo's OWN make tool, under its own
  *  name — one contract in-process and over the MCP door, never a BYO-only
  *  alias. Returns fast with a `vendo/app-ref@1`; the build streams over the
  *  wire, so the host loop is never blocked on generation. */
-export { VENDO_MAKE_TOOL } from "@vendoai/core";
+export { VENDO_MAKE_TOOL } from "./core/index.js";
 
 /** Whole-task delegation via `agent.asRunner()`; returns `VendoDelegateResult`. */
 export const VENDO_DELEGATE_TOOL = "vendo_delegate" as const;

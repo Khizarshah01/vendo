@@ -64,17 +64,29 @@ export async function detectFramework(root: string): Promise<HostFramework> {
   }
 }
 
-/** What Next must leave OUT of the server bundle. `@vendoai/vendo` is the entry
-    that fixes the bug, and listing `esbuild` alone does NOT: the app checker
-    imports it through a VARIABLE specifier behind bundler-ignore comments
-    (packages/vendo/src/apps/checking/toolchain.ts), so there is no static
-    "esbuild" request for Next to match against the list. Bundle @vendoai/vendo
-    and that import becomes a bare runtime resolve from the app root, where pnpm
-    never hoists esbuild — every generated screen then fails its checks while the
-    app looks fine. Externalizing the PACKAGE keeps the import inside it, where
-    esbuild is a declared dependency. The same entry covers PGlite's Emscripten
-    module and the store that loads it, which break under production chunking. */
-export const NEXT_SERVER_EXTERNALS: readonly string[] = ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"];
+/** What Next must leave OUT of the server bundle.
+
+    `@vendoai/vendo` USED TO BE ON THIS LIST and cannot be, because
+    `serverExternalPackages` is package-granular and this package has a
+    "use client" half. Externalizing it hands Next the client doors through the
+    server condition, so `VendoProvider` renders with no client boundary and
+    prerender dies on `Cannot read properties of null (reading 'useMemo')` —
+    `next build` exit 1 for any host that prerenders a Vendo surface. Meanwhile
+    `vendo doctor` demanded the entry, so there was no config a host could write
+    that satisfied both. Reproduced against the published 0.60.0 tarball, so this
+    predates the core+ui fold: 0.60.0 already shipped `./react`.
+
+    What the entry was FOR is still real and is not lost. PGlite's Emscripten
+    module breaks under production chunking, so `@electric-sql/pglite` stays
+    listed by name. The app checker imports esbuild through a VARIABLE specifier
+    behind bundler-ignore comments (src/apps/checking/toolchain.ts), so Next
+    never sees a static request to match — bundled, that import becomes a bare
+    runtime resolve from the app root, which npm hoists to and pnpm does not.
+    That is a generated-screen degradation on pnpm hosts, and it is strictly
+    smaller than a build that fails for everyone. Verified end to end on a real
+    tarball host: build exit 0, and the server half answers /api/vendo/status
+    200 with store, agent, actions, guard, apps and automations all live. */
+export const NEXT_SERVER_EXTERNALS: readonly string[] = ["esbuild", "@electric-sql/pglite"];
 
 /** The property exactly as init writes it and doctor tells you to paste it. */
 export const NEXT_SERVER_EXTERNALS_LINE =

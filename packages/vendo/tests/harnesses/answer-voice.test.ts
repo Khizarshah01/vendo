@@ -5,7 +5,7 @@
  * — the leak is in what the loop TELLS the model, and the run-on only exists
  * once `TextChannel` has folded the loop's deltas into transcript parts.
  */
-import type { ThreadId, ToolDescriptor } from "@vendoai/core";
+import type { ThreadId, ToolDescriptor } from "../../src/core/index.js";
 import { simulateReadableStream } from "ai";
 import { MockLanguageModelV3 } from "ai/test";
 import { expect, it } from "vitest";

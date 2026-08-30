@@ -35,7 +35,7 @@ import {
   type Principal,
   type RunContext,
   VENDO_APP_FORMAT,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import type { SandboxAdapter } from "../src/apps/index.js";
 import { e2bSandbox } from "../src/apps/index.js";
 import { claudeCode } from "../src/harnesses/claude-code/index.js";

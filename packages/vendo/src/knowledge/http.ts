@@ -1,4 +1,4 @@
-import { VendoError, type KnowledgeAdapter, type KnowledgePosture } from "@vendoai/core";
+import { VendoError, type KnowledgeAdapter, type KnowledgePosture } from "../core/index.js";
 import { knowledgeWireAdapter } from "./wire.js";
 
 /** BYO defaults: the least a wire endpoint can promise — search + status,

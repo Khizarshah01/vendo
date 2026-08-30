@@ -19,7 +19,7 @@
  * the brain up by.
  */
 import { automationsInternals, createAutomations } from "../automations/index.js";
-import { VendoError, type Principal, type RunContext } from "@vendoai/core";
+import { VendoError, type Principal, type RunContext } from "../core/index.js";
 import { agentComposition, type AgentComposition, type VendoAgent } from "./agent.js";
 import { agentAutomationPlan } from "./automations.js";
 import { awayRunner } from "./away.js";

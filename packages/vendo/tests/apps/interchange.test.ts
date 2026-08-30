@@ -1,19 +1,19 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 import {
   type RunContext,
   type ToolRegistry,
   VENDO_APP_FORMAT,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type {
   AppDocument,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import {
   validateAppDocument,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { unzipSync, zipSync } from "fflate";
 import { describe, expect, it } from "vitest";
 import { createApps } from "../../src/apps/index.js";
-import { seedComponentName } from "@vendoai/core/apps";
+import { seedComponentName } from "../../src/core/apps/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";
 import { screenDocument } from "../../src/apps/testing/screen-document.js";

@@ -9,7 +9,7 @@
  * restriction entirely, unset leaves the minimum alone — and where the one
  * audit row per box boot is written.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../core/index.js";
 
 export type EgressConfig = readonly string[] | "all" | undefined;
 

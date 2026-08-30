@@ -1,7 +1,7 @@
 import type {
   AppDocument,
   SeedPort,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import {
   seedBaselineSchema,
@@ -10,7 +10,7 @@ import {
 } from "../../src/apps/index.js";
 import {
   seedDrift,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 
 const capturedAt = "2026-07-11T12:00:00.000Z";
 

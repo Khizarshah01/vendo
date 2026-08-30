@@ -1,5 +1,5 @@
-import { VENDO_POLICY_FORMAT, VendoError } from "@vendoai/core";
-import type { Guard, ToolRegistry } from "@vendoai/core";
+import { VENDO_POLICY_FORMAT, VendoError } from "../../src/core/index.js";
+import type { Guard, ToolRegistry } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { policyFileSchema, policyRuleSchema } from "../../src/guard/types.js";

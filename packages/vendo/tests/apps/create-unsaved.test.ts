@@ -2,7 +2,7 @@ import {
   type RunContext,
   type ToolRegistry,
   type VendoViewPart,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createApps, type AppsRuntime } from "../../src/apps/index.js";
 import { authoringAssembler } from "../../src/apps/testing/screen-assembler.js";

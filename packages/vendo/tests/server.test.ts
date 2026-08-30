@@ -10,11 +10,11 @@ import {
   VENDO_POLICY_FORMAT,
   VENDO_TREE_FORMAT,
   VendoError,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import {
   type ComponentCatalog,
   type ComponentRegistry,
-} from "@vendoai/core/apps";
+} from "../src/core/apps/index.js";
 import type { SandboxAdapter } from "../src/apps/index.js";
 import type { Connector } from "../src/actions/index.js";
 import type { ConnectionsService } from "../src/connections.js";

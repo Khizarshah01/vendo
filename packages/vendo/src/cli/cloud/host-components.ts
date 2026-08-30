@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import { join } from "node:path";
 import { capturedHostComponentSchema, capturedModuleSchema, type CapturedHostComponent } from "../../actions/index.js";
-import type { Json } from "@vendoai/core";
+import type { Json } from "../../core/index.js";
 import { hostedStore } from "../../store/index.js";
 
 /**

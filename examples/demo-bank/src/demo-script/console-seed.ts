@@ -35,8 +35,8 @@
  *   to fill them is running real agent turns against the tenant;
  * - the org guard policy on the HOSTED store — console-managed (guard PR 789).
  */
-import type { RunRecord } from "@vendoai/core";
-import type { AuditEvent, AutomationRecord, AutomationTask, RunId, TriggerSource } from "@vendoai/core";
+import type { RunRecord } from "@vendoai/vendo/core";
+import type { AuditEvent, AutomationRecord, AutomationTask, RunId, TriggerSource } from "@vendoai/vendo/core";
 import { workspaceStore, type VendoStore } from "@vendoai/vendo/store";
 import { mapleDemoUsers } from "@/server/users";
 

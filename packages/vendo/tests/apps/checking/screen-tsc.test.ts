@@ -4,10 +4,10 @@
  */
 import type {
   JsonSchema,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import type {
   NormalizedCatalog,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { screenTypings } from "../../../src/apps/checking/screen-typings.js";
 import { screenTscFindings, __setCompilerForTests } from "../../../src/apps/checking/screen-tsc.js";

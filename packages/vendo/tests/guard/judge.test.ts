@@ -1,4 +1,4 @@
-import type { AuditEvent } from "@vendoai/core";
+import type { AuditEvent } from "../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createGuard, vendoAutoJudge } from "../../src/guard/index.js";
 import { createMemoryStore } from "./fixtures/memory-store.js";

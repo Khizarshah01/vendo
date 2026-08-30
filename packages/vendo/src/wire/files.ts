@@ -1,4 +1,4 @@
-import { UPLOAD_HEADER, VendoError } from "@vendoai/core";
+import { UPLOAD_HEADER, VendoError } from "../core/index.js";
 import { overCap } from "../user-files.js";
 import { json, route, type RouteEntry } from "./shared.js";
 

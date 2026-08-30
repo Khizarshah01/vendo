@@ -1,4 +1,4 @@
-import type { ToolSemantics } from "@vendoai/core";
+import type { ToolSemantics } from "../core/index.js";
 import { judgmentsFileSchema, overridesFileSchema, toolsFileSchema } from "./formats.js";
 
 /**

@@ -15,13 +15,13 @@
  *     verdict.
  */
 import { beforeAll, describe, expect, it } from "vitest";
-import type { JsonSchema } from "@vendoai/core";
+import type { JsonSchema } from "../../../src/core/index.js";
 import {
   bootScreen,
   flattenTree,
   KIT_COMPONENT_NAMES,
   warmScreenEngine,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import {
   checkComponentScreen,
   reviewComponentScreenInput,

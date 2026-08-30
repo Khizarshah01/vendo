@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import { secretsProviderConformance, storeAdapterConformance } from "@vendoai/core/conformance";
+import { secretsProviderConformance, storeAdapterConformance } from "../../src/core/conformance/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { createStore, envSecrets, secretStore, storeSecrets } from "../../src/store/index.js";

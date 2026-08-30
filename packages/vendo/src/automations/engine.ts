@@ -1,4 +1,4 @@
-import type { AgentRunners } from "@vendoai/core";
+import type { AgentRunners } from "../core/index.js";
 import { createArmingSurface } from "./arming-surface.js";
 import type { CreateSurfaceAccess } from "./create-surface.js";
 import { createEngineModules } from "./engine-context.js";

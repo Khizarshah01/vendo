@@ -1,5 +1,5 @@
 "use client"
-import { Remixable } from "@vendoai/ui/chrome"
+import { Remixable } from "@vendoai/vendo/ui/chrome"
 import { useToast } from "@/components/ui/toast"
 import { QuickActionsView } from "./quick-actions-view"
 

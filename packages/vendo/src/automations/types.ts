@@ -12,7 +12,7 @@ import {
   type AutomationRecord,
   type Json,
   type RunId,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { z } from "zod";
 import type { RunRecord } from "./index.js";
 

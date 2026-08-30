@@ -1,4 +1,4 @@
-import { safeErrorMessage, VendoError } from "@vendoai/core";
+import { safeErrorMessage, VendoError } from "../../../core/index.js";
 import type { SandboxAdapter, SandboxMachine } from "../sandbox.js";
 
 const DEFAULT_TIMEOUT_MS = 300_000;

@@ -1,4 +1,4 @@
-import { VendoError, type Principal } from "@vendoai/core";
+import { VendoError, type Principal } from "../core/index.js";
 import { handlePermissionRequest, type PermissionRequest, type VendoGuard } from "../guard/index.js";
 import { json, orgsCloudRequired, requestJson, route, string, type RouteEntry } from "./shared.js";
 

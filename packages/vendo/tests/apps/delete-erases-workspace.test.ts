@@ -4,9 +4,9 @@
  * database in `@vendoai/vendo/store` — what was missing is anyone calling it. That
  * call is what this proves, with its exact target.
  */
-import { engineOverAdapter, VENDO_APP_FORMAT, type RunContext, type StoreOps, type ToolRegistry } from "@vendoai/core";
+import { engineOverAdapter, VENDO_APP_FORMAT, type RunContext, type StoreOps, type ToolRegistry } from "../../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
-import type { AppDocument } from "@vendoai/core/apps";
+import type { AppDocument } from "../../src/core/apps/index.js";
 import { createApps } from "../../src/apps/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";

@@ -1,4 +1,4 @@
-import { CONNECTOR_DISCOVERY_TOOLS, VENDO_BASH_TOOL, type ToolRegistry } from "@vendoai/core";
+import { CONNECTOR_DISCOVERY_TOOLS, VENDO_BASH_TOOL, type ToolRegistry } from "./core/index.js";
 import { VENDO_TOOL_PACK_PREFIX } from "./tool-pack.js";
 
 /**

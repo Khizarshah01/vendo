@@ -1,4 +1,4 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../../src/core/index.js";
 /**
  * The checks floor STOPS a bad app at the commit path (design §7).
  *
@@ -30,12 +30,12 @@ import {
   VendoError,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import {
   type AppDocument,
   type Check,
   type Finding,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { createApps, type AppsRuntime } from "../../../src/apps/index.js";
 import { scriptedAssembler, type AssemblerAnswer } from "../../../src/apps/testing/screen-assembler.js";

@@ -6,8 +6,8 @@
  * slot twice leaks no resources on its way to the error.
  */
 import { agentComposition, type AgentComposition } from "./turn/index.js";
-import { unsupportedRouteParams } from "@vendoai/core/apps";
-import { VendoError } from "@vendoai/core";
+import { unsupportedRouteParams } from "./core/apps/index.js";
+import { VendoError } from "./core/index.js";
 import { cloudDirectory } from "./cloud-directory.js";
 import type { VendoComposition } from "./compose-context.js";
 import { cloudKeyOptions } from "./compose-selection.js";

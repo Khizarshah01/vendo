@@ -19,7 +19,7 @@
  * `memories` is the composition's memory adapter — each scoped to this subject,
  * which is the one thing this file adds.
  */
-import { VendoError, type Json, type Principal, type ThreadId } from "@vendoai/core";
+import { VendoError, type Json, type Principal, type ThreadId } from "../core/index.js";
 import { threadMessageStore, threadStore } from "../store/index.js";
 import type { UIMessage } from "ai";
 import { createTurns, type Turns } from "./interruptions.js";

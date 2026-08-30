@@ -10,7 +10,7 @@
  * turn), and the runtime's `addUsage` folds them — the per-hire receipt rows
  * are gone (Option 1, 2026-08-09).
  */
-import type { AuditEvent, ThreadId } from "@vendoai/core";
+import type { AuditEvent, ThreadId } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { vendo } from "../../../src/harnesses/vendo/vendo.js";
 import { createHarnessRuntime } from "../../../src/harnesses/runtime.js";

@@ -1,6 +1,6 @@
 import {
   KIT_SCREEN_COMPONENT_NAMES,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { wirePropNames } from "../../src/apps/checking/prewired-schema.js";
 

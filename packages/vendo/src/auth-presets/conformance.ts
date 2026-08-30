@@ -1,11 +1,11 @@
-import { authMaterialSchema, principalSchema, publicBase, type AuthMaterial, type Json, type Membership, type PermissionGrant, type Principal } from "@vendoai/core";
-import type { ConformanceSuite } from "@vendoai/core/conformance";
+import { authMaterialSchema, principalSchema, publicBase, type AuthMaterial, type Json, type Membership, type PermissionGrant, type Principal } from "../core/index.js";
+import type { ConformanceSuite } from "../core/conformance/index.js";
 import type { HostAuthPreset } from "./shared.js";
 
 /**
  * 09-vendo §2.1 — executable three-seam checks for a HostAuthPreset: the preset
  * must behave exactly like the hand-written per-seam trio it replaces. Built on
- * the core conformance kit's framework-agnostic shape (`@vendoai/core/conformance`),
+ * the core conformance kit's framework-agnostic shape (`@vendoai/vendo/core/conformance`),
  * so every named preset (authJs today; clerk/supabase/auth0/jwt as they land)
  * runs the SAME suite: mount with `for (const c of suite.cases) it(c.name, c.run)`
  * or execute via `runConformance`.

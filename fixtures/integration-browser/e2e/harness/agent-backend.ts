@@ -2,7 +2,7 @@
  * The STANDALONE agent leg: a real `agent()` behind a real `agentHandler()`, on
  * its own loopback listener, with nothing stubbed between it and the page.
  *
- * The browser half is `useVendoChat` (@vendoai/ui); this is the half it talks
+ * The browser half is `useVendoChat` (@vendoai/vendo/ui); this is the half it talks
  * to. Both are real, which is the whole point — this repo has shipped a dead
  * feature more than once because the producer and the consumer each mocked the
  * other and could therefore never disagree (CLAUDE.md).
@@ -17,7 +17,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import type { AddressInfo } from "node:net";
 import { agent, agentHandler, tool } from "@vendoai/vendo";
-import type { Harness } from "@vendoai/core";
+import type { Harness } from "@vendoai/vendo/core";
 import { createStore } from "@vendoai/vendo/store";
 
 const BASE_PATH = "/api/agent";

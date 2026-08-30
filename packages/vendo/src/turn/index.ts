@@ -73,9 +73,9 @@ export {
   type ToolSource,
 } from "./tools.js";
 export type { EgressConfig } from "./egress.js";
-export type { RunContext } from "@vendoai/core";
+export type { RunContext } from "../core/index.js";
 /** The turn contract, from the one package a host installed. It is DEFINED in
- *  `@vendoai/core` — one definition, every block speaks it — and re-exported
+ *  `@vendoai/vendo/core` — one definition, every block speaks it — and re-exported
  *  here so nobody has to add a second dependency to name what a turn returned.
  *  `TurnResult` is the exception, and only because core cannot name the `Turn`
  *  its `resume()` hands back: turn.ts binds that one parameter and nothing
@@ -87,11 +87,11 @@ export type {
   Question,
   ResumeOptions,
   TurnUsage,
-} from "@vendoai/core";
+} from "../core/index.js";
 export type { TurnResult } from "./turn.js";
-export { decisionSchema, decisionsSchema, interruptionSchema, questionSchema } from "@vendoai/core";
+export { decisionSchema, decisionsSchema, interruptionSchema, questionSchema } from "../core/index.js";
 /** The header `respond()` and `session.stream()` return the conversation's id
- *  on, and the one `@vendoai/ui` reads it from. Named, not spelled out, so a
+ *  on, and the one `@vendoai/vendo/ui` reads it from. Named, not spelled out, so a
  *  host and the browser cannot drift onto two literals. */
 export { THREAD_ID_HEADER, type UsageTotals } from "../harnesses/index.js";
 /** The default engine, from the one package a host installed — DEFINED in

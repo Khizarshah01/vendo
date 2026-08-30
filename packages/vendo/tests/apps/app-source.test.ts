@@ -22,11 +22,11 @@ import {
   type Membership,
   type RunContext,
   type WorkspaceFs,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   type AppDocument,
   type AppSourceFile,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   appMountFor,

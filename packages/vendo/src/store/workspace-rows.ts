@@ -1,10 +1,10 @@
-import { WORKSPACE_INLINE_MAX_BYTES, appRootPath, VendoError, type AppMount, type FilesAdapter, type IsoDateTime } from "@vendoai/core";
+import { WORKSPACE_INLINE_MAX_BYTES, appRootPath, VendoError, type AppMount, type FilesAdapter, type IsoDateTime } from "../core/index.js";
 import type { Db } from "./db.js";
 import { escapeLike, iso, text } from "./helpers/utils.js";
 
 /** Build contract §3.3 — inline in `content` up to this size; past it the row
     carries a `blob_ref` into the files adapter instead. */
-export { WORKSPACE_INLINE_MAX_BYTES } from "@vendoai/core";
+export { WORKSPACE_INLINE_MAX_BYTES } from "../core/index.js";
 
 /** Build contract §3.3 — retention per path, same as app history. */
 export const WORKSPACE_HISTORY_LIMIT = 50;
@@ -12,7 +12,7 @@ export const WORKSPACE_HISTORY_LIMIT = 50;
 /** Build contract §9.7 — the mount type and the one derivation of an app's root
     path both live in core now: `@vendoai/vendo/apps` projects an app into a workspace
     and has to compute the same address this file moves rows between. */
-export type { AppMount } from "@vendoai/core";
+export type { AppMount } from "../core/index.js";
 
 const mountOwner = (mount: AppMount): string =>
   mount.kind === "user" ? mount.subject : mount.org;

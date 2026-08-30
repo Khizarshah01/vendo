@@ -1,4 +1,4 @@
-import type { KnowledgeDoc } from "@vendoai/core";
+import type { KnowledgeDoc } from "@vendoai/vendo/core";
 
 /** Knowledge K1 — Maple's demo corpus for the `vendo_knowledge_search` tool:
     product docs, glossary/api rows for schema lookups, and one INTERNAL doc

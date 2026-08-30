@@ -1,7 +1,7 @@
 import { join, resolve } from "node:path";
 import { stdin, stdout } from "node:process";
 import { vendoSync, type SyncReportWithWarnings } from "../actions/sync/public.js";
-import type { ToolImpact } from "@vendoai/core";
+import type { ToolImpact } from "../core/index.js";
 import { pushSyncReport } from "./cloud/services.js";
 import type { JudgmentPassOptions } from "./judge/pass.js";
 import { createPrettyOutput, usePrettyOutput, type PrettyOutput } from "./pretty.js";

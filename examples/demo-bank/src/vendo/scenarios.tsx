@@ -1,4 +1,4 @@
-import type { VendoThreadProps } from "@vendoai/ui/chrome";
+import type { VendoThreadProps } from "@vendoai/vendo/ui/chrome";
 
 /** The card form of a thread suggestion (chrome does not re-export
  *  VendoSuggestionCard by name, so derive it from the prop). */

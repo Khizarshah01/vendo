@@ -29,11 +29,11 @@ import {
   safeErrorMessage,
   type AppId,
   type TurnTools,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   SCREEN_FILE,
   type Finding,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { hotPathAppId } from "./render-seam.js";
 
 /** The verb's name on the one registry (`@vendoai/vendo` `vendo-verbs.ts`). */

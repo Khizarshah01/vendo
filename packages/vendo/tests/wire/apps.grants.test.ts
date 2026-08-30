@@ -1,4 +1,4 @@
-import type { AccessLevel, AppGrantRecord, Membership, RunContext } from "@vendoai/core";
+import type { AccessLevel, AppGrantRecord, Membership, RunContext } from "../../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { appRoutes } from "../../src/wire/apps.js";
 import { dispatchRoutes, routeSegments, type WireDeps } from "../../src/wire/shared.js";

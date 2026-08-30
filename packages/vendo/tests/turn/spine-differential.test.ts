@@ -16,7 +16,7 @@
  * Every intended difference is named in {@link ALLOWED} with its reason.
  * Anything else fails.
  */
-import type { RunContext, ThreadId, ToolResult, TurnId } from "@vendoai/core";
+import type { RunContext, ThreadId, ToolResult, TurnId } from "../../src/core/index.js";
 import { createGuard } from "../../src/guard/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, storeFiles, threadMessageStore } from "../../src/store/index.js";

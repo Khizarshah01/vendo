@@ -1,4 +1,4 @@
-import { engineOverAdapter, type StoreAdapter, type StoreOps } from "@vendoai/core";
+import { engineOverAdapter, type StoreAdapter, type StoreOps } from "../../core/index.js";
 
 /**
  * Vendo's OWN drawers — app rows, grants, placements, history, the parked

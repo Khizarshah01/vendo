@@ -16,7 +16,7 @@ import {
   type PermissionGrant,
   type RunContext,
   type ToolOutcome,
-} from "@vendoai/core";
+} from "./core/index.js";
 import { createByoApprovals } from "./byo-approvals.js";
 import type { VendoActionsConfig, VendoComposition } from "./compose-context.js";
 import { selectConnectedAccounts, selectConnectors } from "./compose-selection.js";

@@ -1,4 +1,4 @@
-import { orgOfPath, type RunContext } from "@vendoai/core";
+import { orgOfPath, type RunContext } from "./core/index.js";
 import { parseOrgPolicyFile, type PolicyRule } from "./guard/index.js";
 import { workspaceStore, type VendoStore } from "./store/index.js";
 

@@ -2,7 +2,7 @@
  * §9.9's stop sentences, in one place — the list, the fire-time gate and the
  * stopped run row all print them and have to match byte for byte.
  */
-import { humanizeToolName, type AutomationRecord } from "@vendoai/core";
+import { humanizeToolName, type AutomationRecord } from "../core/index.js";
 import type { Sponsorship } from "./sponsorship.js";
 
 /** What to CALL an automation in a sentence a person reads. A record has no

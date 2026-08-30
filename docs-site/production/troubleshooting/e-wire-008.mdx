@@ -5,7 +5,7 @@ description: "Doctor warns when no <VendoProvider> is found on an unrecognized-f
 ---
 
 ```text wiring/client
-warning: no <VendoProvider> found in the host source — the @vendoai/ui hooks
+warning: no <VendoProvider> found in the host source — the @vendoai/vendo/ui hooks
 and embeds need it; ignore this if the host renders a fully custom surface
 ```
 
@@ -20,12 +20,12 @@ blocks an install.
 
 Your host isn't recognized as Next.js or Express, so doctor scanned your
 source generically for a `<VendoProvider` element and found none. The
-`@vendoai/ui` hooks and embeds throw at runtime without that context, so
+`@vendoai/vendo/ui` hooks and embeds throw at runtime without that context, so
 doctor flags its absence.
 
 ## The fix
 
-If you use `@vendoai/ui` hooks or embeds anywhere, wrap the client app in
+If you use `@vendoai/vendo/ui` hooks or embeds anywhere, wrap the client app in
 `<VendoProvider>`.
 
 ```tsx client/main.tsx {1,5}
@@ -40,7 +40,7 @@ export function Root() {
 }
 ```
 
-If your host drives a fully custom surface without `@vendoai/ui` at all,
+If your host drives a fully custom surface without `@vendoai/vendo/ui` at all,
 this warning is safe to ignore.
 
 ## Related errors

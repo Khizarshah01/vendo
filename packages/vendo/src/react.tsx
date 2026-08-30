@@ -3,8 +3,8 @@
 // Named re-exports, not `export *`: this file is a "use client" boundary, and
 // Next's flight loader builds the client-reference manifest by statically
 // enumerating a client module's named exports — it cannot do that through
-// `export *`. This list must stay in exact parity with @vendoai/ui's public
-// surface (packages/ui/src/index.ts); react-export-parity.test.ts fails loudly
+// `export *`. This list must stay in exact parity with @vendoai/vendo/ui's public
+// surface (packages/vendo/src/ui/index.ts); react-export-parity.test.ts fails loudly
 // if a future ui export is missing here.
 export {
   // client.ts
@@ -118,11 +118,11 @@ export {
   type ThreadSummary,
   type GuardPosture,
   type VendoStatus,
-} from "@vendoai/ui";
+} from "./ui/index.js";
 // The agent conversation panel — re-exported from the
 // chrome subpath so the init-scaffolded layout wrapper can import everything
 // from "@vendoai/vendo/react": hosts only get @vendoai/vendo as a direct
-// dependency, and under pnpm strict linking the transitive "@vendoai/ui/chrome"
+// dependency, and under pnpm strict linking the transitive "@vendoai/vendo/ui/chrome"
 // does not resolve for them (same TS2307 story as the registry's
 // ComponentRegistry import).
-export { VendoOverlay, type VendoOverlayProps } from "@vendoai/ui/chrome";
+export { VendoOverlay, type VendoOverlayProps } from "./ui/chrome/index.js";

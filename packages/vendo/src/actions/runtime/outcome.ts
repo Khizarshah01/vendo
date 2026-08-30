@@ -1,4 +1,4 @@
-import type { Json, ToolOutcome } from "@vendoai/core";
+import type { Json, ToolOutcome } from "../../core/index.js";
 
 /** Shared ToolOutcome error envelope for the actions runtime. */
 export function error(code: string, message: string): ToolOutcome {

@@ -16,7 +16,7 @@
  * console's to enforce; an over-cap doc is refused there and the uploader drops
  * its copy like any other undelivered batch.
  */
-import { canonicalJson, CONFIG_SURFACES, selectConfigSurface, sha256Hex, type ConfigSurfaceName } from "@vendoai/core";
+import { canonicalJson, CONFIG_SURFACES, selectConfigSurface, sha256Hex, type ConfigSurfaceName } from "./core/index.js";
 import { createBatchedUploader } from "./batched-uploader.js";
 
 const REPORT_PATH = "/api/v1/config/report";

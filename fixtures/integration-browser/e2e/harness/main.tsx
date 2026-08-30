@@ -7,7 +7,7 @@
  *  cookie so present host-tool calls execute for real (04 §4).
  */
 import { createVendoClient, useApps, VendoProvider } from "@vendoai/vendo/react";
-import { VendoThread } from "@vendoai/ui/chrome";
+import { VendoThread } from "@vendoai/vendo/ui/chrome";
 import { createRoot } from "react-dom/client";
 import { McpAppsHost } from "./mcp-host.tsx";
 

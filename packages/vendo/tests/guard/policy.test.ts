@@ -1,5 +1,5 @@
-import { VENDO_BASH_TOOL, VENDO_POLICY_FORMAT, VendoError } from "@vendoai/core";
-import type { GuardDecision } from "@vendoai/core";
+import { VENDO_BASH_TOOL, VENDO_POLICY_FORMAT, VendoError } from "../../src/core/index.js";
+import type { GuardDecision } from "../../src/core/index.js";
 import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";

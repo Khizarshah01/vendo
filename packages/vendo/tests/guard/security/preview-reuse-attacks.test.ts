@@ -1,4 +1,4 @@
-import type { RiskLabel } from "@vendoai/core";
+import type { RiskLabel } from "../../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createGuard } from "../../../src/guard/guard.js";
 import type { PolicyRule } from "../../../src/guard/types.js";

@@ -3,7 +3,7 @@ import {
   engineAppHistory,
   tenantConnectorSecretPrefix,
   type FilesAdapter,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { escapeLike } from "./helpers/utils.js";
 import { dbFor, type VendoStore } from "./store.js";
 import { invalid } from "./validate.js";

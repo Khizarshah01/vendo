@@ -17,7 +17,7 @@ import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { nodeBridge } from "@vendoai-fixtures/test-kit/node-bridge";
-import { type Principal } from "@vendoai/core";
+import { type Principal } from "@vendoai/vendo/core";
 import { VENDO_TOOLS_FORMAT } from "@vendoai/vendo/actions";
 import type { HostOAuthAdapter } from "@vendoai/vendo/mcp";
 import { createStore, type VendoStore } from "@vendoai/vendo/store";

@@ -1,4 +1,4 @@
-import type { Json, Principal } from "@vendoai/core";
+import type { Json, Principal } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createContextResolver } from "../../src/wire/context.js";
 import type { WireDeps } from "../../src/wire/shared.js";

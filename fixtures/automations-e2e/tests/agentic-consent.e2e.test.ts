@@ -22,7 +22,7 @@
  */
 import { planAutomation, type HostToolInfo } from "@vendoai/vendo/apps";
 import { scriptedLanguageModel } from "@vendoai/vendo/apps/testing";
-import { withheldFromUnattended } from "@vendoai/core";
+import { withheldFromUnattended } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStack, hostTools, ownerCtx, resetFixture } from "../src/harness.js";
 import { ADA } from "../src/support.js";

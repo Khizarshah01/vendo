@@ -1,4 +1,4 @@
-import { VendoError, type Json, type Principal } from "@vendoai/core";
+import { VendoError, type Json, type Principal } from "../../src/core/index.js";
 import { Client } from "pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";

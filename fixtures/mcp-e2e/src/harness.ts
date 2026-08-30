@@ -3,10 +3,10 @@ import { createServer, type IncomingMessage, type ServerResponse } from "node:ht
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { inject } from "vitest";
-import { type AppDocument, type PolicyConfig, type Principal, sha256Hex, type ToolRegistry } from "@vendoai/core";
+import { type AppDocument, type PolicyConfig, type Principal, sha256Hex, type ToolRegistry } from "@vendoai/vendo/core";
 import type {
   VendoTheme,
-} from "@vendoai/core/apps";
+} from "@vendoai/vendo/core/apps";
 import { createActions } from "@vendoai/vendo/actions";
 import { createApps, sealBundleBlobs, SCREEN_FILE, type AppsRuntime } from "@vendoai/vendo/apps";
 import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";

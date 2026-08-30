@@ -92,9 +92,9 @@ packages/*/.vendo/data/
 packages/vendo/.type-surface.*.ts
 packages/vendo/.wire-parity.*.ts
 
-# chrome export-surface test fixtures (packages/ui/test/chrome/export-surface.test.ts)
+# chrome export-surface test fixtures (packages/vendo/tests/ui/chrome/export-surface.test.ts)
 # — same afterEach cleanup, same interrupted-run hazard.
-packages/ui/.chrome-surface.*.ts
+packages/vendo/.chrome-surface.*.ts
 
 # Coverage reports (v8 / vitest)
 coverage/
@@ -136,8 +136,8 @@ design-canvas/
 packages/vendo/box/claude-turn.mjs
 
 # The screen engine's WebAssembly, copied out of the wasmfile dependency by
-# @vendoai/core's build (and shipped by its "files") — generated, never authored.
-packages/core/quickjs.wasm
+# @vendoai/vendo/core's build (and shipped by its "files") — generated, never authored.
+packages/vendo/quickjs.wasm
 
 # Agent working notes and factory process exhaust — useful locally, not shipped.
 # Lane contracts, raw proof logs, and eval run dumps stay on their branches.

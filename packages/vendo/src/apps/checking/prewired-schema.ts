@@ -8,12 +8,12 @@
  *  would survive into props and be silently dropped at render — this map is
  *  what the floor rejects them against.
  *
- *  SOURCE OF TRUTH: `KIT_SPECS` in `@vendoai/core`. V4 retired the legacy
+ *  SOURCE OF TRUTH: `KIT_SPECS` in `@vendoai/vendo/core`. V4 retired the legacy
  *  prewired/branded family, so there is nothing left to hand-write here. */
 import {
   KIT_SCREEN_COMPONENT_NAMES,
   kitPropClasses,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 
 /** Allowed prop-name set per wire built-in, for validation. */
 export const wirePropNames: ReadonlyMap<string, ReadonlySet<string>> = new Map(

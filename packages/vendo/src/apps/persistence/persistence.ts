@@ -4,14 +4,14 @@ import {
   type RecordQuery,
   type RecordStore,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   admitAppDocument,
   validateAppDocument,
   type AdmissionOrigin,
   type AppData,
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { EngineOps } from "./engine.js";
 
 /** The app row's drawer. A literal per file was fine while each file bound one

@@ -6,12 +6,12 @@
  */
 import {
   VENDO_APP_FORMAT,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import {
   SCREEN_FILE,
   type AppDocument,
   type NormalizedCatalog,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { screenTypesCheck } from "../../../src/apps/checking/facts.js";
 import { createCheckingLayer } from "../../../src/apps/checking/layer.js";

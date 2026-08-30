@@ -46,7 +46,7 @@ import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { chmodSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../core/index.js";
 import type { ClaudeTurnEvent } from "./claude-turn.js";
 import type { SyncFile, TreeState } from "../materialize.js";
 import { emptyTree, inWritableMount } from "../materialize.js";

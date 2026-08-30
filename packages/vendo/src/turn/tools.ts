@@ -18,7 +18,7 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { asSchema, type FlexibleSchema, type InferSchema } from "ai";
 
 /** What `execute` is handed. A zod (or any standard-schema) `inputSchema` types

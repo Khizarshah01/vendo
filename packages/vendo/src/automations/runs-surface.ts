@@ -5,7 +5,7 @@
  * Owner / agent / automation views are FILTERS over the one ledger, never
  * separate tables.
  */
-import { VendoError, type RunId } from "@vendoai/core";
+import { VendoError, type RunId } from "../core/index.js";
 import type { AutomationRowsAccess } from "./automation-rows.js";
 import type { EngineBase } from "./engine-context.js";
 import type { AutomationsEngine, RunRecord } from "./index.js";

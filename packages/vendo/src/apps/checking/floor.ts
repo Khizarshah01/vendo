@@ -14,16 +14,16 @@ import {
   type AppId,
   type Json,
   type TreeNode,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
   type Check,
   type ComponentPaintResult,
   type Finding,
   type AppFloor,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 // The screen engine, by its own path: the contract door does not carry it yet.
-import { SCREEN_FILE } from "@vendoai/core/apps";
+import { SCREEN_FILE } from "../../core/apps/index.js";
 import { PORTED_SCREEN_DIALECT, checkComponentScreen, screenName } from "./component-screen.js";
 import { screenCatalog } from "./screen-typings.js";
 import type { FloorDependencies } from "./deps.js";

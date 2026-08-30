@@ -1,4 +1,4 @@
-import type { PermissionGrant } from "@vendoai/core";
+import type { PermissionGrant } from "@vendoai/vendo/core";
 import { authJs } from "@vendoai/vendo/auth/auth-js";
 import { encode } from "next-auth/jwt";
 import { afterEach, describe, expect, it, vi } from "vitest";

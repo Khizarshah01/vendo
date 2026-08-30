@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core"
+import { VendoError } from "@vendoai/vendo/core"
 import { encode } from "next-auth/jwt"
 import { describe, expect, it, vi } from "vitest"
 import { GET } from "../../../../../src/app/api/vendo/text-link/route"

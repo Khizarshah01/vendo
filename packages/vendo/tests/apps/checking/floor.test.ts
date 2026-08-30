@@ -4,13 +4,13 @@
  * guarantees that hold no matter which harness built the app or whether it
  * bothered to review its own work.
  */
-import { VENDO_APP_FORMAT } from "@vendoai/core";
+import { VENDO_APP_FORMAT } from "../../../src/core/index.js";
 import {
   SCREEN_FILE,
   type AppDocument,
   type Check,
   type CheckInput,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { createCheckingLayer } from "../../../src/apps/checking/layer.js";
 import { inlineSourceFile } from "../../../src/apps/persistence/app-source.js";

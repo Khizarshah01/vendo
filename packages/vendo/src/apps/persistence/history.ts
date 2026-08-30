@@ -4,10 +4,10 @@ import {
   isoDateTimeSchema,
   type AppId,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { z } from "zod";
 import type { EngineOps } from "./engine.js";
 import { APPS_COLLECTION, documentFromRecord, listAllEngineRecords, validateDocument } from "./persistence.js";

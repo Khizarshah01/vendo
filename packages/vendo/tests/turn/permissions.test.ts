@@ -5,7 +5,7 @@
  * live guard state and that everything else — the MCP door above all — comes
  * back undefined for the host's next handler.
  */
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../../src/core/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";

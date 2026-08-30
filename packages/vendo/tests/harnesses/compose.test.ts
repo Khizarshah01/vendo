@@ -4,7 +4,7 @@
  * boot-time errors ('Claude Code needs a sandbox adapter'), never runtime
  * surprises."
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { assertHarnessComposable } from "../../src/harnesses/compose.js";
 import { defineHarness } from "../../src/harnesses/define.js";

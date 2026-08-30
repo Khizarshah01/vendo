@@ -5,7 +5,7 @@
  *    LOUDLY and asks again (the guard binding, not a cached decision, gates the
  *    run).
  */
-import type { CreateAutomationInput, Principal } from "@vendoai/core";
+import type { CreateAutomationInput, Principal } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStack, ownerCtx, resetFixture } from "../src/harness.js";
 import { ADA, BOB, enableAndApprove, fixtureInvoices, runCount } from "../src/support.js";

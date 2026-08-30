@@ -23,7 +23,7 @@
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { beforeAll, describe, expect, it } from "vitest";
-import { warmScreenEngine } from "@vendoai/core/apps";
+import { warmScreenEngine } from "../../../src/core/apps/index.js";
 import { checkComponentScreen } from "../../../src/apps/checking/component-screen.js";
 import { edgeToolchain, EDGE_TYPESCRIPT_VERSION } from "../../../src/sandbox/edge/index.js";
 import { runToolchainConformance } from "./toolchain-conformance.test-util.js";

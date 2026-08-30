@@ -1,5 +1,5 @@
 import { genericJwtPreset, verifyHs256 } from "../../src/actions/presets/index.js";
-import type { PermissionGrant } from "@vendoai/core";
+import type { PermissionGrant } from "../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 // jwt is pinned via its own module — the same file the
 // "@vendoai/vendo/auth/jwt" subpath re-exports (corpus-triage Task 9);

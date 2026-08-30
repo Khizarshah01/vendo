@@ -14,7 +14,7 @@ import {
   type ReservedCollection,
   type VendoRecord,
   type Watermark,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { Db } from "./db.js";
 import { createRecordStore, requireRevision, type DedicatedRecordTable } from "./records.js";
 import {
@@ -53,7 +53,7 @@ import {
   type ThreadData,
 } from "./validate.js";
 
-/** Declared in `@vendoai/core` — the console reads them from another process —
+/** Declared in `@vendoai/vendo/core` — the console reads them from another process —
  *  and re-exported here because this router is where the store's callers reach
  *  for them. */
 export { DEDICATED_RECORD_COLLECTIONS, RESERVED_COLLECTIONS, type ReservedCollection };

@@ -1,7 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join, relative } from "node:path";
 import { z } from "zod";
-import { fieldSemanticSchema, gradedRiskLabelSchema, jsonSchemaSchema, type JsonSchema } from "@vendoai/core";
+import { fieldSemanticSchema, gradedRiskLabelSchema, jsonSchemaSchema, type JsonSchema } from "../../core/index.js";
 import {
   VENDO_JUDGMENTS_FORMAT,
   applyJudgment,

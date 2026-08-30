@@ -7,7 +7,7 @@ import {
   type Json,
   type RunContext,
   type UIPayload,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   buildInFlight,
   componentSources,
@@ -15,11 +15,11 @@ import {
   type ComponentPaintResult,
   type PendingSurface,
   type Tree,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 // The screen engine, by its own path: the contract door does not carry it yet.
-import { SCREEN_FILE } from "@vendoai/core/apps";
+import { SCREEN_FILE } from "../../core/apps/index.js";
 import { formingTreeOf } from "./forming.js";
-import { bundleOf, seedDrift, type SeedBaseline } from "@vendoai/core/apps";
+import { bundleOf, seedDrift, type SeedBaseline } from "../../core/apps/index.js";
 import type { OpenSurface } from "../runtime/runtime.js";
 
 /**

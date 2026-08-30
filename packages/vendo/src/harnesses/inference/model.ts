@@ -2,7 +2,7 @@ import { createRequire } from "node:module";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { acceptsSamplingParams, UNKNOWN_MODEL_MAX_OUTPUT_TOKENS } from "../../apps/index.js";
-import { consoleUrlFromEnv, log, meterExhaustedFromError, VendoError } from "@vendoai/core";
+import { consoleUrlFromEnv, log, meterExhaustedFromError, VendoError } from "../../core/index.js";
 import type { LanguageModel } from "ai";
 import {
   describeDevCredential,
@@ -41,7 +41,7 @@ import {
  */
 
 /** The model slots the runtime composes — one per real job, matching the seats
- *  in `@vendoai/core` (`agent` is what the `default` seat rides). `extract`
+ *  in `@vendoai/vendo/core` (`agent` is what the `default` seat rides). `extract`
  *  never runs in-process; it exists so the CLI extraction ladder shares the
  *  same pin names. */
 export type VendoModelSlot = "agent" | "apps" | "review" | "judge" | "extract";

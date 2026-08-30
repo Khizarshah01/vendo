@@ -31,7 +31,7 @@ import {
   type Principal,
   type RunContext,
   type WorkspaceFs,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createGuard } from "../src/guard/index.js";
 import { wrapWorkspaceForRender } from "../src/apps/index.js";
 import { appAccess, createStore, workspaceStore, type VendoStore } from "../src/store/index.js";

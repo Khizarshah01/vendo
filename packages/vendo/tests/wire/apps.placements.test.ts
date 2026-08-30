@@ -1,5 +1,5 @@
-import type { RunContext } from "@vendoai/core";
-import { createVendoClient } from "@vendoai/ui";
+import type { RunContext } from "../../src/core/index.js";
+import { createVendoClient } from "../../src/ui/index.js";
 import { describe, expect, it } from "vitest";
 import { appRoutes } from "../../src/wire/apps.js";
 import { dispatchRoutes, routeSegments, type WireContext, type WireDeps } from "../../src/wire/shared.js";

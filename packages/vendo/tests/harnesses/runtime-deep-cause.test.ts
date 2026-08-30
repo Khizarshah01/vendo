@@ -7,7 +7,7 @@
  * that tells a refused connect from a dropped socket. Printing one hop down printed
  * a wrapper, which is the same three words the log already had.
  */
-import { VendoError, setLogger, type ThreadId, type VendoLogEvent } from "@vendoai/core";
+import { VendoError, setLogger, type ThreadId, type VendoLogEvent } from "../../src/core/index.js";
 import { afterEach, expect, test } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";
 import { memoryHarnessStateStore } from "../../src/harnesses/harness-state.js";

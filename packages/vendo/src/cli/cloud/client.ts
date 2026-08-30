@@ -3,7 +3,7 @@ import {
   deploymentIdentityHeaders,
   formatMeterExhausted,
   parseMeterExhausted,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   isSessionExpired,
   readCloudSession,
@@ -64,8 +64,8 @@ export class CloudError extends Error {
 
 // Base-URL resolution lives in core so server-side code (capability misses)
 // and this Node-only client resolve the same origin from the same inputs.
-export { resolveCloudBaseUrl, type CloudUrlOptions } from "@vendoai/core";
-import { resolveCloudBaseUrl, type CloudUrlOptions } from "@vendoai/core";
+export { resolveCloudBaseUrl, type CloudUrlOptions } from "../../core/index.js";
+import { resolveCloudBaseUrl, type CloudUrlOptions } from "../../core/index.js";
 
 export interface SessionStore {
   read(): Promise<CloudSession | null>;

@@ -7,7 +7,7 @@ import {
   type Membership,
   type Principal,
   type TenantDirectoryPayload,
-} from "@vendoai/core";
+} from "./core/index.js";
 
 /** The hosted tenant directory — the implementation the composition seam
  * (createVendo) puts in the `memberships` slot when VENDO_API_KEY fills a slot

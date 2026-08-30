@@ -1,4 +1,4 @@
-import type { PermissionGrant, Principal } from "@vendoai/core";
+import type { PermissionGrant, Principal } from "../../core/index.js";
 
 type Awaitable<T> = T | Promise<T>;
 export type SecretSource = string | (() => Awaitable<string | undefined>);

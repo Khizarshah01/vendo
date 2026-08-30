@@ -1,4 +1,4 @@
-import { VENDO_BASH_TOOL } from "@vendoai/core";
+import { VENDO_BASH_TOOL } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { PROMPT_TAUGHT_TOOLS } from "../src/compose-harness.js";
 

@@ -13,7 +13,7 @@
  * has been made twice on this seam, once on each side.
  */
 import { signedWebhookBytes, verifySignature } from "../src/automations/index.js";
-import { setLogger, type VendoLogEvent } from "@vendoai/core";
+import { setLogger, type VendoLogEvent } from "../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { deriveTickSecret, enrolForTicks, tickSecret } from "../src/tick-enrolment.js";
 

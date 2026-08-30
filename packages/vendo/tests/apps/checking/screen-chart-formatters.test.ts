@@ -16,7 +16,7 @@
  * "$285,000.00" with nobody writing the division down, and did, twice.
  */
 import { describe, expect, it } from "vitest";
-import type { JsonSchema } from "@vendoai/core";
+import type { JsonSchema } from "../../../src/core/index.js";
 import { checkComponentScreen, type ComponentScreenCheck } from "../../../src/apps/checking/component-screen.js";
 import type { HostToolInfo } from "../../../src/apps/checking/deps.js";
 

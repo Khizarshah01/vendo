@@ -4,7 +4,7 @@ import {
   type CreateAutomationInput,
   type Principal,
   type VendoError,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { createStore } from "../../src/store/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { describe, expect, it } from "vitest";

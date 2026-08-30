@@ -9,7 +9,7 @@ import {
   type KnowledgeContext,
   type KnowledgePosture,
   type KnowledgeStatus,
-} from "@vendoai/core";
+} from "../core/index.js";
 
 const DEFAULT_TIMEOUT_MS = 30_000;
 

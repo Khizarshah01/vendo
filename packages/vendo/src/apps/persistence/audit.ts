@@ -6,7 +6,7 @@ import type {
   RunContext,
   TriggerRef,
   TurnId,
-} from "@vendoai/core";
+} from "../../core/index.js";
 
 /**
  * 01-core §7 — the one mint for this package's "app-lifecycle" audit events

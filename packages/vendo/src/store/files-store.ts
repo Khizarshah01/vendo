@@ -1,4 +1,4 @@
-import { VendoError, type FilesAdapter } from "@vendoai/core";
+import { VendoError, type FilesAdapter } from "../core/index.js";
 import { createBlobStore } from "./blobs.js";
 import type { Db } from "./db-postgres.js";
 import { dbFor, type VendoStore } from "./store.js";

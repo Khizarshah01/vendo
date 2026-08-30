@@ -17,8 +17,8 @@ import {
   type StoreAdapter,
   type StoreOps,
   type ToolRegistry,
-} from "@vendoai/core";
-import { memoryStoreAdapter, memoryStoreOps } from "@vendoai/core/conformance";
+} from "../../src/core/index.js";
+import { memoryStoreAdapter, memoryStoreOps } from "../../src/core/conformance/index.js";
 import { describe, expect, it } from "vitest";
 import { createMcpDoor, type HostOAuthAdapter, type McpDoor } from "../../src/mcp/index.js";
 

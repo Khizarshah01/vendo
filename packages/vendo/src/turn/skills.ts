@@ -7,7 +7,7 @@
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { basename, join, relative, resolve, sep } from "node:path";
-import { SAFE_SKILL_NAME, VendoError, type Skill } from "@vendoai/core";
+import { SAFE_SKILL_NAME, VendoError, type Skill } from "../core/index.js";
 
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
 

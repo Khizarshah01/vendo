@@ -3,8 +3,8 @@ import {
   VendoError,
   type KnowledgeContext,
   type VendoErrorCode,
-} from "@vendoai/core";
-import { knowledgeAdapterConformance, memoryKnowledgeAdapter, runConformance } from "@vendoai/core/conformance";
+} from "../../src/core/index.js";
+import { knowledgeAdapterConformance, memoryKnowledgeAdapter, runConformance } from "../../src/core/conformance/index.js";
 import { cloudKnowledge } from "../../src/knowledge/cloud.js";
 import { fakeKnowledgeServer } from "../../src/knowledge/cloud.test-util.js";
 

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import type { Connector, ConnectorAccount } from "../src/actions/index.js";
 import { byoConnections, cloudConnections, unconfiguredConnections } from "../src/connections.js";
 

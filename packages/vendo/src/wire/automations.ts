@@ -1,5 +1,5 @@
 import type { RunStatus } from "../automations/index.js";
-import { RUN_STATUSES, VendoError } from "@vendoai/core";
+import { RUN_STATUSES, VendoError } from "../core/index.js";
 import { json, route, string, type RouteEntry } from "./shared.js";
 
 /** 07-automations / 09 §3 — the /automations wire area, one route per verb on

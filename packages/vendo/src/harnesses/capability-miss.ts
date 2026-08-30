@@ -9,7 +9,7 @@ import {
   type ToolCall,
   type ToolListing,
   type ToolOutcome,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { UIMessage } from "ai";
 
 export const CAPABILITY_MISS_TOOL_NAME = "vendo_report_capability_miss";

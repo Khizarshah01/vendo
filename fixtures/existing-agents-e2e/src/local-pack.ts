@@ -8,13 +8,13 @@ import path from "node:path";
  * publish set once, pin the whole closure to file:vendor/*.tgz via npm
  * overrides, add the two direct deps a BYO host declares. */
 export const VENDO_PACKAGE_NAMES = [
-  "@vendoai/core",
-  "@vendoai/ui",
+  "@vendoai/vendo/core",
+  "@vendoai/vendo/ui",
   "@vendoai/vendo",
   "vendoai",
 ] as const;
 
-const DIRECT_DEPENDENCIES = ["@vendoai/vendo", "@vendoai/ui"] as const;
+const DIRECT_DEPENDENCIES = ["@vendoai/vendo", "@vendoai/vendo/ui"] as const;
 
 export interface LocalTarball {
   name: string;

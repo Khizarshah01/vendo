@@ -11,10 +11,10 @@
 import {
   type ShapeType,
   type ToolSemantics,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { LanguageModel, SystemModelMessage } from "ai";
 import type { FloorDependencies } from "../checking/deps.js";
 import { modelCallParams } from "../runtime/model-params.js";

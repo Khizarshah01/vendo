@@ -5,7 +5,7 @@
  * catalog and the knowledge index. It rides the turn (`Turn.system`), so every
  * harness — the default one, a host's own — thinks on the same brief.
  */
-import { userPromptBlock, type Guard, type Harness, type RunContext } from "@vendoai/core";
+import { userPromptBlock, type Guard, type Harness, type RunContext } from "./core/index.js";
 
 /**
  * Which discovery rail a turn's harness actually carries — ONE derivation, for
@@ -50,7 +50,7 @@ Voice (design §3 — you are talking to a customer, not a developer)
 // hard way. The shape and lessons are adapted from OpenAI Codex CLI
 // (`openai/codex`, `codex-rs/core/gpt_5_1_prompt.md`, Apache-2.0: persistence,
 // plan-then-act), Gemini CLI (`google-gemini/gemini-cli`,
-// `packages/core/src/prompts/snippets.ts`, Apache-2.0: acting vs asking,
+// `packages/vendo/src/core/prompts/snippets.ts`, Apache-2.0: acting vs asking,
 // tool output as untrusted data) and the Claude Code prompt lineage (section
 // shape); the text is Vendo's own, written for Vendo's tools. Capability-
 // SPECIFIC teaching stays out: file discipline arrives with the file hands,

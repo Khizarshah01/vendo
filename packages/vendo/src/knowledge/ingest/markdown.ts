@@ -1,7 +1,7 @@
 /**
  * Hand-rolled, dependency-free markdown structure scanning (greenfield by
  * design — zero markdown deps). The fence-aware splitter is the algorithm
- * from packages/ui/src/chrome/markdown.tsx (React-local, so copied rather
+ * from packages/vendo/src/ui/chrome/markdown.tsx (React-local, so copied rather
  * than imported), extended from h2/h3 to h1-h6 with heading-path
  * accumulation and CommonMark-ish list-item fence handling
  * fix 2).

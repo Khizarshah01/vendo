@@ -19,7 +19,7 @@
  * survive `createUIMessageStream`'s deferral of `execute`, and a slot that is
  * silently empty is exactly the failure mode this file exists to close.
  */
-import type { AppId, Finding, Harness, TurnTools } from "@vendoai/core";
+import type { AppId, Finding, Harness, TurnTools } from "../core/index.js";
 
 /**
  * The host's own MCP door, as a harness that runs a MACHINE needs it.

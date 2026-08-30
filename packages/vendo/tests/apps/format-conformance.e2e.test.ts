@@ -1,7 +1,7 @@
 /**
  * THE FORMAT CONSTITUTION.
  *
- * The app format has mirrors — the contract, `@vendoai/core`'s pinned limits,
+ * The app format has mirrors — the contract, `@vendoai/vendo/core`'s pinned limits,
  * the manual the model reads (`skills/format-reference.ts`) and the public docs
  * page. Every one of them used to be maintained by hand, and they disagreed: the
  * manual promised "16 islands, 64 KB each" and never mentioned the 256 KB TOTAL
@@ -25,7 +25,7 @@ import {
   TREE_MAX_COMPONENT_SOURCE_BYTES as CORE_MAX_COMPONENT_SOURCE_BYTES,
   TREE_MAX_GENERATED_COMPONENTS as CORE_MAX_GENERATED_COMPONENTS,
   TREE_MAX_TOTAL_COMPONENT_BYTES as CORE_MAX_TOTAL_COMPONENT_BYTES,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   catalogPrompt,
   KIT_COMPONENT_NAMES,
@@ -37,7 +37,7 @@ import {
   TREE_MAX_COMPONENT_SOURCE_BYTES,
   TREE_MAX_GENERATED_COMPONENTS,
   TREE_MAX_TOTAL_COMPONENT_BYTES,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { VENDO_FORMAT_REFERENCE } from "../../src/apps/skills/format-reference.js";
 
 const KB = 1_024;

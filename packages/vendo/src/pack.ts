@@ -14,10 +14,10 @@ import {
   type VendoAppRef,
   type VendoToolEnvelope,
   type VendoViewStreamingToolCall,
-} from "@vendoai/core";
+} from "./core/index.js";
 import {
   makeReceiptSchema,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import {
   VENDO_DELEGATE_TOOL,
   VENDO_TOOL_PACK_PREFIX,

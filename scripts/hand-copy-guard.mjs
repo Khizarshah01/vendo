@@ -6,13 +6,13 @@
  *  metering-registry drift test, which is this gate's ancestor: it compares the
  *  metering registry against the REAL .sql files rather than a copy of them —
  *  see the console's AGENTS.md). This generalises the idea to the seam that
- *  produced nine defects at once — `@vendoai/core` exports a vocabulary, the
+ *  produced nine defects at once — `@vendoai/vendo/core` exports a vocabulary, the
  *  console spells the same words again by hand, one side gains a word, and
  *  nothing goes red. Every one of those nine sites carried a comment claiming
  *  parity. A comment asserting parity is not parity; this is.
  *
  *  THE RULE: a string-literal member set declared in cloud/console/** whose
- *  members EQUAL a set `@vendoai/core` exports is an error. Import core's.
+ *  members EQUAL a set `@vendoai/vendo/core` exports is an error. Import core's.
  *
  *  Equality, not containment, is the whole design. The nine defects were all
  *  SUBSETS — copies that had already lost a member — but subset is unusable as
@@ -124,7 +124,7 @@ const canon = (members) => [...new Set(members)].sort();
 const key = (members) => JSON.stringify(canon(members));
 
 const core = new Map();
-for (const file of gitFiles("packages/core/src/*.ts")) {
+for (const file of gitFiles("packages/vendo/src/core/*.ts")) {
   for (const set of memberSetsIn(file)) {
     if (!set.exported) continue;
     if (!core.has(key(set.members))) core.set(key(set.members), []);
@@ -142,9 +142,9 @@ for (const file of gitFiles("cloud/console/*.ts", "cloud/console/*.tsx")) {
 
 for (const copy of copies) {
   console.error(
-    `hand-copy-guard: ${copy.file}:${copy.line} ${copy.name} re-declares a set @vendoai/core already exports\n` +
+    `hand-copy-guard: ${copy.file}:${copy.line} ${copy.name} re-declares a set @vendoai/vendo/core already exports\n` +
       `    members: ${canon(copy.members).join(", ")}\n` +
-      `    import it from "@vendoai/core" instead: ${copy.exports.join(", ")}`,
+      `    import it from "@vendoai/vendo/core" instead: ${copy.exports.join(", ")}`,
   );
 }
 

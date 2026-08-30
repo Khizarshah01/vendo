@@ -3,8 +3,8 @@ import { join } from "node:path";
 import type { z } from "zod";
 import type { ExtractedTool } from "../actions/index.js";
 import { firstOpenApiSpec, openApiMountPath, vendoSync, type SyncReportWithWarnings } from "../actions/sync/public.js";
-import type { VendoThemeFont } from "@vendoai/core/apps";
-import type { ToolImpact } from "@vendoai/core";
+import type { VendoThemeFont } from "../core/apps/index.js";
+import type { ToolImpact } from "../core/index.js";
 import {
   pushHostComponents,
   readPushComponents,
@@ -250,7 +250,7 @@ export function printSyncReport(report: SyncReportWithWarnings, output: Output):
   // emit, so the wrappers it could not attribute are named here, not buried.
   const unattributed = report.pins.unattributed ?? [];
   if (unattributed.length > 0) {
-    output.error(`warning: ${unattributed.length} <Remixable> wrapper${unattributed.length === 1 ? " was" : "s were"} found but NOT captured — sync could not trace ${unattributed.length === 1 ? "its" : "their"} \`Remixable\` back to @vendoai/ui:`);
+    output.error(`warning: ${unattributed.length} <Remixable> wrapper${unattributed.length === 1 ? " was" : "s were"} found but NOT captured — sync could not trace ${unattributed.length === 1 ? "its" : "their"} \`Remixable\` back to @vendoai/vendo/ui:`);
     for (const line of unattributed) output.error(`  ${line}`);
   }
   if ((report.pins.ported ?? []).length > 0) {

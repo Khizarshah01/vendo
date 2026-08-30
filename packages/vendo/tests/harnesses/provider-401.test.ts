@@ -13,7 +13,7 @@
  * what to do about it — and, because that constant was spoken as prose, kept no
  * record of the failure at all.
  */
-import { VendoError, type ThreadId } from "@vendoai/core";
+import { VendoError, type ThreadId } from "../../src/core/index.js";
 import { APICallError } from "ai";
 import type { UIMessage } from "ai";
 import { MockLanguageModelV3 } from "ai/test";
@@ -154,7 +154,7 @@ describe("the credential ladder's fix survives the fold", () => {
   });
 
   /** …and it survives a REALM too. A host bundle can carry a second
-   *  `@vendoai/core` copy, whose VendoErrors are a different class: the gate's
+   *  `@vendoai/vendo/core` copy, whose VendoErrors are a different class: the gate's
    *  `instanceof` said no, and the one sentence that names the fix was replaced
    *  by the generic. The check is `name` + `code` now — the two things this gate
    *  reads — so both copies' errors travel whole. */

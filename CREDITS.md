@@ -62,7 +62,7 @@ authors below.
 <https://github.com/vercel-labs/just-bash>
 
 - The `IFileSystem` interface, vendored verbatim (v3.2.0,
-  `dist/fs/interface.d.ts`) so `@vendoai/core` carries the shape without the
+  `dist/fs/interface.d.ts`) so `@vendoai/vendo/core` carries the shape without the
   interpreter → `packages/core/src/filesystem.ts`
 - The interpreter itself is a regular dependency of the packages that run
   bash over workspace files.

@@ -33,7 +33,7 @@ function checkGenericWiring(run: DoctorRun, wiring: VendoWiring, mountedUi: bool
   else run.fail("wiring/server", "E-WIRE-007", "no createVendo server wiring found — import createVendo from @vendoai/vendo/server and mount vendo.handler on your runtime's request entry");
   if (!mountedUi) return;
   if (wiring.client) run.pass("wiring/client", "<VendoProvider> wraps the client");
-  else run.warn("wiring/client", "E-WIRE-008", "no <VendoProvider> found in the host source — the @vendoai/ui hooks and embeds need it; ignore this if the host renders a fully custom surface");
+  else run.warn("wiring/client", "E-WIRE-008", "no <VendoProvider> found in the host source — the @vendoai/vendo/ui hooks and embeds need it; ignore this if the host renders a fully custom surface");
 }
 
 function checkExpressWiring(run: DoctorRun, wiring: VendoWiring, mountedUi: boolean): void {

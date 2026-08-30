@@ -20,7 +20,7 @@ import {
   type ToolCall,
   type ToolDescriptor,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { AutomationRowsAccess } from "./automation-rows.js";
 import type { EngineBase } from "./engine-context.js";
 import type { GrantsAccess } from "./grants.js";

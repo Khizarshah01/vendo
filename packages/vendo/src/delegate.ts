@@ -7,7 +7,7 @@
  * so it stays off `Vendo` and rides a WeakMap keyed on the composition, the same
  * way the agent surface carries what `agent()` composed.
  */
-import { VendoError, type AgentRunner } from "@vendoai/core";
+import { VendoError, type AgentRunner } from "./core/index.js";
 import type { Vendo } from "./server.js";
 
 const runners = new WeakMap<Vendo, AgentRunner>();

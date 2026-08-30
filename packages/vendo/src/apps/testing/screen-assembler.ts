@@ -1,13 +1,13 @@
 import {
   type UIPayload,
   vendoViewPart,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
   type ScreenAssembler,
   type ScreenOutcome,
   type ScreenRequest,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { assembleTree, type AppsRuntime } from "../runtime/runtime.js";
 
 /**

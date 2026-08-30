@@ -1,4 +1,4 @@
-import type { PermissionGrant, Principal } from "@vendoai/core";
+import type { PermissionGrant, Principal } from "../../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const principal: Principal = { kind: "user", subject: "user_authjs_retry" };

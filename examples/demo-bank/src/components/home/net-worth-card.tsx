@@ -1,5 +1,5 @@
 "use client"
-import { Remixable } from "@vendoai/ui/chrome"
+import { Remixable } from "@vendoai/vendo/ui/chrome"
 import { useProfile, useAccounts } from "@/lib/hooks"
 import { Card, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"

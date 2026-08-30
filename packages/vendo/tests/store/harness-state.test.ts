@@ -1,4 +1,4 @@
-import { VendoError, type Principal } from "@vendoai/core";
+import { VendoError, type Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { eraseStore, harnessStateStore, storeFiles, threadStore } from "../../src/store/index.js";

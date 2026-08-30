@@ -1,4 +1,4 @@
-import type { BlobStore, RecordStore, StoreAdapter, StoreOps } from "@vendoai/core";
+import type { BlobStore, RecordStore, StoreAdapter, StoreOps } from "../core/index.js";
 import { createBlobStore } from "./blobs.js";
 import { validateEncryptionKey } from "#store/crypto";
 // Type-only — erased at compile time. This module is the engine-agnostic

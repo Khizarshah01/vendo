@@ -1,4 +1,4 @@
-import { safeErrorMessage, type ApprovalId, type Json, type Step, type ToolCall, type ToolOutcome } from "@vendoai/core";
+import { safeErrorMessage, type ApprovalId, type Json, type Step, type ToolCall, type ToolOutcome } from "../../core/index.js";
 
 /**
  * Pure step-walker kernel for compound tools (04-actions §6).

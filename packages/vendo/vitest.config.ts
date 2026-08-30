@@ -1,4 +1,4 @@
-import { defineConfig } from "vitest/config";
+import { defaultExclude, defineConfig } from "vitest/config";
 
 export default defineConfig({
   resolve: {
@@ -54,6 +54,13 @@ export default defineConfig({
       // aggregate the threshold actually checks never appears in the log. They
       // rise when someone measures them, not before.
       //
+      // src/core/**, src/core/apps/** and src/ui/** are the same rule for the
+      // core+ui fold: each arrives at the floor its own package last enforced —
+      // @vendoai/core's global 94 and its src/apps/** 88, @vendoai/ui's 92 — so
+      // three configs become one without a number moving. The global stays 93:
+      // it is now measured over a bigger tree, and both incoming halves last
+      // measured above it, so blending them in cannot pull it under.
+      //
       // Off inside a shard, which sees a fraction of the files: coverage-merge
       // replays the blobs and enforces these against the whole suite. This gate
       // lives here rather than in a CLI override because
@@ -66,9 +73,43 @@ export default defineConfig({
             lines: 93,
             "src/apps/**": { lines: 88 },
             "src/cli/**": { lines: 92 },
+            "src/core/**": { lines: 94 },
+            "src/core/apps/**": { lines: 88 },
             "src/sandbox/**": { lines: 88 },
+            "src/ui/**": { lines: 92 },
           },
     },
+    // Two environments in one package since the ui fold: everything composes the
+    // Node stack except tests/ui, which renders React and needs a DOM. Projects
+    // rather than per-file `@vitest-environment` pragmas — 167 files would carry
+    // one, and a new ui test that forgot it would run green in the wrong realm.
+    // `extends: true` so both inherit the resolve alias, the worker caps and the
+    // timeouts above; coverage stays here, where it spans both.
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: "node",
+          environment: "node",
+          // `e2e/**` is Playwright's, and the exclusion is load-bearing: those
+          // are `.spec.ts` files, which vitest's DEFAULT include matches. ui kept
+          // them out with a narrow `include`; the fold moved them into a package
+          // that has no such fence, and all 26 were collected and failed.
+          exclude: [...defaultExclude, "tests/ui/**", "e2e/**"],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: "ui",
+          environment: "jsdom",
+          include: ["tests/ui/**/*.test.ts?(x)"],
+          // Both files: the umbrella's telemetry mute, then the DOM-realm
+          // bridge @vendoai/ui carried in.
+          setupFiles: ["./vitest.setup.ts", "./tests/ui/setup.ts"],
+        },
+      },
+    ],
     environment: "node",
     // No real telemetry from tests (see vitest.setup.ts).
     setupFiles: ["./vitest.setup.ts"],

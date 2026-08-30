@@ -15,8 +15,9 @@
     // build time and sits at the package root, so it is the same relative path from
     // src/ (vitest) and from dist/ (a published install). It has to be a declared
     // OUTPUT or a cache hit restores dist/ and leaves the engine with no bytes.
-    // It follows the CONTRACT half of the old @vendoai/apps, which is core's now.
-    "@vendoai/core#build": { "dependsOn": ["^build"], "outputs": ["dist/**", "quickjs.wasm"] },
+    // It follows the app-generation CONTRACT half, which the fold put under
+    // packages/vendo/src/core/apps.
+    "@vendoai/vendo#build": { "dependsOn": ["^build"], "outputs": ["dist/**", "quickjs.wasm"] },
     "test": { "dependsOn": ["^build", "build"], "env": ["CI", "POSTGRES_URL", "VITEST_MIN_FORKS", "VITEST_MAX_FORKS", "VITEST_MIN_THREADS", "VITEST_MAX_THREADS"] },
     "test:ui": { "dependsOn": ["^build", "build"], "env": ["CI", "VITEST_MIN_FORKS", "VITEST_MAX_FORKS", "VITEST_MIN_THREADS", "VITEST_MAX_THREADS"] },
     "test:coverage": { "dependsOn": ["^build", "build"], "outputs": ["coverage/**"], "env": ["CI", "POSTGRES_URL", "VITEST_MIN_FORKS", "VITEST_MAX_FORKS", "VITEST_MIN_THREADS", "VITEST_MAX_THREADS"] },

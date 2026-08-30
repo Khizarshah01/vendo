@@ -10,8 +10,8 @@ import {
   knowledgeWireSearchRequestSchema,
   knowledgeWireUpsertRequestSchema,
   type KnowledgeAdapter,
-} from "@vendoai/core";
-import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
+} from "../../../src/core/index.js";
+import { memoryKnowledgeAdapter } from "../../../src/core/conformance/index.js";
 import { cloudKnowledge } from "../../../src/knowledge/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { runKnowledge } from "../../../src/cli/knowledge/index.js";

@@ -4,7 +4,7 @@
  *
  * The agent DECIDES to ask (the tool, in
  * packages/vendo/src/connector-discovery.ts) and the chrome RENDERS
- * the ask (the connect card, in @vendoai/ui). Those are two packages that never
+ * the ask (the connect card, in @vendoai/vendo/ui). Those are two packages that never
  * import each other, and the only thing joining them is the shape of one
  * `connect-required` outcome as it crosses the wire. A test that hand-writes
  * that outcome on the render side proves nothing — it is the producer and the
@@ -22,11 +22,11 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Connector } from "../src/actions/index.js";
-import { AGENT_CONTEXT_MARK, type Principal } from "@vendoai/core";
+import { AGENT_CONTEXT_MARK, type Principal } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
-import { VendoProvider, createVendoClient } from "@vendoai/ui";
-import { VendoThread } from "@vendoai/ui/chrome";
+import { VendoProvider, createVendoClient } from "../src/ui/index.js";
+import { VendoThread } from "../src/ui/chrome/index.js";
 import type { LanguageModel } from "ai";
 import { createElement, act, type ReactElement } from "react";
 import { createRoot } from "react-dom/client";

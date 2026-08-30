@@ -13,7 +13,7 @@
  * not fail the tool call, change its outcome, or stop any other watcher, on the
  * way in or on the way out.
  */
-import { setLogger, type CapabilityMissEvent, type Harness, type ThreadId, type ToolOutcome, type VendoLogEvent } from "@vendoai/core";
+import { setLogger, type CapabilityMissEvent, type Harness, type ThreadId, type ToolOutcome, type VendoLogEvent } from "../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";
 import { memoryHarnessStateStore } from "../../src/harnesses/harness-state.js";

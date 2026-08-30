@@ -1,4 +1,4 @@
-import type { PermissionGrant, Principal, RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "@vendoai/core";
+import type { PermissionGrant, Principal, RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "../../core/index.js";
 import type { OpenApiBinding } from "../formats.js";
 import { extractOpenApiDocument, openApiDocument } from "../openapi-document.js";
 import { fetchHostTool, hostRequest } from "../runtime/http-dispatch.js";

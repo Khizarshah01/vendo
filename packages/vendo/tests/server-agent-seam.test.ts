@@ -9,7 +9,7 @@
 import type { SandboxAdapter, SandboxMachine } from "../src/apps/index.js";
 import { inMemoryBoxFiles } from "../src/apps/testing/index.js";
 import { agent, agentComposition } from "../src/turn/index.js";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import { defineHarness, harnessAdapters } from "../src/harnesses/index.js";
 import { createStore, threadStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel, UIMessage } from "ai";

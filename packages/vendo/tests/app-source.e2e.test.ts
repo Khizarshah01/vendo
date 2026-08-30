@@ -23,7 +23,7 @@ import {
   type Principal,
   type RunContext,
   type WorkspaceFs,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { commitApp, type AppSourceSeam } from "../src/apps/index.js";
 import { createStore, workspaceStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";

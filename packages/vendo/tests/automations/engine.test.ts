@@ -19,8 +19,8 @@ import {
   type ToolOutcome,
   type ToolRegistry,
   type VendoRecord,
-} from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+} from "../../src/core/index.js";
+import { memoryStoreAdapter } from "../../src/core/conformance/index.js";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { automationsInternals, createAutomations, type AutomationsEngine } from "../../src/automations/index.js";
 
@@ -782,7 +782,7 @@ describe("grant sets: one set per enable, dedupe against pending", () => {
   /** The RECORD has to name its set, because that is where the consent surface
    *  reads it from: chrome resolves the automation through `automations.list()`
    *  and settles the whole set with the id it finds there
-   *  (`packages/ui/src/chrome/thread/automation-consent.tsx`). */
+   *  (`packages/vendo/src/ui/chrome/thread/automation-consent.tsx`). */
   it("stamps the set on the record, so a surface holding only the id can settle it", async () => {
     const result = await engine.enable(WEEKLY, ctx());
 

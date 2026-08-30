@@ -12,7 +12,7 @@
  * the host's own drawers, and never in another app's.
  */
 import { createHash } from "node:crypto";
-import type { AppDatabase, SqlResult, SqlStatement } from "@vendoai/core";
+import type { AppDatabase, SqlResult, SqlStatement } from "../core/index.js";
 import type { Query } from "./db-postgres.js";
 import { maybeDbFor, type VendoStore } from "./store.js";
 

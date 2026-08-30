@@ -19,7 +19,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import type { LanguageModel } from "ai";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+import { memoryStoreAdapter } from "../src/core/conformance/index.js";
 import {
   PARKED_BUILD_COLLECTION,
   type AppId,
@@ -29,9 +29,9 @@ import {
   type RunContext,
   type StoreAdapter,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createApps, readBundleBlob, type AppsConfig } from "../src/apps/index.js";
-import { BUILD_WATCHDOG_MS } from "@vendoai/core/apps";
+import { BUILD_WATCHDOG_MS } from "../src/core/apps/index.js";
 import { createGuard } from "../src/guard/index.js";
 import { MESSAGE_BUDGET_MS } from "../src/harnesses/claude-code/index.js";
 import { createSessionRoutes } from "../box/turn-routes.mjs";
@@ -41,7 +41,7 @@ import {
   inferenceEnv,
 } from "../src/harnesses/claude-code/box.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
-import * as kit from "@vendoai/ui/kit";
+import * as kit from "../src/ui/kit/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { appBuilder, BUILD_ALLOWED_DOMAINS, BUILD_STATUS_LINES } from "../src/build-agent.js";
 import { createVendo } from "../src/server.js";
@@ -55,7 +55,7 @@ const ctx: RunContext = { principal, venue: "chat", presence: "present", session
 const APP = "app_build_lane" as AppId;
 /** Where the brief sends the box for the frame protocol. This file imports it,
  *  so a specifier that stopped resolving fails before any assertion runs. */
-const KIT_SPECIFIER = "@vendoai/ui/kit";
+const KIT_SPECIFIER = "@vendoai/vendo/ui/kit";
 const ASK = "a photo editor that crops and rotates";
 const WHY = "this needs a real image library";
 

@@ -11,7 +11,7 @@
  * tool, and sandbox traffic server-side; real agent turns fill those charts.
  */
 import { join } from "node:path";
-import { consoleUrlFromEnv } from "@vendoai/core";
+import { consoleUrlFromEnv } from "@vendoai/vendo/core";
 import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { seedConsoleData } from "../src/demo-script/console-seed";
 

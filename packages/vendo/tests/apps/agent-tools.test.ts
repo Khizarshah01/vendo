@@ -1,4 +1,4 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 import {
   TOOL_NAME_PATTERN,
   VENDO_APP_FORMAT,
@@ -6,10 +6,10 @@ import {
   toolDescriptorSchema,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   type ScreenAssembler,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { agentToolDescriptors } from "../../src/apps/doors/agent-tools.js";
 import { VENDO_APPS_SQL_TOOL } from "../../src/apps/doors/sql-tool.js";

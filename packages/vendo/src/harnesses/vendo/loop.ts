@@ -18,7 +18,7 @@ import {
   VENDO_APP_BUILD_FAILED_PREFIX,
   type TurnId,
   type VendoStepLimitPart,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   convertToModelMessages,
   isToolUIPart,

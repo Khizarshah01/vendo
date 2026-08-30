@@ -1,7 +1,7 @@
 {
   "name": "@vendoai/vendo",
   "version": "0.60.0",
-  "description": "The Vendo umbrella: default composition, public wire routes, the React provider, and the `vendo` CLI.",
+  "description": "The Vendo umbrella: the v0 contracts, default composition, public wire routes, the React provider and headless UI, and the `vendo` CLI.",
   "keywords": [
     "ai",
     "agent",
@@ -34,6 +34,36 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "require": "./dist/cjs/core/index.js",
+      "default": "./dist/core/index.js"
+    },
+    "./core/apps": {
+      "types": "./dist/core/apps/index.d.ts",
+      "default": "./dist/core/apps/index.js"
+    },
+    "./core/conformance": {
+      "types": "./dist/core/conformance/index.d.ts",
+      "require": "./dist/cjs/core/conformance/index.js",
+      "default": "./dist/core/conformance/index.js"
+    },
+    "./ui": {
+      "types": "./dist/ui/index.d.ts",
+      "default": "./dist/ui/index.js"
+    },
+    "./ui/chrome": {
+      "types": "./dist/ui/chrome/index.d.ts",
+      "default": "./dist/ui/chrome/index.js"
+    },
+    "./ui/tree": {
+      "types": "./dist/ui/tree/index.d.ts",
+      "default": "./dist/ui/tree/index.js"
+    },
+    "./ui/kit": {
+      "types": "./dist/ui/kit/index.d.ts",
+      "default": "./dist/ui/kit/index.js"
     },
     "./extract": {
       "types": "./dist/cli/extract/index.d.ts",
@@ -181,30 +211,45 @@
   },
   "files": [
     "dist",
+    "quickjs.wasm",
     "bin",
     "box",
     "skills",
     "README.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node -e \"require('node:fs').writeFileSync('dist/cjs/package.json', JSON.stringify({ type: 'commonjs' }) + '\\n')\" && node -e \"require('node:fs').copyFileSync(require.resolve('@jitl/quickjs-wasmfile-release-sync/wasm'), 'quickjs.wasm')\"",
     "test": "vitest run",
-    "conformance": "vitest run tests/conformance.test.ts tests/store/conformance.test.ts tests/store/security/audit-append-only.conformance.test.ts tests/store/security/secrets-aad.conformance.test.ts tests/store/flip-guards.conformance.test.ts tests/store/erase.conformance.test.ts tests/store/workspace.erase.test.ts tests/store/postgres-gate.test.ts",
+    "conformance": "vitest run tests/conformance.test.ts tests/store/conformance.test.ts tests/store/security/audit-append-only.conformance.test.ts tests/store/security/secrets-aad.conformance.test.ts tests/store/flip-guards.conformance.test.ts tests/store/erase.conformance.test.ts tests/store/workspace.erase.test.ts tests/store/postgres-gate.test.ts tests/core/contract-coverage.e2e.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.docs-check.json --noEmit && tsc -p tsconfig.test.json --noEmit",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prebuild": "pnpm run check:icons",
+    "pretest": "pnpm run check:icons",
+    "pretypecheck": "pnpm run check:icons",
+    "test:browser": "playwright test",
+    "test:ui": "playwright test e2e/smoke.spec.ts",
+    "test:mcp-shim": "playwright test --config e2e/mcp-shim.config.ts",
+    "build:mcp-shim": "node scripts/build-mcp-app-shim.mjs",
+    "build:onest-font": "node scripts/build-onest-font.mjs",
+    "build:icons": "node scripts/build-icons.mjs",
+    "check:icons": "node scripts/build-icons.mjs --check"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.12",
+    "@ai-sdk/react": "3.0.30",
+    "@base-ui/react": "1.7.0",
     "@e965/xlsx": "0.20.3",
     "@electric-sql/pglite": "^0.5.4",
     "@jitl/quickjs-wasmfile-release-sync": "^0.32.0",
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "@vendoai/core": "workspace:*",
-    "@vendoai/ui": "workspace:*",
+    "@standard-schema/spec": "^1.1.0",
+    "@tanstack/react-table": "^8.20.0",
     "acorn": "^8.15.0",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
+    "aria-snapshot": "0.2.0",
     "aws4fetch": "^1.0.20",
+    "clsx": "2.1.1",
     "croner": "^9.0.0",
     "esbuild": "^0.28.2",
     "fflate": "^0.8.3",
@@ -212,8 +257,13 @@
     "jsonata": "^2.0.5",
     "just-bash": "^3.4.2",
     "pg": "^8.22.0",
+    "preact": "10.24.3",
     "qrcode-generator": "^2.0.4",
     "quickjs-emscripten-core": "^0.32.0",
+    "react-markdown": "^9.0.1",
+    "recharts": "^3.2.0",
+    "remark-gfm": "^4.0.0",
+    "tailwind-merge": "3.6.0",
     "undici": "^7.29.0",
     "unpdf": "^1.8.1",
     "yaml": "^2.6.0",
@@ -273,8 +323,13 @@
     "@ai-sdk/openai-compatible": "2.0.9",
     "@anthropic-ai/sdk": "^0.112.3",
     "@auth/core": "^0.41.3",
+    "@axe-core/playwright": "^4.10.0",
     "@clerk/backend": "^3.11.7",
+    "@jitl/quickjs-singlefile-browser-release-sync": "^0.32.0",
     "@mastra/core": "1.51.0",
+    "@modelcontextprotocol/ext-apps": "^1.7.4",
+    "@playwright/test": "^1.49.0",
+    "@testing-library/react": "^16.1.0",
     "@types/json-schema": "^7.0.15",
     "@types/node": "^22.0.0",
     "@types/pg": "^8.11.10",
@@ -282,12 +337,15 @@
     "@types/react-dom": "^19.2.0",
     "ai": "6.0.28",
     "e2b": "^2.32.0",
+    "jsdom": "^29.1.1",
+    "lucide": "1.31.0",
     "next": "16.2.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sucrase": "^3.35.0",
     "typescript": "^5.6.0",
     "typescript-6": "npm:typescript@6.0.3",
+    "vite": "^6.4.3",
     "vitest": "^3.2.6",
     "zod-to-json-schema": "^3.25.2"
   },
@@ -326,6 +384,10 @@
       "edge-light": "./dist/actions/runtime/host-files-edge.js",
       "browser": "./dist/actions/runtime/host-files-edge.js",
       "default": "./dist/actions/runtime/host-files.js"
+    },
+    "#engine/wasm": {
+      "node": "./dist/core/apps/genui/wasm-node.js",
+      "default": "./dist/core/apps/genui/wasm-browser.js"
     }
   }
 }

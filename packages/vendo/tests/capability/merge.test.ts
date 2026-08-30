@@ -12,7 +12,7 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { toolsFromRegistry } from "../../src/capability/from-registry.js";
 import { mergeCapability, type Contribution } from "../../src/capability/merge.js";

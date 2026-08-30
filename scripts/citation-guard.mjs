@@ -124,14 +124,18 @@ const liveNames = new Set(
  *  Everywhere else the name is a lead, and a lead to a deleted package is worse
  *  than none. Three kinds are not leads:
  *
- *   - the two guards THEMSELVES: dependency-guard.mjs is the retirement
- *     registry, and this file has to name a dead package to explain the rule.
+ *   - the guards THEMSELVES: dependency-guard.mjs is the retirement registry,
+ *     this file has to name a dead package to explain the rule, and
+ *     portability-gate.mjs quotes the layer-map entry the fold removed to say
+ *     what its browser legs now stand in for.
  *     A `*.gen.ts` artifact (matched below, not listed) is generated
  *     rather than authored: its payload is a minified bundle whose `//` runs are not
  *     comments and whose embedded import list names whatever the generator saw.
- *   - the scanner pair, where a retired name is a string this repo still has to
- *     RECOGNISE in a stranger's code: route-scan keys on `@vendoai/agents`
- *     because a host that installed it before the fold still imports it.
+ *   - the scanners, where a retired name is a string this repo still has to
+ *     RECOGNISE in a stranger's code: route-scan keys on `@vendoai/agents`, and
+ *     catalog-scan and screen-tools-scan on `@vendoai/ui`, because a host that
+ *     installed either before the fold still imports it — as does a model
+ *     writing from the docs that shipped with it.
  *   - the rest are sentences that NARRATE a retirement ("it arrived here when X
  *     folded in"), where the dead name is the subject of a past-tense fact and
  *     is correct as written.
@@ -152,15 +156,18 @@ const MAY_NAME_RETIRED = new Set([
   "scripts/citation-guard.mjs",
   "scripts/dependency-guard.mjs",
   ".changeset/cli-ships-with-vendo.md",
+  ".changeset/core-ui-fold.md",
   "cloud/console/tests/config-preview.test.ts",
-  "packages/ui/src/tree/screen-engine.ts",
   "packages/vendo/README.md",
+  "packages/vendo/src/actions/sync/catalog-scan.ts",
   "packages/vendo/src/actions/sync/route-scan.ts",
+  "packages/vendo/src/core/apps/screen-tools-scan.ts",
   "packages/vendo/src/harnesses/index.ts",
   "packages/vendo/src/index.ts",
   "packages/vendo/src/server.ts",
   "packages/vendo/src/threads.ts",
   "packages/vendo/src/turn/index.ts",
+  "packages/vendo/src/ui/tree/screen-engine.ts",
   "packages/vendo/tests/actions/sync/route-exclusions.agents.test.ts",
   "packages/vendo/tests/apps/automations-double.test-util.ts",
   "packages/vendo/tests/apps/engine.bundler-safety.e2e.test.ts",
@@ -169,6 +176,7 @@ const MAY_NAME_RETIRED = new Set([
   "packages/vendo/tests/harnesses/provider-401.test.ts",
   "packages/vendo/tests/threads.test.ts",
   "packages/vendo/vitest.config.ts",
+  "scripts/portability-gate.mjs",
 ]);
 const mayNameRetired = (f) => MAY_NAME_RETIRED.has(f) || /\.gen\.tsx?$/.test(f);
 

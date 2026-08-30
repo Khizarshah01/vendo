@@ -11,7 +11,7 @@
  * model was actually given. No stub on either side.
  */
 import { mkdtemp, rm } from "node:fs/promises";
-import type { Principal, RunContext, ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import type { Principal, RunContext, ToolDescriptor, ToolRegistry } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { tmpdir } from "node:os";

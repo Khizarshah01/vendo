@@ -15,13 +15,13 @@ import {
   type ConfigSurfaceName,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "./core/index.js";
 import {
   catalogSummaryEntries,
   type BriefingPack,
   type NormalizedCatalog,
   type VendoTheme,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import {
   hostToolCollision,
   mergeCapability,

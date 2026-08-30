@@ -13,7 +13,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Connector, ConnectorAccount, OverridesFile, ServiceToolMatch } from "../src/actions/index.js";
-import type { Principal, RiskLabel, RunContext } from "@vendoai/core";
+import type { Principal, RiskLabel, RunContext } from "../src/core/index.js";
 import { auditStore, createStore, type VendoStore } from "../src/store/index.js";
 import type { PolicyRule } from "../src/guard/index.js";
 import type { LanguageModel } from "ai";

@@ -3,7 +3,7 @@
  * rows were the only pointer to. The blob half is the point — a `rm` through the
  * façade leaves the object behind, because history is append-only.
  */
-import type { FilesAdapter, Principal } from "@vendoai/core";
+import type { FilesAdapter, Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { eraseStore } from "../../src/store/erase.js";

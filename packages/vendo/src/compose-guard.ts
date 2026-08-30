@@ -10,7 +10,7 @@ import {
   type RunContext,
   type ToolCall,
   type ToolDescriptor,
-} from "@vendoai/core";
+} from "./core/index.js";
 import {
   createGuard,
   isGuardInstance,

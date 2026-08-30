@@ -9,7 +9,7 @@ import {
   type RunContext,
   type ToolDescriptor,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createGuard } from "../src/guard/index.js";
 import { createStore } from "../src/store/index.js";
 import { screenSource } from "./screen-fixture.js";

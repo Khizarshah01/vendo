@@ -23,11 +23,11 @@ import {
   type ToolOutcome,
   type VendoViewStreamUpdate,
   type VendoViewStreamingToolCall,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   makeReceiptSchema,
   type MakeReceipt,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { AgentToolsDataDependencies } from "./agent-tools.js";
 import { automationCard } from "./automate-tool.js";
 import { BUILD_CONSENT_ASK, buildDescriptor } from "./build-door.js";

@@ -26,7 +26,7 @@ import {
   type ScreenBudget,
   type ScreenEngineVariant,
   type ScreenInstance,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { ScreenPaintInput, ScreenPaintResult } from "../../apps/checking/toolchain.js";
 
 /** The deploy-time module, typed off the dependency: this package compiles

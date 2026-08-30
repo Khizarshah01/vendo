@@ -1,4 +1,4 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 /**
  * Remix as a seeded app (06-apps §8).
  *
@@ -20,13 +20,13 @@ import {
   type Json,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   SCREEN_FILE,
   seedDrift,
   type AppDocument,
   type SeedBaseline,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { createApps, type AppsConfig, type AppsRuntime } from "../../src/apps/index.js";
 import { scriptedScreenAssembler } from "../../src/apps/testing/screen-assembler.js";
@@ -436,7 +436,7 @@ describe("the seed keeps EVERY wish, and a re-seed replays all of them in order"
 // ---------------------------------------------------------------------------
 
 /** The wrapper's discovery rule, verbatim — `useRemixFork` in
- *  `packages/ui/src/chrome/remixable.tsx` reads `client.apps.list()` (the wire's
+ *  `packages/vendo/src/ui/chrome/remixable.tsx` reads `client.apps.list()` (the wire's
  *  `GET /apps`, which is `runtime.list()`) and takes the OLDEST app seeded from
  *  this component. If this returns undefined the ✦ did nothing. */
 const discovered = (apps: AppDocument[], component: string): string | undefined =>

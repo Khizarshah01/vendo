@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
-import { VERSION } from "@vendoai/core";
+import { VERSION } from "../../src/core/index.js";
 import { browserOpenCommand, CLI_VERSION, invokedByPackageScript } from "../../src/cli/shared.js";
 
 // Both constants ride user-facing surfaces (--version, doctor fix_ref URLs,

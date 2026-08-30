@@ -2,7 +2,7 @@
  * ONE permission wire. Five routes — the pending asks, the decision, the two
  * take-backs, the standing grants — served identically by every surface that
  * mounts them (the umbrella's `/api/vendo`, `agentHandler`'s mount, a host
- * wiring the guard itself), because `@vendoai/ui`'s consent surfaces post to
+ * wiring the guard itself), because `@vendoai/vendo/ui`'s consent surfaces post to
  * ONE shape and a second hand-rolled copy is how they come to disagree.
  *
  * `undefined` means "not one of mine": the caller falls through to its own
@@ -18,7 +18,7 @@ import {
   type Json,
   type Principal,
   type VendoErrorCode,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { VendoGuard } from "./types.js";
 
 export interface PermissionRequest {

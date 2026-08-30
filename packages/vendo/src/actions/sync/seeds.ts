@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { sha256Hex, type Json } from "@vendoai/core";
+import { sha256Hex, type Json } from "../../core/index.js";
 import {
   seedBaselineSchema,
   type SeedBaseline,
@@ -52,7 +52,7 @@ export interface PinCaptureResult {
   pruned: string[];
   /** Loud wrapper errors ("file:line — message"); sync must fail on them. */
   errors: string[];
-  /** `<Remixable>` wrappers sync FOUND but could not attribute to `@vendoai/ui`
+  /** `<Remixable>` wrappers sync FOUND but could not attribute to `@vendoai/vendo/ui`
    *  ("file:line — message"). Never silent: a repo whose wrappers all sit
    *  behind an unrecognized module used to sync to "0 captured, 0 drifted"
    *  with nothing said. */
@@ -88,8 +88,8 @@ function tagText(ts: typeof TS, tagName: TS.JsxTagNameExpression, sf: TS.SourceF
   return ts.isIdentifier(tagName) ? tagName.text : tagName.getText(sf);
 }
 
-/** The modules whose `Remixable` export is OURS: `@vendoai/ui` (any subpath —
- *  the export lives on `@vendoai/ui/chrome`), the `vendoai` alias, and the
+/** The modules whose `Remixable` export is OURS: `@vendoai/vendo/ui` (any subpath —
+ *  the export lives on `@vendoai/vendo/ui/chrome`), the `vendoai` alias, and the
  *  `@vendoai/vendo` umbrella re-export. */
 const REMIXABLE_MODULE = /^(?:@vendoai\/(?:ui|vendo)|vendoai)(?:\/|$)/u;
 
@@ -116,11 +116,11 @@ interface BindingScope {
 }
 
 /**
- * Is `imported` from `specifier` OUR Remixable? A direct `@vendoai/ui` import
+ * Is `imported` from `specifier` OUR Remixable? A direct `@vendoai/vendo/ui` import
  * is proof on its face. Anything else is proof only if reading the host's own
  * modules says so: hosts that forbid deep `@vendoai/*` imports re-export
  * `Remixable` through a kit module (`@host/vendo-kit`), and following that
- * module's exports back to `@vendoai/ui` is a fact, not a guess. A specifier
+ * module's exports back to `@vendoai/vendo/ui` is a fact, not a guess. A specifier
  * that cannot be followed is left unproven rather than assumed either way.
  */
 async function isOurRemixable(specifier: string, imported: string, scope: BindingScope): Promise<boolean> {
@@ -212,10 +212,12 @@ function remixableTagBinding(text: string): string | null {
 
 const quoted = (value: string): string => `"${value}"`;
 
-/** `"@vendoai/ui/chrome"`, quotes included, assembled at runtime: the
- *  dependency guard's static scan reads import-shaped text even inside a string
- *  literal, and actions may not depend on `@vendoai/ui`. */
-const CHROME = quoted(["@vendoai", "ui", "chrome"].join("/"));
+/** `"@vendoai/vendo/ui/chrome"`, quotes included — the import this hint tells a
+ *  host to write. A plain literal since the fold: the dependency guard's static
+ *  scan does read import-shaped text inside a string, which is why this used to
+ *  be assembled at runtime, but the specifier it now names is this package's
+ *  own, and a self-reference is not a cross-block edge. */
+const CHROME = quoted("@vendoai/vendo/ui/chrome");
 const IMPORT_FIX = `\`import { Remixable } from ${CHROME}\``;
 const REEXPORT_FIX = `\`export { Remixable } from ${CHROME}\``;
 
@@ -226,12 +228,12 @@ function unattributedWrapper(at: string, tag: string, local: string, specifier: 
   const head = `${at} — <${tag}> was NOT captured: \`${local}\``;
   return specifier === undefined
     ? `${head} is not imported in this file, so sync cannot tell whether it is Vendo's. Import it (${IMPORT_FIX}, or from one of your own modules that re-exports it) and re-run \`vendo sync\`. If this is your own component, rename it — Remixable is Vendo's wrap marker.`
-    : `${head} comes from ${quoted(specifier)}, and following that module's exports never reached @vendoai/ui's Remixable. Fix it either way: import it directly (${IMPORT_FIX}), or re-export it from ${quoted(specifier)} (${REEXPORT_FIX}). Then re-run \`vendo sync\`.`;
+    : `${head} comes from ${quoted(specifier)}, and following that module's exports never reached @vendoai/vendo/ui's Remixable. Fix it either way: import it directly (${IMPORT_FIX}), or re-export it from ${quoted(specifier)} (${REEXPORT_FIX}). Then re-run \`vendo sync\`.`;
 }
 
 /** Every `<Remixable>` usage in one module: the ones that capture, loud errors
  *  for children that are not a single component element, and loud misses for
- *  wrappers whose `Remixable` could not be traced to `@vendoai/ui`. */
+ *  wrappers whose `Remixable` could not be traced to `@vendoai/vendo/ui`. */
 async function wrapperSites(
   source: string,
   file: string,

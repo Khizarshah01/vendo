@@ -10,8 +10,8 @@
 // (`memoryStoreOps`), gate included: the flow writes through the guard and
 // reads back through that same surface, so neither side can mock the other into
 // agreeing.
-import { isEngineCollection, type StoreOps } from "@vendoai/core";
-import { memoryStoreOps } from "@vendoai/core/conformance";
+import { isEngineCollection, type StoreOps } from "../../src/core/index.js";
+import { memoryStoreOps } from "../../src/core/conformance/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createMemoryStore } from "./fixtures/memory-store.js";

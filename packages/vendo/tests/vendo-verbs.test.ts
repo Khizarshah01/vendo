@@ -1,4 +1,4 @@
-import { VENDO_TOOL_TITLES, VendoError, type RunContext } from "@vendoai/core";
+import { VENDO_TOOL_TITLES, VendoError, type RunContext } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { VENDO_VERB_TOOLS, vendoVerbsRegistry } from "../src/vendo-verbs.js";
 

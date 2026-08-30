@@ -20,7 +20,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { VENDO_TOOLS_FORMAT, type ExtractedTool } from "../src/actions/index.js";
-import { VendoError, type Principal, type RunContext } from "@vendoai/core";
+import { VendoError, type Principal, type RunContext } from "../src/core/index.js";
 import { createGuard, guard as guardRules } from "../src/guard/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel, UIMessage } from "ai";

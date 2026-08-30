@@ -17,8 +17,8 @@
  * The console itself is proven with no stand-in at all, against Yousef's Vendo
  * Cloud account, in `packages/vendo/tests/hosted-transcript.live.test.ts`.
  */
-import { VendoError, type Principal, type StoreOps } from "@vendoai/core";
-import { memoryStoreOps } from "@vendoai/core/conformance";
+import { VendoError, type Principal, type StoreOps } from "../../src/core/index.js";
+import { memoryStoreOps } from "../../src/core/conformance/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 // The store deliberately does not depend on `ai` (src/helpers/thread-messages.ts),

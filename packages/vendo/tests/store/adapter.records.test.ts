@@ -1,4 +1,4 @@
-import { isoDateTimeSchema } from "@vendoai/core";
+import { isoDateTimeSchema } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { appStore } from "../../src/store/index.js";

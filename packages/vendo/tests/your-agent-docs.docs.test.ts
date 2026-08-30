@@ -276,7 +276,7 @@ describe("every tool the docs name really exists", () => {
   });
 
   it("vendo_make is core's own constant, not a docs-only alias", async () => {
-    expect(await read("packages/core/src/tools.ts")).toContain('export const VENDO_MAKE_TOOL = "vendo_make"');
+    expect(await read("packages/vendo/src/core/tools.ts")).toContain('export const VENDO_MAKE_TOOL = "vendo_make"');
   });
 
 });
@@ -345,7 +345,7 @@ describe("the documented arguments match the real schemas", () => {
     for (const option of ["include", "exclude"]) {
       expect(text, `${page} must name \`${option}\``).toContain(`\`${option}\``);
     }
-    expect(await read("packages/core/src/tools.ts")).toContain('export const VENDO_TOOL_PREFIX = "vendo_"');
+    expect(await read("packages/vendo/src/core/tools.ts")).toContain('export const VENDO_TOOL_PREFIX = "vendo_"');
     const pack = await read("packages/vendo/src/tool-pack.ts");
     for (const option of ["include", "exclude"]) {
       expect(pack, `the pack filter must really take \`${option}\``).toMatch(
@@ -365,7 +365,7 @@ describe("the documented arguments match the real schemas", () => {
 
 describe("the receipt law the docs teach is the real receipt", () => {
   it("has exactly id, title, status, say — and status's four values", async () => {
-    const source = await read("packages/core/src/apps/make-receipt.ts");
+    const source = await read("packages/vendo/src/core/apps/make-receipt.ts");
     expect(source).toContain("id: appIdSchema");
     expect(source).toContain("title: z.string().min(1)");
     expect(source).toContain('status: z.enum(["ready", "partial", "building", "failed"])');
@@ -391,16 +391,16 @@ describe("every component the docs tell a reader to import is exported", () => {
     // VendoProvider left both walkthroughs when embeds learned to find the
     // wire bare (#1583) — the provider is settings now, taught on the embeds page.
     //
-    // VendoSlot is `@vendoai/vendo/react` here, not `@vendoai/ui/chrome`: it is
+    // VendoSlot is `@vendoai/vendo/react` here, not `@vendoai/vendo/ui/chrome`: it is
     // exported from both, and the page teaches the one that needs no direct
-    // `@vendoai/ui` dependency ("It ships in @vendoai/vendo — nothing extra to
+    // `@vendoai/vendo/ui` dependency ("It ships in @vendoai/vendo — nothing extra to
     // install"), the same rule reference/hooks.mdx states for every hook.
     ["VendoSlot", "@vendoai/vendo/react", "packages/vendo/src/react.tsx", SURFACE_PAGE],
     ["VendoToolResult", "@vendoai/vendo/react", "packages/vendo/src/react.tsx", AI_SDK_PAGE],
     ["VendoToolResult", "@vendoai/vendo/react", "packages/vendo/src/react.tsx", MASTRA_PAGE],
   ])("%s is exported from %s", async (component, specifier, entry, page) => {
     // ONE import statement, not two independent `contains` checks. This row read
-    // `VendoSlot` + `@vendoai/ui/chrome` and passed for as long as SOME OTHER
+    // `VendoSlot` + `@vendoai/vendo/ui/chrome` and passed for as long as SOME OTHER
     // code block on the page happened to import from ui/chrome — the deleted
     // VendoPalette example. The page had always taught VendoSlot from
     // `@vendoai/vendo/react`, so the gate was green while checking two unrelated
@@ -433,7 +433,7 @@ describe("every component the docs tell a reader to import is exported", () => {
     "the branch %s tells a reader to add matches on the tool name, not the part shape",
     async (page) => {
       expect(await read(page)).toContain("isVendoToolPart(part)");
-      expect(await read("packages/ui/src/embeds.ts")).toContain(
+      expect(await read("packages/vendo/src/ui/embeds.ts")).toContain(
         "getToolName(part).startsWith(VENDO_TOOL_PREFIX)",
       );
     },

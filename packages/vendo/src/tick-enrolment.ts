@@ -8,7 +8,7 @@
  * door (compose-channels.ts).
  */
 import { base64url } from "./automations/index.js";
-import { consoleSender, defaultFetch, log, raiseCloudError } from "@vendoai/core";
+import { consoleSender, defaultFetch, log, raiseCloudError } from "./core/index.js";
 import { environment } from "./wire/shared.js";
 
 /** The label the tick secret is derived under. FROZEN: both ends key an HMAC on

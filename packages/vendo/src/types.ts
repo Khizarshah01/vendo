@@ -35,13 +35,13 @@ import type {
   UsageTallyQuery,
   UsageTallyRow,
   VendoLogger,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type {
   ComponentCatalog,
   ComponentRegistry,
   VendoRouteMap,
   VendoTheme,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import type { GuardRules, PolicyFile, VendoGuard } from "./guard/index.js";
 import type { ShellLimits } from "./harnesses/vendo/index.js";
 import type { HostOAuthAdapter } from "./mcp/index.js";

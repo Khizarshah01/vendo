@@ -3,7 +3,7 @@
  * under an explicit subject, and one under the calling principal. Lifted out of
  * `createApps` unchanged.
  */
-import { type AppId, type Json, type RunContext } from "@vendoai/core";
+import { type AppId, type Json, type RunContext } from "../../core/index.js";
 import { appLifecycleEvent } from "./audit.js";
 import type { AppsConfig } from "../runtime/types.js";
 

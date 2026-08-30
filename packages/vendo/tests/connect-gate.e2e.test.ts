@@ -1,6 +1,6 @@
 import { createActions, createConnectGate, type Connector } from "../src/actions/index.js";
-import type { Principal, RunContext, ToolDescriptor } from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+import type { Principal, RunContext, ToolDescriptor } from "../src/core/index.js";
+import { memoryStoreAdapter } from "../src/core/conformance/index.js";
 import { createGuard } from "../src/guard/index.js";
 import { describe, expect, it, vi } from "vitest";
 

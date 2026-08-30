@@ -5,22 +5,17 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   // Served in place at demos.vendo.run/maple — see ./src/lib/base-path.
   basePath: BASE_PATH,
-  // @vendoai/vendo is the load-bearing entry: its engine syntax-checks generated
-  // islands with esbuild through a VARIABLE specifier the bundler cannot see, so
-  // an "esbuild" entry alone is inert — bundle the package and that import
-  // becomes a bare resolve from this app's root. It only ever worked here
-  // because the monorepo root hoists esbuild. The same package holds the store
-  // that loads PGlite, whose Emscripten module breaks under Turbopack's
-  // production chunking ("f.instantiateWasm is not a function"), so one entry
-  // now covers both reasons. It is dev-conditional because the dev block below
-  // aliases the umbrella to source and Turbopack HARD-FATALS on a package named
-  // in both lists; production chunking is the only venue the externalization was
-  // ever for.
-  serverExternalPackages: [
-    "esbuild",
-    "@electric-sql/pglite",
-    ...(process.env.NODE_ENV === "development" ? [] : ["@vendoai/vendo"]),
-  ],
+  // PGlite's Emscripten module breaks under Turbopack's production chunking
+  // ("f.instantiateWasm is not a function"), so it is named here. `esbuild` is
+  // the checker's, and it is only reachable through a VARIABLE specifier the
+  // bundler cannot see — the entry is what keeps a static resolve out, and the
+  // monorepo root hoists the binary for the runtime one.
+  //
+  // @vendoai/vendo is deliberately ABSENT, and unconditionally so.
+  // `serverExternalPackages` is package-granular and the umbrella has a
+  // "use client" half, so listing it hands Next the client doors through the
+  // server condition and prerender dies on a null React dispatcher.
+  serverExternalPackages: ["esbuild", "@electric-sql/pglite"],
   // Dev-only: resolve the whole @vendoai workspace graph to its TypeScript
   // source so edits anywhere in packages/*/src hot-reload here instead of
   // waiting on a `pnpm build`. Turbopack matches the request verbatim, so
@@ -34,18 +29,22 @@ const nextConfig: NextConfig = {
   // a package named in BOTH transpilePackages and serverExternalPackages, which
   // is exactly why @vendoai/vendo's entry above is dev-conditional. `next build`
   // skips this block entirely and resolves dist/ like a published install would.
+  //
+  // Production transpiles the umbrella too, which is the same thing this branch
+  // always did for the ui package — the two are one now, and with the umbrella
+  // off the externals list above there is no list for it to collide with.
   ...(process.env.NODE_ENV === "development"
     ? {
-        transpilePackages: ["@vendoai/core", "@vendoai/ui", "@vendoai/vendo"],
+        transpilePackages: ["@vendoai/vendo"],
         turbopack: {
           resolveAlias: {
-            "@vendoai/core": "../../packages/core/src/index.ts",
-            "@vendoai/core/conformance": "../../packages/core/src/conformance/index.ts",
-            "@vendoai/core/apps": "../../packages/core/src/apps/index.ts",
-            "@vendoai/ui": "../../packages/ui/src/index.ts",
-            "@vendoai/ui/chrome": "../../packages/ui/src/chrome/index.ts",
-            "@vendoai/ui/tree": "../../packages/ui/src/tree/index.ts",
-            "@vendoai/ui/kit": "../../packages/ui/src/kit/index.ts",
+            "@vendoai/vendo/core": "../../packages/vendo/src/core/index.ts",
+            "@vendoai/vendo/core/conformance": "../../packages/vendo/src/core/conformance/index.ts",
+            "@vendoai/vendo/core/apps": "../../packages/vendo/src/core/apps/index.ts",
+            "@vendoai/vendo/ui": "../../packages/vendo/src/ui/index.ts",
+            "@vendoai/vendo/ui/chrome": "../../packages/vendo/src/ui/chrome/index.ts",
+            "@vendoai/vendo/ui/tree": "../../packages/vendo/src/ui/tree/index.ts",
+            "@vendoai/vendo/ui/kit": "../../packages/vendo/src/ui/kit/index.ts",
             "@vendoai/vendo": "../../packages/vendo/src/index.ts",
             "@vendoai/vendo/server": "../../packages/vendo/src/server.ts",
             "@vendoai/vendo/apps": "../../packages/vendo/src/apps/index.ts",
@@ -79,7 +78,7 @@ const nextConfig: NextConfig = {
           },
         },
       }
-    : { transpilePackages: ["@vendoai/ui"] }),
+    : { transpilePackages: ["@vendoai/vendo"] }),
   // Test boots (away-drill e2e) get their own dist dir → own dev-server lock,
   // so they never fight a concurrent `pnpm dev`. Nested under .next so
   // gitignore/scanner rules that skip .next cover it.

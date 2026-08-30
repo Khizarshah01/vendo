@@ -11,7 +11,7 @@
  * explicitly would agree with a list built from `config` and prove nothing, so
  * the cases below leave the slots UNSET and let the adapter rule fill them.
  */
-import { setLogger, setUsageSink, type VendoUsageEvent } from "@vendoai/core";
+import { setLogger, setUsageSink, type VendoUsageEvent } from "../src/core/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createVendo } from "../src/server.js";
 import type { CreateVendoConfig } from "../src/types.js";

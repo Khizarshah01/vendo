@@ -12,7 +12,7 @@
  * proves the rows.
  */
 import { describe, expect, it } from "vitest";
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../../src/core/index.js";
 import { guardSql, mineTable, sharedTable, sqlRisk } from "../../../src/apps/persistence/app-sql-guard.js";
 
 const ADA = "0123456789abcdef0123";

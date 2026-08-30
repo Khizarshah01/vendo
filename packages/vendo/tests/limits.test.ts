@@ -22,8 +22,8 @@ import {
   type VendoLogEvent,
   type VendoViewStreamingToolCall,
   type VendoViewStreamUpdate,
-} from "@vendoai/core";
-import { memoryStoreOps } from "@vendoai/core/conformance";
+} from "../src/core/index.js";
+import { memoryStoreOps } from "../src/core/conformance/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createComposition } from "../src/compose-context.js";

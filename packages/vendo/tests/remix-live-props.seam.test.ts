@@ -48,7 +48,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { SeedBaseline } from "../src/apps/index.js";
-import type { AppDocument, Principal } from "@vendoai/core";
+import type { AppDocument, Principal } from "../src/core/index.js";
 import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

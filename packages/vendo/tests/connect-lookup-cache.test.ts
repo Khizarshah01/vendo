@@ -7,7 +7,7 @@
  * refusal was not: it refetched, so every unconnected call paid two broker
  * round trips to say the same no.
  */
-import type { Principal, RunContext } from "@vendoai/core";
+import type { Principal, RunContext } from "../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { VendoComposition } from "../src/compose-context.js";
 import { composeDiscovery } from "../src/compose-discovery.js";

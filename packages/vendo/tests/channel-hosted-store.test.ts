@@ -1,4 +1,4 @@
-import { STORE_WIRE_PATHS, type ApprovalId } from "@vendoai/core";
+import { STORE_WIRE_PATHS, type ApprovalId } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { ChannelAskRepository, ChannelEventLog, ChannelLinkRepository } from "../src/channel-links.js";
 import { hostedStore } from "../src/store/index.js";

@@ -1,5 +1,5 @@
 import { chromium, type Browser, type Page } from "@playwright/test";
-import type { Json, UIPayload } from "@vendoai/core";
+import type { Json, UIPayload } from "@vendoai/vendo/core";
 import { build } from "esbuild";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";

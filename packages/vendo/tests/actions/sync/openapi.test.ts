@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "../../../src/core/index.js";
 import type { OpenApiBinding, RouteBinding } from "../../../src/actions/formats.js";
 import { createActions } from "../../../src/actions/runtime/registry.js";
 import { runExtractors } from "../../../src/actions/sync/extractors.js";

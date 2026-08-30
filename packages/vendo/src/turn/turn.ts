@@ -44,7 +44,7 @@ import {
   type Turn as HarnessTurn,
   type TurnId,
   type TurnResult as CoreTurnResult,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { VendoGuard } from "../guard/index.js";
 import { addUsage, type HarnessRuntimeDeps, type UsageTotals } from "../harnesses/index.js";
 import { storeFiles, threadMessageStore, type VendoStore } from "../store/index.js";

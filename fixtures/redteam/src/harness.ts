@@ -17,7 +17,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { inject } from "vitest";
 import { unzipSync, zipSync, type Unzipped, type Zippable } from "fflate";
-import { type ActAs, type AgentRunner, type AgentRunners, type AppDocument, type AppId, type AutomationRecord, type CreateAutomation, DEFAULT_RUNNER_NAME, type PolicyConfig, type Principal, type RiskResolver, type RunContext, serviceToolSlug, type ToolRegistry, USE_SERVICE_TOOL } from "@vendoai/core";
+import { type ActAs, type AgentRunner, type AgentRunners, type AppDocument, type AppId, type AutomationRecord, type CreateAutomation, DEFAULT_RUNNER_NAME, type PolicyConfig, type Principal, type RiskResolver, type RunContext, serviceToolSlug, type ToolRegistry, USE_SERVICE_TOOL } from "@vendoai/vendo/core";
 import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createGuard, type Judge, type VendoGuard } from "@vendoai/vendo/guard";
 import { createActions } from "@vendoai/vendo/actions";

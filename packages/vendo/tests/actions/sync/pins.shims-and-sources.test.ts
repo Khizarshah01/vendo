@@ -4,11 +4,16 @@ import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { capturePins } from "../../../src/actions/sync/seeds.js";
 
-/** The proven wrapper-import specifier fixtures write to disk. Assembled at
- *  runtime because the dependency guard's static text scan reads
- *  import-shaped strings even inside fixtures, and actions may not import
- *  @vendoai/ui. */
+/** The proven wrapper-import specifiers fixtures write to disk. Assembled at
+ *  runtime because the dependency guard's static text scan reads import-shaped
+ *  strings even inside fixtures, and `UI_CHROME` is a RETIRED name it rejects.
+ *
+ *  Both spellings are proven, and they play different parts: `UI_CHROME` is
+ *  what a host mid-migration still has in its own source, so sync must keep
+ *  following it; `VENDO_UI_CHROME` is the one the HINT tells that host to move
+ *  to, so it is what the message must name. */
 const UI_CHROME = ["@vendoai", "ui", "chrome"].join("/");
+const VENDO_UI_CHROME = ["@vendoai", "vendo", "ui", "chrome"].join("/");
 
 const temporaryDirectories: string[] = [];
 
@@ -104,8 +109,8 @@ describe("the loud miss", () => {
     expect(miss).toContain('`Remixable` comes from "@host/vendo-kit"');
     expect(miss).toContain("NOT captured");
     // Both exact next steps.
-    expect(miss).toContain(`import { Remixable } from "${UI_CHROME}"`);
-    expect(miss).toContain(`export { Remixable } from "${UI_CHROME}"`);
+    expect(miss).toContain(`import { Remixable } from "${VENDO_UI_CHROME}"`);
+    expect(miss).toContain(`export { Remixable } from "${VENDO_UI_CHROME}"`);
   }, 60_000);
 
   it("says so when the wrapper's Remixable is not imported at all", async () => {

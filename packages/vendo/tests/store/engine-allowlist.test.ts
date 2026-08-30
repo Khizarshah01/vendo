@@ -3,11 +3,11 @@ import {
   ENGINE_COLLECTIONS,
   isEngineCollection,
   type EngineCollectionSpec,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { DEDICATED_RECORD_COLLECTIONS, RESERVED_COLLECTIONS } from "../../src/store/index.js";
 
-// The engine allowlist is a hand-maintained LITERAL in @vendoai/core: core
+// The engine allowlist is a hand-maintained LITERAL in @vendoai/vendo/core: core
 // imports nothing (layering, scripts/dependency-guard.mjs), so it cannot read
 // the store's real routing constants. @vendoai/vendo/store can see both, so this test
 // is the thing that holds the literal to reality — it fails the day someone

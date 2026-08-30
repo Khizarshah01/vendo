@@ -1,4 +1,4 @@
-import { VendoError, vendoErrorCodeSchema } from "@vendoai/core";
+import { VendoError, vendoErrorCodeSchema } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import {
   dispatchRoutes,

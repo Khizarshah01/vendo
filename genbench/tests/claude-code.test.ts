@@ -6,7 +6,7 @@
  * cleanup are the driver's own behaviour and not a fixture's.
  */
 import { createAnthropic } from "@ai-sdk/anthropic";
-import { renderBriefingPack } from "@vendoai/core/apps";
+import { renderBriefingPack } from "@vendoai/vendo/core/apps";
 import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { writeFile } from "node:fs/promises";

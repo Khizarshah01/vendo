@@ -1,4 +1,4 @@
-import { log, VENDO_TOOL_TITLES, isVendoError, type Json, type RunContext, type ToolDescriptor, type ToolRegistry } from "@vendoai/core";
+import { log, VENDO_TOOL_TITLES, isVendoError, type Json, type RunContext, type ToolDescriptor, type ToolRegistry } from "./core/index.js";
 
 /**
  * Design §4's vendo-verb family, projected as ordinary tools on the one

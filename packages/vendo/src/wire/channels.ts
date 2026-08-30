@@ -1,4 +1,4 @@
-import { log } from "@vendoai/core";
+import { log } from "../core/index.js";
 import qrcode from "qrcode-generator";
 import type { ChannelDoor, InboundEvent, TextChannelInvite } from "../channels.js";
 import { timingSafeEqual } from "./misc.js";

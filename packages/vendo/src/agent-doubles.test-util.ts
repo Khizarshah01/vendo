@@ -27,7 +27,7 @@ import type {
   ToolOutcome,
   ToolRegistry,
   WorkspaceFs,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import { InMemoryFs } from "just-bash";

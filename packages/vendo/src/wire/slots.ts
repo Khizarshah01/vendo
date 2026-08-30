@@ -4,7 +4,7 @@ import {
   SLOT_ID_MAX_CHARS,
   SLOT_LABEL_MAX_CHARS,
   VendoError,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { json, requestJson, route, string, type RouteEntry } from "./shared.js";
 
 /** The slot REGISTRY — which slots this caller's surfaces mount, as opposed to
@@ -19,7 +19,7 @@ import { json, requestJson, route, string, type RouteEntry } from "./shared.js";
 /** Any page render writes here, so this is the widest unprivileged write on the
     wire and it is bounded like its neighbours (at most 200 tool names on
     /sync/impact, a 1-256 character row id on /box). The numbers live in
-    @vendoai/core because the UI client cleans a page's report to fit them
+    @vendoai/vendo/core because the UI client cleans a page's report to fit them
     before it sends; this route is the strict backstop for every other caller,
     so the two must never drift. */
 const bounded = (value: unknown, label: string, max: number): string => {

@@ -1,4 +1,4 @@
-import { joinUrl, withPathPrefix } from "@vendoai/core";
+import { joinUrl, withPathPrefix } from "@vendoai/vendo/core";
 import { getToken } from "next-auth/jwt";
 import { withBasePath } from "@/lib/base-path";
 import {

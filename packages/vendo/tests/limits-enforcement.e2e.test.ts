@@ -10,7 +10,7 @@
  * whole promise of the message choke is that a denied turn costs nothing, and
  * "the reply looked right" is compatible with having paid for a turn first.
  *
- * The card is parsed with `vendoLimitPartSchema` off `@vendoai/core` — the same
+ * The card is parsed with `vendoLimitPartSchema` off `@vendoai/vendo/core` — the same
  * schema the chat surface reads it through. A hand-written expectation here
  * would let the producer and the consumer drift apart with the suite green.
  */
@@ -26,8 +26,8 @@ import {
   type LimitsCallback,
   type Principal,
   type StoreOps,
-} from "@vendoai/core";
-import { memoryStoreOps } from "@vendoai/core/conformance";
+} from "../src/core/index.js";
+import { memoryStoreOps } from "../src/core/conformance/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

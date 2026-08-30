@@ -17,7 +17,7 @@
  * full: a stranger stays masked, an editor cannot re-share, and a revoke leaves
  * nothing standing in either place.
  */
-import type { Membership, RunContext, StoreOps } from "@vendoai/core";
+import type { Membership, RunContext, StoreOps } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { appFixture } from "../../src/store/fixtures.test-util.js";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";

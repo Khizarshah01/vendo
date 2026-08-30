@@ -13,7 +13,7 @@ import {
   type RunContext,
   type TriggerSource,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { EngineBase } from "./engine-context.js";
 import { allRecords, parseAutomation } from "./rows.js";
 import { AUTOMATIONS } from "./types.js";

@@ -38,7 +38,7 @@ Two copies are refused outright, and both refusals are loud.
 Wrap a component and a user can make it theirs. What they get is your own component: `vendo sync` [ports it](#the-port) into the dialect a generated screen speaks, and the wish edits that code. A remix is an edit of the component, not a fresh screen wearing its name.
 
 ```tsx focus={3-5}
-import { Remixable } from "@vendoai/ui/chrome";
+import { Remixable } from "@vendoai/vendo/ui/chrome";
 
 <Remixable>
   <NetWorthCard accounts={accounts} />
@@ -237,10 +237,10 @@ Acknowledged slots are skipped without error and their baselines are left alone.
 
 ### Importing `Remixable` through your own module
 
-Plenty of codebases forbid deep package imports and re-export what they use through a kit module. Sync follows that: it reads your module's exports and traces `Remixable` back to `@vendoai/ui`, so wrapping works the same behind a shim.
+Plenty of codebases forbid deep package imports and re-export what they use through a kit module. Sync follows that: it reads your module's exports and traces `Remixable` back to `@vendoai/vendo/ui`, so wrapping works the same behind a shim.
 
 ```ts src/kit/vendo-kit.ts
-export { Remixable } from "@vendoai/ui/chrome";
+export { Remixable } from "@vendoai/vendo/ui/chrome";
 ```
 
 ```tsx demos/maple/Overview.tsx
@@ -258,8 +258,8 @@ It is a trace, not a name match — so a `Remixable` that is genuinely your own 
 
 ```text
 pins: 0 captured, 0 drifted
-warning: 1 <Remixable> wrapper was found but NOT captured — sync could not trace its `Remixable` back to @vendoai/ui:
-  demos/maple/Overview.tsx:4 — <Remixable> was NOT captured: `Remixable` comes from "@host/vendo-kit", and following that module's exports never reached @vendoai/ui's Remixable. Fix it either way: import it directly (`import { Remixable } from "@vendoai/ui/chrome"`), or re-export it from "@host/vendo-kit" (`export { Remixable } from "@vendoai/ui/chrome"`). Then re-run `vendo sync`.
+warning: 1 <Remixable> wrapper was found but NOT captured — sync could not trace its `Remixable` back to @vendoai/vendo/ui:
+  demos/maple/Overview.tsx:4 — <Remixable> was NOT captured: `Remixable` comes from "@host/vendo-kit", and following that module's exports never reached @vendoai/vendo/ui's Remixable. Fix it either way: import it directly (`import { Remixable } from "@vendoai/vendo/ui/chrome"`), or re-export it from "@host/vendo-kit" (`export { Remixable } from "@vendoai/vendo/ui/chrome"`). Then re-run `vendo sync`.
 ```
 
 That one is a warning, not an exit code: sync cannot prove a `Remixable` it could not trace is Vendo's, so it reports it instead of failing your build on the guess. `sync --json` carries the same lines as `pins.unattributed`. Baseline pruning is held for that run too — a wrapper sync stopped recognizing is still a wrapper, and its baseline is what existing forks render from.

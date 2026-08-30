@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { descriptorHash, VendoError } from "@vendoai/core";
+import { descriptorHash, VendoError } from "../../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import type { ExtractedTool } from "../../../src/actions/formats.js";
 import { routeToolFullName, withUniqueNames } from "../../../src/actions/sync/common.js";
@@ -10,7 +10,7 @@ import { inputNarrowed, mergeOverrides, vendoSync } from "../../../src/actions/s
 /** The proven wrapper-import specifier fixtures write to disk. Assembled at
  *  runtime because the dependency guard's static text scan reads
  *  import-shaped strings even inside fixtures, and actions may not import
- *  @vendoai/ui. */
+ *  @vendoai/vendo/ui. */
 const UI_CHROME = ["@vendoai", "ui", "chrome"].join("/");
 const VENDO_REACT = ["@vendoai", "vendo", "react"].join("/");
 

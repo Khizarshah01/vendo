@@ -1,5 +1,5 @@
 import { getToken } from "@auth/core/jwt";
-import type { PermissionGrant, Principal } from "@vendoai/core";
+import type { PermissionGrant, Principal } from "../../../src/core/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 // authJsPreset ships on its own module — not the shared "./index.js" barrel
 // (corpus-triage Task 9) — so import it directly here too.

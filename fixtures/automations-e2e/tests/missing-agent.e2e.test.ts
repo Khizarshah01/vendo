@@ -15,8 +15,8 @@
  * The default runner is registered and counts every call it receives, so
  * "no fallback brain" is asserted against a witness rather than assumed.
  */
-import type { AgentRunner } from "@vendoai/core";
-import { DEFAULT_RUNNER_NAME } from "@vendoai/core";
+import type { AgentRunner } from "@vendoai/vendo/core";
+import { DEFAULT_RUNNER_NAME } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStack, ownerCtx, resetFixture } from "../src/harness.js";
 import { ADA, approve, record } from "../src/support.js";

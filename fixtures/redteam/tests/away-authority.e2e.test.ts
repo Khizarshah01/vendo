@@ -9,8 +9,8 @@
  * parking, no resumption, so no approval can be replayed into an away run).
  */
 import { beforeEach, describe, expect, it } from "vitest";
-import { UNATTENDED_DESTRUCTIVE_REASON } from "@vendoai/core";
-import type { AutomationRecord, RunContext } from "@vendoai/core";
+import { UNATTENDED_DESTRUCTIVE_REASON } from "@vendoai/vendo/core";
+import type { AutomationRecord, RunContext } from "@vendoai/vendo/core";
 import {
   ADA,
   createStack,

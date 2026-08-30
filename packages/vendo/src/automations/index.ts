@@ -3,7 +3,7 @@
  * The package root exports exactly the 07 §1 public API.
  *
  * ZERO app concepts, and that is enforced rather than intended: this package
- * depends on `@vendoai/core` alone (`scripts/dependency-guard.mjs`). An
+ * depends on `@vendoai/vendo/core` alone (`scripts/dependency-guard.mjs`). An
  * automation is a first-class principal-owned RECORD; a task reaches an app only
  * by naming one of its functions as an ordinary granted tool, which resolves
  * through the bound registry like anything else. Goal runs go to the named
@@ -28,7 +28,7 @@ import type {
   StoreOps,
   ToolCall,
   ToolRegistry,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { createAutomationsEngine } from "./engine.js";
 
 export { automationsInternals, type AutomationsInternals } from "./engine.js";
@@ -91,7 +91,7 @@ export interface AutomationsConfig {
 }
 
 // The ledger's ANSWER shapes live in core (core/src/automation.ts) with the
-// record itself: this package serves them and `@vendoai/ui` renders them, and
+// record itself: this package serves them and `@vendoai/vendo/ui` renders them, and
 // the dependency guard lets neither import the other.
 export type { EnableResult, RunPlan, RunRecord, RunRowStatus, RunStatus };
 /** 07 §1 — the PUBLIC surface, `vendo.automations`.

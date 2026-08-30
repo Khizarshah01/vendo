@@ -12,12 +12,12 @@ import {
   safeErrorMessage,
   type AppId,
   type RunContext,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
   type ScreenAssembler,
   type AdmissionOrigin,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { appMemoryBrief } from "./app-memory.js";
 import { APPS_COLLECTION, appRecordInput, rowFromRecord, type AppRecordWrite, withoutSession } from "./persistence.js";
 import type { AppsRuntimeContext } from "../runtime/runtime-context.js";

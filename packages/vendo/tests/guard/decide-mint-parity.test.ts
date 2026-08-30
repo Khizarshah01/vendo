@@ -6,7 +6,7 @@
  * risked). Values below are what `git show origin/main:packages/guard/src/
  * guard.ts` wrote at #commitDecidedMember.
  */
-import { USE_SERVICE_TOOL, type ToolDescriptor } from "@vendoai/core";
+import { USE_SERVICE_TOOL, type ToolDescriptor } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createMemoryStore, type MemoryStore } from "./fixtures/memory-store.js";

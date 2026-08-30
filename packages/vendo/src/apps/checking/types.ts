@@ -1,6 +1,6 @@
 /**
  * The checking floor's contract. The shapes themselves live in core
- * (`@vendoai/core` `pack.ts`, build contract §5) because a pack is how a host
+ * (`@vendoai/vendo/core` `pack.ts`, build contract §5) because a pack is how a host
  * plugs a check in, and a pack must be authorable without depending on the apps
  * block. This file re-exports them so the floor's own modules read naturally,
  * and adds the one shape that belongs to the floor rather than to the contract:
@@ -15,7 +15,7 @@ import type {
   Check,
   CheckInput,
   Finding,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 
 export type { Check, CheckInput, Finding };
 

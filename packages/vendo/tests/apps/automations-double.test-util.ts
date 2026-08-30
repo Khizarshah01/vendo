@@ -3,7 +3,7 @@
  *
  * A double is the only option on this side of the line and that is the design.
  * Until S11d the seam WAS a package boundary — `@vendoai/apps` could import
- * `@vendoai/core` and nothing else — and the fold put both sides inside
+ * `@vendoai/vendo/core` and nothing else — and the fold put both sides inside
  * `@vendoai/vendo`, so the dependency guard no longer holds it. The double is
  * what holds it now: it is still the whole of what the app-generation code may
  * see through the seam, and a real engine here would hide a widening. What it
@@ -18,7 +18,7 @@ import {
   type AutomationRecord,
   type CreateAutomationInput,
   type RunContext,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type { AutomationsSeam } from "../../src/apps/runtime/types.js";
 
 export interface FakeAutomations {

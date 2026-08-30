@@ -11,12 +11,7 @@ import { run } from "./process.js";
  * import: a link would resolve the umbrella's inter-package deps through the
  * monorepo, which is the one thing a published install never gets to do.
  */
-export const VENDO_PACKAGE_NAMES = [
-  "@vendoai/core",
-  "@vendoai/ui",
-  "@vendoai/vendo",
-  "vendoai",
-] as const;
+export const VENDO_PACKAGE_NAMES = ["@vendoai/vendo", "vendoai"] as const;
 
 /** What the stranger declares itself. Everything else arrives as a transitive
  *  dependency — pinned to a tarball by the overrides, never the registry. */

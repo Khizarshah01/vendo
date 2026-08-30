@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import { CONFIG_SURFACES, OVERRIDES_ENABLEMENT_NOTE, type ConfigSurfaceName } from "@vendoai/core";
+import { CONFIG_SURFACES, OVERRIDES_ENABLEMENT_NOTE, type ConfigSurfaceName } from "../core/index.js";
 import { positionals } from "./cloud/args.js";
 import { consoleOutput, exists, type Output } from "./shared.js";
 

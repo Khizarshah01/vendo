@@ -2,7 +2,7 @@
  * The one thing composition has to SAY about a contributed tool: it claimed a
  * name the deployment's own host tools already own (F4).
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { hostToolCollision, hostToolNamesIn, vendoDirOf } from "../../src/capability/host-collision.js";
 

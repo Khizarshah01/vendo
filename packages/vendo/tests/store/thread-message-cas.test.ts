@@ -1,4 +1,4 @@
-import { VendoError, type Principal } from "@vendoai/core";
+import { VendoError, type Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 // The store deliberately does not depend on `ai` (src/helpers/thread-messages.ts),

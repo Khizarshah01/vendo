@@ -2,7 +2,7 @@
  * Build contract §1.1 (the three-status surface a harness sees) and §1.4
  * (approvals wait or fail — they never suspend a run).
  */
-import { setLogger, type Harness, type ToolOutcome, type ToolRegistry, type VendoLogEvent } from "@vendoai/core";
+import { setLogger, type Harness, type ToolOutcome, type ToolRegistry, type VendoLogEvent } from "../../src/core/index.js";
 import { CAPABILITY_MISS_TOOL_NAME, type CapabilityMissReporter } from "../../src/harnesses/capability-miss.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createTurnTools, type MirrorEvent } from "../../src/harnesses/turn-tools.js";

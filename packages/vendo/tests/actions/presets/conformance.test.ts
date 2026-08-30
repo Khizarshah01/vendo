@@ -1,5 +1,5 @@
-import type { PermissionGrant, Principal } from "@vendoai/core";
-import { actAsConformance, runConformance } from "@vendoai/core/conformance";
+import type { PermissionGrant, Principal } from "../../../src/core/index.js";
+import { actAsConformance, runConformance } from "../../../src/core/conformance/index.js";
 import { describe, expect, it } from "vitest";
 import {
   auth0Preset,

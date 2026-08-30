@@ -36,7 +36,7 @@ import type {
   UIPayload,
   VendoViewPart,
   WorkspaceFs,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type {
   AppBuilder,
   AppDocument,
@@ -48,13 +48,13 @@ import type {
   VendoRouteMap,
   VendoTheme,
   AppFloor,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { LanguageModel } from "ai";
 import type { ScreenToolchain } from "../checking/toolchain.js";
 import type { Check, Finding } from "../checking/types.js";
 import type { CloudAppsClient, PublishRecord, ShareSnapshot } from "../persistence/cloud.js";
 import type { GenerationDependencies } from "../generation/engine.js";
-import type { SeedBaseline, SeedDrift } from "@vendoai/core/apps";
+import type { SeedBaseline, SeedDrift } from "../../core/apps/index.js";
 import type { SlotRegistry } from "../persistence/slots.js";
 
 /**
@@ -138,7 +138,7 @@ export interface AppsConfig {
   /**
    * The automations seam (the same seam pattern as AutomationsConfig.runner:
    * this block never imports the automations engine, and the engine has no app
-   * concepts to import back — the two meet on the types `@vendoai/core` owns).
+   * concepts to import back — the two meet on the types `@vendoai/vendo/core` owns).
    *
    * Unset ⇒ no engine is composed: an app is still built and stored, and an ask
    * that wanted a schedule is told so rather than being told one runs.
@@ -169,7 +169,7 @@ export interface AppsConfig {
   /** The island smoke-render gate (on unless explicitly `false`): every
    *  generated island renders once headless before it can reach a screen. */
   pipeline?: GenerationDependencies["pipeline"];
-  /** The host's own checks over a generated app (`Check` is `@vendoai/core`'s —
+  /** The host's own checks over a generated app (`Check` is `@vendoai/vendo/core`'s —
    *  a pack is authorable without depending on this block). APPENDED
    *  to the built-in fact checks and the reviewer — a host can add findings,
    *  never remove or replace a built-in one. */

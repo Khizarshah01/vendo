@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import type { LanguageModel } from "ai";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
@@ -53,7 +53,7 @@ describe("createVendo construction purity (Workers global scope)", () => {
   });
 
   /** The wire's catch-all answers a VendoError with the error's OWN status and
-   *  everything else with 501. A host bundle carrying a second `@vendoai/core`
+   *  everything else with 501. A host bundle carrying a second `@vendoai/vendo/core`
    *  copy mints VendoErrors of a different class, so `instanceof` said no and a
    *  store refusal reached the client as "Internal Vendo error" (0.27.0). */
   it("answers a cross-realm VendoError with its own status, not 501", async () => {

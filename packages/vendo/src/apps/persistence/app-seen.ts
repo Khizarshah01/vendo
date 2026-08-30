@@ -17,8 +17,8 @@
  * erase.ts`), and the only query this surface makes — plus `app_id`, the same
  * ref name the rest of this package sweeps an app by.
  */
-import { isVendoError, log } from "@vendoai/core";
-import type { AppId, IsoDateTime } from "@vendoai/core";
+import { isVendoError, log } from "../../core/index.js";
+import type { AppId, IsoDateTime } from "../../core/index.js";
 import type { EngineOps } from "./engine.js";
 import { listAllEngineRecords } from "./persistence.js";
 
@@ -39,7 +39,7 @@ export interface AppSeenStore {
   clearForApp(appId: AppId): Promise<void>;
 }
 
-/** `appIdSchema` pins only the `app_` PREFIX (`packages/core/src/ids.ts:39`), so
+/** `appIdSchema` pins only the `app_` PREFIX (`packages/vendo/src/core/ids.ts:39`), so
  *  the type does not forbid a colon and this pair is not unambiguous by grammar.
  *  It is unambiguous by the MINT: every app id Vendo writes is `app_` + a uuid
  *  (`doors/build-surface.ts`, `apps-surface.ts` fork), which carries no colon.

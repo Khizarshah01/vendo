@@ -5,7 +5,7 @@
  *  engine they can't run. The PGlite dev-mode default layers on top of this
  *  module in ./db.ts. Enforced by scripts/portability-gate.mjs. */
 import { Client, Pool } from "pg";
-import { log } from "@vendoai/core";
+import { log } from "../core/index.js";
 
 /** 02-store §1 */
 export interface StoreConfig {

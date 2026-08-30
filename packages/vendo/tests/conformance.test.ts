@@ -3,7 +3,7 @@ import {
   vendoApprovalRefSchema,
   type AgentRunner,
   type ToolDescriptor,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { buildVendoToolPack } from "../src/pack.js";
 import { VENDO_DELEGATE_TOOL } from "../src/tool-pack.js";

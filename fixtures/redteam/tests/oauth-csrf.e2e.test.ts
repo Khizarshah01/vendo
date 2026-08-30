@@ -18,7 +18,7 @@
  * umbrella uses (createStack), and the wire is a real createVendo handler.
  */
 import type { LanguageModel } from "ai";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "@vendoai/vendo/core";
 import { createMcpDoor, type HostOAuthAdapter, type McpDoor } from "@vendoai/vendo/mcp";
 import { createVendo } from "@vendoai/vendo/server";
 import { afterEach, describe, expect, it } from "vitest";

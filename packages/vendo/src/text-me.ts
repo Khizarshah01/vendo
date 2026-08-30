@@ -26,7 +26,7 @@ import {
   type RunContext,
   type ToolDescriptor,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type { ChannelLinkRepository } from "./channel-links.js";
 import { PLAIN_TEXT_RULE } from "./channel-turn.js";
 import type { ChannelsService, TextChannelInvite } from "./channels.js";

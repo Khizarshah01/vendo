@@ -10,7 +10,7 @@ import {
   type GrantId,
   type MintGrantInput,
   type ToolDescriptor,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createMemoryStore, type MemoryStore } from "./fixtures/memory-store.js";

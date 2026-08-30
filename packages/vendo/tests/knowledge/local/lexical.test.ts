@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import type { KnowledgeContext, KnowledgeDoc } from "@vendoai/core";
-import { knowledgeAdapterConformance, memoryStoreAdapter, runConformance } from "@vendoai/core/conformance";
-import { KNOWLEDGE_CHUNKS_COLLECTION, KNOWLEDGE_DOCS_COLLECTION } from "@vendoai/core";
+import type { KnowledgeContext, KnowledgeDoc } from "../../../src/core/index.js";
+import { knowledgeAdapterConformance, memoryStoreAdapter, runConformance } from "../../../src/core/conformance/index.js";
+import { KNOWLEDGE_CHUNKS_COLLECTION, KNOWLEDGE_DOCS_COLLECTION } from "../../../src/core/index.js";
 import { bindKnowledgeStore, vendoKnowledge } from "../../../src/knowledge/local/lexical.js";
 
 const ctx: KnowledgeContext = { principal: { kind: "user", subject: "user_lexical_test" } };

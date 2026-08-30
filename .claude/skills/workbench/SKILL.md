@@ -38,7 +38,7 @@ edit. In-flight turns finish on the old code.
 
 Harness sink `packages/vendo/src/harnesses/workbench.ts` → transient
 `data-vendo-debug` parts (never persisted) → ui feed store
-`packages/ui/src/chrome/workbench-store.ts` (20-turn retention) → pane in
+`packages/vendo/src/ui/chrome/workbench-store.ts` (20-turn retention) → pane in
 `examples/demo-bank/src/components/vendo/workbench/`.
 
 ## Measuring

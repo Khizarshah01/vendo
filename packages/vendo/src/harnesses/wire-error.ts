@@ -1,4 +1,4 @@
-import { log, isVendoError, formatMeterExhausted, meterExhaustedFromError } from "@vendoai/core";
+import { log, isVendoError, formatMeterExhausted, meterExhaustedFromError } from "../core/index.js";
 
 /** The one gate raw errors pass on their way to the wire. Vendo's OWN errors
  *  (code + operator-crafted message) are safe and actionable, so they travel
@@ -32,7 +32,7 @@ const GENERIC_TURN_ERROR = "An error occurred while generating the response.";
  *  the caller that has the raw error owns the operator's line. */
 export function specificWireErrorMessage(error: unknown): string | undefined {
   // `isVendoError`, not `instanceof`: a host bundle can carry a second
-  // @vendoai/core copy (dual-package hazard), and its VendoErrors are just as
+  // @vendoai/vendo/core copy (dual-package hazard), and its VendoErrors are just as
   // safe — same crafted messages, same code enum.
   if (isVendoError(error)) return `Vendo: ${error.message} (${error.code})`;
   // Pricing v3 (spec §5): the Cloud model gateway's meter refusal reaches this

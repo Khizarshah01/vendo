@@ -1,4 +1,4 @@
-import type { RiskLabel } from "@vendoai/core";
+import type { RiskLabel } from "../../core/index.js";
 
 /** 04-actions §3 — Composio risk resolution from UPSTREAM FACTS ONLY: the
  * toolkit's own `destructiveHint` / `readOnlyHint` tags, which the provider

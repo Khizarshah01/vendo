@@ -25,14 +25,14 @@
  * call in `persistence.ts`'s row writer and every origin's refusal goes red at
  * once, not one of them.
  */
-import { VendoError, type RecordStore } from "@vendoai/core";
+import { VendoError, type RecordStore } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import {
   admitAppDocument,
   validateAppDocument,
   type AdmissionOrigin,
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { appRecordInput, rowFromRecord } from "../../src/apps/persistence/persistence.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";
 import { screenDocument } from "../../src/apps/testing/screen-document.js";

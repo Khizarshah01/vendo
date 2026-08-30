@@ -59,7 +59,7 @@ import {
   inputSchemaIsBlind,
   modelToolDescription,
   UNKNOWN_INPUT_SCHEMA_NOTE,
-} from "@vendoai/core";
+} from "./core/index.js";
 import {
   queryKey,
   renderBriefingPack,
@@ -68,7 +68,7 @@ import {
   type ScreenAssembler,
   type ScreenOutcome,
   type ScreenRequest,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import {
   buildingAppsSkill,
   paintedIn,

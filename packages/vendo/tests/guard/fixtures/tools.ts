@@ -8,8 +8,8 @@ import type {
   ToolDescriptor,
   ToolOutcome,
   ToolRegistry,
-} from "@vendoai/core";
-import { descriptorHash } from "@vendoai/core";
+} from "../../../src/core/index.js";
+import { descriptorHash } from "../../../src/core/index.js";
 
 export const alice: Principal = { kind: "user", subject: "user_alice", display: "Alice" };
 export const bob: Principal = { kind: "user", subject: "user_bob", display: "Bob" };

@@ -12,7 +12,7 @@
  * assertion runs at build time in this repo and the import is type-only, so it
  * leaves no trace in the published surface.
  */
-import type { WorkspaceFs } from "@vendoai/core";
+import type { WorkspaceFs } from "../core/index.js";
 import type { IFileSystem as UpstreamFileSystem } from "just-bash";
 
 /** Fails to compile unless `T` is exactly `true`. */

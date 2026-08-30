@@ -1,4 +1,4 @@
-import type { Harness, HarnessEvent, Turn } from "@vendoai/core";
+import type { Harness, HarnessEvent, Turn } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";
 

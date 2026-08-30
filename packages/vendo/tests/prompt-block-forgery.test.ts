@@ -17,8 +17,8 @@
  * real-door placement is `situation-seam.test.ts`'s; the real-door forgery
  * defence is `situation-abuse.test.ts`'s.
  */
-import { situationPromptBlock, type RunContext } from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+import { situationPromptBlock, type RunContext } from "../src/core/index.js";
+import { memoryStoreAdapter } from "../src/core/conformance/index.js";
 import { createGuard } from "../src/guard/index.js";
 import { describe, expect, it } from "vitest";
 import { assembleSystemPrompt } from "../src/prompt.js";

@@ -5,7 +5,7 @@ import { expect, type Page } from "@playwright/test";
  *
  * Everything here is the SHIPPED surface: the branded launcher demo-bank mounts
  * (`examples/demo-bank/src/components/vendo/VendoLayer.tsx`), the composer and
- * transcript from `@vendoai/ui` (`packages/ui/src/chrome/thread/*`), and the
+ * transcript from `@vendoai/vendo/ui` (`packages/vendo/src/ui/chrome/thread/*`), and the
  * activity ledger the wire already serves (`packages/vendo/src/wire/misc.ts`
  * `GET /activity`). No test-only hooks were added to make this suite possible —
  * the one seam it needed is the harness switch in `proof-harness.ts`.
@@ -99,7 +99,7 @@ export async function openFreshChat(page: Page): Promise<void> {
  * Send one message and wait for the turn to finish.
  *
  * `aria-busy` on the transcript log is the shipped signal
- * (`packages/ui/src/chrome/thread/message-list.tsx`): it goes true the moment
+ * (`packages/vendo/src/ui/chrome/thread/message-list.tsx`): it goes true the moment
  * the turn is submitted and false when the thread reaches `ready` or `error`.
  * Waiting for the rise first is what stops a stale `false` from reading as a
  * finished turn.

@@ -28,7 +28,7 @@
  * Yousef iterates on this text — keep it one screen per section, and shorter than
  * you found it.
  */
-import type { Skill } from "@vendoai/core";
+import type { Skill } from "../../core/index.js";
 import { VENDO_FORMAT_REFERENCE } from "./format-reference.js";
 
 const BODY = `# Building an app

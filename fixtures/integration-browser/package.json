@@ -14,8 +14,6 @@
   "dependencies": {
     "@modelcontextprotocol/ext-apps": "^1.7.4",
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "@vendoai/core": "workspace:*",
-    "@vendoai/ui": "workspace:*",
     "@vendoai/vendo": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

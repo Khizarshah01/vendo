@@ -34,7 +34,7 @@ import {
   type ToolListingContext,
   type ToolRegistry,
   type VendoErrorCode,
-} from "@vendoai/core";
+} from "./core/index.js";
 import { assertedOrgs } from "./org-policy.js";
 
 /** What the host registers: an MCP server URL or an OpenAPI spec, plus the

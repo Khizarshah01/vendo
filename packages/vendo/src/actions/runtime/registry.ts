@@ -12,7 +12,7 @@ import {
   type ToolOutcome,
   type ToolRegistry,
   VendoError,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type { Connector } from "../connectors/connector.js";
 import {
   VENDO_OVERRIDES_FORMAT,

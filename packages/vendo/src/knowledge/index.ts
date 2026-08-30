@@ -5,12 +5,12 @@
  * local lexical engine, the cloud client, and the BYO HTTP template — plus the
  * ingestion pipeline (parse → normalize → structural chunk → sync) and the
  * `vendo_knowledge_search` agent tool, all behind core's frozen contract
- * (`@vendoai/core`).
+ * (`@vendoai/vendo/core`).
  *
  * Pure re-export barrel, alphabetical by module.
  */
 
-export type { KnowledgeAdapter } from "@vendoai/core";
+export type { KnowledgeAdapter } from "../core/index.js";
 
 /** The `vendo_knowledge_search` agent tool (tool-layer intent policy,
     structured refusal, read-more) over any adapter. */
@@ -24,7 +24,7 @@ export {
   type KnowledgeToolsOptions,
 } from "./agent-tools.js";
 export { cloudKnowledge, type CloudKnowledgeOptions } from "./cloud.js";
-export { KNOWLEDGE_CHUNKS_COLLECTION, KNOWLEDGE_DOCS_COLLECTION } from "@vendoai/core";
+export { KNOWLEDGE_CHUNKS_COLLECTION, KNOWLEDGE_DOCS_COLLECTION } from "../core/index.js";
 export { httpKnowledge, type HttpKnowledgeOptions } from "./http.js";
 export {
   VENDO_KNOWLEDGE_CONFIG_FORMAT,

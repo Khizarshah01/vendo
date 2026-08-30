@@ -6,7 +6,7 @@
  * as "waiting on a person". Real embedded store, real guard, real runtime; only
  * the thinker is scripted (CLAUDE.md: test the SEAM).
  */
-import type { ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import type { ToolDescriptor, ToolRegistry } from "../../src/core/index.js";
 import type { VendoGuard } from "../../src/guard/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadStore } from "../../src/store/index.js";

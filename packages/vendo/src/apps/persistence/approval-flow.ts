@@ -4,7 +4,7 @@
  * consented build. By the time either fires the surface that asked is long
  * gone, so the record is what carries the intent, not the call stack.
  */
-import { type ApprovalId } from "@vendoai/core";
+import { type ApprovalId } from "../../core/index.js";
 import type { AppsRuntimeContext } from "../runtime/runtime-context.js";
 
 const subscribeApprovalDecisions = (

@@ -1,7 +1,7 @@
 import { stdin, stdout } from "node:process";
 import { createInterface } from "node:readline/promises";
 import { Writable } from "node:stream";
-import { vendoStyle } from "@vendoai/core";
+import { vendoStyle } from "../core/index.js";
 import { BANNER_COMPACT, BANNER_CONCEPT, BANNER_TAGLINE, bannerColorMode, bannerFrames, playBanner } from "./banner.js";
 import type { Output } from "./shared.js";
 
@@ -25,7 +25,7 @@ import type { Output } from "./shared.js";
 
 const ESC = "\u001b";
 /** The palette is core's — ONE set of colours for the CLI rail and the boot
-    summary `createVendo` prints (@vendoai/core's style.ts). These five are
+    summary `createVendo` prints (@vendoai/vendo/core's style.ts). These five are
     env-independent, so they are read once here; the accent is not (which purple
     it is depends on the terminal), so it rides the env its renderer was built
     with — the same probe `bannerColorMode` makes for the ramp above it. */

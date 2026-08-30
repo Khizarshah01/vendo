@@ -12,7 +12,7 @@
  * `not-implemented` for the route itself), not as a stub of our own code, so
  * the feature detect has a real skew to detect.
  */
-import { VENDO_STORE_WIRE_FORMAT, VendoError, type Principal, type StoreOps } from "@vendoai/core";
+import { VENDO_STORE_WIRE_FORMAT, VendoError, type Principal, type StoreOps } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import {

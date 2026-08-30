@@ -6,8 +6,8 @@
  * rules without a second copy: `list` needs viewer, grant/revoke need owner, and
  * naming a tenant needs membership in it.
  */
-import { VendoError, encodeGrantPrincipal, parseGrantPrincipal, type AppId, type RunContext } from "@vendoai/core";
-import { refuseBundleArtifact } from "@vendoai/core/apps";
+import { VendoError, encodeGrantPrincipal, parseGrantPrincipal, type AppId, type RunContext } from "../../core/index.js";
+import { refuseBundleArtifact } from "../../core/apps/index.js";
 import { APPS_COLLECTION } from "../persistence/persistence.js";
 import type { AppsRuntimeContext } from "../runtime/runtime-context.js";
 import type { AppsRuntime } from "../runtime/types.js";

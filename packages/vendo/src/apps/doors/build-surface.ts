@@ -18,12 +18,12 @@ import {
   type Json,
   type RunContext,
   type UIPayload,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
   type ScreenAssembler,
   type Tree,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { sqlRisk } from "../persistence/app-sql-guard.js";
 import { VENDO_APPS_SQL_TOOL } from "./sql-tool.js";
 import {
@@ -36,7 +36,7 @@ import {
   fallbackAppName,
 } from "./build-messages.js";
 // The screen engine, by its own path: the contract door does not carry it yet.
-import { SCREEN_FILE } from "@vendoai/core/apps";
+import { SCREEN_FILE } from "../../core/apps/index.js";
 import { checkComponentScreen, reviewComponentScreenInput } from "../checking/component-screen.js";
 import { screenCatalog } from "../checking/screen-typings.js";
 import { screenTypesCheck } from "../checking/facts.js";

@@ -14,7 +14,7 @@
  * that dies at 24s used to hand the second one the adapter's full timeout, five
  * minutes of holding a hot sync open on a barrier the box released long ago.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../../src/core/index.js";
 import { readFileSync } from "node:fs";
 import { afterEach, expect, test, vi } from "vitest";
 import { boxMachine, disposeSessionMachines, type SandboxAdapterLike } from "../../../src/harnesses/claude-code/box.js";

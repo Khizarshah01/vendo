@@ -4,7 +4,7 @@ import {
   consoleSender,
   defaultFetch,
   raiseCloudError,
-} from "@vendoai/core";
+} from "./core/index.js";
 import {
   publishRecordSchema,
   shareSnapshotSchema,

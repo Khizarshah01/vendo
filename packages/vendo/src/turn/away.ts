@@ -20,7 +20,7 @@
  * rendered VERBATIM in the automations panel's run row, so it is a reading
  * budget. `TurnResult.text` — what `run()` answers with — is the whole reply.
  */
-import { mintTurnId, type AgentRunner, type AgentRunReport, type Json, type ThreadId } from "@vendoai/core";
+import { mintTurnId, type AgentRunner, type AgentRunReport, type Json, type ThreadId } from "../core/index.js";
 import type { FlexibleSchema } from "ai";
 import { randomUUID } from "node:crypto";
 import {

@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { sha256Hex } from "@vendoai/core";
+import { sha256Hex } from "../../core/index.js";
 import type TS from "typescript";
 import { resolveCompiler } from "./compiler-gate.js";
 import type { ExtractedTool, PrimitiveToolBinding } from "../formats.js";

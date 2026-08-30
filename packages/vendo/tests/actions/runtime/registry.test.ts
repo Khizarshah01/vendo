@@ -4,7 +4,7 @@ import type { AddressInfo } from "node:net";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { ActAs } from "@vendoai/core";
+import type { ActAs } from "../../../src/core/index.js";
 
 // Spies on the ONE seam the registry's disk reads flow through
 // (readOptionalVendoJson → node:fs/promises's readFile). Defaults to the
@@ -26,7 +26,7 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import type { Connector } from "../../../src/actions/connectors/connector.js";
 import {
   VENDO_OVERRIDES_FORMAT,

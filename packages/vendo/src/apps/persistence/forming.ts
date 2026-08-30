@@ -3,7 +3,7 @@ import {
   VENDO_TREE_FORMAT,
   type AppId,
   type UIPayload,
-} from "@vendoai/core";
+} from "../../core/index.js";
 
 /**
  * The geometry of one paint — node ids, component names, nesting, and the

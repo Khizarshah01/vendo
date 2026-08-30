@@ -22,7 +22,7 @@
  * machinery, the same audit row and the same transcript mirror the in-process
  * path uses. Parity is by construction, not by a second implementation.
  */
-import type { RunContext, TurnTools } from "@vendoai/core";
+import type { RunContext, TurnTools } from "../core/index.js";
 
 /** One live turn, as the door needs to see it. */
 export interface LiveTurn {

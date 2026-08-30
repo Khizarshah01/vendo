@@ -5,7 +5,7 @@
  * themselves are `packages/vendo/src/guard/permission-wire.ts`'s ONE
  * implementation.
  */
-import type { Principal, StoreAdapter } from "@vendoai/core";
+import type { Principal, StoreAdapter } from "../core/index.js";
 
 /** Where the host mounts {@link VendoAgent.permissions}. `DOOR_PATH` lives
  *  under it, which is why the handler falls THROUGH (undefined) instead of

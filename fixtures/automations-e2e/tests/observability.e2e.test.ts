@@ -2,7 +2,7 @@
  * newest-first, owner-scoped on every door, plus dryRun — a preview that
  * executes nothing, on the store or on the live host.
  */
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStack, ownerCtx, resetFixture, type Stack } from "../src/harness.js";
 import { ADA, BOB, approve, enableAndApprove, fixtureInvoices, tableCount } from "../src/support.js";

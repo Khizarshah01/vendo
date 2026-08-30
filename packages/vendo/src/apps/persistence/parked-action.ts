@@ -8,7 +8,7 @@ import {
   type ToolCall,
   type ToolOutcome,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type { EngineOps } from "./engine.js";
 import { listAllEngineRecords } from "./persistence.js";
 

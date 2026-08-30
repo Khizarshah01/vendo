@@ -1,4 +1,4 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 /**
  * Build contract §1.6 / redesign D4 — a FILES-FIRST app is a first-class app.
  *
@@ -20,14 +20,14 @@ import {
   type RunContext,
   type ToolDescriptor,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   SCREEN_FILE,
   warmScreenEngine,
   type AppDocument,
   type ComponentPaintResult,
   type ScreenAssembler,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 import { bindTools, guardFixture, type GuardFixture } from "../../src/apps/testing/guard-fixture.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";

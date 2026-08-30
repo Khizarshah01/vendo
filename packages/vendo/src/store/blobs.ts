@@ -1,4 +1,4 @@
-import type { BlobStore } from "@vendoai/core";
+import type { BlobStore } from "../core/index.js";
 import type { Db } from "./db.js";
 import { appScopeId, escapeLike, requireKnownApp, text, unknownAppError } from "./helpers/utils.js";
 

@@ -1,4 +1,4 @@
-import { VendoError, type StoreOps } from "@vendoai/core";
+import { VendoError, type StoreOps } from "../core/index.js";
 import type { Db } from "./db-postgres.js";
 import { backendOf } from "./helpers/backend.js";
 import type { VendoStore } from "./store.js";

@@ -159,7 +159,7 @@ describe("blindness", () => {
         // because its prompt tells it to (diy.ts), the product because its
         // document is stamped with the format (VENDO_APP_FORMAT).
         artifact: `{"format":"vendo/app@1","tree":{"formatVersion":"vendo-genui/v2"}}
-<script type="module">import { PayloadView } from "@vendoai/ui/tree";</script>
+<script type="module">import { PayloadView } from "@vendoai/vendo/ui/tree";</script>
 <style>body{--crayon-primary-text:#111}</style>
 <div class="crayon-shell-container--mobile">
 <button onclick="window.vendo.callTool('cancel_transfer', { id: 'tr_1' })">Cancel</button></div>`,
@@ -213,7 +213,7 @@ describe("blindness", () => {
     await judge(
       input({
         artifact: `{"format":"vendo/app@1"}<td>Northgate Plumbing — vendor</td>
-<script type="module">import { PayloadView } from "@vendoai/ui/tree";</script>`,
+<script type="module">import { PayloadView } from "@vendoai/vendo/ui/tree";</script>`,
         trace: [{ label: "Pay vendor", changed: false, calls: [{ name: "pay_vendor", args: { vendorId: "ven_4" } }] }],
         toolData: `list_vendors → {"data":[{"vendor_name":"Northgate Plumbing","vendorId":"ven_4","vendored":true}]}`,
       }),

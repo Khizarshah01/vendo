@@ -10,14 +10,14 @@ description: "Every server-side symbol: the createVendo composition and the Vend
 | --- | --- |
 | `@vendoai/vendo` | Types only, plus three tool registries. The root re-exports every type the blocks own |
 | `@vendoai/vendo/server` | `createVendo` and everything a composition needs |
-| `@vendoai/vendo/react` | The client surface, re-exported from `@vendoai/ui` |
+| `@vendoai/vendo/react` | The client surface, re-exported from `@vendoai/vendo/ui` |
 | `@vendoai/vendo/ai-sdk` | `vendoTools`, the guarded tool pack as an AI SDK `ToolSet` |
 | `@vendoai/vendo/mastra` | `vendoMastraTools`, the same pack as Mastra tool shapes |
 | `@vendoai/vendo/auth/{auth0,auth-js,clerk,jwt,supabase}` | One preset factory each |
 | `@vendoai/vendo/extract` | The extraction stages the CLI drives |
 | `@vendoai/vendo` | `agent()`, the standalone backend agent |
 
-Type imports come from the umbrella, not the block packages. Importing the same type from `@vendoai/core` is a `TS2307` under strict linking, because it is not your dependency.
+Type imports come from the umbrella, not the block packages. Importing the same type from `@vendoai/vendo/core` is a `TS2307` under strict linking, because it is not your dependency.
 
 The split between the root and `/server` matters. `createVendo` and the types shaped for its config live on `/server`; the bulk of the types, including `HostOAuthAdapter`, live on the root.
 
@@ -369,7 +369,7 @@ const handle = support.handler({ basePath: "/api/agent", resolveUser });
 | `resolveUser` | `(request) => Promise<HandlerUser \| null>`. `null` is unauthenticated and answers 401 |
 | `headers` | What the turn's tools forward as the caller's authority. Unset forwards this request's own headers; `false` forwards nothing |
 
-`HandlerUser` is `{ subject, profile?, context? }` — `profile` is the server-trusted identity the model may read. The routes it serves are in [HTTP routes](/reference/http-routes); the browser half is `useVendoChat` from `@vendoai/ui`.
+`HandlerUser` is `{ subject, profile?, context? }` — `profile` is the server-trusted identity the model may read. The routes it serves are in [HTTP routes](/reference/http-routes); the browser half is `useVendoChat` from `@vendoai/vendo/ui`.
 
 The permission wire is mounted under this `basePath`, behind this mount's `resolveUser`, rather than on the fixed `PERMISSIONS_PATH` — deciding an approval is what unblocks a parked turn, so it has to be reachable by the same person the turns belong to.
 
@@ -479,7 +479,7 @@ if (turn.status === "interrupted") {
 }
 ```
 
-The `input` arm is frozen but unemitted: `ask_user` ends the turn in v1 and the answer arrives as the next message, so nothing mints one yet. It is in the union because `@vendoai/ui` and the resume route both parse this shape, and a shape added later is a shape two shipped readers reject.
+The `input` arm is frozen but unemitted: `ask_user` ends the turn in v1 and the answer arrives as the next message, so nothing mints one yet. It is in the union because `@vendoai/vendo/ui` and the resume route both parse this shape, and a shape added later is a shape two shipped readers reject.
 
 A `Decisions` map is keyed by `id`. An approval takes `"approve"` or `"deny"` — an `{ answers }` value type-checks against it and is refused at runtime, so a shape nobody meant never lands as a denial nobody made.
 

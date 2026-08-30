@@ -3,7 +3,7 @@
  *  state on top — Node-only concerns that used to ride into Worker bundles
  *  whenever runtime code borrowed it. Keep this module free of node builtins
  *  and CLI imports; the portability gate bundles it. */
-import { defaultFetch, deploymentIdentityHeaders, resolveCloudBaseUrl, type CloudUrlOptions } from "@vendoai/core";
+import { defaultFetch, deploymentIdentityHeaders, resolveCloudBaseUrl, type CloudUrlOptions } from "./core/index.js";
 import { VERSION } from "./wire/shared.js";
 
 /** Base-URL resolution lives in core, beside the env read it wraps: the CLI

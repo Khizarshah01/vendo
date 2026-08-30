@@ -15,7 +15,7 @@
  * that asserted the sentence against a hand-written VendoError would have passed
  * on the broken code, because the hand-written one is where the bug was.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../src/core/index.js";
 import { buildFailureReason } from "../src/apps/index.js";
 import {
   boxMachine,

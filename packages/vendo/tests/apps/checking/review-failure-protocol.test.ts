@@ -25,7 +25,7 @@
  *     with two choices, an owner override) is still absent, and the tests below
  *     still name it.
  *  2. There is no version status to be flagged. `AppDocument`
- *     (`packages/core/src/app-document.ts`) has no `status`/`flagged`/`review`
+ *     (`packages/vendo/src/core/app-document.ts`) has no `status`/`flagged`/`review`
  *     field — the only failure-ish field is `buildFailed`, a terminal generation
  *     crash marker. `appRecordInput` (`../persistence.ts`) keys the row by the app
  *     id, so every write clobbers the live row. `createAppHistory`

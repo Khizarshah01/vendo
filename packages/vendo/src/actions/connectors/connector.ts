@@ -1,9 +1,9 @@
-import type { ConnectionAccount, RiskLabel, RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "@vendoai/core";
+import type { ConnectionAccount, RiskLabel, RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "../../core/index.js";
 
 /** 04-actions §3 — one per-user connected account at an external connector, as
  * the umbrella's /connections endpoints and the chrome panel see it. The shape
  * is core's (core/src/connections.ts): this block produces the rows and
- * `@vendoai/ui` renders them, and neither may import the other. */
+ * `@vendoai/vendo/ui` renders them, and neither may import the other. */
 export type ConnectorAccount = ConnectionAccount;
 
 /** One connectable toolkit as the connect dock's catalog advertises it. */

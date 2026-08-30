@@ -14,7 +14,7 @@ import {
   type PermissionGrant,
   type RunContext,
   type ToolDescriptor,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { EngineBase } from "./engine-context.js";
 import { allRecords, id } from "./rows.js";
 import { scopeCovers } from "./steps.js";

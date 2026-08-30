@@ -1,5 +1,5 @@
 import type { SecretSource } from "../actions/presets/index.js";
-import type { ActAs, Json, Membership, Principal } from "@vendoai/core";
+import type { ActAs, Json, Membership, Principal } from "../core/index.js";
 import type { HostOAuthAdapter } from "../mcp/index.js";
 
 /** 09-vendo §2.1 — one host-identity story, every seam. This is what the ONE

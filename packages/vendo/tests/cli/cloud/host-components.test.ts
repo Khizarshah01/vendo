@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
-import { STORE_WIRE_PATHS } from "@vendoai/core";
+import { STORE_WIRE_PATHS } from "../../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { runSync } from "../../../src/cli/sync.js";
 import { HOST_COMPONENTS_COLLECTION, pushHostComponents, readPushComponents } from "../../../src/cli/cloud/host-components.js";
@@ -72,7 +72,7 @@ const VERBS = ["list", "put", "delete"] as const;
  * addresses the verb and carries the collection in the body; the routes are read
  * off `STORE_WIRE_PATHS` rather than written out here, so this cannot drift from
  * the contract the client actually routes by — the literal 35 paths stay pinned
- * in `packages/core/tests/store-wire.test.ts`, which is where a path belongs.
+ * in `packages/vendo/tests/core/store-wire.test.ts`, which is where a path belongs.
  */
 function engineVerb(pathname: string, body: { collection?: string }): typeof VERBS[number] | undefined {
   for (const verb of VERBS) {

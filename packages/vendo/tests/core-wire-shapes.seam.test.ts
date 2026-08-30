@@ -1,7 +1,7 @@
 /**
- * The shapes `@vendoai/ui` used to hand-copy, proven at the seam.
+ * The shapes `@vendoai/vendo/ui` used to hand-copy, proven at the seam.
  *
- * ui is layered to `@vendoai/core` alone, so it could not name this package's
+ * ui is layered to `@vendoai/vendo/core` alone, so it could not name this package's
  * types and kept its own restatement of them instead — "verbatim from the
  * frozen contract text", which is a promise and not a mechanism. The copy of
  * `Thread` had lost `title` and `revision`, and the compile-time parity check
@@ -19,9 +19,9 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { automationsInternals } from "../src/automations/index.js";
-import { RUN_STATUSES, type AutomationId, type Principal, type RunContext } from "@vendoai/core";
+import { RUN_STATUSES, type AutomationId, type Principal, type RunContext } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
-import { createVendoClient, type VendoClient } from "@vendoai/ui";
+import { createVendoClient, type VendoClient } from "../src/ui/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { scriptedModel, textTurn } from "../src/agent-doubles.test-util.js";
 import { createVendo, type Vendo } from "../src/server.js";

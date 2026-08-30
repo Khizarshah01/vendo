@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { PermissionGrant } from "@vendoai/core";
+import type { PermissionGrant } from "../../../src/core/index.js";
 import type { ExtractedTool } from "../../../src/actions/formats.js";
 import { createActions, type ActionsRunContext } from "../../../src/actions/runtime/registry.js";
 

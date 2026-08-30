@@ -1,4 +1,4 @@
-import { CONNECTOR_DISCOVERY_TOOLS, log, VENDO_TOOL_TITLES, type Json, type RunContext, type ToolDescriptor, type ToolOutcome, type ToolRegistry } from "@vendoai/core";
+import { CONNECTOR_DISCOVERY_TOOLS, log, VENDO_TOOL_TITLES, type Json, type RunContext, type ToolDescriptor, type ToolOutcome, type ToolRegistry } from "./core/index.js";
 
 /**
  * The connector-discovery tools, projected as ordinary tools on the one registry

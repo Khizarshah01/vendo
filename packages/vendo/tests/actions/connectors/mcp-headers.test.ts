@@ -1,7 +1,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import type { AddressInfo } from "node:net";
 import { afterEach, describe, expect, it } from "vitest";
-import type { PermissionGrant, RunContext } from "@vendoai/core";
+import type { PermissionGrant, RunContext } from "../../../src/core/index.js";
 import { mcpConnector, type McpAuthContext } from "../../../src/actions/connectors/mcp.js";
 
 const ada: RunContext = {

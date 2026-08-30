@@ -5,7 +5,7 @@ import {
   isoDateTimeSchema,
   permissionGrantSchema,
   VendoError,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import type {
   BlobStore,
   PermissionGrant,
@@ -13,7 +13,7 @@ import type {
   RecordStore,
   StoreAdapter,
   VendoRecord,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import { z } from "zod";
 
 /** Mirrors the store lane's routed-put validation (DESIGN.md addendum 1). */

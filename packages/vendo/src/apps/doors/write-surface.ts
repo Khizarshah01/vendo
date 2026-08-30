@@ -13,16 +13,16 @@ import {
   seedComponentName,
   type AppId,
   type RunContext,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   SCREEN_FILE,
   bundleOf,
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { rememberedMemory } from "../persistence/app-memory.js";
 import { commitApp, inlineSourceFile } from "../persistence/app-source.js";
 import { rungFor } from "../persistence/edit-journal.js";
-import type { AppData } from "@vendoai/core/apps";
+import type { AppData } from "../../core/apps/index.js";
 import { APPS_COLLECTION, appRecordInput, onAppRow, rowFromRecord } from "../persistence/persistence.js";
 import type { AppsRuntimeContext } from "../runtime/runtime-context.js";
 import type { AppsRuntime, EditResult, VersionEntry } from "../runtime/types.js";

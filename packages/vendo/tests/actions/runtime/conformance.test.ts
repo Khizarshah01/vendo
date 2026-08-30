@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { runConformance, toolRegistryConformance } from "@vendoai/core/conformance";
-import type { RunContext, ToolDescriptor } from "@vendoai/core";
+import { runConformance, toolRegistryConformance } from "../../../src/core/conformance/index.js";
+import type { RunContext, ToolDescriptor } from "../../../src/core/index.js";
 import type { Connector } from "../../../src/actions/connectors/connector.js";
 import type { ExtractedTool } from "../../../src/actions/formats.js";
 import { createActions } from "../../../src/actions/runtime/registry.js";

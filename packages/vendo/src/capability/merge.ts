@@ -27,7 +27,7 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { backingRegistry } from "./from-registry.js";
 
 /**

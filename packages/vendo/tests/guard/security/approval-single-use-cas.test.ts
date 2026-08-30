@@ -1,4 +1,4 @@
-import type { ApprovalRequest, StoreAdapter } from "@vendoai/core";
+import type { ApprovalRequest, StoreAdapter } from "../../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createGuard } from "../../../src/guard/index.js";
 import { createMemoryStore } from "../fixtures/memory-store.js";

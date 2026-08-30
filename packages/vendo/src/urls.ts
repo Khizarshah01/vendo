@@ -1,4 +1,4 @@
-import { publicBase } from "@vendoai/core";
+import { publicBase } from "./core/index.js";
 
 /**
  * The deployment's two URLs, resolved once (spec 2026-08-06 §B1).

@@ -1,4 +1,4 @@
-import type { RiskLabel, ToolDescriptor } from "@vendoai/core";
+import type { RiskLabel, ToolDescriptor } from "../../core/index.js";
 
 /** A ranked hit from {@link searchToolDescriptors}. Carries just enough to load
  * the tool into a run and describe it to the model — never the input schema. */

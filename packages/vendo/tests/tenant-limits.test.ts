@@ -1,5 +1,5 @@
-import type { LimitAction, LimitUser, LimitWindow, StoreOps, TenantDirectoryPayload } from "@vendoai/core";
-import { memoryStoreOps } from "@vendoai/core/conformance";
+import type { LimitAction, LimitUser, LimitWindow, StoreOps, TenantDirectoryPayload } from "../src/core/index.js";
+import { memoryStoreOps } from "../src/core/conformance/index.js";
 import { describe, expect, it, vi } from "vitest";
 import type { CloudDirectory } from "../src/cloud-directory.js";
 import { createLimiter } from "../src/limits.js";

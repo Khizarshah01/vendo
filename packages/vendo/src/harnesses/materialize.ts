@@ -26,7 +26,7 @@
  * view, so this file never speaks about views.
  */
 import { createHash } from "node:crypto";
-import type { WorkspaceFs } from "@vendoai/core";
+import type { WorkspaceFs } from "../core/index.js";
 
 /** §3.1's frozen mounts: `/host`, `/user`, and one `/orgs/<org>` per asserted
  *  membership. A path outside them is not the workspace and never reaches a

@@ -1,6 +1,6 @@
-import { consoleSender, debugConnectorHttp, raiseCloudError, VendoError, type ConnectableToolkit, type InitiatedConnection, type Principal } from "@vendoai/core";
+import { consoleSender, debugConnectorHttp, raiseCloudError, VendoError, type ConnectableToolkit, type InitiatedConnection, type Principal } from "./core/index.js";
 
-// Both answer shapes are core's (core/src/connections.ts): `@vendoai/ui` reads
+// Both answer shapes are core's (core/src/connections.ts): `@vendoai/vendo/ui` reads
 // them off the wire and may not import this package.
 export type { ConnectableToolkit, InitiatedConnection };
 import { keepAliveFetch } from "./keep-alive-fetch.js";

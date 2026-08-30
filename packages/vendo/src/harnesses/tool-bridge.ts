@@ -31,7 +31,7 @@ import {
   type VendoViewPart,
   type VendoViewStreamingToolCall,
   type VendoViewStreamUpdate,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { UIMessage, UIMessageStreamWriter } from "ai";
 import type { TurnTimings } from "./runtime.js";
 

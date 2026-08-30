@@ -1,4 +1,4 @@
-import { VENDO_BASH_TOOL, VendoError } from "@vendoai/core";
+import { VENDO_BASH_TOOL, VendoError } from "../core/index.js";
 import type { PolicyConfig, PolicyConfigObject, PolicyFile, PolicyPresetName, PolicyRule } from "./types.js";
 import { policyFileSchema } from "./types.js";
 

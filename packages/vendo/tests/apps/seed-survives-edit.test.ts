@@ -9,8 +9,8 @@
  */
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import type { RunContext, ToolRegistry } from "@vendoai/core";
-import type { AppDocument, NormalizedCatalog, SeedBaseline } from "@vendoai/core/apps";
+import type { RunContext, ToolRegistry } from "../../src/core/index.js";
+import type { AppDocument, NormalizedCatalog, SeedBaseline } from "../../src/core/apps/index.js";
 import { createApps, type AppsRuntime } from "../../src/apps/index.js";
 import { createCheckingLayer } from "../../src/apps/checking/layer.js";
 import { screenTypesCheck } from "../../src/apps/checking/facts.js";

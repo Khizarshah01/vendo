@@ -14,7 +14,7 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { toolLine } from "../../src/apps/automation/plan.js";
 import { createApps } from "../../src/apps/index.js";

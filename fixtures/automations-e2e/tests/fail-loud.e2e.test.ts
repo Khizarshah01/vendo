@@ -9,7 +9,7 @@
  * (This file replaces park-resume.e2e.test.ts, which proved the parking
  * machinery this slice deletes.)
  */
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createAutomation, createStack, ownerCtx, resetFixture, type Stack } from "../src/harness.js";
 import { ADA, approve, fixtureInvoices, waitForRun } from "../src/support.js";

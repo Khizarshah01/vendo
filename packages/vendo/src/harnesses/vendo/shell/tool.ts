@@ -14,7 +14,7 @@ import {
   type ToolOutcome,
   type ToolRegistry,
   type WorkspaceFs,
-} from "@vendoai/core";
+} from "../../../core/index.js";
 import { createShellSession, type ShellLimits, type ShellSession } from "./engine.js";
 import { workerThreadsAvailable } from "./runtime.js";
 

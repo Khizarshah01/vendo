@@ -4,7 +4,7 @@
  * external keys — so it always runs in CI.
  */
 import { describe, expect, it } from "vitest";
-import type { RunContext, ToolCall } from "@vendoai/core";
+import type { RunContext, ToolCall } from "@vendoai/vendo/core";
 import { ADA, createStack, loginCookie, ownerCtx, resetFixture } from "../src/harness.js";
 
 describe("redteam harness composition", () => {

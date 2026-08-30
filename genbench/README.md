@@ -457,8 +457,8 @@ is hashed with `world.json` into `world.hash` — a run with a different face do
 not compare with a run without it.
 
 `maple` ships **Onest** (SIL OFL 1.1), the latin subset decoded out of the face
-the product itself vendors in `packages/ui/src/chrome/onest-font.gen.ts`; the
-license text is `packages/ui/ONEST-OFL.txt`.
+the product itself vendors in `packages/vendo/src/ui/chrome/onest-font.gen.ts`; the
+license text is `packages/vendo/ONEST-OFL.txt`.
 
 ## The floor
 
@@ -1085,7 +1085,7 @@ says `crayon` — which is the point: it was the asymmetry that was the bug. The
 `pipeline` field arrived beside it and breaks nothing, being a recording rather
 than a rule: no floor check, rubric line or exit code reads it. Its repair half is
 still missing and needs a field on `ScreenOutcome`
-(`packages/core/src/apps/screen.ts`) — from out here the reviewer's verdict is
+(`packages/vendo/src/core/apps/screen.ts`) — from out here the reviewer's verdict is
 watchable and whether the repair round ran is not.
 
 Two probe fairness fixes later on 2026-08-18 are a fifth and a sixth break, and

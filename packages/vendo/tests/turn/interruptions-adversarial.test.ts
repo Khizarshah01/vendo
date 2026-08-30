@@ -13,7 +13,7 @@ import {
   type RunContext,
   type ToolCall,
   type ToolResult,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { agent, agentComposition, type VendoAgent } from "../../src/turn/agent.js";
 import { createTurns, type Turns } from "../../src/turn/interruptions.js";

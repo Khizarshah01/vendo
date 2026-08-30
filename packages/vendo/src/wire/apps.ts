@@ -1,5 +1,5 @@
 import { BUNDLE_HEADERS } from "../apps/index.js";
-import { isVendoError, VendoError, type AccessLevel, type Json, type RunContext, type StoreOps } from "@vendoai/core";
+import { isVendoError, VendoError, type AccessLevel, type Json, type RunContext, type StoreOps } from "../core/index.js";
 import { json, object, requestJson, route, string, type RouteEntry, type WireContext } from "./shared.js";
 
 /** What the ?pending=1 disambiguation learned about a record open() refused
@@ -174,7 +174,7 @@ async function openApp(wire: WireContext, appId: string, ctx: RunContext, pendin
     if (isVendoError(reason) && reason.code === "validation") {
       return json({ kind: "failed", reason: reason.message });
     }
-    // Cross-realm safe (`isVendoError`): a second @vendoai/core copy's not-found
+    // Cross-realm safe (`isVendoError`): a second @vendoai/vendo/core copy's not-found
     // read as an unknown fault here, which 501'd the poll instead of answering it.
     // Only the flagged route rescues it; unflagged keeps its contracted 404.
     if (!(pending && isVendoError(reason) && reason.code === "not-found")) throw reason;

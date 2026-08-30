@@ -1,5 +1,5 @@
-import { canonicalJson, sha256Hex } from "@vendoai/core";
-import type { GuardDecision, RiskLabel, RunContext } from "@vendoai/core";
+import { canonicalJson, sha256Hex } from "../../src/core/index.js";
+import type { GuardDecision, RiskLabel, RunContext } from "../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createMemoryStore, type MemoryStore } from "./fixtures/memory-store.js";

@@ -4,7 +4,7 @@
  * `guard.bind` keys off `risk`.
  */
 import { InMemoryFs } from "just-bash";
-import { VENDO_BASH_TOOL, type Principal, type RunContext, type WorkspaceFs } from "@vendoai/core";
+import { VENDO_BASH_TOOL, type Principal, type RunContext, type WorkspaceFs } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createShellTools } from "../../../src/harnesses/vendo/shell/tool.js";
 

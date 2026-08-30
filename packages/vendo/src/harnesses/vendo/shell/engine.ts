@@ -9,7 +9,7 @@
  * with and no host disk to reach: a write outside the mounts is `EACCES` from
  * the filesystem itself, not from a check bolted on here.
  */
-import { log, type IFileSystem } from "@vendoai/core";
+import { log, type IFileSystem } from "../../../core/index.js";
 import type { Bash as BashInstance, SecurityViolation } from "just-bash";
 import { docx2txt } from "./parsers/docx2txt.js";
 import { pdftotext } from "./parsers/pdftotext.js";

@@ -11,7 +11,7 @@ import {
   type ToolDescriptor,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../core/index.js";
 
 const DRAFT_2020_12 = "https://json-schema.org/draft/2020-12/schema";
 
@@ -24,7 +24,7 @@ export const VENDO_KNOWLEDGE_SEARCH_TOOL = "vendo_knowledge_search";
 
 /** The envelope tag core names once (stream-parts.ts) — re-exported so tool
     consumers keep pulling it from the package that produces the envelope. */
-export { VENDO_KNOWLEDGE_RESULT_KIND } from "@vendoai/core";
+export { VENDO_KNOWLEDGE_RESULT_KIND } from "../core/index.js";
 
 /** The tool keeps ok.output comfortably under the agent's tool-output cap:
     the model gets trimmed snippets it can answer from; the FULL citation data

@@ -3,8 +3,8 @@ import {
   guardConformance,
   storeAdapterConformance,
   type ConformanceSuite,
-} from "@vendoai/core/conformance";
-import type { RunContext, ToolCall, ToolDescriptor } from "@vendoai/core";
+} from "../../src/core/conformance/index.js";
+import type { RunContext, ToolCall, ToolDescriptor } from "../../src/core/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";
 

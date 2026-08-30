@@ -137,7 +137,7 @@ describe("the named-runner map — registered at BOOT, looked up at fire time", 
 
 /** What a store answers for a collection its engine allowlist does not carry —
  *  Vendo Cloud's did not carry `vendo_automations` in 0.27.0 — wearing the shape
- *  a SECOND copy of `@vendoai/core` mints (a host bundle's dist/cjs beside its
+ *  a SECOND copy of `@vendoai/vendo/core` mints (a host bundle's dist/cjs beside its
  *  dist/), which is what carried it past every `instanceof VendoError` on the
  *  way out. */
 const collectionRefused = (collection: string): Error =>
@@ -167,7 +167,7 @@ function refuse(store: VendoStore, collection: string): VendoStore {
 describe("a store that will not hold automations does not take the deployment with it", () => {
   it("keeps serving every other route, and says why once", async () => {
     // Read off the CONSOLE, not off `setLogger`: a host process can hold two
-    // copies of `@vendoai/core` (this suite does), and only one of them has the
+    // copies of `@vendoai/vendo/core` (this suite does), and only one of them has the
     // sink a test installed — while both default to the console line.
     const warnings = vi.spyOn(console, "warn").mockImplementation(() => undefined);
     const support = named("support");

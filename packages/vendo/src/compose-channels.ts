@@ -2,7 +2,7 @@
  * The text-channel lane: which adapter carries the texts, where the link
  * binding lives, and the one door the wire and the host both call.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "./core/index.js";
 import {
   CODE_PATTERN,
   ChannelAskRepository,

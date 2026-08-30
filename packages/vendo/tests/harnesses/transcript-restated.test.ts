@@ -16,7 +16,7 @@
  * full. The last test here is that guarantee.
  */
 import { defineHarness } from "../../src/harnesses/define.js";
-import type { Harness, ThreadId } from "@vendoai/core";
+import type { Harness, ThreadId } from "../../src/core/index.js";
 import type { UIMessage } from "ai";
 import { describe, expect, it } from "vitest";
 import { createHarnessRuntime } from "../../src/harnesses/runtime.js";

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import type { AppId } from "@vendoai/core";
-import { createVendoClient, hostComponentMap, useApp, useApps } from "@vendoai/ui";
-import { AppFrame } from "@vendoai/ui/tree";
+import type { AppId } from "@vendoai/vendo/core";
+import { createVendoClient, hostComponentMap, useApp, useApps } from "@vendoai/vendo/ui";
+import { AppFrame } from "@vendoai/vendo/ui/tree";
 import { withBasePath } from "@/lib/base-path";
 import { mapleRegistry } from "@/vendo/registry";
 import { Card, CardContent } from "@/components/ui/card";

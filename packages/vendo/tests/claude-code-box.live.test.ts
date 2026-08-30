@@ -11,7 +11,7 @@
  * (`packages/vendo/src/harnesses/`) — and harnesses no longer depends on apps.
  */
 import { e2bSandbox } from "../src/apps/index.js";
-import type { Json, ToolResult, Turn } from "@vendoai/core";
+import type { Json, ToolResult, Turn } from "../src/core/index.js";
 import { afterAll, describe, expect, test } from "vitest";
 import { createTurnState } from "../src/harnesses/index.js";
 import {

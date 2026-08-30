@@ -15,8 +15,8 @@
  * The turn door's own behaviour (D4/D6, the loadout cleanup) is proven through
  * the composed wire in `harness-threads.test.ts`; this file is the layer under it.
  */
-import { AGENT_CONTEXT_MARK, type Json, type RunContext, type StoreAdapter, type ThreadId } from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+import { AGENT_CONTEXT_MARK, type Json, type RunContext, type StoreAdapter, type ThreadId } from "../src/core/index.js";
+import { memoryStoreAdapter } from "../src/core/conformance/index.js";
 import type { UIMessage } from "ai";
 import { describe, expect, it } from "vitest";
 import { ThreadRepository } from "../src/threads.js";

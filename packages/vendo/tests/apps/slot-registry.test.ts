@@ -1,5 +1,5 @@
-import { engineOverAdapter } from "@vendoai/core";
-import type { RunContext } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
+import type { RunContext } from "../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SLOTS_COLLECTION, SLOT_DECAY_MS, createSlotRegistry } from "../../src/apps/persistence/slots.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";

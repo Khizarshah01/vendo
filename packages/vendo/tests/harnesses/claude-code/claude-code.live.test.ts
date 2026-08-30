@@ -27,7 +27,7 @@
  * its real bash hands, the diff sync-back, the native session across turns, and
  * an honest refusal.
  */
-import type { Json, ToolResult, Turn } from "@vendoai/core";
+import type { Json, ToolResult, Turn } from "../../../src/core/index.js";
 import { describe, expect, test } from "vitest";
 import { createTurnState } from "../../../src/harnesses/harness-state.js";
 import { testWorkspace, unusedModels, userMessage } from "../../../src/harnesses/test-doubles.test-util.js";

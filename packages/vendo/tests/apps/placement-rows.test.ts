@@ -1,4 +1,4 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import {
   PLACEMENTS_COLLECTION,

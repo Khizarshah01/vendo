@@ -6,7 +6,7 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { seedComponentName, type AppDocument, type Principal } from "@vendoai/core";
+import { seedComponentName, type AppDocument, type Principal } from "../src/core/index.js";
 import { createStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

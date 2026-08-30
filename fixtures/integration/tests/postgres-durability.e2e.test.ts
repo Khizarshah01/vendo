@@ -16,7 +16,7 @@
  * and sets POSTGRES_URL, so the journey code is real and runs there.
  */
 import { afterEach, describe, expect, it } from "vitest";
-import type { AutomationTask } from "@vendoai/core";
+import type { AutomationTask } from "@vendoai/vendo/core";
 import { createStore } from "@vendoai/vendo/store";
 import {
   ADA,

@@ -5,7 +5,7 @@
  * Moved out of server.ts with the composition that calls it.
  */
 import { createAppSql } from "./apps/index.js";
-import type { AppDatabase, FilesAdapter, StoreOps } from "@vendoai/core";
+import type { AppDatabase, FilesAdapter, StoreOps } from "./core/index.js";
 import {
   createStore,
   createStoreOps,

@@ -15,7 +15,7 @@
  *
  * Keep this module free of node builtins; the portability gate bundles it.
  */
-import { emitUsage, vendoErrorCodeSchema, type VendoLogger, type VendoUsageEvent } from "@vendoai/core";
+import { emitUsage, vendoErrorCodeSchema, type VendoLogger, type VendoUsageEvent } from "./core/index.js";
 import { envOptOut } from "#telemetry";
 import { createBatchedUploader } from "./batched-uploader.js";
 import { KNOWN_REF_SCHEMES, UNKNOWN_REF_SCHEME } from "./sandbox-wire.js";

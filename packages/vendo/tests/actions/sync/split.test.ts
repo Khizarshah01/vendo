@@ -8,7 +8,7 @@ import { capturePins } from "../../../src/actions/sync/seeds.js";
 
 /** Assembled at runtime for the same reason pins.test.ts does it: the
  *  dependency guard's static text scan reads import-shaped strings even inside
- *  fixtures, and actions may not import @vendoai/ui. */
+ *  fixtures, and actions may not import @vendoai/vendo/ui. */
 const UI_CHROME = ["@vendoai", "ui", "chrome"].join("/");
 
 const temporaryDirectories: string[] = [];

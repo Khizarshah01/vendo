@@ -1,4 +1,4 @@
-import { debugConnectorHttp, joinUrl, VendoError, type RiskLabel, type RunContext, type ToolCall, type ToolDescriptor, type ToolOutcome } from "@vendoai/core";
+import { debugConnectorHttp, joinUrl, VendoError, type RiskLabel, type RunContext, type ToolCall, type ToolDescriptor, type ToolOutcome } from "../../core/index.js";
 import type { Connector, ConnectorAccount, ConnectorAccountIdentity, ConnectorCatalogEntry, ServiceToolMatch } from "./connector.js";
 import { composioToolRisk } from "./composio-risk.js";
 import { normalizeToolName } from "./names.js";

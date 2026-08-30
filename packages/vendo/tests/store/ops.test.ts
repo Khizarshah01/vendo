@@ -4,7 +4,7 @@ import { backends, type MadeBackend } from "../../src/store/backends.test-util.j
 import { at, auditFixture } from "../../src/store/fixtures.test-util.js";
 import { encodeCursor } from "../../src/store/helpers/utils.js";
 import { createStore, createStoreOps } from "../../src/store/index.js";
-import { STORE_WIRE_PATHS, type StoreOps } from "@vendoai/core";
+import { STORE_WIRE_PATHS, type StoreOps } from "../../src/core/index.js";
 
 /** One run at an exact instant — the watermark walk's only subject, because
  *  `vendo_runs.started_at` is the one indexed field the registry declares. */

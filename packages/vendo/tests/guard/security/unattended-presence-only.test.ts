@@ -1,4 +1,4 @@
-import { PRESENCE_ONLY_TOOLS, UNATTENDED_DESTRUCTIVE_REASON, VENDO_APPS_PIN_TOOL } from "@vendoai/core";
+import { PRESENCE_ONLY_TOOLS, UNATTENDED_DESTRUCTIVE_REASON, VENDO_APPS_PIN_TOOL } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../../src/guard/index.js";
 import { createMemoryStore } from "../fixtures/memory-store.js";

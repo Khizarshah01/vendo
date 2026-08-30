@@ -1,4 +1,4 @@
-import type { Harness } from "@vendoai/core";
+import type { Harness } from "../core/index.js";
 
 /**
  * Build contract §1 — returns the harness value itself. A harness that needs

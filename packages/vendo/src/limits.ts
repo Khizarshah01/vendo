@@ -28,7 +28,7 @@ import {
   type StoreOps,
   type ToolRegistry,
   type VendoViewStreamingToolCall,
-} from "@vendoai/core";
+} from "./core/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { tenantLimits } from "./tenant-limits.js";
 

@@ -8,7 +8,7 @@ import {
   type ToolCall,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type { CompoundTool } from "../formats.js";
 import { error, isArgsObject } from "./outcome.js";
 import { walkSteps, type StepResumePoint } from "./steps.js";

@@ -11,7 +11,7 @@ import {
   type ToolDescriptor,
   type ToolRegistry,
   type Turn,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { createGuard } from "../../src/guard/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadMessageStore, threadStore, workspaceStore, type VendoStore } from "../../src/store/index.js";

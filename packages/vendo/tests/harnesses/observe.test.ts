@@ -3,7 +3,7 @@
  * it. It is a tap, not a route: what reaches the wire is what reached it before
  * the hook existed, so both halves are asserted on one turn.
  */
-import type { Harness, HarnessEvent, ThreadId, Turn } from "@vendoai/core";
+import type { Harness, HarnessEvent, ThreadId, Turn } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";
 import { createHarnessRuntime } from "../../src/harnesses/runtime.js";

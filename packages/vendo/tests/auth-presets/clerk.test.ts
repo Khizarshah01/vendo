@@ -1,5 +1,5 @@
 import { clerkPreset } from "../../src/actions/presets/index.js";
-import type { AuthMaterial, PermissionGrant } from "@vendoai/core";
+import type { AuthMaterial, PermissionGrant } from "../../src/core/index.js";
 import { SignJWT, exportSPKI, generateKeyPair } from "jose";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 // clerk is pinned via its own module — the same file the

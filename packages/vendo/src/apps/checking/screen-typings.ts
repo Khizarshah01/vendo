@@ -25,7 +25,7 @@
  */
 import {
   type JsonSchema,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   ACTION_PROP_DESCRIPTION,
   DISPLAY_TAG_NAMES,
@@ -40,9 +40,9 @@ import {
   kitSpec,
   type KitComponentSpec,
   type NormalizedCatalog,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { ZodTypeAny } from "zod";
-import { zodShape } from "@vendoai/core/apps";
+import { zodShape } from "../../core/apps/index.js";
 import { VENDO_APPS_SQL_TOOL } from "../doors/sql-tool.js";
 import { isMutatingTool, type HostToolInfo } from "./deps.js";
 
@@ -570,7 +570,7 @@ const HANDLER_TYPE = "(event?: { target: { value?: any; checked?: boolean } }) =
 const IDENTIFIER = /^[A-Za-z_$][\w$]*$/u;
 
 /** The paint allowlist, as a TYPE. The renderer drops an unnamed property at
- *  paint (`@vendoai/ui` `safeStyle`), so leaving it legal here shipped screens
+ *  paint (`@vendoai/vendo/ui` `safeStyle`), so leaving it legal here shipped screens
  *  that compiled clean and then did not paint what they wrote. Printed from the
  *  contract's one list, so the compiler and the renderer cannot disagree. */
 const SAFE_STYLE_TYPE = "VendoStyle";

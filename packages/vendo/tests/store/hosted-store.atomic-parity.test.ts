@@ -1,4 +1,4 @@
-import { ENGINE_COLLECTIONS, engineAppHistory } from "@vendoai/core";
+import { ENGINE_COLLECTIONS, engineAppHistory } from "../../src/core/index.js";
 import { afterAll, describe, expect, it } from "vitest";
 import { hostedStore } from "../../src/store/hosted-store.js";
 import { createStore } from "../../src/store/index.js";

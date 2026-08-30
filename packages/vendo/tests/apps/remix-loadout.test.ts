@@ -31,10 +31,10 @@ import {
   type ToolRegistry,
   type VendoViewStreamUpdate,
   type VendoViewStreamingToolCall,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type { LanguageModel } from "ai";
 import { describe, expect, it } from "vitest";
-import type { SeedBaseline } from "@vendoai/core/apps";
+import type { SeedBaseline } from "../../src/core/apps/index.js";
 import type { AgentToolsDataDependencies } from "../../src/apps/doors/agent-tools.js";
 import { runMakeTool } from "../../src/apps/doors/make-tool.js";
 import { createApps, type AppsConfig, type AppsRuntime } from "../../src/apps/index.js";

@@ -15,7 +15,7 @@
  * throwing somewhere else.
  */
 import { beforeAll, describe, expect, it } from "vitest";
-import { warmScreenEngine } from "@vendoai/core/apps";
+import { warmScreenEngine } from "../../../src/core/apps/index.js";
 import {
   checkComponentScreen,
   type ComponentScreenCheck,

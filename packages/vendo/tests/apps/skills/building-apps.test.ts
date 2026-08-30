@@ -4,7 +4,7 @@
  * / write-per-section, and that it points at its references instead of inlining
  * them.
  */
-import { createTurnSkills, hostSkillFiles, renderSkillMd, type SkillsFs } from "@vendoai/core";
+import { createTurnSkills, hostSkillFiles, renderSkillMd, type SkillsFs } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { buildingAppsSkill } from "../../../src/apps/skills/building-apps.js";
 

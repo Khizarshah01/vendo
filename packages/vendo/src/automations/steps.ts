@@ -15,7 +15,7 @@ import {
   type Step,
   type ToolOutcome,
   type TriggerSource,
-} from "@vendoai/core";
+} from "../core/index.js";
 import jsonata from "jsonata";
 import { FOREACH_MAX_ITEMS, type ConsentItem } from "./types.js";
 

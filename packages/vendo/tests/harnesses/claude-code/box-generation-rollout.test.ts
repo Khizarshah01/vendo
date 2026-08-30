@@ -10,7 +10,7 @@
  * Which leaves an unprotected turn looking exactly like a protected one. It says
  * so instead.
  */
-import { setLogger, type VendoLogEvent } from "@vendoai/core";
+import { setLogger, type VendoLogEvent } from "../../../src/core/index.js";
 import { afterEach, expect, test } from "vitest";
 import { boxMachine, disposeSessionMachines, type SandboxAdapterLike } from "../../../src/harnesses/claude-code/box.js";
 

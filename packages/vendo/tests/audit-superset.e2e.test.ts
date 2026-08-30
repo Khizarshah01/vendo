@@ -30,7 +30,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import type { Principal, ToolDescriptor, ToolRegistry } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel, UIMessage } from "ai";
@@ -548,7 +548,7 @@ describe("the unattended failure card (design §3)", () => {
 
   it.skip("carries a skipped-run count on the standing card", async () => {
     // MUST BE BUILT: a counter field. `ApprovalRequest`
-    // (`packages/core/src/grants.ts`) is `{ id, call, descriptor, inputPreview,
+    // (`packages/vendo/src/core/grants.ts`) is `{ id, call, descriptor, inputPreview,
     // invalidatedGrant?, ctx, createdAt }` — there is nowhere for a count to
     // live, so the card cannot tell a person whether their automation missed
     // once or two hundred times. Depends on the dedupe above: without one card

@@ -22,7 +22,7 @@ import {
   type Principal,
   type ReconcilePlan,
   type When,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { VendoAgent } from "./agent.js";
 
 export interface OnOptions {

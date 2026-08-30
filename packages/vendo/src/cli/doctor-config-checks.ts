@@ -2,7 +2,7 @@ import { tmpdir } from "node:os";
 import { join, relative, sep } from "node:path";
 import { applyJudgment, disabledReason, judgmentsFileSchema, overridesFileSchema, toolsFileSchema, type ExtractedTool, type ToolJudgment, type ToolsFile } from "../actions/index.js";
 import { firstOpenApiSpec, openApiMountPath } from "../actions/sync/public.js";
-import { CONFIG_SURFACES, OVERRIDES_ENABLEMENT_NOTE, publicBase, UPLOAD_MAX_BYTES, type RiskLabel } from "@vendoai/core";
+import { CONFIG_SURFACES, OVERRIDES_ENABLEMENT_NOTE, publicBase, UPLOAD_MAX_BYTES, type RiskLabel } from "../core/index.js";
 import { ENV_KEY_VARS, describeDevCredential, resolveDevCredential } from "../harnesses/inference/resolve.js";
 // The Node ladder itself (not @vendoai/vendo's `#dev-creds/model` condition):
 // the CLI is Node-only, and the edge build deliberately does not export the
@@ -47,9 +47,8 @@ export async function checkNextServerExternals(run: DoctorRun): Promise<void> {
   const conflicting = source === null ? [] : transpiledServerExternals(source);
   run.fail("config/next-externals", "E-CFG-004",
     `${configPath === null ? "next.config" : relative(root, configPath)} does not list ${missing.join(", ")} in serverExternalPackages — `
-    + "@vendoai/vendo is the entry that matters, and an \"esbuild\" entry without it is inert (the checker's esbuild import uses a variable "
-    + "specifier the bundler cannot see). Bundled, that import resolves from your app root, where pnpm never hoists esbuild, and every "
-    + `generated screen fails its checks while the rest of the app looks fine. Add inside the config object: ${NEXT_SERVER_EXTERNALS_LINE} `
+    + "PGlite's Emscripten module breaks under production chunking, and the app checker reaches esbuild at runtime. "
+    + `Add inside the config object: ${NEXT_SERVER_EXTERNALS_LINE} `
     + (conflicting.length === 0 ? "" : `${transpileConflictNote(conflicting)} `)
     + "(Next 14 spells it experimental.serverComponentsExternalPackages).");
 }

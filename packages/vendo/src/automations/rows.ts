@@ -5,7 +5,7 @@
  *
  * Lifted out of engine.ts unchanged.
  */
-import { VendoError, type AutomationRecord, type StoreOps, type VendoRecord } from "@vendoai/core";
+import { VendoError, type AutomationRecord, type StoreOps, type VendoRecord } from "../core/index.js";
 import type { RunRecord, RunRowStatus } from "./index.js";
 import { automationRowSchema, runRowDataSchema, type InternalRunRecord } from "./types.js";
 

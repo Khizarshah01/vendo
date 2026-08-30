@@ -4,10 +4,10 @@
  * is stubbed on either side, so the writer and the reader cannot agree on a
  * shape neither of them actually uses.
  */
-import { engineOverAdapter, setLogger } from "@vendoai/core";
-import type { RunContext, StoreAdapter, ToolRegistry, VendoLogEvent } from "@vendoai/core";
+import { engineOverAdapter, setLogger } from "../../src/core/index.js";
+import type { RunContext, StoreAdapter, ToolRegistry, VendoLogEvent } from "../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
-import type { AppDocument } from "@vendoai/core/apps";
+import type { AppDocument } from "../../src/core/apps/index.js";
 import { createApps } from "../../src/apps/index.js";
 import { APP_SEEN_COLLECTION } from "../../src/apps/persistence/app-seen.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";
@@ -90,7 +90,7 @@ describe("app arrival", () => {
 
   /** A store may refuse this collection outright: Vendo Cloud's engine allowlist
    *  did not carry `vendo_app_seen` in 0.27.0. The refusal wears the shape a
-   *  SECOND `@vendoai/core` copy mints (a host bundle's dist/cjs), which is what
+   *  SECOND `@vendoai/vendo/core` copy mints (a host bundle's dist/cjs), which is what
    *  carried it past `instanceof VendoError` everywhere it passed. */
   it("a store that will not hold read state costs the DOT, never the answer", async () => {
     const logs: VendoLogEvent[] = [];

@@ -14,7 +14,7 @@
  * already give last-CAS-wins with the loser kept as a readable version.
  */
 import { createAppHistory, readBundleBlob, sealBundleBlobs, updateAppRow } from "../../src/apps/index.js";
-import { appBundleSchema, type AppDocument, type AppId } from "@vendoai/core";
+import { appBundleSchema, type AppDocument, type AppId } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { storeFiles } from "../../src/store/files-store.js";

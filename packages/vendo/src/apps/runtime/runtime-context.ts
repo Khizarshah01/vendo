@@ -17,11 +17,11 @@ import {
   type RunContext,
   VendoError,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type {
   AppDocument,
   AdmissionOrigin,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { createAccessChecks } from "../doors/access-checks.js";
 import { engineOf, type EngineOps } from "../persistence/engine.js";
 import { createAuditReporters } from "../persistence/audit-reports.js";
@@ -255,7 +255,7 @@ const createDoors = (
       if (paint === undefined) {
         throw new VendoError(
           "not-implemented",
-          "this build of @vendoai/core carries no screen engine, so a saved screen cannot be opened",
+          "this build of @vendoai/vendo/core carries no screen engine, so a saved screen cannot be opened",
         );
       }
       return await paint(input);

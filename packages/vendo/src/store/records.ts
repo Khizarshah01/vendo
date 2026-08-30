@@ -6,7 +6,7 @@ import {
   type RecordQuery,
   type RecordStore,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { Db } from "./db.js";
 import {
   appScopeId,

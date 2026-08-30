@@ -1,4 +1,4 @@
-import { sha256Hex, type JsonSchema } from "@vendoai/core";
+import { sha256Hex, type JsonSchema } from "../../core/index.js";
 
 /**
  * Synthesize preview props from a component's DECLARED props schema — rung 2 of

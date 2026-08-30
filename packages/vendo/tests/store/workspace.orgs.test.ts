@@ -1,4 +1,4 @@
-import type { Membership, Principal } from "@vendoai/core";
+import type { Membership, Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { appAccess } from "../../src/store/helpers/app-access.js";
 import { appStore } from "../../src/store/helpers/apps.js";

@@ -29,7 +29,7 @@ import {
   type AppDocument,
   type Principal,
   type RunContext,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { screenDocument } from "./screen-fixture.js";
 import type { LanguageModel } from "ai";
@@ -165,7 +165,7 @@ describe("an app is seen when a PERSON renders it, not when an agent reads it", 
    * A LONG conversation, which is where marking the stored transcript and marking
    * what is on screen stop being the same thing. The client mounts only a trailing
    * window and defers the head behind "Show N earlier messages"
-   * (`chrome/thread/scrolling.ts`; `packages/ui/test/chrome/extreme-content.test.tsx`
+   * (`chrome/thread/scrolling.ts`; `packages/vendo/tests/ui/chrome/extreme-content.test.tsx`
    * holds it to ≤60 articles in a 400-message thread), so a card in the head is
    * not drawn — and a mark cannot be taken back.
    */

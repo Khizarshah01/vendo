@@ -18,7 +18,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { automationsInternals } from "../src/automations/index.js";
-import { VENDO_AUTOMATE_TOOL, type Harness, type Principal, type RunContext, type ToolDescriptor, type ToolRegistry } from "@vendoai/core";
+import { VENDO_AUTOMATE_TOOL, type Harness, type Principal, type RunContext, type ToolDescriptor, type ToolRegistry } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

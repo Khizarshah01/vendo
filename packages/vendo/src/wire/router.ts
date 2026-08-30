@@ -7,7 +7,7 @@
  * off its own context (composed deps, a RunContext resolver) is invisible here.
  * `@vendoai/vendo`'s wire binds this to its own WireContext (wire/shared.ts).
  */
-import { isVendoError, VendoError, type VendoErrorCode } from "@vendoai/core";
+import { isVendoError, VendoError, type VendoErrorCode } from "../core/index.js";
 
 export function isJsonRequest(request: Request): boolean {
   return request.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase()

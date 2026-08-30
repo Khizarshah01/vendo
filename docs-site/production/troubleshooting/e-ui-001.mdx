@@ -1,7 +1,7 @@
 ---
 title: "E-UI-001"
 sidebarTitle: "E-UI-001"
-description: "Retired: vendo eject was removed, so no copied surface can drift from the installed @vendoai/ui."
+description: "Retired: vendo eject was removed, so no copied surface can drift from the installed @vendoai/vendo/ui."
 ---
 
 ```text retired
@@ -18,14 +18,14 @@ it from an older run's output, or a saved report.
 ## Why
 
 This code fired when a surface copied into your repo by `vendo eject` came
-from an older `@vendoai/ui` than the one installed. That command was
+from an older `@vendoai/vendo/ui` than the one installed. That command was
 removed, so there is no copied surface for doctor to compare.
 
 ## The fix
 
 Nothing to fix. If your repo still holds a surface you ejected before the
 command was removed, those files are yours — they keep working, and their
-data and wire logic still come from `@vendoai/ui`. Delete the leftover
+data and wire logic still come from `@vendoai/vendo/ui`. Delete the leftover
 `.vendo-eject.json` manifest beside them; nothing reads it now.
 
 To restyle a shipped surface without forking it, theme it with

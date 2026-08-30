@@ -10,7 +10,7 @@ import {
   type RiskLabel,
   type Step,
   type ToolDescriptor,
-} from "@vendoai/core";
+} from "../core/index.js";
 
 /**
  * `confirmEach` was called `critical` before the risk-grading redesign (D5).
@@ -511,12 +511,12 @@ export type {
   SeedBaseline,
   SeedSubSource,
   SeedStyle,
-} from "@vendoai/core/apps";
-export { seedBaselineSchema } from "@vendoai/core/apps";
+} from "../core/apps/index.js";
+export { seedBaselineSchema } from "../core/apps/index.js";
 
 /**
  * The component-bundle format (`CapturedModule`, `CapturedHostComponent` and
- * their schemas) lives on the contract door — `@vendoai/core/apps` — because
+ * their schemas) lives on the contract door — `@vendoai/vendo/core/apps` — because
  * the console and the jail renderer read the same bytes from the browser. Sync
  * writes them; re-exported here so this package's surface is unchanged.
  */
@@ -530,7 +530,7 @@ export {
   type HostComponentSampleGap,
   type HostComponentSkip,
   type HostComponentSkipReason,
-} from "@vendoai/core/apps";
+} from "../core/apps/index.js";
 
 
 /** 04-actions §1 */
@@ -548,7 +548,7 @@ export interface SyncReport {
    *  empty) — the slots the wiring file covers, which is what makes the report
    *  say the wiring's TWO hookup call sites out loud. `unattributed` (absent
    *  when empty) — `<Remixable>` wrappers sync FOUND and could not trace back
-   *  to `@vendoai/ui`, each one "file:line — what to do about it". */
+   *  to `@vendoai/vendo/ui`, each one "file:line — what to do about it". */
   pins: { captured: string[]; drifted: string[]; pruned?: string[]; ported?: string[]; unattributed?: string[] };
   catalog: { discovered: number; registered: number };
   /** Registered host components whose source sync captured, so the console can

@@ -30,7 +30,7 @@ import {
   type Principal,
   type RunContext,
   type ToolDefinition,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createStore, eraseStore, secretStore, storeFiles, storeSecrets, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import {

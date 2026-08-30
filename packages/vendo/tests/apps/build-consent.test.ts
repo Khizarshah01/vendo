@@ -18,13 +18,13 @@ import {
   type FilesAdapter,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import {
   validateAppDocument,
   type AppBuilder,
   type BuildOutcome,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { bundleDocument, createBuildDoor } from "../../src/apps/doors/build-door.js";
 import { APPS_COLLECTION } from "../../src/apps/persistence/persistence.js";
 import { runMakeTool } from "../../src/apps/doors/make-tool.js";
@@ -33,7 +33,7 @@ import { createApps, type AppsConfig } from "../../src/apps/index.js";
 import { guardFixture, type GuardFixture } from "../../src/apps/testing/guard-fixture.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";
 import type { AgentToolsDataDependencies } from "../../src/apps/doors/agent-tools.js";
-import { PARKED_BUILD_COLLECTION } from "@vendoai/core";
+import { PARKED_BUILD_COLLECTION } from "../../src/core/index.js";
 
 const ctx: RunContext = {
   principal: { kind: "user", subject: "user_ada" },

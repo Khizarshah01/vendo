@@ -12,7 +12,7 @@
  *
  * A real browser, the real bundle, real recharts — no doubles.
  */
-import type { UIPayload } from "@vendoai/core";
+import type { UIPayload } from "@vendoai/vendo/core";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";

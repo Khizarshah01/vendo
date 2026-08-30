@@ -1,4 +1,4 @@
-import type { RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "@vendoai/core";
+import type { RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "../../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createGuard } from "../../../src/guard/guard.js";
 import type { Judge, PolicyRule, VendoGuard } from "../../../src/guard/types.js";

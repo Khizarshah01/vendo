@@ -2,7 +2,7 @@
  * The TTL sweep: expired parked BYO calls and stranded approvals, on one pass
  * and one cadence.
  */
-import { log } from "@vendoai/core";
+import { log } from "./core/index.js";
 import type { VendoComposition } from "./compose-context.js";
 
 /** The sweep pass, and the unref'd timer that drives it on a long-lived host. */

@@ -5,8 +5,8 @@
  * Composition hands the registry the same keep-alive pool the store already
  * rides — and a host that brings its own fetch still wins (adapter rule).
  */
-import type { Principal, RunContext } from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+import type { Principal, RunContext } from "../src/core/index.js";
+import { memoryStoreAdapter } from "../src/core/conformance/index.js";
 import type { LanguageModel } from "ai";
 import { Agent } from "undici";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";

@@ -93,6 +93,19 @@ describe("the install seam", () => {
     expect(stranger.typecheck.code, stranger.typecheck.output.slice(-4000)).toBe(0);
   });
 
+  /** THE CONTRADICTION THIS EXISTS TO CATCH. `vendo init` writes a next.config
+   *  and `vendo doctor` grades it, and for a while each passed while the other
+   *  could not: doctor demanded `@vendoai/vendo` in serverExternalPackages, and
+   *  that entry made a production build die in prerender on a null React
+   *  dispatcher, because the list is package-granular and the umbrella has a
+   *  "use client" half. No config a host could write satisfied both. Asserted
+   *  TOGETHER, on the untouched config init wrote, because either one alone is
+   *  green in exactly the state that shipped broken. */
+  it("builds for production AND passes doctor, on the config init wrote", () => {
+    expect(stranger.build.code, stranger.build.output.slice(-4000)).toBe(0);
+    expect(stranger.doctor.code, stranger.doctor.output.slice(-4000)).toBe(0);
+  });
+
   it("answers from the app's own API, and writes back to it", async () => {
     const list = stranger.toolFor("GET", "/api/todos");
     const create = stranger.toolFor("POST", "/api/todos");

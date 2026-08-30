@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { LanguageModel } from "ai";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createVendo } from "../src/server.js";

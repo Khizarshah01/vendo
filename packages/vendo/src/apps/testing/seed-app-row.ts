@@ -1,6 +1,6 @@
 import type {
   AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { EngineOps } from "../persistence/engine.js";
 import { APPS_COLLECTION } from "../persistence/persistence.js";
 

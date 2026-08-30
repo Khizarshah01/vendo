@@ -1,4 +1,4 @@
-import { VendoError, type SecretsProvider } from "@vendoai/core";
+import { VendoError, type SecretsProvider } from "../core/index.js";
 import { decryptSecret, encryptSecret } from "#store/crypto";
 import { dbFor, secretsConfigFor, type VendoStore } from "./store.js";
 import { text } from "./helpers/utils.js";

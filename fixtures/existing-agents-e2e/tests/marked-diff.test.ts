@@ -57,7 +57,7 @@ describe("starterPackageJson", () => {
       scripts: { dev: "next dev", test: "vitest run" },
       dependencies: { "@vendoai/vendo": "workspace:*", ai: "6.0.28", vendoai: "workspace:*" },
       devDependencies: {
-        "@vendoai/core": "workspace:*",
+        "@vendoai/vendo/core": "workspace:*",
         // The scope the check missed in #1001, when it matched `@vendoai/` only.
         "@vendoai-fixtures/test-kit": "workspace:*",
         // …and the case scope-matching still cannot see: a real workspace

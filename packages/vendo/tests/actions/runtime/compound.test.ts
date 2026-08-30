@@ -10,7 +10,7 @@ import {
   type ToolCall,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import {
   VENDO_OVERRIDES_FORMAT,
   VENDO_TOOLS_FORMAT,

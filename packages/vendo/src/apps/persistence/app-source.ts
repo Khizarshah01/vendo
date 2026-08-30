@@ -29,14 +29,14 @@ import {
   type FilesAdapter,
   type RunContext,
   type WorkspaceFs,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   SCREEN_FILE,
   appSourceFileSchema,
   type AppDocument,
   type AppSourceFile,
   type BuiltFile,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 
 /**
  * The one file the render seam OWNS, which a commit must never diff back into

@@ -5,7 +5,7 @@
  * Pure functions of what boot already knows, so the message is testable on its
  * own rather than only observable as console noise from a booted server.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../core/index.js";
 
 /**
  * The `.vendo` directory a configured `profileDir` means — the SAME rule the tool

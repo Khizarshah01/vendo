@@ -17,14 +17,14 @@ import {
   type ToolResult,
   vendoApprovalRef,
   withPathPrefix,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { AppsRuntime } from "../apps/index.js";
 import type {
   VendoTheme,
-} from "@vendoai/core/apps";
+} from "../core/apps/index.js";
 import {
   themeCssVariables,
-} from "@vendoai/core/apps";
+} from "../core/apps/index.js";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { AjvJsonSchemaValidator } from "@modelcontextprotocol/sdk/validation/ajv";

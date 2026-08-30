@@ -1,7 +1,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import type { AddressInfo } from "node:net";
 import { afterEach, describe, expect, it } from "vitest";
-import { toolOutcomeSchema, type RunContext } from "@vendoai/core";
+import { toolOutcomeSchema, type RunContext } from "../../../src/core/index.js";
 import { composioConnector } from "../../../src/actions/connectors/composio.js";
 
 const ctx: RunContext = {

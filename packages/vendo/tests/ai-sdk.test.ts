@@ -7,7 +7,7 @@ import {
   parseVendoToolEnvelope,
   vendoApprovalRefSchema,
   type Principal,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createStore } from "../src/store/index.js";
 import type { LanguageModel, Tool, ToolCallOptions } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";

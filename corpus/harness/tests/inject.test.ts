@@ -35,17 +35,8 @@ async function createWorkspace(): Promise<string> {
   });
 
   const packages: Array<{ dir: string; name: string; version?: string; dependencies?: Record<string, string> }> = [
-    {
-      dir: "vendo",
-      name: "@vendoai/vendo",
-      dependencies: {
-        "@vendoai/core": "workspace:*",
-        "@vendoai/ui": "workspace:*",
-      },
-    },
+    { dir: "vendo", name: "@vendoai/vendo" },
     { dir: "vendoai", name: "vendoai", dependencies: { "@vendoai/vendo": "workspace:*" } },
-    { dir: "core", name: "@vendoai/core" },
-    { dir: "ui", name: "@vendoai/ui" },
   ];
 
   for (const pkg of packages) {
@@ -97,11 +88,7 @@ describe("createLocalVendoInjector", () => {
     await writeJson(path.join(repoDir, "package.json"), {
       name: "local-host",
       dependencies: {
-        "@vendoai/ui": "workspace:*",
         "@vendoai/vendo": "workspace:*",
-      },
-      devDependencies: {
-        "@vendoai/core": "workspace:*",
       },
     });
     const pack: PackWorkspacePackage = async (pkg, opts) => {
@@ -122,8 +109,6 @@ describe("createLocalVendoInjector", () => {
     expect(result.packageManager).toBe("pnpm");
     expect(result.installDir).toBe(repoDir);
     expect(pkg.dependencies["@vendoai/vendo"]).toBe("file:vendor/vendoai-vendo-0.3.0.tgz");
-    expect(pkg.dependencies["@vendoai/ui"]).toBe("file:vendor/vendoai-ui-0.3.0.tgz");
-    expect(pkg.devDependencies?.["@vendoai/core"]).toBe("file:vendor/vendoai-core-0.3.0.tgz");
     await expect(readFile(path.join(repoDir, "pnpm-lock.yaml"), "utf8")).rejects.toThrow();
     await expect(readFile(path.join(repoDir, "node_modules/.modules.yaml"), "utf8")).rejects.toThrow();
   });
@@ -157,21 +142,15 @@ describe("createLocalVendoInjector", () => {
     expect(second.repoDir).toBe(repoTwo);
     expect(buildCount).toBe(1);
     expect([...packCounts.entries()].sort()).toEqual([
-      ["@vendoai/core", 1],
-      ["@vendoai/ui", 1],
       ["@vendoai/vendo", 1],
       ["vendoai", 1],
     ]);
     await expect(readdir(path.join(repoOne, "vendor"))).resolves.toEqual(expect.arrayContaining([
       "vendoai-0.3.0.tgz",
-      "vendoai-core-0.3.0.tgz",
-      "vendoai-ui-0.3.0.tgz",
       "vendoai-vendo-0.3.0.tgz",
     ]));
     await expect(readdir(path.join(repoTwo, "vendor"))).resolves.toEqual(expect.arrayContaining([
       "vendoai-0.3.0.tgz",
-      "vendoai-core-0.3.0.tgz",
-      "vendoai-ui-0.3.0.tgz",
       "vendoai-vendo-0.3.0.tgz",
     ]));
 
@@ -180,8 +159,6 @@ describe("createLocalVendoInjector", () => {
     expect(pkg.dependencies["vendoai"]).toBeUndefined();
     expect(pkg.devDependencies).toBeUndefined();
     for (const name of [
-      "@vendoai/core",
-      "@vendoai/ui",
       "@vendoai/vendo",
       "vendoai",
     ]) {
@@ -214,9 +191,6 @@ describe("createLocalVendoInjector", () => {
           "  '@vendoai/vendo':",
           "    specifier: file:vendor/vendoai-vendo-0.3.0.tgz",
           "    version: file:vendor/vendoai-vendo-0.3.0.tgz",
-          "  '@vendoai/core':",
-          "    specifier: file:vendor/vendoai-core-0.3.0.tgz",
-          "    version: file:vendor/vendoai-core-0.3.0.tgz",
           "",
         ].join("\n"));
       },
@@ -520,7 +494,7 @@ describe("createLocalVendoInjector", () => {
       },
       packageManager: "pnpm@11.2.1",
     });
-    await writeJson(path.join(repoDir, "packages/ui/package.json"), {
+    await writeJson(path.join(repoDir, "packages/vendo/package.json"), {
       name: "@repo/ui",
       version: "1.0.0",
     });
@@ -547,9 +521,6 @@ describe("createLocalVendoInjector", () => {
           "      '@vendoai/vendo':",
           "        specifier: file:vendor/vendoai-vendo-0.3.0.tgz",
           "        version: file:apps/web/vendor/vendoai-vendo-0.3.0.tgz",
-          "      '@vendoai/core':",
-          "        specifier: file:vendor/vendoai-core-0.3.0.tgz",
-          "        version: file:apps/web/vendor/vendoai-core-0.3.0.tgz",
           "",
         ].join("\n"));
       },
@@ -580,13 +551,9 @@ describe("createLocalVendoInjector", () => {
     expect(rootPkg.dependencies?.["vendoai"]).toBeUndefined();
     expect(rootPkg.devDependencies?.["@vendoai/vendo"]).toBeUndefined();
     const workspaceYaml = await readFile(path.join(repoDir, "pnpm-workspace.yaml"), "utf8");
-    expect(workspaceYaml).toContain('"@vendoai/core": "file:apps/web/vendor/vendoai-core-0.3.0.tgz"');
-    expect(workspaceYaml).toContain('"@vendoai/core@0.3.0": "file:apps/web/vendor/vendoai-core-0.3.0.tgz"');
     expect(workspaceYaml).toContain('"@vendoai/vendo": "file:apps/web/vendor/vendoai-vendo-0.3.0.tgz"');
     expect(workspaceYaml).toContain('"@vendoai/vendo@0.3.0": "file:apps/web/vendor/vendoai-vendo-0.3.0.tgz"');
     expect(workspaceYaml).toContain('"vendoai": "file:apps/web/vendor/vendoai-0.3.0.tgz"');
-    expect(rootPkg.pnpm.overrides["@vendoai/core"]).toBe("file:apps/web/vendor/vendoai-core-0.3.0.tgz");
-    expect(rootPkg.pnpm.overrides["@vendoai/core@0.3.0"]).toBe("file:apps/web/vendor/vendoai-core-0.3.0.tgz");
     expect(rootPkg.pnpm.overrides["@vendoai/vendo"]).toBe("file:apps/web/vendor/vendoai-vendo-0.3.0.tgz");
     expect(rootPkg.pnpm.overrides["@vendoai/vendo@0.3.0"]).toBe("file:apps/web/vendor/vendoai-vendo-0.3.0.tgz");
   });
@@ -672,8 +639,6 @@ describe("createLocalVendoInjector", () => {
       async runInstallCommand(command, cwd) {
         installCalls.push(`${command} @ ${cwd}`);
         await writeFile(path.join(cwd, "yarn.lock"), [
-          '"@vendoai/core@file:apps/web/vendor/vendoai-core-0.3.0.tgz":',
-          '  resolution: "@vendoai/core@file:apps/web/vendor/vendoai-core-0.3.0.tgz"',
           '"@vendoai/vendo@file:apps/web/vendor/vendoai-vendo-0.3.0.tgz":',
           '  resolution: "@vendoai/vendo@file:apps/web/vendor/vendoai-vendo-0.3.0.tgz"',
           "",

@@ -18,7 +18,7 @@
  * compaction, and the only thing that changes between the two attempts is how
  * much history the projection carries.
  */
-import type { HarnessEvent, ToolRegistry, Turn } from "@vendoai/core";
+import type { HarnessEvent, ToolRegistry, Turn } from "../../../src/core/index.js";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import type { LanguageModel } from "ai";
 import { describe, expect, it } from "vitest";

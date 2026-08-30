@@ -10,7 +10,7 @@
  * The counterparty is a captured `fetch`, and it is the only mock here: the
  * adapter's job ENDS at the request it hands over.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { s3Files } from "../../src/store/s3-files.js";
 

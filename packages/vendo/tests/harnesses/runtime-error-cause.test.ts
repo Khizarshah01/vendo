@@ -5,7 +5,7 @@
  * reason lives on the cause, and the log kept only the message. An operator got
  * "fetch failed" and no way to tell a refused connect from a dropped socket.
  */
-import { setLogger, type ThreadId, type VendoLogEvent } from "@vendoai/core";
+import { setLogger, type ThreadId, type VendoLogEvent } from "../../src/core/index.js";
 import { afterEach, expect, test } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";
 import { memoryHarnessStateStore } from "../../src/harnesses/harness-state.js";

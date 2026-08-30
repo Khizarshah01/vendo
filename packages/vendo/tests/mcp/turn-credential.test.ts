@@ -13,7 +13,7 @@
  * to forge, because nothing about the caller is stated in the token.
  */
 import { describe, expect, it } from "vitest";
-import type { RunContext, ToolResult, TurnTools } from "@vendoai/core";
+import type { RunContext, ToolResult, TurnTools } from "../../src/core/index.js";
 import { createTurnCredentials } from "../../src/mcp/turn-credential.js";
 
 const ctxFor = (subject: string, presence: RunContext["presence"] = "present"): RunContext => ({

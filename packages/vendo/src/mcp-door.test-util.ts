@@ -13,7 +13,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { ExtractedTool } from "./actions/index.js";
-import type { AuditEvent, Principal, ToolDescriptor, ToolRegistry, ToolResult } from "@vendoai/core";
+import type { AuditEvent, Principal, ToolDescriptor, ToolRegistry, ToolResult } from "./core/index.js";
 import { defineHarness, harnessAdapters } from "./harnesses/index.js";
 import { createStore, type VendoStore } from "./store/index.js";
 import type { LanguageModel } from "ai";

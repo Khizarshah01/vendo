@@ -13,11 +13,11 @@ import {
   type ToolOutcome,
   type SqlDialect,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
   type ScreenAssembler,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { runAutomateTool } from "./automate-tool.js";
 import { appSqlDescriptor, runAppSql, VENDO_APPS_SQL_TOOL } from "./sql-tool.js";
 import { runMakeTool } from "./make-tool.js";

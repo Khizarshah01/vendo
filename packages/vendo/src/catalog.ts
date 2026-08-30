@@ -3,10 +3,10 @@ import {
   type JsonSchema,
   log,
   VendoError,
-} from "@vendoai/core";
+} from "./core/index.js";
 import {
   componentPath,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import type {
   ComponentCatalog,
   ComponentRegistry,
@@ -14,7 +14,7 @@ import type {
   NormalizedCatalogEntry,
   RegisteredComponent,
   StandardSchema,
-} from "@vendoai/core/apps";
+} from "./core/apps/index.js";
 import { zodSchema } from "ai";
 import Ajv, { type ErrorObject } from "ajv";
 import addFormats from "ajv-formats";

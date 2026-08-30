@@ -23,10 +23,10 @@ import {
   type AppId,
   type AppSourceFile,
   type RunContext,
-} from "@vendoai/core";
+} from "./core/index.js";
 import { buildFailureReason } from "./apps/index.js";
-import { renderBriefingPack } from "@vendoai/core/apps";
-import type { AppBuilder, BriefingPack, BuildOutcome, BuildRequest, BuiltFile } from "@vendoai/core/apps";
+import { renderBriefingPack } from "./core/apps/index.js";
+import type { AppBuilder, BriefingPack, BuildOutcome, BuildRequest, BuiltFile } from "./core/apps/index.js";
 import {
   BOX_WORKSPACE_ROOT,
   boxEgress,
@@ -119,7 +119,7 @@ const checkoutOf = (source: Record<string, AppSourceFile> | undefined, directory
  *  move, so the brief tells the truth about it instead.
  *
  *  Two more of the same kind, measured the same day once the first was gone: the
- *  image's baked `@vendoai/ui` predates the frame protocol, so a build that used
+ *  image's baked `@vendoai/vendo/ui` predates the frame protocol, so a build that used
  *  it lost the time to find that out; and `callHost` is named here as the way to
  *  reach host data, which sent an agent hunting this disk for a tool list that
  *  is deliberately absent (no `toolDoor`, below). `callHost` is real — it is a
@@ -141,12 +141,12 @@ ${request.why}
 
 HOW IT SHIPS
 - Write the source under ${directory}/src and install whatever npm packages it
-  needs. Install @vendoai/ui from npm rather than using the copy already on this
+  needs. Install @vendoai/vendo/ui from npm rather than using the copy already on this
   machine: the baked one predates the frame protocol below and does not have it.
 - The document that serves your bundle is one <div id="root"></div>: mount into
   that element, and once your first render is really in the DOM (an empty mount
   measures as height 0, which the host renders as a collapsed frame) call
-  startFrameProtocol(mount) from @vendoai/ui/kit. That is what sizes the frame
+  startFrameProtocol(mount) from @vendoai/vendo/ui/kit. That is what sizes the frame
   and applies the host's brand tokens, and callHost(tool, args) from the same
   module is how the SHIPPED app reaches the host's data. Both speak to the page
   that embeds the app, so neither answers in here: there is no host on this

@@ -1,4 +1,4 @@
-import { VendoError, type ToolDescriptor, type ToolOutcome, type ToolRegistry } from "@vendoai/core";
+import { VendoError, type ToolDescriptor, type ToolOutcome, type ToolRegistry } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { withUniqueToolTitles } from "../src/duplicate-titles.js";
 

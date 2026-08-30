@@ -15,10 +15,10 @@
 import type {
   Json,
   ToolResult,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type {
   Finding,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { repairInstruction, validateWrittenApps } from "../../src/apps/generation/validate-gate.js";
 

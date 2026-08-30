@@ -1,4 +1,4 @@
-import { ASK_USER_TOOL, type RunContext } from "@vendoai/core";
+import { ASK_USER_TOOL, type RunContext } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { askUserRegistry } from "../src/ask-user.js";
 

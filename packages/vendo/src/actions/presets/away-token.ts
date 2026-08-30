@@ -1,4 +1,4 @@
-import type { ActAs } from "@vendoai/core";
+import type { ActAs } from "../../core/index.js";
 import { genericJwtPreset } from "./generic-jwt.js";
 import {
   resolveClaims,

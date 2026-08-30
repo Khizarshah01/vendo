@@ -1,4 +1,4 @@
-import { VendoError, type AccessLevel, type RunContext } from "@vendoai/core";
+import { VendoError, type AccessLevel, type RunContext } from "../../src/core/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { appRoutes } from "../../src/wire/apps.js";
 import { dispatchRoutes, routeSegments, type WireContext, type WireDeps } from "../../src/wire/shared.js";

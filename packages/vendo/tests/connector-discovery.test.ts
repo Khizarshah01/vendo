@@ -1,4 +1,4 @@
-import { VENDO_TOOL_TITLES, type RunContext, type ToolOutcome } from "@vendoai/core";
+import { VENDO_TOOL_TITLES, type RunContext, type ToolOutcome } from "../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import {
   CONNECTOR_DISCOVERY_TOOLS,

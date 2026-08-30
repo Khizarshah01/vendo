@@ -4,10 +4,10 @@ import { basename, dirname, join } from "node:path";
 import type {
   JsonSchema,
   ToolDescriptor,
-} from "@vendoai/core";
+} from "@vendoai/vendo/core";
 import type {
   VendoTheme,
-} from "@vendoai/core/apps";
+} from "@vendoai/vendo/core/apps";
 
 /** The world file, as authored. `theme` is a VendoTheme verbatim and is handed
  *  to every contender unchanged. */

@@ -10,7 +10,7 @@
  * HARNESS was actually given — never off the options object the test passed in,
  * which would only prove the test can spell.
  */
-import type { Principal, RunContext } from "@vendoai/core";
+import type { Principal, RunContext } from "../../src/core/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";

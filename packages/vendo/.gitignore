@@ -1,0 +1,5 @@
+.e2e-pack
+e2e/screenshots/
+e2e/test-results/
+playwright-report/
+e2e/harness/dist/

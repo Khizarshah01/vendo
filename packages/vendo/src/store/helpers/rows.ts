@@ -4,7 +4,7 @@ import {
   type AuditEvent,
   type Json,
   type PermissionGrant,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import type { Db } from "../db.js";
 import type { AppRow, ApprovalRow, RunRow, ThreadRow } from "./types.js";
 import { iso, optionalIso, text } from "./utils.js";

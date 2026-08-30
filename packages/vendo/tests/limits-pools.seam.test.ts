@@ -26,7 +26,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { genericJwtPreset } from "../src/actions/presets/index.js";
-import type { LimitUser, PermissionGrant } from "@vendoai/core";
+import type { LimitUser, PermissionGrant } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { jwt } from "../src/auth-presets/jwt.js";

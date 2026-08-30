@@ -4,7 +4,7 @@
  * the designed cleanup point. Per-row failures are logged and skipped: a
  * flaky broker must never wedge the demo reset.
  */
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "@vendoai/vendo/core";
 import type { ConnectionsService } from "@vendoai/vendo/server";
 
 export async function sweepDemoConnections(

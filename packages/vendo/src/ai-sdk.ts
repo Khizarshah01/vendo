@@ -1,6 +1,6 @@
 import { buildVendoToolPack } from "./pack.js";
 import { delegateRunner } from "./delegate.js";
-import { VendoError, type RunContext } from "@vendoai/core";
+import { VendoError, type RunContext } from "./core/index.js";
 import { dynamicTool, jsonSchema, type ToolSet } from "ai";
 import type { Vendo } from "./server.js";
 

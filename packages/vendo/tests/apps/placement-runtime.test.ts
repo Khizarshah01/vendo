@@ -1,12 +1,12 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 import type {
   RunContext,
   StoreAdapter,
   ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type {
   AppDocument,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { createApps, type AppsRuntime } from "../../src/apps/index.js";
 import {

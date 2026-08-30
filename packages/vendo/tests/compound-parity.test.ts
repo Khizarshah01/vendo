@@ -10,8 +10,8 @@ import {
   type Step,
   type ToolCall,
   type ToolOutcome,
-} from "@vendoai/core";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+} from "../src/core/index.js";
+import { memoryStoreAdapter } from "../src/core/conformance/index.js";
 import { describe, expect, it } from "vitest";
 
 // ENG-249 decision 6: compound step semantics MUST match the automations

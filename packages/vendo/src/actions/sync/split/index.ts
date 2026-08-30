@@ -1,7 +1,7 @@
 import path from "node:path";
 import { PORTED_SCREEN_DIALECT, checkComponentScreen } from "../../../apps/index.js";
-import type { Json } from "@vendoai/core";
-import type { SeedPort } from "@vendoai/core/apps";
+import type { Json } from "../../../core/index.js";
+import type { SeedPort } from "../../../core/apps/index.js";
 import type TS from "typescript";
 import { defaultExportOf } from "../capture.js";
 import { isPackageSpecifier, parseModuleSource, resolveImportSource, visitNodes } from "../common.js";

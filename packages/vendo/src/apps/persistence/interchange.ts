@@ -6,18 +6,18 @@ import {
   type Guard,
   type Json,
   type RunContext,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   refuseBundleArtifact,
   validateAppDocument,
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { unzipSync, zipSync, type Zippable } from "fflate";
 import { appLifecycleEvent } from "./audit.js";
 import type { EngineOps } from "./engine.js";
 import { APPS_COLLECTION, appRecordInput } from "./persistence.js";
-import { SCREEN_FILE } from "@vendoai/core/apps";
-import { type SeedBaseline } from "@vendoai/core/apps";
+import { SCREEN_FILE } from "../../core/apps/index.js";
+import { type SeedBaseline } from "../../core/apps/index.js";
 
 /**
  * 06-apps §7–§8 — an artifact export needs explicit host permission for the

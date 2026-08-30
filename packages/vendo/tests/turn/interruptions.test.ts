@@ -13,7 +13,7 @@
 import { createGuard } from "../../src/guard/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadMessageStore, type VendoStore } from "../../src/store/index.js";
-import { VendoError, type RunContext, type ToolResult } from "@vendoai/core";
+import { VendoError, type RunContext, type ToolResult } from "../../src/core/index.js";
 import type { UIMessage } from "ai";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";

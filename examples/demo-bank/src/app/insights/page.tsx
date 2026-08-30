@@ -1,5 +1,5 @@
 "use client"
-import { VendoSlot, VendoTrigger } from "@vendoai/ui/chrome"
+import { VendoSlot, VendoTrigger } from "@vendoai/vendo/ui/chrome"
 import { useSpending } from "@/lib/hooks"
 import { formatUSD } from "@/lib/money"
 import { categoryLabel } from "@/components/charts/colors"

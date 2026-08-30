@@ -5,11 +5,14 @@ import { afterEach, describe, expect, it } from "vitest";
 import { seedBaselineSchema } from "../../../src/actions/formats.js";
 import { capturePins } from "../../../src/actions/sync/seeds.js";
 
-/** The proven wrapper-import specifier fixtures write to disk. Assembled at
- *  runtime because the dependency guard's static text scan reads
- *  import-shaped strings even inside fixtures, and actions may not import
- *  @vendoai/ui. */
+/** The proven wrapper-import specifiers fixtures write to disk. Assembled at
+ *  runtime because the dependency guard's static text scan reads import-shaped
+ *  strings even inside fixtures, and `UI_CHROME` is a RETIRED name it rejects.
+ *
+ *  The rest of this suite writes the retired spelling, because that is the one
+ *  that would go quietly wrong; the fold's own case below writes the new one. */
 const UI_CHROME = ["@vendoai", "ui", "chrome"].join("/");
+const VENDO_UI_CHROME = ["@vendoai", "vendo", "ui", "chrome"].join("/");
 
 const temporaryDirectories: string[] = [];
 
@@ -38,6 +41,28 @@ afterEach(async () => {
 });
 
 describe("wrapper pin capture", () => {
+  // Both spellings reach the same Remixable, and BOTH are load-bearing: a host
+  // that has migrated writes the umbrella subpath, and one mid-migration still
+  // writes the retired package. Capture that only worked for one of them would
+  // silently pin nothing for the other.
+  it.each([
+    ["the umbrella subpath", VENDO_UI_CHROME],
+    ["the retired package", UI_CHROME],
+  ])("captures a wrapper importing Remixable through %s", async (_name, specifier) => {
+    const root = await temporaryRoot();
+    await write(root, "src/app/page.tsx", `
+      import { Remixable } from "${specifier}";
+      import { Card } from "../components/Card";
+      export default function Page() { return <Remixable><Card title="Live" /></Remixable>; }
+    `);
+    await write(root, "src/components/Card.tsx",
+      "export function Card(props: { title: string }) { return <div>{props.title}</div>; }");
+    const result = await capturePins(root, path.join(root, ".vendo"));
+    expect(result.errors).toEqual([]);
+    expect(result.unattributed).toEqual([]);
+    expect(result.captured).toEqual(["Card"]);
+  });
+
   it("captures a wrapped component's whole import closure — depth is no limit — and direct app-root CSS", async () => {
     const root = await temporaryRoot();
     await write(root, "src/app/page.tsx", `
@@ -321,10 +346,10 @@ describe("wrapper pin capture on semicolon-free hosts", () => {
 });
 
 // Checker round-1 rulings (2026-08-02): wrapper detection requires proof of
-// import from @vendoai/ui at the use site; default-import slots take the
+// import from @vendoai/vendo/ui at the use site; default-import slots take the
 // component's own declared name, never the call-site alias; baselines whose
 // wrapper vanished are pruned.
-describe("wrapper detection requires a proven @vendoai/ui import", () => {
+describe("wrapper detection requires a proven @vendoai/vendo/ui import", () => {
   it("silently skips a decoy Remixable imported from a host module", async () => {
     const root = await temporaryRoot();
     await write(root, "src/components/Card.tsx", "export function Card() { return <div>card</div>; }");
@@ -363,7 +388,7 @@ describe("wrapper detection requires a proven @vendoai/ui import", () => {
     expect(result.captured).toEqual([]);
   });
 
-  it("detects an aliased import (import { Remixable as R }) from @vendoai/ui", async () => {
+  it("detects an aliased import (import { Remixable as R }) from @vendoai/vendo/ui", async () => {
     const root = await temporaryRoot();
     await write(root, "src/components/Card.tsx", "export function Card() { return <div>card</div>; }");
     await write(root, "src/app/page.tsx", `

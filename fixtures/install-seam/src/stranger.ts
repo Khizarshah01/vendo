@@ -55,6 +55,10 @@ export interface Stranger {
   predev: CommandResult;
   /** `tsc --noEmit` over the app INCLUDING what init generated — assertion 3. */
   typecheck: CommandResult;
+  /** A PRODUCTION `next build` over the config init wrote, untouched. */
+  build: CommandResult;
+  /** `vendo doctor` over that same untouched config. */
+  doctor: CommandResult;
   /** Every dependency name/spec the scaffold declares after install + init. */
   declaredDependencies: Record<string, string>;
   /** The scaffold's pnpm-lock.yaml — assertion 5 reads provenance out of it. */
@@ -309,6 +313,18 @@ export async function bootStranger(artifactsDir: string): Promise<{ stranger: St
     );
     await writeLog("typecheck.log", typecheck.output);
 
+    // Assertion 4: the config init WROTE must satisfy the build and doctor at
+    // the same time. Both run against it untouched — the contradiction this
+    // pins is that each half passed alone and no host config passed both.
+    const build = await run(
+      process.execPath,
+      [path.join(scaffoldDir, "node_modules/next/dist/bin/next"), "build"],
+      { cwd: scaffoldDir, env },
+    );
+    await writeLog("build.log", build.output);
+    const doctor = await run(cliBin, ["doctor", scaffoldDir], { cwd: elsewhere, env });
+    await writeLog("doctor.log", doctor.output);
+
     const declaredDependencies = await readDeclaredDependencies(scaffoldDir);
     const lockfile = await fs.readFile(path.join(scaffoldDir, "pnpm-lock.yaml"), "utf8");
     const envLocal = await fs.readFile(path.join(scaffoldDir, ".env.local"), "utf8").catch(() => "");
@@ -343,6 +359,8 @@ export async function bootStranger(artifactsDir: string): Promise<{ stranger: St
       init,
       predev,
       typecheck,
+      build,
+      doctor,
       declaredDependencies,
       lockfile,
       vendoHomeEntries,

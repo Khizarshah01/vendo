@@ -6,7 +6,7 @@ import {
   type AppDocument,
   type PermissionGrant,
   type Principal,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { appStore, createStore, createStoreOps, grantStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { computeImpact } from "../src/sync-impact.js";

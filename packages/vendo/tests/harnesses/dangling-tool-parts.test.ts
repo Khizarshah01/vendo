@@ -7,7 +7,7 @@
  * died with the receipt path — usage folding is pinned in runtime.test.ts and
  * vendo/ledger.test.ts.)
  */
-import type { ThreadId } from "@vendoai/core";
+import type { ThreadId } from "../../src/core/index.js";
 import type { UIMessage } from "ai";
 import { describe, expect, it } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";

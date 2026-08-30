@@ -23,10 +23,10 @@ import {
   type AutomationRecord,
   type AutomationTask,
   type RunContext,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { Finding } from "../checking/types.js";
 import type { GeneratedAppDocument, GenerationDependencies } from "../generation/engine.js";
 import { rungFor, withoutId } from "../persistence/edit-journal.js";

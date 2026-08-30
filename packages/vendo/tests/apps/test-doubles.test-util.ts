@@ -19,7 +19,7 @@ import type {
   GuardDecision,
   RunContext,
   WorkspaceFs,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type { LanguageModel } from "ai";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import { InMemoryFs } from "just-bash";

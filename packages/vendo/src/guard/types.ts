@@ -20,7 +20,7 @@ import {
   type ToolDescriptor,
   type ToolRegistry,
   type GuardPosture,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { LanguageModel } from "ai";
 
 /** Re-exported: the hook is defined in core because the automations engine
@@ -28,10 +28,10 @@ import type { LanguageModel } from "ai";
 export type { RiskResolver };
 
 /** The policy contract — the rule shape, the .vendo/policy.json schema and the
- *  preset names — lives in @vendoai/core: a second repo validates policy files
+ *  preset names — lives in @vendoai/vendo/core: a second repo validates policy files
  *  against it, and a schema with two spellings is two schemas. Re-exported here
  *  so this block's own files keep importing one place. */
-export { policyFileSchema, policyRuleSchema } from "@vendoai/core";
+export { policyFileSchema, policyRuleSchema } from "../core/index.js";
 export type {
   PolicyConfig,
   PolicyConfigObject,
@@ -39,7 +39,7 @@ export type {
   PolicyFn,
   PolicyPresetName,
   PolicyRule,
-} from "@vendoai/core";
+} from "../core/index.js";
 
 export interface Judge {
   /** The judge's own model, when it has one (vendoAutoJudge exposes the model

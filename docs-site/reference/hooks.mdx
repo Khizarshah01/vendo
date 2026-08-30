@@ -1,19 +1,19 @@
 ---
 title: "Hooks"
 sidebarTitle: "Hooks"
-description: "Every headless React hook from @vendoai/ui: the shared read shape, opt-in polling, the per-hook write verbs, and the context accessors."
+description: "Every headless React hook from @vendoai/vendo/ui: the shared read shape, opt-in polling, the per-hook write verbs, and the context accessors."
 ---
 
 Headless React hooks that read from the same wire the built-in chrome uses. Pair them with your own UI, or drop them beside `VendoOverlay` to power an inline widget.
 
 ```ts
-import { useThreads, useApprovals, useVendoThread } from "@vendoai/ui";
+import { useThreads, useApprovals, useVendoThread } from "@vendoai/vendo/ui";
 ```
 
-Every hook here is also re-exported from `@vendoai/vendo/react`, which is the import that needs no direct `@vendoai/ui` dependency — with one exception. `useApprovalModal` ships only on `@vendoai/ui/chrome`:
+Every hook here is also re-exported from `@vendoai/vendo/react`, which is the import that needs no direct `@vendoai/vendo/ui` dependency — with one exception. `useApprovalModal` ships only on `@vendoai/vendo/ui/chrome`:
 
 ```ts
-import { useApprovalModal } from "@vendoai/ui/chrome";
+import { useApprovalModal } from "@vendoai/vendo/ui/chrome";
 ```
 
 ## The shared read shape
@@ -88,7 +88,7 @@ Pass `pollMs` to keep a value fresh without a manual refresh. Polls are self-sch
 ```tsx
 "use client";
 
-import { useApprovals } from "@vendoai/ui";
+import { useApprovals } from "@vendoai/vendo/ui";
 
 export function ApprovalBadge() {
   const { pending, error, isLoading, refresh } = useApprovals({ pollMs: 5_000 });
@@ -115,7 +115,7 @@ Omit `pollMs` for a one-shot fetch on mount. Polling does not pause when the tab
 ```tsx
 "use client";
 
-import { useThreads } from "@vendoai/ui";
+import { useThreads } from "@vendoai/vendo/ui";
 
 export function ThreadList({ onSelect }: { onSelect: (id: string) => void }) {
   const { threads, error, isLoading, refresh } = useThreads();
@@ -166,7 +166,7 @@ The argument is named `selectedThreadId` on purpose. The hook also returns `thre
 ```tsx
 "use client";
 
-import { useVendoThread } from "@vendoai/ui";
+import { useVendoThread } from "@vendoai/vendo/ui";
 
 export function EditLastButton() {
   const { messages, setMessages } = useVendoThread();
@@ -216,7 +216,7 @@ It keeps nothing in the browser. Reopening a thread reads the transcript back th
 ```tsx
 "use client";
 
-import { useApps } from "@vendoai/ui";
+import { useApps } from "@vendoai/vendo/ui";
 
 export function AppsDrawer() {
   const { apps, error, isLoading, refresh, exportApp, importApp } = useApps();
@@ -256,8 +256,8 @@ export interface VendoOverlayController {
 "use client";
 
 import { useEffect } from "react";
-import { useVendoOverlay } from "@vendoai/ui";
-import { VendoOverlay } from "@vendoai/ui/chrome";
+import { useVendoOverlay } from "@vendoai/vendo/ui";
+import { VendoOverlay } from "@vendoai/vendo/ui/chrome";
 
 export function Assistant() {
   const overlay = useVendoOverlay();
@@ -304,7 +304,7 @@ Wire it in two lines. Pass `approval.onParked` down to whichever component fires
 ```tsx {12,13}
 "use client";
 
-import { AppFrame, useApprovalModal } from "@vendoai/ui/chrome";
+import { AppFrame, useApprovalModal } from "@vendoai/vendo/ui/chrome";
 import type { OpenSurface } from "@vendoai/vendo";
 
 export function CustomStage({ surface, components }: {
@@ -330,7 +330,7 @@ Approve or Deny spends the decision. Esc and the scrim close the modal without d
 `refusalCopy(reason)` maps an error from `approvals.decide` to the same user-voice sentence the built-in approval card renders when a decision fails to land.
 
 ```ts
-import { refusalCopy } from "@vendoai/ui/chrome";
+import { refusalCopy } from "@vendoai/vendo/ui/chrome";
 
 try {
   await approvals.decide([id], "approve");

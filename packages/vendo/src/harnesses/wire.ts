@@ -1,7 +1,7 @@
 /**
  * The wire half of the runtime — build contract §1.6: "converts HarnessEvents
  * plus mirrored tool calls into the existing ai-SDK UIMessage stream with today's
- * `data-vendo-*` parts (packages/core/src/stream-parts.ts — UNCHANGED; no new
+ * `data-vendo-*` parts (packages/vendo/src/core/stream-parts.ts — UNCHANGED; no new
  * wire format)". Harness adapters contain no wire code; this is the only file
  * that knows what a chunk looks like.
  *
@@ -25,7 +25,7 @@ import {
   type ToolOutcome,
   type ToolResult,
   type VendoViewPart,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { UIMessage, UIMessageStreamWriter } from "ai";
 import type { MirrorEvent } from "./turn-tools.js";
 import type { WorkbenchPart } from "./workbench.js";

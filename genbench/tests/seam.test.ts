@@ -18,7 +18,7 @@
  * A real browser, because the claim is about which assignment won.
  */
 import { chromium } from "@playwright/test";
-import type { Json, UIPayload } from "@vendoai/core";
+import type { Json, UIPayload } from "@vendoai/vendo/core";
 import { mkdtemp } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";

@@ -6,8 +6,8 @@
  * descriptor, the ctx and the call id that reach `previewCheck` are the ones
  * that reach `bind().execute`, so both sides are real.
  */
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
-import type { RunContext, ToolCall, ToolDescriptor, ToolRegistry } from "@vendoai/core";
+import { memoryStoreAdapter } from "../../src/core/conformance/index.js";
+import type { RunContext, ToolCall, ToolDescriptor, ToolRegistry } from "../../src/core/index.js";
 import { createGuard, type Judge } from "../../src/guard/index.js";
 import { describe, expect, it } from "vitest";
 import { createTurnTools } from "../../src/harnesses/turn-tools.js";

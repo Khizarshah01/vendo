@@ -20,7 +20,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { automationsInternals } from "../src/automations/index.js";
-import type { Principal, RunContext, ToolRegistry } from "@vendoai/core";
+import type { Principal, RunContext, ToolRegistry } from "../src/core/index.js";
 import { createStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";

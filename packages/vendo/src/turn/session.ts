@@ -21,7 +21,7 @@ import {
   type SeatModels,
   type ThreadId,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { VendoGuard } from "../guard/index.js";
 import { THREAD_ID_HEADER, type HarnessRuntimeDeps } from "../harnesses/index.js";
 import { threadStore, type VendoStore } from "../store/index.js";
@@ -224,7 +224,7 @@ export async function createSession(
         ...(streamOptions.signal === undefined ? {} : { signal: streamOptions.signal }),
       });
       // The conversation's id, on the response the caller is already holding —
-      // the same header the umbrella's wire stamps and `@vendoai/ui` reads, so a
+      // the same header the umbrella's wire stamps and `@vendoai/vendo/ui` reads, so a
       // browser talking to an `agent()` backend resumes exactly as it does
       // against `createVendo`.
       response.headers.set(THREAD_ID_HEADER, threadId);

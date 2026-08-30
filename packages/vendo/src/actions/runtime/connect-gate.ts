@@ -1,4 +1,4 @@
-import { auditContext, canonicalJson, type AuditEvent, type RunContext, type ToolCall, type ToolOutcome, type ToolRegistry } from "@vendoai/core";
+import { auditContext, canonicalJson, type AuditEvent, type RunContext, type ToolCall, type ToolOutcome, type ToolRegistry } from "../../core/index.js";
 
 /** Discovery-discipline 2026-07-25 (criterion 11): the connect check runs
  * BEFORE any guard decision. Without it, a call to an unconnected brokered

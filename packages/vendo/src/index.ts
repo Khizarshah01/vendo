@@ -1,8 +1,8 @@
 /** @vendoai/vendo — root contract types (09-vendo §1). */
-export type * from "@vendoai/core";
+export type * from "./core/index.js";
 // The app format moved off core onto its own browser-safe door; re-exported
 // here so every type consumer reading it through the umbrella is untouched.
-export type * from "@vendoai/core/apps";
+export type * from "./core/apps/index.js";
 export type { VendoStore } from "./store/index.js";
 export type { Thread, ThreadSummary } from "./threads.js";
 // What `vendo.putUserFile` answers, and what the ui client's `files.upload`
@@ -12,7 +12,7 @@ export type {
   ActionsRegistry,
   // Task 15a — the actions-file shapes a host names when composing the
   // in-memory `createVendo({ profile })` pieces (VendoTheme already arrives
-  // through `export type * from "@vendoai/core"` above).
+  // through `export type * from "./core/index.js"` above).
   CatalogFile,
   Connector,
   ConnectorAccount,
@@ -68,7 +68,7 @@ export type {
   RunRecord,
   RunStatus,
 } from "./automations/index.js";
-export type { VendoClient, VendoClientConfig } from "@vendoai/ui";
+export type { VendoClient, VendoClientConfig } from "./ui/index.js";
 // 10-mcp §3: the one type a host implements to open the MCP door
 // (`createVendo({ mcp: true, oauth })`). The rest of the door's surface
 // (createMcpDoor, McpDoor, McpDoorConfig, McpRunContext) is
@@ -98,7 +98,7 @@ export {
 } from "./connector-discovery.js";
 // Writing a tool by hand for the `tools:` slot — beside the registries above
 // for the same reason: it is a VALUE a host composing capability needs.
-export { defineTool } from "@vendoai/core";
+export { defineTool } from "./core/index.js";
 // The copy-paste install prompt, so a surface that offers it (docs, README,
 // console) builds the one text instead of keeping a copy that rots.
 export { buildAgentPrompt } from "./agent-prompt.js";
@@ -114,4 +114,4 @@ export * from "./turn/index.js";
 // core's — what it meant before the fold-in — so no existing umbrella consumer
 // silently changes meaning. A host migrating off `@vendoai/agents` that names
 // either one gets a compile error at its use site, never a quiet swap.
-export type { Turn, TurnResult } from "@vendoai/core";
+export type { Turn, TurnResult } from "./core/index.js";

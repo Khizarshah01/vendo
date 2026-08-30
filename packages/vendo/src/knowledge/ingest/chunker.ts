@@ -1,4 +1,4 @@
-import type { KnowledgeChunk, KnowledgeChunker, KnowledgeDoc } from "@vendoai/core";
+import type { KnowledgeChunk, KnowledgeChunker, KnowledgeDoc } from "../../core/index.js";
 import { splitBlocks, splitHeadingSections, startsWithFence } from "./markdown.js";
 
 /** Soft per-chunk character budget. Chunks split at structural boundaries

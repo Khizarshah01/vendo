@@ -4,8 +4,8 @@ import type {
   Json,
   Principal,
   ToolOutcome,
-} from "@vendoai/core";
-import type { RunRecord, RunStatus } from "@vendoai/core";
+} from "@vendoai/vendo/core";
+import type { RunRecord, RunStatus } from "@vendoai/vendo/core";
 import { expect } from "vitest";
 import {
   ADA,

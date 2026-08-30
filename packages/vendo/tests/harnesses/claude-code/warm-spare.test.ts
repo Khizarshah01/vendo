@@ -13,7 +13,7 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { WARM_THREAD_PREFIX } from "@vendoai/core";
+import { WARM_THREAD_PREFIX } from "../../../src/core/index.js";
 import { afterEach, expect, test } from "vitest";
 // The REAL box door, over a fake transport: `hello` is a protocol, and a fake that
 // simply says yes to it is how a live blocker hid once already.

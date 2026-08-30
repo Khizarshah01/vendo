@@ -25,7 +25,7 @@ import {
   type VendoAutomationPart,
   type VendoAutomationRef,
   type When,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import { Cron } from "croner";
 import { input, optionalString } from "./tool-args.js";
 import type { AutomationsSeam } from "../runtime/types.js";

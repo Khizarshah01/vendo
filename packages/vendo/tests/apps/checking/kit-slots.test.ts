@@ -10,13 +10,13 @@
  * than restating a list the checker would then have to agree with.
  */
 import { describe, expect, it } from "vitest";
-import { VENDO_TREE_FORMAT } from "@vendoai/core";
+import { VENDO_TREE_FORMAT } from "../../../src/core/index.js";
 import {
   KIT_SPECS,
   kitSlotPath,
   type KitSlotSpec,
   type Tree,
-} from "@vendoai/core/apps";
+} from "../../../src/core/apps/index.js";
 import { catalogIssues, kitNestingIssues } from "../../../src/apps/checking/facts.js";
 
 /** An element as the screen VM stamps one into a prop (vm-program.ts). */

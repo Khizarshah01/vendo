@@ -17,7 +17,7 @@ import {
   type StoreOps,
   type ToolOutcome,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { VendoGuard } from "../guard/index.js";
 import type { McpDoor } from "../mcp/index.js";
 import type { VendoStore } from "../store/index.js";
@@ -38,8 +38,8 @@ import type { ConnectionsService } from "../connections.js";
 export { errorResponse, hex, internalError, json, object, requestJson, routeSegments, string } from "./router.js";
 
 /** Re-exported, not redeclared: the one version literal lives in
-    @vendoai/core, beside the deployment-identity headers that stamp it. */
-export { VERSION } from "@vendoai/core";
+    @vendoai/vendo/core, beside the deployment-identity headers that stamp it. */
+export { VERSION } from "../core/index.js";
 export const BASE_PATH = "/api/vendo";
 
 /** Re-exported, not redeclared: the venue tag is what the ONE sandbox ladder
@@ -221,4 +221,4 @@ export function orgsCloudRequired(): never {
     so from another package now. boot-summary.ts's `keySet` documents itself as
     the stricter one; the trimmed reader in the agent surface's turn/door.ts is
     a different question — an ORIGIN. */
-export { environment } from "@vendoai/core";
+export { environment } from "../core/index.js";

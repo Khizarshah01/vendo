@@ -23,9 +23,9 @@
  * back. They are pinned in `tests/skills/format-reference.test.ts`, which runs each
  * of them through the real save-time gauntlet.
  */
-import { DISPLAY_TAG_NAMES } from "@vendoai/core/apps";
-import { SCREEN_FILE } from "@vendoai/core/apps";
-import { VENDO_THEME_VARIABLE_NAMES } from "@vendoai/core/apps";
+import { DISPLAY_TAG_NAMES } from "../../core/apps/index.js";
+import { SCREEN_FILE } from "../../core/apps/index.js";
+import { VENDO_THEME_VARIABLE_NAMES } from "../../core/apps/index.js";
 import { HOT_PATH_FILES } from "../generation/render-seam.js";
 import { componentsPromptSection } from "../generation/contracts/sections.js";
 

@@ -14,7 +14,7 @@
  *  magic. Keep this module free of node builtins and CLI imports; the
  *  portability gate bundles it. */
 import type { LanguageModel } from "ai";
-import { log } from "@vendoai/core";
+import { log } from "../core/index.js";
 
 import type { ConfigurableSlotModels, VendoModelOptions, VendoModelSlot } from "./model.js";
 

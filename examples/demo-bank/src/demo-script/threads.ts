@@ -7,7 +7,7 @@
  * VendoStore implements), so scripted turns behave identically on the local
  * PGlite store and the Cloud hosted store.
  */
-import type { Json, Principal, ThreadId } from "@vendoai/core";
+import type { Json, Principal, ThreadId } from "@vendoai/vendo/core";
 import type { UIMessage } from "ai";
 import { vendo } from "@/vendo/server";
 

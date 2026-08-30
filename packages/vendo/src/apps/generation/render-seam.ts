@@ -32,12 +32,12 @@ import {
   type UIPayload,
   type VendoViewPart,
   type WorkspaceFs,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   screenDescriptionSchema,
   type AppFloor,
   stripServerAuthoritativeFields,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 // In-package since the seam moved home to @vendoai/vendo/apps: the emitted-payload
 // assembly and the field stripping that goes with it.
 import { assembleTree } from "../runtime/runtime.js";

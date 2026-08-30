@@ -1,4 +1,4 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 // RISK ROUND — the decay boundary, and what a row the server did not write does
 // to the read. Both hold today; this pins them.
 //
@@ -6,7 +6,7 @@ import { engineOverAdapter } from "@vendoai/core";
 // `new Date().toISOString()` (slots.ts:70) and no caller-supplied time exists
 // anywhere on this surface, so a client cannot backdate a slot into permanence
 // or forward-date one out of the window.
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "../../src/core/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SLOTS_COLLECTION, SLOT_DECAY_MS, createSlotRegistry } from "../../src/apps/persistence/slots.js";
 import { memoryStore } from "../../src/apps/testing/memory-store.js";

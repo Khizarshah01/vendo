@@ -3,7 +3,7 @@ import {
   type AppId,
   type Principal,
   VendoError,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import { dbFor, type VendoStore } from "../store.js";
 import type { AppRow } from "./types.js";
 import { appFromRow, putAppRow } from "./rows.js";

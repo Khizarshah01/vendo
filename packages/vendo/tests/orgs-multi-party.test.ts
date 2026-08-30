@@ -9,7 +9,7 @@ import {
   type Principal,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { appAccess, createStore, postgresAppDatabase, workspaceStore, type VendoStore } from "../src/store/index.js";
 import { createAppSql } from "../src/apps/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";

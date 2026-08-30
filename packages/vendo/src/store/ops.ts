@@ -16,7 +16,7 @@ import {
   type UsageTallyQuery,
   type UsageTallyRow,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type { Db, Query } from "./db.js";
 import { eraseStore, type EraseAppSql } from "./erase.js";
 import { storeFiles, storeFilesForDb } from "./files-store.js";

@@ -12,7 +12,7 @@
  * wire's view channel.
  */
 import { createAppFloor, wrapWorkspaceForRender } from "../src/apps/index.js";
-import type { Harness, ThreadId } from "@vendoai/core";
+import type { Harness, ThreadId } from "../src/core/index.js";
 import {
   createHarnessRuntime,
   defineHarness,

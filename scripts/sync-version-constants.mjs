@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Keeps the hand-maintained version constants in the CLI half of
-// @vendoai/vendo and in @vendoai/core in lockstep with package.json (every published package is one
+// @vendoai/vendo and in @vendoai/vendo/core in lockstep with package.json (every published package is one
 // `fixed` group, so one version serves all of them). Runs as part of
 // `pnpm changeset:version` so the Version Packages PR is self-consistent;
 // the CLI's shared.test.ts and core's store-wire.test.ts pin it either way.
@@ -15,7 +15,7 @@ const version = JSON.parse(
 
 const targets = [
   { file: "packages/vendo/src/cli/shared.ts", pattern: /(export const CLI_VERSION = ")[^"]+(")/ },
-  { file: "packages/core/src/version.ts", pattern: /(export const VERSION = ")[^"]+(")/ },
+  { file: "packages/vendo/src/core/version.ts", pattern: /(export const VERSION = ")[^"]+(")/ },
 ];
 
 for (const { file, pattern } of targets) {

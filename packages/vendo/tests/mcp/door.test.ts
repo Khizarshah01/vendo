@@ -15,10 +15,10 @@ import {
   type ToolOutcome,
   type ToolRegistry,
   type VendoRecord,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import {
   type VendoTheme,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { AjvJsonSchemaValidator } from "@modelcontextprotocol/sdk/validation/ajv";

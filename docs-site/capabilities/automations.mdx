@@ -240,7 +240,7 @@ Server-side there is no request to read from, so every verb takes the caller's
 there is no ambient "current user".
 
 ```ts
-import type { RunContext } from "@vendoai/core";
+import type { RunContext } from "@vendoai/vendo/core";
 
 const ctx: RunContext = {
   principal: { kind: "user", subject: "user_ada" },

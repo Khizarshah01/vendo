@@ -8,7 +8,7 @@
 //     nothing written;
 //   - concurrent deciders resolve to exactly one commit per member — the
 //     final state is never mixed.
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../../src/core/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createGuard } from "../../src/guard/index.js";
 import { createPGliteStore, type PGliteStore } from "./fixtures/pglite-store.js";

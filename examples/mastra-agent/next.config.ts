@@ -16,13 +16,11 @@ const nextConfig: NextConfig = {
     "@duckdb/node-api",
     "@electric-sql/pglite",
     "@libsql/client",
-    // --- vendo: @vendoai/vendo is the load-bearing entry. The checker reaches
-    // esbuild through a VARIABLE specifier the bundler cannot see, so an
-    // "esbuild" entry alone is inert — this only ever worked because the
-    // monorepo root hoists esbuild. The same package loads PGlite, which breaks
-    // under production chunking. `vendo doctor` fails E-CFG-004 on any name
-    // missing from the list init writes.
-    "@vendoai/vendo",
+    // --- vendo: PGlite (above) breaks under production chunking, and the
+    // checker reaches esbuild through a VARIABLE specifier the bundler cannot
+    // see. @vendoai/vendo itself is NOT listed: the list is package-granular and
+    // the umbrella has a "use client" half, so externalizing it hands Next the
+    // client doors through the server condition and prerender dies.
     // --- /vendo
     "esbuild",
   ],

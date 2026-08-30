@@ -29,7 +29,7 @@
  *      this is a boot fact, not a per-request one (the same latch
  *      `reportHostedStoreOnce` uses).
  */
-import { log, vendoStyle, type VendoStyle } from "@vendoai/core";
+import { log, vendoStyle, type VendoStyle } from "./core/index.js";
 import { maybeDbFor, type VendoStore } from "./store/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { ENV_KEY_VARS } from "./dev-creds/resolve.js";

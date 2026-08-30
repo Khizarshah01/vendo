@@ -2,7 +2,7 @@
  * The import block `docs-site/reference/server-api.mdx` publishes — compiled.
  *
  * That page used to import each type from its owning block package
- * (`@vendoai/core`, `@vendoai/vendo/apps`, …), which is a TS2307 in a real host: a
+ * (`@vendoai/vendo/core`, `@vendoai/vendo/apps`, …), which is a TS2307 in a real host: a
  * host depends on `@vendoai/vendo`, not on the blocks, and pnpm's strict
  * linking makes that gap fatal. The page now imports from the umbrella, and
  * this file is the proof that every name it lists is actually re-exported

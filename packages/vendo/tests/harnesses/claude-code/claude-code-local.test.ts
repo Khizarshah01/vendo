@@ -16,7 +16,7 @@
  * `claudeCode({ machine: "local" })` therefore ran with none of the product's
  * actions and said NOTHING to anyone.
  */
-import type { HarnessEvent, Turn } from "@vendoai/core";
+import type { HarnessEvent, Turn } from "../../../src/core/index.js";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import type { SessionMachine, SessionMessage } from "../../../src/harnesses/claude-code/machine.js";
 import { emptyTree } from "../../../src/harnesses/materialize.js";

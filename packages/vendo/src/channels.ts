@@ -1,4 +1,4 @@
-import { consoleSender, raiseCloudError, VendoError, type Principal } from "@vendoai/core";
+import { consoleSender, raiseCloudError, VendoError, type Principal } from "./core/index.js";
 import { keepAliveFetch } from "./keep-alive-fetch.js";
 import { hex } from "./wire/shared.js";
 

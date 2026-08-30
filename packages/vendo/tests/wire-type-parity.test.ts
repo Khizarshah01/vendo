@@ -52,7 +52,7 @@ function typecheckFixture(source: string): string | null {
 //
 // This file compared ui's hand copies against the blocks that produce them.
 // Those copies are gone: the chat, connections, automations and status shapes
-// have ONE definition each, in `@vendoai/core`, and both halves import it — so
+// have ONE definition each, in `@vendoai/vendo/core`, and both halves import it — so
 // the rows for them became `Assignable<X, X>`, a green check that cannot fail,
 // which is the exact thing this file exists to prevent. They are proven now by
 // tests/core-wire-shapes.seam.test.ts, which reads the real door's answers back
@@ -60,7 +60,7 @@ function typecheckFixture(source: string): string | null {
 //
 // The apps rows STAY, because `@vendoai/vendo/apps` genuinely ships two declarations
 // of these names — the browser-safe contract door and the richer server one
-// (see the header of packages/core/src/apps/wire-types.ts, which leaves unifying
+// (see the header of packages/vendo/src/core/apps/wire-types.ts, which leaves unifying
 // them to the slice that owns that behavior question). Two declarations is
 // exactly what this gate is for.
 //
@@ -78,7 +78,7 @@ import type {
   EditResult as UiEditResult,
   VersionEntry as UiVersionEntry,
   SeedDrift as UiSeedDrift,
-} from "@vendoai/ui";
+} from "@vendoai/vendo/ui";
 import type {
   OpenSurface as AppsOpenSurface,
   EditResult as AppsEditResult,

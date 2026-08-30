@@ -1,4 +1,4 @@
-import { auditEventSchema, permissionGrantSchema, type Principal } from "@vendoai/core";
+import { auditEventSchema, permissionGrantSchema, type Principal } from "../../src/core/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { approvalFixture, at, auditFixture, automationFixture, grantFixture } from "../../src/store/fixtures.test-util.js";

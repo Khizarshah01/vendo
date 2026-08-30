@@ -1,0 +1,40 @@
+{
+  // The CommonJS arm, and ONLY the contract half: `require("@vendoai/vendo/core")`
+  // and `require("@vendoai/vendo/core/conformance")` are the two entries with a
+  // `require` condition, so `src/core` is all this pass compiles. `rootDir: src`
+  // is inherited, which is what puts the output at dist/cjs/core/.
+  //
+  // The rest of the umbrella is ESM-only by construction — top-level await, the
+  // `#`-prefixed subpath imports, `import.meta.url` — and compiling it here would
+  // fail rather than produce a second surface anybody asked for.
+  //
+  // `ignoreDeprecations` is the fold's one new line here, and it is a COMPILER
+  // difference, not a policy one: `moduleResolution: Node10` is the only
+  // resolution a `module: CommonJS` emit can use, and TypeScript 6 turned its
+  // deprecation into an error. @vendoai/core never saw that because its `tsc`
+  // was the 5.x devDependency; the umbrella's is the 6.0.3 the edge toolchain
+  // pins (`typescript-6`, whose bin wins in this package). Same emit as core
+  // shipped — this only re-silences the warning core was compiled under.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    // Named rather than auto-included, for the same compiler reason: under
+    // `Node10` TypeScript 6 does not pick `@types/node` up on its own, and
+    // without it neither `process` nor a `node:`-prefixed specifier resolves —
+    // `deployment-identity.ts` reads all three through `typeof import("node:…")`.
+    "types": ["node"],
+    "module": "CommonJS",
+    "moduleResolution": "Node10",
+    "outDir": "dist/cjs",
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false
+  },
+  "include": ["src/core"],
+  // `src/core/apps` — the app-generation contract door — is ESM-only and stays
+  // out of the CommonJS arm: it reads `import.meta.url` (illegal under
+  // `module: CommonJS`) and resolves the engine's WebAssembly through the
+  // `#engine/wasm` condition, which `moduleResolution: Node10` cannot see. That
+  // is why `./core/apps` has no `require` leg while `./core` does.
+  "exclude": ["src/**/*.test.ts", "src/core/apps"]
+}

@@ -12,8 +12,8 @@
  * composition holds, and they arrive as one briefing pack the box rung is handed
  * byte for byte (`briefing-pack.test.ts` proves that half).
  */
-import { type AppId, type Json, type ToolDescriptor } from "@vendoai/core";
-import { type BriefingPack } from "@vendoai/core/apps";
+import { type AppId, type Json, type ToolDescriptor } from "../src/core/index.js";
+import { type BriefingPack } from "../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { assembleScreen, screenAssembler, type ScreenInput } from "../src/screen-agent.js";
 import {

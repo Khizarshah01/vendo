@@ -1,9 +1,9 @@
 /**
  * The seam between the shipped client and the shipped door.
  *
- * `@vendoai/ui`'s `createVendoClient` is one half of a contract whose other half
+ * `@vendoai/vendo/ui`'s `createVendoClient` is one half of a contract whose other half
  * is this package's wire route table. A ui test cannot reach the door — ui is
- * layered to `@vendoai/core` alone — so ui proved its half against a fixture
+ * layered to `@vendoai/vendo/core` alone — so ui proved its half against a fixture
  * wire that lives in ui too: the producer and the consumer each holding their own
  * copy of the route table, unable to disagree. `test/client.test.ts` asserted
  * `(method, path, body)` triples against that fixture's own request log, which
@@ -18,9 +18,9 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
-import { createVendoClient, type VendoClient } from "@vendoai/ui";
+import { createVendoClient, type VendoClient } from "../src/ui/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

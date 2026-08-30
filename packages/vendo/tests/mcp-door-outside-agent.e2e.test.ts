@@ -19,7 +19,7 @@
  * `mcp-door.test-util.ts`.
  */
 import { sealBundleBlobs } from "../src/apps/index.js";
-import { VENDO_APP_FORMAT, vendoApprovalRefSchema, type AppDocument, type AppId } from "@vendoai/core";
+import { VENDO_APP_FORMAT, vendoApprovalRefSchema, type AppDocument, type AppId } from "../src/core/index.js";
 import { storeFiles, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {

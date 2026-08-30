@@ -29,7 +29,7 @@ import {
   type Skill,
   type ThreadId,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../core/index.js";
 import { wrapWorkspaceForRender } from "../apps/index.js";
 import { createHarnessRuntime, type HarnessRuntimeDeps } from "../harnesses/index.js";
 import {

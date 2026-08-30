@@ -1,6 +1,6 @@
 import { createConnectGate } from "../src/actions/index.js";
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
-import type { RunContext, ToolDescriptor, ToolOutcome, ToolRegistry } from "@vendoai/core";
+import { memoryStoreAdapter } from "../src/core/conformance/index.js";
+import type { RunContext, ToolDescriptor, ToolOutcome, ToolRegistry } from "../src/core/index.js";
 import { createGuard } from "../src/guard/index.js";
 import { describe, expect, it } from "vitest";
 import { withUniqueToolTitles } from "../src/duplicate-titles.js";

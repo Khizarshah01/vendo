@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { canonicalJson, descriptorHash, VendoError, type Json, type JsonSchema, type ToolSemantics } from "@vendoai/core";
+import { canonicalJson, descriptorHash, VendoError, type Json, type JsonSchema, type ToolSemantics } from "../../core/index.js";
 import {
   VENDO_TOOLS_FORMAT,
   judgmentsFileSchema,

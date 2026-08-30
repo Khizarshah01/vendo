@@ -6,10 +6,10 @@
  */
 import {
   isVendoError,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   effectiveBuildWatchdogMs,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type { Finding } from "../checking/types.js";
 
 /** The non-empty name a failed build record ships under (open() ignores it —
@@ -78,7 +78,7 @@ export const BUILD_WATCHDOG_REASON =
 /** Test seam and operator escape hatch, mirroring turn-liveness: the window a
  *  create has to persist SOMETHING (app or failure) before the watchdog writes
  *  the terminal failed record. Shared with the UI polling cutoff through
- *  @vendoai/core's build-deadlines module (speed-core lane), so the client
+ *  @vendoai/vendo/core's build-deadlines module (speed-core lane), so the client
  *  always outlasts the watchdog and renders its record instead of the generic
  *  deadline beat. */
 export const buildWatchdogMs = effectiveBuildWatchdogMs;

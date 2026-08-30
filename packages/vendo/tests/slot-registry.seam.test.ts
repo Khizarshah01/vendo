@@ -4,7 +4,7 @@
  *
  * A slot exists because a HOST PAGE renders one, and the surface that offers it
  * as a destination ("Add to…") is on a different page — often a different
- * device. The producer (`VendoSlot`, @vendoai/ui) and the consumer (`useSlots`
+ * device. The producer (`VendoSlot`, @vendoai/vendo/ui) and the consumer (`useSlots`
  * behind `AddToPicker`, same package but a different client instance) are
  * joined by nothing but a row in the deployment's store. A test that stubs the
  * wire on either side is the producer and the consumer each holding their own
@@ -26,11 +26,11 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { VENDO_SLOTS_LIST_TOOL, type Principal, type ToolResult } from "@vendoai/core";
+import { VENDO_SLOTS_LIST_TOOL, type Principal, type ToolResult } from "../src/core/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
-import { VendoProvider, createVendoClient, type VendoClient } from "@vendoai/ui";
-import { AddToPicker, VendoSlot } from "@vendoai/ui/chrome";
+import { VendoProvider, createVendoClient, type VendoClient } from "../src/ui/index.js";
+import { AddToPicker, VendoSlot } from "../src/ui/chrome/index.js";
 import { act, createElement, type ReactElement } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, describe, expect, it } from "vitest";

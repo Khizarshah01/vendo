@@ -10,7 +10,7 @@
  * A real browser, because the claim is about what loaded, not about what the
  * HTML said.
  */
-import type { UIPayload } from "@vendoai/core";
+import type { UIPayload } from "@vendoai/vendo/core";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";

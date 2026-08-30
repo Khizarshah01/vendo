@@ -7,11 +7,11 @@
  */
 import {
   VendoError,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   refuseBundleArtifact,
   type AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { createAgentTools } from "./agent-tools.js";
 import { allRecords } from "./access-checks.js";
 import { appSeenStore } from "../persistence/app-seen.js";
@@ -100,7 +100,7 @@ const createAppReadDoors = (
       // fn path lands (see call.ts).
       //
       // A READ takes the QUERY arm. This is the only door a code-land app has
-      // (@vendoai/ui/kit's useToolQuery), so sending every call through the action
+      // (@vendoai/vendo/ui/kit's useToolQuery), so sending every call through the action
       // arm gave a read a random uuid per invocation — and the guard's approved
       // replay PINS the call id (05 §2), so an ungraded read that parked could
       // never be satisfied: approve, refetch, new id, park again, forever.

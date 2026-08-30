@@ -6,7 +6,7 @@
  * the SEAM). Everything a caller is promised about a turn is proved through the
  * real write path and read back through the real read path.
  */
-import { VendoError, type ToolResult } from "@vendoai/core";
+import { VendoError, type ToolResult } from "../../src/core/index.js";
 import { createGuard } from "../../src/guard/index.js";
 import { APPROVAL_WAIT_MS, defineHarness } from "../../src/harnesses/index.js";
 import { createStore, threadMessageStore, type VendoStore } from "../../src/store/index.js";

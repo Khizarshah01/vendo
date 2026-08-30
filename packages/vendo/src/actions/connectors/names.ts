@@ -1,4 +1,4 @@
-import { sha256Hex } from "@vendoai/core";
+import { sha256Hex } from "../../core/index.js";
 
 const MAX_TOOL_NAME_LENGTH = 64;
 

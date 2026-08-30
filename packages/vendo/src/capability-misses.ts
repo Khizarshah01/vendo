@@ -4,7 +4,7 @@ import {
   type CapabilityMissEvent,
   type RiskLabel,
   type ToolDescriptor,
-} from "@vendoai/core";
+} from "./core/index.js";
 import { envOptOut, loadConfig, type TelemetryConfig } from "#telemetry";
 import { createBatchedUploader, type BatchedUploader } from "./batched-uploader.js";
 

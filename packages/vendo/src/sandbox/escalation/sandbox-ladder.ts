@@ -31,7 +31,7 @@
  * `@vendoai/vendo`, which this package may not import. Unset, rung 2 simply
  * does not light — a build with no Cloud adapter has no Cloud sandbox.
  */
-import { consoleUrlFromEnv } from "@vendoai/core";
+import { consoleUrlFromEnv } from "../../core/index.js";
 import type { SandboxAdapter } from "./sandbox.js";
 
 /** Which rung answered — reported verbatim on the umbrella's /status. `"e2b"`

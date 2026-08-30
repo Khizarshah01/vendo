@@ -16,7 +16,7 @@
  */
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
-import { VendoError, type HarnessEvent, type Turn } from "@vendoai/core";
+import { VendoError, type HarnessEvent, type Turn } from "../../../src/core/index.js";
 import { describe, expect, test } from "vitest";
 import { createTurnState } from "../../../src/harnesses/harness-state.js";
 import { provideHarnessAdapters } from "../../../src/harnesses/harness-sandbox.js";

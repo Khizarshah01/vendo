@@ -4,7 +4,7 @@ import { useChat } from "@ai-sdk/react";
 import { useState } from "react";
 // --- vendo: the provider that points the embeds at the wire, and the one
 // dispatcher component that turns a `vendo_*` tool output into the right embed.
-import { VendoProvider, VendoToolResult } from "@vendoai/ui";
+import { VendoProvider, VendoToolResult } from "@vendoai/vendo/ui";
 // --- /vendo
 
 export default function Chat() {

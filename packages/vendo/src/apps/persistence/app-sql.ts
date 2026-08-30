@@ -36,7 +36,7 @@ import {
   type AppDatabase,
   type SqlResult,
   type SqlStatement,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import { guardSql, mineTable, replayFor, sqlRisk, templateOf, unnamespaced } from "./app-sql-guard.js";
 
 /** Which person's copy of a `mine.` table. A digest and not the subject itself

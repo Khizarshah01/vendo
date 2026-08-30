@@ -13,7 +13,7 @@
  *    `interactive: false` card, which is meant to stand.
  */
 import { providerHistory, turnModelMessages } from "../../src/harnesses/vendo/loop.js";
-import type { ApprovalId, ThreadId } from "@vendoai/core";
+import type { ApprovalId, ThreadId } from "../../src/core/index.js";
 import { convertToModelMessages, type ModelMessage, type UIMessage } from "ai";
 import { describe, expect, it, vi } from "vitest";
 import { defineHarness } from "../../src/harnesses/define.js";

@@ -8,7 +8,7 @@ import {
   type Json,
   type ToolResult,
   type Turn,
-} from "@vendoai/core";
+} from "../../../src/core/index.js";
 import { afterEach, describe, expect, test, vi } from "vitest";
 // The REAL box door, driven over a fake transport — see the block comment below.
 // A sibling of the driver since the claude-turn rehome: this package owns the

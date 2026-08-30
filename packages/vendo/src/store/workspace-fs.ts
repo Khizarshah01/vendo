@@ -15,7 +15,7 @@ import {
   VendoError,
   type WorkspaceFs,
   type WriteFileOptions,
-} from "@vendoai/core";
+} from "../core/index.js";
 import type {
   PreparedWrite,
   WorkspaceCommitEntry,

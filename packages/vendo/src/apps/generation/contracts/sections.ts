@@ -19,7 +19,7 @@
 import {
   KIT_SCREEN_COMPONENT_NAMES,
   catalogPrompt,
-} from "@vendoai/core/apps";
+} from "../../../core/apps/index.js";
 
 /** The COMPONENTS section is GENERATED from the Kit specs (catalogPrompt); no
  *  hand-written component list survives here. One short typed ENTRY per

@@ -1,4 +1,4 @@
-import type { ActAs, AuthMaterial } from "@vendoai/core";
+import type { ActAs, AuthMaterial } from "../../core/index.js";
 import {
   TokenCache,
   assertLifetime,

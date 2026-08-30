@@ -1,5 +1,5 @@
 import type { LanguageModel } from "ai";
-import { SEATS, seatConflict, VendoError, type ResolvedModels, type Seat } from "@vendoai/core";
+import { SEATS, seatConflict, VendoError, type ResolvedModels, type Seat } from "./core/index.js";
 import { vendoModel, type VendoModelOptions } from "#dev-creds/model";
 import { keepAliveFetch } from "./keep-alive-fetch.js";
 

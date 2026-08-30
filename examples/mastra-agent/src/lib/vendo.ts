@@ -4,7 +4,7 @@
 // Action descriptors (name, schema, risk) live in `.vendo/tools.json`, exactly
 // where `vendo init` extracts them in a real app.
 import { openai } from "@ai-sdk/openai";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "@vendoai/vendo/core";
 import { createVendo, guard, type Vendo } from "@vendoai/vendo/server";
 import { getWeather, sendTripReport } from "./vendo-actions";
 

@@ -9,12 +9,12 @@ import {
   VendoError,
   type AppId,
   type RunContext,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   buildInFlight,
   effectiveAppBuildUiDeadlineMs,
   refuseBundleArtifact,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import { APPS_COLLECTION, appRecordInput, updateAppRow } from "../persistence/persistence.js";
 import type { PlacementRow } from "../persistence/placements.js";
 import type { AppsRuntimeContext } from "../runtime/runtime-context.js";

@@ -24,7 +24,7 @@ import {
   type Json,
   type ToolListing,
   type Turn,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import { readCompactionState, writeCompactionState, type CompactionState } from "./compaction.js";
 import { startTurn, type TurnCompaction, type TurnContext } from "./loop.js";
 import { contextWindowTokens, rememberResolvedModelId, resolvedModelId } from "./model-windows.js";

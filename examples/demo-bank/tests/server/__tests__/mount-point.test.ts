@@ -14,7 +14,7 @@
  * exactly once at call time.
  */
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { joinUrl } from "@vendoai/core";
+import { joinUrl } from "@vendoai/vendo/core";
 import { config } from "../../../src/proxy";
 import spec from "../../../openapi.json";
 import tools from "../../../.vendo/tools.json";

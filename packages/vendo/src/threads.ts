@@ -6,13 +6,13 @@
  * block deliberately has no `ai` dependency. Its one consumer is the harness turn
  * door (`harness-turn.ts`), which resolves, persists and evicts through it.
  *
- * The SHAPE it reads and writes is core's, not this file's — `@vendoai/ui` reads
+ * The SHAPE it reads and writes is core's, not this file's — `@vendoai/vendo/ui` reads
  * a thread off the wire and may not import this package.
  */
-import { isAgentContextText, VendoError, type RunContext, type StoreAdapter, type Thread, type ThreadId, type ThreadSummary, type VendoRecord } from "@vendoai/core";
+import { isAgentContextText, VendoError, type RunContext, type StoreAdapter, type Thread, type ThreadId, type ThreadSummary, type VendoRecord } from "./core/index.js";
 import type { UIMessage } from "ai";
 
-// The SHAPE is core's (core/src/threads.ts) so `@vendoai/ui` can read a thread
+// The SHAPE is core's (core/src/threads.ts) so `@vendoai/vendo/ui` can read a thread
 // without an illegal edge to this package; the LIFECYCLE below is ours.
 export type { Thread, ThreadSummary };
 

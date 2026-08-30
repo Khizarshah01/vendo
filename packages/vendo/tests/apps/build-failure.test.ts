@@ -4,10 +4,10 @@ import {
   VendoError,
   type RunContext,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type {
   ScreenAssembler,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it, vi } from "vitest";
 import { buildFailureReason } from "../../src/apps/doors/build-messages.js";
 import { createApps, type AppsRuntime } from "../../src/apps/index.js";
@@ -317,7 +317,7 @@ describe("buildFailureReason", () => {
     expect(buildFailureReason(aborted)).toEqual({ reason: "timed out", retryable: true });
   });
 
-  /** A host bundle can carry a second `@vendoai/core` copy, whose VendoErrors
+  /** A host bundle can carry a second `@vendoai/vendo/core` copy, whose VendoErrors
    *  are a different class — so `instanceof` said no and the store's own "not
    *  now" came back as "generation failed", a verdict on an ask that was never
    *  the problem. */

@@ -8,7 +8,7 @@
  * bare `label` still puts exactly the chunk on the wire it always did.
  */
 import { defineHarness } from "../../src/harnesses/define.js";
-import type { BeatPhase, Harness, HarnessEvent, ThreadId } from "@vendoai/core";
+import type { BeatPhase, Harness, HarnessEvent, ThreadId } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { createHarnessRuntime } from "../../src/harnesses/runtime.js";
 import { VENDO_STATUS_PART } from "../../src/harnesses/wire.js";

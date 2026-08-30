@@ -9,8 +9,8 @@
  * cascades, and an answer is never overwritten — read identically whichever
  * backend answers.
  */
-import { VendoError, type Principal, type StoreOps } from "@vendoai/core";
-import { memoryStoreOps } from "@vendoai/core/conformance";
+import { VendoError, type Principal, type StoreOps } from "../../../src/core/index.js";
+import { memoryStoreOps } from "../../../src/core/conformance/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../../src/store/backends.test-util.js";
 import { createStoreOps, threadStore, type VendoStore } from "../../../src/store/index.js";

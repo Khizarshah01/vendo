@@ -4,7 +4,7 @@
  * and a second record of the same owner declaring the same tools is asked in
  * full.
  */
-import type { CreateAutomationInput } from "@vendoai/core";
+import type { CreateAutomationInput } from "@vendoai/vendo/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createAutomation, createStack, ownerCtx, resetFixture, type Stack } from "../src/harness.js";
 import { ADA, BOB, approve } from "../src/support.js";

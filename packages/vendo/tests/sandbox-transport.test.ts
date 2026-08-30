@@ -5,7 +5,7 @@
  * whose only detail is on the cause. Raw, it reaches a caller as three words
  * that name neither Vendo nor the call, and the log seam above drops the cause.
  */
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../src/core/index.js";
 import { expect, test } from "vitest";
 import { cloudSandbox } from "../src/sandbox.js";
 

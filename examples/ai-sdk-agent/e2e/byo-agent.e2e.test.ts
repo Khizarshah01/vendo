@@ -5,7 +5,7 @@ import {
   parseVendoToolEnvelope,
   vendoAppRefSchema,
   vendoApprovalRefSchema,
-} from "@vendoai/core";
+} from "@vendoai/vendo/core";
 import { createStore } from "@vendoai/vendo/store";
 import { vendoTools } from "@vendoai/vendo/ai-sdk";
 import { createVendo, guard, type Vendo } from "@vendoai/vendo/server";

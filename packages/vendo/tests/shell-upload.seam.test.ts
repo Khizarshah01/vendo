@@ -16,7 +16,7 @@ import {
   type PermissionGrant,
   type Principal,
   type RunContext,
-} from "@vendoai/core";
+} from "../src/core/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { jwt } from "../src/auth-presets/jwt.js";

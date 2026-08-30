@@ -5,7 +5,7 @@ import {
   type RunContext,
   type ToolDescriptor,
   type ToolRegistry,
-} from "@vendoai/core";
+} from "./core/index.js";
 
 export { ASK_USER_TOOL };
 

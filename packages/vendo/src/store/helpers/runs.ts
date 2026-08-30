@@ -1,4 +1,4 @@
-import type { AutomationId, RunId } from "@vendoai/core";
+import type { AutomationId, RunId } from "../../core/index.js";
 import { dbFor, type VendoStore } from "../store.js";
 import type { RunRow } from "./types.js";
 import { putRunRow, runFromRow } from "./rows.js";

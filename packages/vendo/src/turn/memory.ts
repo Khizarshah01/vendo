@@ -17,7 +17,7 @@
  * anything, and no verb — the tool least of all — takes a subject from its
  * caller's input.
  */
-import { VendoError, type Principal, type VendoRecord } from "@vendoai/core";
+import { VendoError, type Principal, type VendoRecord } from "../core/index.js";
 import type { VendoStore } from "../store/index.js";
 import { randomUUID } from "node:crypto";
 import { tool, type HostTool } from "./tools.js";

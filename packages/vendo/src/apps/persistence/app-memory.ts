@@ -9,7 +9,7 @@
  */
 import type {
   AppMemory,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 
 /**
  * How many asks a row keeps. Twenty is the point past which an ask is history

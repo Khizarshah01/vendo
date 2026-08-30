@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import type { JsonSchema } from "@vendoai/core";
+import type { JsonSchema } from "../../core/index.js";
 import type tsTypes from "typescript";
 import type { CatalogEntry } from "../formats.js";
 import { walk } from "./common.js";
@@ -56,11 +56,17 @@ function compareText(left: string, right: string): number {
 }
 
 /** The tags whose `components={…}` prop registers host components. Both the
- *  umbrella's `@vendoai/vendo/react` and `@vendoai/ui` export the provider, and
+ *  umbrella's `@vendoai/vendo/react` and `@vendoai/vendo/ui` export the provider, and
  *  `VendoRoot` stays recognized so a host mid-migration is never silently
- *  scanned to zero components. */
+ *  scanned to zero components.
+ *
+ *  `@vendoai/ui` is the SAME rule for the package the fold retired, and it is a
+ *  specifier this repo READS out of a stranger's source rather than one it
+ *  writes. A host upgrades the umbrella and rewrites its imports in two separate
+ *  moments; between them its provider still says `@vendoai/ui`, and dropping the
+ *  name here would scan that host's catalog to zero components without a word. */
 const PROVIDER_EXPORTS: readonly string[] = ["VendoProvider", "VendoRoot"];
-const PROVIDER_MODULES: readonly string[] = ["@vendoai/vendo/react", "@vendoai/ui"];
+const PROVIDER_MODULES: readonly string[] = ["@vendoai/vendo/react", "@vendoai/vendo/ui", "@vendoai/ui"];
 
 function vendoRootNames(sourceFile: tsTypes.SourceFile): Set<string> {
   const names = new Set(PROVIDER_EXPORTS);

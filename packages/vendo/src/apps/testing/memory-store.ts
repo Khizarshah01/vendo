@@ -1,4 +1,4 @@
-import { memoryStoreAdapter } from "@vendoai/core/conformance";
+import { memoryStoreAdapter } from "../../core/conformance/index.js";
 
 /** Canonical test-only StoreAdapter shared by block fixtures. */
 export const memoryStore = memoryStoreAdapter;

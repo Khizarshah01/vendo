@@ -8,7 +8,7 @@
  * `@vendoai/vendo`), and a second copy of "may a client rewrite this message?"
  * is a security answer that could drift.
  */
-import { VendoError, type ApprovalId } from "@vendoai/core";
+import { VendoError, type ApprovalId } from "../core/index.js";
 import { isToolUIPart, type UIMessage } from "ai";
 import { jsonEqual } from "./json-equal.js";
 

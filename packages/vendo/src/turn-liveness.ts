@@ -16,7 +16,7 @@
  * beatable after it.
  */
 
-import { log } from "@vendoai/core";
+import { log } from "./core/index.js";
 import { environment } from "./wire/shared.js";
 
 const IDLE_ABORT_MS = 15_000;

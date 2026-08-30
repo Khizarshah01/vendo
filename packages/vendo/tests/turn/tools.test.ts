@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { Json, RunContext, ToolRegistry } from "@vendoai/core";
+import type { Json, RunContext, ToolRegistry } from "../../src/core/index.js";
 import { afterEach, describe, expect, expectTypeOf, it } from "vitest";
 import { z } from "zod";
 import { api, mergeSources, tool } from "../../src/turn/tools.js";

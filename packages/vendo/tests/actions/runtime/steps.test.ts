@@ -1,6 +1,6 @@
 import jsonata from "jsonata";
 import { describe, expect, it } from "vitest";
-import type { Json, Step, ToolCall, ToolOutcome } from "@vendoai/core";
+import type { Json, Step, ToolCall, ToolOutcome } from "../../../src/core/index.js";
 import { STEP_FOREACH_MAX_ITEMS, walkSteps, type StepResumePoint, type StepWalkOptions } from "../../../src/actions/runtime/steps.js";
 
 const evaluate = async (expression: string, context: Record<string, Json | undefined>): Promise<Json> =>

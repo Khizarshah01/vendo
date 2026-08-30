@@ -23,7 +23,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { LanguageModel, UIMessage } from "ai";
-import type { Principal } from "@vendoai/core";
+import type { Principal } from "../src/core/index.js";
 import { createSessionRoutes } from "../box/turn-routes.mjs";
 import { claudeCode, disposeSessionMachines } from "../src/harnesses/claude-code/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";

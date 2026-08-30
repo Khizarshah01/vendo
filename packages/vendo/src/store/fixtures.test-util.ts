@@ -10,7 +10,7 @@ import {
   type AutomationRecord,
   type PermissionGrant,
   type Principal,
-} from "@vendoai/core";
+} from "../core/index.js";
 
 export const persistentPrincipal: Principal = { kind: "user", subject: "user_test" };
 

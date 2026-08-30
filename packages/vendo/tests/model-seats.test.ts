@@ -1,4 +1,4 @@
-import { VendoError } from "@vendoai/core";
+import { VendoError } from "../src/core/index.js";
 import type { LanguageModel } from "ai";
 import { describe, expect, it } from "vitest";
 import { resolveModels } from "../src/models-config.js";

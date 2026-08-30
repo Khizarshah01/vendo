@@ -15,7 +15,7 @@ import {
   isPathBinding,
   isStateBinding,
   type TreeNode,
-} from "@vendoai/core";
+} from "../../core/index.js";
 import {
   DISPLAY_TAG_NAMES,
   KIT_CHILDLESS_NAMES,
@@ -29,12 +29,12 @@ import {
   type NormalizedCatalog,
   type Tree,
   type VendoRouteMap,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 import type {
   AppDocument,
-} from "@vendoai/core/apps";
+} from "../../core/apps/index.js";
 // The screen engine, by its own path: the contract door does not carry it yet.
-import { SCREEN_FILE } from "@vendoai/core/apps";
+import { SCREEN_FILE } from "../../core/apps/index.js";
 import { wirePropNames } from "./prewired-schema.js";
 import type { FloorDependencies } from "./deps.js";
 import { COMPONENT_SCREEN_LIB, componentScreenTypings, screenCatalog } from "./screen-typings.js";

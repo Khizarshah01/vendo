@@ -1,4 +1,4 @@
-import type { Guard, GuardDecision, RunContext, ToolCall, ToolDescriptor, ToolOutcome, ToolRegistry } from "@vendoai/core";
+import type { Guard, GuardDecision, RunContext, ToolCall, ToolDescriptor, ToolOutcome, ToolRegistry } from "../../src/core/index.js";
 import { describe, expect, it } from "vitest";
 import { guardedCall, previewApproval } from "../../src/harnesses/tool-bridge.js";
 import { ctx } from "../../src/harnesses/test-doubles.test-util.js";

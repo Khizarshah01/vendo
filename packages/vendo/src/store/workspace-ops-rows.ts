@@ -1,4 +1,4 @@
-import { isVendoError, VendoError, type StoreOps } from "@vendoai/core";
+import { isVendoError, VendoError, type StoreOps } from "../core/index.js";
 import { iso } from "./helpers/utils.js";
 import type {
   CommitAllResult,

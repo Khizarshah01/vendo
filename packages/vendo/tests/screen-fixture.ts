@@ -1,4 +1,4 @@
-import { sha256Hex, VENDO_APP_FORMAT, type AppDocument, type AppId } from "@vendoai/core";
+import { sha256Hex, VENDO_APP_FORMAT, type AppDocument, type AppId } from "../src/core/index.js";
 import { SCREEN_FILE } from "../src/apps/index.js";
 
 /** The smallest screen the gauntlet passes and the seam paints. */

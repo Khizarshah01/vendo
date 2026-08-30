@@ -1,14 +1,14 @@
-import { engineOverAdapter } from "@vendoai/core";
+import { engineOverAdapter } from "../../src/core/index.js";
 import {
   type RunContext,
   type ToolCall,
   type ToolDescriptor,
   type ToolRegistry,
   VENDO_APP_FORMAT,
-} from "@vendoai/core";
+} from "../../src/core/index.js";
 import type {
   AppDocument,
-} from "@vendoai/core/apps";
+} from "../../src/core/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { createApps } from "../../src/apps/index.js";
 import { guardFixture } from "../../src/apps/testing/guard-fixture.js";
@@ -18,7 +18,7 @@ import { seedAppRow } from "../../src/apps/testing/seed-app-row.js";
 /**
  * A READ through `apps.call` takes the QUERY arm.
  *
- * `apps.call` is the only door a code-land app (`@vendoai/ui/kit`'s `useToolQuery`)
+ * `apps.call` is the only door a code-land app (`@vendoai/vendo/ui/kit`'s `useToolQuery`)
  * has, and it used to hand every call to `caller.call` — the arm with a random
  * uuid per invocation. A query's identity is (app, tool, args), and
  * `callQuery` derives the call id from exactly that triple (call.ts's
