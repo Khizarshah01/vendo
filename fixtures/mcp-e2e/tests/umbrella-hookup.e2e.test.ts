@@ -18,9 +18,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { nodeBridge } from "@vendoai-fixtures/test-kit/node-bridge";
 import { type Principal } from "@vendoai/core";
-import { VENDO_TOOLS_FORMAT } from "@vendoai/actions";
+import { VENDO_TOOLS_FORMAT } from "@vendoai/vendo/actions";
 import type { HostOAuthAdapter } from "@vendoai/vendo/mcp";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createVendo, type CreateVendoConfig, type Vendo } from "@vendoai/vendo/server";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import {

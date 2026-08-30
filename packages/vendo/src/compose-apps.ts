@@ -20,7 +20,7 @@ import {
   type RunContext,
   type WorkspaceFs,
 } from "@vendoai/core";
-import { appAccess } from "@vendoai/store";
+import { appAccess } from "./store/index.js";
 import { askUserRegistry } from "./ask-user.js";
 import { cloudApps } from "./cloud-apps.js";
 import { cloudKeyOptions, selectAppDatabase } from "./compose-selection.js";

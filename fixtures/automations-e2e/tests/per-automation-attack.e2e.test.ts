@@ -16,9 +16,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { beforeEach, describe, expect, it } from "vitest";
 import { type ApprovalRequest, type CreateAutomation, type CreateAutomationInput, descriptorHash, type PermissionGrant } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";
-import { createActions } from "@vendoai/actions";
+import { createActions } from "@vendoai/vendo/actions";
 import { automationsInternals, createAutomations, type AutomationsEngine } from "@vendoai/vendo/automations";
 import {
   createAutomation,

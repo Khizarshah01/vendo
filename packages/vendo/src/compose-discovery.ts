@@ -7,7 +7,7 @@
  * ever runs inside a request, which is why the composition is handed around as
  * one object instead of threaded in dependency order.
  */
-import type { Connector } from "@vendoai/actions";
+import type { Connector } from "./actions/index.js";
 import type { Principal, RiskLabel, RunContext, ToolCall } from "@vendoai/core";
 import type { VendoComposition } from "./compose-context.js";
 import { selectConnections, withDisconnectInvalidation } from "./compose-selection.js";

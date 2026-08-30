@@ -1,4 +1,4 @@
-import { catalogFileSchema, type CatalogFile } from "@vendoai/actions";
+import { catalogFileSchema, type CatalogFile } from "./actions/index.js";
 import {
   type JsonSchema,
   log,

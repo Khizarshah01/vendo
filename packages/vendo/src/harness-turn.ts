@@ -60,7 +60,7 @@ import {
   workspaceIndexPage,
   workspaceStore,
   type VendoStore,
-} from "@vendoai/store";
+} from "./store/index.js";
 import {
   createHarnessRuntime,
   createTurnTimings,
@@ -758,7 +758,7 @@ export function createHarnessTurns(config: HarnessTurnsConfig): HarnessTurns {
       // message on a deployment that can never answer it.
       const { transcript, workspaces, harnessState } = sqlDoors();
       // The batch verb, read as OPTIONAL on purpose — its type says it is always
-      // there, and a `@vendoai/store` older than it says otherwise at runtime.
+      // there, and a `@vendoai/vendo/store` older than it says otherwise at runtime.
       // The group ships lockstep, so that takes pinning the packages
       // individually (or a stale build), but an unguarded call turns it into a
       // hard failure on turn TWO of a conversation, and `persistTurn` in

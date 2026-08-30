@@ -1,8 +1,8 @@
 import { readFile, rm } from "node:fs/promises";
 import { join } from "node:path";
 import type { z } from "zod";
-import type { ExtractedTool } from "@vendoai/actions";
-import { firstOpenApiSpec, openApiMountPath, vendoSync, type SyncReportWithWarnings } from "@vendoai/actions/sync";
+import type { ExtractedTool } from "@vendoai/vendo/actions";
+import { firstOpenApiSpec, openApiMountPath, vendoSync, type SyncReportWithWarnings } from "@vendoai/vendo/actions/sync";
 import type { VendoThemeFont } from "@vendoai/apps/contract";
 import type { ToolImpact } from "@vendoai/core";
 import {

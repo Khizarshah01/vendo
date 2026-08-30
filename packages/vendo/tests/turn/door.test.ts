@@ -23,7 +23,7 @@ import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
 import { createSessionRoutes } from "../../box/turn-routes.mjs";
 import { createClaudeSession, VENDO_MCP_SERVER } from "../../src/harnesses/claude-code/claude-turn.js";
 import { harnessAdapters } from "../../src/harnesses/index.js";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../../src/store/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { agent } from "../../src/turn/agent.js";
 import { DOOR_PATH } from "../../src/turn/door.js";

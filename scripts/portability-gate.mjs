@@ -8,7 +8,7 @@
  *    (CLI, dev-creds ladder, actions sync, telemetry disk config, store
  *    engines). Bare node builtins stay external — that mirrors Wrangler's
  *    nodejs_compat, the Workers baseline.
- *  Leg A2 (store split): the @vendoai/store/postgres entry must bundle under
+ *  Leg A2 (store split): the @vendoai/vendo/store/postgres entry must bundle under
  *    DEFAULT/node resolution (what OpenNext-style Worker builds and Lambda
  *    bundlers use — the resolution mode under which a console Worker silently
  *    crossed Cloudflare's size ceiling carrying PGlite wasm it can't run)
@@ -48,14 +48,14 @@ const NODE_BUILTIN_EXTERNALS = [
 const FORBIDDEN_INPUTS = [
   { fragment: "packages/cli/dist/", seam: "@vendoai/cli is its own package (runtime code must not borrow CLI modules)" },
   { fragment: "packages/vendo/dist/dev-creds/model.js", seam: "#dev-creds/model conditions" },
-  { fragment: "packages/actions/dist/sync/", seam: "@vendoai/actions/sync subpath split" },
-  { fragment: "packages/actions/dist/runtime/host-files.js", seam: "#actions/host-files conditions" },
-  { fragment: "packages/vendo-telemetry/dist/config.js", seam: "@vendoai/telemetry worker conditions" },
-  { fragment: "packages/vendo-telemetry/dist/base-props.js", seam: "@vendoai/telemetry worker conditions" },
-  { fragment: "packages/store/dist/db.js", seam: "#store/db conditions" },
-  { fragment: "packages/store/dist/crypto.js", seam: "#store/crypto conditions" },
+  { fragment: "packages/vendo/dist/actions/sync/", seam: "@vendoai/vendo/actions/sync subpath split" },
+  { fragment: "packages/vendo/dist/actions/runtime/host-files.js", seam: "#actions/host-files conditions" },
+  { fragment: "packages/vendo/dist/telemetry/config.js", seam: "@vendoai/vendo/telemetry worker conditions" },
+  { fragment: "packages/vendo/dist/telemetry/base-props.js", seam: "@vendoai/vendo/telemetry worker conditions" },
+  { fragment: "packages/vendo/dist/store/db.js", seam: "#store/db conditions" },
+  { fragment: "packages/vendo/dist/store/crypto.js", seam: "#store/crypto conditions" },
   { fragment: "node_modules/.pnpm/pg@", seam: "#store/db conditions" },
-  { fragment: "node_modules/.pnpm/typescript@", seam: "@vendoai/actions/sync subpath split" },
+  { fragment: "node_modules/.pnpm/typescript@", seam: "@vendoai/vendo/actions/sync subpath split" },
   { fragment: "node_modules/.pnpm/e2b@", seam: "bundler-blind e2b specifier (apps/src/server/escalation/e2b)" },
   { fragment: "node_modules/.pnpm/esbuild@", seam: "bundler-blind esbuild specifier (apps/src/server/checking/islands)" },
   { fragment: "packages/apps/dist/server/edge/", seam: "@vendoai/apps/edge subpath split (a whole TypeScript compiler, for the venue that has no Node — a Node host must never carry it)" },
@@ -127,10 +127,10 @@ if (serverMeta !== undefined) {
   }
 }
 
-// ---- Leg A2: @vendoai/store/postgres stays PGlite-free under node resolution ----
-const STORE_POSTGRES_ENTRY = join(root, "packages/store/dist/postgres.js");
+// ---- Leg A2: @vendoai/vendo/store/postgres stays PGlite-free under node resolution ----
+const STORE_POSTGRES_ENTRY = join(root, "packages/vendo/dist/store/postgres.js");
 if (!existsSync(STORE_POSTGRES_ENTRY)) {
-  fail("packages/store/dist/postgres.js missing — run `pnpm build` first");
+  fail("packages/vendo/dist/store/postgres.js missing — run `pnpm build` first");
 } else {
   try {
     const result = await esbuild.build({
@@ -145,10 +145,10 @@ if (!existsSync(STORE_POSTGRES_ENTRY)) {
     });
     const inputs = Object.keys(result.metafile.inputs);
     const leaks = inputs.filter(
-      (input) => input.includes("@electric-sql") || input.includes("pglite") || input.includes("packages/store/dist/db.js"),
+      (input) => input.includes("@electric-sql") || input.includes("pglite") || input.includes("packages/vendo/dist/store/db.js"),
     );
     if (leaks.length > 0) {
-      fail(`@vendoai/store/postgres reached the PGlite engine under node resolution: ${leaks[0]}\n    containment seam: packages/store src/db-postgres.ts split (engine picker stays in src/db.ts)`);
+      fail(`@vendoai/vendo/store/postgres reached the PGlite engine under node resolution: ${leaks[0]}\n    containment seam: packages/vendo src/store/db-postgres.ts split (engine picker stays in src/store/db.ts)`);
     } else {
       ok(`store postgres entry stays PGlite-free under node resolution (${inputs.length} modules checked)`);
     }

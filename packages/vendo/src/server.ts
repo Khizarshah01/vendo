@@ -74,13 +74,13 @@ export type { HarnessTurns } from "./harness-turn.js";
 export type { AppsConfig } from "@vendoai/apps";
 
 // 02-store §5: the erase API ships on the umbrella's runtime surface so hosts
-// reach it without installing @vendoai/store directly.
-export { eraseStore, type EraseReport, type EraseTable } from "@vendoai/store";
+// reach it without going through the @vendoai/vendo/store subpath.
+export { eraseStore, type EraseReport, type EraseTable } from "./store/index.js";
 // XCUT-3: the production-deploy path — createStore({ url }) plus the secrets
 // runtime — is reachable from the umbrella itself (docs/persistence-and-deploy
-// imports these from "@vendoai/vendo/server"); hosts never need to install
-// @vendoai/store directly.
-export { createStore, envSecrets, secretStore, storeSecrets } from "@vendoai/store";
+// imports these from "@vendoai/vendo/server"); hosts never need the
+// @vendoai/vendo/store subpath.
+export { createStore, envSecrets, secretStore, storeSecrets } from "./store/index.js";
 
 // 09-vendo §2.1 — host-identity presets: one `auth` key fills the principal,
 // actAs, and oauth seams from one config. The conformance kit + shared types
@@ -163,13 +163,13 @@ export { doorWellKnownPaths } from "./door-paths.js";
 
 // The BYO connectors a host passes to createVendo({ connectors }), named from
 // here so bringing an MCP server or a third-party REST API in is one import
-// from the umbrella — no direct @vendoai/actions dependency.
+// from the umbrella — no @vendoai/vendo/actions import.
 export {
   mcpConnector,
   openApiConnector,
   type ConnectorAuthContext,
   type ConnectorHeadersResolver,
-} from "@vendoai/actions";
+} from "./actions/index.js";
 
 // The config resolution seam: per surface, a value passed in code → the local
 // `.vendo/<name>` file → unset. Nothing remote participates.
@@ -184,11 +184,11 @@ export {
 // The hosted-store adapter rides the server surface like the other Cloud
 // adapters: a host can pass it explicitly via createVendo({ store }) with its
 // own options instead of relying on the VENDO_API_KEY default.
-export { hostedStore, hostedStoreOps, type HostedStore, type HostedStoreOptions } from "@vendoai/store";
+export { hostedStore, hostedStoreOps, type HostedStore, type HostedStoreOptions } from "./store/index.js";
 
 // The ready-made `files:` adapter, on the same surface for the same reason —
 // and the one the over-cap upload refusal names by hand.
-export { s3Files, type S3FilesOptions } from "@vendoai/store";
+export { s3Files, type S3FilesOptions } from "./store/index.js";
 
 // The composition merge, for anyone re-expressing a `ToolRegistry` as the
 // `tools:` entries createVendo takes.
@@ -203,11 +203,11 @@ export { UNATTENDED_IRREVERSIBILITY_RULE } from "./automations/index.js";
 // Task 15a — the profile piece types, named from THIS entry so they sit
 // beside createVendo/CreateVendoConfig: the hosted try venue (a Worker in the
 // console repo) composes typed `profile` pieces against the umbrella alone,
-// without adding a direct @vendoai/actions or @vendoai/core dependency.
+// without adding a direct @vendoai/vendo/actions or @vendoai/core dependency.
 // ServerActionHandler rides along for the same reason: it is the value type of
 // the documented `serverActions` config key, so a host must be able to name it
-// without adding a direct @vendoai/actions dependency.
-export type { CatalogFile, ExtractedTool, OverridesFile, ServerActionHandler } from "@vendoai/actions";
+// without adding a direct @vendoai/vendo/actions dependency.
+export type { CatalogFile, ExtractedTool, OverridesFile, ServerActionHandler } from "./actions/index.js";
 // The second arm of the `agent:` key — what `agent()` returns — named from here for the same reason as ServerActionHandler: a host
 // must be able to name what it passes without adding a direct dependency on the
 // block the value came from.

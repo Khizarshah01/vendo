@@ -7,7 +7,7 @@ import {
   KNOWLEDGE_DOCS_COLLECTION,
   vendoKnowledge,
 } from "../src/knowledge/index.js";
-import { createStore, createStoreOps, type VendoStore } from "@vendoai/store";
+import { createStore, createStoreOps, type VendoStore } from "../src/store/index.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 /**

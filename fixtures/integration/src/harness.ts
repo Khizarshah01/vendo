@@ -23,7 +23,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { inject } from "vitest";
 import { zipSync } from "fflate";
-import type { Connector } from "@vendoai/actions";
+import type { Connector } from "@vendoai/vendo/actions";
 import type { SandboxAdapter } from "@vendoai/apps";
 import {
   type AppDocument,
@@ -35,7 +35,7 @@ import {
 } from "@vendoai/core";
 import { automationsInternals } from "@vendoai/vendo/automations";
 import { createMcpDoor, type McpDoorConfig, type HostOAuthAdapter, type McpDoor } from "@vendoai/vendo/mcp";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createVendo, type CreateVendoConfig, type Vendo } from "@vendoai/vendo/server";
 import {
   scriptedModel,

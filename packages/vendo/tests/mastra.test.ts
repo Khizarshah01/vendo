@@ -4,14 +4,14 @@ import { join } from "node:path";
 import { Agent } from "@mastra/core/agent";
 import { RequestContext } from "@mastra/core/request-context";
 import { Tool, noopObserve } from "@mastra/core/tools";
-import { VENDO_TOOLS_FORMAT, type ExtractedTool } from "@vendoai/actions";
+import { VENDO_TOOLS_FORMAT, type ExtractedTool } from "../src/actions/index.js";
 import {
   VendoError,
   parseVendoToolEnvelope,
   vendoApprovalRefSchema,
   type Principal,
 } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { VENDO_PRINCIPAL_KEY, VENDO_SESSION_KEY, vendoMastraTools } from "../src/mastra.js";

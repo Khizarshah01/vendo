@@ -45,7 +45,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { SeedBaseline } from "@vendoai/apps";
 import type { RunContext } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createVendo } from "../src/server.js";

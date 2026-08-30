@@ -8,7 +8,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { defineHarness } from "../src/harnesses/index.js";
 import { VENDO_BASH_TOOL } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";
 import { vendo as vendoHarness } from "../src/harnesses/index.js";

@@ -1,4 +1,4 @@
-import { createActions, createConnectGate, type Connector } from "@vendoai/actions";
+import { createActions, createConnectGate, type Connector } from "../src/actions/index.js";
 import type { Principal, RunContext, ToolDescriptor } from "@vendoai/core";
 import { memoryStoreAdapter } from "@vendoai/core/conformance";
 import { createGuard } from "../src/guard/index.js";

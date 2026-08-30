@@ -20,7 +20,7 @@ import { setUsageSink } from "@vendoai/core";
 import { createGuard, type VendoGuard } from "../src/guard/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { memoryStoreAdapter } from "@vendoai/core/conformance";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

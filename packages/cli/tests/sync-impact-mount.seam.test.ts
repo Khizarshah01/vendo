@@ -1,7 +1,7 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { afterEach, describe, expect, it } from "vitest";
 import { runSyncFlow } from "../src/sync-flow.js";
 import { createVendo } from "@vendoai/vendo/server";

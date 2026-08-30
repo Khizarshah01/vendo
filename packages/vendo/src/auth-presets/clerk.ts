@@ -1,4 +1,4 @@
-import { clerkPreset } from "@vendoai/actions/presets";
+import { clerkPreset } from "../actions/presets/index.js";
 import { environment } from "../wire/shared.js";
 import {
   actAsClaimsFromUser,

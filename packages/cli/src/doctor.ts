@@ -1,5 +1,5 @@
 import { resolve } from "node:path";
-import type { Telemetry } from "@vendoai/telemetry";
+import type { Telemetry } from "@vendoai/vendo/telemetry";
 import { cloudDoctor, type CloudDoctorResult } from "./cloud/client.js";
 import { checkConfigFiles, checkModelResolution, checkMountAgreement, checkNextServerExternals, checkStorePersistence, checkSurfaceOwnership, checkUserFiles, checkToolCatalog } from "./doctor-config-checks.js";
 import { checkInstalledDeps } from "./doctor-deps-checks.js";

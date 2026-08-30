@@ -14,7 +14,7 @@ import { nodeBridge } from "@vendoai-fixtures/test-kit/node-bridge";
 import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
 import type { Principal } from "@vendoai/core";
 import type { HostOAuthAdapter } from "@vendoai/vendo/mcp";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createVendo, type CreateVendoConfig, type Vendo } from "@vendoai/vendo/server";
 import { afterEach, describe, expect, it } from "vitest";
 import { SUBJECT, type Stack } from "../src/harness.js";

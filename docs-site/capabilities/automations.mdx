@@ -178,14 +178,11 @@ sessions with private keys you do not hold, so their presets ship two halves: a
 producer that signs a short-lived `VendoAway` token, and a verify middleware you
 mount on your host app.
 
-They ship in `@vendoai/actions`, a separate install:
-
-```bash
-npm install @vendoai/actions
-```
+They ship on `@vendoai/vendo/actions`, a subpath of the package you already
+have:
 
 ```ts lib/vendo.ts focus={7,8,9,10}
-import { authJsPreset } from "@vendoai/actions/presets/auth-js";
+import { authJsPreset } from "@vendoai/vendo/actions/presets/auth-js";
 import { createVendo } from "@vendoai/vendo/server";
 import { resolvePrincipal } from "@/lib/session";
 
@@ -208,7 +205,7 @@ Clerk and Auth0 sign a host-owned token rather than a real provider session, so
 your host API has to accept it and turn it back into a user.
 
 ```ts middleware.ts focus={3,5}
-import { clerkPreset } from "@vendoai/actions/presets";
+import { clerkPreset } from "@vendoai/vendo/actions/presets";
 
 const clerk = clerkPreset({ secret: process.env.VENDO_AWAY_TOKEN_SECRET! });
 

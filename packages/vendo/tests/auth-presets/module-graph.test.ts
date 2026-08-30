@@ -117,7 +117,7 @@ describe("auth-presets module graph (bundler-style reachability)", () => {
     expect(reached.has("@clerk/backend")).toBe(false);
   });
 
-  it("@vendoai/actions/presets never reaches @auth/core (authJsPreset moved to its own subpath)", () => {
+  it("@vendoai/vendo/actions/presets never reaches @auth/core (authJsPreset moved to its own subpath)", () => {
     const reached = collectReachableSpecifiers(ACTIONS_PRESETS_INDEX);
     expect(reached.has("@auth/core/jwt")).toBe(false);
     expect(reached.has("@auth/core")).toBe(false);

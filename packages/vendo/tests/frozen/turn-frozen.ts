@@ -56,7 +56,7 @@ import {
   threadMessageStore,
   workspaceStore,
   type VendoStore,
-} from "@vendoai/store";
+} from "../../src/store/index.js";
 import { asSchema, type FlexibleSchema, type LanguageModel, type Schema, type UIMessage } from "ai";
 import { randomUUID } from "node:crypto";
 import type { MemoryAdapter } from "../../src/turn/memory.js";

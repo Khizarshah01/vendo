@@ -30,7 +30,7 @@ import {
 import type { SandboxAdapter } from "@vendoai/apps";
 import { createSessionRoutes } from "../box/turn-routes.mjs";
 import { claudeCode } from "../src/harnesses/claude-code/index.js";
-import { appAccess, createStore, type VendoStore } from "@vendoai/store";
+import { appAccess, createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { liveDoor } from "../src/agent-doubles.test-util.js";
 import { createVendo, type Vendo } from "../src/server.js";

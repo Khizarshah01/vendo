@@ -10,7 +10,7 @@ import {
   createConnectGate,
   type ActionsRunContext,
   type Connector,
-} from "@vendoai/actions";
+} from "./actions/index.js";
 import {
   descriptorHash,
   type PermissionGrant,

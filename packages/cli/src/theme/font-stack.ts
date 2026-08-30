@@ -37,7 +37,7 @@ import type TS from "typescript";
  */
 
 // The TypeScript compiler, resolved lazily through this package's own
-// dependency graph (same posture as @vendoai/actions' loadCompiler): a Next
+// dependency graph (same posture as @vendoai/vendo/actions' loadCompiler): a Next
 // host always carries typescript; when it genuinely cannot be loaded, every
 // derivation here verifies nothing and the slot stays with the model.
 let compilerModule: typeof TS | null | undefined;

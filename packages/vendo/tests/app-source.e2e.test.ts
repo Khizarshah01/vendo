@@ -25,7 +25,7 @@ import {
   type WorkspaceFs,
 } from "@vendoai/core";
 import { commitApp, type AppSourceSeam } from "@vendoai/apps";
-import { createStore, workspaceStore, type VendoStore } from "@vendoai/store";
+import { createStore, workspaceStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 
 const cleanups: Array<() => Promise<void>> = [];

@@ -72,7 +72,7 @@ describe("§1 — format constants are pinned to their exact wire strings", () =
     expect(VENDO_POLICY_FORMAT).toBe("vendo/policy@1");
   });
 
-  // The tools/overrides tags moved to @vendoai/actions at @3 and the capabilities
+  // The tools/overrides tags moved to @vendoai/vendo/actions at @3 and the capabilities
   // tag was retired with the pre-v3 `.vendo` layer. Core cannot import from
   // actions (layering), so their absence here is the assertion.
   it("no longer carries the retired pre-v3 tags", () => {
@@ -495,7 +495,7 @@ describe("amended public export surface — root utilities and /conformance inve
       "actAsConformance",
       "agentRunnerConformance",
       // Build contract §9.2–§9.4: the app-access rule, mounted by BOTH
-      // implementations (@vendoai/store's real one and the apps runtime's
+      // implementations (@vendoai/vendo/store's real one and the apps runtime's
       // memory-store stand-in) so they cannot drift.
       "appAccessConformance",
       "guardConformance",

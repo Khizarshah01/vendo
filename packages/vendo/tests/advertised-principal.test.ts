@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

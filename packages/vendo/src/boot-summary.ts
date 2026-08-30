@@ -30,7 +30,7 @@
  *      `reportHostedStoreOnce` uses).
  */
 import { log, vendoStyle, type VendoStyle } from "@vendoai/core";
-import { maybeDbFor, type VendoStore } from "@vendoai/store";
+import { maybeDbFor, type VendoStore } from "./store/index.js";
 import type { VendoComposition } from "./compose-context.js";
 import { ENV_KEY_VARS } from "./dev-creds/resolve.js";
 import { environment } from "./wire/shared.js";

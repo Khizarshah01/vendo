@@ -73,7 +73,7 @@ const auth = authJs({
 describe("authJs's actAs half (away/MCP minting) — the session resolveMapleSession reads", () => {
   it("mints an away session Maple's own session reads accept", async () => {
     // Cross-package proof: the preset's actAs half encodes the session JWE
-    // through @vendoai/actions' bundled @auth/core, while resolveMapleSession
+    // through @vendoai/vendo/actions' bundled @auth/core, while resolveMapleSession
     // (and /api/transfers, /api/profile, /login) decode it through
     // next-auth's own bundled @auth/core. The two must agree on wire format
     // or away/MCP execution mints cookies the app itself cannot read.

@@ -208,7 +208,7 @@ export const nodeToolchain = (): ScreenToolchain => ({
       // The whole list is the one `vendo init` writes, so it pastes as it stands.
       throw new ScreenToolchainUnavailable(
         "no esbuild is reachable from @vendoai/apps — keep this package out of the server bundle (Next:"
-        + ' serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/store", "@vendoai/apps"]'
+        + ' serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo", "@vendoai/apps"]'
         + " in next.config)",
       );
     }

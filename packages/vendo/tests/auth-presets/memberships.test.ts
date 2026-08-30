@@ -1,4 +1,4 @@
-import { genericJwtPreset } from "@vendoai/actions/presets";
+import { genericJwtPreset } from "../../src/actions/presets/index.js";
 import type { Membership, PermissionGrant, Principal } from "@vendoai/core";
 import { describe, expect, it } from "vitest";
 import { hostAuthPresetConformance } from "../../src/auth-presets/index.js";

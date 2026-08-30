@@ -12,11 +12,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@vendoai/actions": "workspace:*",
     "@vendoai/apps": "workspace:*",
     "@vendoai/core": "workspace:*",
-    "@vendoai/store": "workspace:*",
-    "@vendoai/telemetry": "workspace:*",
     "@vendoai/vendo": "workspace:*"
   },
   "devDependencies": {

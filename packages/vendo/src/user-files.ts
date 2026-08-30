@@ -20,7 +20,7 @@ import {
   type ToolRegistry,
   type WorkspaceFs,
 } from "@vendoai/core";
-import { FILES_STORE_MAX_BYTES } from "@vendoai/store";
+import { FILES_STORE_MAX_BYTES } from "./store/index.js";
 import type { FilesVenue } from "./compose-store.js";
 import type { CreateVendoConfig } from "./types.js";
 

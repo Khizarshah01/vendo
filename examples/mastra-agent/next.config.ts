@@ -19,11 +19,11 @@ const nextConfig: NextConfig = {
     // --- vendo: @vendoai/apps is the load-bearing entry. The checker reaches
     // esbuild through a VARIABLE specifier the bundler cannot see, so an
     // "esbuild" entry alone is inert — this only ever worked because the
-    // monorepo root hoists esbuild. @vendoai/store loads PGlite, which breaks
+    // monorepo root hoists esbuild. @vendoai/vendo loads PGlite, which breaks
     // under production chunking. Both are required: `vendo doctor` fails
     // E-CFG-004 on any name missing from the list init writes.
     "@vendoai/apps",
-    "@vendoai/store",
+    "@vendoai/vendo",
     // --- /vendo
     "esbuild",
   ],

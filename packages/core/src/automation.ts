@@ -119,7 +119,7 @@ export const automationRecordSchema = z.object({
  *  run nobody could see the end of — it held an approval open, an identity open,
  *  and an intent open across an unbounded gap.
  *
- *  Here rather than in `@vendoai/automations` because `@vendoai/store` persists
+ *  Here rather than in `@vendoai/automations` because `@vendoai/vendo/store` persists
  *  these rows and may not import that package (dependency-guard). */
 export const RUN_STATUSES = ["running", "ok", "error", "stopped"] as const;
 export type RunStatus = (typeof RUN_STATUSES)[number];
@@ -130,7 +130,7 @@ export type RunStatus = (typeof RUN_STATUSES)[number];
  *  can never drift, and narrowing it would be a behaviour change, not a
  *  consolidation.
  *
- *  Here rather than in `@vendoai/store` for the same reason `RUN_STATUSES` is
+ *  Here rather than in `@vendoai/vendo/store` for the same reason `RUN_STATUSES` is
  *  here: the readers of this ledger live outside the store — Vendo Cloud's
  *  console validates a `?status=` query param against it — and console code
  *  consumes contracts from this package, never the store implementation. A

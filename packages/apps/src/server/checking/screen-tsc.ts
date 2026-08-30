@@ -28,7 +28,7 @@
  * and `@vendoai/apps` is reachable from the Worker server entry, so a static
  * `import ... from "typescript"` here would break `pnpm lint`. Layering
  * (apps → core only) is why this is not the loader in
- * `packages/actions/src/sync/common.ts:178-190`; that loader is the pattern
+ * `packages/vendo/src/actions/sync/common.ts:178-190`; that loader is the pattern
  * this one copies.
  */
 import { createRequire } from "node:module";
@@ -44,7 +44,7 @@ import type { Finding } from "./types.js";
 
 /** Every module-level compiler function this module calls, feature-detected
  *  one by one rather than by version string — the shape of the gate in
- *  `packages/actions/src/sync/compiler-gate.ts`, kept local because apps may
+ *  `packages/vendo/src/actions/sync/compiler-gate.ts`, kept local because apps may
  *  not depend on actions. A compiler missing any of them degrades exactly like
  *  a compiler that failed to load. */
 const REQUIRED_COMPILER_API = [

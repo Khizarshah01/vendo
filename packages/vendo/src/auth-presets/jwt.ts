@@ -1,4 +1,4 @@
-import { genericJwtPreset, verifyHs256 } from "@vendoai/actions/presets";
+import { genericJwtPreset, verifyHs256 } from "../actions/presets/index.js";
 import {
   actAsClaimsFromUser,
   bearerToken,

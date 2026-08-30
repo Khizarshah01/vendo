@@ -14,10 +14,10 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Connector } from "@vendoai/actions";
+import type { Connector } from "../src/actions/index.js";
 import type { AuditEvent, Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

@@ -39,7 +39,7 @@ import {
 import type { SandboxAdapter } from "@vendoai/apps";
 import { e2bSandbox } from "@vendoai/apps";
 import { claudeCode } from "../src/harnesses/claude-code/index.js";
-import { appAccess, createStore, type VendoStore } from "@vendoai/store";
+import { appAccess, createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";
 

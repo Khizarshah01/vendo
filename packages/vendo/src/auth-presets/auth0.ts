@@ -1,4 +1,4 @@
-import { auth0Preset } from "@vendoai/actions/presets";
+import { auth0Preset } from "../actions/presets/index.js";
 import { environment } from "../wire/shared.js";
 import {
   actAsClaimsFromUser,

@@ -37,7 +37,7 @@
  */
 import type { RunRecord } from "@vendoai/core";
 import type { AuditEvent, AutomationRecord, AutomationTask, RunId, TriggerSource } from "@vendoai/core";
-import { workspaceStore, type VendoStore } from "@vendoai/store";
+import { workspaceStore, type VendoStore } from "@vendoai/vendo/store";
 import { mapleDemoUsers } from "@/server/users";
 
 const ORG = "maple";

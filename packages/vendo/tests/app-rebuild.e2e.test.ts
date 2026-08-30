@@ -34,7 +34,7 @@ import {
 } from "@vendoai/core";
 import { createGuard } from "../src/guard/index.js";
 import { wrapWorkspaceForRender } from "@vendoai/apps";
-import { appAccess, createStore, workspaceStore, type VendoStore } from "@vendoai/store";
+import { appAccess, createStore, workspaceStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const cleanups: Array<() => Promise<void>> = [];

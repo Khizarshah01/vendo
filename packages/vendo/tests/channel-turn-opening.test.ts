@@ -33,7 +33,7 @@ import {
   type StoreOps,
 } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, createStoreOps, type VendoStore } from "@vendoai/store";
+import { createStore, createStoreOps, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { ChannelLink } from "../src/channel-links.js";

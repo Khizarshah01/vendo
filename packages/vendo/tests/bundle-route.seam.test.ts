@@ -17,7 +17,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { sealBundleBlobs } from "@vendoai/apps";
 import { VENDO_APP_FORMAT, type AppBundle, type AppId, type Principal } from "@vendoai/core";
-import { createStore, storeFiles } from "@vendoai/store";
+import { createStore, storeFiles } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";

@@ -11,7 +11,7 @@ import type { StoreOps } from "../../src/store.js";
  * family and nothing served it — and this file was what kept them from being a
  * paragraph of prose wearing a test's clothes: it executed them against a
  * reference before any engine existed. The family ships now (the memory
- * reference here, the local engine in @vendoai/store), so the cases run
+ * reference here, the local engine in @vendoai/vendo/store), so the cases run
  * everywhere the suite mounts, and what is left to prove is the half a green
  * suite never shows: that each case catches the thing it was written for.
  *

@@ -4,8 +4,8 @@ import { run } from "./process.js";
 
 /**
  * The publish set, packed into tarballs — the same discovery-by-manifest-name
- * rule the corpus harness and the Lane E journey use (`@vendoai/telemetry`
- * lives in `packages/vendo-telemetry`, so directory names cannot be trusted).
+ * rule the corpus harness and the Lane E journey use (`@vendoai/cli` lives in
+ * `packages/cli`, so directory names cannot be trusted).
  *
  * The stranger installs THESE, never a `workspace:` link and never a source
  * import: a link would resolve the umbrella's inter-package deps through the
@@ -13,11 +13,8 @@ import { run } from "./process.js";
  */
 export const VENDO_PACKAGE_NAMES = [
   "@vendoai/core",
-  "@vendoai/store",
-  "@vendoai/actions",
   "@vendoai/apps",
   "@vendoai/ui",
-  "@vendoai/telemetry",
   "@vendoai/vendo",
   "@vendoai/cli",
   "vendoai",
@@ -38,8 +35,9 @@ export interface Packed {
   tarballs: Tarball[];
 }
 
-/** Package name → the version this workspace packed for it. Not one shared
- *  number: `@vendoai/telemetry` versions independently of the umbrella. */
+/** Package name → the version this workspace packed for it. A map rather than
+ *  one shared number: nothing in the workspace guarantees the publish set moves
+ *  in lockstep, and a single number would be a claim this file cannot check. */
 export function packedVersions(packed: Packed): Record<string, string> {
   return Object.fromEntries(packed.tarballs.map((tarball) => [tarball.name, tarball.version]));
 }

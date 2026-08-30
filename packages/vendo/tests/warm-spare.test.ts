@@ -26,7 +26,7 @@ import type { LanguageModel, UIMessage } from "ai";
 import type { Principal } from "@vendoai/core";
 import { createSessionRoutes } from "../box/turn-routes.mjs";
 import { claudeCode, disposeSessionMachines } from "../src/harnesses/claude-code/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { liveDoor } from "../src/agent-doubles.test-util.js";
 import { createVendo, type Vendo } from "../src/server.js";

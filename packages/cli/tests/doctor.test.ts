@@ -1,7 +1,7 @@
 import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { extractServerActions } from "@vendoai/actions/sync";
+import { extractServerActions } from "@vendoai/vendo/actions/sync";
 import { afterEach, describe, expect, it } from "vitest";
 import { doctorErrorCodes, doctorFixRef } from "../src/doctor-codes.js";
 import { runDoctor } from "../src/doctor.js";
@@ -36,7 +36,7 @@ async function healthy(base?: string): Promise<string> {
     await writeFile(path, body);
   };
   await write("package.json", JSON.stringify({ dependencies: { "@vendoai/vendo": "0.3.0", next: "16" } }));
-  await write("next.config.ts", 'export default { serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"] };\n');
+  await write("next.config.ts", 'export default { serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"] };\n');
   await write("app/layout.tsx", "export default ({children}) => <VendoProvider>{children}<VendoOverlay /></VendoProvider>;");
   await write("app/api/vendo/[...vendo]/route.ts", "export const GET = () => {};\n");
   for (const file of ["tools.json", "overrides.json", "policy.json", "brief.md", "theme.json"]) await write(`.vendo/${file}`, "{}\n");
@@ -1109,7 +1109,7 @@ describe("vendo doctor error codes + fix_refs", () => {
     const { exit, report } = await jsonChecks({ targetDir: root });
     const check = report.checks.find((entry) => entry.id === "config/next-externals");
     expect(check).toMatchObject({ status: "broken", error_code: "E-CFG-004" });
-    expect(check?.message).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"],');
+    expect(check?.message).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],');
     expect(exit).toBe(1);
   });
 
@@ -1119,7 +1119,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("fails E-CFG-004 on a list that has esbuild but not @vendoai/apps", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      'export default { serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/store"] };\n', "utf8");
+      'export default { serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"] };\n', "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     const check = report.checks.find((entry) => entry.id === "config/next-externals");
     expect(check).toMatchObject({ status: "broken", error_code: "E-CFG-004" });
@@ -1132,7 +1132,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("fails E-CFG-004 when the only externals list is commented out", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      '// serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"],\n'
+      '// serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],\n'
       + "export default { reactStrictMode: true };\n", "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals"))
@@ -1143,7 +1143,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("fails E-CFG-004 when the list is inside a block comment", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      '/* serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"], */\n'
+      '/* serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"], */\n'
       + "export default {};\n", "utf8");
     const { report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals"))
@@ -1175,7 +1175,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("passes config/next-externals on the Next 14 spelling of the same list", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      'export default { experimental: { serverComponentsExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"] } };\n',
+      'export default { experimental: { serverComponentsExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"] } };\n',
       "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals")).toMatchObject({ status: "ok" });

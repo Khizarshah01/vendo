@@ -9,9 +9,9 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Connector } from "@vendoai/actions";
+import type { Connector } from "../src/actions/index.js";
 import type { FilesAdapter, Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { vendo as vendoHarness } from "../src/harnesses/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import type { LanguageModel, UIMessage } from "ai";
@@ -39,7 +39,7 @@ async function tempStore(prefix: string): Promise<VendoStore> {
 /**
  * A store the way a HOST supplies one: the whole public `VendoStore` surface,
  * delegating to a real store so records and blobs genuinely work — but not the
- * handle `@vendoai/store` minted, so it is absent from the package's internals
+ * handle `@vendoai/vendo/store` minted, so it is absent from the package's internals
  * WeakMap (`dbFor`) and has no SQL handle. That is the same shape the Cloud
  * hosted store presents to `storeServesHarnessTurns`, without needing the Cloud.
  */
@@ -392,7 +392,7 @@ describe("THE CONSTRAINT — TurnRunInput.messages is store-sourced", () => {
       }),
     });
     await composed.store.ensureSchema();
-    const { threadStore } = await import("@vendoai/store");
+    const { threadStore } = await import("../src/store/index.js");
     await threadStore(composed.store).put(principal, {
       id: threadId as never,
       messages: [userMessage("m0", "list invoices"), assistantWithPendingApproval] as never,
@@ -505,7 +505,7 @@ describe("ONE files adapter (build contract §3.4)", () => {
     // Now the other end: the erase cascade must delete the same object. If erase
     // resolved its own adapter, the row would go and the object would leak —
     // the class lane B spent three rounds killing.
-    const { eraseStore } = await import("@vendoai/store");
+    const { eraseStore } = await import("../src/store/index.js");
     await eraseStore(store, { files }).bySubject(principal.subject);
     expect(files.deletes).toContain(key);
   });

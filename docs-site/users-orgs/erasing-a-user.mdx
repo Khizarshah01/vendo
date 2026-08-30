@@ -9,7 +9,7 @@ A right-to-erasure request arrives with one subject in it, and one call answers 
 ## One call, one subject
 
 ```ts app/api/account/delete/route.ts highlight={3,5}
-import { eraseStore, storeFiles } from "@vendoai/store";
+import { eraseStore, storeFiles } from "@vendoai/vendo/store";
 
 const erase = eraseStore(vendo.store, { files: storeFiles(vendo.store) });
 

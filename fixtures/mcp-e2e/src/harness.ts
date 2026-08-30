@@ -7,11 +7,11 @@ import { type AppDocument, type PolicyConfig, type Principal, sha256Hex, type To
 import type {
   VendoTheme,
 } from "@vendoai/apps/contract";
-import { createActions } from "@vendoai/actions";
+import { createActions } from "@vendoai/vendo/actions";
 import { createApps, sealBundleBlobs, SCREEN_FILE, type AppsRuntime } from "@vendoai/apps";
 import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";
 import { createMcpDoor, type McpDoorConfig, type HostOAuthAdapter } from "@vendoai/vendo/mcp";
-import { createStore, storeFiles, type VendoStore } from "@vendoai/store";
+import { createStore, storeFiles, type VendoStore } from "@vendoai/vendo/store";
 
 export const SUBJECT = "user_1";
 export const FIXTURE_APP_ID = "app_mcp_fixture";

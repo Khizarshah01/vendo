@@ -6,7 +6,7 @@ import {
   vendoAppRefSchema,
   vendoApprovalRefSchema,
 } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { vendoTools } from "@vendoai/vendo/ai-sdk";
 import { createVendo, guard, type Vendo } from "@vendoai/vendo/server";
 import {

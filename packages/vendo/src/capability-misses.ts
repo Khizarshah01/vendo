@@ -5,7 +5,7 @@ import {
   type RiskLabel,
   type ToolDescriptor,
 } from "@vendoai/core";
-import { envOptOut, loadConfig, type TelemetryConfig } from "@vendoai/telemetry";
+import { envOptOut, loadConfig, type TelemetryConfig } from "#telemetry";
 import { createBatchedUploader, type BatchedUploader } from "./batched-uploader.js";
 
 const DEFAULT_DATA_DIR = ".vendo/data";

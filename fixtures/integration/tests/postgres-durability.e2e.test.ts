@@ -17,7 +17,7 @@
  */
 import { afterEach, describe, expect, it } from "vitest";
 import type { AutomationTask } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import {
   ADA,
   createStack,

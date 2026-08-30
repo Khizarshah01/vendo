@@ -8,7 +8,7 @@ import { alice, bob, call, context, descriptor, FixtureTools, seedGrant } from "
 // These exercise the priority behaviours end-to-end through the public surface
 // (guard.bind / approvals / grants / audit) against the real-SQL PGlite mapping,
 // asserting the persisted side effects with raw SQL on the reserved tables. The
-// the guard block never imported @vendoai/store directly, even in
+// the guard block never imported @vendoai/vendo/store directly, even in
 // tests, so the store here is the routed PGlite fixture — real Postgres SQL over
 // the same reserved-table schema, exposed via `.query()`.
 

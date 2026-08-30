@@ -1,4 +1,4 @@
-import type { PendingLoosening } from "@vendoai/actions";
+import type { PendingLoosening } from "@vendoai/vendo/actions";
 
 /**
  * The human gate on loosenings. A hardening applies itself; a loosening — lower

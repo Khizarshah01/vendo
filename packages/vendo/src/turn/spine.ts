@@ -37,7 +37,7 @@ import {
   threadMessageStore,
   workspaceStore,
   type VendoStore,
-} from "@vendoai/store";
+} from "../store/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import type { MemoryAdapter } from "./memory.js";
 import { resolveSystem, type SystemPromptHook } from "./prompt.js";

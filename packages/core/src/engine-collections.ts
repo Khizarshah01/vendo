@@ -38,21 +38,21 @@ export interface EngineCollectionSpec {
 /** The collections the `engine` op family may touch: Vendo's OWN internal
     drawers, nothing a host or a generated app owns. The registry lives in core
     because guard, automations and apps all need it and none of them may import
-    @vendoai/store (layering); core imports nothing, so it is a literal here and
-    a drift test in @vendoai/store holds it to the real constants.
+    the umbrella (layering); core imports nothing, so it is a literal here and a
+    drift test in @vendoai/vendo holds it to the real constants.
 
     ONE registry, not a list plus a side-table of attributes: a second place
     naming these collections is how the allowlist rots, and `kind` and `indexed`
     are facts ABOUT an entry, so they live on the entry. */
 export const ENGINE_COLLECTION_REGISTRY = {
   // Reserved, routed through typed doors — mirrors RESERVED_COLLECTIONS,
-  // packages/store/src/routing.ts:53-63.
+  // store-collections.ts.
   vendo_grants: { kind: "storage" },
   vendo_approvals: { kind: "storage" },
   vendo_audit: { kind: "storage" },
   vendo_threads: { kind: "storage" },
   // The ONE collection with a watermark field today: `vendo_runs.started_at` is
-  // a real column with its own index (packages/store/src/schema.ts:120), and a
+  // a real column with its own index (packages/vendo/src/store/schema.ts:120), and a
   // meter that reconciles runs it has already counted has to walk forward from
   // where it stopped. Every other collection is read newest-first and needs no
   // forward walk — which is why this list is per-collection and not a blanket
@@ -64,7 +64,7 @@ export const ENGINE_COLLECTION_REGISTRY = {
   vendo_app_grants: { kind: "storage" },
 
   // Dedicated tables — mirrors DEDICATED_RECORD_COLLECTIONS,
-  // packages/store/src/routing.ts:65-70.
+  // store-collections.ts.
   vendo_mcp_clients: { kind: "storage" },
   vendo_mcp_grants: { kind: "storage" },
   // The retrieval corpus: the document rows and the chunks an engine mints from
@@ -92,7 +92,7 @@ export const ENGINE_COLLECTION_REGISTRY = {
   vendo_parked_build: { kind: "storage" }, // COLLECTION, packages/apps/src/server/persistence/parked-build.ts
   vendo_slots: { kind: "storage" }, // SLOTS_COLLECTION, packages/apps/src/server/persistence/slots.ts:24
   vendo_app_seen: { kind: "storage" }, // APP_SEEN_COLLECTION, packages/apps/src/server/persistence/app-seen.ts:26
-  vendo_workspace_commits: { kind: "storage" }, // WORKSPACE_COMMITS, packages/store/src/ops.ts:27
+  vendo_workspace_commits: { kind: "storage" }, // WORKSPACE_COMMITS, packages/vendo/src/store/ops.ts:27
   "automations:captures": { kind: "storage" }, // CAPTURES, packages/vendo/src/automations/types.ts:29
   "automations:schedule": { kind: "storage" }, // SCHEDULE, packages/vendo/src/automations/types.ts:30
   "automations:deliveries": { kind: "storage" }, // DELIVERIES, packages/vendo/src/automations/types.ts:32

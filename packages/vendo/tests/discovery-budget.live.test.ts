@@ -3,8 +3,8 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { composioConnector } from "@vendoai/actions";
-import { createStore } from "@vendoai/store";
+import { composioConnector } from "../src/actions/index.js";
+import { createStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";
 

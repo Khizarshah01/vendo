@@ -20,7 +20,7 @@ import { createServer } from "node:http";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { EVENT_ALLOWLIST, initTelemetry, type EventName, type Telemetry } from "@vendoai/telemetry";
+import { EVENT_ALLOWLIST, initTelemetry, type EventName, type Telemetry } from "@vendoai/vendo/telemetry";
 import { createStack, readSse, resetFixture, textTurn, ADA, type Stack } from "../src/harness.js";
 
 interface Capture {

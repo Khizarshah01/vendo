@@ -16,7 +16,7 @@ import {
   type EraseAppSql,
   type HostedStore,
   type VendoStore,
-} from "@vendoai/store";
+} from "./store/index.js";
 import { cloudKeyOptions, selectAppDatabase } from "./compose-selection.js";
 import { keepAliveFetch } from "./keep-alive-fetch.js";
 import { environment } from "./wire/shared.js";
@@ -120,7 +120,7 @@ export function storeServesHarnessTurns(store: VendoStore): boolean {
     standing.
 
     `undefined` for a store with NEITHER — the same three-way answer
-    `@vendoai/store`'s own `backendOf` gives, and the reason this resolves the
+    `@vendoai/vendo/store`'s own `backendOf` gives, and the reason this resolves the
     handle here instead of calling `createStoreOps` unconditionally: that call
     opens the handle eagerly, so composition would crash at boot for a host
     whose store has none, where today it refuses at the op that needed one. */
@@ -149,7 +149,7 @@ export function selectStore(
     if (configured !== undefined) return configured;
     const cloud = cloudKeyOptions();
     // The kept-alive pool is the umbrella's to supply: it reaches undici, so it
-    // cannot live in @vendoai/store, which the standalone agent surface composes
+    // cannot live in @vendoai/vendo/store, which the standalone agent surface composes
     // on an edge target too. A host passing its own `fetch` still wins (adapter rule).
     if (cloud !== undefined) return hostedStore({ ...cloud, fetch: keepAliveFetch });
     const encryptionKey = environment("VENDO_STORE_ENCRYPTION_KEY");

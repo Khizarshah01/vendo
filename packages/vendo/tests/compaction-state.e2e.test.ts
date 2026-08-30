@@ -29,7 +29,7 @@ import { join } from "node:path";
 import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
 import { vendo as vendoHarness } from "../src/harnesses/index.js";
 import { readCompactionState } from "../src/harnesses/vendo/index.js";
-import { createStore, harnessStateStore, type VendoStore } from "@vendoai/store";
+import { createStore, harnessStateStore, type VendoStore } from "../src/store/index.js";
 import type { UIMessage } from "ai";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import { afterEach, describe, expect, it } from "vitest";

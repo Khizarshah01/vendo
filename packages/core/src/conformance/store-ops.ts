@@ -1452,7 +1452,7 @@ export function storeOpsConformance(opts: StoreOpsConformanceOptions): Conforman
           rebuild an app's own data is a SQL database of its own, which no op on
           `StoreOps` can read or write — so no case here can prove it, and one
           that pretended to would be a test agreeing with a bug. Its cascade leg
-          is `EraseAppSql` in @vendoai/store's erase.ts, proven at the seam (real
+          is `EraseAppSql` in @vendoai/vendo/store's erase.ts, proven at the seam (real
           write path in, real read path out, nothing stubbed) by
           `store/tests/erase-app-database.seam.test.ts`. When the app-data family
           lived in `vendo_records`/`vendo_blobs` this case DID cover it, and the

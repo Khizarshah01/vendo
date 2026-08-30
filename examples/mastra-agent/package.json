@@ -22,7 +22,6 @@
     "@mastra/memory": "^1.26.1",
     "@mastra/observability": "^1.16.0",
     "@vendoai/core": "workspace:*",
-    "@vendoai/store": "workspace:*",
     "@vendoai/ui": "workspace:*",
     "@vendoai/vendo": "workspace:*",
     "ai": "6.0.230",

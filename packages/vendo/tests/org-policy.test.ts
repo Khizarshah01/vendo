@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal, RunContext, ToolDescriptor } from "@vendoai/core";
 import { createGuard } from "../src/guard/index.js";
-import { createStore, workspaceStore } from "@vendoai/store";
+import { createStore, workspaceStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { orgPolicyPath, orgPolicyResolver, workspacePolicySource } from "../src/org-policy.js";
 

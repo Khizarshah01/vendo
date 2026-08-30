@@ -5,7 +5,7 @@ import {
   type Principal,
   type VendoError,
 } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../../src/store/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
 import { describe, expect, it } from "vitest";
 import { agent } from "../../src/turn/agent.js";

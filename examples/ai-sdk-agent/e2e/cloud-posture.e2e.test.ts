@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { vendoTools } from "@vendoai/vendo/ai-sdk";
 import { createVendo, guard, type Vendo } from "@vendoai/vendo/server";
 import {

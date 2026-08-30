@@ -7,7 +7,7 @@ import {
   type PermissionGrant,
   type Principal,
 } from "@vendoai/core";
-import { appStore, createStore, createStoreOps, grantStore, type VendoStore } from "@vendoai/store";
+import { appStore, createStore, createStoreOps, grantStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { computeImpact } from "../src/sync-impact.js";
 

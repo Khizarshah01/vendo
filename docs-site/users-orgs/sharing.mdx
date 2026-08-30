@@ -60,15 +60,11 @@ org in your own tables and the row stops matching them on their next request.
 
 ## Granting from your own code
 
-`appAccess` ships on `@vendoai/store`, which a host installs directly — it is not
-re-exported by the umbrella.
-
-```bash
-npm install @vendoai/store
-```
+`appAccess` ships on `@vendoai/vendo/store`, a subpath of the package you
+already have — it is not re-exported by the umbrella's root.
 
 ```ts app/api/share/route.ts highlight={5}
-import { appAccess } from "@vendoai/store";
+import { appAccess } from "@vendoai/vendo/store";
 
 const access = appAccess(vendo.store);
 

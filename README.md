@@ -109,12 +109,9 @@ Install individual blocks when you want to compose Vendo yourself.
 | Package | One job |
 | --- | --- |
 | `@vendoai/core` | Shared types, schemas, formats, validators, and seams |
-| `@vendoai/store` | Postgres persistence, with PGlite as the default |
-| `@vendoai/actions` | Host API and connector tools executed as the signed-in user |
 | `@vendoai/apps` | App generation, editing, execution, interchange, and sandbox adapters |
 | `@vendoai/ui` | Headless React hooks, optional chrome, tree rendering, and the in-jail component kit |
-| `@vendoai/telemetry` | Anonymous, opt-out build and development telemetry |
-| `@vendoai/vendo` | Default composition, public wire, React entry, `vendo` bin, and the automations, knowledge and MCP-door blocks |
+| `@vendoai/vendo` | Default composition, public wire, React entry, `vendo` bin, and the persistence, actions, telemetry, automations, knowledge, MCP-door, guard and harness blocks |
 
 Cloud-gated sharing, publishing, org overlays, and pinning activate with
 `VENDO_API_KEY`; the open-source blocks remain self-hosted.

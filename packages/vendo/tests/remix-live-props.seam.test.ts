@@ -49,7 +49,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { SeedBaseline } from "@vendoai/apps";
 import type { AppDocument, Principal } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

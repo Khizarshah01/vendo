@@ -1,14 +1,14 @@
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { vendoSync } from "@vendoai/actions/sync";
+import { vendoSync } from "../src/actions/sync/public.js";
 import { seedBaselineSchema } from "@vendoai/apps";
 import {
   seedComponentName,
   type AppDocument,
   type Principal,
 } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

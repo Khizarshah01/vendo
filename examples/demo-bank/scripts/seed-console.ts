@@ -12,7 +12,7 @@
  */
 import { join } from "node:path";
 import { consoleUrlFromEnv } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { seedConsoleData } from "../src/demo-script/console-seed";
 
 async function main(): Promise<void> {

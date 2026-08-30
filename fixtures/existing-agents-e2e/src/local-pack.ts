@@ -9,11 +9,8 @@ import path from "node:path";
  * overrides, add the two direct deps a BYO host declares. */
 export const VENDO_PACKAGE_NAMES = [
   "@vendoai/core",
-  "@vendoai/store",
-  "@vendoai/actions",
   "@vendoai/apps",
   "@vendoai/ui",
-  "@vendoai/telemetry",
   "@vendoai/vendo",
   "vendoai",
 ] as const;
@@ -55,8 +52,8 @@ export async function packLocalVendo(workspaceRoot: string, destDir: string): Pr
     throw new Error("local pack requires space-free paths (file: specs)");
   }
   await fs.mkdir(destDir, { recursive: true });
-  // Discover by manifest name, not directory name (@vendoai/telemetry lives
-  // in packages/vendo-telemetry) — the corpus harness's discovery rule.
+  // Discover by manifest name, not directory name (@vendoai/cli lives in
+  // packages/cli) — the corpus harness's discovery rule.
   const byName = new Map<string, { dir: string; version: string }>();
   for (const entry of await fs.readdir(path.join(workspaceRoot, "packages"), { withFileTypes: true })) {
     if (!entry.isDirectory()) continue;

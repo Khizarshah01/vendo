@@ -17,7 +17,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { SSE_KEEPALIVE_FRAME, type Principal } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { readUIMessageStream, type LanguageModel, type UIMessage, type UIMessageChunk } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";

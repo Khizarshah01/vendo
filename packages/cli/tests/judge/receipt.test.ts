@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { VENDO_TOOLS_FORMAT, type ExtractedTool } from "@vendoai/actions";
+import { VENDO_TOOLS_FORMAT, type ExtractedTool } from "@vendoai/vendo/actions";
 import type { ExtractionHarness } from "../../src/extract/harness.js";
 import { runJudgmentPass, type JudgmentPassOptions } from "../../src/judge/pass.js";
 

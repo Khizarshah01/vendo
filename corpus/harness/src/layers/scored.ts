@@ -5,7 +5,7 @@ import {
   vendoThemeSchema,
   type VendoTheme,
 } from "@vendoai/apps/contract";
-import { toolsFileSchema, type ExtractedTool } from "@vendoai/actions";
+import { toolsFileSchema, type ExtractedTool } from "@vendoai/vendo/actions";
 import {
   THEME_RUBRIC_DIMENSIONS,
   expectedToolIdentity,

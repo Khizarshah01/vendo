@@ -81,7 +81,7 @@ const setup = (
 };
 
 // The SHARED rule (core's conformance kit), mounted against the stand-in these
-// tests run on. @vendoai/store mounts the SAME cases against the real
+// tests run on. @vendoai/vendo/store mounts the SAME cases against the real
 // `appAccess(store)`, so the two implementations cannot drift: mutating either
 // one fails here. Without this, mutating the real `can()` to `return true` left
 // this suite green.

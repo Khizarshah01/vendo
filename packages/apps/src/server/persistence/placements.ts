@@ -8,7 +8,7 @@
  *
  * The rows live in the GENERIC records collection — like this package's own
  * egress-approval rows (`egress-approval.ts`), and unlike the app-GRANT rows,
- * which earned a dedicated table (`packages/store/src/routing.ts`
+ * which earned a dedicated table (`packages/vendo/src/store/routing.ts`
  * RESERVED_COLLECTIONS). One adapter interface, so this behaves identically on
  * the local PGlite store, a BYO Postgres, and the Cloud hosted store — none of
  * which shares a schema migration path.
@@ -35,7 +35,7 @@
  *
  * `refs` is the queryable key on both: `subject` is what the erase cascade
  * matches (`vendo_records WHERE refs @> '{"subject": …}'::jsonb` —
- * `packages/store/src/erase.ts`), `{subject, slot}` is the GIN-indexed pair a
+ * `packages/vendo/src/store/erase.ts`), `{subject, slot}` is the GIN-indexed pair a
  * slot query reads, and `app_id` is what app deletion sweeps on (the same ref
  * name `egress-approval.ts` clears an app by) — a shared app is placed by
  * people its owner cannot enumerate.

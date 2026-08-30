@@ -1,4 +1,4 @@
-import type { SecretSource } from "@vendoai/actions/presets";
+import type { SecretSource } from "../actions/presets/index.js";
 import type { ActAs, Json, Membership, Principal } from "@vendoai/core";
 import type { HostOAuthAdapter } from "../mcp/index.js";
 
@@ -44,7 +44,7 @@ export interface HostAuthPreset {
   memberships?: (principal: Principal) => Promise<Membership[]>;
   /** Scoped auth material for away host-API execution — the host mints a token
       for `principal` bounded by `grant`. Hand-written this is usually
-      `genericJwtPreset({ secret })` from `@vendoai/actions/presets`, or your own
+      `genericJwtPreset({ secret })` from `@vendoai/vendo/actions/presets`, or your own
       minting call. Absent → away/MCP execution cleanly unavailable, as ever
       (01-core §13). */
   actAs?: ActAs;

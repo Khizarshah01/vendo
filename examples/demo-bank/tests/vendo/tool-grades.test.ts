@@ -7,8 +7,8 @@ import {
   overridesFileSchema,
   pruneJudgments,
   toolsFileSchema,
-} from "@vendoai/actions"
-import { mergeOverrides } from "@vendoai/actions/sync"
+} from "@vendoai/vendo/actions"
+import { mergeOverrides } from "@vendoai/vendo/actions/sync"
 import { describe, expect, it } from "vitest"
 
 /**

@@ -1,10 +1,10 @@
 import { mkdtemp, readFile, readdir, rm, writeFile, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { extractServerActions } from "@vendoai/actions/sync";
+import { extractServerActions } from "@vendoai/vendo/actions/sync";
 import type { RunContext, ToolDescriptor } from "@vendoai/core";
 import { createGuard } from "@vendoai/vendo/guard";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { runDoctor } from "../src/doctor.js";
 import type { ExtractionHarness } from "../src/extract/harness.js";
@@ -2089,7 +2089,7 @@ describe("the next.config repair (Next hosts)", () => {
       'import type { NextConfig } from "next";\n\nconst nextConfig: NextConfig = {\n  reactStrictMode: true,\n};\n\nexport default nextConfig;\n');
     expect(await run(root, output())).toBe(0);
     const config = await readFile(join(root, "next.config.ts"), "utf8");
-    expect(config).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"],');
+    expect(config).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],');
     expect(config).toContain("reactStrictMode: true");
   });
 
@@ -2102,7 +2102,7 @@ describe("the next.config repair (Next hosts)", () => {
       'const nextConfig = {\n  // serverExternalPackages: ["esbuild"],\n  reactStrictMode: true,\n};\n\nexport default nextConfig;\n');
     expect(await run(root, output())).toBe(0);
     const config = await readFile(join(root, "next.config.ts"), "utf8");
-    expect(config).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"],');
+    expect(config).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],');
     expect(config, "the host's comment is left exactly as they wrote it").toContain('  // serverExternalPackages: ["esbuild"],');
   });
 
@@ -2122,7 +2122,7 @@ describe("the next.config repair (Next hosts)", () => {
       'const nextConfig = {\n  serverExternalPackages: ["@electric-sql/pglite"],\n};\n\nexport default nextConfig;\n');
     expect(await run(root, output())).toBe(0);
     expect(await readFile(join(root, "next.config.ts"), "utf8"))
-      .toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@vendoai/store", "@electric-sql/pglite"],');
+      .toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@vendoai/vendo", "@electric-sql/pglite"],');
   });
 
   it("writes a minimal config when the host has none, and re-running changes nothing", async () => {
@@ -2130,7 +2130,7 @@ describe("the next.config repair (Next hosts)", () => {
     const sink = output();
     expect(await agentRun(root, sink)).toBe(0);
     const written = await readFile(join(root, "next.config.mjs"), "utf8");
-    expect(written).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"],');
+    expect(written).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],');
     expect(receiptOf(sink.logs).wrote).toContain("next.config.mjs");
     expect(await run(root, output())).toBe(0);
     expect(await readFile(join(root, "next.config.mjs"), "utf8")).toBe(written);

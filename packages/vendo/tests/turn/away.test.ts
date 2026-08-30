@@ -14,7 +14,7 @@ import {
 } from "@vendoai/core";
 import { createGuard } from "../../src/guard/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
-import { createStore, threadMessageStore, threadStore, workspaceStore, type VendoStore } from "@vendoai/store";
+import { createStore, threadMessageStore, threadStore, workspaceStore, type VendoStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";
 import { awayRunner } from "../../src/turn/away.js";
 

@@ -1,5 +1,5 @@
-import { catalogEntrySchema } from "@vendoai/actions";
-import { parseModule, zodFromExpression, type StaticExtraction } from "@vendoai/actions/sync";
+import { catalogEntrySchema } from "../src/actions/index.js";
+import { parseModule, zodFromExpression, type StaticExtraction } from "../src/actions/sync/public.js";
 import {
   VendoError,
 } from "@vendoai/core";

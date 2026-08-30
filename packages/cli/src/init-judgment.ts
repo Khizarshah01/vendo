@@ -5,7 +5,7 @@ import {
   judgmentsFileSchema,
   toolsFileSchema,
   type ExtractedTool,
-} from "@vendoai/actions";
+} from "@vendoai/vendo/actions";
 import type { ExtractionHarness } from "./extract/harness.js";
 import {
   applyBrief,

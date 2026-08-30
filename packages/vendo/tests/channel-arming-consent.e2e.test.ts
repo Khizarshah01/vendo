@@ -12,7 +12,7 @@ import {
   type ToolRegistry,
 } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { channelInboundSecret } from "../src/channels.js";

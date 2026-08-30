@@ -1,4 +1,4 @@
-import { genericJwtPreset, verifyHs256 } from "@vendoai/actions/presets";
+import { genericJwtPreset, verifyHs256 } from "../../src/actions/presets/index.js";
 import type { PermissionGrant } from "@vendoai/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 // jwt is pinned via its own module — the same file the

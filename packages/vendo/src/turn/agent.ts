@@ -27,7 +27,7 @@ import { createGuard, isGuardInstance, permissionsHandler, type GuardRules, type
 import { provideHarnessAdapters, vendo } from "../harnesses/index.js";
 import { vendoModel } from "../harnesses/inference/model.js";
 import { resolveDevCredential } from "../harnesses/inference/resolve.js";
-import { createStore, hostedStore, storeFiles, type VendoStore } from "@vendoai/store";
+import { createStore, hostedStore, storeFiles, type VendoStore } from "../store/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { randomUUID } from "node:crypto";
 import { declareAutomation, type OnOptions } from "./automations.js";

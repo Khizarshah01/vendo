@@ -13,9 +13,9 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { genericJwtPreset } from "@vendoai/actions/presets";
+import { genericJwtPreset } from "../src/actions/presets/index.js";
 import { UPLOAD_HEADER, type FilesAdapter, type PermissionGrant, type Principal } from "@vendoai/core";
-import { createStore, FILES_STORE_MAX_BYTES, type VendoStore } from "@vendoai/store";
+import { createStore, FILES_STORE_MAX_BYTES, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { jwt } from "../src/auth-presets/jwt.js";

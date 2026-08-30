@@ -5,7 +5,7 @@
  * umbrella makes, moved out of server.ts with the composition that calls them.
  * The adapters themselves never read the environment; these do.
  */
-import type { Connector } from "@vendoai/actions";
+import type { Connector } from "./actions/index.js";
 import {
   consoleUrlFromEnv,
   VendoError,
@@ -15,7 +15,7 @@ import {
   type StoreAdapter,
 } from "@vendoai/core";
 import { bindKnowledgeStore, cloudKnowledge } from "./knowledge/index.js";
-import { envSecrets, postgresAppDatabase, type VendoStore } from "@vendoai/store";
+import { envSecrets, postgresAppDatabase, type VendoStore } from "./store/index.js";
 import { chainSecrets, cloudSecrets } from "./cloud-secrets.js";
 import { warnDeprecatedOnce } from "./config-keys.js";
 import { cloudTools } from "./cloud-tools.js";

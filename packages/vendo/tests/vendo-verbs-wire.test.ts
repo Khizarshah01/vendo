@@ -24,7 +24,7 @@ import {
   type ComponentRegistry,
 } from "@vendoai/apps/contract";
 import { SCREEN_FILE } from "@vendoai/apps";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";

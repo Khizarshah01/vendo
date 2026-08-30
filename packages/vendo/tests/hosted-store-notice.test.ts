@@ -1,7 +1,7 @@
 import type { LanguageModel } from "ai";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createVendo } from "../src/server.js";
-import { fakeConsole } from "@vendoai/store/test-util";
+import { fakeConsole } from "../src/store/fake-console.js";
 
 /**
  * Self-serve audit F7: the hosted-store automations notice is a boot fact, but

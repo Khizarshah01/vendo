@@ -1,6 +1,6 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
-import { runsAgentLoop } from "@vendoai/actions/sync";
+import { runsAgentLoop } from "@vendoai/vendo/actions/sync";
 import { exists, stripBom } from "./shared.js";
 import { walk } from "./theme/walk.js";
 
@@ -74,7 +74,7 @@ export async function detectFramework(root: string): Promise<HostFramework> {
     fine. Externalizing the PACKAGE keeps the import inside it, where esbuild is
     a declared dependency. PGlite's Emscripten module and the store that loads it
     stay external for their own reason: they break under production chunking. */
-export const NEXT_SERVER_EXTERNALS: readonly string[] = ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"];
+export const NEXT_SERVER_EXTERNALS: readonly string[] = ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"];
 
 /** The property exactly as init writes it and doctor tells you to paste it. */
 export const NEXT_SERVER_EXTERNALS_LINE =

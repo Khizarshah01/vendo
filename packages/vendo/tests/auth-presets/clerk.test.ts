@@ -1,4 +1,4 @@
-import { clerkPreset } from "@vendoai/actions/presets";
+import { clerkPreset } from "../../src/actions/presets/index.js";
 import type { AuthMaterial, PermissionGrant } from "@vendoai/core";
 import { SignJWT, exportSPKI, generateKeyPair } from "jose";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";

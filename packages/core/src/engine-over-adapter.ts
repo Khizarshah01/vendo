@@ -24,7 +24,7 @@ export interface EngineOverAdapterOptions {
  *  with neither its own ops surface nor a SQL handle — and a host constructing a
  *  block DIRECTLY passes only a `StoreAdapter`. This is that store's engine
  *  family: the allowlist gate in front, the adapter's own record door behind.
- *  It lives in core because none of those blocks may import `@vendoai/store`.
+ *  It lives in core because none of those blocks may import `@vendoai/vendo/store`.
  *
  *  `records()` is called per verb and never cached: an adapter is free to mint a
  *  fresh handle each time, and fixtures that wrap one to inject a failure depend

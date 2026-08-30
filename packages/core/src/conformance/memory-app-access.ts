@@ -22,7 +22,7 @@ import type { RunContext } from "../run-context.js";
  * It holds rows in maps and nothing else. Every DECISION comes from the pure
  * half of `can()` in ../app-access.ts — `accessForPath`, `grantMatches`,
  * `strongerLevel`, `holdsLevel`, `parseGrantPrincipal` — which is the same set
- * `appAccess(store)` in @vendoai/store applies. That is the point: this is a
+ * `appAccess(store)` in @vendoai/vendo/store applies. That is the point: this is a
  * second store, never a second rule, so it cannot drift from the real one on
  * anything `appAccessConformance` asks about.
  */

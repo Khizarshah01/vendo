@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
-import { PROJECT_ID_SALT } from "@vendoai/telemetry";
+import { PROJECT_ID_SALT } from "@vendoai/vendo/telemetry";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { runSync } from "../src/sync.js";
 import { telemetryCapture } from "../src/telemetry.test-util.js";

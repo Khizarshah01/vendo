@@ -18,7 +18,7 @@ import { createServer, type IncomingMessage, type ServerResponse } from "node:ht
 import type { AddressInfo } from "node:net";
 import { agent, agentHandler, tool } from "@vendoai/vendo";
 import type { Harness } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 
 const BASE_PATH = "/api/agent";
 const CONTROL = "/__agent";

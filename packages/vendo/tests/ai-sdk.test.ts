@@ -1,14 +1,14 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { VENDO_TOOLS_FORMAT, type ExtractedTool } from "@vendoai/actions";
+import { VENDO_TOOLS_FORMAT, type ExtractedTool } from "../src/actions/index.js";
 import {
   VendoError,
   parseVendoToolEnvelope,
   vendoApprovalRefSchema,
   type Principal,
 } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel, Tool, ToolCallOptions } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { vendoTools } from "../src/ai-sdk.js";

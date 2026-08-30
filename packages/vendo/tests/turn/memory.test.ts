@@ -6,7 +6,7 @@
  */
 import type { Guard, Principal, RunContext, ToolCall, ToolResult } from "@vendoai/core";
 import { defineHarness } from "../../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";
 import { agent, agentComposition } from "../../src/turn/agent.js";
 import {

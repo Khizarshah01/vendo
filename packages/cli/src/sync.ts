@@ -1,6 +1,6 @@
 import { join, resolve } from "node:path";
 import { stdin, stdout } from "node:process";
-import { vendoSync, type SyncReportWithWarnings } from "@vendoai/actions/sync";
+import { vendoSync, type SyncReportWithWarnings } from "@vendoai/vendo/actions/sync";
 import type { ToolImpact } from "@vendoai/core";
 import { pushSyncReport } from "./cloud/services.js";
 import type { JudgmentPassOptions } from "./judge/pass.js";

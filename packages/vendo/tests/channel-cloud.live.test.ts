@@ -28,7 +28,7 @@ import { join } from "node:path";
 import type { AddressInfo } from "node:net";
 import { VendoError, type Principal } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterAll, expect, it, describe } from "vitest";
 import { channelInboundSecret, cloudTextChannel } from "../src/channels.js";

@@ -1,10 +1,10 @@
 import { dirname, join, relative, resolve, sep } from "node:path";
-import { applyJudgment, disabledReason, judgmentsFileSchema, overridesFileSchema, toolsFileSchema } from "@vendoai/actions";
+import { applyJudgment, disabledReason, judgmentsFileSchema, overridesFileSchema, toolsFileSchema } from "@vendoai/vendo/actions";
 import {
   extractServerActions,
   serverActionRegistrations,
   type ServerActionRegistration,
-} from "@vendoai/actions/sync";
+} from "@vendoai/vendo/actions/sync";
 import type { EnvKeyProvider } from "@vendoai/vendo/harnesses/inference/credential";
 import { AUTH_FAMILY_INFO, AUTH_PRESET_SPECIFIER, JWT_SECRET_ENV, type AuthWire } from "./init-auth.js";
 import { appDirectory, readOptional } from "./shared.js";

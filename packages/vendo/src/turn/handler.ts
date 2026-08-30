@@ -34,7 +34,7 @@
  */
 import { isVendoError, VendoError, type Json, type Principal, type ThreadId } from "@vendoai/core";
 import { handlePermissionRequest } from "../guard/index.js";
-import { threadMessageStore, threadStore } from "@vendoai/store";
+import { threadMessageStore, threadStore } from "../store/index.js";
 import type { UIMessage } from "ai";
 import { agentComposition, type VendoAgent } from "./agent.js";
 import { DOOR_PATH } from "./door.js";

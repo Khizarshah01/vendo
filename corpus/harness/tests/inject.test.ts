@@ -39,20 +39,14 @@ async function createWorkspace(): Promise<string> {
       dir: "vendo",
       name: "@vendoai/vendo",
       dependencies: {
-        "@vendoai/actions": "workspace:*",
         "@vendoai/apps": "workspace:*",
         "@vendoai/core": "workspace:*",
-        "@vendoai/store": "workspace:*",
-        "@vendoai/telemetry": "workspace:*",
         "@vendoai/ui": "workspace:*",
       },
     },
     { dir: "vendoai", name: "vendoai", dependencies: { "@vendoai/vendo": "workspace:*" } },
-    { dir: "actions", name: "@vendoai/actions" },
     { dir: "apps", name: "@vendoai/apps" },
     { dir: "core", name: "@vendoai/core" },
-    { dir: "store", name: "@vendoai/store" },
-    { dir: "vendo-telemetry", name: "@vendoai/telemetry" },
     { dir: "ui", name: "@vendoai/ui" },
   ];
 
@@ -109,7 +103,7 @@ describe("createLocalVendoInjector", () => {
         "@vendoai/vendo": "workspace:*",
       },
       devDependencies: {
-        "@vendoai/store": "workspace:*",
+        "@vendoai/apps": "workspace:*",
       },
     });
     const pack: PackWorkspacePackage = async (pkg, opts) => {
@@ -131,7 +125,7 @@ describe("createLocalVendoInjector", () => {
     expect(result.installDir).toBe(repoDir);
     expect(pkg.dependencies["@vendoai/vendo"]).toBe("file:vendor/vendoai-vendo-0.3.0.tgz");
     expect(pkg.dependencies["@vendoai/ui"]).toBe("file:vendor/vendoai-ui-0.3.0.tgz");
-    expect(pkg.devDependencies?.["@vendoai/store"]).toBe("file:vendor/vendoai-store-0.3.0.tgz");
+    expect(pkg.devDependencies?.["@vendoai/apps"]).toBe("file:vendor/vendoai-apps-0.3.0.tgz");
     await expect(readFile(path.join(repoDir, "pnpm-lock.yaml"), "utf8")).rejects.toThrow();
     await expect(readFile(path.join(repoDir, "node_modules/.modules.yaml"), "utf8")).rejects.toThrow();
   });
@@ -165,11 +159,8 @@ describe("createLocalVendoInjector", () => {
     expect(second.repoDir).toBe(repoTwo);
     expect(buildCount).toBe(1);
     expect([...packCounts.entries()].sort()).toEqual([
-      ["@vendoai/actions", 1],
       ["@vendoai/apps", 1],
       ["@vendoai/core", 1],
-      ["@vendoai/store", 1],
-      ["@vendoai/telemetry", 1],
       ["@vendoai/ui", 1],
       ["@vendoai/vendo", 1],
       ["vendoai", 1],
@@ -200,11 +191,8 @@ describe("createLocalVendoInjector", () => {
     expect(pkg.dependencies["vendoai"]).toBeUndefined();
     expect(pkg.devDependencies).toBeUndefined();
     for (const name of [
-      "@vendoai/actions",
       "@vendoai/apps",
       "@vendoai/core",
-      "@vendoai/store",
-      "@vendoai/telemetry",
       "@vendoai/ui",
       "@vendoai/vendo",
       "vendoai",

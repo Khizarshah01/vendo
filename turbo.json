@@ -33,12 +33,12 @@
       "env": ["CI", "VITEST_MIN_FORKS", "VITEST_MAX_FORKS", "VITEST_MIN_THREADS", "VITEST_MAX_THREADS"]
     },
     "conformance": { "dependsOn": ["^build", "build"], "env": ["CI", "POSTGRES_URL"] },
-    // `build` as well as `^build`. @vendoai/actions and @vendoai/store resolve
-    // their own subpath `imports` (#actions/host-files, #store/db, #store/crypto)
-    // to ./dist/*.js, and tsconfig.test.json — which includes tests/ as well as
-    // src/, so it can carry no outDir — leaves TypeScript no way to map those
-    // back to source. A typecheck therefore reads its OWN dist, not just its
-    // dependencies'.
+    // `build` as well as `^build`. @vendoai/vendo resolves its own subpath
+    // `imports` (#dev-creds/model, #store/db, #store/crypto, #actions/host-files,
+    // #telemetry) to ./dist/*.js, and tsconfig.test.json — which includes tests/
+    // as well as src/, so it can carry no outDir — leaves TypeScript no way to
+    // map those back to source. A typecheck therefore reads its OWN dist, not
+    // just its dependencies'.
     //
     // Undeclared, the two were unordered WITHIN a package, and `compile` runs
     // them in one pass (`turbo run build typecheck`). Whichever one turbo gave a

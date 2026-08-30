@@ -30,7 +30,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { SCREEN_FILE, type SeedBaseline } from "@vendoai/apps";
 import type { AppId, RunContext } from "@vendoai/core";
-import { createStore, workspaceStore, type VendoStore } from "@vendoai/store";
+import { createStore, workspaceStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createVendo } from "../src/server.js";

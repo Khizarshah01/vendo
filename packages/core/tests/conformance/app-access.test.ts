@@ -4,7 +4,7 @@ import { appAccessConformance, memoryAppAccess, runConformance } from "../../src
 
 /**
  * The `can()` conformance kit, mounted against core's own reference the same way
- * the KnowledgeAdapter kit is (conformance/knowledge.test.ts). @vendoai/store and
+ * the KnowledgeAdapter kit is (conformance/knowledge.test.ts). @vendoai/vendo/store and
  * @vendoai/apps each mount this kit too, over real rows — this suite proves the
  * KIT itself, so a case that cannot be satisfied by any implementation is caught
  * here rather than showing up as a mystery failure in two other packages.

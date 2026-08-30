@@ -9,7 +9,7 @@ import {
   toolsFileSchema,
   type ExtractedTool,
   type ToolsFile,
-} from "@vendoai/actions";
+} from "@vendoai/vendo/actions";
 import type { ZodError } from "zod";
 import { isUnsafeAutoAllowed } from "./scored.js";
 import { runHostCommand } from "../process.js";
@@ -98,7 +98,7 @@ const CHECK_ORDER: StructuralCheckId[] = [
 
 
 // The TypeScript compiler, resolved lazily and fail-closed (the same posture
-// as packages/actions/src/sync/common.ts's loadCompiler): when it cannot be
+// as packages/vendo/src/actions/sync/common.ts's loadCompiler): when it cannot be
 // loaded, wiring analysis verifies nothing rather than guessing with string
 // scans — the check fails, never passes.
 let compilerModule: typeof TS | null | undefined;

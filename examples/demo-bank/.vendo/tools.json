@@ -230,7 +230,7 @@
       },
       "inputSchemaSource": "unknown",
       "outputSchemaSource": "unknown",
-      "srcHash": "sha256:ab3ae3e6b09905fa7c73eb198dbfb1d227d46621e883c333933eedd3ae060613"
+      "srcHash": "sha256:41c303b15f195a93a0eb3099b125da77bbc8509275b60845348e39162919734c"
     },
     {
       "name": "host_getAccount",

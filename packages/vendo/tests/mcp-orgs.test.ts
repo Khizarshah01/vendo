@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { VENDO_APP_FORMAT, type AppDocument, type Membership, type Principal } from "@vendoai/core";
-import { appAccess, createStore, type VendoStore } from "@vendoai/store";
+import { appAccess, createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";
 

@@ -20,7 +20,7 @@
  */
 import { sealBundleBlobs } from "@vendoai/apps";
 import { VENDO_APP_FORMAT, vendoApprovalRefSchema, type AppDocument, type AppId } from "@vendoai/core";
-import { storeFiles, type VendoStore } from "@vendoai/store";
+import { storeFiles, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   MOUNT,

@@ -1,5 +1,5 @@
 /**
- * A `@vendoai/store` older than `upsertMany` must make a turn SLOWER, not
+ * A `@vendoai/vendo/store` older than `upsertMany` must make a turn SLOWER, not
  * broken.
  *
  * `harness-turn` calls the batch verb on every turn after the first, and it
@@ -17,7 +17,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { scriptedModel, textTurn } from "../src/agent-doubles.test-util.js";
@@ -26,8 +26,8 @@ import { createVendo, type CreateVendoConfig } from "../src/server.js";
 /** The store as it shipped BEFORE the batch verb: every real door, minus the
  *  one method. `importOriginal` keeps this a subtraction from the shipped
  *  implementation rather than a re-implementation of it. */
-vi.mock("@vendoai/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@vendoai/store")>();
+vi.mock("../src/store/index.js", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("../src/store/index.js")>();
   return {
     ...actual,
     threadMessageStore: (store: Parameters<typeof actual.threadMessageStore>[0]) => {

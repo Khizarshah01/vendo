@@ -1,6 +1,6 @@
 /** J8 — ACTIONS OPENAPI SYNC → callable over the composed wire.
  *
- * `vendoSync` is the build-time extractor (packages/actions/src/sync): it reads a
+ * `vendoSync` is the build-time extractor (packages/vendo/src/actions/sync): it reads a
  * host project's OpenAPI spec (+ route scan), and writes `.vendo/tools.json` — the
  * SAME contract file `createVendo` loads at boot (`createActions({ dir: "." })`).
  * This journey proves the whole loop end to end against the REAL fixture host:
@@ -22,7 +22,7 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { vendoSync } from "@vendoai/actions/sync";
+import { vendoSync } from "@vendoai/vendo/actions/sync";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   ADA,

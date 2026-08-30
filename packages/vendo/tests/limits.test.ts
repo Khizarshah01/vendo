@@ -24,7 +24,7 @@ import {
   type VendoViewStreamUpdate,
 } from "@vendoai/core";
 import { memoryStoreOps } from "@vendoai/core/conformance";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createComposition } from "../src/compose-context.js";
 import { createLimiter, limitGenerations } from "../src/limits.js";

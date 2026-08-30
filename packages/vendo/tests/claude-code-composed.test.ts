@@ -29,7 +29,7 @@ import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
 // climb, because the door is the wire contract between the two blocks.
 import { createSessionRoutes } from "../box/turn-routes.mjs";
 import { claudeCode } from "../src/harnesses/claude-code/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { liveDoor } from "../src/agent-doubles.test-util.js";
 import { createVendo, type Vendo } from "../src/server.js";

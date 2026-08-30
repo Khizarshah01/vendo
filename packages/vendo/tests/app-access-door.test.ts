@@ -4,9 +4,9 @@ import {
   type AppId,
   type RunContext,
 } from "@vendoai/core";
-import { appAccess, hostedStore } from "@vendoai/store";
+import { appAccess, hostedStore } from "../src/store/index.js";
 import { describe, expect, it } from "vitest";
-import { fakeConsole } from "@vendoai/store/test-util";
+import { fakeConsole } from "../src/store/fake-console.js";
 
 /**
  * Build contract §9.2 — the principal grammar belongs to the DOOR.
@@ -14,7 +14,7 @@ import { fakeConsole } from "@vendoai/store/test-util";
  * `appAccess(store)` is one implementation over the record adapter, and the
  * adapter rule says behaviour may never depend on which store is wired. It did:
  * the grammar guard lived in the local engine's routing layer
- * (`packages/store/src/routing.ts` `parseAppGrantData`), and the hosted store
+ * (`packages/vendo/src/store/routing.ts` `parseAppGrantData`), and the hosted store
  * posts straight to the console, so the SAME share was refused on Postgres and
  * accepted on Vendo Cloud's own default. The refusal is proven here on the shape
  * that had no coverage at all.

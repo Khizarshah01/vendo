@@ -20,10 +20,10 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Connector } from "@vendoai/actions";
+import type { Connector } from "../src/actions/index.js";
 import { AGENT_CONTEXT_MARK, type Principal } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { VendoProvider, createVendoClient } from "@vendoai/ui";
 import { VendoThread } from "@vendoai/ui/chrome";
 import type { LanguageModel } from "ai";

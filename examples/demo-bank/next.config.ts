@@ -11,9 +11,17 @@ const nextConfig: NextConfig = {
   // becomes a bare resolve from this app's root. It only ever worked here
   // because the monorepo root hoists esbuild. PGlite's Emscripten module breaks
   // under Turbopack's production chunking ("f.instantiateWasm is not a
-  // function"), so it stays external too — including @vendoai/store, which loads
-  // PGlite for the local default store.
-  serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"],
+  // function"), so it stays external too — including @vendoai/vendo, which now
+  // holds the store that loads PGlite. That entry is dev-conditional because the
+  // dev block below aliases the umbrella to source and Turbopack HARD-FATALS on a
+  // package named in both lists; production chunking is the only venue the
+  // externalization was ever for.
+  serverExternalPackages: [
+    "@vendoai/apps",
+    "esbuild",
+    "@electric-sql/pglite",
+    ...(process.env.NODE_ENV === "development" ? [] : ["@vendoai/vendo"]),
+  ],
   // Dev-only: resolve the whole @vendoai workspace graph to its TypeScript
   // source so edits anywhere in packages/*/src hot-reload here instead of
   // waiting on a `pnpm build`. Turbopack matches the request verbatim, so
@@ -23,36 +31,32 @@ const nextConfig: NextConfig = {
   // only part of it leaves one bundle holding a src copy and a dist copy of
   // the same module, and state keyed by module identity (harnesses' WeakMap of
   // adapter slots, store's of internals) then splits silently across the two.
-  // @vendoai/apps and @vendoai/store are the holdouts — both are externalized
-  // above (apps for its runtime esbuild import, store for PGlite), and an
-  // externalized package must not stay aliased here: Turbopack HARD-FATALS on a
-  // package named in BOTH transpilePackages and serverExternalPackages, and node
-  // cannot require .ts anyway. `next build` skips the block entirely and
-  // resolves dist/ like a published install would.
+  // @vendoai/apps is the holdout — externalized above for its runtime esbuild
+  // import, and an externalized package must not stay aliased here: Turbopack
+  // HARD-FATALS on a package named in BOTH transpilePackages and
+  // serverExternalPackages, and node cannot require .ts anyway. `next build`
+  // skips the block entirely and resolves dist/ like a published install would.
   ...(process.env.NODE_ENV === "development"
     ? {
-        transpilePackages: [
-          "@vendoai/actions",
-          "@vendoai/core",
-          "@vendoai/telemetry",
-          "@vendoai/ui",
-          "@vendoai/vendo",
-        ],
+        transpilePackages: ["@vendoai/core", "@vendoai/ui", "@vendoai/vendo"],
         turbopack: {
           resolveAlias: {
-            "@vendoai/actions": "../../packages/actions/src/index.ts",
-            "@vendoai/actions/presets": "../../packages/actions/src/presets/index.ts",
-            "@vendoai/actions/presets/auth-js": "../../packages/actions/src/presets/auth-js.ts",
-            "@vendoai/actions/sync": "../../packages/actions/src/sync/public.ts",
             "@vendoai/core": "../../packages/core/src/index.ts",
             "@vendoai/core/conformance": "../../packages/core/src/conformance/index.ts",
-            "@vendoai/telemetry": "../../packages/vendo-telemetry/src/index.ts",
             "@vendoai/ui": "../../packages/ui/src/index.ts",
             "@vendoai/ui/chrome": "../../packages/ui/src/chrome/index.ts",
             "@vendoai/ui/tree": "../../packages/ui/src/tree/index.ts",
             "@vendoai/ui/kit": "../../packages/ui/src/kit/index.ts",
             "@vendoai/vendo": "../../packages/vendo/src/index.ts",
             "@vendoai/vendo/server": "../../packages/vendo/src/server.ts",
+            "@vendoai/vendo/store": "../../packages/vendo/src/store/index.ts",
+            "@vendoai/vendo/store/postgres": "../../packages/vendo/src/store/postgres.ts",
+            "@vendoai/vendo/store/test-util": "../../packages/vendo/src/store/fake-console.ts",
+            "@vendoai/vendo/actions": "../../packages/vendo/src/actions/index.ts",
+            "@vendoai/vendo/actions/presets": "../../packages/vendo/src/actions/presets/index.ts",
+            "@vendoai/vendo/actions/presets/auth-js": "../../packages/vendo/src/actions/presets/auth-js.ts",
+            "@vendoai/vendo/actions/sync": "../../packages/vendo/src/actions/sync/public.ts",
+            "@vendoai/vendo/telemetry": "../../packages/vendo/src/telemetry/index.ts",
             "@vendoai/vendo/guard": "../../packages/vendo/src/guard/index.ts",
             "@vendoai/vendo/harnesses": "../../packages/vendo/src/harnesses/index.ts",
             "@vendoai/vendo/harnesses/vendo": "../../packages/vendo/src/harnesses/vendo/index.ts",

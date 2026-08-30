@@ -1,8 +1,8 @@
 import { STORE_WIRE_PATHS, type ApprovalId } from "@vendoai/core";
 import { describe, expect, it } from "vitest";
 import { ChannelAskRepository, ChannelEventLog, ChannelLinkRepository } from "../src/channel-links.js";
-import { hostedStore } from "@vendoai/store";
-import { fakeConsole } from "@vendoai/store/test-util";
+import { hostedStore } from "../src/store/index.js";
+import { fakeConsole } from "../src/store/fake-console.js";
 
 /**
  * The channel's rows against the HOSTED door — the seam that actually ships.
@@ -18,7 +18,7 @@ import { fakeConsole } from "@vendoai/store/test-util";
  *
  * So these cases exercise the repositories through `hostedStore`, whose fake
  * console serves the same gate the live door serves — deliberately, per the note
- * at `hosted-store.test-util.ts`: a fake that answers a collection the real door
+ * at `store/fake-console.ts`: a fake that answers a collection the real door
  * refuses lets a wrong call pass every test and fail in production. Add a
  * collection to this feature and it must appear both in `channel-links.ts` and in
  * `ENGINE_COLLECTIONS`, or this file goes red.

@@ -1,9 +1,9 @@
-// authJsPreset ships on its own subpath, not the shared "@vendoai/actions/presets"
+// authJsPreset ships on its own subpath, not the shared `@vendoai/vendo/actions/presets`
 // barrel: it is the only preset there with a top-level optional-peer dynamic
 // import (@auth/core/jwt), and bundlers resolve every `export ... from` target
 // in a barrel file regardless of which export a consumer uses (corpus-triage
 // Task 9 — mirrors the same split done for this file's own vendo-side barrel).
-import { authJsPreset } from "@vendoai/actions/presets/auth-js";
+import { authJsPreset } from "../actions/presets/auth-js.js";
 import type { ActAs } from "@vendoai/core";
 import { environment } from "../wire/shared.js";
 import {
@@ -27,7 +27,7 @@ type AuthJsGetToken = (params: {
 }) => Promise<JwtClaims | null>;
 
 /** Same optional-dependency strategy as the actions preset's own encoder
-    (packages/actions presets/auth-js.ts): `@auth/core` is an optional
+    (src/actions/presets/auth-js.ts): `@auth/core` is an optional
     peerDependency loaded lazily on first use — a host wiring authJs() already
     runs Auth.js, so it is present next to their auth setup. The failure is an
     actionable install instruction, not a bare module-not-found. */
@@ -84,7 +84,7 @@ function isSecureDeployment(): boolean {
  * the actAs session claims; its null means "subject unknown to host" (the
  * session is treated as absent, actAs declines, the door's lookup returns null).
  *
- * The actAs half IS the shipped `@vendoai/actions/presets` authJsPreset — one
+ * The actAs half IS the shipped `@vendoai/vendo/actions/presets` authJsPreset — one
  * minting story (04 §2.1), configured from these same options.
  */
 export function authJs(options: HostAuthPresetOptions = {}): HostAuthPreset {

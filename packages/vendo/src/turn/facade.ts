@@ -20,7 +20,7 @@
  * which is the one thing this file adds.
  */
 import { VendoError, type Json, type Principal, type ThreadId } from "@vendoai/core";
-import { threadMessageStore, threadStore } from "@vendoai/store";
+import { threadMessageStore, threadStore } from "../store/index.js";
 import type { UIMessage } from "ai";
 import { createTurns, type Turns } from "./interruptions.js";
 import type { Memory, MemoryAdapter } from "./memory.js";

@@ -20,7 +20,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { automationsInternals } from "../src/automations/index.js";
 import { RUN_STATUSES, type AutomationId, type Principal, type RunContext } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { createVendoClient, type VendoClient } from "@vendoai/ui";
 import { afterEach, describe, expect, it } from "vitest";
 import { scriptedModel, textTurn } from "../src/agent-doubles.test-util.js";

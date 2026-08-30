@@ -17,7 +17,7 @@ import {
   vendoKnowledge,
   type KnowledgeConfig,
 } from "@vendoai/vendo/knowledge";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { environment, resolveCloudBaseUrl } from "@vendoai/core";
 import { formatTable } from "../cloud/output.js";
 import { consoleOutput, withCommandRun, type Output, type TelemetryOptions } from "../shared.js";

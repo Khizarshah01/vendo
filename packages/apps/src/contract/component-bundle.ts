@@ -3,9 +3,9 @@
  *
  * These shapes are the ON-DISK and ON-THE-WIRE format of a captured host
  * component (`.vendo/components/**`), so they belong to the contract rather than
- * to the capture that writes them: the console, the jail renderer and `@vendoai/actions`
+ * to the capture that writes them: the console, the jail renderer and `@vendoai/vendo/actions`
  * all read them, and the browser halves of those readers must not pull node code
- * in to speak the format. `@vendoai/actions` re-exports every name from here, so
+ * in to speak the format. `@vendoai/vendo/actions` re-exports every name from here, so
  * its public surface is unchanged.
  */
 import { bundleOf, type ComponentEntry } from "@vendoai/core";

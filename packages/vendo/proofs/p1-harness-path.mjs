@@ -20,7 +20,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createVendo } from "@vendoai/vendo/server";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import { vendo as vendoHarness } from "@vendoai/vendo/harnesses";
 
 const principal = { kind: "user", subject: "user_probe" };

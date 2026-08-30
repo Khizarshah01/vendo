@@ -7,7 +7,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { agent, type VendoAgent } from "../src/turn/index.js";
-import { createStore, createStoreOps, type VendoStore } from "@vendoai/store";
+import { createStore, createStoreOps, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { armDevTicker, CODE_AUTOMATION_OWNER } from "../src/compose-automations.js";

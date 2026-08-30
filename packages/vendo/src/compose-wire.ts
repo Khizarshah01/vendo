@@ -6,7 +6,7 @@
  * here because the wire is what validates a request enough to learn from it.
  */
 import { VendoError } from "@vendoai/core";
-import { initTelemetry, type Telemetry } from "@vendoai/telemetry";
+import { initTelemetry, type Telemetry } from "#telemetry";
 import type { VendoComposition } from "./compose-context.js";
 import { isLoopbackOrigin } from "./door-paths.js";
 import { composeAgentTools } from "./agent-tools.js";

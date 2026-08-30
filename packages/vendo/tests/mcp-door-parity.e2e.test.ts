@@ -35,7 +35,7 @@
  * The OUTSIDE-agent path is unchanged and pinned separately, in
  * `mcp-door-outside-agent.e2e.test.ts`.
  */
-import type { ExtractedTool } from "@vendoai/actions";
+import type { ExtractedTool } from "../src/actions/index.js";
 import {
   VENDO_MAKE_TOOL,
   VENDO_TOOL_TITLES,

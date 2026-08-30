@@ -12,10 +12,10 @@ import { createHash } from "node:crypto";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { ExtractedTool } from "@vendoai/actions";
+import type { ExtractedTool } from "./actions/index.js";
 import type { AuditEvent, Principal, ToolDescriptor, ToolRegistry, ToolResult } from "@vendoai/core";
 import { defineHarness, harnessAdapters } from "./harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "./store/index.js";
 import type { LanguageModel } from "ai";
 import { createVendo, type Vendo } from "./server.js";
 

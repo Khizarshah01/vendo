@@ -1,4 +1,4 @@
-import type { SecretSource } from "@vendoai/actions/presets";
+import type { SecretSource } from "../actions/presets/index.js";
 import {
   type ActAs,
   joinUrl,

@@ -113,7 +113,7 @@ export function createTurnTimings(): TurnTimings {
 }
 
 /** Build contract §6 — lane D's `threadMessageStore(store)` return value. Typed
- *  structurally so this package never imports @vendoai/store: the store handle
+ *  structurally so this package never imports @vendoai/vendo/store: the store handle
  *  arrives as a composed value. */
 export interface TranscriptStore {
   /** One row per message; per-row CAS on `revision` for edits. */

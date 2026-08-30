@@ -31,8 +31,9 @@ specifier is a variable. `@vendoai/apps` is the entry that matters: externalize
 the package and the import stays inside it, where esbuild is a declared
 dependency.
 
-PGlite and `@vendoai/store` are on the same list for a different reason:
-PGlite's Emscripten module breaks under production chunking.
+PGlite and `@vendoai/vendo` — which holds the store that loads it — are on the
+same list for a different reason: PGlite's Emscripten module breaks under
+production chunking.
 
 ## The fix
 
@@ -40,7 +41,7 @@ Add the line inside your config object.
 
 ```ts next.config.ts focus={2}
 const nextConfig = {
-  serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"],
+  serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],
 };
 
 export default nextConfig;

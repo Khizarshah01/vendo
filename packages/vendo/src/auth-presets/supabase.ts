@@ -1,4 +1,4 @@
-import { supabasePreset, verifyHs256 } from "@vendoai/actions/presets";
+import { supabasePreset, verifyHs256 } from "../actions/presets/index.js";
 import { environment } from "../wire/shared.js";
 import {
   actAsClaimsFromUser,
@@ -203,7 +203,7 @@ function supabaseUser(claims: JwtClaims): HostAuthPresetUser {
  * Tokens neither path can verify resolve to null (no session); construction
  * with NEITHER a secret NOR a JWKS source fails loud, naming both.
  *
- * The actAs half IS the shipped `@vendoai/actions/presets` supabasePreset —
+ * The actAs half IS the shipped `@vendoai/vendo/actions/presets` supabasePreset —
  * one minting story (04 §2.1), configured from these same options. Tokens
  * mint (and verify) under Supabase's `authenticated` audience convention.
  */

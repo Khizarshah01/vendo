@@ -4,7 +4,7 @@
  * baselines — plus the ONE capability merge every contributed tool and skill
  * arrives through, and the component catalog.
  */
-import { mergedHostSemantics, VENDO_TOOLS_FORMAT } from "@vendoai/actions";
+import { mergedHostSemantics, VENDO_TOOLS_FORMAT } from "./actions/index.js";
 import { agentToolDescriptors, buildingAppsSkill } from "@vendoai/apps";
 import { selectAppDatabase } from "./compose-selection.js";
 import {

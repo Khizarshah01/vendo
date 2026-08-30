@@ -1,4 +1,4 @@
-import { schemaIsBlind, type ExtractedTool } from "@vendoai/actions";
+import { schemaIsBlind, type ExtractedTool } from "@vendoai/vendo/actions";
 
 /**
  * ALL prompt content for the judgment channel lives HERE — the judge pass and
@@ -22,7 +22,7 @@ import { schemaIsBlind, type ExtractedTool } from "@vendoai/actions";
  *    which is what makes the requirement bite rather than decorate.
  *
  * Nothing here is trusted. The rules tell the model what may land; the
- * deterministic direction rule in `@vendoai/actions` decides what actually does.
+ * deterministic direction rule in `@vendoai/vendo/actions` decides what actually does.
  *
  * The risk section also carries three LABELING-POLICY rules the mutation test
  * cannot derive on its own. Each one is here because a corpus row had to be

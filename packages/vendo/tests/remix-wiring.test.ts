@@ -20,7 +20,7 @@ import { join } from "node:path";
 import { paintedIn, SCREEN_FILE } from "@vendoai/apps";
 import type { AppId, Json, Principal, RiskLabel, RunContext, ToolDefinition } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createVendo, type CreateVendoConfig, type Vendo } from "../src/server.js";

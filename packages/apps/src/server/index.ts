@@ -42,7 +42,7 @@ export {
   type PublishRecord,
   type ShareSnapshot,
 } from "./persistence/cloud.js";
-// The app-history persistence door, exported so `@vendoai/store` — a declared
+// The app-history persistence door, exported so `@vendoai/vendo/store` — a declared
 // consumer of this package — can prove its erase cascade against the REAL
 // writer instead of a hand-rolled copy of the rows it produces.
 export { createAppHistory, type AppHistoryAccess } from "./persistence/history.js";
@@ -87,7 +87,7 @@ export { buildingAppsSkill } from "./skills/building-apps.js";
 // never a store, so composition binds the store side once and hands these to
 // whoever is materializing an app.
 // The seal door beside it, plus the app row's compare-and-swap writer, exported
-// for the same reason `createAppHistory` is: `@vendoai/store` holds both the
+// for the same reason `createAppHistory` is: `@vendoai/vendo/store` holds both the
 // bytes and the row revision a seal depends on, so it proves the whole seal —
 // content-addressed blobs, last-CAS-wins, loser kept as a version — against the
 // REAL writers rather than a hand-rolled copy of what they produce.

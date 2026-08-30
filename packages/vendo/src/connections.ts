@@ -4,7 +4,7 @@ import { consoleSender, debugConnectorHttp, raiseCloudError, VendoError, type Co
 // them off the wire and may not import this package.
 export type { ConnectableToolkit, InitiatedConnection };
 import { keepAliveFetch } from "./keep-alive-fetch.js";
-import type { Connector, ConnectorAccount, ConnectorConnections } from "@vendoai/actions";
+import type { Connector, ConnectorAccount, ConnectorConnections } from "./actions/index.js";
 
 /** Subjects the runtime mints for machine principals (automations webhook
  * triggers today; the reserved `vendo:` namespace going forward). A synthetic

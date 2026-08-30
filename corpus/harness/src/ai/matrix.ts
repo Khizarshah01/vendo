@@ -4,7 +4,7 @@ import { copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { toolsFileSchema } from "@vendoai/actions";
+import { toolsFileSchema } from "@vendoai/vendo/actions";
 import {
   claudeHarness,
   runJudgmentPass as defaultRunJudgmentPass,

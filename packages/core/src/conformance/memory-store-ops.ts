@@ -227,7 +227,7 @@ export function memoryStoreOps(): StoreOps {
   // ---------------------------------------------------------------------------
 
   /** MIRRORS the per-collection policy the real backend enforces in its typed
-      doors (packages/store/src/routing.ts), which the generic records table has
+      doors (packages/vendo/src/store/routing.ts), which the generic records table has
       no idea about. Only the policy the conformance suite pins lives here — the
       reference exists to prove the contract, not to re-implement routing. */
   const APPEND_ONLY = new Set(["vendo_audit", "vendo_effects"]);

@@ -3,7 +3,7 @@ export type * from "@vendoai/core";
 // The app format moved off core onto its own browser-safe door; re-exported
 // here so every type consumer reading it through the umbrella is untouched.
 export type * from "@vendoai/apps/contract";
-export type { VendoStore } from "@vendoai/store";
+export type { VendoStore } from "./store/index.js";
 export type { Thread, ThreadSummary } from "./threads.js";
 // What `vendo.putUserFile` answers, and what the ui client's `files.upload`
 // mirrors: where the file landed and how big it was.
@@ -20,7 +20,7 @@ export type {
   ExtractedTool,
   OverridesFile,
   SyncReport,
-} from "@vendoai/actions";
+} from "./actions/index.js";
 export type { ConnectionsService, InitiatedConnection, InitiateOptions } from "./connections.js";
 export type {
   TenantConnectorInput,

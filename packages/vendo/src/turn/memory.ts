@@ -11,14 +11,14 @@
  *
  * EVERY verb takes the principal it acts for and scopes on `principal.subject`.
  * The generic records door keys rows on (collection, id) alone
- * (`packages/store/src/records.ts:90-101`), so per-user isolation is this
+ * (`packages/vendo/src/store/records.ts:90-101`), so per-user isolation is this
  * module's to enforce: `refs.subject` is written on every row and filtered on
  * every read, the delete reads through that same filter before it removes
  * anything, and no verb — the tool least of all — takes a subject from its
  * caller's input.
  */
 import { VendoError, type Principal, type VendoRecord } from "@vendoai/core";
-import type { VendoStore } from "@vendoai/store";
+import type { VendoStore } from "../store/index.js";
 import { randomUUID } from "node:crypto";
 import { tool, type HostTool } from "./tools.js";
 
@@ -81,7 +81,7 @@ const memoryFromRecord = (record: VendoRecord): Memory => {
  *
  * `refs: { subject }` is doing two jobs. It is the scope every verb here
  * filters on, and it is what `erase.bySubject` sweeps generic rows by
- * (`packages/store/src/erase.ts:242`), so a forgotten person's memories go with
+ * (`packages/vendo/src/store/erase.ts:242`), so a forgotten person's memories go with
  * the rest of their data without this module being named anywhere in the
  * cascade.
  */

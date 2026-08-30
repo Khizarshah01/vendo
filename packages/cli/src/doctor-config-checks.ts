@@ -1,7 +1,7 @@
 import { tmpdir } from "node:os";
 import { join, relative, sep } from "node:path";
-import { applyJudgment, disabledReason, judgmentsFileSchema, overridesFileSchema, toolsFileSchema, type ExtractedTool, type ToolJudgment, type ToolsFile } from "@vendoai/actions";
-import { firstOpenApiSpec, openApiMountPath } from "@vendoai/actions/sync";
+import { applyJudgment, disabledReason, judgmentsFileSchema, overridesFileSchema, toolsFileSchema, type ExtractedTool, type ToolJudgment, type ToolsFile } from "@vendoai/vendo/actions";
+import { firstOpenApiSpec, openApiMountPath } from "@vendoai/vendo/actions/sync";
 import { CONFIG_SURFACES, OVERRIDES_ENABLEMENT_NOTE, publicBase, UPLOAD_MAX_BYTES, type RiskLabel } from "@vendoai/core";
 import { ENV_KEY_VARS, describeDevCredential, resolveDevCredential } from "@vendoai/vendo/harnesses/inference/credential";
 // The Node ladder itself (not @vendoai/vendo's `#dev-creds/model` condition):
@@ -55,7 +55,7 @@ export async function checkNextServerExternals(run: DoctorRun): Promise<void> {
 }
 
 /** Platforms whose container filesystem is wiped on every redeploy — the same
- *  list the store's own boot warning carries (@vendoai/store src/db.ts); the
+ *  list the store's own boot warning carries (@vendoai/vendo/store src/db.ts); the
  *  two copies are deliberate, the CLI must not pull the store's engine module
  *  into its bundle graph just to read four strings. */
 const EPHEMERAL_PLATFORM_ENVS = [

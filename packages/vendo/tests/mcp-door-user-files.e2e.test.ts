@@ -26,7 +26,7 @@ import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { UPLOAD_HEADER } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, FILES_STORE_MAX_BYTES, type VendoStore } from "@vendoai/store";
+import { createStore, FILES_STORE_MAX_BYTES, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";

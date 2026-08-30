@@ -1,4 +1,4 @@
-import { eraseStore, storeFiles } from "@vendoai/store";
+import { eraseStore, storeFiles } from "@vendoai/vendo/store";
 import type { HostedStore } from "@vendoai/vendo/server";
 import { seedDemoScript } from "@/demo-script/seed";
 import { __reseed } from "@/server/store";

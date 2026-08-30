@@ -1,7 +1,7 @@
-import { createActions } from "@vendoai/actions";
+import { createActions } from "../src/actions/index.js";
 import { tenantConnectorSecret, type Principal, type RunContext } from "@vendoai/core";
-import { hostedStore, hostedStoreOps } from "@vendoai/store";
-import { fakeConsole } from "@vendoai/store/test-util";
+import { hostedStore, hostedStoreOps } from "../src/store/index.js";
+import { fakeConsole } from "../src/store/fake-console.js";
 import { describe, expect, it } from "vitest";
 import { createTenantConnectors } from "../src/tenant-connectors.js";
 
@@ -21,7 +21,7 @@ import { createTenantConnectors } from "../src/tenant-connectors.js";
  *
  * So these cases drive `createTenantConnectors` through `hostedStore` and
  * `hostedStoreOps`, whose fake console serves the same gate the live door serves
- * — deliberately, per the note at `hosted-store.test-util.ts`: a fake that
+ * — deliberately, per the note at `store/fake-console.ts`: a fake that
  * answers a collection the real door refuses lets a wrong call pass every test
  * and fail in production. Drop `vendo_tenant_connectors` from
  * `ENGINE_COLLECTION_REGISTRY` and this file goes red.

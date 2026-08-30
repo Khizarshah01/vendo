@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ExtractedTool } from "@vendoai/actions";
+import type { ExtractedTool } from "@vendoai/vendo/actions";
 import {
   JUDGE_OUTPUT_RULES,
   composeJudgeInstructions,

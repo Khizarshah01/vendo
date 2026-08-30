@@ -1,4 +1,4 @@
-import type { ExtractedTool } from "@vendoai/actions";
+import type { ExtractedTool } from "../actions/index.js";
 import { principalSchema, type Principal, type ToolOutcome } from "@vendoai/core";
 import { tickSecret } from "../tick-enrolment.js";
 import { BASE_PATH, environment, json, learnsOriginAtEntry, route, type RouteEntry } from "./shared.js";

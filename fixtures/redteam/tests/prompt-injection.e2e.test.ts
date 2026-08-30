@@ -17,9 +17,9 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import type { LanguageModel } from "ai";
 import type { ToolRegistry } from "@vendoai/core";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { createGuard, type Judge } from "@vendoai/vendo/guard";
-import { createActions } from "@vendoai/actions";
+import { createActions } from "@vendoai/vendo/actions";
 import { awayRunner } from "@vendoai/vendo";
 import { vendo } from "@vendoai/vendo/harnesses";
 import {

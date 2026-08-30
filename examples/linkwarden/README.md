@@ -85,7 +85,7 @@ import { VendoOverlay } from "@vendoai/ui/chrome";
 `apps/web/next.config.js`:
 
 ```js
-serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/store"],
+serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],
 ```
 
 `@vendoai/apps` is the load-bearing entry: it reaches esbuild through a variable

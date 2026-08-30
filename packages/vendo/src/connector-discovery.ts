@@ -67,7 +67,7 @@ const SCHEMA_TOO_LARGE =
   "This tool's argument schema is too large to return here. Ask the user what it needs — do not guess arguments.";
 
 /** One tool the broker's own search matched. Structurally identical to
- *  `ServiceToolMatch` in @vendoai/actions, restated here because agent may not
+ *  `ServiceToolMatch` in @vendoai/vendo/actions, restated here because agent may not
  *  depend on actions (layering) — the wire adapts one to the other. */
 export interface ServiceToolMatch {
   /** The broker's callable slug, verbatim — what `use_service_tool` takes. */

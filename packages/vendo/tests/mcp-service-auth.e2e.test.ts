@@ -11,7 +11,7 @@
  * from the OAuth grant, through the RunContext, onto the row.
  */
 import type { AuditEvent } from "@vendoai/core";
-import type { VendoStore } from "@vendoai/store";
+import type { VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {

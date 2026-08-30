@@ -1,4 +1,4 @@
-import { auth0Preset } from "@vendoai/actions/presets";
+import { auth0Preset } from "../../src/actions/presets/index.js";
 import type { AuthMaterial, PermissionGrant } from "@vendoai/core";
 import { SignJWT } from "jose";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";

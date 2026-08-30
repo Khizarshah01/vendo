@@ -84,7 +84,7 @@ jobs:
           - { name: ui-2, build: "--filter=@vendoai/ui", test: "--filter=@vendoai/ui exec vitest run --shard=2/2" }
           # No build filter = the whole tree; this is the leg that carries the
           # type-break guarantee above.
-          - { name: rest, build: "", test: "turbo run test --continue --concurrency=2 '--filter=./packages/*' '--filter=!@vendoai/store' '--filter=!@vendoai/vendo' '--filter=!@vendoai/ui'" }
+          - { name: rest, build: "", test: "turbo run test --continue --concurrency=2 '--filter=./packages/*' '--filter=!@vendoai/vendo' '--filter=!@vendoai/ui'" }
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4

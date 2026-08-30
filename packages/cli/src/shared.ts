@@ -3,7 +3,7 @@ import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join, sep } from "node:path";
 import { createInterface } from "node:readline/promises";
 import { stdin, stdout } from "node:process";
-import { initTelemetry, repoHost, type Telemetry } from "@vendoai/telemetry";
+import { initTelemetry, repoHost, type Telemetry } from "@vendoai/vendo/telemetry";
 import { walk } from "./theme/walk.js";
 
 export const CLI_VERSION = "0.57.0";

@@ -73,9 +73,6 @@ importers:
 
   corpus/harness:
     dependencies:
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../../packages/actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
@@ -116,9 +113,6 @@ importers:
       '@ai-sdk/anthropic':
         specifier: ^3.0.12
         version: 3.0.12(zod@3.25.76)
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../../packages/store
       '@vendoai/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
@@ -180,9 +174,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../packages/store
       '@vendoai/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -250,9 +241,6 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.10
         version: 1.2.12(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../../packages/actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
@@ -262,9 +250,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../packages/store
       '@vendoai/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -392,9 +377,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../packages/store
       '@vendoai/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -478,18 +460,12 @@ importers:
 
   fixtures/automations-e2e:
     dependencies:
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../../packages/actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../packages/store
       '@vendoai/vendo':
         specifier: workspace:*
         version: link:../../packages/vendo
@@ -573,21 +549,12 @@ importers:
 
   fixtures/integration:
     dependencies:
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../../packages/actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../packages/store
-      '@vendoai/telemetry':
-        specifier: workspace:*
-        version: link:../../packages/vendo-telemetry
       '@vendoai/vendo':
         specifier: workspace:*
         version: link:../../packages/vendo
@@ -622,15 +589,9 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.29.0(@cfworker/json-schema@4.1.1)(zod@3.25.76)
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../../packages/actions
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../packages/store
       '@vendoai/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -671,18 +632,12 @@ importers:
 
   fixtures/mcp-e2e:
     dependencies:
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../../packages/actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../packages/store
       '@vendoai/vendo':
         specifier: workspace:*
         version: link:../../packages/vendo
@@ -711,18 +666,12 @@ importers:
 
   fixtures/redteam:
     dependencies:
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../../packages/actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../../packages/apps
       '@vendoai/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../../packages/store
       '@vendoai/vendo':
         specifier: workspace:*
         version: link:../../packages/vendo
@@ -776,9 +725,6 @@ importers:
       '@vendoai/core':
         specifier: workspace:*
         version: link:../packages/core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../packages/store
       '@vendoai/ui':
         specifier: workspace:*
         version: link:../packages/ui
@@ -849,46 +795,6 @@ importers:
       vitest:
         specifier: ^3.2.6
         version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
-
-  packages/actions:
-    dependencies:
-      '@vendoai/apps':
-        specifier: workspace:*
-        version: link:../apps
-      '@vendoai/core':
-        specifier: workspace:*
-        version: link:../core
-      jsonata:
-        specifier: ^2.0.5
-        version: 2.2.1
-      yaml:
-        specifier: ^2.6.0
-        version: 2.9.0
-      zod:
-        specifier: ^3.25.0
-        version: 3.25.76
-    devDependencies:
-      '@auth/core':
-        specifier: ^0.41.3
-        version: 0.41.3
-      '@types/node':
-        specifier: ^22.0.0
-        version: 22.20.0
-      jose:
-        specifier: ^6.2.3
-        version: 6.2.3
-      next:
-        specifier: '>=16.2.11'
-        version: 16.2.11(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(@playwright/test@1.61.1)(@types/node@22.20.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      typescript:
-        specifier: ^5.6.0
-        version: 5.9.3
-      vitest:
-        specifier: ^3.2.6
-        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
-      zod-to-json-schema:
-        specifier: ^3.25.2
-        version: 3.25.2(zod@3.25.76)
 
   packages/apps:
     dependencies:
@@ -965,21 +871,12 @@ importers:
 
   packages/cli:
     dependencies:
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../apps
       '@vendoai/core':
         specifier: workspace:*
         version: link:../core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../store
-      '@vendoai/telemetry':
-        specifier: workspace:*
-        version: link:../vendo-telemetry
       '@vendoai/vendo':
         specifier: workspace:*
         version: link:../vendo
@@ -1021,40 +918,6 @@ importers:
       ai:
         specifier: 6.0.28
         version: 6.0.28(zod@3.25.76)
-      just-bash:
-        specifier: ^3.1.0
-        version: 3.2.0
-      typescript:
-        specifier: ^5.6.0
-        version: 5.9.3
-      vitest:
-        specifier: ^3.2.6
-        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
-
-  packages/store:
-    dependencies:
-      '@electric-sql/pglite':
-        specifier: ^0.5.4
-        version: 0.5.4
-      '@vendoai/apps':
-        specifier: workspace:*
-        version: link:../apps
-      '@vendoai/core':
-        specifier: workspace:*
-        version: link:../core
-      aws4fetch:
-        specifier: ^1.0.20
-        version: 1.0.20
-      pg:
-        specifier: ^8.22.0
-        version: 8.22.0
-    devDependencies:
-      '@types/node':
-        specifier: ^22.0.0
-        version: 22.20.0
-      '@types/pg':
-        specifier: ^8.11.10
-        version: 8.20.0
       just-bash:
         specifier: ^3.1.0
         version: 3.2.0
@@ -1164,24 +1027,18 @@ importers:
       '@e965/xlsx':
         specifier: 0.20.3
         version: 0.20.3
+      '@electric-sql/pglite':
+        specifier: ^0.5.4
+        version: 0.5.4
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.29.0(@cfworker/json-schema@4.1.1)(zod@3.25.76)
-      '@vendoai/actions':
-        specifier: workspace:*
-        version: link:../actions
       '@vendoai/apps':
         specifier: workspace:*
         version: link:../apps
       '@vendoai/core':
         specifier: workspace:*
         version: link:../core
-      '@vendoai/store':
-        specifier: workspace:*
-        version: link:../store
-      '@vendoai/telemetry':
-        specifier: workspace:*
-        version: link:../vendo-telemetry
       '@vendoai/ui':
         specifier: workspace:*
         version: link:../ui
@@ -1191,6 +1048,9 @@ importers:
       ajv-formats:
         specifier: ^3.0.1
         version: 3.0.1(ajv@8.20.0)
+      aws4fetch:
+        specifier: ^1.0.20
+        version: 1.0.20
       croner:
         specifier: ^9.0.0
         version: 9.1.0
@@ -1206,6 +1066,9 @@ importers:
       just-bash:
         specifier: ^3.4.2
         version: 3.4.2
+      pg:
+        specifier: ^8.22.0
+        version: 8.22.0
       qrcode-generator:
         specifier: ^2.0.4
         version: 2.0.4
@@ -1215,6 +1078,9 @@ importers:
       unpdf:
         specifier: ^1.8.1
         version: 1.8.1
+      yaml:
+        specifier: ^2.6.0
+        version: 2.9.0
       zod:
         specifier: ^3.25.0
         version: 3.25.76
@@ -1234,9 +1100,6 @@ importers:
       '@clerk/backend':
         specifier: ^3.11.7
         version: 3.11.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@electric-sql/pglite':
-        specifier: ^0.2.0
-        version: 0.2.17
       '@mastra/core':
         specifier: 1.51.0
         version: 1.51.0(@bufbuild/protobuf@2.12.1)(@cfworker/json-schema@4.1.1)(ai@6.0.28(zod@3.25.76))(express@5.2.1)(rxjs@7.8.1)(zod@3.25.76)
@@ -1246,6 +1109,9 @@ importers:
       '@types/node':
         specifier: ^22.0.0
         version: 22.20.0
+      '@types/pg':
+        specifier: ^8.11.10
+        version: 8.20.0
       '@types/react':
         specifier: ^19.2.0
         version: 19.2.17
@@ -1255,6 +1121,9 @@ importers:
       ai:
         specifier: 6.0.28
         version: 6.0.28(zod@3.25.76)
+      next:
+        specifier: '>=16.2.11'
+        version: 16.2.11(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(@playwright/test@1.61.1)(@types/node@22.20.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react:
         specifier: ^19.0.0
         version: 19.2.7
@@ -1267,18 +1136,9 @@ importers:
       vitest:
         specifier: ^3.2.6
         version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
-
-  packages/vendo-telemetry:
-    devDependencies:
-      '@types/node':
-        specifier: ^22.0.0
-        version: 22.20.0
-      typescript:
-        specifier: ^5.6.0
-        version: 5.9.3
-      vitest:
-        specifier: ^3.2.6
-        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.0)(jiti@2.7.0)(jsdom@29.1.1(@noble/hashes@2.2.0))(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
+      zod-to-json-schema:
+        specifier: ^3.25.2
+        version: 3.25.2(zod@3.25.76)
 
   packages/vendoai:
     dependencies:
@@ -2017,9 +1877,6 @@ packages:
     resolution: {integrity: sha512-703RN/3OdsRD5mtse2HBX7Um7xwaP9tlswEG6svOtjqokXoX7rJdQj7DyabD2I+xk22RgaIIU+R6BHgkpZGB/w==}
     engines: {node: '>=0.8'}
     hasBin: true
-
-  '@electric-sql/pglite@0.2.17':
-    resolution: {integrity: sha512-qEpKRT2oUaWDH6tjRxLHjdzMqRUGYDnGZlKrnL4dJ77JVMcP2Hpo3NYnOSPKdZdeec57B6QPprCUFg0picx5Pw==}
 
   '@electric-sql/pglite@0.5.4':
     resolution: {integrity: sha512-yYZUyyXrHU7tPlCjwZQJ6hIG9DscdCCn7Uk0mYKwC1FeHX286AbcmFveMiRBEak8e9iPupjsoVImN3yJZVed2g==}
@@ -10415,8 +10272,6 @@ snapshots:
       '@duckdb/node-bindings-win32-x64': 1.5.2-r.2
 
   '@e965/xlsx@0.20.3': {}
-
-  '@electric-sql/pglite@0.2.17': {}
 
   '@electric-sql/pglite@0.5.4': {}
 

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import type { Principal } from "@vendoai/core";
-import type { Connector, ConnectorAccount } from "@vendoai/actions";
+import type { Connector, ConnectorAccount } from "../src/actions/index.js";
 import { byoConnections, cloudConnections, unconfiguredConnections } from "../src/connections.js";
 
 const ada: Principal = { kind: "user", subject: "user_ada" };

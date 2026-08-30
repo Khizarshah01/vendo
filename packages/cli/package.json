@@ -53,11 +53,8 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vendoai/actions": "workspace:*",
     "@vendoai/apps": "workspace:*",
     "@vendoai/core": "workspace:*",
-    "@vendoai/store": "workspace:*",
-    "@vendoai/telemetry": "workspace:*",
     "@vendoai/vendo": "workspace:*",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",

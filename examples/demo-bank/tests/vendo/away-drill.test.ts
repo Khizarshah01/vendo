@@ -54,11 +54,11 @@ import {
   type ToolRegistry,
   UNATTENDED_DESTRUCTIVE_REASON,
 } from "@vendoai/core";
-import { createActions } from "@vendoai/actions";
-import { authJsPreset } from "@vendoai/actions/presets/auth-js";
+import { createActions } from "@vendoai/vendo/actions";
+import { authJsPreset } from "@vendoai/vendo/actions/presets/auth-js";
 import { createAutomations, type AutomationsEngine } from "@vendoai/vendo/automations";
 import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { mapleDemoUsers } from "@/server/users";
 
 // Vitest's root IS the app dir, so cwd names it without `import.meta` — which

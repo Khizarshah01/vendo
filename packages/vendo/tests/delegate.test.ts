@@ -12,7 +12,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel, Tool, ToolCallOptions } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { vendoTools } from "../src/ai-sdk.js";
@@ -49,7 +49,7 @@ const reporting = defineHarness({
 
 /** A store the way a HOST supplies one: the whole public `VendoStore` surface,
  *  delegating to a real store so records and blobs genuinely work — but not the
- *  handle `@vendoai/store` minted, so it has no SQL tables and no StoreOps.
+ *  handle `@vendoai/vendo/store` minted, so it has no SQL tables and no StoreOps.
  *  `storeServesHarnessTurns` answers false for it. */
 function nonSqlStore(backing: VendoStore): VendoStore {
   return {

@@ -8,7 +8,7 @@
  * export breaks this suite instead of the next host's first hour.
  */
 import { defineHarness } from "../../src/harnesses/index.js";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { agent, e2b, postgres } from "../../src/turn/index.js";
 

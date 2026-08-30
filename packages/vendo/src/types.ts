@@ -13,7 +13,7 @@ import type {
   ExtractedTool,
   OverridesFile,
   ServerActionHandler,
-} from "@vendoai/actions";
+} from "./actions/index.js";
 import type { AppsConfig, SandboxAdapter, AppsRuntime } from "@vendoai/apps";
 import type { VendoAgent as ComposedAgent } from "./turn/index.js";
 import type { AutomationsEngine } from "./automations/index.js";
@@ -45,7 +45,7 @@ import type {
 import type { GuardRules, PolicyFile, VendoGuard } from "./guard/index.js";
 import type { ShellLimits } from "./harnesses/vendo/index.js";
 import type { HostOAuthAdapter } from "./mcp/index.js";
-import type { VendoStore } from "@vendoai/store";
+import type { VendoStore } from "./store/index.js";
 import type { VendoAgentTools } from "./agent-tools.js";
 import type { HostAuthPreset } from "./auth-presets/index.js";
 import type { ConnectionsService } from "./connections.js";

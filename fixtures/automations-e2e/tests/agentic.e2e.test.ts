@@ -20,7 +20,7 @@ import {
 import { agentRunnerConformance, runConformance } from "@vendoai/core/conformance";
 import { createGuard } from "@vendoai/vendo/guard";
 import { defineHarness } from "@vendoai/vendo/harnesses";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";

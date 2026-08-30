@@ -43,7 +43,7 @@ concurrency:
 #   ci                aggregate; KEEPS the required-check name `ci`
 #   integration-legs  the e2e fleet in 5 duration-balanced legs
 #   integration       aggregate; KEEPS the required-check name `integration`
-#   conformance       the three-package conformance suite
+#   conformance       the two-package conformance suite
 #   audit             supply-chain gate
 # Required checks on main are: ci, integration, conformance, audit.
 # Renaming any of those job names breaks merges. Both `ci` and `integration`
@@ -86,9 +86,9 @@ jobs:
   # Outputs, consumed verbatim by every job below:
   #   base    the git ref to diff against, or "" on a push to main
   #   filter  "--affected", or "" on a push to main (the full suite)
-  #   big3    space-separated subset of "vendo store ui" whose shards should run
+  #   big3    space-separated subset of "vendo ui" whose shards should run
   #
-  # Fails OPEN. If the probe itself breaks, filter is "" and big3 is all three,
+  # Fails OPEN. If the probe itself breaks, filter is "" and big3 is both,
   # i.e. the full suite runs. A broken probe must never be the reason a suite
   # did not run — that is the failure mode this whole design is guarding.
   cone:
@@ -121,7 +121,7 @@ jobs:
         run: |
           set -uo pipefail
           full() {
-            { echo "base="; echo "filter="; echo "big3=vendo store ui"; } >> "$GITHUB_OUTPUT"
+            { echo "base="; echo "filter="; echo "big3=vendo ui"; } >> "$GITHUB_OUTPUT"
           }
           if [ -z "$BASE_REF" ]; then
             echo "no base ref (push to main) — full suite, no cone"
@@ -138,7 +138,7 @@ jobs:
           cat /tmp/affected-names.txt
           echo "::endgroup::"
           big3=""
-          for p in vendo store ui; do
+          for p in vendo ui; do
             if grep -qx "@vendoai/$p" /tmp/affected-names.txt; then big3="$big3 $p"; fi
           done
           echo "big three in cone:${big3:- (none)}"
@@ -265,16 +265,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     needs: cone
-    # NOTE: only packages/store reads POSTGRES_URL anywhere in the tree
-    # (grep-verified across every packages/*/src and packages/*/tests), so the 4
-    # vendo and 2 ui shards each pay ~20s of container init for a database
-    # nothing they run can see. Left in place deliberately: GitHub Actions has
-    # no YAML anchors, so a per-matrix-entry service map means either a 250-char
-    # JSON blob repeated on three lines or splitting store into a second copy of
-    # this whole job — both of which cost more to read than 20s on a job that is
-    # not the critical path. Worth revisiting together with the store shard
-    # rebalance, which is where store's real time goes (store-1 was 409s of a
-    # 507s run on 1a875d4c).
+    # NOTE: the store's suites read POSTGRES_URL and they now live in
+    # @vendoai/vendo, so every vendo shard can need this database. Only the 2 ui
+    # shards pay ~20s of container init for one nothing they run can see. Left in
+    # place deliberately: GitHub Actions has no YAML anchors, so a
+    # per-matrix-entry service map means either a 250-char JSON blob repeated on
+    # eight lines or splitting ui into a second copy of this whole job — both of
+    # which cost more to read than 20s on a job that is not the critical path.
     services:
       postgres:
         image: postgres:16
@@ -293,17 +290,23 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # 4 shards, not 3: vitest deals files by count, not duration, and at
-          # 3 the full-stack suites clustered on shard 2 (7m25s vs its
-          # siblings' ~4m45s — measured on the #849 proof run), making it tie
-          # integration as the whole run's critical path.
-          - { name: vendo-1, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "1/4" }
-          - { name: vendo-2, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "2/4" }
-          - { name: vendo-3, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "3/4" }
-          - { name: vendo-4, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "4/4" }
-          - { name: store-1, key: store, pkg: "@vendoai/store", dir: packages/store, shard: "1/3", tsc: "true" }
-          - { name: store-2, key: store, pkg: "@vendoai/store", dir: packages/store, shard: "2/3", tsc: "true" }
-          - { name: store-3, key: store, pkg: "@vendoai/store", dir: packages/store, shard: "3/3", tsc: "true" }
+          # 8 shards, not 4. It was 4 because vitest deals files by count, not
+          # duration, and at 3 the full-stack suites clustered on shard 2 (7m25s
+          # vs its siblings' ~4m45s — measured on the #849 proof run). S11c then
+          # folded store, actions and telemetry in: 397 test files became 530 and
+          # the package's test estate went ~98k to ~126k lines, so 4 shards would
+          # put the slowest one near the 25m timeout. The timeout is a
+          # HANG-DETECTOR, not a speed limit, so the shard count moves instead —
+          # and store's own three shards leave with the package, so this costs
+          # one runner, not four.
+          - { name: vendo-1, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "1/8" }
+          - { name: vendo-2, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "2/8" }
+          - { name: vendo-3, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "3/8" }
+          - { name: vendo-4, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "4/8" }
+          - { name: vendo-5, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "5/8" }
+          - { name: vendo-6, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "6/8" }
+          - { name: vendo-7, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "7/8" }
+          - { name: vendo-8, key: vendo, pkg: "@vendoai/vendo", dir: packages/vendo, shard: "8/8" }
           - { name: ui-1, key: ui, pkg: "@vendoai/ui", dir: packages/ui, shard: "1/2" }
           - { name: ui-2, key: ui, pkg: "@vendoai/ui", dir: packages/ui, shard: "2/2" }
     env:
@@ -338,7 +341,7 @@ jobs:
       # nothing.
       # `heavy` is what takes the version PR out: it rewrites CHANGELOGs and
       # package.json versions, which puts every package in the cone and would
-      # otherwise run all nine shards for nothing.
+      # otherwise run all ten shards for nothing.
       RUN: ${{ needs.cone.outputs.heavy == 'true' && contains(needs.cone.outputs.big3, matrix.key) }}
     steps:
       - if: env.RUN == 'true'
@@ -366,9 +369,6 @@ jobs:
       - name: Build deps
         if: env.RUN == 'true'
         run: pnpm turbo run build --filter=${{ matrix.pkg }}
-      - name: tsc (store keeps its tsc-before-test contract)
-        if: env.RUN == 'true' && matrix.tsc == 'true'
-        run: pnpm --filter ${{ matrix.pkg }} exec tsc -p tsconfig.json
       # --reporter=default alongside blob: with blob as the SOLE reporter a
       # failing shard prints nothing about WHICH test failed, so a red shard
       # is undebuggable from the log alone.
@@ -459,7 +459,7 @@ jobs:
       # inside each package's vitest). Unbounded, the two layers multiply and
       # the live-Next-server suites flake (PR #340).
       - name: Test with coverage (PGlite + PostgreSQL)
-        run: pnpm turbo run test:coverage --continue --concurrency=2 $CONE --filter=!@vendoai/vendo --filter=!@vendoai/store --filter=!@vendoai/ui
+        run: pnpm turbo run test:coverage --continue --concurrency=2 $CONE --filter=!@vendoai/vendo --filter=!@vendoai/ui
       - name: pglite bundle tripwire (after)
         if: always()
         run: stat -c '%n size=%s inode=%i links=%h mtime=%Y' node_modules/.pnpm/@electric-sql+pglite@*/node_modules/@electric-sql/pglite/dist/pglite.data
@@ -477,7 +477,7 @@ jobs:
     if: needs.cone.outputs.heavy == 'true'
     uses: ./.github/workflows/ai-dual.yml
 
-  # The per-package coverage floors (vendo 78 / store 84 / ui 90, each in the
+  # The per-package coverage floors (vendo 78 / ui 90, each in the
   # package's vitest config) live HERE, because a floor is only meaningful
   # against the whole suite's coverage. vitest replays the shards' blob reports
   # without re-running a single test, then reports and enforces.
@@ -513,13 +513,6 @@ jobs:
           pattern: blob-vendo-*
           merge-multiple: true
           path: packages/vendo/.vitest-reports
-      - name: Download store shard blobs
-        continue-on-error: true
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
-        with:
-          pattern: blob-store-*
-          merge-multiple: true
-          path: packages/store/.vitest-reports
       - name: Download ui shard blobs
         continue-on-error: true
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
@@ -529,7 +522,7 @@ jobs:
           path: packages/ui/.vitest-reports
       - name: Merge shard reports and enforce coverage floors
         run: |
-          for pkg in vendo store ui; do
+          for pkg in vendo ui; do
             if [ -d "packages/$pkg/.vitest-reports" ]; then
               echo "::group::coverage merge — @vendoai/$pkg"
               pnpm --filter "@vendoai/$pkg" exec vitest run --merge-reports --coverage
@@ -801,7 +794,7 @@ jobs:
       - name: Turbo remote cache (GitHub-cache backed)
         uses: rharkor/caching-for-turbo@2238fae6eb9a9936f92356f54cb3660200d105e7 # v2.5.1
       - run: pnpm install --frozen-lockfile
-      # This job exercises exactly the three packages the root `conformance`
+      # This job exercises exactly the two packages the root `conformance`
       # script covers. `--affected` includes dependents, so a change anywhere
       # beneath them still runs this job — see the integration job's skip step
       # for the TURBO_SCM_BASE and fall-open rationale.
@@ -833,7 +826,6 @@ jobs:
           if pnpm turbo ls --affected --output=json > /tmp/affected.json \
              && jq -e '[.packages.items[].name | select(IN(
                   "@vendoai/core",
-                  "@vendoai/store",
                   "@vendoai/vendo"))] | length == 0' /tmp/affected.json > /dev/null; then
             echo "conformance scope unaffected by this PR; skipping"
             echo "skip=true" >> "$GITHUB_OUTPUT"

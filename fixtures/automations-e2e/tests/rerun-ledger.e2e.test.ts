@@ -11,9 +11,9 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { beforeEach, describe, expect, it } from "vitest";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { createGuard } from "@vendoai/vendo/guard";
-import { createActions } from "@vendoai/actions";
+import { createActions } from "@vendoai/vendo/actions";
 import { createApps } from "@vendoai/apps";
 import { automationsInternals, createAutomations } from "@vendoai/vendo/automations";
 import {

@@ -40,7 +40,7 @@ import {
   disposeSessionMachines,
   inferenceEnv,
 } from "../src/harnesses/claude-code/box.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import * as kit from "@vendoai/ui/kit";
 import { afterEach, describe, expect, it } from "vitest";
 import { appBuilder, BUILD_ALLOWED_DOMAINS, BUILD_STATUS_LINES } from "../src/build-agent.js";

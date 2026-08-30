@@ -20,8 +20,8 @@ import {
 } from "@vendoai/core";
 import type { VendoGuard } from "../guard/index.js";
 import type { McpDoor } from "../mcp/index.js";
-import type { VendoStore } from "@vendoai/store";
-import type { Telemetry } from "@vendoai/telemetry";
+import type { VendoStore } from "../store/index.js";
+import type { Telemetry } from "#telemetry";
 import type { ByoApprovalResolution } from "../byo-approvals.js";
 import type { FilesVenue } from "../compose-store.js";
 import type { HarnessTurns } from "../harness-turn.js";

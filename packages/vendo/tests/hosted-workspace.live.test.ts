@@ -16,7 +16,7 @@
  * runs never collide, and everything written is erased at the end.
  */
 import type { Principal } from "@vendoai/core";
-import { hostedStore, workspaceStore, type HostedStore } from "@vendoai/store";
+import { hostedStore, workspaceStore, type HostedStore } from "../src/store/index.js";
 import { afterAll, describe, expect, it } from "vitest";
 
 // A named secret can EXIST and be empty (`infisical secrets get` exits 0 either

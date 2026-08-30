@@ -10,7 +10,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import type { AddressInfo } from "node:net";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { composioConnector } from "@vendoai/actions";
+import { composioConnector } from "@vendoai/vendo/actions";
 import {
   ADA,
   BOB,

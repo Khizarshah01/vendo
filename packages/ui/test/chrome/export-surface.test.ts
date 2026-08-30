@@ -104,7 +104,7 @@ const require = createRequire(join(packageDir, "package.json"));
 const tsc = require.resolve("typescript/bin/tsc");
 
 // Scratch files live OUTSIDE the package tree, and that is load-bearing rather
-// than tidiness. `packages/actions`' repo-wide guard (tests/sync/
+// than tidiness. The actions block's repo-wide guard (tests/actions/sync/
 // protocol-facts.test.ts) lists every *.ts under packages/ and then reads each
 // one, so a fixture written into packages/ui and deleted a moment later made
 // that read die with ENOENT — a test in another package failing for no reason

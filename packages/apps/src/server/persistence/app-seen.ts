@@ -9,11 +9,11 @@
  *
  * The rows live in the GENERIC records collection, like the placement and slot
  * rows beside them: `vendo_app_seen` is neither reserved nor dedicated
- * (`packages/store/src/routing.ts`), so it routes to `vendo_records` on every
+ * (`packages/vendo/src/store/routing.ts`), so it routes to `vendo_records` on every
  * adapter with no migration to run.
  *
  * `refs` carries `subject` — the key the erase cascade matches
- * (`vendo_records WHERE refs @> '{"subject": …}'::jsonb`, `packages/store/src/
+ * (`vendo_records WHERE refs @> '{"subject": …}'::jsonb`, `packages/vendo/src/store/
  * erase.ts`), and the only query this surface makes — plus `app_id`, the same
  * ref name the rest of this package sweeps an app by.
  */

@@ -4,7 +4,7 @@
  * `mcp` servers, and `mergeSources` — one registry the guard binds, where a
  * name collision is a boot error, never a silent shadow.
  */
-import { createActions, mcpConnector, type Connector, type McpHeadersResolver } from "@vendoai/actions";
+import { createActions, mcpConnector, type Connector, type McpHeadersResolver } from "../actions/index.js";
 import {
   TOOL_NAME_PATTERN,
   VendoError,

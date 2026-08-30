@@ -4,7 +4,7 @@
  * Moved out of server.ts with the composition they serve; every one is a pure,
  * fail-soft read, and nothing here reaches the network.
  */
-import type { ExtractedTool } from "@vendoai/actions";
+import type { ExtractedTool } from "./actions/index.js";
 import { seedBaselineSchema, type SeedBaseline } from "@vendoai/apps";
 import {
   log,

@@ -16,7 +16,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal } from "@vendoai/core";
-import { createStore, eraseStore, storeFiles, type VendoStore } from "@vendoai/store";
+import { createStore, eraseStore, storeFiles, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createVendo } from "../src/server.js";
 

@@ -4,7 +4,7 @@ import {
   applyJudgment,
   judgmentFieldsSchema,
   type ExtractedTool,
-} from "@vendoai/actions";
+} from "@vendoai/vendo/actions";
 import type { ScorecardCheck, ScorecardScore } from "../scorecard.js";
 import { aiExpectedToolIdentity, type AiExpectedTool, type RepoAiExpectations } from "./expectations.js";
 
@@ -23,7 +23,7 @@ import { aiExpectedToolIdentity, type AiExpectedTool, type RepoAiExpectations } 
  * That is the state the CHANNEL decided — the same state `vendo doctor`
  * displays, and the same one the runtime resolves once the layer's
  * applier is in the tree (`effectiveHostTool` in
- * `packages/actions/src/runtime/registry.ts`, which composes
+ * `packages/vendo/src/actions/runtime/registry.ts`, which composes
  * `mergeOverride(applyJudgment(extracted, judgment), override)`).
  *
  * NOTE for whoever sequences the judgment stack: that applier arrives in its own

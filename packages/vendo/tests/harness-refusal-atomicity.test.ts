@@ -22,7 +22,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Principal } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
@@ -45,7 +45,7 @@ async function tempStore(): Promise<VendoStore> {
   return store;
 }
 
-/** The public surface only — no SQL handle in @vendoai/store's WeakMap, no
+/** The public surface only — no SQL handle in @vendoai/vendo/store's WeakMap, no
  *  `ops`. Records and blobs really work, which is the whole point: the write
  *  below is not blocked by a broken store, it is simply never rolled back. */
 function nonSqlStore(backing: VendoStore): VendoStore {

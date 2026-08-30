@@ -37,7 +37,7 @@ import type { ComponentRegistry, VendoRouteMap, VendoTheme } from "@vendoai/apps
 import { defineHarness } from "../src/harnesses/index.js";
 import { createSessionRoutes } from "../box/turn-routes.mjs";
 import { disposeSessionMachines } from "../src/harnesses/claude-code/box.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createVendo } from "../src/server.js";

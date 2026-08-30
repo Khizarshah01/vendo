@@ -19,7 +19,7 @@ these rules exist to stop them from recurring.
 - **Tools are labeled only for the detector's intended surface**: app-router
   route handlers under `/api` (or an `(api)` route group) and Pages Router
   handlers under `pages/api`, matching `appRoutePath`/`pagesRoutePath` in
-  `packages/actions/src/sync/route-scan.ts`. Route handlers that live
+  `packages/vendo/src/actions/sync/route-scan.ts`. Route handlers that live
   elsewhere are out of scope by design and must not be labeled — for example
   umami's tracking-pixel and redirect collect endpoints at
   `src/app/(collect)/p/[slug]/route.ts` and `src/app/(collect)/q/[slug]/route.ts`

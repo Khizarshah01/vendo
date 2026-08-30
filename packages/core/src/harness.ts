@@ -55,7 +55,7 @@ export interface Turn<Options = unknown> {
   readonly workspace: WorkspaceFs;
   /** §4 — the seats this turn was handed. Any subset: a seat is required only
    *  where a harness actually reads it.
-   *  `SeatModels` itself is generic so `@vendoai/store` can speak seats without
+   *  `SeatModels` itself is generic so `@vendoai/vendo/store` can speak seats without
    *  an `ai` dependency; a `Turn` is handed to an in-process harness that passes
    *  the seat straight to `streamText`, so here the model type is named. */
   readonly models: SeatModels<LanguageModel>;

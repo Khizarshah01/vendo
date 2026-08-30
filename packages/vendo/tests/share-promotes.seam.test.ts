@@ -8,7 +8,7 @@ import {
   type Principal,
   type ToolRegistry,
 } from "@vendoai/core";
-import { createStore, createStoreOps, type VendoStore } from "@vendoai/store";
+import { createStore, createStoreOps, type VendoStore } from "../src/store/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";
 

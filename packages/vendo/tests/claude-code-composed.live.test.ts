@@ -42,7 +42,7 @@ import type { LanguageModel, UIMessage } from "ai";
 import type { Principal, ToolDescriptor, ToolRegistry } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
 import { claudeCode } from "../src/harnesses/claude-code/index.js";
-import { createStore, maybeDbFor, type VendoStore } from "@vendoai/store";
+import { createStore, maybeDbFor, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";
 

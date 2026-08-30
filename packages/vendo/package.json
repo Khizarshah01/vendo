@@ -83,6 +83,42 @@
     "./box-door": {
       "default": "./box/turn-routes.mjs"
     },
+    "./store": {
+      "types": "./dist/store/index.d.ts",
+      "default": "./dist/store/index.js"
+    },
+    "./store/postgres": {
+      "types": "./dist/store/postgres.d.ts",
+      "default": "./dist/store/postgres.js"
+    },
+    "./store/test-util": {
+      "types": "./dist/store/fake-console.d.ts",
+      "default": "./dist/store/fake-console.js"
+    },
+    "./actions": {
+      "types": "./dist/actions/index.d.ts",
+      "default": "./dist/actions/index.js"
+    },
+    "./actions/presets": {
+      "types": "./dist/actions/presets/index.d.ts",
+      "default": "./dist/actions/presets/index.js"
+    },
+    "./actions/presets/auth-js": {
+      "types": "./dist/actions/presets/auth-js.d.ts",
+      "default": "./dist/actions/presets/auth-js.js"
+    },
+    "./actions/sync": {
+      "types": "./dist/actions/sync/public.d.ts",
+      "default": "./dist/actions/sync/public.js"
+    },
+    "./telemetry": {
+      "types": "./dist/telemetry/index.d.ts",
+      "workerd": "./dist/telemetry/edge.js",
+      "worker": "./dist/telemetry/edge.js",
+      "edge-light": "./dist/telemetry/edge.js",
+      "browser": "./dist/telemetry/edge.js",
+      "default": "./dist/telemetry/index.js"
+    },
     "./server": {
       "types": "./dist/server.d.ts",
       "default": "./dist/server.js"
@@ -128,30 +164,31 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
-    "conformance": "vitest run tests/conformance.test.ts",
+    "conformance": "vitest run tests/conformance.test.ts tests/store/conformance.test.ts tests/store/contract-routing.conformance.test.ts tests/store/security/audit-append-only.conformance.test.ts tests/store/security/secrets-aad.conformance.test.ts tests/store/flip-guards.conformance.test.ts tests/store/erase.conformance.test.ts tests/store/workspace.erase.test.ts tests/store/postgres-gate.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.docs-check.json --noEmit && tsc -p tsconfig.test.json --noEmit",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.12",
     "@e965/xlsx": "0.20.3",
+    "@electric-sql/pglite": "^0.5.4",
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "@vendoai/actions": "workspace:*",
     "@vendoai/apps": "workspace:*",
     "@vendoai/core": "workspace:*",
-    "@vendoai/store": "workspace:*",
-    "@vendoai/telemetry": "workspace:*",
     "@vendoai/ui": "workspace:*",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
+    "aws4fetch": "^1.0.20",
     "croner": "^9.0.0",
     "fflate": "^0.8.3",
     "jose": "^6.2.3",
     "jsonata": "^2.0.5",
     "just-bash": "^3.4.2",
+    "pg": "^8.22.0",
     "qrcode-generator": "^2.0.4",
     "undici": "^7.29.0",
     "unpdf": "^1.8.1",
+    "yaml": "^2.6.0",
     "zod": "^3.25.0"
   },
   "peerDependencies": {
@@ -161,6 +198,7 @@
     "@mastra/core": ">=1.0.0 <2",
     "ai": ">=6.0.0 <8",
     "jose": ">=5.0.0",
+    "next": ">=14",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
     "zod": ">=3.25.0 <5"
@@ -178,6 +216,9 @@
     "jose": {
       "optional": true
     },
+    "next": {
+      "optional": true
+    },
     "@anthropic-ai/claude-agent-sdk": {
       "optional": true
     }
@@ -188,17 +229,19 @@
     "@anthropic-ai/sdk": "^0.112.3",
     "@auth/core": "^0.41.3",
     "@clerk/backend": "^3.11.7",
-    "@electric-sql/pglite": "^0.2.0",
     "@mastra/core": "1.51.0",
     "@types/json-schema": "^7.0.15",
     "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.10",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "ai": "6.0.28",
+    "next": "16.2.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "typescript": "^5.6.0",
-    "vitest": "^3.2.6"
+    "vitest": "^3.2.6",
+    "zod-to-json-schema": "^3.25.2"
   },
   "imports": {
     "#dev-creds/model": {
@@ -207,6 +250,34 @@
       "edge-light": "./dist/dev-creds/model-edge.js",
       "browser": "./dist/dev-creds/model-edge.js",
       "default": "./dist/dev-creds/model.js"
+    },
+    "#store/db": {
+      "workerd": "./dist/store/db-edge.js",
+      "worker": "./dist/store/db-edge.js",
+      "edge-light": "./dist/store/db-edge.js",
+      "browser": "./dist/store/db-edge.js",
+      "default": "./dist/store/db.js"
+    },
+    "#store/crypto": {
+      "workerd": "./dist/store/crypto-edge.js",
+      "worker": "./dist/store/crypto-edge.js",
+      "edge-light": "./dist/store/crypto-edge.js",
+      "browser": "./dist/store/crypto-edge.js",
+      "default": "./dist/store/crypto.js"
+    },
+    "#telemetry": {
+      "workerd": "./dist/telemetry/edge.js",
+      "worker": "./dist/telemetry/edge.js",
+      "edge-light": "./dist/telemetry/edge.js",
+      "browser": "./dist/telemetry/edge.js",
+      "default": "./dist/telemetry/index.js"
+    },
+    "#actions/host-files": {
+      "workerd": "./dist/actions/runtime/host-files-edge.js",
+      "worker": "./dist/actions/runtime/host-files-edge.js",
+      "edge-light": "./dist/actions/runtime/host-files-edge.js",
+      "browser": "./dist/actions/runtime/host-files-edge.js",
+      "default": "./dist/actions/runtime/host-files.js"
     }
   }
 }

@@ -132,7 +132,7 @@ describe("component runs the ONE gauntlet, and it is the paint gate", () => {
     // spent for nothing — and the toolchain's own why reaches the caller
     // verbatim, so whoever CAN fix it reads the fix.
     const why = "no esbuild is reachable from @vendoai/apps — keep this package out of the server bundle"
-      + ' (Next: serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/store", "@vendoai/apps"])';
+      + ' (Next: serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo", "@vendoai/apps"])';
     const painted = await floor({
       toolchain: {
         transform: async () => { throw new ScreenToolchainUnavailable(why); },

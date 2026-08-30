@@ -27,7 +27,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { wrapWorkspaceForRender } from "@vendoai/apps";
 import type { Json, Principal, RunContext, ToolDefinition } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { testWorkspace } from "../../src/agent-doubles.test-util.js";

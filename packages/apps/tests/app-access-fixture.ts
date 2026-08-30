@@ -15,7 +15,7 @@ import type { memoryStore } from "../src/server/testing/memory-store.js";
 
 /**
  * A stand-in for `appAccess(store)` over the same rows: the real function lives
- * in @vendoai/store and `apps → core` is the only edge layering allows the
+ * in @vendoai/vendo/store and `apps → core` is the only edge layering allows the
  * runtime (or its tests).
  *
  * Every RULE it applies comes from core (`accessForPath`, `grantMatches`,
@@ -23,7 +23,7 @@ import type { memoryStore } from "../src/server/testing/memory-store.js";
  * real implementation applies — so all that is left here is reading rows, and
  * there is nothing for the two to disagree about. What remains is pinned by
  * core's `appAccessConformance` kit, which BOTH suites mount (access.test.ts
- * here, app-access.test.ts in @vendoai/store): a rule that moves on either side
+ * here, app-access.test.ts in @vendoai/vendo/store): a rule that moves on either side
  * fails on both. Before that, mutating the real `can()` to `return true` left
  * this file's suite entirely green.
  */
@@ -88,7 +88,7 @@ export function storeAccessFixture(store: ReturnType<typeof memoryStore>): AppAc
         );
       }
       // "Share implies promote" for a PERSON too (design §8, ruled 2026-08-01):
-      // see the same refusal in @vendoai/store's appAccess, pinned by core's
+      // see the same refusal in @vendoai/vendo/store's appAccess, pinned by core's
       // conformance kit that both mount.
       const heldByAnOrg = (runCtx.memberships ?? []).some((entry) => entry.org === orgId);
       if (named.kind === "user" && named.subject !== orgId && !heldByAnOrg) {

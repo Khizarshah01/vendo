@@ -14,9 +14,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { inject } from "vitest";
 import { type ActAs, type AgentRunner, type AgentRunners, type AppDocument, type AutomationRecord, type CreateAutomation, type CreateAutomationInput, DEFAULT_RUNNER_NAME, type PolicyConfig, type Principal, type RiskResolver, type RunContext, serviceToolSlug, type ToolRegistry, USE_SERVICE_TOOL } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";
-import { createActions } from "@vendoai/actions";
+import { createActions } from "@vendoai/vendo/actions";
 import { connectorDiscoveryRegistry } from "@vendoai/vendo";
 import { createApps, type AppsRuntime } from "@vendoai/apps";
 import {

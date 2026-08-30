@@ -21,7 +21,7 @@
  * under a tenant-scoped name and read back only to build a connector — `list`
  * and `register` answer descriptors and metadata, never the credential.
  */
-import { mcpConnector, openApiConnector, type Connector } from "@vendoai/actions";
+import { mcpConnector, openApiConnector, type Connector } from "./actions/index.js";
 import {
   VendoError,
   isVendoError,

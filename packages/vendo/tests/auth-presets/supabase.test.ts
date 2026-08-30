@@ -1,4 +1,4 @@
-import { supabasePreset } from "@vendoai/actions/presets";
+import { supabasePreset } from "../../src/actions/presets/index.js";
 import type { PermissionGrant } from "@vendoai/core";
 import { SignJWT } from "jose";
 import { afterEach, describe, expect, it, vi } from "vitest";

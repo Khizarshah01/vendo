@@ -28,7 +28,7 @@ import {
   type StoreOps,
 } from "@vendoai/core";
 import { memoryStoreOps } from "@vendoai/core/conformance";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { readSse, scriptedModel, textTurn, toolCallTurn, type ScriptedModel } from "../src/agent-doubles.test-util.js";

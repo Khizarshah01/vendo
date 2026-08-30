@@ -4,7 +4,7 @@ Vendo collects anonymous, opt-out telemetry from build and development tooling s
 
 ## What Is Collected
 
-Every event uses a random anonymous id plus the event properties listed here. The allowlist below mirrors `packages/vendo-telemetry/src/events.ts`; keys outside these sets are dropped before sending.
+Every event uses a random anonymous id plus the event properties listed here. The allowlist below mirrors `packages/vendo/src/telemetry/events.ts`; keys outside these sets are dropped before sending.
 
 Every event carries the base properties `vendoVersion`, `osPlatform`, `nodeVersion`, `projectIdHash`, and `packageManager` (written *base* below). `packageManager` is a closed enum — `npm`, `pnpm`, `yarn`, or `bun` — read from the package manager's own user-agent env var, and omitted when unknown. `projectIdHash` is described under Anonymous Identity.
 
@@ -63,7 +63,7 @@ Setting a well-formed `VENDO_API_KEY` (`vnd_` plus 40 hex characters) switches t
 
 In the cloud lane every event additionally carries `cloud: true` and `cloudKeyHash`, the SHA-256 of the API key. The Vendo console stores key hashes, so cloud events can be joined to the owning account; PostHog never receives the key itself.
 
-Cloud-lane events may also carry these extra properties (the `CLOUD_PROP_KEYS` set in `packages/vendo-telemetry/src/events.ts`), allowed on every event: `projectName`, `repoHost`, `errorDetail`, and the per-stage init timings `detectMs`, `engineMs`, `themeMs`, `wiringMs`. Without a valid key these keys are stripped before sending, even if the tooling passes them.
+Cloud-lane events may also carry these extra properties (the `CLOUD_PROP_KEYS` set in `packages/vendo/src/telemetry/events.ts`), allowed on every event: `projectName`, `repoHost`, `errorDetail`, and the per-stage init timings `detectMs`, `engineMs`, `themeMs`, `wiringMs`. Without a valid key these keys are stripped before sending, even if the tooling passes them.
 
 `errorDetail` is the only free-text property Vendo ever sends. It is scrubbed first: file paths, email addresses, and secret-shaped strings (API keys, bearer tokens, long hex or base64 runs) are replaced with fixed tokens like `[path]` and `[secret]`, then the result is capped at 200 characters. The telemetry client re-scrubs every `errorDetail` as defense-in-depth even when the caller already did.
 

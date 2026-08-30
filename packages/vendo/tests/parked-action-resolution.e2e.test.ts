@@ -11,7 +11,7 @@ import {
   type ToolRegistry,
 } from "@vendoai/core";
 import { createGuard } from "../src/guard/index.js";
-import { createStore, createStoreOps } from "@vendoai/store";
+import { createStore, createStoreOps } from "../src/store/index.js";
 import { screenSource } from "./screen-fixture.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { createByoApprovals } from "../src/byo-approvals.js";

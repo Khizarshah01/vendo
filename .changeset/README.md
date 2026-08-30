@@ -7,10 +7,7 @@ markdown file per user-facing change describing the bump it warrants.
 
 The published packages (the `fixed` list in `config.json`) are a **fixed
 lockstep group**: any changeset that bumps one bumps all of them to the same
-version. `@vendoai/telemetry` is deliberately **left out of the fixed group**
-so it versions independently (it is a pure leaf and only bumps when a changeset
-explicitly targets it — it cannot be added to `ignore` because `@vendoai/vendo`
-depends on it). All other workspaces (`examples/*`, `fixtures/*`, `bench`,
+version. All other workspaces (`examples/*`, `fixtures/*`, `bench`,
 `corpus/*`, `tools/*`) are `private` and are never versioned or published.
 
 ## Adding a changeset

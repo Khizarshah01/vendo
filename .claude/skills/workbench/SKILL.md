@@ -11,7 +11,7 @@ zero diagnostic parts on the wire). Shipped in PR #1130.
 
 ## Run
 
-    pnpm install && pnpm build       # once — dist must exist; @vendoai/store stays dist-pinned, so edits there need a rebuild
+    pnpm install && pnpm build       # once — dist must exist; @vendoai/vendo/store stays dist-pinned, so edits there need a rebuild
     VENDO_WORKBENCH=1 pnpm --filter demo-bank dev
     open http://localhost:3000
 

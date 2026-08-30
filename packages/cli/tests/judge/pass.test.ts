@@ -10,7 +10,7 @@ import {
   type ExtractedTool,
   type JudgmentsFile,
   type ToolJudgment,
-} from "@vendoai/actions";
+} from "@vendoai/vendo/actions";
 import type { ExtractionHarness } from "../../src/extract/harness.js";
 import { JUDGE_BATCH_LIMIT, runJudgmentPass, type JudgmentPassOptions } from "../../src/judge/pass.js";
 

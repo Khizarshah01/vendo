@@ -22,7 +22,7 @@ import type {
   ExtractedTool,
   OverridesFile,
   ServerActionHandler,
-} from "@vendoai/actions";
+} from "./actions/index.js";
 import type { AgentComposition } from "./turn/index.js";
 import type { AppsRuntime, SeedBaseline } from "@vendoai/apps";
 import type { AutomationsEngine } from "./automations/index.js";
@@ -49,7 +49,7 @@ import type { VendoGuard, RiskResolver } from "./guard/index.js";
 import type { CapabilityMissConfig } from "./harnesses/index.js";
 import type { VendoToolSearchConfig } from "./harnesses/vendo/index.js";
 import type { McpDoor, TurnCredentials } from "./mcp/index.js";
-import type { VendoStore } from "@vendoai/store";
+import type { VendoStore } from "./store/index.js";
 import type { createByoApprovals } from "./byo-approvals.js";
 import type { McpBundle } from "./cloud-mcp.js";
 import type { CapabilitySurfaceSnapshot } from "./capability-misses.js";
@@ -80,9 +80,9 @@ import type { TenantConnectors } from "./tenant-connectors.js";
 import type { AppsOptions, CreateVendoConfig } from "./types.js";
 import type { resolveVendoUrls } from "./urls.js";
 import type { WireDeps } from "./wire/shared.js";
-import type { createConnectGate, mergedHostSemantics } from "@vendoai/actions";
+import type { createConnectGate, mergedHostSemantics } from "./actions/index.js";
 import type { selectSandbox } from "@vendoai/apps";
-import type { appAccess } from "@vendoai/store";
+import type { appAccess } from "./store/index.js";
 import type { HostAuthPreset } from "./auth-presets/index.js";
 
 /** The actions registry config object, named because composition MUTATES two of

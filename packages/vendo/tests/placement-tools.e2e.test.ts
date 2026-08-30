@@ -35,7 +35,7 @@ import {
   makeReceiptSchema,
 } from "@vendoai/apps/contract";
 import { defineHarness } from "../src/harnesses/index.js";
-import type { VendoStore } from "@vendoai/store";
+import type { VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   SUBJECT,

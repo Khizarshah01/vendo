@@ -7,7 +7,7 @@
  * (CLAUDE.md: test the SEAM).
  */
 import { defineHarness } from "../../src/harnesses/index.js";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { agent } from "../../src/turn/agent.js";
 // Through the BARREL: the header a host reads the thread id from is this

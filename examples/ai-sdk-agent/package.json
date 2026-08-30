@@ -14,7 +14,6 @@
     "@ai-sdk/anthropic": "3.0.12",
     "@ai-sdk/react": "3.0.30",
     "@vendoai/core": "workspace:*",
-    "@vendoai/store": "workspace:*",
     "@vendoai/ui": "workspace:*",
     "@vendoai/vendo": "workspace:*",
     "ai": "6.0.28",

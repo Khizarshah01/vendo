@@ -5,7 +5,7 @@ import { join } from "node:path";
 import type { LanguageModel } from "ai";
 import type { SandboxAdapter } from "@vendoai/apps";
 import type { Principal } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 // 0.4.4 defect C — the field host (Turbopack server bundle, no e2b install)

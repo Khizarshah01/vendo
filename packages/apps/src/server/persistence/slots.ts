@@ -10,11 +10,11 @@
  *
  * The rows live in the GENERIC records collection, like the placement rows
  * beside them (`placements.ts`): `vendo_slots` is neither reserved nor
- * dedicated (`packages/store/src/routing.ts`), so it routes to `vendo_records`
+ * dedicated (`packages/vendo/src/store/routing.ts`), so it routes to `vendo_records`
  * on every adapter with no migration to run.
  *
  * `refs` carries `subject` and nothing else — the key the erase cascade matches
- * (`vendo_records WHERE refs @> '{"subject": …}'::jsonb`, `packages/store/src/
+ * (`vendo_records WHERE refs @> '{"subject": …}'::jsonb`, `packages/vendo/src/store/
  * erase.ts`), and the only query this surface ever makes.
  */
 import { SLOT_DECAY_MS, type RunContext, type SlotEntry, type VendoRecord } from "@vendoai/core";

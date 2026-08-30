@@ -15,7 +15,7 @@
  * the end, and every id is per-run unique so two runs never collide.
  */
 import { VendoError, type Principal } from "@vendoai/core";
-import { harnessStateStore, hostedStore, threadMessageStore, type HostedStore } from "@vendoai/store";
+import { harnessStateStore, hostedStore, threadMessageStore, type HostedStore } from "../src/store/index.js";
 import type { UIMessage } from "ai";
 import { afterAll, describe, expect, it } from "vitest";
 

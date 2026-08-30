@@ -1,7 +1,7 @@
 /**
  * The app cascade's LAST mile. `eraseStore().byApp` already destroys an app's
  * workspace rows, its history and its blobs, and is tested against a real
- * database in `@vendoai/store` — what was missing is anyone calling it. That
+ * database in `@vendoai/vendo/store` — what was missing is anyone calling it. That
  * call is what this proves, with its exact target.
  */
 import { engineOverAdapter, VENDO_APP_FORMAT, type RunContext, type StoreOps, type ToolRegistry } from "@vendoai/core";

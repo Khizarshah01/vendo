@@ -45,7 +45,7 @@ describe("engine allowlist", () => {
   });
 
   // vendo_secrets has zero `.records()` call sites — it is served only by the
-  // dedicated secretStore door (packages/store/src/secrets.ts), so the engine
+  // dedicated secretStore door (packages/vendo/src/store/secrets.ts), so the engine
   // family must never reach it.
   it("does not admit vendo_secrets", () => {
     expect(isEngineCollection("vendo_secrets")).toBe(false);

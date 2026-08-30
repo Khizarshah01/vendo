@@ -28,7 +28,7 @@ import {
   type StoreOps,
 } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, createStoreOps, type VendoStore } from "@vendoai/store";
+import { createStore, createStoreOps, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";
 import { scriptedModel, textTurn } from "../src/agent-doubles.test-util.js";

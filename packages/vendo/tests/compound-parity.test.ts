@@ -1,4 +1,4 @@
-import { createActions, VENDO_OVERRIDES_FORMAT, type ExtractedTool, type OverridesFile } from "@vendoai/actions";
+import { createActions, VENDO_OVERRIDES_FORMAT, type ExtractedTool, type OverridesFile } from "../src/actions/index.js";
 import { automationsInternals, createAutomations } from "../src/automations/index.js";
 import {
   type ApprovalId,

@@ -47,7 +47,7 @@ const createRunReadDoors = (
     // Only what the ledger is KEYED by goes to the store: `vendo_runs` carries an
     // automation id and a status and nothing else — a run names no subject of its
     // own, which is also why the erase cascade reaches a person's runs through
-    // their automations (packages/store/src/erase.ts). Owner and agent are read
+    // their automations (packages/vendo/src/store/erase.ts). Owner and agent are read
     // off the row in the walk below, exactly as `list` reads an automation's
     // `agent` off its row.
     const refs = {

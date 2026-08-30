@@ -1,4 +1,4 @@
-import { composioToolRisk, normalizeToolName, type Connector, type ConnectorAccountIdentity } from "@vendoai/actions";
+import { composioToolRisk, normalizeToolName, type Connector, type ConnectorAccountIdentity } from "./actions/index.js";
 import type { RunContext, ToolCall, ToolDescriptor, ToolOutcome } from "@vendoai/core";
 import { debugConnectorHttp, deploymentIdentityHeaders, log } from "@vendoai/core";
 import { keepAliveFetch } from "./keep-alive-fetch.js";

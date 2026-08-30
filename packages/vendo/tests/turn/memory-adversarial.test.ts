@@ -4,7 +4,7 @@
  */
 import type { Guard, Principal, RunContext, ToolCall } from "@vendoai/core";
 import { defineHarness } from "../../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";
 import { agent, agentComposition } from "../../src/turn/agent.js";
 import {
@@ -296,7 +296,7 @@ describe("erase takes a person's memories with the rest of their data", () => {
     const bob = user("user_bob");
     await memory.remember(alice, "Prefers window seats");
     await memory.remember(bob, "Prefers the aisle");
-    const { eraseStore, storeFiles } = await import("@vendoai/store");
+    const { eraseStore, storeFiles } = await import("../../src/store/index.js");
     const erase = eraseStore(store, { files: storeFiles(store) });
     await erase.bySubject(alice.subject);
     expect(await memory.list(alice)).toEqual([]);

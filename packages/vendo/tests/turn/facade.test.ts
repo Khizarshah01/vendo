@@ -12,7 +12,7 @@
  */
 import type { Principal, RunContext } from "@vendoai/core";
 import { defineHarness } from "../../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";
 import { agent, agentComposition, type VendoAgent } from "../../src/turn/agent.js";
 import { createTurns } from "../../src/turn/interruptions.js";

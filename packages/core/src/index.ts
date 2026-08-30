@@ -67,6 +67,7 @@ export * from "./store-wire.js";
 export * from "./tenant-directory.js";
 export * from "./style.js";
 export * from "./engine-collections.js";
+export * from "./store-collections.js";
 export * from "./engine-over-adapter.js";
 export * from "./stream-parts.js";
 export * from "./tool-envelopes.js";

@@ -14,7 +14,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { RunContext } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createVendo, type Vendo } from "@vendoai/vendo/server";
 import { mapleDemoUsers } from "@/server/users";
 import { seedConsoleData, seedId } from "../../src/demo-script/console-seed";

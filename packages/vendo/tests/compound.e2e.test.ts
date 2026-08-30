@@ -8,7 +8,7 @@ import {
   type CompoundTool,
   type ExtractedTool,
   type OverridesFile,
-} from "@vendoai/actions";
+} from "../src/actions/index.js";
 import {
   descriptorHash,
   type ActAs,
@@ -21,7 +21,7 @@ import {
   type ToolRegistry,
 } from "@vendoai/core";
 import { createGuard, type PolicyConfig } from "../src/guard/index.js";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createVendo } from "../src/server.js";

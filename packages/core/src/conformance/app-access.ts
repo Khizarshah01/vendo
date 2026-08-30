@@ -8,7 +8,7 @@ import type { ConformanceCase, ConformanceSuite } from "./index.js";
  * Build contract §9.2–§9.4 — the executable definition of `can()`.
  *
  * There are two implementations of this seam: `appAccess(store)` in
- * @vendoai/store, and the stand-in @vendoai/apps' own tests run against a
+ * @vendoai/vendo/store, and the stand-in @vendoai/apps' own tests run against a
  * memory store (the runtime cannot import the store — `apps → core` is the only
  * edge layering allows it). Two implementations of one rule is exactly how a
  * permission check rots: mutate the real `can()` to `return true` and the

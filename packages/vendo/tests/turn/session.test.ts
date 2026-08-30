@@ -6,7 +6,7 @@
 import { VendoError, type ApprovalRequest, type RunContext, type Turn } from "@vendoai/core";
 import { createGuard, type VendoGuard } from "../../src/guard/index.js";
 import { defineHarness } from "../../src/harnesses/index.js";
-import { createStore, threadMessageStore, threadStore } from "@vendoai/store";
+import { createStore, threadMessageStore, threadStore } from "../../src/store/index.js";
 import { mkdtemp, rm, writeFile, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";

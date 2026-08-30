@@ -1,9 +1,9 @@
 import { anthropic } from "@ai-sdk/anthropic";
-import { composioConnector } from "@vendoai/actions";
+import { composioConnector } from "@vendoai/vendo/actions";
 import type { LimitsCallback, Principal } from "@vendoai/core";
 import { memoryKnowledgeAdapter } from "@vendoai/core/conformance";
 import { vendoAutoJudge } from "@vendoai/vendo/guard";
-import { createStore } from "@vendoai/store";
+import { createStore } from "@vendoai/vendo/store";
 import { authJs } from "@vendoai/vendo/auth/auth-js";
 import { createVendo, guard, vendoModel, type HostAuthPreset } from "@vendoai/vendo/server";
 import { authSecret, primaryMapleUser, resolveMapleSubject } from "@/server/users";

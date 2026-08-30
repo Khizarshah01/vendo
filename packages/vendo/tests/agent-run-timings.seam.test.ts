@@ -16,7 +16,7 @@ import { join } from "node:path";
 import type { Principal, ToolDescriptor, ToolRegistry, VendoUsageEvent } from "@vendoai/core";
 import { setUsageSink } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { afterEach, expect, it } from "vitest";
 import { createSdkEvents } from "../src/sdk-events.js";

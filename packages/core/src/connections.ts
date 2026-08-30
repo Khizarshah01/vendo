@@ -1,6 +1,6 @@
 /**
  * The per-user CONNECTED ACCOUNT vocabulary, as the `/connections` doors answer
- * it — one definition for the three sites that speak it: `@vendoai/actions`
+ * it — one definition for the three sites that speak it: `@vendoai/vendo/actions`
  * (the connector adapter that produces the rows), `@vendoai/vendo` (the doors
  * that serve them) and `@vendoai/ui` (the connect dock that reads them). None
  * of those may import each other, so this is the only place all three can meet.

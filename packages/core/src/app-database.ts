@@ -1,6 +1,6 @@
 /**
  * One database per app. Real SQL, one adapter interface, two implementations
- * (the host's own Postgres in @vendoai/store, Vendo Cloud's per-app edge SQLite
+ * (the host's own Postgres in @vendoai/vendo/store, Vendo Cloud's per-app edge SQLite
  * in the umbrella) — the ADAPTER RULE seam for app storage.
  *
  * The adapter EXECUTES and decides nothing. Every rule that makes `mine.` one

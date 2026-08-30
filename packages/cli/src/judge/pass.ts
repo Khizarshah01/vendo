@@ -17,8 +17,8 @@ import {
   type JudgmentsFile,
   type PendingLoosening,
   type ToolJudgment,
-} from "@vendoai/actions";
-import { patchToolSchemas, type ToolSchemaPatch, type ToolSchemaSlot } from "@vendoai/actions/sync";
+} from "@vendoai/vendo/actions";
+import { patchToolSchemas, type ToolSchemaPatch, type ToolSchemaSlot } from "@vendoai/vendo/actions/sync";
 import type { ExtractionHarness } from "../extract/harness.js";
 import { parseJudgeArtifact } from "./parse.js";
 import { readOptional, type Output } from "../shared.js";
@@ -45,7 +45,7 @@ import { reviewLoosenings, sanitize, type LooseningReviewItem } from "./review.j
  * - anything the skeptic never looked at gets ONE re-ask and is then REJECTED.
  *   Unexamined must never mean applied, and the narrative says how many;
  * - what survives is routed by the deterministic direction rule in
- *   `@vendoai/actions`: hardenings and prose apply themselves, loosenings wait
+ *   `@vendoai/vendo/actions`: hardenings and prose apply themselves, loosenings wait
  *   for a human.
  *
  * Every model-originated string and every evidence snippet is untrusted repo

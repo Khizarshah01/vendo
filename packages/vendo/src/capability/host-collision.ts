@@ -9,7 +9,7 @@ import { VendoError } from "@vendoai/core";
 
 /**
  * The `.vendo` directory a configured `profileDir` means — the SAME rule the tool
- * registry's own reader uses (`readOptionalVendoJson` in @vendoai/actions):
+ * registry's own reader uses (`readOptionalVendoJson` in @vendoai/vendo/actions):
  * `dir` may be the host root, in which case `.vendo` is inside it, or the
  * `.vendo` directory itself.
  *

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { bindingIdentity, type ExtractedTool } from "@vendoai/actions";
+import { bindingIdentity, type ExtractedTool } from "@vendoai/vendo/actions";
 import { scoreAiJudgments, type AiScoredJudgment, type AiScoredStaticTool } from "../../src/ai/score.js";
 import type { RepoAiExpectations } from "../../src/ai/expectations.js";
 

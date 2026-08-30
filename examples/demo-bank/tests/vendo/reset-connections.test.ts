@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { ConnectorAccount } from "@vendoai/actions";
+import type { ConnectorAccount } from "@vendoai/vendo/actions";
 import type { ConnectionsService } from "@vendoai/vendo/server";
 import { sweepDemoConnections } from "../../src/vendo/reset-connections";
 

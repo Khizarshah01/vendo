@@ -10,7 +10,7 @@ import {
   type KnowledgeQuery,
   type Principal,
 } from "@vendoai/core";
-import { createStore, type VendoStore } from "@vendoai/store";
+import { createStore, type VendoStore } from "../src/store/index.js";
 import { screenDocument, screenSource } from "./screen-fixture.js";
 import type { LanguageModel } from "ai";
 import { afterEach, describe, expect, it } from "vitest";

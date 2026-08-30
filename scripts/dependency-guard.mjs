@@ -8,7 +8,7 @@
  *   1. LAYERING — the only allowed @vendoai/* edges are:
  *        core → (nothing)
  *        apps → core
- *        store, actions, ui → core
+ *        ui → core
  *        vendo (umbrella) → everything
  *      A packages/* block not in the map fails loudly: adding a block means
  *      consciously adding its layer here. A consumer outside packages/ is not a
@@ -74,8 +74,6 @@ const ROOT = fileURLToPath(new URL("..", import.meta.url));
 /** package name → allowed @vendoai/* (and umbrella) deps. "*" = anything in the map. */
 const LAYERS = {
   "@vendoai/core": [],
-  "@vendoai/store": ["@vendoai/core", "@vendoai/apps"],
-  "@vendoai/actions": ["@vendoai/core", "@vendoai/apps"],
   // ui reaches app generation ONLY through the browser-safe contract door —
   // enforced by ONLY_SUBPATHS below, not by this list.
   "@vendoai/ui": ["@vendoai/core", "@vendoai/apps"],
@@ -89,19 +87,14 @@ const LAYERS = {
   // suites boot a real composition to prove the two agree. The edge is one-way
   // and must stay so: @vendoai/vendo does NOT depend on the CLI.
   "@vendoai/cli": [
-    "@vendoai/actions",
     "@vendoai/apps",
     "@vendoai/core",
     "@vendoai/knowledge",
-    "@vendoai/store",
-    "@vendoai/telemetry",
     "@vendoai/vendo",
   ],
   // the unscoped compatibility package is a thin alias of the canonical umbrella,
   // plus the CLI whose `vendo` bin it re-exposes for `npx vendoai@latest …`
   vendoai: ["@vendoai/cli", "@vendoai/vendo"],
-  // orthogonal to the campaign (00-overview: "stays as-is"); no vendo deps
-  "@vendoai/telemetry": [],
 };
 
 /**
@@ -222,6 +215,16 @@ const RETIRED = [
   // written against is declared once. Both stay published at 0.56.0.
   "@vendoai/guard",
   "@vendoai/harnesses",
+  // folded whole into @vendoai/vendo (src/store/, src/actions/, src/telemetry/).
+  // Each block's own barrel survives at a subpath of the umbrella
+  // (@vendoai/vendo/store, /store/postgres, /store/test-util, /actions,
+  // /actions/presets, /actions/presets/auth-js, /actions/sync, /telemetry); the
+  // store's routed COLLECTION NAMES answer to @vendoai/core now, because the
+  // console reads them from a different process. @vendoai/store and
+  // @vendoai/actions stay published at 0.57.0, @vendoai/telemetry at 0.6.0.
+  "@vendoai/store",
+  "@vendoai/actions",
+  "@vendoai/telemetry",
   "@vendoai/client",
   "@vendoai/components",
   "@vendoai/react",

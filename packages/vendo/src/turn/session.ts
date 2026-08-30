@@ -24,7 +24,7 @@ import {
 } from "@vendoai/core";
 import type { VendoGuard } from "../guard/index.js";
 import { THREAD_ID_HEADER, type HarnessRuntimeDeps } from "../harnesses/index.js";
-import { threadStore, type VendoStore } from "@vendoai/store";
+import { threadStore, type VendoStore } from "../store/index.js";
 import type { LanguageModel, UIMessage } from "ai";
 import { randomUUID } from "node:crypto";
 import type { MemoryAdapter } from "./memory.js";

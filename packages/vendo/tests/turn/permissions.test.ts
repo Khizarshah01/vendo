@@ -7,7 +7,7 @@
  */
 import type { Principal } from "@vendoai/core";
 import { defineHarness } from "../../src/harnesses/index.js";
-import { createStore } from "@vendoai/store";
+import { createStore } from "../../src/store/index.js";
 import { describe, expect, it } from "vitest";
 import { agent, agentComposition } from "../../src/turn/agent.js";
 import { DOOR_PATH } from "../../src/turn/door.js";

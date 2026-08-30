@@ -16,10 +16,10 @@ import {
   type ComponentRegistry,
 } from "@vendoai/apps/contract";
 import type { SandboxAdapter } from "@vendoai/apps";
-import type { Connector } from "@vendoai/actions";
+import type { Connector } from "../src/actions/index.js";
 import type { ConnectionsService } from "../src/connections.js";
 import { VERSION as WIRE_VERSION } from "../src/wire/shared.js";
-import { appStore, createStore, hostedStore, secretStore, storeSecrets, type VendoStore } from "@vendoai/store";
+import { appStore, createStore, hostedStore, secretStore, storeSecrets, type VendoStore } from "../src/store/index.js";
 import { createHmac, randomBytes } from "node:crypto";
 import { exportJWK, generateKeyPair, SignJWT } from "jose";
 import type { LanguageModel } from "ai";
@@ -27,7 +27,7 @@ import { afterEach, describe, expect, it, vi, type Mock } from "vitest";
 // authJs now ships on its own subpath (@vendoai/vendo/auth/auth-js), not
 // "./server.js" — corpus-triage Task 9.
 import { authJs } from "../src/auth-presets/auth-js.js";
-import { fakeConsole } from "@vendoai/store/test-util";
+import { fakeConsole } from "../src/store/fake-console.js";
 import { screenSource } from "./screen-fixture.js";
 import { createVendo, nextVendoHandler, wellKnownVendoHandler, type CreateVendoConfig, type Vendo } from "../src/server.js";
 
@@ -1701,7 +1701,7 @@ describe("09 §2.1 — host-identity presets (auth)", () => {
 describe("XCUT-3 — umbrella runtime store surface", () => {
   it("re-exports the store runtime so a production deploy needs only the umbrella", async () => {
     const server = await import("../src/server.js") as Record<string, unknown>;
-    const store = await import("@vendoai/store") as Record<string, unknown>;
+    const store = await import("../src/store/index.js") as Record<string, unknown>;
     for (const name of ["createStore", "envSecrets", "storeSecrets", "secretStore", "eraseStore"]) {
       expect(server[name], `${name} must be re-exported from @vendoai/vendo/server`).toBe(store[name]);
     }

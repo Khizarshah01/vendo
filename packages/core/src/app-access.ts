@@ -4,7 +4,7 @@ import type { RunContext } from "./run-context.js";
 /**
  * Build contract §9.3 — the `can()` seam.
  *
- * The SHAPE lives here and the implementation lives in `@vendoai/store`
+ * The SHAPE lives here and the implementation lives in `@vendoai/vendo/store`
  * (`appAccess(store)`, re-exported from there): the apps runtime, the wire and
  * the MCP door all speak this interface, and `apps → core` is the only edge
  * layering allows them (dependency-guard). Same split as `Check`/`Finding`.
@@ -43,7 +43,7 @@ export interface AppAccess {
 /* ------------------------------------------------------------------------- *
  * The PURE half of `can()`: the principal grammar, the level order, and the
  * path rules. It lives here, beside the shapes, because two packages resolve
- * access — @vendoai/store over real rows and @vendoai/apps' test stand-in over
+ * access — @vendoai/vendo/store over real rows and @vendoai/apps' test stand-in over
  * a memory store — and a second copy of these rules is how a permission check
  * rots. Nothing below touches a store; every function is a total function of
  * its arguments.

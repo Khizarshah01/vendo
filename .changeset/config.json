@@ -5,8 +5,6 @@
   "fixed": [
     [
       "@vendoai/core",
-      "@vendoai/store",
-      "@vendoai/actions",
       "@vendoai/apps",
       "@vendoai/ui",
       "@vendoai/vendo",

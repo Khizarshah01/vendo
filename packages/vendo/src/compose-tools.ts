@@ -3,11 +3,11 @@
  * adapter backs it), the knowledge tool, the user's file-drawer reads, and the
  * capability-miss surface the agent reports an unfulfillable ask through.
  */
-import type { Connector } from "@vendoai/actions";
+import type { Connector } from "./actions/index.js";
 import { consoleLogger, emitUsage, setLogger, setUsageSink, type Json } from "@vendoai/core";
 import { createShellTools } from "./harnesses/vendo/index.js";
 import { createKnowledgeTools, knowledgeIndexResolver } from "./knowledge/index.js";
-import { workspaceStore } from "@vendoai/store";
+import { workspaceStore } from "./store/index.js";
 import {
   capabilitySurfaceSnapshot,
   createCapabilityMissCapture,

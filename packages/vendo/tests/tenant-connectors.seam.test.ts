@@ -31,7 +31,7 @@ import {
   type RunContext,
   type ToolDefinition,
 } from "@vendoai/core";
-import { createStore, eraseStore, secretStore, storeFiles, storeSecrets, type VendoStore } from "@vendoai/store";
+import { createStore, eraseStore, secretStore, storeFiles, storeSecrets, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   scriptedModel,
