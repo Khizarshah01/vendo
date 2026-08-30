@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -242,6 +243,56 @@ for (const backend of backends()) {
       );
       expect(rows).toEqual([]);
     });
+
+    // 02-store: a migration guard must ask about the schema it is about to
+    // write to. `information_schema` spans every schema the ROLE CAN SEE, not
+    // the current one, so a guard that omits `table_schema = current_schema()`
+    // reads a NEIGHBOUR's answer and then runs its body against search_path,
+    // where the column does not exist.
+    //
+    // The seam is a sibling schema in the same database. That is an ordinary
+    // bring-your-own-Postgres shape — several deployments, one database — and
+    // it is also exactly what this harness does: every postgres store test gets
+    // its own `vendo_store_<uuid>` in ONE shared database. Neither repo tested
+    // it, so three guards shipped cross-schema and public CI failed with
+    // `column t.messages does not exist` while every private run stayed green.
+    //
+    // Postgres only: PGlite has one schema, so it cannot host the neighbour.
+    it.runIf(backend.name === "postgres")(
+      "is not steered by a sibling schema's pre-migration tables",
+      async () => {
+        const sibling = `vendo_store_sibling_${randomUUID().replaceAll("-", "")}`;
+        await made.sql(`CREATE SCHEMA ${sibling}`);
+        try {
+          // One neighbour carrying the shape each guard looks for.
+          await made.sql(
+            `CREATE TABLE ${sibling}.vendo_threads (id text PRIMARY KEY, messages jsonb NOT NULL DEFAULT '[]'::jsonb)`,
+          );
+          await made.sql(`CREATE TABLE ${sibling}.vendo_apps (id text PRIMARY KEY, trigger_kind text)`);
+          await made.sql(`CREATE TABLE ${sibling}.vendo_runs (id text PRIMARY KEY, app_id text)`);
+
+          await expect(made.store.ensureSchema()).resolves.toBeUndefined();
+
+          // And it left the neighbour alone: a migration reaching across is the
+          // same defect seen from the other side.
+          const rows = await made.sql(
+            `SELECT table_name, column_name FROM information_schema.columns
+             WHERE table_schema = $1 ORDER BY table_name, column_name`,
+            [sibling],
+          );
+          expect(rows.map((row) => `${row["table_name"]}.${row["column_name"]}`)).toEqual([
+            "vendo_apps.id",
+            "vendo_apps.trigger_kind",
+            "vendo_runs.app_id",
+            "vendo_runs.id",
+            "vendo_threads.id",
+            "vendo_threads.messages",
+          ]);
+        } finally {
+          await made.sql(`DROP SCHEMA ${sibling} CASCADE`);
+        }
+      },
+    );
 
     it("is a no-op on a database that never had vendo_sessions", async () => {
       // The previous test left it dropped; running again must not error.
