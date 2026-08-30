@@ -27,7 +27,9 @@ export default defineConfig({
       // deletion and four ui fixes landed. The 1.65 points of slack are
       // deliberate: a floor with no room is a floor everyone learns to bypass.
       // Branches are not floored (88.86% when this was set).
-      thresholds: { lines: 90 },
+      // Off inside a shard; enforced by coverage-merge. Same rule as
+      // @vendoai/vendo's, and stated the same way.
+      thresholds: process.env.VITEST_SHARD ? {} : { lines: 90 },
     },
     environment: "jsdom",
     include: ["test/**/*.test.ts?(x)"],

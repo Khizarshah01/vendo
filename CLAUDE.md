@@ -85,8 +85,10 @@ generated UI in a sandboxed, brand-native surface.
   actions, then everything else expressed as negations so a new package joins
   the day it is created), and `coverage-merge`, which replays the shards' blob
   reports and enforces the per-package coverage floors — a floor is only
-  meaningful against the whole suite, so the per-shard runs pass
-  `--coverage.thresholds.lines=0` and the gate moves to the merge. The
+  meaningful against the whole suite, so the per-shard runs set `VITEST_SHARD`,
+  which drops the thresholds in each package's vitest config, and the gate moves
+  to the merge. It is an env var and not a CLI override because an override
+  reaches one key at a time and silently stops covering a floor added later. The
   aggregate job is named `ci`; the required checks on main are `ci`,
   `integration`, `conformance`, and `audit`, and renaming any of those job
   names breaks merges. No browser runs in CI (2026-08-06) — headless

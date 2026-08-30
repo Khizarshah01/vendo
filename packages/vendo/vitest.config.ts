@@ -37,11 +37,20 @@ export default defineConfig({
       // averaging it into 78 would have retired 10 points nobody chose to give
       // up. Files matched by a glob are held to the glob and excluded from the
       // number above, so each half still answers for itself.
-      thresholds: {
-        lines: 78,
-        "src/apps/**": { lines: 88 },
-        "src/sandbox/**": { lines: 88 },
-      },
+      //
+      // Off inside a shard, which sees a fraction of the files: coverage-merge
+      // replays the blobs and enforces these against the whole suite. This gate
+      // lives here rather than in a CLI override because
+      // `--coverage.thresholds.lines=0` reaches only the top-level key — the
+      // per-glob entries kept their 88 and reddened all eight shards the day
+      // S11d added them, with every test passing.
+      thresholds: process.env.VITEST_SHARD
+        ? {}
+        : {
+            lines: 78,
+            "src/apps/**": { lines: 88 },
+            "src/sandbox/**": { lines: 88 },
+          },
     },
     environment: "node",
     // No real telemetry from tests (see vitest.setup.ts).

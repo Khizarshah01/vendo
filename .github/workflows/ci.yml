@@ -255,12 +255,19 @@ jobs:
 
   # The big three, split file-wise inside each package. Coverage is collected
   # per shard as a BLOB report and merged in coverage-merge; the per-shard runs
-  # pass --coverage.thresholds.lines=0 because vitest enforces the package's
-  # floor against whatever that shard happened to cover (measured back when a
-  # `kit` package still existed: its shard 1/2 reported 48% of the 94% the whole
-  # suite reaches, and a floor of 90 fails the shard). Zeroing it here moves the
-  # floor to the merge, where the number is the real one — the gate is not
-  # weakened, it is moved to the only place it can be correct.
+  # set VITEST_SHARD, which switches each package's vitest config off its
+  # thresholds, because vitest enforces the package's floor against whatever
+  # that shard happened to cover (measured back when a `kit` package still
+  # existed: its shard 1/2 reported 48% of the 94% the whole suite reaches, and
+  # a floor of 90 fails the shard). The floor moves to the merge, where the
+  # number is the real one — the gate is not weakened, it is moved to the only
+  # place it can be correct.
+  #
+  # An env var rather than the `--coverage.thresholds.lines=0` this replaces:
+  # that flag reaches only the top-level key, so the per-glob floors S11d added
+  # to @vendoai/vendo went on being enforced per shard and reddened all eight
+  # with every test passing. A flag that has to be extended for each new key is
+  # a gate that fails open on the next one.
   test-shards:
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -328,6 +335,10 @@ jobs:
       VITEST_MAX_FORKS: "4"
       VITEST_MIN_THREADS: "1"
       VITEST_MAX_THREADS: "4"
+      # Read by each package's vitest config to drop its coverage thresholds:
+      # a shard covers a fraction of the files, so its number is not the floor.
+      # coverage-merge does not set this, which is what keeps the floor real.
+      VITEST_SHARD: ${{ matrix.shard }}
       # Is this shard's package in the cone? On a push to main `big3` is all
       # three, so every shard runs.
       #
@@ -374,7 +385,7 @@ jobs:
       # is undebuggable from the log alone.
       - name: Test shard
         if: env.RUN == 'true'
-        run: pnpm --filter ${{ matrix.pkg }} exec vitest run --coverage --coverage.thresholds.lines=0 --reporter=dot --reporter=blob --shard=${{ matrix.shard }}
+        run: pnpm --filter ${{ matrix.pkg }} exec vitest run --coverage --reporter=dot --reporter=blob --shard=${{ matrix.shard }}
       # always(): a failed shard must still upload its blob, or coverage-merge
       # merges a hole and reports a phantom coverage drop on top of the real
       # failure.
