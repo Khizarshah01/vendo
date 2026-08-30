@@ -6,7 +6,7 @@ import { VENDO_CATALOG_FORMAT, catalogFileSchema } from "../../../src/actions/fo
 import { scanComponentCatalog } from "../../../src/actions/sync/catalog-scan.js";
 import { mergeCatalogEntries } from "../../../src/actions/sync/catalog.js";
 
-const repoRoot = path.resolve(fileURLToPath(import.meta.url), "../../../../../");
+const repoRoot = path.resolve(fileURLToPath(import.meta.url), "../../../../../../");
 
 describe("committed demo catalog drift guard", () => {
   it.each([

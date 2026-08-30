@@ -163,8 +163,8 @@ describe("loadTypescript capability gate", () => {
   });
 
   it("returns the host compiler unchanged when it is modern", () => {
-    const actionsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
-    const loaded = loadTypescript(actionsRoot);
+    const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
+    const loaded = loadTypescript(packageRoot);
     expect(loaded).not.toBeNull();
     expect(typeof loaded?.getModifiers).toBe("function");
     expect(typeof loaded?.isSatisfiesExpression).toBe("function");
