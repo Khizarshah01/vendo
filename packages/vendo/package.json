@@ -164,7 +164,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
-    "conformance": "vitest run tests/conformance.test.ts tests/store/conformance.test.ts tests/store/contract-routing.conformance.test.ts tests/store/security/audit-append-only.conformance.test.ts tests/store/security/secrets-aad.conformance.test.ts tests/store/flip-guards.conformance.test.ts tests/store/erase.conformance.test.ts tests/store/workspace.erase.test.ts tests/store/postgres-gate.test.ts",
+    "conformance": "vitest run tests/conformance.test.ts tests/store/conformance.test.ts tests/store/security/audit-append-only.conformance.test.ts tests/store/security/secrets-aad.conformance.test.ts tests/store/flip-guards.conformance.test.ts tests/store/erase.conformance.test.ts tests/store/workspace.erase.test.ts tests/store/postgres-gate.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.docs-check.json --noEmit && tsc -p tsconfig.test.json --noEmit",
     "test:coverage": "vitest run --coverage"
   },
