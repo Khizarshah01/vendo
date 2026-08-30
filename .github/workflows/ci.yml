@@ -383,9 +383,27 @@ jobs:
       # --reporter=default alongside blob: with blob as the SOLE reporter a
       # failing shard prints nothing about WHICH test failed, so a red shard
       # is undebuggable from the log alone.
+      # TEMPORARY PROBE — remove with the commit that acts on it. Nobody has
+      # measured THIS runner. The public shards run 4 workers and coverage-merge
+      # runs uncapped (pool = CPU count); both are now failing with
+      # `[vitest-worker]: Timeout calling "onTaskUpdate"`, tests all passing.
+      # Whether that is workers-versus-cores cannot be argued, only measured, and
+      # the run happens anyway so this costs nothing.
       - name: Test shard
         if: env.RUN == 'true'
-        run: pnpm --filter ${{ matrix.pkg }} exec vitest run --coverage --reporter=dot --reporter=blob --shard=${{ matrix.shard }}
+        run: |
+          echo "::group::runner"
+          echo "nproc=$(nproc)"; free -m | head -2; echo "load=$(cat /proc/loadavg)"
+          echo "::endgroup::"
+          set +e
+          /usr/bin/time -v pnpm --filter ${{ matrix.pkg }} exec vitest run --coverage --reporter=dot --reporter=blob --shard=${{ matrix.shard }} 2> /tmp/time-v.txt
+          code=$?
+          set -e
+          echo "::group::probe"
+          grep -E 'Maximum resident set size|Percent of CPU|Elapsed \(wall' /tmp/time-v.txt || true
+          tail -40 /tmp/time-v.txt || true
+          echo "::endgroup::"
+          exit $code
       # always(): a failed shard must still upload its blob, or coverage-merge
       # merges a hole and reports a phantom coverage drop on top of the real
       # failure.
@@ -533,6 +551,9 @@ jobs:
           path: packages/ui/.vitest-reports
       - name: Merge shard reports and enforce coverage floors
         run: |
+          echo "::group::runner"
+          echo "nproc=$(nproc)"; free -m | head -2; echo "load=$(cat /proc/loadavg)"
+          echo "::endgroup::"
           for pkg in vendo ui; do
             if [ -d "packages/$pkg/.vitest-reports" ]; then
               echo "::group::coverage merge — @vendoai/$pkg"
