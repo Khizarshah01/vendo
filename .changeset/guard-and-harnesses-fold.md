@@ -5,7 +5,8 @@
 
 **`@vendoai/guard` and `@vendoai/harnesses` fold into `@vendoai/vendo`; the
 guard's policy contract moves to `@vendoai/core`.** Both retired packages stay
-published at 0.56.0 — nothing you already installed stops working.
+published at 0.57.0, their last release — nothing you already installed stops
+working.
 
 Every symbol keeps the exact surface it had. Each block's own barrel is
 republished whole at a subpath of the umbrella, so a migration is a specifier
