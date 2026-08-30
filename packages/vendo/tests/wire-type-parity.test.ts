@@ -66,6 +66,10 @@ function typecheckFixture(source: string): string | null {
 //
 // The repository gate runs `pnpm build` before `pnpm test`, so these package
 // imports resolve freshly emitted declarations from both owning packages.
+// BOTH specifiers must stay PACKAGE specifiers, `@vendoai/vendo/apps` included
+// even though this test now lives in that package: the fixture is written to
+// the package ROOT, so a relative path computed from tests/ resolves one level
+// too high and tsc answers TS2307. S11d's codemod made exactly that mistake.
 // That keeps the fixture type-only: importing their source roots would make an
 // ad-hoc tsc invocation re-check unrelated runtime implementations as well.
 const imports = `
@@ -80,7 +84,7 @@ import type {
   EditResult as AppsEditResult,
   VersionEntry as AppsVersionEntry,
   SeedDrift as AppsSeedDrift,
-} from "../src/apps/index.js";
+} from "@vendoai/vendo/apps";
 
 type Assignable<Source, Target> = [Source] extends [Target] ? true : false;
 type Assert<T extends true> = T;
