@@ -329,9 +329,17 @@ jobs:
       # (monorepo.yml). Workers must stay UNDER the core count, not equal to it.
       #
       # Halved rather than shaved to 3 because the failure is intermittent, so a
-      # marginal cap would look like a fix and come back. The cost is bounded and
-      # was computed from the same run's core-seconds: the longest shard goes
-      # 7:16 -> about 10:30 against a 25-minute job timeout.
+      # marginal cap would look like a fix and come back. It is nearly free:
+      # measured across the same ten shards before (33315120681) and after
+      # (33316836872), the critical path went 8:13 -> 8:52 and the eight vendo
+      # shards cost 54 seconds more in aggregate — +8% and +2%, against a
+      # 25-minute job timeout. Three of them got FASTER.
+      #
+      # An estimate from core-seconds said 10:30 and was wrong by about double,
+      # because the suite is not CPU-bound the way that arithmetic assumes: it
+      # waits on postgres and on PGlite boots, so halving the workers does not
+      # halve the throughput. Recorded because the estimate is the kind of number
+      # that would otherwise be quoted back as a reason not to do this.
       #
       # Memory is NOT the constraint here, and that is worth recording so nobody
       # re-litigates it: peak RSS was 1.7-2.7 GB on seven shards of sixteen GB.
