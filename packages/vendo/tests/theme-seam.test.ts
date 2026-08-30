@@ -24,7 +24,7 @@ import {
 import {
   VENDO_THEME_VARIABLE_NAMES,
   type VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { createMcpDoor, type McpDoor } from "../src/mcp/index.js";
 import { themeCssVariables } from "@vendoai/ui";
 import { describe, expect, it } from "vitest";

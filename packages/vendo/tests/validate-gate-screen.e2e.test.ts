@@ -15,7 +15,7 @@
  * painted. Only the model is scripted, because what is measured is the doors.
  *
  * The one that must be able to fail: stop the gate reaching the ROW-SCOPED
- * `validate({appId})` in `packages/apps/src/server/generation/validate-gate.ts`
+ * `validate({appId})` in `packages/vendo/src/apps/generation/validate-gate.ts`
  * and this goes red — either with a finding about a screen that paints, or with
  * the silence of a gate that judged nothing at all.
  */
@@ -27,7 +27,7 @@ import {
   SCREEN_FILE,
   validateWrittenApps,
   type AppValidationFailure,
-} from "@vendoai/apps";
+} from "../src/apps/index.js";
 import type { AppId, Principal } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";

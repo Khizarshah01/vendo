@@ -53,7 +53,7 @@ export const sponsorshipSchema = z.object({
  *
  *  An `fn:` step is dropped because it is not a host tool: it is the app's own
  *  server code, run inside the app's own box, which never sees host credentials
- *  (`packages/apps/src/server/persistence/call.ts`) — so the host has no descriptor
+ *  (`packages/vendo/src/apps/persistence/call.ts`) — so the host has no descriptor
  *  to grade, no hash to bind, and nothing to consent to. Its authority is the
  *  app's boundary, and the automation's own kill switch is what revokes it. */
 export const declaredSurface = (record: AutomationRecord): string[] =>

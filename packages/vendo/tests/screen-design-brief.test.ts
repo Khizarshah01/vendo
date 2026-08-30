@@ -13,7 +13,7 @@
  * byte for byte (`briefing-pack.test.ts` proves that half).
  */
 import { type AppId, type Json, type ToolDescriptor } from "@vendoai/core";
-import { type BriefingPack } from "@vendoai/apps/contract";
+import { type BriefingPack } from "@vendoai/core/apps";
 import { describe, expect, it } from "vitest";
 import { assembleScreen, screenAssembler, type ScreenInput } from "../src/screen-agent.js";
 import {
@@ -84,7 +84,7 @@ describe("the writers' design brief", () => {
 
     // The job, and the two references it sends the writer to. The design law used
     // to be inlined here; it moved into `references/format.md`
-    // (`VENDO_FORMAT_REFERENCE`, whose words are pinned in `@vendoai/apps`'s own
+    // (`VENDO_FORMAT_REFERENCE`, whose words are pinned in `@vendoai/vendo/apps`'s own
     // format-reference.test.ts), so what this seam has to prove is that the
     // POINTER travels — a reference nobody is told to open is a reference nobody
     // reads.

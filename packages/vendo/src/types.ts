@@ -14,7 +14,7 @@ import type {
   OverridesFile,
   ServerActionHandler,
 } from "./actions/index.js";
-import type { AppsConfig, SandboxAdapter, AppsRuntime } from "@vendoai/apps";
+import type { AppsConfig, SandboxAdapter, AppsRuntime } from "./apps/index.js";
 import type { VendoAgent as ComposedAgent } from "./turn/index.js";
 import type { AutomationsEngine } from "./automations/index.js";
 import type {
@@ -41,7 +41,7 @@ import type {
   ComponentRegistry,
   VendoRouteMap,
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import type { GuardRules, PolicyFile, VendoGuard } from "./guard/index.js";
 import type { ShellLimits } from "./harnesses/vendo/index.js";
 import type { HostOAuthAdapter } from "./mcp/index.js";

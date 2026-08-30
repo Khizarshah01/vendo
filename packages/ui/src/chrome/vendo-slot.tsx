@@ -1,5 +1,5 @@
 import { log, type AppId, type Json, type ToolOutcome, type UIPayload } from "@vendoai/core";
-import type { VendoTheme } from "@vendoai/apps/contract";
+import type { VendoTheme } from "@vendoai/core/apps";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useVendoProvider } from "../context.js";
 import { announcePin } from "../pin-events.js";

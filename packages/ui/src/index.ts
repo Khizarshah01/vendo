@@ -104,4 +104,4 @@ export type {
   PendingSurface,
   SeedDrift,
   VersionEntry,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";

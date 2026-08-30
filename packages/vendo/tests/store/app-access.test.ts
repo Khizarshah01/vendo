@@ -235,7 +235,7 @@ for (const backend of backends()) {
     });
 
     // The SHARED rule (core's conformance kit), mounted against the real
-    // implementation. @vendoai/apps mounts the same cases against its own
+    // implementation. @vendoai/vendo/apps mounts the same cases against its own
     // stand-in, so the two cannot drift: a mutation here fails there too.
     describe("core's app-access conformance kit", () => {
       const suite = appAccessConformance({

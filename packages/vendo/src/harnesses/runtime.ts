@@ -143,7 +143,7 @@ export interface HarnessRuntimeDeps {
   /**
    * Wrap the turn's workspace before the harness sees it — the one injection
    * point for a commit-intercepting façade (the render seam is composition's
-   * implementation; see `wrapWorkspaceForRender` in `@vendoai/apps`). `emit`
+   * implementation; see `wrapWorkspaceForRender` in `@vendoai/vendo/apps`). `emit`
    * writes a data part on the wire's view channel for this turn; `turnId` is
    * the turn being wrapped. Unset, the harness runs on the workspace as given —
    * the runtime itself knows nothing about apps.

@@ -3,7 +3,7 @@ import Module from "node:module";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { UNKNOWN_MODEL_MAX_OUTPUT_TOKENS } from "@vendoai/apps";
+import { UNKNOWN_MODEL_MAX_OUTPUT_TOKENS } from "../../src/apps/index.js";
 import type { LanguageModel } from "ai";
 import {
   DevModelController,
@@ -99,19 +99,19 @@ describe("THE SELECTION LAW — a provider key is a credential, not a choice", (
   /**
    * THE COUPLING, from the producer's side.
    *
-   * `MODEL_UNAVAILABLE_SIGNAL` in `@vendoai/apps` (server/doors/build-messages.ts)
+   * `MODEL_UNAVAILABLE_SIGNAL` in `@vendoai/vendo/apps` (server/doors/build-messages.ts)
    * is anchored BYTE-FOR-BYTE to this sentence's opening: it is what lets the
    * app-build door surface the actionable line instead of collapsing it to
    * "generation failed · retry", where it reaches only the operator's terminal
    * (0.4.x, measured twice). apps may not import vendo and this test may not
    * import apps' internals, so the coupling is pinned from BOTH sides against one
    * literal — this assertion, and the same literal fed through the real
-   * `buildFailureReason` in packages/apps/tests/build-failure.test.ts ("passes the
+   * `buildFailureReason` in packages/vendo/tests/apps/build-failure.test.ts ("passes the
    * dev-model's own unavailable-credential lines through verbatim"). Reword the
    * message and THIS fails; retune the pattern away from the literal and THAT
    * fails. Neither can drift quietly.
    */
-  it("keeps the exact bytes @vendoai/apps' MODEL_UNAVAILABLE_SIGNAL anchors on", () => {
+  it("keeps the exact bytes @vendoai/vendo/apps' MODEL_UNAVAILABLE_SIGNAL anchors on", () => {
     // The anchored prefix — the pattern is ^-anchored, so this opening is the
     // load-bearing part.
     expect(NO_CREDENTIAL_MESSAGE.startsWith("Vendo has no model.")).toBe(true);

@@ -29,7 +29,7 @@ export async function checkConfigFiles(run: DoctorRun): Promise<void> {
 }
 
 /** The bundler seam a Next install lives or dies on (NEXT_SERVER_EXTERNALS):
- *  without @vendoai/apps on the list Next bundles it into the server chunk, the
+ *  without @vendoai/vendo on the list Next bundles it into the server chunk, the
  *  checker's esbuild import becomes a bare runtime resolve from the app root —
  *  where pnpm never hoists esbuild — and every generated screen fails its checks
  *  while the app itself looks fine. `vendo init` writes the line; a host whose
@@ -47,7 +47,7 @@ export async function checkNextServerExternals(run: DoctorRun): Promise<void> {
   const conflicting = source === null ? [] : transpiledServerExternals(source);
   run.fail("config/next-externals", "E-CFG-004",
     `${configPath === null ? "next.config" : relative(root, configPath)} does not list ${missing.join(", ")} in serverExternalPackages — `
-    + "@vendoai/apps is the entry that matters, and an \"esbuild\" entry without it is inert (the checker's esbuild import uses a variable "
+    + "@vendoai/vendo is the entry that matters, and an \"esbuild\" entry without it is inert (the checker's esbuild import uses a variable "
     + "specifier the bundler cannot see). Bundled, that import resolves from your app root, where pnpm never hoists esbuild, and every "
     + `generated screen fails its checks while the rest of the app looks fine. Add inside the config object: ${NEXT_SERVER_EXTERNALS_LINE} `
     + (conflicting.length === 0 ? "" : `${transpileConflictNote(conflicting)} `)

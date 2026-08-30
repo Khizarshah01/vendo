@@ -50,7 +50,7 @@ export const importFromHere = async (specifier: string): Promise<unknown> =>
  * scripts have to be denied (pnpm-workspace.yaml), and unbundleable, so esbuild
  * hard-fails a Worker build on those two: Leg A of
  * `scripts/portability-gate.mjs`. Same containment, and the same reasoning, as
- * the optional e2b SDK (`packages/apps/src/server/escalation/e2b/index.ts`).
+ * the optional e2b SDK (`packages/vendo/src/sandbox/escalation/e2b/index.ts`).
  *
  * But bundler-blind means the bundler emits a bare `import("just-bash")` into a
  * chunk that sits in the HOST APP's directory, and Node resolves a bare

@@ -2,7 +2,7 @@
  * The engine load, PROBED — the one seam where a stub is the subject rather than
  * a shortcut.
  *
- * `@vendoai/ui` and `@vendoai/apps` are separately published packages, so a host
+ * `@vendoai/ui` and `@vendoai/vendo/apps` are separately published packages, so a host
  * can legitimately hold a `ui` that speaks screens over an `apps` that does not.
  * That version pair cannot be built out of this repo's own workspace, so the only
  * way to run the probe is to stand in for the older package. Every other test of
@@ -12,12 +12,12 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 const loadWith = async (door: Record<string, unknown>): Promise<typeof import("../../src/tree/screen-engine.js")> => {
   vi.resetModules();
-  vi.doMock("@vendoai/apps/contract", () => door);
+  vi.doMock("@vendoai/core/apps", () => door);
   return import("../../src/tree/screen-engine.js");
 };
 
 afterEach(() => {
-  vi.doUnmock("@vendoai/apps/contract");
+  vi.doUnmock("@vendoai/core/apps");
   vi.resetModules();
 });
 
@@ -31,7 +31,7 @@ describe("loadScreenEngine", () => {
       warmScreenEngine: undefined,
     });
 
-    await expect(loadScreenEngine()).rejects.toThrow("this build of @vendoai/apps carries no screen engine");
+    await expect(loadScreenEngine()).rejects.toThrow("this build of @vendoai/core carries no screen engine");
   });
 
   it("warms the engine before handing it over, because bootScreen is synchronous", async () => {

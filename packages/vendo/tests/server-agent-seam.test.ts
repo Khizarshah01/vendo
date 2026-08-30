@@ -6,8 +6,8 @@
  * ships green and dead, so every case below reads through the real composition —
  * a real turn, the real `/status` venue, the real Cloud adapter's HTTP call.
  */
-import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
-import { inMemoryBoxFiles } from "@vendoai/apps/testing";
+import type { SandboxAdapter, SandboxMachine } from "../src/apps/index.js";
+import { inMemoryBoxFiles } from "../src/apps/testing/index.js";
 import { agent, agentComposition } from "../src/turn/index.js";
 import type { Principal } from "@vendoai/core";
 import { defineHarness, harnessAdapters } from "../src/harnesses/index.js";
@@ -59,7 +59,7 @@ const fakeSandbox = (): SandboxAdapter & { created: unknown[] } => {
     snapshot: async () => "fake:snap",
     stop: async () => {},
     destroy: async () => {},
-    // The seam's ONE in-memory implementation (@vendoai/apps/testing), so no
+    // The seam's ONE in-memory implementation (@vendoai/vendo/apps/testing), so no
     // two fakes can drift over what reading a box file means.
     files: inMemoryBoxFiles(new Map()),
   } satisfies SandboxMachine;

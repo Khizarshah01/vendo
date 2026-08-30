@@ -7,7 +7,7 @@ import {
 } from "@vendoai/core";
 import type {
   TreeQuery,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 
 export interface BridgeContentBlock {
   type: string;

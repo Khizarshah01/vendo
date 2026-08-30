@@ -11,8 +11,8 @@ import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import type {
   VendoTheme,
-} from "@vendoai/apps/contract";
-import { chartPaletteFor, themeDefaults } from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
+import { chartPaletteFor, themeDefaults } from "@vendoai/core/apps";
 import { defaultVendoTheme, themeCssVariables } from "../src/theme.js";
 import { chartSeries, control, t } from "../src/kit/tokens.js";
 import { VendoProvider, createVendoClient } from "../src/index.js";

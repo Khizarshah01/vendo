@@ -8,7 +8,7 @@ import {
   validateTree,
   type TreeQuery,
   type Tree,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 
 /**
  * The `vendo-genui/v2` payload converts mechanically to the walk tree TreeView

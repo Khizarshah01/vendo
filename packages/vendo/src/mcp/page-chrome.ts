@@ -1,7 +1,7 @@
 import {
   themeCssVariables,
   type VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 
 /**
  * The chrome every door-rendered page shares: the host's theme as `--vendo-*`

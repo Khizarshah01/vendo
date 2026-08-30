@@ -5,7 +5,7 @@ import {
 } from "@vendoai/core";
 import { useCallback, useSyncExternalStore } from "react";
 import { useVendoProvider } from "../context.js";
-import type { AppListRow } from "@vendoai/apps/contract";
+import type { AppListRow } from "@vendoai/core/apps";
 import { APPS_LOADING, appsFeed } from "./apps-feed.js";
 import { type PollOptions } from "./use-resource.js";
 

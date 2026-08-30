@@ -259,10 +259,10 @@ has none. Add it by hand when the config is one init cannot read as an object
 literal (a function of `phase`, a computed export):
 
 ```js next.config.ts
-serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],
+serverExternalPackages: ["@vendoai/vendo/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],
 ```
 
-`@vendoai/apps` is the entry that matters and an `"esbuild"` entry without it
+`@vendoai/vendo/apps` is the entry that matters and an `"esbuild"` entry without it
 is INERT: the checker reaches esbuild through a variable specifier the bundler
 cannot see, so there is no static request for Next to match. Bundled, that
 import resolves from the app root where pnpm never hoists esbuild, and every

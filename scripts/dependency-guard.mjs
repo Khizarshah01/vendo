@@ -7,7 +7,6 @@
  *
  *   1. LAYERING — the only allowed @vendoai/* edges are:
  *        core → (nothing)
- *        apps → core
  *        ui → core
  *        vendo (umbrella) → everything
  *      A packages/* block not in the map fails loudly: adding a block means
@@ -74,10 +73,13 @@ const ROOT = fileURLToPath(new URL("..", import.meta.url));
 /** package name → allowed @vendoai/* (and umbrella) deps. "*" = anything in the map. */
 const LAYERS = {
   "@vendoai/core": [],
-  // ui reaches app generation ONLY through the browser-safe contract door —
-  // enforced by ONLY_SUBPATHS below, not by this list.
-  "@vendoai/ui": ["@vendoai/core", "@vendoai/apps"],
-  "@vendoai/apps": ["@vendoai/core"],
+  // ui reaches app generation through `@vendoai/core/apps`, the browser-safe
+  // contract door, which is core's since S11d. This one-entry list IS the
+  // fence that the old apps-subpath rule used to be: the node-only half
+  // answers to @vendoai/vendo, and vendo is not on it. What that door
+  // RESOLVES to is a different question, held by the browser legs of
+  // scripts/portability-gate.mjs.
+  "@vendoai/ui": ["@vendoai/core"],
   // the canonical umbrella is the only package allowed to depend on every block
   "@vendoai/vendo": "*",
   // The CLI (S10, 2026-08-29): its own published package, ABOVE the umbrella
@@ -87,7 +89,6 @@ const LAYERS = {
   // suites boot a real composition to prove the two agree. The edge is one-way
   // and must stay so: @vendoai/vendo does NOT depend on the CLI.
   "@vendoai/cli": [
-    "@vendoai/apps",
     "@vendoai/core",
     "@vendoai/knowledge",
     "@vendoai/vendo",
@@ -95,24 +96,6 @@ const LAYERS = {
   // the unscoped compatibility package is a thin alias of the canonical umbrella,
   // plus the CLI whose `vendo` bin it re-exposes for `npx vendoai@latest …`
   vendoai: ["@vendoai/cli", "@vendoai/vendo"],
-};
-
-/**
- * consumer → the ONLY specifiers it may use for a given package.
- *
- * The scan below reduces every specifier to its package name, so a subpath rule
- * is matched on the RAW specifier. An ALLOW-list, not a ban list: `@vendoai/apps`
- * root is the node-only engine and `@vendoai/apps/contract` is its browser-safe
- * half, so a ban list would let a future node-only subpath through by default.
- * Browser code reaches the contract and never the root.
- *
- * Keyed on the CONSUMER's package name, so it covers `packages/*` only —
- * `examples/` and `fixtures/` are scanned for layering but get no subpath rule.
- * That matches the intended scope (the ban exists to keep the browser package
- * off the node-only door), but it is worth knowing before you rely on it.
- */
-const ONLY_SUBPATHS = {
-  "@vendoai/ui": { "@vendoai/apps": ["@vendoai/apps/contract"] },
 };
 
 /**
@@ -225,6 +208,13 @@ const RETIRED = [
   "@vendoai/store",
   "@vendoai/actions",
   "@vendoai/telemetry",
+  // split in two (S11d). The CONTRACT half — the app format, the Kit and the
+  // browser-safe screen engine — is @vendoai/core/apps now, because it is the
+  // door @vendoai/ui and browser consumers reach and core is the one package
+  // below both. The SERVER half answers to @vendoai/vendo: /apps, /apps/testing,
+  // and the sandbox pair /sandbox/e2b and /sandbox/edge. Stays published at
+  // 0.57.0.
+  "@vendoai/apps",
   "@vendoai/client",
   "@vendoai/components",
   "@vendoai/react",
@@ -412,12 +402,6 @@ for (const dir of dirs) {
       const name = spec.startsWith("@")
         ? spec.split("/").slice(0, 2).join("/")
         : spec.split("/")[0];
-      const only = ONLY_SUBPATHS[pkg.name]?.[name];
-      if (only && !only.includes(spec)) {
-        errors.push(
-          `${rel}: imports "${spec}" — ${pkg.name} may reach ${name} only through ${only.join(", ")}.`,
-        );
-      }
       if (RETIRED.includes(name)) {
         errors.push(`${rel}: imports retired package "${name}".`);
       } else if (name.startsWith("@vendoai/") || name === "vendoai") {

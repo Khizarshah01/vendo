@@ -8,7 +8,7 @@
  * driven to match it — because a generated screen holds its state in `$state`
  * and has nowhere to keep an imperative handle.
  */
-import { densityCssVariables, type VendoTheme } from "@vendoai/apps/contract";
+import { densityCssVariables, type VendoTheme } from "@vendoai/core/apps";
 import { Toast as Base } from "@base-ui/react/toast";
 import { useEffect, useId, useRef, type ComponentProps, type CSSProperties } from "react";
 import { useVendoThemeOrDefault } from "../../context.js";

@@ -1,14 +1,14 @@
 /**
  * The screen engine, as the renderer speaks to it.
  *
- * `bootScreen` / `flattenTree` live behind `@vendoai/apps/contract` — the
+ * `bootScreen` / `flattenTree` live behind `@vendoai/core/apps` — the
  * browser-safe door `@vendoai/ui` is allowed to reach (enforced in
  * `scripts/dependency-guard.mjs`). Two things about this module:
  *
  *  - The load is DEFERRED. The engine carries a JavaScript VM; a payload with no
  *    `interactive` half must not pay for it, and an interactive screen paints its
  *    served tree before the VM exists, so nothing on screen waits for the chunk.
- *  - The load is PROBED. `@vendoai/ui` and `@vendoai/apps` are separately
+ *  - The load is PROBED. `@vendoai/ui` and `@vendoai/vendo/apps` are separately
  *    published packages, so a host can hold a `ui` that speaks screens over an
  *    `apps` that does not. Probed, that is one contained notice on the screen's
  *    root; unprobed, it is a `TypeError` on the user's first click.
@@ -119,11 +119,11 @@ export interface ScreenEngine {
 }
 
 export const loadScreenEngine = async (): Promise<ScreenEngine> => {
-  const door = await import("@vendoai/apps/contract") as unknown as Partial<ScreenEngine> & {
+  const door = await import("@vendoai/core/apps") as unknown as Partial<ScreenEngine> & {
     warmScreenEngine?: () => Promise<void>;
   };
   if (typeof door.bootScreen !== "function" || typeof door.flattenTree !== "function") {
-    throw new Error("this build of @vendoai/apps carries no screen engine");
+    throw new Error("this build of @vendoai/core carries no screen engine");
   }
   // bootScreen is synchronous; the WASM behind it is not. Warm here so the
   // first boot never throws "not warm yet" into a contained notice.

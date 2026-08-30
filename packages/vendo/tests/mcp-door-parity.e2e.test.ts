@@ -42,7 +42,7 @@ import {
 } from "@vendoai/core";
 import {
   makeReceiptSchema,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   MOUNT,

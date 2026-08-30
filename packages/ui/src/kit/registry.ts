@@ -55,7 +55,7 @@ export {
   KIT_SPECS,
   kitComponentNames,
   kitSpec,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 
 /** Name → React component, for the tree renderer. */
 export const KIT_COMPONENTS: Readonly<Record<string, ComponentType<Record<string, never>>>> = {

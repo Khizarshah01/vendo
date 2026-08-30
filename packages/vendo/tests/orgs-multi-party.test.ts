@@ -11,7 +11,7 @@ import {
   type ToolRegistry,
 } from "@vendoai/core";
 import { appAccess, createStore, postgresAppDatabase, workspaceStore, type VendoStore } from "../src/store/index.js";
-import { createAppSql } from "@vendoai/apps";
+import { createAppSql } from "../src/apps/index.js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createVendo, type Vendo } from "../src/server.js";
 

@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { embedHostFonts } from "../../src/theme/embed-fonts.js";
-import type { VendoTheme } from "@vendoai/apps/contract";
+import type { VendoTheme } from "@vendoai/core/apps";
 import { extractTheme, toVendoTheme, type ThemeSlotValues } from "../../src/theme/extract-theme.js";
 
 const cleanup: string[] = [];

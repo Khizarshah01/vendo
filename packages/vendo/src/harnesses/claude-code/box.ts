@@ -40,7 +40,7 @@ import type { CheckoutFile, SyncFile, TreeState } from "../materialize.js";
 import { emptyTree } from "../materialize.js";
 import { MESSAGE_BUDGET_MS, type SessionMachine, type SessionMessage } from "./machine.js";
 
-/** The subset of `SandboxAdapter` (`@vendoai/apps`) a session box needs.
+/** The subset of `SandboxAdapter` (`@vendoai/vendo/apps`) a session box needs.
  *  Structural so this subpath never widens the package's type surface.
  *
  *  `snapshot` is deliberately absent now: nothing snapshots a conversation box. */
@@ -211,7 +211,7 @@ export interface BoxMachineOptions {
    * The outbound-domain allowlist this box boots with, filtered at the
    * PROVIDER's domain layer. Required, and never optional: the seam reads
    * `allowedDomains: undefined` as UNRESTRICTED egress (`SandboxAdapter.create`
-   * in `@vendoai/apps`), so a caller that simply forgot would hand a box driven
+   * in `@vendoai/vendo/apps`), so a caller that simply forgot would hand a box driven
    * by user text an unfiltered internet. Unnamed must mean denied for a
    * network boundary, even now that the box's own TOOLS run unprompted (the
    * box is the permission; this list is part of what makes that true). An
@@ -739,7 +739,7 @@ const hostOf = (url: string | undefined): string | undefined => {
  * The conversational box's outbound allowlist — the ONE place its network
  * boundary is assembled.
  *
- * Same shape as the served-app machine's (`boxAllowlist` in `@vendoai/apps`
+ * Same shape as the served-app machine's (`boxAllowlist` in `@vendoai/vendo/apps`
  * `egress-approval.ts`): the box's OWN skin rides unconditionally, and
  * everything else is filtered out at the provider's DOMAIN layer.
  *

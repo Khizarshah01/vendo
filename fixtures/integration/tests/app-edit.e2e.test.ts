@@ -14,7 +14,7 @@
  * History note: the frozen history surface (06 §1) lists prior snapshots,
  * appended only on edit — so one edit yields exactly one entry (the original).
  */
-import { SCREEN_FILE } from "@vendoai/apps";
+import { SCREEN_FILE } from "@vendoai/vendo/apps";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   ADA,

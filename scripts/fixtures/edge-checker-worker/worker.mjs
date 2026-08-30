@@ -1,4 +1,4 @@
-/** Portability-gate fixture: the screen toolchain of `@vendoai/apps/edge`, wired
+/** Portability-gate fixture: the screen toolchain of `@vendoai/vendo/sandbox/edge`, wired
  *  the way the production checker Worker wires it — the QuickJS WebAssembly
  *  arrives as a module the DEPLOYMENT imported (workerd compiles no bytes at
  *  runtime), and the toolchain is built at MODULE SCOPE, where Workers forbids
@@ -7,7 +7,7 @@
  *  The handler runs all three machines over one screen: compile it, type-check
  *  it, RUN it. Anything the edge leg reaches that workerd does not have shows up
  *  here and nowhere in a Node test. */
-import { edgeToolchain } from "@vendoai/apps/edge";
+import { edgeToolchain } from "@vendoai/vendo/sandbox/edge";
 import wasmModule from "./quickjs.wasm";
 
 const toolchain = edgeToolchain({ wasmModule });

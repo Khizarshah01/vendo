@@ -7,7 +7,7 @@
  * Type-only, and here in core, so every block may speak these shapes without
  * reaching sideways (build contract §2). The implementations live where the
  * slots do: the composition merge in the umbrella, the floor in
- * `@vendoai/apps`, the skills store next door in `./skills.ts`.
+ * `@vendoai/vendo/apps`, the skills store next door in `./skills.ts`.
  */
 import type { Json } from "./ids.js";
 import type { RunContext } from "./run-context.js";

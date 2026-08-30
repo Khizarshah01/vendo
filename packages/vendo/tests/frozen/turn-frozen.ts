@@ -47,7 +47,7 @@ import {
   type TurnId,
   type TurnResult as CoreTurnResult,
 } from "@vendoai/core";
-import { wrapWorkspaceForRender } from "@vendoai/apps";
+import { wrapWorkspaceForRender } from "../../src/apps/index.js";
 import type { VendoGuard } from "../../src/guard/index.js";
 import { addUsage, createHarnessRuntime, type HarnessRuntimeDeps, type UsageTotals } from "../../src/harnesses/index.js";
 import {

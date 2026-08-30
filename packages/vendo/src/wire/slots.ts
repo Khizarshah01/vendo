@@ -9,7 +9,7 @@ import { json, requestJson, route, string, type RouteEntry } from "./shared.js";
 
 /** The slot REGISTRY — which slots this caller's surfaces mount, as opposed to
     which app sits in one (`/apps/placements`). One source
-    (`packages/apps/src/server/persistence/slots.ts`): the surfaces report themselves in here and
+    (`packages/vendo/src/apps/persistence/slots.ts`): the surfaces report themselves in here and
     the read ages out whatever stopped being reported.
 
     Subject scoping happens through `context()` alone, exactly like

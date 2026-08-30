@@ -71,7 +71,7 @@ export { screenAssembler, type ScreenAssemblerDeps } from "./screen-agent.js";
 // today and simply cannot name them. Exported so it can (and so the quickstart
 // config listing, which is compiled against these very interfaces, can too).
 export type { HarnessTurns } from "./harness-turn.js";
-export type { AppsConfig } from "@vendoai/apps";
+export type { AppsConfig } from "./apps/index.js";
 
 // 02-store §5: the erase API ships on the umbrella's runtime surface so hosts
 // reach it without going through the @vendoai/vendo/store subpath.
@@ -217,7 +217,7 @@ export type {
   VendoRoute,
   VendoRouteMap,
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 export type { PolicyFile } from "./guard/index.js";
 // The `guard:` slot's two arms, named from here for the same reason as
 // `ServerActionHandler` and `ComposedAgent`: a host must be able to name what

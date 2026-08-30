@@ -9,7 +9,6 @@ import path from "node:path";
  * overrides, add the two direct deps a BYO host declares. */
 export const VENDO_PACKAGE_NAMES = [
   "@vendoai/core",
-  "@vendoai/apps",
   "@vendoai/ui",
   "@vendoai/vendo",
   "vendoai",

@@ -1,7 +1,7 @@
 /**
  * D1 — the consumer who has NOT installed the ~250MB Agent SDK.
  *
- * The measured failure this pins: `@vendoai/apps/internal` re-exported the SDK
+ * The measured failure this pins: `@vendoai/vendo/apps` re-exported the SDK
  * turn, the render seam imports `./internal` statically on every composed host's
  * server path, and a bundler that folds `import(CONST)` therefore demanded
  * `@anthropic-ai/claude-agent-sdk` at BUILD time from a Next.js host that had no
@@ -67,7 +67,7 @@ describe("D1 · a host that never installed the Agent SDK", () => {
   test("the built turn runner itself imports — the artifact the machine image carries", () => {
     // Only THIS package's dist: the apps-side halves of the same pin (the apps
     // root and `./internal` importing SDK-free) live in apps' own suite
-    // (`packages/apps/tests/sdk-absent.e2e.test.ts`), because a test here
+    // (`packages/vendo/tests/apps/sdk-absent.e2e.test.ts`), because a test here
     // reading apps' dist by file path needs apps BUILT, and since the
     // claude-turn rehome nothing orders apps' build before this suite.
     const output = runProbe(`

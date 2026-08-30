@@ -1,4 +1,4 @@
-import { createAppHistory } from "@vendoai/apps";
+import { createAppHistory } from "../../src/apps/index.js";
 import { describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";
 import { eraseStore } from "../../src/store/erase.js";

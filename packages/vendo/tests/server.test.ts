@@ -14,8 +14,8 @@ import {
 import {
   type ComponentCatalog,
   type ComponentRegistry,
-} from "@vendoai/apps/contract";
-import type { SandboxAdapter } from "@vendoai/apps";
+} from "@vendoai/core/apps";
+import type { SandboxAdapter } from "../src/apps/index.js";
 import type { Connector } from "../src/actions/index.js";
 import type { ConnectionsService } from "../src/connections.js";
 import { VERSION as WIRE_VERSION } from "../src/wire/shared.js";
@@ -1713,7 +1713,7 @@ describe("app design rules (spec 2026-07-20)", () => {
    *  which is how one model answers several runs without counting calls. */
   const SAVED_MARKER = "That save landed.";
 
-  /** Minimal scripted model (mirrors @vendoai/apps' internal test helper, which
+  /** Minimal scripted model (mirrors @vendoai/vendo/apps' internal test helper, which
    *  is not exported): captures every prompt as flat text and plays the ONE
    *  builder — one `save_app` of a fixed `app.tsx` screen per run, then a closing
    *  word — so `runtime.create` completes. */

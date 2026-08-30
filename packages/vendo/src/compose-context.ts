@@ -24,7 +24,7 @@ import type {
   ServerActionHandler,
 } from "./actions/index.js";
 import type { AgentComposition } from "./turn/index.js";
-import type { AppsRuntime, SeedBaseline } from "@vendoai/apps";
+import type { AppsRuntime, SeedBaseline } from "./apps/index.js";
 import type { AutomationsEngine } from "./automations/index.js";
 import type {
   ActAs,
@@ -44,7 +44,7 @@ import type {
 import type {
   BriefingPack,
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import type { VendoGuard, RiskResolver } from "./guard/index.js";
 import type { CapabilityMissConfig } from "./harnesses/index.js";
 import type { VendoToolSearchConfig } from "./harnesses/vendo/index.js";
@@ -81,7 +81,7 @@ import type { AppsOptions, CreateVendoConfig } from "./types.js";
 import type { resolveVendoUrls } from "./urls.js";
 import type { WireDeps } from "./wire/shared.js";
 import type { createConnectGate, mergedHostSemantics } from "./actions/index.js";
-import type { selectSandbox } from "@vendoai/apps";
+import type { selectSandbox } from "./apps/index.js";
 import type { appAccess } from "./store/index.js";
 import type { HostAuthPreset } from "./auth-presets/index.js";
 

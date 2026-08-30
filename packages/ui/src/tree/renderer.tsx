@@ -21,7 +21,7 @@ import {
   evaluateExpr,
   isExprBinding,
   warmExprRuntime,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { convertPayload } from "./convert-payload.js";
 import {
   Fragment,
@@ -36,7 +36,7 @@ import {
 } from "react";
 import { useVendoThemeOrDefault } from "../context.js";
 import { themeCssVariables } from "../theme.js";
-import type { SeedDrift } from "@vendoai/apps/contract";
+import type { SeedDrift } from "@vendoai/core/apps";
 import { resolvePointer } from "./bindings.js";
 import { DISPLAY_BRICKS, SURFACE_CONTAINMENT, safeProps } from "./display-bricks.js";
 import { NodeErrorBoundary } from "./error-boundary.js";
@@ -728,7 +728,7 @@ function NodeRenderer(props: NodeRendererProps) {
   if (node.component === SCREEN_TEXT_NODE) {
     return <>{String(node.props?.text ?? "")}</>;
   }
-  // The plan's skeleton (packages/apps generation/skeleton.ts) prewires one
+  // The plan's skeleton (packages/vendo generation/skeleton.ts) prewires one
   // `pending` placeholder per plan leaf and a fill worker later replaces it
   // with the real component. Until then the node holds the same shape-derived
   // shimmer a streaming node holds — the app's real geometry arriving in

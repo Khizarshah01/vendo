@@ -9,7 +9,7 @@ import {
 } from "@vendoai/core";
 import {
   effectiveAppBuildUiDeadlineMs,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useVendoProvider } from "../context.js";
 import type {
@@ -20,7 +20,7 @@ import type {
 import { useResource } from "../hooks/use-resource.js";
 import { AppFrame } from "../tree/frames.js";
 import type { ApprovalResolution } from "@vendoai/core";
-import type { OpenSurface } from "@vendoai/apps/contract";
+import type { OpenSurface } from "@vendoai/core/apps";
 import { PlacementAction } from "./add-to-picker.js";
 import { ApprovalCard, APPROVAL_LINES } from "./approval-card.js";
 import { useApprovalModal } from "./approval-modal.js";

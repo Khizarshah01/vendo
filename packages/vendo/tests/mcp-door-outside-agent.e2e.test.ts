@@ -18,7 +18,7 @@
  * the same composed host and the same minimal MCP client from
  * `mcp-door.test-util.ts`.
  */
-import { sealBundleBlobs } from "@vendoai/apps";
+import { sealBundleBlobs } from "../src/apps/index.js";
 import { VENDO_APP_FORMAT, vendoApprovalRefSchema, type AppDocument, type AppId } from "@vendoai/core";
 import { storeFiles, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";

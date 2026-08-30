@@ -129,12 +129,15 @@ docs/verification/w4-pipeline/samples.ndjson
 
 # throwaway design exploration (never committed)
 design-canvas/
-packages/apps/box/claude-turn.mjs
-packages/apps/box/turn-routes.mjs
+# staged in beside the box harness by packages/vendo/box/build-template.mjs and
+# removed again after the bake — a build artifact, never authored. Its sibling
+# turn-routes.mjs is NOT here: that one is checked in, and the template copies
+# it straight out of this directory (S11d).
+packages/vendo/box/claude-turn.mjs
 
 # The screen engine's WebAssembly, copied out of the wasmfile dependency by
-# @vendoai/apps' build (and shipped by its "files") — generated, never authored.
-packages/apps/quickjs.wasm
+# @vendoai/core's build (and shipped by its "files") — generated, never authored.
+packages/core/quickjs.wasm
 
 # Agent working notes and factory process exhaust — useful locally, not shipped.
 # Lane contracts, raw proof logs, and eval run dumps stay on their branches.

@@ -21,8 +21,8 @@ import { sha256Hex } from "./sha256.js";
  *
  * It is declared HERE, beside the field it types, for the same reason
  * `appDocumentSchema` is: core's own store conformance kit parses a stored app
- * row with that schema, and core may not reach up into `@vendoai/apps`. The
- * format door (`@vendoai/apps/contract`) re-exports these names rather than
+ * row with that schema, and core may not reach up into `@vendoai/vendo/apps`. The
+ * format door (`@vendoai/core/apps`) re-exports these names rather than
  * re-declaring them, so consumers still read one place.
  */
 export interface ComponentBundle {
@@ -386,7 +386,7 @@ export interface AppDocument {
   secrets?: string[];
   /** Remix provenance ONLY (drift, ship-diff, re-seed). "Show this app in that
    *  slot" is a placement ROW, never a document field — see
-   *  `@vendoai/apps` `placements.ts`. */
+   *  `@vendoai/vendo/apps` `placements.ts`. */
   seed?: AppSeed;
   forkedFrom?: AppId;
   /**

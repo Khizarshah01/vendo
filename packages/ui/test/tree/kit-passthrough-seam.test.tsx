@@ -7,7 +7,7 @@
  * Kit by the renderer — four hands, and until they meet, "the component takes
  * `stroke`" is a claim about a unit test rather than about the product. So
  * nothing here is stubbed on either side: real sucrase, the real QuickJS engine
- * from `@vendoai/apps/contract`, the real flatten the server does, the real
+ * from `@vendoai/core/apps`, the real flatten the server does, the real
  * `PayloadView`, the real Kit and the real recharts.
  *
  * The failure it exists to catch is silent: props that validate, cross the wire
@@ -17,7 +17,7 @@
 import { afterEach, beforeAll, describe, expect, it } from "vitest";
 import { cleanup, render } from "@testing-library/react";
 import { transform } from "sucrase";
-import { bootScreen, flattenTree, kitSpec, validateProps, warmScreenEngine } from "@vendoai/apps/contract";
+import { bootScreen, flattenTree, kitSpec, validateProps, warmScreenEngine } from "@vendoai/core/apps";
 import { VENDO_TREE_FORMAT, type ToolOutcome, type TreeNode, type UIPayload } from "@vendoai/core";
 import { PayloadView } from "../../src/tree/index.js";
 

@@ -1,6 +1,16 @@
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
+  resolve: {
+    // The two toolchains want two compilers in one process. The Node one
+    // resolves `typescript` through `createRequire`, which no bundler alias can
+    // touch, so it keeps getting the 5.x devDependency; the edge one IMPORTS
+    // `typescript`, and its peer range is exactly 6.0.3 — the version its
+    // vendored lib files were copied from. Anchored, so `typescript-eslint` and
+    // friends are not rewritten by prefix. (Arrived with the apps fold, S11d;
+    // scripts/portability-gate.mjs's edge leg aliases the same pair.)
+    alias: [{ find: /^typescript$/, replacement: "typescript-6" }],
+  },
   test: {
     // Worker caps live in config, not in the root `test` scripts: a cap in a
     // command line only applies when someone types that command, so a bare
@@ -20,7 +30,18 @@ export default defineConfig({
       exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.test-util.{ts,tsx}"],
       // Ratcheted line-coverage floor (ENG-255): set at/just below the measured
       // value so it can only rise. Regression below this fails CI.
-      thresholds: { lines: 78 },
+      //
+      // The two globs are the app-generation code S11d folded in. A fold must
+      // not weaken a gate as a side effect, and a single umbrella number would
+      // have: that code carried its own floor of 88 as @vendoai/apps, and
+      // averaging it into 78 would have retired 10 points nobody chose to give
+      // up. Files matched by a glob are held to the glob and excluded from the
+      // number above, so each half still answers for itself.
+      thresholds: {
+        lines: 78,
+        "src/apps/**": { lines: 88 },
+        "src/sandbox/**": { lines: 88 },
+      },
     },
     environment: "node",
     // No real telemetry from tests (see vitest.setup.ts).

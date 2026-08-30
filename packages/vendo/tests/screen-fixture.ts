@@ -1,5 +1,5 @@
 import { sha256Hex, VENDO_APP_FORMAT, type AppDocument, type AppId } from "@vendoai/core";
-import { SCREEN_FILE } from "@vendoai/apps";
+import { SCREEN_FILE } from "../src/apps/index.js";
 
 /** The smallest screen the gauntlet passes and the seam paints. */
 export const FIXTURE_SCREEN = `import { Stack, Text } from "@vendo/screen";

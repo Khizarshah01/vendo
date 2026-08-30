@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import type { VendoNavigation, VendoRouteMap } from "@vendoai/apps/contract";
+import type { VendoNavigation, VendoRouteMap } from "@vendoai/core/apps";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { VendoProvider } from "../../src/context.js";
 import { Link } from "../../src/kit/link.js";

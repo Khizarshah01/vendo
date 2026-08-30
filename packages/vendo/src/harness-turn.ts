@@ -40,7 +40,7 @@ import {
 import {
   hostComponentFiles,
   type NormalizedCatalog,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { deriveTitle, isThreadId, mintThreadId, ThreadRepository, type Thread, type ThreadSummary } from "./threads.js";
 import {
   HOT_PATH_WATCH,
@@ -49,7 +49,7 @@ import {
   validateWrittenApps,
   wrapWorkspaceForRender,
   type RenderSeamOptions,
-} from "@vendoai/apps";
+} from "./apps/index.js";
 import type { VendoGuard } from "./guard/index.js";
 import {
   eraseStore,
@@ -429,7 +429,7 @@ export function createHarnessTurns(config: HarnessTurnsConfig): HarnessTurns {
   }
   // The app-document vocabulary a machine-backed driver needs: the hot-path
   // watch set, and the finish-line validate gate. `@vendoai/harnesses` no
-  // longer imports `@vendoai/apps`, so composition hands the driver the REAL
+  // longer imports `@vendoai/vendo/apps`, so composition hands the driver the REAL
   // implementations here — which is what keeps the composed path byte-identical
   // to when the driver imported them itself. Filled unconditionally: the slots
   // are inert on a harness that never reads them.

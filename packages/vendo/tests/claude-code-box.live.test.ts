@@ -3,14 +3,14 @@
  * the real inverted bridge, the real Agent SDK inside the box.
  *
  * Gated on `E2B_API_KEY` + `ANTHROPIC_API_KEY` + `VENDO_BOX_TEMPLATE` (the
- * template `packages/apps/box/build-template.mjs` bakes — it carries the turn
+ * template `packages/vendo/box/build-template.mjs` bakes — it carries the turn
  * door and `claude-turn.mjs`). Skipped otherwise, like every `.live.test.ts`.
  *
  * It lives in the UMBRELLA's suite because it needs both blocks — the real e2b
- * adapter (`@vendoai/apps/e2b`) driving the harness driver (`@vendoai/harnesses`)
+ * adapter (`@vendoai/vendo/sandbox/e2b`) driving the harness driver (`@vendoai/harnesses`)
  * — and harnesses no longer depends on apps.
  */
-import { e2bSandbox } from "@vendoai/apps";
+import { e2bSandbox } from "../src/apps/index.js";
 import type { Json, ToolResult, Turn } from "@vendoai/core";
 import { afterAll, describe, expect, test } from "vitest";
 import { createTurnState } from "../src/harnesses/index.js";

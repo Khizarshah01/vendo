@@ -42,8 +42,8 @@ import {
 } from "@vendoai/core";
 import {
   makeReceiptSchema,
-} from "@vendoai/apps/contract";
-import { SCREEN_FILE } from "@vendoai/apps";
+} from "@vendoai/core/apps";
+import { SCREEN_FILE } from "../src/apps/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
@@ -329,9 +329,9 @@ describe("the assembly loop always hears the floor's verdict on what it saved", 
 /** What the floor says when the refusal is about the DEPLOYMENT: no compiler
  *  where the checks run, so every screen is refused and no rewrite can help. The
  *  real floor mints this from `ScreenToolchainUnavailable`
- *  (`packages/apps/tests/checking/app-floor.test.ts` proves that half); here the
+ *  (`packages/vendo/tests/apps/checking/app-floor.test.ts` proves that half); here the
  *  loop's answer to it is what is measured, so the floor is a double. */
-const ENVIRONMENT = "the screen could not be compiled: no esbuild is reachable from @vendoai/apps"
+const ENVIRONMENT = "the screen could not be compiled: no esbuild is reachable from @vendoai/vendo"
   + " — keep this package out of the server bundle, so nothing about this screen was checked.";
 
 describe("a refusal the loop cannot repair ends the run instead of a rewrite round", () => {

@@ -4,7 +4,7 @@ import path from "node:path";
 import type TS from "typescript";
 import {
   vendoThemeSchema,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import {
   toolsFileSchema,
   type ExtractedTool,

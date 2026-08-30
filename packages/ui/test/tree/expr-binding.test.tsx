@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, beforeAll, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import { warmExprRuntime } from "@vendoai/apps/contract";
+import { warmExprRuntime } from "@vendoai/core/apps";
 import { VENDO_TREE_FORMAT, type Json, type ToolOutcome } from "@vendoai/core";
 import { TreeView, type WalkTree } from "../../src/tree/index.js";
 

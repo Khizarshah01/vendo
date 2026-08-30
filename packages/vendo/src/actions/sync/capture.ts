@@ -4,7 +4,7 @@ import {
   IN_CLIENT_BUNDLED_PACKAGES,
   isIslandResolvableSpecifier,
   isPinnedPackage,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import type { SeedSubSource } from "../formats.js";
 import {
   insideBounds,

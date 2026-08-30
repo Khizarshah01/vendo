@@ -4,7 +4,7 @@ import type {
 } from "@vendoai/core";
 import type {
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { mkdir, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { themeCssVariables } from "../src/theme.js";

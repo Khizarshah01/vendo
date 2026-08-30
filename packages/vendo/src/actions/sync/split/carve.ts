@@ -1,5 +1,5 @@
 import path from "node:path";
-import { DISPLAY_TAG_NAMES, SAFE_STYLE_PROPERTIES } from "@vendoai/apps/contract";
+import { DISPLAY_TAG_NAMES, SAFE_STYLE_PROPERTIES } from "@vendoai/core/apps";
 import type TS from "typescript";
 import { parseModuleSource } from "../common.js";
 

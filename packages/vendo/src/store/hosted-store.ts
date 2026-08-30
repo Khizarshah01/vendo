@@ -100,7 +100,7 @@ const invalidResponse = (what: string): never => {
  * both ride the shared 402/401 → cloud-required mapping, and a rate limit or an
  * upstream 5xx rides its status → unavailable. What is left — a code no table
  * knows — is carried on a plain Error with the server's code attached, the
- * packages/apps cloud client's posture. */
+ * packages/vendo apps cloud client's posture. */
 const raiseStoreError = async (response: Response): Promise<never> => {
   const proposal = await schemaProposalError(response);
   if (proposal !== undefined) throw proposal;

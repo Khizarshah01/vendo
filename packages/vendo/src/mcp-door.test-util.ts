@@ -145,7 +145,7 @@ export interface ComposedHost {
  * how that loop lands an app. Every other prompt gets prose, which is also what
  * ends the loop once the app is saved.
  *
- * Local rather than `@vendoai/apps`' `scriptedLanguageModel` because `testing/`
+ * Local rather than `@vendoai/vendo/apps`' `scriptedLanguageModel` because `testing/`
  * is not on that package's exports map; same shape as the other fixture doubles
  * in this package (`inclient.fixture.test.ts`, `pins.fixture.test.ts`).
  */

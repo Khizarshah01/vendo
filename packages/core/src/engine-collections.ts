@@ -86,12 +86,12 @@ export const ENGINE_COLLECTION_REGISTRY = {
   // cascade correctly never sweeps them. Do not "fix" them by adding a ref.
   vendo_host_components: { kind: "storage" }, // HOST_COMPONENTS_COLLECTION, packages/cli/src/cloud/host-components.ts:34
   vendo_pin_baselines: { kind: "storage" }, // PIN_BASELINES_COLLECTION, packages/cli/src/cloud/seed-baselines.ts:26
-  vendo_placements: { kind: "storage" }, // PLACEMENTS_COLLECTION, packages/apps/src/server/persistence/placements.ts:48
-  vendo_placement_slots: { kind: "storage" }, // PLACEMENT_SLOTS_COLLECTION, packages/apps/src/server/persistence/placements.ts:54
-  vendo_parked_action: { kind: "storage" }, // COLLECTION, packages/apps/src/server/persistence/parked-action.ts:50
-  vendo_parked_build: { kind: "storage" }, // COLLECTION, packages/apps/src/server/persistence/parked-build.ts
-  vendo_slots: { kind: "storage" }, // SLOTS_COLLECTION, packages/apps/src/server/persistence/slots.ts:24
-  vendo_app_seen: { kind: "storage" }, // APP_SEEN_COLLECTION, packages/apps/src/server/persistence/app-seen.ts:26
+  vendo_placements: { kind: "storage" }, // PLACEMENTS_COLLECTION, packages/vendo/src/apps/persistence/placements.ts:48
+  vendo_placement_slots: { kind: "storage" }, // PLACEMENT_SLOTS_COLLECTION, packages/vendo/src/apps/persistence/placements.ts:54
+  vendo_parked_action: { kind: "storage" }, // COLLECTION, packages/vendo/src/apps/persistence/parked-action.ts:50
+  vendo_parked_build: { kind: "storage" }, // COLLECTION, packages/vendo/src/apps/persistence/parked-build.ts
+  vendo_slots: { kind: "storage" }, // SLOTS_COLLECTION, packages/vendo/src/apps/persistence/slots.ts:24
+  vendo_app_seen: { kind: "storage" }, // APP_SEEN_COLLECTION, packages/vendo/src/apps/persistence/app-seen.ts:26
   vendo_workspace_commits: { kind: "storage" }, // WORKSPACE_COMMITS, packages/vendo/src/store/ops.ts:27
   "automations:captures": { kind: "storage" }, // CAPTURES, packages/vendo/src/automations/types.ts:29
   "automations:schedule": { kind: "storage" }, // SCHEDULE, packages/vendo/src/automations/types.ts:30
@@ -125,7 +125,7 @@ const APP_HISTORY_ID = /^[A-Za-z0-9_-]{1,128}$/;
 
 /** The ONE dynamic engine collection: the per-app capped version log and
     pin-intent trail, assembled at
-    packages/apps/src/server/persistence/history.ts:84. Pin intents are rows
+    packages/vendo/src/apps/persistence/history.ts:84. Pin intents are rows
     INSIDE this collection, not a second drawer — there is one builder and one
     pattern, and a second of either is how an allowlist rots.
     Throws `validation` on an id the pattern would not accept: an empty or

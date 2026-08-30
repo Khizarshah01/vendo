@@ -86,7 +86,7 @@ describe("packaging e2e — the artifact blocks will install", () => {
     expect(missing).toEqual([]);
 
     // behavior spot-checks through the packed artifact. The tree validator moved
-    // to `@vendoai/apps/contract` with the rest of the app format, so the schema
+    // to `@vendoai/core/apps` with the rest of the app format, so the schema
     // core still owns stands in for it — the subject is the packed artifact, not
     // which validator it carries.
     const parsed = core.appDocumentSchema.safeParse({
@@ -140,13 +140,43 @@ describe("packaging e2e — the artifact blocks will install", () => {
     // CORE-10: dist/cjs is the CommonJS condition — require() IS its module
     // system. The platform-clean (edge/Bun) guarantee applies to the ESM dist,
     // the `default` condition every non-CJS runtime resolves.
+    //
+    // dist/apps — the app-generation contract door, core's since S11d — is the
+    // one exception, and it is FENCED rather than trusted. Its screen engine
+    // reaches a `node:` arm through the `#engine/wasm` condition that no edge
+    // runtime ever takes, and its browser leg is proven by Leg D of
+    // scripts/portability-gate.mjs, which bundles that exact entry for a
+    // browser target. The exception is only sound while nothing portable can
+    // reach it, so that premise is ASSERTED below instead of assumed: the day
+    // core's root or its conformance kit re-exports the engine, this test goes
+    // red on its own. Every other file keeps exactly the coverage it had.
     const cjsDir = join(distDir, "cjs");
-    for (const file of walk(distDir).filter((name) => name.endsWith(".js") && !name.startsWith(cjsDir))) {
+    const appsDir = join(distDir, "apps");
+    const reachable = (entry: string): string[] => {
+      const seen = new Set<string>();
+      const visit = (file: string): void => {
+        if (seen.has(file) || !existsSync(file)) return;
+        seen.add(file);
+        for (const [, spec] of readFileSync(file, "utf8").matchAll(/\bfrom\s*["'](\.[^"']*)["']/g)) {
+          visit(join(dirname(file), spec!));
+        }
+      };
+      visit(entry);
+      return [...seen];
+    };
+    const portable = ([".", "./conformance"] as const).flatMap((subpath) => reachable(packed.resolve(subpath)));
+    expect(portable.length).toBeGreaterThan(50); // a graph that collapsed to its entries proves nothing
+    expect(portable.filter((file) => file.startsWith(appsDir))).toEqual([]);
+
+    for (const file of walk(distDir).filter((name) =>
+      name.endsWith(".js") && !name.startsWith(cjsDir) && !name.startsWith(appsDir))) {
       const source = readFileSync(file, "utf8");
       expect(source, `${file} imports a platform module`).not.toMatch(/from\s+["']node:/);
       expect(source, `${file} uses require`).not.toMatch(/\brequire\s*\(/);
     }
-    // The CJS leg still must not touch platform modules.
+    // The CJS leg still must not touch platform modules. It has no apps leg at
+    // all — tsconfig.cjs.json excludes src/apps, because the door reads
+    // `import.meta.url` and resolves `#engine/wasm`, and CommonJS can do neither.
     for (const file of walk(cjsDir).filter((name) => name.endsWith(".js"))) {
       const source = readFileSync(file, "utf8");
       expect(source, `${file} imports a platform module`).not.toMatch(/require\(["']node:/);

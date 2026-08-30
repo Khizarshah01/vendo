@@ -1,6 +1,6 @@
 /**
  * The display bricks' React half — the tags `DISPLAY_SPECS` names
- * (`packages/apps/src/contract/kit/display.ts`), keyed by tag. A drift test pins
+ * (`packages/core/src/apps/kit/display.ts`), keyed by tag. A drift test pins
  * the two in step, exactly as `KIT_COMPONENTS` is pinned to `KIT_SPECS`.
  *
  * Each brick is written out by hand and destructures exactly `style`,
@@ -9,7 +9,7 @@
  * `dangerouslySetInnerHTML` cannot arrive — not because a list refuses them, but
  * because nothing carries them through.
  */
-import { SAFE_STYLE_PROPERTIES } from "@vendoai/apps/contract";
+import { SAFE_STYLE_PROPERTIES } from "@vendoai/core/apps";
 import type { CSSProperties, ReactNode } from "react";
 
 export interface DisplayBrickProps {

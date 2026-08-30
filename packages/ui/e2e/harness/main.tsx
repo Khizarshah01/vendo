@@ -6,7 +6,7 @@ import {
   type ToolOutcome,
   type UIPayload,
 } from "@vendoai/core";
-import { type VendoTheme } from "@vendoai/apps/contract";
+import { type VendoTheme } from "@vendoai/core/apps";
 import {
   VendoProvider,
   createVendoClient,

@@ -6,7 +6,7 @@ import { log, VENDO_TOOL_TITLES, isVendoError, type Json, type RunContext, type 
  * like a host tool. There is no privileged side door.
  *
  * `records_list/put/delete` are deliberately NOT here: an app's own data has
- * ONE door, `vendo_apps_sql` (packages/apps/src/server/doors/sql-tool.ts), and a
+ * ONE door, `vendo_apps_sql` (packages/vendo/src/apps/doors/sql-tool.ts), and a
  * second spelling of it would be a second place for the mine./shared. fence to
  * be got wrong.
  */

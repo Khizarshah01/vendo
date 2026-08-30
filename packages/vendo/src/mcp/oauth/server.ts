@@ -10,7 +10,7 @@ import {
 import { engineOverAdapter, isVendoError } from "@vendoai/core";
 import type {
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { z } from "zod";
 import type { HostOAuthAdapter } from "./adapter.js";
 import { consentPage } from "./consent-page.js";

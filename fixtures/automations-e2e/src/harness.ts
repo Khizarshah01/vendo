@@ -18,7 +18,7 @@ import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";
 import { createActions } from "@vendoai/vendo/actions";
 import { connectorDiscoveryRegistry } from "@vendoai/vendo";
-import { createApps, type AppsRuntime } from "@vendoai/apps";
+import { createApps, type AppsRuntime } from "@vendoai/vendo/apps";
 import {
   automationsInternals,
   createAutomations,

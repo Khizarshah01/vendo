@@ -16,7 +16,7 @@
  * SEMANTICS (role, focus, Enter) and leaves the address to the host.
  */
 import type { PropsWithChildren } from "react";
-import { resolveVendoRoute } from "@vendoai/apps/contract";
+import { resolveVendoRoute } from "@vendoai/core/apps";
 import { useVendoNavigate, useVendoRoutes } from "../routes.js";
 import { font, t, transitionFor, type KitStyled } from "./tokens.js";
 

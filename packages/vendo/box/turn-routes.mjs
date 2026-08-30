@@ -35,7 +35,7 @@
  *
  * This file lives in `@vendoai/harnesses` (the claude-code driver's package —
  * the box-side half of the session protocol the driver speaks), but it RUNS in
- * the box: `packages/apps/box/build-template.mjs` stages it into the machine
+ * the box: `packages/vendo/box/build-template.mjs` stages it into the machine
  * image beside the supervisor, which delegates every `/session/*` request here.
  * It imports nothing but node builtins, so it works from either home.
  */

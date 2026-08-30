@@ -25,7 +25,7 @@
  *  3. One beat, not fireworks. Past {@link MAX_MARKS} changed nodes the repaint
  *     is a different view rather than a data refresh, and nothing animates.
  */
-import { isHandlerRef, SCREEN_TEXT_NODE } from "@vendoai/apps/contract";
+import { isHandlerRef, SCREEN_TEXT_NODE } from "@vendoai/core/apps";
 import type { TreeNode } from "@vendoai/core";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { applyFormat } from "../kit/format.js";

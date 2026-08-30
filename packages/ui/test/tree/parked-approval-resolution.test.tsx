@@ -18,7 +18,7 @@
 import { afterEach, beforeAll, describe, expect, it } from "vitest";
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { transform } from "sucrase";
-import { bootScreen, flattenTree, warmScreenEngine } from "@vendoai/apps/contract";
+import { bootScreen, flattenTree, warmScreenEngine } from "@vendoai/core/apps";
 import { VENDO_TREE_FORMAT, type Json, type ToolOutcome, type UIPayload } from "@vendoai/core";
 import type { VendoClient } from "../../src/client.js";
 import { APPROVALS_DECIDED_EVENT } from "../../src/client-impl.js";

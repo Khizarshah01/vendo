@@ -13,7 +13,6 @@ import { run } from "./process.js";
  */
 export const VENDO_PACKAGE_NAMES = [
   "@vendoai/core",
-  "@vendoai/apps",
   "@vendoai/ui",
   "@vendoai/vendo",
   "@vendoai/cli",

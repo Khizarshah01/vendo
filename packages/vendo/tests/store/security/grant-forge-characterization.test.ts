@@ -10,7 +10,7 @@ import { backends, type MadeBackend } from "../../../src/store/backends.test-uti
 // completely: whoever holds a StoreAdapter handle can mint any grant they like.
 //
 // This is SAFE ONLY because of a STRUCTURAL invariant enforced ONE LAYER UP (in
-// @vendoai/apps): app / sandbox code NEVER receives a StoreAdapter handle. App
+// @vendoai/vendo/apps): app / sandbox code NEVER receives a StoreAdapter handle. App
 // code reaches the host solely through the guard-bound tool proxy, which is the
 // component that actually decides authorization. The store is a trusted backend
 // behind that boundary — it is not, and is not meant to be, an authorization

@@ -369,7 +369,7 @@ export function seats(model: LanguageModel): ResolvedModels<LanguageModel> {
  * The apps hooks a composed deployment injects into `claudeCode()`
  * (`provideHarnessAdapters` — see `HarnessAdapters`), as this package's suites
  * need them: the hot-path vocabulary restated (`HOT_PATH_WATCH` /
- * `hotPathAppId` in `@vendoai/apps`, which this package no longer imports),
+ * `hotPathAppId` in `@vendoai/vendo/apps`, which this package no longer imports),
  * and a validate gate that always passes. The REAL vocabulary and gate joined
  * to the driver are covered in `packages/vendo/tests/`, where both blocks are
  * legal.

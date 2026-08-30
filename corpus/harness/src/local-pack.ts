@@ -11,7 +11,6 @@ export const LOCAL_DIRECT_DEPENDENCIES = ["@vendoai/vendo", "@vendoai/ui"] as co
 
 export const LOCAL_VENDO_PACKAGE_NAMES = [
   "@vendoai/core",
-  "@vendoai/apps",
   "@vendoai/ui",
   "@vendoai/vendo",
   "vendoai",

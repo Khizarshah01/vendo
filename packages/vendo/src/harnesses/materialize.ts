@@ -22,7 +22,7 @@
  * its caller today; any future harness is the same shape.
  *
  * Landing bytes and calling `commit()` is the WHOLE mid-turn render story — the
- * render seam (`@vendoai/apps` render-seam.ts) wraps `commit` and emits the
+ * render seam (`@vendoai/vendo/apps` render-seam.ts) wraps `commit` and emits the
  * view, so this file never speaks about views.
  */
 import { createHash } from "node:crypto";
@@ -166,7 +166,7 @@ export async function checkoutWorkspace(
   reseed = true,
   /**
    * Which paths `syncHot` may land — the hot-path vocabulary, injected because
-   * this package no longer imports `@vendoai/apps` (composition hands the driver
+   * this package no longer imports `@vendoai/vendo/apps` (composition hands the driver
    * `hotPathAppId`; see `HotPathsPort`). Omitted, `syncHot` lands nothing, which
    * is exactly the bare-runtime deployment where nobody watches hot paths.
    */

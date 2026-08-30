@@ -32,8 +32,8 @@ import {
   type Principal,
   type RunContext,
 } from "@vendoai/core";
-import type { SandboxAdapter } from "@vendoai/apps";
-import type { ComponentRegistry, VendoRouteMap, VendoTheme } from "@vendoai/apps/contract";
+import type { SandboxAdapter } from "../src/apps/index.js";
+import type { ComponentRegistry, VendoRouteMap, VendoTheme } from "@vendoai/core/apps";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createSessionRoutes } from "../box/turn-routes.mjs";
 import { disposeSessionMachines } from "../src/harnesses/claude-code/box.js";

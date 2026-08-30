@@ -35,7 +35,7 @@
  *
  * What must be able to fail: call
  * `assertEngineCollection("vendo_inclient_approvals")` at the top of
- * `paintedScreenSurface` (`@vendoai/apps` persistence/open.ts) — the same
+ * `paintedScreenSurface` (`@vendoai/vendo/apps` persistence/open.ts) — the same
  * unguarded read, in the same place — and this goes red with a 403. Note that
  * routing it through the `venueState` seam instead does NOT reproduce it:
  * `additionalVenueState` catches, so that hook can only cost the payload a key.
@@ -43,7 +43,7 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { SeedBaseline } from "@vendoai/apps";
+import type { SeedBaseline } from "../src/apps/index.js";
 import type { RunContext } from "@vendoai/core";
 import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

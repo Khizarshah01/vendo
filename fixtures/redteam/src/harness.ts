@@ -22,7 +22,7 @@ import { createStore, type VendoStore } from "@vendoai/vendo/store";
 import { createGuard, type Judge, type VendoGuard } from "@vendoai/vendo/guard";
 import { createActions } from "@vendoai/vendo/actions";
 import { connectorDiscoveryRegistry } from "@vendoai/vendo";
-import { createApps, type AppsRuntime, type SandboxAdapter } from "@vendoai/apps";
+import { createApps, type AppsRuntime, type SandboxAdapter } from "@vendoai/vendo/apps";
 import { automationsInternals, createAutomations, type AutomationsEngine } from "@vendoai/vendo/automations";
 
 export const fixtureBaseUrl = (): string => inject("fixtureBaseUrl");

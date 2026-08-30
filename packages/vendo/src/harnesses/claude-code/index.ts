@@ -143,7 +143,7 @@ const optionsSchema = z.object({
  *  an explicitly passed value always wins (the adapter rule). The three apps
  *  hooks are the app-document vocabulary this package no longer imports —
  *  `HOT_PATH_WATCH`/`hotPathAppId`, `validateWrittenApps`, `repairInstruction`
- *  in `@vendoai/apps`. Without them the driver still runs, minus the mid-turn
+ *  in `@vendoai/vendo/apps`. Without them the driver still runs, minus the mid-turn
  *  hot-path sync and the validate gate ({@link warnNoAppsHooksOnce}). */
 export interface ClaudeCodeDeps
   extends Pick<HarnessAdapters, "hotPaths" | "validateApps" | "repairInstruction"> {
@@ -372,7 +372,7 @@ export function claudeCode(
       const composed = harnessAdapters(harness);
 
       // The apps hooks — the hot-path vocabulary and the validate gate, which
-      // used to be value imports from `@vendoai/apps` and now arrive injected:
+      // used to be value imports from `@vendoai/vendo/apps` and now arrive injected:
       // the constructor's own arg wins, composition fills what the host left
       // unset (the adapter rule). A runtime driven bare has neither, keeps
       // running, and the operator hears exactly what it lost, once.

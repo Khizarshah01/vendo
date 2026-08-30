@@ -346,7 +346,7 @@ describe("H2 — turn.messages is genuinely ours", () => {
 
 // H3 ("the seam's payload streams, then settles") and H4 ("the seam wrapper
 // survives a real façade") moved with the render seam to
-// packages/apps/tests/render-seam.test.ts — they exercise the seam alone,
+// packages/vendo/tests/apps/render-seam.test.ts — they exercise the seam alone,
 // which no longer lives in this package.
 
 describe("C5 — the two consent surfaces a harness turn must still render", () => {

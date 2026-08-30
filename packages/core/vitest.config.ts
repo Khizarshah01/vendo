@@ -21,7 +21,17 @@ export default defineConfig({
       exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.test-util.{ts,tsx}"],
       // Ratcheted line-coverage floor (ENG-255): set at/just below the measured
       // value so it can only rise. Regression below this fails CI.
-      thresholds: { lines: 97 },
+      //
+      // `src/apps/**` is the app-generation contract S11d folded in, and it
+      // keeps the floor of 88 it carried as @vendoai/apps. Averaged into one
+      // number the pair would sit near 94, which would have quietly retired
+      // three points of core's own gate to admit code that never met it. Files
+      // matched by a glob are held to the glob and excluded from the number
+      // above, so core's own 97 is untouched.
+      thresholds: {
+        lines: 97,
+        "src/apps/**": { lines: 88 },
+      },
     },
   },
 });

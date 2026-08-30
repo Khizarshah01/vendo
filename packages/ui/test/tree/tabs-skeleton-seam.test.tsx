@@ -2,7 +2,7 @@
 /**
  * The screen-paint ↔ Tabs seam.
  *
- * The Kit's own contract (`packages/apps` contract/kit/specs.ts) says a screen
+ * The Kit's own contract (`packages/core` src/apps/kit/specs.ts) says a screen
  * NAMES its tabs and nests one child per tab in tab order, so a painted screen
  * arrives here as `{component:"Tabs", props:{tabs:[{value,label}], value},
  * children:[…panels]}` and every panel's body hangs off those children. V4

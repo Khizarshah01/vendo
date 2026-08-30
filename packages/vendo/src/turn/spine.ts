@@ -30,7 +30,7 @@ import {
   type ThreadId,
   type ToolRegistry,
 } from "@vendoai/core";
-import { wrapWorkspaceForRender } from "@vendoai/apps";
+import { wrapWorkspaceForRender } from "../apps/index.js";
 import { createHarnessRuntime, type HarnessRuntimeDeps } from "../harnesses/index.js";
 import {
   harnessStateStore,

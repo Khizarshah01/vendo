@@ -6,9 +6,9 @@ import { inject } from "vitest";
 import { type AppDocument, type PolicyConfig, type Principal, sha256Hex, type ToolRegistry } from "@vendoai/core";
 import type {
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { createActions } from "@vendoai/vendo/actions";
-import { createApps, sealBundleBlobs, SCREEN_FILE, type AppsRuntime } from "@vendoai/apps";
+import { createApps, sealBundleBlobs, SCREEN_FILE, type AppsRuntime } from "@vendoai/vendo/apps";
 import { createGuard, type VendoGuard } from "@vendoai/vendo/guard";
 import { createMcpDoor, type McpDoorConfig, type HostOAuthAdapter } from "@vendoai/vendo/mcp";
 import { createStore, storeFiles, type VendoStore } from "@vendoai/vendo/store";

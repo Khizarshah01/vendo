@@ -162,7 +162,7 @@ describe("THE LAW: unattended destructive calls are refused at the guard", () =>
   // out: `baseRunContext` in `packages/vendo/src/automations/sponsorship-gate.ts`
   // fires genuine unattended work as `{ venue: "automation", presence: "away" }`
   // — including a machine app's own `vendo.json` schedules, which
-  // `packages/apps/src/server/automation/plan.ts` folds into document triggers that
+  // `packages/vendo/src/apps/automation/plan.ts` folds into document triggers that
   // same engine fires — so a venue-keyed predicate would put every scheduled
   // firing outside the law.
   it.each(VENUES)("refuses an away destructive call in venue %s", async (venue) => {

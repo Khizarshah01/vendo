@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { effectiveAppBuildUiDeadlineMs } from "@vendoai/apps/contract";
+import { effectiveAppBuildUiDeadlineMs } from "@vendoai/core/apps";
 import type { VendoAppRef, VendoApprovalRef } from "@vendoai/core";
 import type { ReactNode } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";

@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
+import type { SandboxAdapter, SandboxMachine } from "../src/apps/index.js";
 import {
   sandboxAdapterConformance,
   type SandboxConformanceHarness,
-} from "@vendoai/apps/testing";
+} from "../src/apps/testing/index.js";
 import { CLOUD_BOX_PORT, CLOUD_SANDBOX_PATH, CLOUD_SNAPSHOT_REF_PREFIX } from "../src/sandbox-wire.js";
 import { cloudSandbox } from "../src/sandbox.js";
 

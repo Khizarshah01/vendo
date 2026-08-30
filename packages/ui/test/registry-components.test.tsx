@@ -4,7 +4,7 @@ import type {
 } from "@vendoai/core";
 import type {
   ComponentRegistry,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import { VendoProvider, createVendoClient, hostComponentMap, useVendoProvider, type VendoClient } from "../src/index.js";

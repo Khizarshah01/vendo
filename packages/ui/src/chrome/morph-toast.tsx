@@ -1,6 +1,6 @@
 import type {
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { themeCssVariables } from "../theme.js";

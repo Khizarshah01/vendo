@@ -1085,7 +1085,7 @@ says `crayon` — which is the point: it was the asymmetry that was the bug. The
 `pipeline` field arrived beside it and breaks nothing, being a recording rather
 than a rule: no floor check, rubric line or exit code reads it. Its repair half is
 still missing and needs a field on `ScreenOutcome`
-(`packages/apps/src/contract/screen.ts`) — from out here the reviewer's verdict is
+(`packages/core/src/apps/screen.ts`) — from out here the reviewer's verdict is
 watchable and whether the repair round ran is not.
 
 Two probe fairness fixes later on 2026-08-18 are a fifth and a sixth break, and

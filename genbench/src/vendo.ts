@@ -1,5 +1,5 @@
-import { createApps, SCREEN_FILE } from "@vendoai/apps";
-import { renderBriefingPack, type BriefingPack } from "@vendoai/apps/contract";
+import { createApps, SCREEN_FILE } from "@vendoai/vendo/apps";
+import { renderBriefingPack, type BriefingPack } from "@vendoai/core/apps";
 import type { AppId, Principal, RunContext, ToolRegistry, UIPayload } from "@vendoai/core";
 import { createGuard } from "@vendoai/vendo/guard";
 import { createStore, workspaceStore } from "@vendoai/vendo/store";
@@ -174,7 +174,7 @@ export interface Review {
  *
  * THE REPAIR HALF IS NOT HERE, and cannot be from out here. Whether the round ran
  * and whether the floor accepted its bytes are `assembleScreen` internals, and
- * `ScreenOutcome` (`packages/apps/src/contract/screen.ts`) answers `assembled`
+ * `ScreenOutcome` (`packages/core/src/apps/screen.ts`) answers `assembled`
  * with a sentence and nothing else — reporting it needs a field on that contract.
  */
 export interface Pipeline {

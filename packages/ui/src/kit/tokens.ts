@@ -9,7 +9,7 @@ import {
   densityCssVariables,
   infoColorFor,
   themeDefaults,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import type { CSSProperties, ReactNode } from "react";
 
 /** Every fallback is READ OFF `defaultVendoTheme` rather than retyped, because

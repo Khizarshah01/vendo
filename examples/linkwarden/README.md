@@ -85,10 +85,10 @@ import { VendoOverlay } from "@vendoai/ui/chrome";
 `apps/web/next.config.js`:
 
 ```js
-serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],
+serverExternalPackages: ["@vendoai/vendo/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],
 ```
 
-`@vendoai/apps` is the load-bearing entry: it reaches esbuild through a variable
+`@vendoai/vendo/apps` is the load-bearing entry: it reaches esbuild through a variable
 specifier the bundler cannot see, so an `"esbuild"` entry on its own is inert
 (`vendo doctor` fails `E-CFG-004` without the package).
 

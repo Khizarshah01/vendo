@@ -17,7 +17,7 @@
  * model `diy` streamed through and off the session `claude-code` opened. Only
  * the model and the SDK are doubles.
  */
-import { renderBriefingPack } from "@vendoai/apps/contract";
+import { renderBriefingPack } from "@vendoai/core/apps";
 import type { RunContext } from "@vendoai/core";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
 import { writeFile } from "node:fs/promises";

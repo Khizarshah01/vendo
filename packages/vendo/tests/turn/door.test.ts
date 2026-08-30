@@ -17,7 +17,7 @@ import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
+import type { SandboxAdapter, SandboxMachine } from "../../src/apps/index.js";
 // The REAL box door and the REAL in-box session opener, over a fake transport:
 // what the box does with `toolDoor` is the other half of this seam.
 import { createSessionRoutes } from "../../box/turn-routes.mjs";

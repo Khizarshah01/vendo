@@ -36,7 +36,7 @@ async function healthy(base?: string): Promise<string> {
     await writeFile(path, body);
   };
   await write("package.json", JSON.stringify({ dependencies: { "@vendoai/vendo": "0.3.0", next: "16" } }));
-  await write("next.config.ts", 'export default { serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"] };\n');
+  await write("next.config.ts", 'export default { serverExternalPackages: ["@vendoai/vendo/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"] };\n');
   await write("app/layout.tsx", "export default ({children}) => <VendoProvider>{children}<VendoOverlay /></VendoProvider>;");
   await write("app/api/vendo/[...vendo]/route.ts", "export const GET = () => {};\n");
   for (const file of ["tools.json", "overrides.json", "policy.json", "brief.md", "theme.json"]) await write(`.vendo/${file}`, "{}\n");
@@ -1100,7 +1100,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   });
 
   /** A Next host whose config never externalizes esbuild: Next bundles
-   *  @vendoai/apps into the server chunk, the checker's runtime esbuild import
+   *  @vendoai/vendo/apps into the server chunk, the checker's runtime esbuild import
    *  then resolves from the app root — where pnpm never hoists it — and every
    *  generated screen fails its checks. */
   it("fails E-CFG-004 when a Next host's config does not externalize esbuild", async () => {
@@ -1109,21 +1109,21 @@ describe("vendo doctor error codes + fix_refs", () => {
     const { exit, report } = await jsonChecks({ targetDir: root });
     const check = report.checks.find((entry) => entry.id === "config/next-externals");
     expect(check).toMatchObject({ status: "broken", error_code: "E-CFG-004" });
-    expect(check?.message).toContain('serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],');
+    expect(check?.message).toContain('serverExternalPackages: ["@vendoai/vendo/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],');
     expect(exit).toBe(1);
   });
 
-  /** The hole a live run found: an "esbuild" entry without @vendoai/apps is
+  /** The hole a live run found: an "esbuild" entry without @vendoai/vendo/apps is
    *  inert (the checker's specifier is a variable the bundler cannot see), so
    *  the check has to fail on the package, not just on esbuild. */
-  it("fails E-CFG-004 on a list that has esbuild but not @vendoai/apps", async () => {
+  it("fails E-CFG-004 on a list that has esbuild but not @vendoai/vendo/apps", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
       'export default { serverExternalPackages: ["esbuild", "@electric-sql/pglite", "@vendoai/vendo"] };\n', "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     const check = report.checks.find((entry) => entry.id === "config/next-externals");
     expect(check).toMatchObject({ status: "broken", error_code: "E-CFG-004" });
-    expect(check?.message).toContain("@vendoai/apps");
+    expect(check?.message).toContain("@vendoai/vendo/apps");
     expect(exit).toBe(1);
   });
 
@@ -1132,7 +1132,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("fails E-CFG-004 when the only externals list is commented out", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      '// serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],\n'
+      '// serverExternalPackages: ["@vendoai/vendo/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"],\n'
       + "export default { reactStrictMode: true };\n", "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals"))
@@ -1143,7 +1143,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("fails E-CFG-004 when the list is inside a block comment", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      '/* serverExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"], */\n'
+      '/* serverExternalPackages: ["@vendoai/vendo/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"], */\n'
       + "export default {};\n", "utf8");
     const { report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals"))
@@ -1155,11 +1155,11 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("names the transpilePackages conflict in the E-CFG-004 message", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      'export default { transpilePackages: ["@vendoai/apps"] };\n', "utf8");
+      'export default { transpilePackages: ["@vendoai/vendo/apps"] };\n', "utf8");
     const { report } = await jsonChecks({ targetDir: root });
     const check = report.checks.find((entry) => entry.id === "config/next-externals");
     expect(check).toMatchObject({ status: "broken", error_code: "E-CFG-004" });
-    expect(check?.message).toContain("Remove @vendoai/apps from transpilePackages first");
+    expect(check?.message).toContain("Remove @vendoai/vendo/apps from transpilePackages first");
   });
 
   it("fails E-CFG-004 when a Next host has no next.config at all", async () => {
@@ -1175,7 +1175,7 @@ describe("vendo doctor error codes + fix_refs", () => {
   it("passes config/next-externals on the Next 14 spelling of the same list", async () => {
     const root = await healthy();
     await writeFile(join(root, "next.config.ts"),
-      'export default { experimental: { serverComponentsExternalPackages: ["@vendoai/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"] } };\n',
+      'export default { experimental: { serverComponentsExternalPackages: ["@vendoai/vendo/apps", "esbuild", "@electric-sql/pglite", "@vendoai/vendo"] } };\n',
       "utf8");
     const { exit, report } = await jsonChecks({ targetDir: root });
     expect(report.checks.find((entry) => entry.id === "config/next-externals")).toMatchObject({ status: "ok" });

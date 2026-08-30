@@ -12,7 +12,7 @@ import {
   type SandboxMachine,
   e2bSandbox,
   selectSandbox,
-} from "@vendoai/apps";
+} from "../apps/index.js";
 import {
   consoleUrlFromEnv,
   VendoError,
@@ -306,7 +306,7 @@ const defaultStore = (): VendoStore => {
   return key === undefined ? createStore() : hostedStore(key);
 };
 
-/** The ladder itself lives in @vendoai/apps (`selectSandbox`) — ONE
+/** The ladder itself lives in @vendoai/vendo/apps (`selectSandbox`) — ONE
  *  implementation, shared with the umbrella's composition seam. This function
  *  is only what an EMPTY ladder means here: a harness that needs a machine and
  *  has none is a boot error, not a turn that dies in front of a user. Both
@@ -426,7 +426,7 @@ export function agent(config: AgentConfig): VendoAgent {
     ...(door === undefined ? {} : { toolDoor: door.port }),
     // The app-document vocabulary a machine-backed driver needs (the hot-path
     // watch set and the validate gate) — injected because `@vendoai/harnesses`
-    // no longer imports `@vendoai/apps`. Same fill as the umbrella's
+    // no longer imports `@vendoai/vendo/apps`. Same fill as the umbrella's
     // (`packages/vendo/src/harness-turn.ts`), so both composed paths stay
     // byte-identical to when the driver imported these itself.
     hotPaths: { watch: HOT_PATH_WATCH, appId: hotPathAppId },

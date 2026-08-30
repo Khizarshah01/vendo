@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import { join } from "node:path";
-import { seedBaselineSchema, type SeedBaseline } from "@vendoai/apps";
+import { seedBaselineSchema, type SeedBaseline } from "@vendoai/vendo/apps";
 import type { Json } from "@vendoai/core";
 import { hostedStore } from "@vendoai/vendo/store";
 

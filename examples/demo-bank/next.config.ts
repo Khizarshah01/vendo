@@ -5,19 +5,18 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   // Served in place at demos.vendo.run/maple — see ./src/lib/base-path.
   basePath: BASE_PATH,
-  // @vendoai/apps is the load-bearing entry: its engine syntax-checks generated
+  // @vendoai/vendo is the load-bearing entry: its engine syntax-checks generated
   // islands with esbuild through a VARIABLE specifier the bundler cannot see, so
   // an "esbuild" entry alone is inert — bundle the package and that import
   // becomes a bare resolve from this app's root. It only ever worked here
-  // because the monorepo root hoists esbuild. PGlite's Emscripten module breaks
-  // under Turbopack's production chunking ("f.instantiateWasm is not a
-  // function"), so it stays external too — including @vendoai/vendo, which now
-  // holds the store that loads PGlite. That entry is dev-conditional because the
-  // dev block below aliases the umbrella to source and Turbopack HARD-FATALS on a
-  // package named in both lists; production chunking is the only venue the
-  // externalization was ever for.
+  // because the monorepo root hoists esbuild. The same package holds the store
+  // that loads PGlite, whose Emscripten module breaks under Turbopack's
+  // production chunking ("f.instantiateWasm is not a function"), so one entry
+  // now covers both reasons. It is dev-conditional because the dev block below
+  // aliases the umbrella to source and Turbopack HARD-FATALS on a package named
+  // in both lists; production chunking is the only venue the externalization was
+  // ever for.
   serverExternalPackages: [
-    "@vendoai/apps",
     "esbuild",
     "@electric-sql/pglite",
     ...(process.env.NODE_ENV === "development" ? [] : ["@vendoai/vendo"]),
@@ -31,11 +30,10 @@ const nextConfig: NextConfig = {
   // only part of it leaves one bundle holding a src copy and a dist copy of
   // the same module, and state keyed by module identity (harnesses' WeakMap of
   // adapter slots, store's of internals) then splits silently across the two.
-  // @vendoai/apps is the holdout — externalized above for its runtime esbuild
-  // import, and an externalized package must not stay aliased here: Turbopack
-  // HARD-FATALS on a package named in BOTH transpilePackages and
-  // serverExternalPackages, and node cannot require .ts anyway. `next build`
-  // skips the block entirely and resolves dist/ like a published install would.
+  // An externalized package must not stay aliased here: Turbopack HARD-FATALS on
+  // a package named in BOTH transpilePackages and serverExternalPackages, which
+  // is exactly why @vendoai/vendo's entry above is dev-conditional. `next build`
+  // skips this block entirely and resolves dist/ like a published install would.
   ...(process.env.NODE_ENV === "development"
     ? {
         transpilePackages: ["@vendoai/core", "@vendoai/ui", "@vendoai/vendo"],
@@ -43,12 +41,17 @@ const nextConfig: NextConfig = {
           resolveAlias: {
             "@vendoai/core": "../../packages/core/src/index.ts",
             "@vendoai/core/conformance": "../../packages/core/src/conformance/index.ts",
+            "@vendoai/core/apps": "../../packages/core/src/apps/index.ts",
             "@vendoai/ui": "../../packages/ui/src/index.ts",
             "@vendoai/ui/chrome": "../../packages/ui/src/chrome/index.ts",
             "@vendoai/ui/tree": "../../packages/ui/src/tree/index.ts",
             "@vendoai/ui/kit": "../../packages/ui/src/kit/index.ts",
             "@vendoai/vendo": "../../packages/vendo/src/index.ts",
             "@vendoai/vendo/server": "../../packages/vendo/src/server.ts",
+            "@vendoai/vendo/apps": "../../packages/vendo/src/apps/index.ts",
+            "@vendoai/vendo/apps/testing": "../../packages/vendo/src/apps/testing/index.ts",
+            "@vendoai/vendo/sandbox/e2b": "../../packages/vendo/src/sandbox/escalation/e2b/index.ts",
+            "@vendoai/vendo/sandbox/edge": "../../packages/vendo/src/sandbox/edge/index.ts",
             "@vendoai/vendo/store": "../../packages/vendo/src/store/index.ts",
             "@vendoai/vendo/store/postgres": "../../packages/vendo/src/store/postgres.ts",
             "@vendoai/vendo/store/test-util": "../../packages/vendo/src/store/fake-console.ts",

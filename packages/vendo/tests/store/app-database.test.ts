@@ -1,7 +1,7 @@
 /**
  * The app-database SEAM, end to end, with nothing stubbed on either side.
  *
- * Producer: `@vendoai/apps`' real door — the guard, the physical names, the
+ * Producer: `@vendoai/vendo/apps`' real door — the guard, the physical names, the
  * per-owner schema replay. Consumer: this package's real Postgres adapter over
  * a real Postgres engine. A harness that mocked either half would prove only
  * that it agrees with itself, which is the exact failure this repo has shipped
@@ -16,7 +16,7 @@
  * enumerate Ada's rows, by every address the door might have left open.
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { createAppSql, type AppSqlAccess } from "@vendoai/apps";
+import { createAppSql, type AppSqlAccess } from "../../src/apps/index.js";
 import { VendoError } from "@vendoai/core";
 import { appSchema, createStore, postgresAppDatabase, type VendoStore } from "../../src/store/index.js";
 
@@ -267,7 +267,7 @@ describe("app database — Grace cannot reach Ada's rows", () => {
 /**
  * The catalog, on the REAL connection.
  *
- * `packages/apps/tests/security/app-sql-guard.test.ts` proves the refusals
+ * `packages/vendo/tests/apps/security/app-sql-guard.test.ts` proves the refusals
  * against the guard alone. This block is the other half, and the reason the
  * pair exists: the guard once refused `query_to_xml` bare and admitted
  * `"query_to_xml"`, and the statement that got through ran here — on a real

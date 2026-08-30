@@ -21,8 +21,8 @@
  * planner owes is exactly what is asserted below: a labelled-irreversible tool is
  * never offered, and an ask that needs one comes back as a sentence.
  */
-import { planAutomation, type AutomationPlanInput, type HostToolInfo } from "@vendoai/apps";
-import { scriptedLanguageModel, type ScriptedModelCall } from "@vendoai/apps/testing";
+import { planAutomation, type AutomationPlanInput, type HostToolInfo } from "@vendoai/vendo/apps";
+import { scriptedLanguageModel, type ScriptedModelCall } from "@vendoai/vendo/apps/testing";
 import { UNATTENDED_DESTRUCTIVE_REASON } from "@vendoai/core";
 import { describe, expect, it } from "vitest";
 

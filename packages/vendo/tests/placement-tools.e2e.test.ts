@@ -19,7 +19,7 @@
  *
  * This host has no sandbox, so `vendo_make` here is always served by the
  * ASSEMBLY engine. The escalated-builder half of `slot` is proved one layer
- * down, in `packages/apps/tests/agent-tools.test.ts`, where a fake box makes that
+ * down, in `packages/vendo/tests/apps/agent-tools.test.ts`, where a fake box makes that
  * route reachable.
  */
 import {
@@ -33,7 +33,7 @@ import {
 } from "@vendoai/core";
 import {
   makeReceiptSchema,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { defineHarness } from "../src/harnesses/index.js";
 import type { VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";

@@ -43,7 +43,7 @@ export interface AppAccess {
 /* ------------------------------------------------------------------------- *
  * The PURE half of `can()`: the principal grammar, the level order, and the
  * path rules. It lives here, beside the shapes, because two packages resolve
- * access — @vendoai/vendo/store over real rows and @vendoai/apps' test stand-in over
+ * access — @vendoai/vendo/store over real rows and @vendoai/vendo/apps' test stand-in over
  * a memory store — and a second copy of these rules is how a permission check
  * rots. Nothing below touches a store; every function is a total function of
  * its arguments.

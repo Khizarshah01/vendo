@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { TreeNode } from "@vendoai/core";
-import { SCREEN_TEXT_NODE } from "@vendoai/apps/contract";
+import { SCREEN_TEXT_NODE } from "@vendoai/core/apps";
 import { diffPaints, type NodeMap } from "../../src/tree/repaint-motion.js";
 
 const paint = (...nodes: TreeNode[]): NodeMap => new Map(nodes.map((node) => [node.id, node]));

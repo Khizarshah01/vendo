@@ -35,8 +35,8 @@ import {
 } from "@vendoai/core";
 import {
   makeReceiptSchema,
-} from "@vendoai/apps/contract";
-import { SCREEN_FILE } from "@vendoai/apps";
+} from "@vendoai/core/apps";
+import { SCREEN_FILE } from "../src/apps/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

@@ -12,8 +12,8 @@
  * comparison, because that is everything the deployment's brain is handed.
  */
 import { agent } from "../src/turn/index.js";
-import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
-import { inMemoryBoxFiles } from "@vendoai/apps/testing";
+import type { SandboxAdapter, SandboxMachine } from "../src/apps/index.js";
+import { inMemoryBoxFiles } from "../src/apps/testing/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel, UIMessage } from "ai";

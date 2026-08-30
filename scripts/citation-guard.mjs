@@ -10,7 +10,7 @@
  *
  *  A citation is resolved against the repo root AND against every ancestor
  *  directory of the file that cites it, because many packages (cloud/console,
- *  packages/apps, fixtures/mcp-e2e, ...) nest their OWN scripts/, docs/ and
+ *  packages/vendo, fixtures/mcp-e2e, ...) nest their OWN scripts/, docs/ and
  *  fixtures/ directories, and a comment inside one of them written as
  *  `scripts/<name>.ts` means package-relative, not repo-root-relative.
  *

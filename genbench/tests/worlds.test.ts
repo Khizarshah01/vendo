@@ -12,7 +12,7 @@
 import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { vendoThemeSchema } from "@vendoai/apps/contract";
+import { vendoThemeSchema } from "@vendoai/core/apps";
 import { TOOL_NAME_PATTERN } from "@vendoai/core";
 import { beforeAll, describe, expect, it } from "vitest";
 import { blind } from "../src/judge.js";

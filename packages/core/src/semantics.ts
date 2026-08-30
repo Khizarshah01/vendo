@@ -52,7 +52,7 @@ const CENTS_NAME = /cents$/i;
 const MONEY_NAME = /(amount|balance|price|cost|fee|revenue|spend|paid|budget)/i;
 const NOT_MONEY_NAME = /(count|qty|quantity|number|num$|id$|rate|ratio|pct|percent)/i;
 
-// The same two regexes `amountUnitIssue` (packages/apps/src/server/persistence/call.ts) and
+// The same two regexes `amountUnitIssue` (packages/vendo/src/apps/persistence/call.ts) and
 // `unitAnnotation` (apps generation contracts) already classify unit metadata
 // with. Kept here so the consent surface reads the host's declaration through
 // the same rule the call seam enforces it with.

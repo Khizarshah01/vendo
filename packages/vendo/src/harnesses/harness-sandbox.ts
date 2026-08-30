@@ -66,7 +66,7 @@ export interface ToolDoorPort {
  * watch on the machine's disk mid-turn, and which paths count as hot when the
  * collected files come home.
  *
- * Injected — this package no longer depends on `@vendoai/apps`, where the real
+ * Injected — this package no longer depends on `@vendoai/vendo/apps`, where the real
  * vocabulary (`HOT_PATH_WATCH`, `hotPathAppId`) lives. Composition hands the
  * driver the real one; a bare host-driven runtime without it simply has no
  * mid-turn hot sync, and the driver says so once.
@@ -79,7 +79,7 @@ export interface HotPathsPort {
 }
 
 /** One app document that did not pass the validate gate — a structural mirror
- *  of `AppValidationFailure` in `@vendoai/apps` (validate-gate.ts). Restated
+ *  of `AppValidationFailure` in `@vendoai/vendo/apps` (validate-gate.ts). Restated
  *  because this package no longer imports apps; the composition site assigns
  *  the real functions into {@link HarnessAdapters}, so drift between the two
  *  shapes fails to compile there, by name. */
@@ -92,7 +92,7 @@ export interface AppValidationFailureLike {
 /** The composed adapters a harness may be handed. Mirrors `ComposedAdapters`
  *  (the boot gate's view), plus the MCP door a machine-backed harness needs. */
 export interface HarnessAdapters {
-  /** `SandboxAdapter` from `@vendoai/apps`; typed loosely so the root entry of
+  /** `SandboxAdapter` from `@vendoai/vendo/apps`; typed loosely so the root entry of
    *  this package never pulls a provider SDK into scope. */
   sandbox?: unknown;
   /** The host's MCP door, for a harness whose thinker runs on a machine. */

@@ -1,7 +1,7 @@
 /**
  * The SEAM: what a box turn that outran its budget is finally CALLED.
  *
- * `@vendoai/harnesses` throws the budget error and `@vendoai/apps` turns a throw
+ * `@vendoai/harnesses` throws the budget error and `@vendoai/vendo/apps` turns a throw
  * into the sentence on the person's failure card — and apps cannot import
  * harnesses, so the two only meet in the umbrella. They disagreed silently for
  * exactly that reason: the budget throw carries code `unavailable`, which the
@@ -16,7 +16,7 @@
  * on the broken code, because the hand-written one is where the bug was.
  */
 import { VendoError } from "@vendoai/core";
-import { buildFailureReason } from "@vendoai/apps";
+import { buildFailureReason } from "../src/apps/index.js";
 import {
   boxMachine,
   disposeSessionMachines,

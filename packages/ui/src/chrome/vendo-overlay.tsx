@@ -1,5 +1,5 @@
 import type { UIPayload } from "@vendoai/core";
-import type { VendoTheme } from "@vendoai/apps/contract";
+import type { VendoTheme } from "@vendoai/core/apps";
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState, useSyncExternalStore, type ComponentProps, type ComponentType, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { useVendoProvider, useVendoDiscoverability } from "../context.js";

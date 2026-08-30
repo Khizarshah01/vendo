@@ -7,7 +7,7 @@
 // `var(…, fallback)` carries, which is why a screenshot could not see it.
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import type { VendoTheme } from "@vendoai/apps/contract";
+import type { VendoTheme } from "@vendoai/core/apps";
 import { VENDO_TREE_FORMAT, type ToolOutcome } from "@vendoai/core";
 import { TreeView, type WalkTree } from "../../src/tree/index.js";
 import { VendoProvider, createVendoClient } from "../../src/index.js";

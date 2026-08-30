@@ -5,7 +5,7 @@
  * fail-soft read, and nothing here reaches the network.
  */
 import type { ExtractedTool } from "./actions/index.js";
-import { seedBaselineSchema, type SeedBaseline } from "@vendoai/apps";
+import { seedBaselineSchema, type SeedBaseline } from "./apps/index.js";
 import {
   log,
   type ToolDefinition,
@@ -13,7 +13,7 @@ import {
 import {
   vendoThemeSchema,
   type VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { hostToolNamesIn, vendoDirOf } from "./capability/index.js";
 import type { CreateVendoConfig } from "./types.js";
 

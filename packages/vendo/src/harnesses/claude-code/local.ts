@@ -59,7 +59,7 @@ const RUNNER = "./claude-turn.js";
 
 /**
  * The SDK, from HERE, because this package declares the optional peer
- * (`@vendoai/apps` declares it too, for the box's layer-3 agent engine) — and
+ * (`@vendoai/vendo/apps` declares it too, for the box's layer-3 agent engine) — and
  * this function is the ONLY place in the shipped packages that names it on a
  * host path.
  *

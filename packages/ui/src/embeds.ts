@@ -1,4 +1,4 @@
-import type { VendoTheme } from "@vendoai/apps/contract";
+import type { VendoTheme } from "@vendoai/core/apps";
 import { VENDO_TOOL_PREFIX, type VendoAppRef, type VendoApprovalRef } from "@vendoai/core";
 import {
   getToolName,

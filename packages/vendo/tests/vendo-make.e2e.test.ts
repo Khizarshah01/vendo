@@ -20,7 +20,7 @@ import {
 } from "@vendoai/core";
 import {
   makeReceiptSchema,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

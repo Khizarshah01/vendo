@@ -7,7 +7,7 @@
  * `stream-turns.ts`, and the `TurnSpec` wire form
  * fixtures/integration-browser pushes over HTTP), ported here because a
  * stranger installs published packages: it cannot import a private workspace
- * fixture, and `@vendoai/apps/testing` pulls `vitest` into the module graph,
+ * fixture, and `@vendoai/vendo/apps/testing` pulls `vitest` into the module graph,
  * which a running server cannot load. `ai/test` is the published primitive
  * underneath all three, so that is what this uses.
  */

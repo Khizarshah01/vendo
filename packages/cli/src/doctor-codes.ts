@@ -36,7 +36,7 @@ export const DOCTOR_ERROR_CODES = {
   "E-CFG-001": "a required .vendo/ config file is missing",
   "E-CFG-002": ".vendo/data/.gitignore is missing",
   "E-CFG-003": "the OpenAPI spec's relative server mount and VENDO_BASE_URL's path prefix disagree",
-  "E-CFG-004": "the Next host's next.config does not keep @vendoai/apps out of the server bundle (serverExternalPackages)",
+  "E-CFG-004": "the Next host's next.config does not keep @vendoai/vendo out of the server bundle (serverExternalPackages)",
   "E-STORE-001": "the store's data directory is on ephemeral disk (it will be wiped on redeploy)",
   "E-TENANT-001": "tenant connectors are wired but the store has no encryption key, so a tenant's pasted token has nowhere safe to live",
   "E-DEP-001": "the installed ai package is a major version @vendoai/vendo does not support",

@@ -27,7 +27,7 @@ import {
   type Principal,
   type RunContext,
 } from "@vendoai/core";
-import type { SandboxAdapter } from "@vendoai/apps";
+import type { SandboxAdapter } from "../src/apps/index.js";
 import { createSessionRoutes } from "../box/turn-routes.mjs";
 import { claudeCode } from "../src/harnesses/claude-code/index.js";
 import { appAccess, createStore, type VendoStore } from "../src/store/index.js";

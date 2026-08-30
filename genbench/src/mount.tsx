@@ -21,7 +21,7 @@ import {
   type ScreenInstance,
   type ScreenQuery,
   type VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { VendoProvider } from "@vendoai/ui";
 import { applyThemeVars } from "@vendoai/ui/kit";
 import { PayloadView } from "@vendoai/ui/tree";

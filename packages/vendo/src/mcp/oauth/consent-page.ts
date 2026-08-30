@@ -1,6 +1,6 @@
 import type {
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { escapeHtml, htmlPage, themeAttribute } from "../page-chrome.js";
 
 export function consentPage(

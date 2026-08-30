@@ -20,7 +20,7 @@
  *   (`packages/vendo/src/screen-agent.ts`) and case 1 goes red — the reviewer
  *   is never called and the double count ships, which is the incident.
  * - stop passing `queryResults` to `reviewComponentScreenInput` (the validate door
- *   in `packages/apps/src/server/doors/build-surface.ts`) and case 1 goes red at
+ *   in `packages/vendo/src/apps/doors/build-surface.ts`) and case 1 goes red at
  *   the evidence assertion — the reviewer double cannot see the overlap it is
  *   asked to judge, so it reports nothing, exactly as the live reviewer would have.
  */
@@ -36,7 +36,7 @@ import {
 } from "@vendoai/core";
 import {
   makeReceiptSchema,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

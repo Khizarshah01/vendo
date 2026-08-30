@@ -56,9 +56,9 @@ const FORBIDDEN_INPUTS = [
   { fragment: "packages/vendo/dist/store/crypto.js", seam: "#store/crypto conditions" },
   { fragment: "node_modules/.pnpm/pg@", seam: "#store/db conditions" },
   { fragment: "node_modules/.pnpm/typescript@", seam: "@vendoai/vendo/actions/sync subpath split" },
-  { fragment: "node_modules/.pnpm/e2b@", seam: "bundler-blind e2b specifier (apps/src/server/escalation/e2b)" },
-  { fragment: "node_modules/.pnpm/esbuild@", seam: "bundler-blind esbuild specifier (apps/src/server/checking/islands)" },
-  { fragment: "packages/apps/dist/server/edge/", seam: "@vendoai/apps/edge subpath split (a whole TypeScript compiler, for the venue that has no Node — a Node host must never carry it)" },
+  { fragment: "node_modules/.pnpm/e2b@", seam: "bundler-blind e2b specifier (packages/vendo/src/sandbox/escalation/e2b)" },
+  { fragment: "node_modules/.pnpm/esbuild@", seam: "bundler-blind esbuild specifier (packages/vendo/src/apps/checking/islands)" },
+  { fragment: "packages/vendo/dist/sandbox/edge/", seam: "@vendoai/vendo/sandbox/edge subpath split (a whole TypeScript compiler, for the venue that has no Node — a Node host must never carry it)" },
 ];
 
 /** Raw source patterns whose fix classes this gate owns. */
@@ -69,7 +69,7 @@ const SOURCE_GUARDS = [
   },
   {
     pattern: /await import\((?:\/\*[^*]*\*\/\s*)*["']e2b["']\)/,
-    message: "literal import(\"e2b\") — esbuild hard-resolves it; route through the bundler-blind specifier in packages/apps/src/server/escalation/e2b",
+    message: "literal import(\"e2b\") — esbuild hard-resolves it; route through the bundler-blind specifier in packages/vendo/src/sandbox/escalation/e2b",
   },
   {
     pattern: /await import\((?:\/\*[^*]*\*\/\s*)*["']esbuild["']\)/,
@@ -235,33 +235,41 @@ try {
 }
 
 // ---- Leg D: the app-generation CONTRACT door bundles for a BROWSER ----
-// `@vendoai/apps/contract` is the browser-safe half of the app engine, and
-// `scripts/dependency-guard.mjs`'s ONLY_SUBPATHS rule makes it the one door
-// @vendoai/ui may reach. That rule enforces which SPECIFIER ui writes; nothing
-// enforced what the specifier RESOLVES to. A single `import "node:fs"` inside
-// src/contract/ passed lint, typecheck and the whole suite, and surfaced only
-// in a customer's `next build` — so the headline layering claim was a
-// convention, not a mechanism. This is the mechanism.
+// `@vendoai/core/apps` is the browser-safe half of the app engine, and
+// `scripts/dependency-guard.mjs` lets @vendoai/ui depend on @vendoai/core and
+// nothing else, which makes this the one app-generation door ui can reach at
+// all. That list enforces which PACKAGE ui writes; nothing enforced what the
+// specifier RESOLVES to. A single `import "node:fs"` inside the contract half
+// passed lint, typecheck and the whole suite, and surfaced only in a customer's
+// `next build` — so the headline layering claim was a convention, not a
+// mechanism. This is the mechanism.
+//
+// It matters more since S11d put this door inside @vendoai/core: the engine's
+// `#engine/wasm` node arm now lives in the package every block depends on, and
+// this leg is what proves a browser still resolves the OTHER arm. Flip that
+// condition's `default` to the node leg and this goes red — verified, not
+// assumed. Core's own `packaging.e2e.test.ts` holds the matching half: that
+// nothing portable in core can reach this door in the first place.
 try {
   await esbuild.build({
-    entryPoints: [join(root, "packages/apps/dist/contract/index.js")],
+    entryPoints: [join(root, "packages/core/dist/apps/index.js")],
     bundle: true,
     format: "esm",
     platform: "browser",
     write: false,
   });
-  ok("@vendoai/apps/contract bundles for a browser target (no node built-ins)");
+  ok("@vendoai/core/apps bundles for a browser target (no node built-ins)");
 } catch (error) {
   fail(
-    "@vendoai/apps/contract does NOT bundle for a browser target — something under "
-    + "packages/apps/src/contract/ reached a node built-in or a node-only package. "
+    "@vendoai/core/apps does NOT bundle for a browser target — something under "
+    + "packages/core/src/apps/ reached a node built-in or a node-only package. "
     + "That door is imported by @vendoai/ui and by browser consumers; it must stay "
     + `platform-clean. ${error instanceof Error ? error.message : String(error)}`,
   );
 }
 
 // ---- Leg E: the edge screen toolchain, in workerd, with NO nodejs_compat ----
-// `@vendoai/apps/edge` exists so a screen can be checked where there is no Node,
+// `@vendoai/vendo/sandbox/edge` exists so a screen can be checked where there is no Node,
 // and every test it has runs under Node — which proves the three machines agree
 // with the stock ones, and nothing at all about the venue they were written for.
 // This leg is the venue: the toolchain bundled for workerd and driven through
@@ -306,9 +314,9 @@ try {
 // import comes back and stops the worker at startup. (a) is what sees it while
 // it is still latent, because it does not ask what the bundle DID — it asks what
 // is IN it.
-const EDGE_ENTRY = join(root, "packages/apps/dist/server/edge/index.js");
+const EDGE_ENTRY = join(root, "packages/vendo/dist/sandbox/edge/index.js");
 const EDGE_FIXTURE_ENTRY = join(root, "scripts/fixtures/edge-checker-worker/worker.mjs");
-const NODE_COMPILER_LOADER = "packages/apps/dist/server/checking/screen-tsc.js";
+const NODE_COMPILER_LOADER = "packages/vendo/dist/apps/checking/screen-tsc.js";
 
 // A path fragment that matches nothing matches nothing SILENTLY: rename or move
 // that file and (a) keeps passing with the guard gone and no one told. So the
@@ -351,10 +359,10 @@ const stubDeadRequires = {
 };
 
 if (!existsSync(EDGE_ENTRY)) {
-  fail("packages/apps/dist/server/edge/index.js missing — run `pnpm build` first");
+  fail("packages/vendo/dist/sandbox/edge/index.js missing — run `pnpm build` first");
 } else {
   try {
-    const appsRequire = createRequire(join(root, "packages/apps/package.json"));
+    const appsRequire = createRequire(join(root, "packages/vendo/package.json"));
     const bundled = await esbuild.build({
       entryPoints: [EDGE_FIXTURE_ENTRY],
       bundle: true,
@@ -372,8 +380,8 @@ if (!existsSync(EDGE_ENTRY)) {
         // `typescript` here is the repo's 5.x build compiler; the edge leg's
         // peer is pinned to the 6.0.3 its vendored lib files were copied from,
         // installed as `typescript-6`. Same alias, same reason, as
-        // packages/apps/vitest.config.ts.
-        "@vendoai/apps/edge": EDGE_ENTRY,
+        // packages/vendo/vitest.config.ts.
+        "@vendoai/vendo/sandbox/edge": EDGE_ENTRY,
         typescript: appsRequire.resolve("typescript-6"),
       },
       metafile: true,

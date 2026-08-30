@@ -5,9 +5,9 @@
  * only thing that can prove they agree is one run that goes all the way through:
  *
  *   producer  the screen agent's `save_app` hand (`@vendoai/harnesses`) and the
- *             front door's ask recording (`@vendoai/apps`)
+ *             front door's ask recording (`@vendoai/vendo/apps`)
  *   store     the real row, through the real `AppsRuntime.remember` door
- *   consumer  the edit brain's brief (`@vendoai/apps` generation), which is what
+ *   consumer  the edit brain's brief (`@vendoai/vendo/apps` generation), which is what
  *             the NEXT editor actually reads
  *
  * So this is a REAL composed deployment: real store, real guard, real apps pack,
@@ -28,7 +28,7 @@ import {
 } from "@vendoai/core";
 import {
   makeReceiptSchema,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

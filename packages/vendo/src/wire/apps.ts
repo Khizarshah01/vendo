@@ -1,4 +1,4 @@
-import { BUNDLE_HEADERS } from "@vendoai/apps";
+import { BUNDLE_HEADERS } from "../apps/index.js";
 import { isVendoError, VendoError, type AccessLevel, type Json, type RunContext, type StoreOps } from "@vendoai/core";
 import { json, object, requestJson, route, string, type RouteEntry, type WireContext } from "./shared.js";
 

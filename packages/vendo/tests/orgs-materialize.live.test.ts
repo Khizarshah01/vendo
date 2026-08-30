@@ -4,7 +4,7 @@
  * The offline sibling (`orgs-materialize.test.ts`) proves the two gates with a
  * scripted SDK loop, which means it proves OUR seams and not the model's hands.
  * This one removes the last stand-in: a real machine, the real box image (the
- * one `packages/apps/box/build-template.mjs` bakes, which carries the walk rule
+ * one `packages/vendo/box/build-template.mjs` bakes, which carries the walk rule
  * this lane changed), a real Claude Agent SDK session, and a real model deciding
  * for itself which file to open. What is asserted is only what the user would
  * see: Kim asks for a change to the TEAM's app, and Dana sees it.
@@ -36,8 +36,8 @@ import {
   type RunContext,
   VENDO_APP_FORMAT,
 } from "@vendoai/core";
-import type { SandboxAdapter } from "@vendoai/apps";
-import { e2bSandbox } from "@vendoai/apps";
+import type { SandboxAdapter } from "../src/apps/index.js";
+import { e2bSandbox } from "../src/apps/index.js";
 import { claudeCode } from "../src/harnesses/claude-code/index.js";
 import { appAccess, createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";

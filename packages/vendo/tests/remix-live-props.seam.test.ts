@@ -41,13 +41,13 @@
  * dropped prop and a leaked one are both visible in the tree.
  *
  * The one that must be able to fail: drop the `seed.props` preference from the
- * props resolver in `packages/apps/src/server/doors/build-surface.ts` and the
+ * props resolver in `packages/vendo/src/apps/doors/build-surface.ts` and the
  * screen paints the captured 5490715 forever.
  */
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { SeedBaseline } from "@vendoai/apps";
+import type { SeedBaseline } from "../src/apps/index.js";
 import type { AppDocument, Principal } from "@vendoai/core";
 import { createStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";

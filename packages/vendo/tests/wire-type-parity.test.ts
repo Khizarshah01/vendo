@@ -58,7 +58,7 @@ function typecheckFixture(source: string): string | null {
 // tests/core-wire-shapes.seam.test.ts, which reads the real door's answers back
 // through the real client.
 //
-// The apps rows STAY, because `@vendoai/apps` genuinely ships two declarations
+// The apps rows STAY, because `@vendoai/vendo/apps` genuinely ships two declarations
 // of these names — the browser-safe contract door and the richer server one
 // (see the header of apps/src/contract/wire-types.ts, which leaves unifying
 // them to the slice that owns that behavior question). Two declarations is
@@ -80,14 +80,14 @@ import type {
   EditResult as AppsEditResult,
   VersionEntry as AppsVersionEntry,
   SeedDrift as AppsSeedDrift,
-} from "@vendoai/apps";
+} from "../src/apps/index.js";
 
 type Assignable<Source, Target> = [Source] extends [Target] ? true : false;
 type Assert<T extends true> = T;
 `;
 
 describe("UI wire types stay structurally aligned with their owning blocks", () => {
-  it("is assignable both ways for the two doors @vendoai/apps still ships", () => {
+  it("is assignable both ways for the two doors @vendoai/vendo/apps still ships", () => {
     const failure = typecheckFixture(`${imports}
 type Checks = [
   Assert<Assignable<UiOpenSurface, AppsOpenSurface>>,

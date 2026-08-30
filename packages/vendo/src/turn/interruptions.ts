@@ -87,7 +87,7 @@ export interface Turns {
  * A parked ask THIS agent, on THIS lane, may answer.
  *
  * Every other lane that parks a call owns its own resume — an in-app action
- * resumes on the surface that asked (`packages/apps`), an automation's arming
+ * resumes on the surface that asked (`packages/vendo/src/apps`), an automation's arming
  * yes mints the standing grant its consent moment was for (`packages/automations`)
  * — and re-dispatching one of those inside a fresh chat turn would answer it in
  * the wrong place. What is left is exactly a turn this package ran: it names

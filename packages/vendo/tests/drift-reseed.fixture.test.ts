@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { vendoSync } from "../src/actions/sync/public.js";
-import { seedBaselineSchema } from "@vendoai/apps";
+import { seedBaselineSchema } from "../src/apps/index.js";
 import {
   seedComponentName,
   type AppDocument,

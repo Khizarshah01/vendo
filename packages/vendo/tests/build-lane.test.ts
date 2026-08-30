@@ -30,8 +30,8 @@ import {
   type StoreAdapter,
   type ToolRegistry,
 } from "@vendoai/core";
-import { createApps, readBundleBlob, type AppsConfig } from "@vendoai/apps";
-import { BUILD_WATCHDOG_MS } from "@vendoai/apps/contract";
+import { createApps, readBundleBlob, type AppsConfig } from "../src/apps/index.js";
+import { BUILD_WATCHDOG_MS } from "@vendoai/core/apps";
 import { createGuard } from "../src/guard/index.js";
 import { MESSAGE_BUDGET_MS } from "../src/harnesses/claude-code/index.js";
 import { createSessionRoutes } from "../box/turn-routes.mjs";
@@ -534,7 +534,7 @@ describe("every failure lands on the ONE terminal record", () => {
 
 describe("the dead-man timer outlasts the work it guards", () => {
   it("gives a build longer than the box's own message budget", () => {
-    // The two numbers only meet HERE — `@vendoai/apps` cannot see the box, and
+    // The two numbers only meet HERE — `@vendoai/vendo/apps` cannot see the box, and
     // the box cannot see the watchdog. At 4 minutes the watchdog always won:
     // three real builds (229 s, 414 s, 450 s) were killed mid-work on
     // 2026-08-24, and the box will not even give up on one message for 15.

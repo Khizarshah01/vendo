@@ -3,7 +3,7 @@ import path from "node:path";
 import type {
   VendoTheme,
   VendoThemeFont,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { z } from "zod";
 import { contrastingText, normalizeColor, normalizeLength, resolveCssVarRefs } from "./color.js";
 import { parseCssVars, type CssVarDecl } from "./css-vars.js";

@@ -68,7 +68,7 @@ import {
   type ScreenAssembler,
   type ScreenOutcome,
   type ScreenRequest,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import {
   buildingAppsSkill,
   paintedIn,
@@ -78,7 +78,7 @@ import {
   VALIDATE_TOOL,
   wrapWorkspaceForRender,
   type RenderSeamOptions,
-} from "@vendoai/apps";
+} from "./apps/index.js";
 import { wrapLanguageModel, type LanguageModel } from "ai";
 import { vendo, type HarnessHand, type VendoHarnessOptions } from "./harnesses/index.js";
 
@@ -353,7 +353,7 @@ export type ScreenResult = ScreenOutcome & {
 };
 
 /** The screen artifact, by the name the seam watches and the manual teaches
- *  (`@vendoai/apps` `SCREEN_FILE`) — one spelling, or a save paints nothing. */
+ *  (`@vendoai/vendo/apps` `SCREEN_FILE`) — one spelling, or a save paints nothing. */
 const APP_FILE = SCREEN_FILE;
 
 /** §3.1's frozen layout, personal mount. A NEW app is always `/user/**`: a fresh
@@ -1577,7 +1577,7 @@ export interface ScreenAssemblerDeps {
  * The `ScreenAssembler` the front door routes into.
  *
  * The layering is why this door exists at all — and why this file lives in the
- * umbrella. `@vendoai/apps` depends on `core` alone, so the `vendo_make` handler
+ * umbrella. `@vendoai/vendo/apps` depends on `core` alone, so the `vendo_make` handler
  * cannot reach a harness; and `@vendoai/harnesses` no longer reaches apps, so
  * the loop that needs `vendo()` AND the render seam can only live here. The two
  * meet on core's `ScreenAssembler` and composition — the one place that already

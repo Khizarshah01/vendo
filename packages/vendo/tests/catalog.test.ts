@@ -5,12 +5,12 @@ import {
 } from "@vendoai/core";
 import {
   SAFE_COMPONENT_NAME,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import type {
   ComponentCatalog,
   ComponentRegistry,
   NormalizedCatalog,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import ts from "typescript";
 import { describe, expect, it, vi } from "vitest";
 import { z } from "zod";

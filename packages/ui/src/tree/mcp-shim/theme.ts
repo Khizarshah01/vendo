@@ -4,7 +4,7 @@ import {
   defaultVendoTheme,
   themeDefaults,
   type VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 
 type CssVariables = Pick<CSSStyleDeclaration, "getPropertyValue">;
 

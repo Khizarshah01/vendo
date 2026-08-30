@@ -73,7 +73,7 @@ export type EraseTable = typeof ERASE_TABLES[number];
  * An app's own data is not a `vendo_*` row and cannot be reached by a selector
  * over this schema: it lives in the app's own SQL database, behind the
  * `AppDatabase` adapter the deployment selected. So the cascade reaches it
- * through this port, which `@vendoai/apps` fills (`createAppSql` — it knows the
+ * through this port, which `@vendoai/vendo/apps` fills (`createAppSql` — it knows the
  * physical names, and it is the ONLY place that does, so nothing here has a
  * second copy of that convention to drift from).
  *

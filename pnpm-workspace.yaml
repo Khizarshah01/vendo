@@ -217,7 +217,7 @@ overrides:
   # reports it. Patched Go lines are 1.24.13, 1.25.7 and 1.26.0-rc.3.
   #
   # Fixed by bumping the three DECLARED consumers to ^0.28.2 (root, and the
-  # `dependencies` entries in @vendoai/apps and genbench), NOT by a floor here.
+  # `dependencies` entries in @vendoai/vendo/apps and genbench), NOT by a floor here.
   #
   # Toolchain stamps read out of each @esbuild/linux-x64 binary rather than
   # trusted from the release notes: 0.25.12 -> go1.23.12 (EOL, never patched),
@@ -237,5 +237,5 @@ overrides:
   # @vitejs/plugin-react) — dev tooling, absent from demo-bank's `next start`
   # path, in the image only because the Dockerfile installs devDependencies
   # too. It leaves with a vite major bump or a prod-only image, neither of which
-  # belongs in a CVE patch. The copy that mattered — the one @vendoai/apps
+  # belongs in a CVE patch. The copy that mattered — the one @vendoai/vendo/apps
   # lazy-loads in server/checking/toolchain.ts — is on 0.28.2.

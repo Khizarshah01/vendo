@@ -7,7 +7,7 @@ import type { ToolOutcome } from "./tools.js";
  * Two lanes park calls and both resume them from the SAME
  * `guard.onApprovalDecision` seam: the venue-neutral BYO one
  * (`packages/vendo/src/byo-approvals.ts`) and the apps runtime's in-app actions
- * (`packages/apps/src/server/persistence/parked-action.ts`). By the time either
+ * (`packages/vendo/src/apps/persistence/parked-action.ts`). By the time either
  * resumes, the surface that asked is long gone from the call stack — a foreign
  * agent loop, or a generated screen sitting on "Sending…" — so the answer is
  * PERSISTED here, keyed by the approval, and `GET /approvals/:id` serves it back.
@@ -36,7 +36,7 @@ export const PARKED_ACTION_COLLECTION = "vendo_parked_action";
  * Unlike the two above, nothing was called: the record exists precisely so the
  * yes can arrive long after the turn that asked is gone, and until it does no
  * box has been claimed. Here for the same reason they are — the door that
- * writes it (`packages/apps/src/server/persistence/parked-build.ts`) and the
+ * writes it (`packages/vendo/src/apps/persistence/parked-build.ts`) and the
  * decision seam that reads it may not import each other.
  */
 export const PARKED_BUILD_COLLECTION = "vendo_parked_build";

@@ -1,6 +1,6 @@
 /** The host's route registry and its navigator — the two halves a `<Link>` reads. */
 import { useContext } from "react";
-import type { VendoNavigation, VendoRouteMap } from "@vendoai/apps/contract";
+import type { VendoNavigation, VendoRouteMap } from "@vendoai/core/apps";
 import { VendoContext } from "./context.js";
 
 /** The routes the host registered, provider-optional: a tree rendered standalone

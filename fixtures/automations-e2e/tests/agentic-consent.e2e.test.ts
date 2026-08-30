@@ -20,8 +20,8 @@
  * time and which no grant may ever suppress. `host_invoices_send` is the first
  * kind; `host_invoices_send_critical` is the second.
  */
-import { planAutomation, type HostToolInfo } from "@vendoai/apps";
-import { scriptedLanguageModel } from "@vendoai/apps/testing";
+import { planAutomation, type HostToolInfo } from "@vendoai/vendo/apps";
+import { scriptedLanguageModel } from "@vendoai/vendo/apps/testing";
 import { withheldFromUnattended } from "@vendoai/core";
 import { beforeEach, describe, expect, it } from "vitest";
 import { createStack, hostTools, ownerCtx, resetFixture } from "../src/harness.js";

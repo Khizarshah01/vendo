@@ -7,7 +7,7 @@ import type {
 } from "@vendoai/core";
 import type {
   VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 
 /** The world file, as authored. `theme` is a VendoTheme verbatim and is handed
  *  to every contender unchanged. */

@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import type { LanguageModel } from "ai";
-import type { SandboxAdapter } from "@vendoai/apps";
+import type { SandboxAdapter } from "../src/apps/index.js";
 import type { Principal } from "@vendoai/core";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -18,8 +18,8 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 // The unloadable-SDK mock stays as the TRIPWIRE for that: this is the field host's
 // exact shape, and nothing in the composition path may consult installability any
 // more. Re-introduce an env-driven e2b rung and every case below changes answer.
-vi.mock("@vendoai/apps/e2b", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@vendoai/apps/e2b")>()),
+vi.mock("../src/sandbox/escalation/e2b/index.js", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("../src/sandbox/escalation/e2b/index.js")>()),
   e2bInstalled: () => false,
 }));
 

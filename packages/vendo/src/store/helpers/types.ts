@@ -10,10 +10,10 @@ import {
   type TriggerSource,
 } from "@vendoai/core";
 
-/** 02-store §3 — declared once, in `@vendoai/apps/contract`. The store is a
+/** 02-store §3 — declared once, in `@vendoai/core/apps`. The store is a
  *  dumb adapter for a shape app generation owns; re-declaring it here is how
  *  the two drifted. */
-export type { AppRow } from "@vendoai/apps/contract";
+export type { AppRow } from "@vendoai/core/apps";
 
 /** 02-store §3 */
 export interface ThreadRow {

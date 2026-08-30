@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { checkComponentScreen, PORTED_SCREEN_DIALECT } from "@vendoai/apps";
+import { checkComponentScreen, PORTED_SCREEN_DIALECT } from "../../../src/apps/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { seedBaselineSchema } from "../../../src/actions/formats.js";
 import { capturePins } from "../../../src/actions/sync/seeds.js";

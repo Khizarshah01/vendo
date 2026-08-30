@@ -6,7 +6,7 @@ import {
 } from "@vendoai/core";
 import {
   componentPath,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import type {
   ComponentCatalog,
   ComponentRegistry,
@@ -14,7 +14,7 @@ import type {
   NormalizedCatalogEntry,
   RegisteredComponent,
   StandardSchema,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { zodSchema } from "ai";
 import Ajv, { type ErrorObject } from "ajv";
 import addFormats from "ajv-formats";

@@ -511,12 +511,12 @@ export type {
   SeedBaseline,
   SeedSubSource,
   SeedStyle,
-} from "@vendoai/apps/contract";
-export { seedBaselineSchema } from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
+export { seedBaselineSchema } from "@vendoai/core/apps";
 
 /**
  * The component-bundle format (`CapturedModule`, `CapturedHostComponent` and
- * their schemas) lives on the contract door — `@vendoai/apps/contract` — because
+ * their schemas) lives on the contract door — `@vendoai/core/apps` — because
  * the console and the jail renderer read the same bytes from the browser. Sync
  * writes them; re-exported here so this package's surface is unchanged.
  */
@@ -530,7 +530,7 @@ export {
   type HostComponentSampleGap,
   type HostComponentSkip,
   type HostComponentSkipReason,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 
 
 /** 04-actions §1 */

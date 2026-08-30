@@ -176,7 +176,7 @@ export {
 } from "@vendoai/core";
 export {
   evaluateExpr,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 export type { Json, ReshapeOp, ReshapeResult, ReshapeStep, ToolOutcome } from "@vendoai/core";
 
 // The projection vocabulary: nine live reshape ops.

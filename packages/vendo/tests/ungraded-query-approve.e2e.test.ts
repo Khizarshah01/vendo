@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createApps } from "@vendoai/apps";
+import { createApps } from "../src/apps/index.js";
 import {
   VENDO_APP_FORMAT,
   type AppDocument,

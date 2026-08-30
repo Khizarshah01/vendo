@@ -5,7 +5,7 @@
  * a store has app databases.
  *
  * This adapter EXECUTES and decides nothing. `mine.` and `shared.` are resolved
- * before a statement reaches it (@vendoai/apps' app-sql). The one thing it owns
+ * before a statement reaches it (@vendoai/vendo/apps' app-sql). The one thing it owns
  * is the FENCE the resolution rests on: every statement runs with `search_path`
  * set to this app's schema and nothing else, so a name that somehow arrived
  * unqualified resolves inside the app's own tables or nowhere at all — never in

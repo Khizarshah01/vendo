@@ -2,7 +2,7 @@
 import type { CSSProperties } from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import { DISPLAY_TAG_NAMES, flattenTree } from "@vendoai/apps/contract";
+import { DISPLAY_TAG_NAMES, flattenTree } from "@vendoai/core/apps";
 import { VENDO_TREE_FORMAT, type ToolOutcome } from "@vendoai/core";
 import { PayloadView, TreeView, type WalkTree } from "../../src/tree/index.js";
 import { DISPLAY_BRICKS, SURFACE_CONTAINMENT, safeStyle } from "../../src/tree/display-bricks.js";

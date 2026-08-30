@@ -1,7 +1,7 @@
 /** Wave 7 — vendo_apps guarded writes (01 §12 atomic capability).
  *
  * The machine lifecycle and the schedule engine's fire claims arbitrate racers
- * through read-mutate-CAS on the app row (updateAppRow in @vendoai/apps).
+ * through read-mutate-CAS on the app row (updateAppRow in @vendoai/vendo/apps).
  * Before this, the routed vendo_apps seam carried no revision, so the dev
  * store silently degraded to read-then-put — a multi-process dev host could
  * double-fire a schedule or clobber a concurrent lifecycle write. Same

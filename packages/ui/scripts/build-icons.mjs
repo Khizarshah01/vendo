@@ -18,10 +18,10 @@ import * as lucide from "lucide";
 const here = resolve(fileURLToPath(new URL(".", import.meta.url)));
 const output = resolve(here, "../src/kit/icons.gen.ts");
 // The NAMES are model-facing vocabulary — the catalog prompt lists them so the
-// model stops inventing glyphs — and `@vendoai/apps` cannot import `@vendoai/ui`
+// model stops inventing glyphs — and `@vendoai/core` cannot import `@vendoai/ui`
 // (it is the layer below). So the one curated list emits a second committed
 // artifact there rather than being hand-copied into two packages.
-const namesOutput = resolve(here, "../../apps/src/contract/kit/icon-names.gen.ts");
+const namesOutput = resolve(here, "../../core/src/apps/kit/icon-names.gen.ts");
 
 // The vocabulary. A name the model can guess is worth more than a name that is
 // merely available, so this is the common set, not lucide's 1600 — and it is

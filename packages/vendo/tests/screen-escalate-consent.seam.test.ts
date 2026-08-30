@@ -39,8 +39,8 @@ import {
   type ToolResult,
   type VendoApprovalPart,
 } from "@vendoai/core";
-import { makeReceiptSchema } from "@vendoai/apps/contract";
-import type { SandboxAdapter } from "@vendoai/apps";
+import { makeReceiptSchema } from "@vendoai/core/apps";
+import type { SandboxAdapter } from "../src/apps/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import { VendoProvider, createVendoClient } from "@vendoai/ui";

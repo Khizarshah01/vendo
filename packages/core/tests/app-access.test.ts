@@ -17,7 +17,7 @@ import {
 
 /**
  * The PURE half of `can()` (build contract §9.2–§9.3). Two packages resolve
- * access over real rows — @vendoai/vendo/store and @vendoai/apps' stand-in — and BOTH
+ * access over real rows — @vendoai/vendo/store and @vendoai/vendo/apps' stand-in — and BOTH
  * apply these functions rather than re-deciding. So a rule that quietly changes
  * shape here changes it in every door at once, which is exactly why the grammar,
  * the level order and the path rules are pinned right beside them.

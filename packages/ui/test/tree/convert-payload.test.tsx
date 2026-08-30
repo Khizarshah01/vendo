@@ -8,7 +8,7 @@ import {
   type ToolOutcome,
   type UIPayload,
 } from "@vendoai/core";
-import { type Tree } from "@vendoai/apps/contract";
+import { type Tree } from "@vendoai/core/apps";
 import { PayloadView, TreeView } from "../../src/tree/index.js";
 
 afterEach(() => {

@@ -24,7 +24,7 @@ import { join } from "node:path";
 import { inject } from "vitest";
 import { zipSync } from "fflate";
 import type { Connector } from "@vendoai/vendo/actions";
-import type { SandboxAdapter } from "@vendoai/apps";
+import type { SandboxAdapter } from "@vendoai/vendo/apps";
 import {
   type AppDocument,
   type AutomationRecord,
@@ -109,7 +109,7 @@ export function generationTurn(dialect: unknown, id = "gen_1"): LanguageModelV3S
 
 /**
  * The AI reviewer's verdict on one finished screen — a `report_findings` strict
- * tool call over `doGenerate` (`packages/apps/src/server/checking/strict-tool-call.ts`),
+ * tool call over `doGenerate` (`packages/vendo/src/apps/checking/strict-tool-call.ts`),
  * empty by default because "nothing wrong" is what a fixture app deserves.
  *
  * Scripted as the call it really is rather than left to run the script dry:

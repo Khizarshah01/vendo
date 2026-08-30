@@ -1,4 +1,4 @@
-import type { VendoRouteMap } from "@vendoai/apps/contract";
+import type { VendoRouteMap } from "@vendoai/core/apps";
 
 /**
  * WHERE MAPLE WILL SEND SOMEONE. The one registry both sides read: the server

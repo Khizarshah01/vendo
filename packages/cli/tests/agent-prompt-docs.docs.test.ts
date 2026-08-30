@@ -15,7 +15,7 @@ import { compositionModuleSource } from "../src/init-scaffolds.js";
  *     rot one at a time;
  *  2. the `serverExternalPackages` list. Two pages restate it — the machine-read
  *     playbook and the troubleshooting page a reader lands on when the list is
- *     wrong — and the entry that matters (`@vendoai/apps`) is invisible when it
+ *     wrong — and the entry that matters (`@vendoai/vendo/apps`) is invisible when it
  *     is missing: the app still boots and every generated screen fails its
  *     checks. The quickstart and the AI SDK walkthrough were copies of their own
  *     until init started writing the property itself, so those two are pinned

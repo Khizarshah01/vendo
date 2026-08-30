@@ -62,7 +62,7 @@ const DOOR_SETUP_PAGE = "docs-site/outside-agents/quickstart.mdx";
 const INSTALL_PAGE = "docs-site/agents/index.mdx";
 /** Where a generated view is mounted inside the host's own page. */
 const SURFACE_PAGE = "docs-site/product/mount-the-surface.mdx";
-const AGENT_TOOLS = "packages/apps/src/server/doors/agent-tools.ts";
+const AGENT_TOOLS = "packages/vendo/src/apps/doors/agent-tools.ts";
 const PACK = "packages/vendo/src/pack.ts";
 
 interface NavGroup {
@@ -365,7 +365,7 @@ describe("the documented arguments match the real schemas", () => {
 
 describe("the receipt law the docs teach is the real receipt", () => {
   it("has exactly id, title, status, say — and status's four values", async () => {
-    const source = await read("packages/apps/src/contract/make-receipt.ts");
+    const source = await read("packages/core/src/apps/make-receipt.ts");
     expect(source).toContain("id: appIdSchema");
     expect(source).toContain("title: z.string().min(1)");
     expect(source).toContain('status: z.enum(["ready", "partial", "building", "failed"])');

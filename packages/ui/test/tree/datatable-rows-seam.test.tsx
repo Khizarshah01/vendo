@@ -5,7 +5,7 @@
  * A `<TableRow>` is written in TSX, serialized by the screen VM, flattened the
  * way the server flattens it, and painted by the renderer into the `<tr>`
  * DataTable drew — four hands, and nothing here is stubbed on any of them: real
- * sucrase, the real QuickJS engine from `@vendoai/apps/contract`, the real
+ * sucrase, the real QuickJS engine from `@vendoai/core/apps`, the real
  * `flattenTree`, the real `PayloadView` and the real Kit. The only double is the
  * host's `onAction`, which is the host's half by definition.
  *
@@ -19,7 +19,7 @@
 import { beforeAll, afterEach, describe, expect, it } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { transform } from "sucrase";
-import { bootScreen, flattenTree, warmScreenEngine } from "@vendoai/apps/contract";
+import { bootScreen, flattenTree, warmScreenEngine } from "@vendoai/core/apps";
 import { VENDO_TREE_FORMAT, type Json, type ToolOutcome, type UIPayload } from "@vendoai/core";
 import { PayloadView } from "../../src/tree/index.js";
 

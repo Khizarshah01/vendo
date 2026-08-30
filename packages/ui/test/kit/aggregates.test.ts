@@ -4,7 +4,7 @@ import {
 import {
   evaluateExpr,
   warmExprRuntime,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import { beforeAll, describe, expect, it } from "vitest";
 import { average, count, daysUntil, difference, groupBy, max, min, sum } from "../../src/kit/aggregates.js";
 

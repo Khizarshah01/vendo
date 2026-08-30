@@ -15,7 +15,7 @@
  */
 import type { CapabilityMissConfig } from "./harnesses/index.js";
 import type { VendoToolSearchConfig } from "./harnesses/vendo/index.js";
-import { themeSummary } from "@vendoai/apps/contract";
+import { themeSummary } from "@vendoai/core/apps";
 import type { VendoComposition } from "./compose-context.js";
 import { selectConfigSurface } from "@vendoai/core";
 

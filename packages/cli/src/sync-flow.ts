@@ -3,7 +3,7 @@ import { join } from "node:path";
 import type { z } from "zod";
 import type { ExtractedTool } from "@vendoai/vendo/actions";
 import { firstOpenApiSpec, openApiMountPath, vendoSync, type SyncReportWithWarnings } from "@vendoai/vendo/actions/sync";
-import type { VendoThemeFont } from "@vendoai/apps/contract";
+import type { VendoThemeFont } from "@vendoai/core/apps";
 import type { ToolImpact } from "@vendoai/core";
 import {
   pushHostComponents,

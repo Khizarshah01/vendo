@@ -17,11 +17,11 @@
  *
  * The two that must be able to fail:
  * - drop the `buildInFlight(app.building)` gate from `openSurface`
- *   (packages/apps/src/server/persistence/open.ts) and BOTH mid-build reads go
+ *   (packages/vendo/src/apps/persistence/open.ts) and BOTH mid-build reads go
  *   red — `open()` serves the double-counted draft and the wire hands it to the
  *   embed, which is the incident.
  * - stamp `building` only when the row is new (`previous === undefined` in
- *   `screenDocument`, packages/apps/src/server/doors/write-surface.ts) and the
+ *   `screenDocument`, packages/vendo/src/apps/doors/write-surface.ts) and the
  *   EDIT's read goes red on its own. That was the shipped gap: a ✦ remix and an
  *   edit both build onto a row that already exists, so a create-only gate left
  *   the number-changing repair the person actually watches unguarded.

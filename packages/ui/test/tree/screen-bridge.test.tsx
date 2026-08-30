@@ -6,7 +6,7 @@
  * Nothing is stubbed on either side of the seam. The screen is real TSX,
  * compiled with the compiler this package already ships (sucrase, the jail's own
  * transform) into the CommonJS the VM hosts; the engine is the real
- * `@vendoai/apps/contract` — a QuickJS VM running the vendored Preact; the served
+ * `@vendoai/core/apps` — a QuickJS VM running the vendored Preact; the served
  * tree is that engine's own first paint, flattened the way the server flattens
  * it; and the Kit controls are the real ones. The only double is the host's
  * `onAction`, which is the host's half by definition.
@@ -24,7 +24,7 @@
 import { afterEach, beforeAll, describe, expect, it } from "vitest";
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { transform } from "sucrase";
-import { bootScreen, flattenTree, warmScreenEngine } from "@vendoai/apps/contract";
+import { bootScreen, flattenTree, warmScreenEngine } from "@vendoai/core/apps";
 import { VENDO_TREE_FORMAT, type Json, type ToolOutcome, type UIPayload } from "@vendoai/core";
 import { PayloadView } from "../../src/tree/index.js";
 

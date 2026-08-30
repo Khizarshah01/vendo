@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import type { VendoThemeFont } from "@vendoai/apps/contract";
+import type { VendoThemeFont } from "@vendoai/core/apps";
 import { walk } from "./walk.js";
 
 /**

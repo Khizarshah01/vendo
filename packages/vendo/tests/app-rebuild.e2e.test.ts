@@ -20,7 +20,7 @@ import { join } from "node:path";
 import {
   createApps,
   type AppSourceSeam,
-} from "@vendoai/apps";
+} from "../src/apps/index.js";
 import {
   VENDO_APP_FORMAT,
   WORKSPACE_INLINE_MAX_BYTES,
@@ -33,7 +33,7 @@ import {
   type WorkspaceFs,
 } from "@vendoai/core";
 import { createGuard } from "../src/guard/index.js";
-import { wrapWorkspaceForRender } from "@vendoai/apps";
+import { wrapWorkspaceForRender } from "../src/apps/index.js";
 import { appAccess, createStore, workspaceStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 

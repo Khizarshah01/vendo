@@ -8,7 +8,7 @@ import {
   createApps,
   SCREEN_FILE,
   type AppsConfig,
-} from "@vendoai/apps";
+} from "./apps/index.js";
 import { unattendedIrreversibilityCheck } from "./automations/index.js";
 import { inferenceEnv } from "./harnesses/claude-code/box.js";
 import { appBuilder } from "./build-agent.js";

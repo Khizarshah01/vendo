@@ -8,7 +8,7 @@ import {
   type ToolImpact,
   type VendoRecord,
 } from "@vendoai/core";
-import { appRowSchema } from "@vendoai/apps/contract";
+import { appRowSchema } from "@vendoai/core/apps";
 
 /** The wire shape lives in core: `vendo sync` reads this report back off the
  *  response from another package, so producer and consumer share one

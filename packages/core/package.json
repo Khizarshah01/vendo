@@ -32,6 +32,10 @@
       "require": "./dist/cjs/index.js",
       "default": "./dist/index.js"
     },
+    "./apps": {
+      "types": "./dist/apps/index.d.ts",
+      "default": "./dist/apps/index.js"
+    },
     "./conformance": {
       "types": "./dist/conformance/index.d.ts",
       "require": "./dist/cjs/conformance/index.js",
@@ -40,21 +44,27 @@
   },
   "files": [
     "dist",
+    "quickjs.wasm",
     "README.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node -e \"require('node:fs').writeFileSync('dist/cjs/package.json', JSON.stringify({ type: 'commonjs' }) + '\\n')\"",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node -e \"require('node:fs').writeFileSync('dist/cjs/package.json', JSON.stringify({ type: 'commonjs' }) + '\\n')\" && node -e \"require('node:fs').copyFileSync(require.resolve('@jitl/quickjs-wasmfile-release-sync/wasm'), 'quickjs.wasm')\"",
     "conformance": "vitest run tests/contract-coverage.e2e.test.ts",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@jitl/quickjs-wasmfile-release-sync": "^0.32.0",
     "@standard-schema/spec": "^1.1.0",
+    "acorn": "^8.15.0",
     "croner": "^9.0.0",
+    "preact": "10.24.3",
+    "quickjs-emscripten-core": "^0.32.0",
     "zod": "^3.25.0"
   },
   "peerDependencies": {
+    "@jitl/quickjs-wasmfile-release-sync": "^0.32.0",
     "ai": ">=6.0.0 <8",
     "just-bash": "^3.1.0",
     "zod": ">=3.25.0 <5"
@@ -68,10 +78,18 @@
     }
   },
   "devDependencies": {
+    "@jitl/quickjs-singlefile-browser-release-sync": "^0.32.0",
     "@types/node": "^22.0.0",
     "ai": "6.0.28",
+    "esbuild": "^0.28.2",
     "just-bash": "^3.1.0",
     "typescript": "^5.6.0",
     "vitest": "^3.2.6"
+  },
+  "imports": {
+    "#engine/wasm": {
+      "node": "./dist/apps/genui/wasm-node.js",
+      "default": "./dist/apps/genui/wasm-browser.js"
+    }
   }
 }

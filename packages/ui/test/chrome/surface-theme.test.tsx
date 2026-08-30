@@ -9,7 +9,7 @@
  * frame-only limit are pinned against the real DOM.
  */
 import type { ApprovalId, Json, ToolOutcome, UIPayload } from "@vendoai/core";
-import type { VendoTheme } from "@vendoai/apps/contract";
+import type { VendoTheme } from "@vendoai/core/apps";
 import type { UIMessage } from "ai";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";

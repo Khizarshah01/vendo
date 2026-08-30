@@ -6,7 +6,7 @@
  * purpose:
  *
  *   - inside the box, copied into the template as `/opt/vendo-box/claude-turn.mjs`
- *     (`packages/apps/box/build-template.mjs` stages this package's compiled
+ *     (`packages/vendo/box/build-template.mjs` stages this package's compiled
  *     `dist/claude-code/claude-turn.js`), driven by the supervisor's session
  *     routes (`packages/vendo/box/turn-routes.mjs`);
  *   - on the host, imported by `claude-code/local.ts` for `machine: "local"`.

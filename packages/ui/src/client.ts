@@ -24,7 +24,7 @@ import {
 } from "@vendoai/core";
 import type { UIMessage } from "ai";
 import type { ApprovalResolution, AutomationEntry, ConnectableToolkit, ConnectionAccount, EnableResult, InitiatedConnection, PlacementEntry, RunPlan, RunRecord, RunStatus, SlotEntry, Thread, ThreadSummary, UploadedFile, VendoStatus } from "@vendoai/core";
-import type { AppListRow, EditResult, OpenSurface, PendingSurface, VersionEntry } from "@vendoai/apps/contract";
+import type { AppListRow, EditResult, OpenSurface, PendingSurface, VersionEntry } from "@vendoai/core/apps";
 
 export interface VendoClientConfig {
   /** Wire mount point. Default "/api/vendo". */

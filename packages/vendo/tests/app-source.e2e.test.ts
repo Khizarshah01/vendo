@@ -24,7 +24,7 @@ import {
   type RunContext,
   type WorkspaceFs,
 } from "@vendoai/core";
-import { commitApp, type AppSourceSeam } from "@vendoai/apps";
+import { commitApp, type AppSourceSeam } from "../src/apps/index.js";
 import { createStore, workspaceStore, type VendoStore } from "../src/store/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 
@@ -74,7 +74,7 @@ function memoryBlobs(): FilesAdapter & { keys(): string[] } {
 
 /**
  * The store half of the seam, bound over the REAL app row — what composition
- * binds in production. `@vendoai/apps` has no store dependency by design, which
+ * binds in production. `@vendoai/vendo/apps` has no store dependency by design, which
  * is why the seam takes these in rather than importing them.
  */
 function seamOver(store: VendoStore, blobs?: FilesAdapter, owner = principal.subject): AppSourceSeam {

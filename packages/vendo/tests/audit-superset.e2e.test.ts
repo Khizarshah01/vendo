@@ -566,5 +566,5 @@ describe("the unattended failure card (design §3)", () => {
  * GAP 2 — the review failure protocol (design §7, evaluation E4) — is NOT here.
  * It is not implemented at all, and the tests naming what must be built live
  * beside the code that must change:
- * `packages/apps/tests/checking/review-failure-protocol.test.ts`.
+ * `packages/vendo/tests/apps/checking/review-failure-protocol.test.ts`.
  */

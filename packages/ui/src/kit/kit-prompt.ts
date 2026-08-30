@@ -6,4 +6,4 @@
 export {
   kitPrompt,
   type KitPromptOptions,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";

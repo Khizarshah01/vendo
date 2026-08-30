@@ -1,7 +1,7 @@
 /**
  * The sealed bundle, end to end through REAL paths.
  *
- * A seal has two halves in two packages: `@vendoai/apps` decides the keys and
+ * A seal has two halves in two packages: `@vendoai/vendo/apps` decides the keys and
  * the row, the store holds the bytes and arbitrates the row's revision. A suite
  * that hand-rolled either half could only ever agree with itself, so everything
  * below writes through the real writers (`sealBundleBlobs`, `updateAppRow`,
@@ -13,7 +13,7 @@
  * needs ZERO new code: the bounded CAS in `updateAppRow` plus the capped history
  * already give last-CAS-wins with the loser kept as a readable version.
  */
-import { createAppHistory, readBundleBlob, sealBundleBlobs, updateAppRow } from "@vendoai/apps";
+import { createAppHistory, readBundleBlob, sealBundleBlobs, updateAppRow } from "../../src/apps/index.js";
 import { appBundleSchema, type AppDocument, type AppId } from "@vendoai/core";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { backends, type MadeBackend } from "../../src/store/backends.test-util.js";

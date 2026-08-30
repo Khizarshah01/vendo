@@ -22,7 +22,7 @@
  * place, and the run's own reader is what these assertions read back. No judge,
  * no contender.
  */
-import { bootScreen, flattenTree, KIT_COMPONENT_NAMES, warmScreenEngine } from "@vendoai/apps/contract";
+import { bootScreen, flattenTree, KIT_COMPONENT_NAMES, warmScreenEngine } from "@vendoai/core/apps";
 import { VENDO_TREE_FORMAT, type UIPayload } from "@vendoai/core";
 import { MockLanguageModelV3 } from "ai/test";
 import { transform } from "esbuild";

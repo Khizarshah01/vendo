@@ -1220,7 +1220,7 @@ export async function createWireServer(options: WireServerOptions = {}) {
         return json(response, held === undefined || held.appId === id ? {} : { evicted: held.appId });
       }
       // ⚠️ FIXTURE EDIT (D5) — NEWEST FIRST, which is what the real wire returns.
-      // `runtime.list()` sorts createdAt DESCENDING (packages/apps/src/server/doors/apps-surface.ts,
+      // `runtime.list()` sorts createdAt DESCENDING (packages/vendo/src/apps/doors/apps-surface.ts,
       // pinned by its "newest-first list" case in lifecycle.test.ts) and
       // AppDocument carries no timestamp at all — so list ORDER is the only
       // newness signal a client has. This fixture served insertion order, the

@@ -15,7 +15,7 @@
  * "lifecycle.erase removes one app's data" over assertions that no longer
  * touched an app's data. This file is what that name has to mean now.
  *
- * NOTHING is stubbed on either side. The WRITE path is `@vendoai/apps`' real
+ * NOTHING is stubbed on either side. The WRITE path is `@vendoai/vendo/apps`' real
  * door — the guard, the physical names, the per-owner schema replay. The READ
  * BACK is the same real door and this package's real Postgres adapter over a
  * real Postgres (PGlite: real schemas, real `search_path`, real
@@ -23,7 +23,7 @@
  * either half would only prove the two halves agree.
  */
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { createAppSql, type AppSqlAccess } from "@vendoai/apps";
+import { createAppSql, type AppSqlAccess } from "../../src/apps/index.js";
 import {
   createStore,
   createStoreOps,

@@ -34,8 +34,8 @@ import {
 } from "@vendoai/core";
 import {
   makeReceiptSchema,
-} from "@vendoai/apps/contract";
-import type { SandboxAdapter, SandboxMachine } from "@vendoai/apps";
+} from "@vendoai/core/apps";
+import type { SandboxAdapter, SandboxMachine } from "../src/apps/index.js";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";
 import type { LanguageModel } from "ai";
@@ -83,7 +83,7 @@ export default function Spending() {
 // Modelled on a real v2 box, not on what the host wishes one did: the control
 // port 8811 answers /agent/env and the /agent/task long-poll, the app's $PORT
 // answers /vendo.json and POST /fn/<name>, and the in-box agent WRITES FILES to
-// the box's disk through the seam's own `files`. `@vendoai/apps`' `testing/`
+// the box's disk through the seam's own `files`. `@vendoai/vendo/apps`' `testing/`
 // substrate is not on that package's exports map, so this is the local one —
 // same shape as `box-wire.test.ts`'s.
 

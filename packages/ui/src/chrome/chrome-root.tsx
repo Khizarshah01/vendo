@@ -1,4 +1,4 @@
-import type { VendoTheme } from "@vendoai/apps/contract";
+import type { VendoTheme } from "@vendoai/core/apps";
 import { createContext, useContext, useEffect, useMemo, type CSSProperties, type ReactNode } from "react";
 import { useVendoProvider } from "../context.js";
 import { useVendoStatus } from "../hooks/use-vendo-status.js";

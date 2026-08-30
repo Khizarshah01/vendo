@@ -1,9 +1,10 @@
 /**
  * The apps runtime's ANSWER shapes that the client must speak too.
  *
- * Membership rule, and the only one: a shape belongs here when `@vendoai/apps`
- * produces it and `@vendoai/ui` consumes it off the wire. `ui → apps` is not an
- * edge the dependency guard allows, so before this the client hand-declared its
+ * Membership rule, and the only one: a shape belongs here when the umbrella's
+ * app-generation code produces it and `@vendoai/ui` consumes it off the wire.
+ * `ui → vendo` is not an edge the dependency guard allows, so before this the
+ * client hand-declared its
  * own copy "verbatim from the frozen contract text" — which is a promise, not a
  * mechanism, and the copies drifted. Same split, same reason, as
  * {@link ./app-access.js}: the shape lives in core, the implementation stays in

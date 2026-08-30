@@ -17,7 +17,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { paintedIn, SCREEN_FILE } from "@vendoai/apps";
+import { paintedIn, SCREEN_FILE } from "../src/apps/index.js";
 import type { AppId, Json, Principal, RiskLabel, RunContext, ToolDefinition } from "@vendoai/core";
 import { defineHarness } from "../src/harnesses/index.js";
 import { createStore, type VendoStore } from "../src/store/index.js";

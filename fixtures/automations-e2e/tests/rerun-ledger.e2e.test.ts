@@ -14,7 +14,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { createStore } from "@vendoai/vendo/store";
 import { createGuard } from "@vendoai/vendo/guard";
 import { createActions } from "@vendoai/vendo/actions";
-import { createApps } from "@vendoai/apps";
+import { createApps } from "@vendoai/vendo/apps";
 import { automationsInternals, createAutomations } from "@vendoai/vendo/automations";
 import {
   appsAutomationsSeam,

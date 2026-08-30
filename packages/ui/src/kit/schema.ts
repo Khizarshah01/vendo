@@ -15,4 +15,4 @@ export {
   type KitSlotSpec,
   type PropClass,
   type PropSpec,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";

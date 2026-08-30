@@ -10,7 +10,7 @@ export { WORKSPACE_INLINE_MAX_BYTES } from "@vendoai/core";
 export const WORKSPACE_HISTORY_LIMIT = 50;
 
 /** Build contract §9.7 — the mount type and the one derivation of an app's root
-    path both live in core now: `@vendoai/apps` projects an app into a workspace
+    path both live in core now: `@vendoai/vendo/apps` projects an app into a workspace
     and has to compute the same address this file moves rows between. */
 export type { AppMount } from "@vendoai/core";
 

@@ -12,7 +12,7 @@ import { bootStranger, workspaceRoot, type Stranger } from "../src/stranger.js";
  *
  * There is exactly ONE double in the chain, and it is the one a test genuinely
  * cannot call: the model. Its moves arrive in the request body and are replayed
- * by `@vendoai/apps/testing`. The package under test is a real tarball, the CLI
+ * by `@vendoai/vendo/apps/testing`. The package under test is a real tarball, the CLI
  * is the real binary, the server is a real `next dev`, and `/api/todos` is a
  * real route over real HTTP.
  *

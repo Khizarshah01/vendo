@@ -209,7 +209,7 @@ jobs:
       # whole thing is a remote-cache replay because main's full build filled
       # the cache. Explicit beats the old implicit ordering, which was one
       # `pnpm build` away from this same failure at any time.
-      - run: pnpm turbo run build --filter=@vendoai/vendo --filter=@vendoai/apps
+      - run: pnpm turbo run build --filter=@vendoai/vendo --filter=@vendoai/core
       - run: node scripts/portability-gate.mjs
       # `//#lint:packages` is a ROOT task (one eslint over all of packages/), so
       # it has no place in a package cone. Run unfiltered: turbo caches it on

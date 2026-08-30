@@ -30,7 +30,7 @@ import {
   type VendoLogEvent,
   type VendoViewPart,
 } from "@vendoai/core";
-import { createAppFloor, SCREEN_FILE, type HostToolInfo } from "@vendoai/apps";
+import { createAppFloor, SCREEN_FILE, type HostToolInfo } from "../src/apps/index.js";
 import { afterEach, describe, expect, it } from "vitest";
 import { EDIT_APP_TOOL, REPAIR_STEPS, SAVE_APP_TOOL, SCREEN_STEPS, screenAssembler } from "../src/screen-agent.js";
 import {

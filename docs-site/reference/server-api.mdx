@@ -17,7 +17,7 @@ description: "Every server-side symbol: the createVendo composition and the Vend
 | `@vendoai/cli/extract` | The extraction stages the CLI drives |
 | `@vendoai/vendo` | `agent()`, the standalone backend agent |
 
-Type imports come from the umbrella, not the block packages. Importing the same type from `@vendoai/core` or `@vendoai/apps` is a `TS2307` under strict linking, because those are not your dependencies.
+Type imports come from the umbrella, not the block packages. Importing the same type from `@vendoai/core` or `@vendoai/vendo/apps` is a `TS2307` under strict linking, because those are not your dependencies.
 
 The split between the root and `/server` matters. `createVendo` and the types shaped for its config live on `/server`; the bulk of the types, including `HostOAuthAdapter`, live on the root.
 
@@ -171,7 +171,7 @@ createVendo({
 | `toolsFromRegistry` | `(registry, descriptors) => ToolDefinition[]` |
 | `UNATTENDED_IRREVERSIBILITY_RULE` | the frozen rule string |
 
-The sandbox adapter for e2b, `e2bSandbox()`, ships on `@vendoai/apps/e2b` rather than the umbrella. With `VENDO_API_KEY` set and no `sandbox` passed, `cloudSandbox` fills the slot on its own.
+The sandbox adapter for e2b, `e2bSandbox()`, ships on `@vendoai/vendo/sandbox/e2b` rather than the umbrella. With `VENDO_API_KEY` set and no `sandbox` passed, `cloudSandbox` fills the slot on its own.
 
 ### `eraseStore`
 

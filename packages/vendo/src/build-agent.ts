@@ -24,9 +24,9 @@ import {
   type AppSourceFile,
   type RunContext,
 } from "@vendoai/core";
-import { buildFailureReason } from "@vendoai/apps";
-import { renderBriefingPack } from "@vendoai/apps/contract";
-import type { AppBuilder, BriefingPack, BuildOutcome, BuildRequest, BuiltFile } from "@vendoai/apps/contract";
+import { buildFailureReason } from "./apps/index.js";
+import { renderBriefingPack } from "@vendoai/core/apps";
+import type { AppBuilder, BriefingPack, BuildOutcome, BuildRequest, BuiltFile } from "@vendoai/core/apps";
 import {
   BOX_WORKSPACE_ROOT,
   boxEgress,

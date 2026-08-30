@@ -5,7 +5,7 @@
  * arrives through, and the component catalog.
  */
 import { mergedHostSemantics, VENDO_TOOLS_FORMAT } from "./actions/index.js";
-import { agentToolDescriptors, buildingAppsSkill } from "@vendoai/apps";
+import { agentToolDescriptors, buildingAppsSkill } from "./apps/index.js";
 import { selectAppDatabase } from "./compose-selection.js";
 import {
   log,
@@ -21,7 +21,7 @@ import {
   type BriefingPack,
   type NormalizedCatalog,
   type VendoTheme,
-} from "@vendoai/apps/contract";
+} from "@vendoai/core/apps";
 import {
   hostToolCollision,
   mergeCapability,

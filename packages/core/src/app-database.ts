@@ -6,7 +6,7 @@
  * The adapter EXECUTES and decides nothing. Every rule that makes `mine.` one
  * user's rows and `shared.` everybody's — the guard, the physical names, the
  * per-owner schema replay — lives ABOVE this seam, in one place
- * (`@vendoai/apps`' app-sql), so the two implementations cannot disagree about
+ * (`@vendoai/vendo/apps`' app-sql), so the two implementations cannot disagree about
  * who can see what. An adapter that re-implemented the owner rule would be a
  * second copy of the security boundary, and two copies is how a boundary drifts.
  */

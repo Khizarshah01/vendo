@@ -5,8 +5,8 @@ import {
   type RouteEntry as HttpRouteEntry,
   type RouteHandler as HttpRouteHandler,
 } from "./router.js";
-import type { AppsRuntime } from "@vendoai/apps";
-import type { SandboxVenue } from "@vendoai/apps";
+import type { AppsRuntime } from "../apps/index.js";
+import type { SandboxVenue } from "../apps/index.js";
 import type { AutomationsEngine } from "../automations/index.js";
 import {
   VendoError,
@@ -43,7 +43,7 @@ export { VERSION } from "@vendoai/core";
 export const BASE_PATH = "/api/vendo";
 
 /** Re-exported, not redeclared: the venue tag is what the ONE sandbox ladder
-    returns (@vendoai/apps), and /status reports it verbatim. */
+    returns (@vendoai/vendo/apps), and /status reports it verbatim. */
 export type { SandboxVenue };
 
 /** Re-exported for the same reason: `selectFiles` is what decides it. */

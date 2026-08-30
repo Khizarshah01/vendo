@@ -5,9 +5,11 @@
  *
  * It lives in core because four authoring doors and two packages have to name
  * the same shapes: the chat tool (`vendo_automate`), `vendo_make`'s auto-arm
- * sugar and the `vendo.json` manifest fold-in (both in `@vendoai/apps`), and
- * `agent.on` (`@vendoai/vendo`). `@vendoai/apps` may import core and nothing
- * else, so this is the only place all four can meet.
+ * sugar and the `vendo.json` manifest fold-in (all three in `@vendoai/vendo`),
+ * and `agent.on` (the same package since S11d). The binding constraint is no
+ * longer between those doors — it is `@vendoai/ui`, which renders automation
+ * consent and may import core and nothing else. Core is the one layer both the
+ * umbrella and the client can name.
  */
 import { Cron } from "croner";
 import { z } from "zod";
@@ -188,7 +190,8 @@ export type AutomationEntry = AutomationRecord;
 /** THE one create operation, as a type — the implementation is
  *  `create-surface.ts` in `@vendoai/automations`, reached through
  *  `automationsInternals(engine)` and never exposed on `vendo.automations`.
- *  Named here so `@vendoai/apps` can hold one without an illegal import. */
+ *  Named here so the app-generation code can hold one without importing the
+ *  automations engine it is composed beside. */
 export type CreateAutomation = (
   input: CreateAutomationInput,
   ctx: RunContext,

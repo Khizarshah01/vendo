@@ -3,7 +3,7 @@
  * the hosted-config reader, and the `.vendo` surface root every later lazy read
  * resolves against — plus the boot-once readiness latch they all hang off.
  */
-import { selectSandbox } from "@vendoai/apps";
+import { selectSandbox } from "./apps/index.js";
 import { isGuardInstance } from "./guard/index.js";
 import { bindVendoModelSlots } from "#dev-creds/model";
 import { cloudKeyOptions, selectSecrets } from "./compose-selection.js";
@@ -45,7 +45,7 @@ export const composeAdapters = (composition: VendoComposition): Pick<VendoCompos
     composed?.files ?? config.files,
     config.appDatabase,
   );
-  // The sandbox seam, resolved by THE ladder — the one in @vendoai/apps that
+  // The sandbox seam, resolved by THE ladder — the one in @vendoai/vendo/apps that
   // `agent()` calls too (explicit → the Cloud rung → nothing; E2B_API_KEY is a
   // credential for an explicit `e2bSandbox()`, never a rung).
   // "Nothing" is this deployment's dark venue: server apps answer

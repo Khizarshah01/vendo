@@ -164,7 +164,7 @@ const generationDenied = (verdict: Extract<LimitVerdict, { allow: false }>): str
  *  person reads on the call's own stream, so the turn CARRIES ON: unlike a
  *  refused message, a refused generation is something the agent can talk about.
  *
- *  Wrapped at composition rather than inside `@vendoai/apps`, so a deployment
+ *  Wrapped at composition rather than inside `@vendoai/vendo/apps`, so a deployment
  *  with no `limits` key executes the registry it always executed. */
 export const limitGenerations = (tools: ToolRegistry, limiter: Limiter): ToolRegistry => ({
   ...tools,

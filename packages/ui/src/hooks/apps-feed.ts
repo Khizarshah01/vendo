@@ -14,7 +14,7 @@
  * request of its own — there is no second poller to keep in step with this one.
  */
 import type { VendoClient } from "../client.js";
-import type { AppListRow } from "@vendoai/apps/contract";
+import type { AppListRow } from "@vendoai/core/apps";
 
 export interface AppsSnapshot {
   data: AppListRow[];

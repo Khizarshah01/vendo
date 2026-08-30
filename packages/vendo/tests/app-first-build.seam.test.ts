@@ -22,8 +22,8 @@
  * gauntlet. Only the choice of screen is scripted, because what is measured is
  * the doors.
  */
-import { agentToolDescriptors, createApps, type AppsRuntime } from "@vendoai/apps";
-import type { ScreenAssembler } from "@vendoai/apps/contract";
+import { agentToolDescriptors, createApps, type AppsRuntime } from "../src/apps/index.js";
+import type { ScreenAssembler } from "@vendoai/core/apps";
 import type { AppId, Principal, RunContext, SqlDialect, ToolRegistry } from "@vendoai/core";
 import { createGuard } from "../src/guard/index.js";
 import { createStore, postgresAppDatabase, type VendoStore } from "../src/store/index.js";
