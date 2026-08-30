@@ -364,12 +364,18 @@ const ADDITIVE_DDL = [
   // with it, so there is nothing else to clean up. Same law as the
   // `vendo_sessions` drop below: the version gate would never re-run the DDL
   // loop on a database that already carries them, so this runs every boot.
+  //
+  // `current_schema()` is load-bearing here and in the `vendo_runs` guard below:
+  // information_schema spans every schema the role can see, so without it a
+  // SIBLING deployment sharing the database answers, and the DDL then runs
+  // against ours, where the column does not exist.
   `DO $$
    DECLARE projection text;
    BEGIN
      FOR projection IN
        SELECT column_name FROM information_schema.columns
-       WHERE table_name = 'vendo_apps' AND column_name LIKE 'trigger\\_kind%'
+       WHERE table_schema = current_schema()
+         AND table_name = 'vendo_apps' AND column_name LIKE 'trigger\\_kind%'
      LOOP
        EXECUTE format('ALTER TABLE vendo_apps DROP COLUMN %I', projection);
      END LOOP;
@@ -395,7 +401,8 @@ const ADDITIVE_DDL = [
    BEGIN
      IF EXISTS (
        SELECT 1 FROM information_schema.columns
-       WHERE table_name = 'vendo_runs' AND column_name = 'app_id'
+       WHERE table_schema = current_schema()
+         AND table_name = 'vendo_runs' AND column_name = 'app_id'
      ) THEN
        DELETE FROM vendo_runs;
        ALTER TABLE vendo_runs DROP COLUMN app_id;
@@ -464,8 +471,9 @@ const ADDITIVE_DDL = [
 // Guarded on the COLUMN's existence, not just the version, because the two must
 // agree: a fresh database is created by the v6 DDL above and never had
 // `messages`, so a version gate alone would run this SQL against a column that
-// does not exist. The information_schema check makes the whole step idempotent
-// and safe to re-apply.
+// does not exist. The check is scoped to `current_schema()` — information_schema
+// spans every schema the role can see — which is what makes the whole step
+// idempotent and safe to re-apply.
 //
 // `seq` comes from WITH ORDINALITY (1-based) shifted to 0-based, so the stored
 // array order — the only order a legacy row carries — becomes the ordering
@@ -486,7 +494,8 @@ const DATA_BACKFILL_V6 = [
    BEGIN
      IF EXISTS (
        SELECT 1 FROM information_schema.columns
-       WHERE table_name = 'vendo_threads' AND column_name = 'messages'
+       WHERE table_schema = current_schema()
+         AND table_name = 'vendo_threads' AND column_name = 'messages'
      ) THEN
        INSERT INTO vendo_thread_messages (thread_id, id, seq, message, created_at, updated_at)
        SELECT thread_id,
@@ -580,8 +589,8 @@ async function migrate(query: Query): Promise<void> {
   // Additive columns are safe to re-apply every run (IF NOT EXISTS); they keep
   // same-version development databases compatible without a version bump.
   for (const statement of ADDITIVE_DDL) await query(statement);
-  // The v6 split is guarded on the column itself (see DATA_BACKFILL_V6), so it
-  // is safe on every boot — including a fresh database, where it does nothing.
+  // The v6 split is guarded on the column in THIS schema (see DATA_BACKFILL_V6),
+  // so it is safe on every boot — including a fresh database, where it does nothing.
   for (const statement of DATA_BACKFILL_V6) await query(statement);
   // Same rule, same reason: guarded on the table it reads, so it is a no-op the
   // moment the move has already happened.
