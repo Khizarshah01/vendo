@@ -1,17 +1,15 @@
 /**
  * The engine's ROUTED collection names, declared here because their readers
- * live outside the store's own process — Vendo Cloud's console builds a
- * footprint and a retention sweep off them (cloud/console/lib/api/store-doors.ts,
- * lib/data-plane/native-store/), and a reader's copy of a writer's collection
- * name drifts silently the moment the writer renames one. Core already spells
- * every one of them as a literal in ENGINE_COLLECTION_REGISTRY
+ * live outside the store's own process — Vendo Cloud's console builds a store
+ * footprint and a retention sweep off them — and a reader's copy of a writer's
+ * collection name drifts silently the moment the writer renames one. Core
+ * already spells every one of them as a literal in ENGINE_COLLECTION_REGISTRY
  * (engine-collections.ts), so this is where the one spelling belongs.
  *
  * The engine's PRIVATE routing facts stay beside the engine that owns them:
  * ATOMIC_RESERVED_COLLECTIONS is never exported at all, and
  * RESERVED_CURSOR_COLUMNS names PHYSICAL COLUMNS, which only the layer allowed
- * to know the schema may read (the console's own data-plane fence draws exactly
- * that line).
+ * to know the schema may read.
  */
 
 /** Collections routed to their own typed door and their own table (02-store §2). */
