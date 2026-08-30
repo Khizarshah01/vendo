@@ -131,8 +131,8 @@ describe("component runs the ONE gauntlet, and it is the paint gate", () => {
     // so the refusal is marked as environmental — a repair round spent on it is
     // spent for nothing — and the toolchain's own why reaches the caller
     // verbatim, so whoever CAN fix it reads the fix.
-    const why = "no esbuild is reachable from @vendoai/vendo's own installation — it is a dependency"
-      + " of that package, so reinstall your dependencies, then restart";
+    const why = "no esbuild is reachable from @vendoai/vendo — keep this package out of the server bundle"
+      + ' (Next: serverExternalPackages: ["esbuild", "@electric-sql/pglite"])';
     const painted = await floor({
       toolchain: {
         transform: async () => { throw new ScreenToolchainUnavailable(why); },

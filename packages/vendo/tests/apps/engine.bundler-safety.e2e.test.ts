@@ -34,12 +34,9 @@
  * Building here was always redundant: turbo.json's `test` task declares
  * `dependsOn: ["^build", "build"]`, so dist is on disk before this file runs.
  */
-import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 const PACKAGE_DIR = join(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -80,55 +77,4 @@ describe("toolchain.ts esbuild import — bundler-style reachability (built dist
     const compiled = distToolchainSource();
     expect(GUARDED_ESBUILD_IMPORT.test(compiled)).toBe(true);
   });
-});
-
-/**
- * The other half of bundler-safety, and the one a green suite missed for a
- * release: not "does a bundler leave the specifier alone" but "does the
- * specifier still RESOLVE once a bundler has moved this module".
- *
- * A bare "esbuild" resolves relative to the module that CONTAINS the import.
- * While `@vendoai/vendo` was in `serverExternalPackages` that module always sat
- * in the package's own directory, so it always worked. Once the umbrella had to
- * leave that list — it has a "use client" half, and the list is
- * package-granular — its code was copied into `.next/server/chunks/…`, whose
- * nearest node_modules is the APP ROOT: npm flat-hoists esbuild there and pnpm
- * does not, so screen checking died on every pnpm host while npm stayed green.
- *
- * The probe therefore runs from a temp directory that is not inside the package
- * and has no node_modules above it, which is what a chunk's location does to
- * resolution. Both halves are asserted in the same run, because the bare failure
- * is what makes the anchored success mean anything.
- */
-describe("the toolchain resolves esbuild from a bundled location", () => {
-  it("anchors on the package's own installation, where a bare specifier cannot reach", async () => {
-    const outside = await mkdtemp(join(tmpdir(), "vendo-bundled-chunk-"));
-    try {
-      const toolchain = pathToFileURL(join(PACKAGE_DIR, "dist/apps/checking/toolchain.js")).href;
-      const chunk = join(outside, "chunk.mjs");
-      // `.mjs` in a directory with no package.json above it: Node reads it as a
-      // module standing alone, which is the resolution context of a server chunk.
-      await writeFile(chunk, [
-        `const { esbuildEntry } = await import(${JSON.stringify(toolchain)});`,
-        "const out = { anchored: esbuildEntry() };",
-        // The PRE-FIX behaviour, from this same module: a bare specifier, whose
-        // resolution starts here and finds nothing.
-        'try { await import("esbuild"); out.bare = true; } catch { out.bare = false; }',
-        // And the anchored one actually loads and compiles.
-        "const esbuild = await import(out.anchored);",
-        'out.transformed = esbuild.transformSync("const a = <b/>;", { loader: "tsx", format: "esm", target: "es2022" }).code.length > 0;',
-        "process.stdout.write(JSON.stringify(out));",
-      ].join("\n"), "utf8");
-      const probe = JSON.parse(execFileSync(process.execPath, [chunk], { cwd: PACKAGE_DIR, encoding: "utf8" })) as
-        { anchored: string; bare: boolean; transformed: boolean };
-
-      // The teeth: from here a bare specifier does NOT resolve, so the anchored
-      // one succeeding is the fix and not the layout being forgiving.
-      expect(probe.bare, "a bare specifier resolved from outside the package — this probe proves nothing").toBe(false);
-      expect(probe.anchored).not.toBe("esbuild");
-      expect(probe.transformed).toBe(true);
-    } finally {
-      await rm(outside, { recursive: true, force: true });
-    }
-  }, 30_000);
 });
