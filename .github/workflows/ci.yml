@@ -374,7 +374,7 @@ jobs:
       # is undebuggable from the log alone.
       - name: Test shard
         if: env.RUN == 'true'
-        run: pnpm --filter ${{ matrix.pkg }} exec vitest run --coverage --coverage.thresholds.lines=0 --reporter=default --reporter=blob --shard=${{ matrix.shard }}
+        run: pnpm --filter ${{ matrix.pkg }} exec vitest run --coverage --coverage.thresholds.lines=0 --reporter=dot --reporter=blob --shard=${{ matrix.shard }}
       # always(): a failed shard must still upload its blob, or coverage-merge
       # merges a hole and reports a phantom coverage drop on top of the real
       # failure.
