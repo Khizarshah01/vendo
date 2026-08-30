@@ -8,10 +8,15 @@
  *  - The load is DEFERRED. The engine carries a JavaScript VM; a payload with no
  *    `interactive` half must not pay for it, and an interactive screen paints its
  *    served tree before the VM exists, so nothing on screen waits for the chunk.
- *  - The load is PROBED. `@vendoai/ui` and `@vendoai/vendo/apps` are separately
- *    published packages, so a host can hold a `ui` that speaks screens over an
- *    `apps` that does not. Probed, that is one contained notice on the screen's
- *    root; unprobed, it is a `TypeError` on the user's first click.
+ *  - The load is PROBED. S11d moved this door from `@vendoai/apps` into
+ *    `@vendoai/core`, which `@vendoai/ui` DEPENDS on — so the old reason (two
+ *    separately installable packages) is gone, and the probe is kept for the
+ *    reason that outlived it: the specifier is a DYNAMIC import, so no compiler
+ *    on either side ever checks it, and a host that resolves an older
+ *    `@vendoai/core` — a pin, or a second copy another dependency hoisted — gets
+ *    a door with no engine behind it. Probed, that is one contained notice on
+ *    the screen's root; unprobed, it is a `TypeError` on the user's first
+ *    click.
  *
  * The declarations below are the seam itself — the renderer's half of the frozen
  * `bootScreen` contract.
