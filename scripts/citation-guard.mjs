@@ -144,7 +144,10 @@ const liveNames = new Set(
  *  both — so a marker heuristic would have waved through the very sentences
  *  this gate exists to catch.
  *
- *  A stale entry is an error, below: the list can only shrink by being right. */
+ *  A stale entry is an error, below — but only when the file is actually in
+ *  the tree being scanned: the public projection runs this same guard over a
+ *  copy with cloud/ removed, and an entry for a file that is not there is
+ *  absent, not stale. */
 const MAY_NAME_RETIRED = new Set([
   "scripts/citation-guard.mjs",
   "scripts/dependency-guard.mjs",
@@ -171,8 +174,15 @@ const mayNameRetired = (f) => MAY_NAME_RETIRED.has(f) || /\.gen\.tsx?$/.test(f);
 // deadName -> namingFile -> true
 const retired = new Map();
 const usedExcuse = new Set();
+// Which excused files this run actually SAW. The public projection is a real
+// subset of this tree — the OSS suite copies everything but cloud/ into a fresh
+// index and runs this guard there — so an entry naming a file that is not in
+// the tree at hand is absent, not stale, and only a file that IS scanned and
+// names nothing has gone stale.
+const scannedFiles = new Set();
 
 function retiredIn(file, chunks) {
+  scannedFiles.add(file);
   for (const chunk of chunks) {
     for (const name of chunk.match(NAME_RE) ?? []) {
       if (liveNames.has(name)) continue;
@@ -255,7 +265,7 @@ for (const [name, files] of [...retired].sort(([a], [b]) => a.localeCompare(b)))
 }
 
 for (const f of [...MAY_NAME_RETIRED].sort()) {
-  if (usedExcuse.has(f)) continue;
+  if (usedExcuse.has(f) || !scannedFiles.has(f)) continue;
   deadNames += 1;
   console.error(`citation-guard: STALE EXCUSE ${f} names no retired package — drop it from MAY_NAME_RETIRED`);
 }
