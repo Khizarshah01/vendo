@@ -60,7 +60,32 @@ jobs:
     # tests <=6m). A timeout is a hang detector, so the ceiling sits well above
     # that rather than at it.
     timeout-minutes: 25
+    # The store's suites read POSTGRES_URL, and S11c folded @vendoai/store into
+    # @vendoai/vendo — which this lane shards. Before the fold `store` was this
+    # matrix's one negation, so the database was never needed here; afterwards no
+    # filter can express "every vendo test except the store's", so the database
+    # comes to the lane instead. Without it the store's CI gate
+    # (tests/store/postgres-gate.test.ts) fails every vendo leg it lands on,
+    # which is exactly what it exists to do: a backend suite must never skip
+    # silently in CI. ci.yml's test-shards carries the same block for the same
+    # reason. The 4 non-vendo legs pay ~20s of container init for nothing they
+    # run — the same trade test-shards already took for its 2 ui shards.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: vendo
+          POSTGRES_PASSWORD: vendo
+          POSTGRES_DB: vendo_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U vendo"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
+      POSTGRES_URL: postgres://vendo:vendo@localhost:5432/vendo_test
       # Both halves, at job level: this job invokes turbo directly, so it does
       # not inherit the root scripts' caps, and a max-only cap makes Tinypool
       # throw before a single test runs. Stays at 2 rather than test-shards' 4:

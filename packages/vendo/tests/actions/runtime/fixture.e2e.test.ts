@@ -1,5 +1,5 @@
 import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
-import { access, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { access, cp, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { createServer } from "node:net";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
@@ -16,6 +16,7 @@ const nextBin = join(fixtureDir, "node_modules", ".bin", "next");
 let child: ChildProcessWithoutNullStreams | undefined;
 let baseUrl = "";
 let serverOutput = "";
+let syncedFixture = "";
 
 async function freePort(): Promise<number> {
   const server = createServer();
@@ -181,6 +182,19 @@ async function loginCookie(): Promise<string> {
   return cookie;
 }
 
+/** Every test that needs an extraction needs the SAME one: `vendoSync` is a
+ *  TypeScript pass over an immutable fixture tree, and its tools.json/catalog.json
+ *  are byte-identical run to run. Run inside a test body it was ~7s of that test's
+ *  30s budget, and CI shard contention multiplies it 2.2x — which is what timed the
+ *  chain test out on main (run 33293317307). So it runs ONCE, here, beside the
+ *  server boot this hook already carries a 120s budget for. Each test still gets its
+ *  own `.vendo` to write into: a copy, not a shared directory. */
+async function syncedRoot(): Promise<string> {
+  const root = await mkdtemp(join(tmpdir(), "vendo-actions-"));
+  await cp(join(syncedFixture, ".vendo"), join(root, ".vendo"), { recursive: true });
+  return root;
+}
+
 beforeAll(async () => {
   await access(nextBin);
   try {
@@ -190,9 +204,14 @@ beforeAll(async () => {
     await stopFixture();
     await startFixture();
   }
+  syncedFixture = await mkdtemp(join(tmpdir(), "vendo-actions-synced-"));
+  await vendoSync({ root: fixtureDir, out: join(syncedFixture, ".vendo") });
 }, 120_000);
 
-afterAll(stopFixture);
+afterAll(async () => {
+  await stopFixture();
+  await rm(syncedFixture, { recursive: true, force: true });
+});
 
 beforeEach(async () => {
   const response = await fetch(`${baseUrl}/fixture/reset`, { method: "POST" });
@@ -201,10 +220,9 @@ beforeEach(async () => {
 
 describe("fixture route execution", () => {
   it("executes the full sync to overrides to runtime chain", async () => {
-    const root = await mkdtemp(join(tmpdir(), "vendo-actions-chain-"));
+    const root = await syncedRoot();
     const out = join(root, ".vendo");
     try {
-      await mkdir(out);
       await writeFile(join(out, "overrides.json"), JSON.stringify({
         format: VENDO_OVERRIDES_FORMAT,
         tools: {
@@ -212,7 +230,6 @@ describe("fixture route execution", () => {
           host_listInvoices: { description: "Invoices from the synced fixture" },
         },
       }));
-      await vendoSync({ root: fixtureDir, out });
 
       const cookie = await loginCookie();
       const ctx: RunContext = { ...presentBase, requestHeaders: { cookie } };
@@ -319,10 +336,9 @@ describe("fixture route execution", () => {
     // Real extraction over the real host tree: /api/export-data cannot be classified,
     // so sync emits it disabled with a note (04 §1). The runtime must never list or
     // execute it — a route the scanner can't classify is never silently auto-allowed.
-    const root = await mkdtemp(join(tmpdir(), "vendo-actions-failclosed-"));
+    const root = await syncedRoot();
     const out = join(root, ".vendo");
     try {
-      await vendoSync({ root: fixtureDir, out });
       const written = JSON.parse(await readFile(join(out, "tools.json"), "utf8")) as {
         tools: Array<{ name: string; disabled?: boolean; note?: string }>;
       };
