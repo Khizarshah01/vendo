@@ -32,6 +32,9 @@ import {
   type ScreenInstance,
   type ScreenQuery,
 } from "../../core/apps/index.js";
+import { createRequire } from "node:module";
+import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 import { screenTypecheckIssues } from "./screen-typecheck.js";
 import { screenProgram } from "./screen-tsc.js";
 import type { ComponentScreenIssue } from "./component-screen.js";
@@ -180,10 +183,38 @@ type ScreenForm = "engine" | "scan";
 
 type Transform = (source: string, form: ScreenForm) => string;
 
+/** esbuild's entry, resolved from THIS PACKAGE's own installation rather than
+ *  from wherever a bundler put this module.
+ *
+ *  A bare "esbuild" resolves relative to the IMPORTER, and since the umbrella
+ *  stopped being externalized the importer is `.next/server/chunks/…`. From
+ *  there Node walks to the app root — which npm flat-hoists esbuild into and
+ *  pnpm does not — so every pnpm host silently lost screen checking.
+ *
+ *  `@vendoai/vendo` IS resolvable from the app root on both managers, because
+ *  the host declares it, and esbuild is this package's own dependency. So
+ *  resolving esbuild from the package's own entry finds it by construction on
+ *  either layout. A file URL, not a path: Windows rejects a bare drive path.
+ *
+ *  The bare name stays the fallback — it is what an unbundled install and every
+ *  test runner already resolve, and what a host with no cwd to anchor to needs. */
+export function esbuildEntry(): string {
+  try {
+    const fromApp = createRequire(join(process.cwd(), "index.js"));
+    const umbrella = createRequire(fromApp.resolve("@vendoai/vendo"));
+    return pathToFileURL(umbrella.resolve("esbuild")).href;
+  } catch {
+    return "esbuild";
+  }
+}
+
 /** Started at MODULE SCOPE, not on first use: the load is the slowest thing in
  *  a first check, and it has nothing to wait for. */
 const esbuildTransform: Promise<Transform | undefined> = (async () => {
   try {
+    // Assigned, not inlined: the import below must keep reading a MUTABLE
+    // BINDING or a bundler can see the specifier again (engine.bundler-safety).
+    ESBUILD_SPECIFIER = esbuildEntry();
     const esbuild = await import(/* webpackIgnore: true */ /* turbopackIgnore: true */ /* @vite-ignore */ ESBUILD_SPECIFIER) as typeof import("esbuild");
     return (source, form) => esbuild.transformSync(source, form === "engine"
       ? { loader: "tsx", format: "cjs", target: "es2020", jsx: "automatic", banner: STRICT_BANNER }
@@ -199,17 +230,17 @@ export const nodeToolchain = (): ScreenToolchain => ({
   async transform(source) {
     const transform = await esbuildTransform;
     if (transform === undefined) {
-      // The why carries its own FIX, and the fix is THIS PACKAGE rather than
-      // esbuild: the import above hides its specifier behind a variable and
-      // bundler-ignore comments, so a bundler never sees an "esbuild" import to
-      // match an external against — naming esbuild alone is inert (measured on a
-      // fresh host). What has to stay out of the bundle is `@vendoai/vendo`
-      // itself, so this module is still resolving esbuild from Node at runtime.
-      // The whole list is the one `vendo init` writes, so it pastes as it stands.
+      // esbuild is a DEPENDENCY of this package, and `esbuildEntry` resolves it
+      // from the package's own installation, so a complete install reaches it
+      // whichever package manager laid it out and whether or not a bundler
+      // moved this module. Reaching here means the dependency is genuinely
+      // absent — a pruned install, or a deploy that shipped node_modules
+      // without it. No next.config change can help, which is why this no longer
+      // asks for one.
       throw new ScreenToolchainUnavailable(
-        "no esbuild is reachable from @vendoai/vendo — keep this package out of the server bundle (Next:"
-        + ' serverExternalPackages: ["esbuild", "@electric-sql/pglite"]'
-        + " in next.config)",
+        "no esbuild is reachable from @vendoai/vendo's own installation — it is a dependency of that"
+        + " package, so reinstall your dependencies (or add `esbuild` to your app if your deploy prunes"
+        + " them), then restart",
       );
     }
     return { engine: transform(source, "engine"), scan: transform(source, "scan") };
